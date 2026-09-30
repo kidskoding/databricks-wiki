@@ -1,0 +1,13 @@
+* text=auto eol=lf
+
+*.md linguist-detectable=true
+
+.obsidian/** linguist-vendored
+
+# Binary assets
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.webp binary
+*.pdf binary

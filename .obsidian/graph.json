@@ -1,0 +1,100 @@
+{
+  "collapse-filter": true,
+  "search": "-path:_templates",
+  "showTags": false,
+  "showAttachments": false,
+  "hideUnresolved": false,
+  "showOrphans": true,
+  "collapse-color-groups": false,
+  "colorGroups": [
+    {
+      "query": "path:01_foundations",
+      "color": {
+        "a": 1,
+        "rgb": 6583435
+      }
+    },
+    {
+      "query": "path:02_big_data_era",
+      "color": {
+        "a": 1,
+        "rgb": 9584654
+      }
+    },
+    {
+      "query": "path:03_apache_spark",
+      "color": {
+        "a": 1,
+        "rgb": 14834204
+      }
+    },
+    {
+      "query": "path:04_modern_data_stack",
+      "color": {
+        "a": 1,
+        "rgb": 14251782
+      }
+    },
+    {
+      "query": "path:05_lakehouse",
+      "color": {
+        "a": 1,
+        "rgb": 889992
+      }
+    },
+    {
+      "query": "path:06_databricks_platform OR path:07_unity_catalog_and_governance OR path:08_data_engineering OR path:09_sql_bi_and_apps OR path:10_ai_and_ml",
+      "color": {
+        "a": 1,
+        "rgb": 16725537
+      }
+    },
+    {
+      "query": "path:11_azure_databricks",
+      "color": {
+        "a": 1,
+        "rgb": 30932
+      }
+    },
+    {
+      "query": "path:12_databricks_on_aws",
+      "color": {
+        "a": 1,
+        "rgb": 16750848
+      }
+    },
+    {
+      "query": "path:13_databricks_on_gcp",
+      "color": {
+        "a": 1,
+        "rgb": 3450963
+      }
+    },
+    {
+      "query": "path:14_admin_security_and_cost",
+      "color": {
+        "a": 1,
+        "rgb": 12131356
+      }
+    },
+    {
+      "query": "path:90_glossary",
+      "color": {
+        "a": 1,
+        "rgb": 9741240
+      }
+    }
+  ],
+  "collapse-display": true,
+  "showArrow": true,
+  "textFadeMultiplier": 0,
+  "nodeSizeMultiplier": 1.1,
+  "lineSizeMultiplier": 1,
+  "collapse-forces": true,
+  "centerStrength": 0.45,
+  "repelStrength": 12,
+  "linkStrength": 1,
+  "linkDistance": 200,
+  "scale": 1,
+  "close": false
+}

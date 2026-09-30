@@ -1,0 +1,115 @@
+/* Databricks Brain: custom callouts and reading-view polish.
+   Callout colors are RGB triples so Obsidian can apply its own alpha in light and dark themes. */
+
+body {
+  --dbx-lava: 255, 54, 33;
+  --dbx-azure: 0, 120, 212;
+  --dbx-aws: 255, 153, 0;
+  --dbx-gcp: 52, 168, 83;
+  --dbx-teal: 13, 148, 136;
+  --dbx-amber: 217, 119, 6;
+  --dbx-slate: 100, 116, 139;
+  --dbx-sepia: 146, 64, 14;
+}
+
+/* ---------- Custom callouts ---------- */
+
+.callout[data-callout="eli5"] {
+  --callout-color: var(--dbx-lava);
+  --callout-icon: lucide-sparkles;
+}
+
+.callout[data-callout="analogy"] {
+  --callout-color: var(--dbx-teal);
+  --callout-icon: lucide-lightbulb;
+}
+
+.callout[data-callout="azure"] {
+  --callout-color: var(--dbx-azure);
+  --callout-icon: lucide-cloud;
+}
+
+.callout[data-callout="aws"] {
+  --callout-color: var(--dbx-aws);
+  --callout-icon: lucide-cloud;
+}
+
+.callout[data-callout="gcp"] {
+  --callout-color: var(--dbx-gcp);
+  --callout-icon: lucide-cloud;
+}
+
+.callout[data-callout="confusion"] {
+  --callout-color: var(--dbx-amber);
+  --callout-icon: lucide-circle-help;
+}
+
+.callout[data-callout="recall"] {
+  --callout-color: var(--dbx-slate);
+  --callout-icon: lucide-brain;
+}
+
+.callout[data-callout="path"] {
+  --callout-color: var(--dbx-slate);
+  --callout-icon: lucide-route;
+}
+
+.callout[data-callout="story"] {
+  --callout-color: var(--dbx-sepia);
+  --callout-icon: lucide-book-marked;
+}
+
+.callout[data-callout="nextup"] {
+  --callout-color: var(--dbx-sepia);
+  --callout-icon: lucide-arrow-right-circle;
+}
+
+.callout[data-callout="bridge"] {
+  --callout-color: var(--dbx-lava);
+  --callout-icon: lucide-git-merge;
+}
+
+.callout[data-callout="sources"] {
+  --callout-color: var(--dbx-slate);
+  --callout-icon: lucide-book-open;
+}
+
+/* ---------- Headings ---------- */
+
+.markdown-rendered h1 {
+  border-bottom: 3px solid rgb(var(--dbx-lava));
+  padding-bottom: 0.25em;
+  letter-spacing: -0.01em;
+}
+
+.markdown-rendered h2 {
+  margin-top: 1.8em;
+  padding-left: 0.5em;
+  border-left: 4px solid rgba(var(--dbx-lava), 0.7);
+}
+
+/* ---------- Tables ---------- */
+
+.markdown-rendered table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.markdown-rendered th {
+  background-color: rgba(var(--dbx-lava), 0.08);
+  text-align: left;
+}
+
+.markdown-rendered td,
+.markdown-rendered th {
+  padding: 0.45em 0.75em;
+}
+
+/* ---------- Inline code: namespaces like catalog.schema.table stand out ---------- */
+
+.markdown-rendered :not(pre) > code {
+  color: rgb(var(--dbx-lava));
+  background-color: rgba(var(--dbx-lava), 0.08);
+  border-radius: 4px;
+  padding: 0.1em 0.35em;
+}
