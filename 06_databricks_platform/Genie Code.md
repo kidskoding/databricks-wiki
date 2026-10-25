@@ -60,7 +60,7 @@ Mastery: `INPUT[inlineSelect(option(new), option(learning), option(solid)):maste
 > Genie Code is a helper built into Databricks that you talk to in plain English. You describe what you want, such as "clean up this sales table and chart it by month," and it writes the instructions for you, runs them, and fixes them when they break.
 
 > [!renamed] Renamed
-> **Databricks Assistant** was renamed **Genie Code** on March 11, 2026, when Databricks added expanded agentic capabilities for multi-step data tasks. This note keeps the old filename so existing links work. Older docs, blog posts, and admin settings may still say "Assistant."
+> **Databricks Assistant** was renamed **Genie Code** on March 11, 2026, when Databricks added expanded agentic capabilities for multi-step data tasks. The old name is kept as an alias so searches for it still find this note. Older docs, blog posts, and admin settings may still say "Assistant."
 
 > [!analogy]- Analogy: a pair programmer who knows the filing cabinet
 > | Pair programmer | Genie Code |
@@ -160,7 +160,7 @@ flowchart LR
 ## Common misconceptions
 
 > [!confusion] Genie Code is not Genie
-> **Genie Code** (formerly Databricks Assistant) is for people who write code. **[[Genie Agents]]**, through Genie Agents (formerly Genie spaces), is for business users who ask questions of curated data without writing code.
+> **Genie Code** (formerly Databricks Assistant) is for people who write code. **[[Genie Agents]]** (formerly Genie spaces) are for business users who ask questions of curated data without writing code.
 
 > [!confusion] Genie Code does not bypass permissions
 > It cannot read tables or columns that you cannot read. Generated code runs under your identity.

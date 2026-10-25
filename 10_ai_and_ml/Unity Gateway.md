@@ -28,6 +28,7 @@ related:
   - "[[Budgets and Usage Dashboards]]"
   - "[[Databricks on AWS GovCloud]]"
 aliases:
+  - AI Gateway
   - External Models
   - Unity Gateway
   - Unity AI Gateway

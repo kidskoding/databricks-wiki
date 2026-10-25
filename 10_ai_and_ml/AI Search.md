@@ -26,6 +26,7 @@ related:
   - "[[Latency]]"
   - "[[Databricks Free Edition and Trials]]"
 aliases:
+  - Vector Search
   - AI Search
   - Databricks AI Search
   - Mosaic AI Vector Search
