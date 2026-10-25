@@ -99,7 +99,7 @@ ETL (extract, transform, load) and ELT (extract, load, transform) are the two st
 | **Where transformation runs** | A separate ETL server or tool | Inside the warehouse or [[The Lakehouse Idea\|lakehouse]] |
 | **Raw data kept** | Often not | Yes, in a raw or bronze layer ([[Medallion Architecture]]) |
 | **Change a business rule** | Re-extract and re-run | Re-run the transformation on stored raw data |
-| **Typical tools** | Informatica, SSIS, Talend, Azure Data Factory data flows[^unverified] | [[Fivetran and ELT Tools\|Fivetran]] or [[Lakeflow Connect]] for EL, [[dbt]] or [[Lakeflow Spark Declarative Pipelines]] for T |
+| **Typical tools** | Informatica, SSIS, Talend, Azure Data Factory mapping data flows | [[Fivetran and ELT Tools\|Fivetran]] or [[Lakeflow Connect]] for EL, [[dbt]] or [[Lakeflow Spark Declarative Pipelines]] for T |
 | **Main risk** | Rigid; lost raw data | Raw data accumulates without governance ([[Data Swamps\|data swamp]]) |
 | **When it still fits** | Removing sensitive fields before data leaves a source; strict regulatory filtering | Most cloud analytics |
 
@@ -156,8 +156,8 @@ In production, the same steps are usually declared in a pipeline that loads only
 > - **Mask sensitive data early.** A clinic should restrict or mask patient identifiers as soon as data lands, not only in the reporting layer.
 
 > [!bridge]- In Databricks today
-> Databricks groups its data engineering features under [[Lakeflow]][^unverified]:
-> - **Extract and load:** [[Lakeflow Connect]] for managed connectors to SaaS applications and databases, and [[Auto Loader]] or [[COPY INTO]] for files[^unverified].
+> Databricks groups its data engineering features under [[Lakeflow]], a unified solution for ingestion, transformation, and orchestration:
+> - **Extract and load:** [[Lakeflow Connect]] for managed connectors to SaaS applications and databases, and [[Auto Loader]] or [[COPY INTO]] for files.
 > - **Transform:** [[Lakeflow Spark Declarative Pipelines]] for declarative SQL or Python pipelines with built-in data quality [[Expectations and Data Quality|expectations]], or [[dbt on Databricks|dbt]] if you already use it.
 > - **Orchestrate:** [[Lakeflow Jobs]] to schedule and chain tasks.
 > - **Layering:** Databricks guidance uses bronze and silver layers for ingestion and cleaning, and a gold layer for business-ready models such as star schemas.
@@ -166,10 +166,10 @@ In production, the same steps are usually declared in a pipeline that loads only
 ## Cloud differences
 
 > [!azure]- Azure Databricks
-> Many Azure customers already use Azure Data Factory for extraction and orchestration, and it can call Databricks notebooks and jobs[^unverified]. See [[Azure Data Factory with Databricks]].
+> Many Azure customers already use Azure Data Factory for extraction and orchestration, and its Azure Databricks Notebook and Job activities run Databricks notebooks and jobs (including serverless jobs) from a pipeline. See [[Azure Data Factory with Databricks]].
 
 > [!aws]- Databricks on AWS
-> AWS Glue is a common existing ETL tool. Its catalog can be federated into Unity Catalog[^unverified]. See [[Hive Metastore Federation for AWS Glue]].
+> AWS Glue is a common existing ETL tool. Hive metastore federation can connect an AWS Glue catalog to Unity Catalog as a foreign catalog, which is read-only from Databricks. See [[Hive Metastore Federation for AWS Glue]].
 
 > [!gcp]- Databricks on Google Cloud
 > BigQuery is a common source or destination. See [[BigQuery Integration]].
@@ -219,5 +219,11 @@ What are the three medallion layers?::Bronze (raw), silver (cleaned), and gold (
 > - [Dimensional modeling in Lakeflow pipelines (AWS)](https://docs.databricks.com/aws/en/ldp/best-practices/dimensional-modeling)
 > - [read_files table-valued function (AWS)](https://docs.databricks.com/aws/en/sql/language-manual/functions/read_files)
 > - [Data modeling (AWS)](https://docs.databricks.com/aws/en/transform/data-modeling)
-
-[^unverified]: Unconfirmed: not yet checked against an official or primary source.
+> - [Data engineering with Databricks (Lakeflow) (AWS)](https://docs.databricks.com/aws/en/data-engineering/)
+> - [Lakeflow Connect (AWS)](https://docs.databricks.com/aws/en/ingestion/lakeflow-connect/)
+> - [Mapping data flows in Azure Data Factory (Microsoft Learn)](https://learn.microsoft.com/en-us/azure/data-factory/concepts-data-flow-overview)
+> - [SQL Server Integration Services (Microsoft Learn)](https://learn.microsoft.com/en-us/sql/integration-services/sql-server-integration-services)
+> - [Run a Databricks notebook with the Databricks Notebook Activity in Azure Data Factory (Microsoft Learn)](https://learn.microsoft.com/en-us/azure/data-factory/transform-data-databricks-notebook)
+> - [Transform data with a Databricks Job in Azure Data Factory (Microsoft Learn)](https://learn.microsoft.com/en-us/azure/data-factory/transform-data-databricks-job)
+> - [Enable Hive metastore federation for AWS Glue metastores (AWS)](https://docs.databricks.com/aws/en/query-federation/hms-federation-glue)
+> - [Hive metastore federation concepts (AWS)](https://docs.databricks.com/aws/en/query-federation/hms-federation-concepts)

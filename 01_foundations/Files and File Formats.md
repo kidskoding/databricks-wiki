@@ -122,7 +122,7 @@ pd.read_csv("orders_2026.csv", usecols=["price"])
 pd.read_parquet("orders_2026.parquet", columns=["price"])
 ```
 
-On typical data[^unverified] the Parquet file is several times smaller than the CSV, and the single-column read is much faster, because Parquet stores each column together, compresses similar values well, and keeps types so nothing has to be guessed. Exact ratios depend on the data, so measure your own.
+On typical data the Parquet file is several times smaller than the CSV (a Databricks example shows 1 TB of CSV stored as 130 GB of Parquet), and the single-column read is much faster, because Parquet stores each column together, compresses similar values well, and keeps types so nothing has to be guessed. Exact ratios depend on the data, so measure your own.
 
 ## Small-business considerations
 
@@ -132,7 +132,7 @@ On typical data[^unverified] the Parquet file is several times smaller than the 
 > - **Keep the original files anyway.** Saving the raw export before you clean it means you can always redo the cleaning. This is the "bronze" idea in the [[Medallion Architecture]].
 
 > [!bridge]- In Databricks today
-> Databricks reads every common format: the `read_files` function handles CSV, JSON, XML, text, binary files, Parquet, Avro, and ORC, and Excel has its own reader. Tables you create are stored as [[Delta Lake]] by default[^unverified]: Parquet data files plus a transaction log that adds [[ACID Transactions|ACID transactions]], [[Time Travel|time travel]], and [[Schema Enforcement and Evolution|schema enforcement]]. Through [[Delta UniForm]], the same tables can also be read as [[Apache Iceberg]][^unverified]. The general idea of "a table made of open files plus metadata" is covered in [[Open Table Formats]].
+> Databricks reads every common format: the `read_files` function handles CSV, JSON, XML, text, binary files, Parquet, Avro, and ORC, and Excel has its own reader. Unless you specify otherwise, tables you create are [[Delta Lake]] tables: Parquet data files plus a transaction log that adds [[ACID Transactions|ACID transactions]], [[Time Travel|time travel]], and [[Schema Enforcement and Evolution|schema enforcement]]. Through [[Delta UniForm]], the same tables can also be read by [[Apache Iceberg]] clients (Databricks Runtime 14.3 LTS and above), because Databricks generates Iceberg metadata without rewriting the data files. The general idea of "a table made of open files plus metadata" is covered in [[Open Table Formats]].
 
 ## Cloud differences
 
@@ -142,10 +142,10 @@ On typical data[^unverified] the Parquet file is several times smaller than the 
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Splittability.**[^unverified] Distributed engines want to split a big file so many machines read it in parallel. Uncompressed CSV can be split at line breaks; gzip-compressed CSV cannot, so one machine reads the whole file. Parquet is splittable by row group. This is one reason a single huge `.csv.gz` loads slowly in Spark.
-> - **Parquet's internals.**[^unverified] A Parquet file is divided into row groups; each row group holds one column chunk per column; each chunk holds pages with encodings such as dictionary and run-length encoding. The footer holds the schema and per-chunk min/max statistics, which let engines skip chunks that cannot match a filter (see [[Data Skipping]]).
+> - **Splittability.** Distributed engines want to split a big file so many machines read it in parallel. Spark cannot read unsplittable files such as gzip files in multiple parts, so one task reads each whole file. Parquet is splittable: the row group is its unit of parallelization. This is one reason a single huge `.csv.gz` loads slowly in Spark; Databricks recommends ingesting such files once into a Delta table.
+> - **Parquet's internals.** A Parquet file is divided into row groups; each row group holds exactly one column chunk per column; each chunk holds pages, the unit of encoding and compression, with encodings such as dictionary and run-length encoding. The file metadata, including the location of every column chunk, is written after the data at the end of the file, and an optional page index stores min/max statistics that let readers skip pages that cannot match a filter. Databricks also records per-file min/max statistics for Delta tables (see [[Data Skipping]]).
 > - **Files vs. tables.** A folder of Parquet files has no transactions: two writers can corrupt it, and a reader can see half-written data. Table formats ([[Delta Lake]], [[Apache Iceberg]], [[Apache Hudi]]) add a log or manifest on top so a set of files behaves like one consistent table. That leap is chapter 05's story.
-> - **The small-files problem.** Thousands of tiny files are slow to list and open, especially on object storage. Compaction (in Delta, `OPTIMIZE`[^unverified]) rewrites them into fewer, larger files. See [[OPTIMIZE and VACUUM]].
+> - **The small-files problem.** Thousands of tiny files are slow to list and open, especially on object storage. Compaction (on Databricks, the `OPTIMIZE` command) rewrites them into fewer, larger files. See [[OPTIMIZE and VACUUM]].
 > - **In-memory formats are a separate layer.** Apache Arrow (first release 0.1.0, October 2016) is a columnar format for data *in memory*, designed as the complement to Parquet on disk. It lets tools like pandas and Spark exchange data without converting it row by row.
 
 ## Common misconceptions
@@ -177,5 +177,13 @@ What is serialization?::Turning data in memory into bytes to store or send; dese
 > - [read_files table-valued function (AWS)](https://docs.databricks.com/aws/en/sql/language-manual/functions/read_files)
 > - [read_files table-valued function (Azure Databricks)](https://learn.microsoft.com/en-us/azure/databricks/sql/language-manual/functions/read_files)
 > - [Read and stream Excel files (AWS)](https://docs.databricks.com/aws/en/query/formats/excel)
-
-[^unverified]: Unconfirmed: not yet checked against an official or primary source.
+> - [What is Parquet? (Databricks glossary)](https://www.databricks.com/glossary/what-is-parquet)
+> - [What is Delta Lake? (AWS)](https://docs.databricks.com/aws/en/delta/)
+> - [Read Delta Lake tables with Iceberg clients (AWS)](https://docs.databricks.com/aws/en/delta/uniform)
+> - [Long Spark stage with one task (AWS)](https://docs.databricks.com/aws/en/optimizations/spark-ui-guide/one-spark-task)
+> - [Parquet concepts (parquet.apache.org)](https://parquet.apache.org/docs/concepts/)
+> - [Parquet file format (parquet.apache.org)](https://parquet.apache.org/docs/file-format/)
+> - [Parquet encodings (parquet.apache.org)](https://parquet.apache.org/docs/file-format/data-pages/encodings/)
+> - [Parquet page index (parquet.apache.org)](https://parquet.apache.org/docs/file-format/pageindex/)
+> - [Data skipping (AWS)](https://docs.databricks.com/aws/en/delta/data-skipping)
+> - [Optimize data file layout (AWS)](https://docs.databricks.com/aws/en/delta/optimize)

@@ -177,8 +177,8 @@ LEFT ANTI JOIN bakery.sales.customers c ON o.customer_id = c.customer_id;
 > [!deepdive]- Advanced topics (301–401)
 > - **Why Databricks does not enforce keys.** Enforcing uniqueness on a distributed table means checking every write against every existing key, across many files and concurrent writers. That costs coordination that analytic workloads rarely want to pay. The data pipeline is responsible for uniqueness, usually through `MERGE` or deduplication.
 > - **Natural vs. surrogate keys in analytics.** Databricks' dimensional modeling guidance prefers natural keys when the source's key is stable and usable, and reserves surrogate keys for sources that reuse or change IDs. Identity columns are safe when the upstream table is append-only and never fully refreshed; a full rebuild can assign different IDs and break fact-to-dimension joins.
-> - **Deterministic surrogate keys.**[^unverified] An alternative to identity columns is hashing the natural key (for example `xxhash64(source_system, source_id)`), which gives the same key on every rebuild. Collisions are rare but possible, so test for them at large scale.
-> - **Keys and indexes.** In OLTP databases a primary key automatically creates a unique [[Index|index]], usually a B-tree. Delta tables do not have B-tree indexes[^unverified]; lookups by key rely on file statistics, [[Data Skipping|data skipping]], and [[Liquid Clustering|liquid clustering]] on the key columns.
+> - **Deterministic surrogate keys.** When a surrogate key is needed, Databricks' dimensional modeling guidance recommends deriving an order-preserving surrogate deterministically from the stable natural key, so the same entity gets the same key after a full refresh or rebuild. The same guidance advises against hash surrogates such as `sha2(natural_key)`: hash values are random, so physically adjacent rows end up scattered across files, which hurts liquid clustering and Z-order performance.
+> - **Keys and indexes.** In OLTP databases such as PostgreSQL, a primary key or unique constraint automatically creates a unique B-tree [[Index|index]]. On Databricks, primary keys are informational and not enforced; lookups by key rely on per-file statistics (minimum and maximum values) for [[Data Skipping|data skipping]] and on [[Liquid Clustering|liquid clustering]] on the key columns. The older Bloom filter indexes are deprecated.
 > - **Keys in slowly changing dimensions.** When you keep history of a customer's address, one natural key maps to several rows, so the dimension needs a surrogate or a `(natural_key, valid_from)` key. See [[Slowly Changing Dimensions]].
 
 ## Common misconceptions
@@ -219,5 +219,6 @@ What data type must a Databricks identity column be?::BIGINT.
 > - [Query optimization using primary key and unique constraints (Azure Databricks)](https://learn.microsoft.com/en-us/azure/databricks/sql/user/queries/query-optimization-constraints)
 > - [Dimensional modeling in Lakeflow pipelines (AWS)](https://docs.databricks.com/aws/en/ldp/best-practices/dimensional-modeling)
 > - [Delta Lake generated columns (AWS)](https://docs.databricks.com/aws/en/delta/generated-columns)
-
-[^unverified]: Unconfirmed: not yet checked against an official or primary source.
+> - [Data skipping (AWS)](https://docs.databricks.com/aws/en/delta/data-skipping)
+> - [Bloom filter indexes (deprecated) (AWS)](https://docs.databricks.com/aws/en/optimizations/bloom-filters)
+> - [PostgreSQL: Constraints](https://www.postgresql.org/docs/current/ddl-constraints.html)

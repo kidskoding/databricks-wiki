@@ -69,7 +69,7 @@ Mastery: `INPUT[inlineSelect(option(new), option(learning), option(solid)):maste
 
 ## Background
 
-Before spreadsheets, a business "model" (a budget, a price list, a forecast) lived on paper ledgers, and changing one assumption meant recalculating everything by hand. **VisiCalc**[^unverified], released for the Apple II in 1979 by Dan Bricklin and Bob Frankston, made the grid recalculate automatically and drove early adoption of personal computers in small businesses. **Lotus 1-2-3** (January 1983) took over on the IBM PC, adding charts, named ranges, and macros (recorded or scripted sequences of actions). **Microsoft Excel** arrived in 1985[^unverified], first on the Mac, and eventually became the default. Google Sheets later added real-time collaboration in the browser.
+Before spreadsheets, a business "model" (a budget, a price list, a forecast) lived on paper ledgers, and changing one assumption meant recalculating everything by hand. **VisiCalc**, created by Dan Bricklin and Bob Frankston, prototyped on an Apple II, and announced in June 1979, made the grid recalculate automatically and gave business users a reason to buy a personal computer. **Lotus 1-2-3** (January 1983) took over on the IBM PC, adding charts, named ranges, and macros (recorded or scripted sequences of actions). **Microsoft Excel** arrived in September 1985, first on the Macintosh, and eventually became the default. Google Sheets later added real-time collaboration in the browser.
 
 Spreadsheets won because they give one person **instant, visual control** of data with no programmer, no database, and no IT ticket.
 
@@ -88,7 +88,7 @@ Where they break:
 
 | Limit | What happens | Bakery or clinic example |
 |---|---|---|
-| **Size** | Excel caps a sheet at about a million rows[^unverified], and slows well before that | Two years of item-level point-of-sale (POS) lines no longer fit |
+| **Size** | Excel caps a worksheet at 1,048,576 rows, and slows well before that | Two years of item-level point-of-sale (POS) lines no longer fit |
 | **No enforced types** | A column can mix numbers, text, and blanks | "3", "three", and "3 boxes" in the quantity column |
 | **Copies everywhere** | Files get emailed and edited in parallel | `Sales_FINAL_v3_Sam_edits.xlsx` |
 | **Fragile formulas** | One wrong range or hard-coded number silently breaks totals | A `SUM` that stops at row 500 after rows were added |
@@ -134,12 +134,12 @@ The formula and the query express the same idea. The difference is in the surrou
 > - **Reading Excel files:** Databricks has a built-in Excel reader (`read_files` with `format => 'excel'`, or `spark.read.excel`) on Databricks Runtime 17.1 and above. It reads one sheet at a time, returns formulas as their computed values, keeps only the top-left value of merged cells, and can target a sheet or range with `dataAddress`. Excel files can also be ingested from SharePoint. Check the docs for current release status.
 > - **Replacing the master spreadsheet:** a [[Delta Lake]] table in [[Unity Catalog]], with grants per group.
 > - **Replacing the pivot-table report:** [[AI-BI Dashboards]], or [[Genie Agents]] for asking questions in plain English.
-> - **Keeping Excel as the front end:** Excel and [[Connecting Power BI|Power BI]] can query Databricks tables directly through [[SQL Warehouses]] and the [[JDBC and ODBC|ODBC]] driver[^unverified].
+> - **Keeping Excel as the front end:** the Databricks Excel Add-in browses, imports, and queries governed Databricks tables inside Excel (web, Windows, and macOS), and [[Connecting Power BI|Power BI]] connects to Databricks clusters and [[SQL Warehouses]].
 
 ## Cloud differences
 
 > [!azure]- Azure Databricks
-> Microsoft 365 shops can keep Excel and Power BI as the front end and connect them to Azure Databricks with Microsoft Entra ID sign-in[^unverified]. See [[Power BI on Azure Databricks]].
+> Microsoft 365 shops can keep Excel and Power BI as the front end and connect them to Azure Databricks. Reports published to the Power BI service can use single sign-on that passes the same Microsoft Entra ID credentials through to Azure Databricks. See [[Power BI on Azure Databricks]].
 
 > [!aws]- Databricks on AWS
 > Nothing Excel-specific differs. Files usually arrive through S3 or a Unity Catalog volume.
@@ -150,7 +150,7 @@ The formula and the query express the same idea. The difference is in the surrou
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Excel's grid limit**[^unverified] is 1,048,576 rows by 16,384 columns per worksheet. Power Pivot and the Data Model can hold more rows in compressed columnar memory, which is effectively a small embedded analytical database.
+> - **Excel's grid limit** is 1,048,576 rows by 16,384 columns per worksheet. The Excel Data Model, which Power Pivot uses, has a separate limit of 1,999,999,997 rows per table, so it acts as a small embedded analytical database.
 > - **Spreadsheets are a functional programming language.** Each formula is a pure function of other cells, and the recalculation engine maintains a dependency graph (a [[DAG]]). Data pipelines, dbt models, and declarative pipelines in Databricks use the same idea at a larger scale.
 > - **Type coercion.** Excel converts values that look like dates into dates on entry, so codes such as `MAR1` or `3-4` can become dates without warning.
 > - **The Excel reader's limits** (single sheet per read, no schema evolution when streaming with Auto Loader, merged cells collapsed) mean spreadsheets with several tables per sheet need a `dataAddress` per table, or a one-time cleanup.
@@ -184,5 +184,10 @@ What does the Databricks Excel reader do with formulas?::Loads their computed va
 > - [Read and stream Excel files (Azure Databricks)](https://learn.microsoft.com/en-us/azure/databricks/query/formats/excel)
 > - [Ingest files from SharePoint (GCP)](https://docs.databricks.com/gcp/en/ingestion/sharepoint)
 > - [Reading .xlsx files with xlrd fails (Azure Databricks KB)](https://learn.microsoft.com/vi-vn/azure/databricks/kb/libraries/xlsx-file-not-supported-xlrd)
-
-[^unverified]: Unconfirmed: not yet checked against an official or primary source.
+> - [VisiCalc: information from its creators, Dan Bricklin and Bob Frankston (bricklin.com)](http://www.bricklin.com/visicalc.htm)
+> - [The idea for VisiCalc, by Dan Bricklin (bricklin.com)](http://www.bricklin.com/history/saiidea.htm)
+> - [The History of Microsoft: 1985 (Microsoft Learn)](https://learn.microsoft.com/en-us/shows/history/history-of-microsoft-1985)
+> - [Excel specifications and limits (Microsoft Support)](https://support.microsoft.com/en-us/office/excel-specifications-and-limits-1672b34d-7043-467e-8e27-269d656771c3)
+> - [Data Model specification and limits (Microsoft Support)](https://support.microsoft.com/en-us/excel/data-model-specification-and-limits)
+> - [Connect to Databricks from Microsoft Excel (AWS)](https://docs.databricks.com/aws/en/integrations/excel)
+> - [Connect Power BI Desktop to Azure Databricks (Azure Databricks)](https://learn.microsoft.com/en-us/azure/databricks/partners/bi/power-bi-desktop)

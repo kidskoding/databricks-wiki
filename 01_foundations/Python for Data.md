@@ -80,7 +80,7 @@ SQL describes questions about tables. Many data tasks are not questions about ta
 - Training a model to forecast next week's demand.
 - Producing charts and automating a weekly report.
 
-Python, first released in 1991[^unverified], became the most common language for these tasks. Its syntax is readable for non-specialists[^unverified], it runs on every operating system, and it has a large ecosystem of [[Open Source|open-source]] libraries for numerical computing, statistics, [[Machine Learning Basics|machine learning]], and data access. The pandas library, started by Wes McKinney in 2008[^unverified], added a table-like data structure, the DataFrame, that made Python practical for analysts used to spreadsheets and SQL.
+Python, first posted publicly by Guido van Rossum in February 1991, became the most common language for these tasks. It is approachable for beginning programmers, it runs on every operating system, and it has a large ecosystem of [[Open Source|open-source]] libraries for numerical computing, statistics, [[Machine Learning Basics|machine learning]], and data access. The pandas library, whose development began in 2008 at AQR Capital Management with Wes McKinney as its original lead, added a table-like data structure, the DataFrame, that made Python practical for analysts used to spreadsheets and SQL.
 
 ## Overview
 
@@ -157,11 +157,11 @@ daily.write.mode("overwrite").saveAsTable("bakery.gold.daily_sales")
 > - **Keep scripts out of personal laptops.** A script that only runs on one person's machine is the Python version of the master spreadsheet. Store code in [[Git]] and run it on shared, scheduled compute.
 
 > [!bridge]- In Databricks today
-> - **Notebooks:** Databricks [[Notebooks|notebooks]] run Python, SQL, Scala, and R[^unverified], and cells in different languages can share tables.
+> - **Notebooks:** Databricks [[Notebooks|notebooks]] run Python, SQL, Scala, and R, and cells in different languages can share tables.
 > - **pandas on Databricks:** you can use plain pandas on the [[Driver and Executors|driver]] node (the machine that coordinates a cluster). The **pandas API on Spark** (`import pyspark.pandas as ps`, Databricks Runtime 10.0 and above) provides pandas-equivalent APIs that run on Apache Spark.
 > - **Moving between pandas and Spark:** `toPandas()` and `spark.createDataFrame(pandas_df)` use Apache Arrow when `spark.sql.execution.arrow.pyspark.enabled` is `true`. The docs note this is on by default except on High Concurrency clusters and user isolation clusters in Unity Catalog-enabled workspaces. Even with Arrow, `toPandas()` collects every row to the driver, so use it only on small results.
 > - **Custom Python logic at scale:** pandas [[UDF|user-defined functions]] process Spark data in Arrow batches.
-> - **Local development:** [[Databricks Connect]] runs PySpark code from a local IDE (code editor) against Databricks compute[^unverified].
+> - **Local development:** [[Databricks Connect]] runs PySpark code from a local IDE (code editor), such as Visual Studio Code, PyCharm, or IntelliJ IDEA, against Databricks compute.
 > - **Libraries:** see [[Libraries and Environments]].
 
 ## Cloud differences
@@ -172,7 +172,7 @@ daily.write.mode("overwrite").saveAsTable("bakery.gold.daily_sales")
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Why pandas is fast enough on one machine.**[^unverified] pandas operations are implemented over NumPy arrays and compiled code, so vectorized column operations avoid slow Python loops. Row-by-row `apply` with Python functions loses that advantage.
+> - **Why pandas is fast enough on one machine.** pandas is built on top of NumPy, so vectorized column operations avoid slow Python loops. Row-by-row `apply` with Python functions loses that advantage; the pandas performance guide recommends removing for-loops in favor of NumPy vectorization.
 > - **Apache Arrow.** Arrow (first release 0.1.0 in October 2016) is a language-independent columnar in-memory format. It lets pandas, Spark, and other tools exchange data without converting it row by row, and it is the complement to Parquet on disk. On Databricks, Arrow-based conversion supports all Spark SQL types except `ArrayType` of `TimestampType`.
 > - **Arrow fallback.** If an error occurs before computation starts in Spark, Arrow-enabled conversions can fall back to a non-Arrow path. `spark.sql.execution.arrow.pyspark.fallback.enabled` controls this.
 > - **Batch size for pandas UDFs.** Spark converts partitions to Arrow record batches, which can temporarily use a lot of JVM memory. `spark.sql.execution.arrow.maxRecordsPerBatch` defaults to 10,000 rows; lower it for very wide data.
@@ -212,5 +212,10 @@ What is the default Arrow batch size for pandas UDFs?::10,000 records per batch 
 > - [Pandas API on Spark (Azure Databricks)](https://learn.microsoft.com/en-us/azure/databricks/pandas/pandas-on-spark)
 > - [pandas user-defined functions (Azure Databricks)](https://learn.microsoft.com/en-us/azure/databricks/udf/pandas)
 > - [Apache Arrow is 10 years old (Apache Arrow project blog)](https://arrow.apache.org/blog/2026/02/12/arrow-anniversary/)
-
-[^unverified]: Unconfirmed: not yet checked against an official or primary source.
+> - [General Python FAQ: Why was Python created in the first place? (python.org)](https://docs.python.org/3/faq/general.html)
+> - [About pandas: history of development (pandas.pydata.org)](https://pandas.pydata.org/about/)
+> - [pandas project governance (pandas.pydata.org)](https://pandas.pydata.org/about/governance.html)
+> - [pandas package overview (pandas.pydata.org)](https://pandas.pydata.org/docs/getting_started/overview.html)
+> - [pandas: Enhancing performance (pandas.pydata.org)](https://pandas.pydata.org/docs/user_guide/enhancingperf.html)
+> - [Databricks notebooks (AWS)](https://docs.databricks.com/aws/en/notebooks/)
+> - [What is Databricks Connect? (AWS)](https://docs.databricks.com/aws/en/dev-tools/databricks-connect/)

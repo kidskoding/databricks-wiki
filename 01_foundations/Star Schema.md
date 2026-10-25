@@ -76,7 +76,7 @@ Mastery: `INPUT[inlineSelect(option(new), option(learning), option(solid)):maste
 
 Normalized models (see [[Data Modeling Basics]]) are built for safe updates, so a single business question can need many joins. Business users found them hard to understand, and older databases ran them slowly.
 
-The star schema reorganizes data around **business processes** (selling, booking, shipping) and **the ways people slice them** (by product, by date, by customer). It became the standard pattern for [[Data Warehouses|data warehouses]] through the work of Ralph Kimball, popularized by his book *The Data Warehouse Toolkit* (1996)[^unverified]. Its main properties:
+The star schema reorganizes data around **business processes** (selling, booking, shipping) and **the ways people slice them** (by product, by date, by customer). It became the standard pattern for [[Data Warehouses|data warehouses]] through the work of Ralph Kimball, popularized by his book *The Data Warehouse Toolkit*, first published in 1996, whose first edition introduced the industry to dimensional modeling. Its main properties:
 
 - **Easy to understand.** Business people recognize "sales" and "products".
 - **Easy to query.** Every question is one fact table joined to a few dimensions.
@@ -182,12 +182,12 @@ The clinic's version has `fact_appointments` (one row per appointment, with a `n
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Types of fact tables.**[^unverified] *Transaction* facts store one row per event (each sale). *Periodic snapshot* facts store one row per period per thing (stock level per product per day). *Accumulating snapshot* facts store one row per process instance, updated as it moves through milestones (an order from placed to delivered). *Factless* facts record that something happened with no measure (a class attendance).
+> - **Types of fact tables.** The Kimball Group describes three basic types plus factless facts. *Transaction* facts store one row per measurement event (each sale). *Periodic snapshot* facts store one row per standard period, such as a day or month, summarizing the events in it (stock level per product per day). *Accumulating snapshot* facts store one row per process instance, revisited and updated as it moves through predictable steps (an order from placed to delivered). *Factless* facts record that something happened with no measure (a class attendance).
 > - **Additivity.** Sales amounts add up across every dimension. Balances and stock levels are *semi-additive*: they add across products but not across time (you average or take the last value). Ratios such as no-show rate are *non-additive*: store numerator and denominator and compute the ratio at query time. [[Metric Views]] are a good place to encode these rules.
 > - **Fan-out traps.** Joining a fact to a dimension at a finer grain than its key (for example, a product dimension with one row per supplier) duplicates fact rows and inflates totals. Declare the grain of every table and test `COUNT(*)` before and after joins.
 > - **Identity columns as surrogate keys** are safe only when the upstream table is append-only and never fully refreshed; a rebuild can assign different IDs and break fact-to-dimension joins. Identity values are unique but not guaranteed contiguous.
 > - **Star vs. one big table.** Columnar engines make wide denormalized tables cheap, and some teams flatten a star into one table for a single dashboard. Keeping the star underneath preserves one definition of each dimension.
-> - **Bus matrix.**[^unverified] Kimball's enterprise bus matrix lists business processes as rows and conformed dimensions as columns. It is a simple planning tool for deciding which dimensions must be shared.
+> - **Bus matrix.** Kimball's enterprise data warehouse bus matrix lists business processes as rows and dimensions as columns, and the marked cells show which dimensions each process uses and where a dimension must be conformed. It is a simple planning tool for deciding which dimensions must be shared.
 
 ## Common misconceptions
 
@@ -225,5 +225,10 @@ Why declare keys with RELY on a star schema in Databricks?::So the optimizer can
 > - [Constraints on Databricks (AWS)](https://docs.databricks.com/aws/en/tables/constraints)
 > - [Query optimization using primary key and unique constraints (Azure Databricks)](https://learn.microsoft.com/en-us/azure/databricks/sql/user/queries/query-optimization-constraints)
 > - [Delta Lake generated columns (AWS)](https://docs.databricks.com/aws/en/delta/generated-columns)
-
-[^unverified]: Unconfirmed: not yet checked against an official or primary source.
+> - [The Data Warehouse Toolkit, 3rd Edition (Wiley)](https://www.wiley.com/en-ie/The+Data+Warehouse+Toolkit:+The+Definitive+Guide+to+Dimensional+Modeling,+3rd+Edition-p-9781118530801)
+> - [Dimensional modeling techniques (Kimball Group)](https://www.kimballgroup.com/data-warehouse-business-intelligence-resources/kimball-techniques/dimensional-modeling-techniques/)
+> - [Transaction fact tables (Kimball Group)](https://www.kimballgroup.com/data-warehouse-business-intelligence-resources/kimball-techniques/dimensional-modeling-techniques/transaction-fact-table/)
+> - [Periodic snapshot fact tables (Kimball Group)](https://www.kimballgroup.com/data-warehouse-business-intelligence-resources/kimball-techniques/dimensional-modeling-techniques/periodic-snapshot-fact-table/)
+> - [Accumulating snapshot fact tables (Kimball Group)](https://www.kimballgroup.com/data-warehouse-business-intelligence-resources/kimball-techniques/dimensional-modeling-techniques/accumulating-snapshot-fact-table/)
+> - [Factless fact tables (Kimball Group)](https://www.kimballgroup.com/data-warehouse-business-intelligence-resources/kimball-techniques/dimensional-modeling-techniques/factless-fact-table/)
+> - [Enterprise data warehouse bus matrix (Kimball Group)](https://www.kimballgroup.com/data-warehouse-business-intelligence-resources/kimball-techniques/dimensional-modeling-techniques/enterprise-data-warehouse-bus-matrix/)

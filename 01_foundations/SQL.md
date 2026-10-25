@@ -70,9 +70,9 @@ Mastery: `INPUT[inlineSelect(option(new), option(learning), option(solid)):maste
 
 ## Background
 
-Codd's 1970 relational model described *what* a query language should do, in mathematical notation that few business users could read. At IBM's San Jose lab[^unverified], **Donald Chamberlin and Raymond Boyce** first designed a language called SQUARE, whose subscript-heavy notation proved hard to use, and then a successor, **SEQUEL** (Structured English Query Language), around 1974, for IBM's System R prototype. A trademark conflict led to the shorter name **SQL**. Many people still pronounce it "sequel".
+Codd's 1970 relational model described *what* a query language should do, in mathematical notation that few business users could read. At the IBM Research Laboratory in San Jose, **Donald Chamberlin and Raymond Boyce** first designed, with colleagues, a language called SQUARE (described in a 1973 IBM report), whose subscript-heavy notation proved hard to use, and then a successor, **SEQUEL** (Structured English Query Language), presented in May 1974 and used in IBM's System R prototype. A trademark conflict led to the shorter name **SQL**. Many people still pronounce it "sequel".
 
-The design goal was to let people who are not programmers query a database. **ANSI published the first SQL standard in 1986 and ISO followed in 1987**[^unverified] (today ISO/IEC 9075), with major revisions such as SQL-92 and many since. Every major relational database adopted it, and later so did [[The Three Vs of Big Data|big data]] engines, cloud [[Data Warehouses|warehouses]], and Databricks.
+The design goal was to let people who are not programmers query a database. **ANSI published the first SQL standard in 1986 (X3.135-1986) and ISO followed in 1987 (ISO 9075:1987)** (today ISO/IEC 9075), with major revisions such as SQL-92 and many since. Every major relational database adopted it, and later so did [[The Three Vs of Big Data|big data]] engines, cloud [[Data Warehouses|warehouses]], and Databricks.
 
 No product follows the standard exactly, so SQL varies a little between systems ("dialects"). The core is the same everywhere, which makes SQL knowledge portable across systems.
 
@@ -157,9 +157,9 @@ FROM bakery.sales.daily_revenue;
 
 > [!deepdive]- Advanced topics (301–401)
 > - **Relational algebra.** Every SQL query maps to operators from Codd's algebra: selection (`WHERE`), projection (`SELECT` columns), join, union, difference, and grouping. Optimizers rewrite the operator tree (push filters down, reorder joins) without changing the result.
-> - **Cost-based optimization** estimates rows at each step from table statistics and picks the cheapest plan. Bad statistics produce bad plans. In Spark, [[Adaptive Query Execution]][^unverified] corrects plans at runtime using real partition sizes.
+> - **Cost-based optimization** estimates rows at each step from table statistics and picks the cheapest plan. Bad statistics produce bad plans. In Spark, [[Adaptive Query Execution]] re-optimizes the plan while the query runs, using the actual data sizes measured at each shuffle or broadcast exchange.
 > - **Three-valued logic.** `NULL` is "unknown", so `NULL = NULL` is not true, and `WHERE col <> 'x'` silently drops rows where `col` is `NULL`. Use `IS NULL`, `IS DISTINCT FROM`, or `COALESCE`.
-> - **Dialects.**[^unverified] Databricks SQL follows ANSI SQL closely, with extensions (lambda functions, `QUALIFY`, `VARIANT` paths, `MERGE` with `WHEN NOT MATCHED BY SOURCE`). T-SQL, PL/pgSQL, and Oracle PL/SQL add procedural features. [[Lakebridge]] helps translate dialects during migrations.
+> - **Dialects.** Databricks SQL follows the SQL standard by default (`ANSI_MODE` is `TRUE` for accounts created on or after October 19, 2022, and ANSI mode is on by default in Databricks Runtime 17.0 and above), with extensions such as lambda functions, `QUALIFY`, `VARIANT` path expressions, and `MERGE` with `WHEN NOT MATCHED BY SOURCE`. T-SQL (control-of-flow keywords such as `IF...ELSE` and `WHILE`), PostgreSQL's PL/pgSQL, and Oracle PL/SQL add procedural features. [[Lakebridge]] includes a transpiler for converting other dialects during migrations.
 > - **Declarative pipelines** extend the same idea from one query to a whole pipeline: you declare tables, and the engine works out order, retries, and incremental updates. See [[Lakeflow Spark Declarative Pipelines]].
 
 ## Common misconceptions
@@ -193,5 +193,17 @@ What is the Databricks product for analysts writing SQL?::Databricks SQL, with t
 > - [ai_parse_document function (AWS)](https://docs.databricks.com/aws/en/sql/language-manual/functions/ai_parse_document)
 > - [read_files table-valued function (AWS)](https://docs.databricks.com/aws/en/sql/language-manual/functions/read_files)
 > - [Model metric views (AWS)](https://docs.databricks.com/aws/en/business-semantics/metric-views/basic-modeling)
-
-[^unverified]: Unconfirmed: not yet checked against an official or primary source.
+> - [Chamberlin and Boyce, "SEQUEL: A Structured English Query Language", ACM SIGFIDET workshop, May 1974](https://dl.acm.org/doi/10.1145/800296.811515)
+> - [Astrahan et al., "System R: Relational Approach to Database Management", ACM TODS, June 1976](https://dl.acm.org/doi/10.1145/320455.320457)
+> - [ISO 9075:1987 Information processing systems: Database language SQL (iso.org)](https://www.iso.org/standard/16661.html)
+> - [FIPS PUB 127: Database Language SQL, adopting ANSI X3.135-1986 (NIST)](https://nvlpubs.nist.gov/nistpubs/Legacy/FIPS/fipspub127.pdf)
+> - [Adaptive query execution (AWS)](https://docs.databricks.com/aws/en/optimizations/aqe)
+> - [ANSI_MODE (AWS)](https://docs.databricks.com/aws/en/sql/language-manual/parameters/ansi_mode)
+> - [ANSI compliance in Databricks Runtime (AWS)](https://docs.databricks.com/aws/en/sql/language-manual/sql-ref-ansi-compliance)
+> - [Lambda functions (AWS)](https://docs.databricks.com/aws/en/sql/language-manual/sql-ref-lambda-functions)
+> - [QUALIFY clause (AWS)](https://docs.databricks.com/aws/en/sql/language-manual/sql-ref-syntax-qry-select-qualify)
+> - [MERGE INTO (AWS)](https://docs.databricks.com/aws/en/sql/language-manual/delta-merge-into)
+> - [Transact-SQL control-of-flow (Microsoft Learn)](https://learn.microsoft.com/en-us/sql/t-sql/language-elements/control-of-flow)
+> - [PL/pgSQL overview (PostgreSQL)](https://www.postgresql.org/docs/current/plpgsql-overview.html)
+> - [SQL Standards (Oracle Database SQL Language Reference 19c)](https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/SQL-Standards.html)
+> - [Lakebridge (Databricks Labs)](https://databrickslabs.github.io/lakebridge/)

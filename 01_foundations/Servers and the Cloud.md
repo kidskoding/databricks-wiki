@@ -80,7 +80,7 @@ Before the cloud, a business that needed a database server bought hardware, put 
 - **Idle waste.** The server sized for December sat mostly unused in February.
 - **Staff time** spent on power, cooling, patches, backups, and disk failures.
 
-Cloud providers turned servers into a metered utility. Amazon Web Services launched its storage service, S3, and its rental servers, EC2, in 2006[^unverified]. Microsoft Azure and Google Cloud followed. Today most new data platforms, Databricks included, run on one of these three.
+Cloud providers turned servers into a metered utility. Amazon Web Services launched its storage service, S3, in March 2006 and its rental servers, EC2, as a beta in August 2006. Microsoft Azure and Google Cloud followed. Today most new data platforms, Databricks included, run on one of these three.
 
 ## Overview
 
@@ -200,5 +200,5 @@ On which clouds does Databricks run?::Azure, AWS, and Google Cloud.
 > - [Managed SaaS connectors (Azure Databricks)](https://learn.microsoft.com/en-us/azure/databricks/ingestion/lakeflow-connect/saas-overview)
 > - [Streaming on serverless compute (Azure Databricks)](https://learn.microsoft.com/en-us/azure/databricks/compute/serverless/streaming)
 > - [Work with files in Unity Catalog volumes (AWS)](https://docs.databricks.com/aws/en/volumes/volume-files)
-
-[^unverified]: Unconfirmed: not yet checked against an official or primary source.
+> - [Announcing Amazon S3: Simple Storage Service (AWS, March 13, 2006)](https://aws.amazon.com/about-aws/whats-new/2006/03/13/announcing-amazon-s3---simple-storage-service/)
+> - [Announcing Amazon Elastic Compute Cloud (Amazon EC2) beta (AWS, August 24, 2006)](https://aws.amazon.com/about-aws/whats-new/2006/08/24/announcing-amazon-elastic-compute-cloud-amazon-ec2---beta/)

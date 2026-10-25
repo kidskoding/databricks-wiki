@@ -141,7 +141,7 @@ FROM read_files('/Volumes/clinic/raw/referrals/', format => 'binaryFile', fileNa
 
 > [!bridge]- In Databricks today
 > - **Structured** data becomes [[Delta Lake]] tables in [[Unity Catalog]].
-> - **Semi-structured** data can be stored in a `VARIANT` column, which Databricks recommends over keeping JSON as plain strings. Databricks SQL and recent Databricks Runtime versions support it (the docs give 15.3 in one place and 15.4 in another).
+> - **Semi-structured** data can be stored in a `VARIANT` column, which Databricks recommends over keeping JSON as plain strings. Databricks SQL supports it, and on classic compute you need Databricks Runtime 15.4 LTS or above to query `VARIANT` data and to read or write tables that use it. (The type was introduced in Public Preview in Databricks Runtime 15.3, which is why the SQL type reference lists 15.3.)
 > - **Unstructured** files live in Unity Catalog [[Volumes]], with the same permissions model as tables. Functions such as `ai_parse_document` (PDF, DOC/DOCX, PPT/PPTX, TIFF) turn documents into structured output, and a newer `FILE` data type for file references is in Beta as of October 2026. See [[AI Functions in SQL]] and [[AI Search]].
 
 ## Cloud differences
@@ -191,6 +191,8 @@ What SQL function in Databricks turns a PDF into structured output?::`ai_parse_d
 > - [Query variant data (AWS)](https://docs.databricks.com/aws/en/semi-structured/variant)
 > - [Query variant data (Azure Databricks)](https://learn.microsoft.com/en-us/azure/databricks/semi-structured/variant)
 > - [How is variant different than JSON strings? (AWS)](https://docs.databricks.com/aws/en/semi-structured/variant-json-diff)
+> - [Variant type support for Apache Iceberg and Delta Lake (AWS)](https://docs.databricks.com/aws/en/delta/variant)
+> - [Databricks Runtime 15.3 release notes (AWS)](https://docs.databricks.com/aws/en/release-notes/runtime/15.3)
 > - [parse_json function (AWS)](https://docs.databricks.com/aws/en/sql/language-manual/functions/parse_json)
 > - [ai_parse_document function (AWS)](https://docs.databricks.com/aws/en/sql/language-manual/functions/ai_parse_document)
 > - [ai_parse_document function (Azure Databricks)](https://learn.microsoft.com/en-us/azure/databricks/sql/language-manual/functions/ai_parse_document)

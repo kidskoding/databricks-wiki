@@ -136,7 +136,7 @@ Trigger options on Databricks:
 | Trigger | Behavior | Use when |
 |---|---|---|
 | `availableNow=True` | Processes all available data, then stops | Scheduled incremental batch; minute-level freshness at lower cost |
-| `processingTime="1 minute"` | Runs a micro-batch at a fixed interval and keeps running[^unverified] | Continuous pipelines with near-real-time needs |
+| `processingTime="1 minute"` | Runs fixed-interval micro-batches and keeps running; the interval sets how often the query checks for new data | Continuous pipelines with near-real-time needs |
 | `realTime="5 minutes"` | Real-time mode; the interval sets the long-running batch and checkpoint duration, not per-record latency | Operational workloads that need sub-second latency |
 | `once=True` | Processes one batch and stops | Deprecated; migrate to `availableNow` |
 
@@ -158,14 +158,14 @@ Trigger options on Databricks:
 ## Cloud differences
 
 > [!note] Nothing differs by cloud
-> Batch and streaming behave the same on Azure, AWS, and Google Cloud. Message-queue services differ by cloud (for example Azure Event Hubs, Amazon Kinesis, and Google Pub/Sub[^unverified]), and Kafka runs on all three.
+> Batch and streaming behave the same on Azure, AWS, and Google Cloud. Message-queue services differ by cloud (Azure Event Hubs, Amazon Kinesis, and Google Pub/Sub), and Databricks has a streaming connector for each; Event Hubs is read through its Kafka-compatible endpoint. Kafka runs on all three.
 
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
 > - **Event time vs. processing time.** Event time is when something happened; processing time is when the system sees it. Mobile apps and sensors send late data, so aggregations by event time need a [[Watermark|watermark]] that defines how late data may arrive before a window closes.
 > - **State and checkpoints.** Streaming aggregations and joins keep state across micro-batches. A [[Checkpoint|checkpoint]] in durable storage records offsets and state so a restarted query resumes where it stopped. Changing a query in incompatible ways can require a new checkpoint.
-> - **Delivery guarantees.** At-most-once can lose data, at-least-once can duplicate it, and [[Exactly-Once Processing|exactly-once]] requires replayable sources, checkpoints, and idempotent or transactional sinks. Delta tables as sinks support exactly-once writes from Structured Streaming[^unverified].
+> - **Delivery guarantees.** At-most-once can lose data, at-least-once can duplicate it, and [[Exactly-Once Processing|exactly-once]] requires replayable sources, checkpoints, and idempotent or transactional sinks. When Structured Streaming writes to a Delta table, the Delta transaction log guarantees exactly-once processing, even with other streams or batch queries writing to the same table.
 > - **Changing triggers.** Switching a query from a time-based interval to `availableNow` can cause a micro-batch to run as an incremental batch before all available records are processed. Plan trigger changes deliberately.
 > - **Guidance by workload.** The Databricks production guidance recommends real-time mode for operational, sub-second workloads and `availableNow` for cost-sensitive, minute-level freshness, and advises against `availableNow`, `once`, or continuous triggers for operational workloads.
 > - **Lambda and Kappa architectures.** Lambda runs separate batch and streaming paths and merges results; Kappa uses a single streaming path and replays the log for reprocessing. A single engine that handles both styles on the same tables removes most of the reason for Lambda.
@@ -205,5 +205,7 @@ Which Databricks trigger targets sub-second operational latency?::Real-time mode
 > - [Streaming on serverless compute (Azure Databricks)](https://learn.microsoft.com/en-us/azure/databricks/compute/serverless/streaming)
 > - [Managed SaaS connectors (AWS)](https://docs.databricks.com/aws/en/ingestion/lakeflow-connect/saas-overview)
 > - [Dimensional modeling in Lakeflow pipelines (AWS)](https://docs.databricks.com/aws/en/ldp/best-practices/dimensional-modeling)
-
-[^unverified]: Unconfirmed: not yet checked against an official or primary source.
+> - [Delta table streaming reads and writes (AWS)](https://docs.databricks.com/aws/en/structured-streaming/delta-lake)
+> - [Connect to Amazon Kinesis (AWS)](https://docs.databricks.com/aws/en/connect/streaming/kinesis)
+> - [Subscribe to Google Pub/Sub (GCP)](https://docs.databricks.com/gcp/en/connect/streaming/pub-sub)
+> - [Stream processing with Apache Kafka, including Azure Event Hubs (Azure Databricks)](https://learn.microsoft.com/en-us/azure/databricks/connect/streaming/kafka)

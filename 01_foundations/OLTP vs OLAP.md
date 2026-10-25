@@ -74,7 +74,7 @@ Mastery: `INPUT[inlineSelect(option(new), option(learning), option(solid)):maste
 
 Relational databases were first built to **run** businesses: bank transfers, airline seats, stock levels. These workloads are many small reads and writes that must be correct and immediate. They became known as **OLTP**, online transaction processing.
 
-By the 1980s and 1990s, businesses also wanted to **analyze** years of those transactions. Those queries scan millions of rows, join many tables, and add things up. Run on the operational database, they slowed the operational workload, and the operational schema (designed for safe updates) was awkward for analysis. In 1993[^unverified], E. F. Codd and colleagues published a paper in *ComputerWorld* that named this second category **OLAP**, online analytical processing, and proposed twelve rules for OLAP products. The paper was later retracted (reportedly because a vendor had commissioned it), but the term remained in use.
+By the 1980s and 1990s, businesses also wanted to **analyze** years of those transactions. Those queries scan millions of rows, join many tables, and add things up. Run on the operational database, they slowed the operational workload, and the operational schema (designed for safe updates) was awkward for analysis. This second category became known as **OLAP**, online analytical processing. A white paper by E. F. Codd, S. B. Codd, and C. T. Salley, "Providing OLAP (On-Line Analytical Processing) to User-Analysts: An IT Mandate", distributed by the vendor Arbor Software, defined twelve rules for OLAP products.
 
 The standard answer became two systems: OLTP databases that run the business, and a separate analytical store, the [[Data Warehouses|data warehouse]], fed by a nightly copy.
 
@@ -156,10 +156,10 @@ The first pair wants a row store with an index. The last query wants a column st
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Row stores vs. column stores, mechanically.**[^unverified] A B-tree over row pages finds a key in a few page reads, but scanning one column reads every page of the table. A column store reads only the needed columns, compresses them well (similar values sit together), and processes them in vectorized batches using CPU SIMD instructions. It pays for that on point updates, which must touch many column files. See [[Columnar Storage]] and [[Photon]].
+> - **Row stores vs. column stores, mechanically.** A B-tree over row pages finds a key in a few page reads, but scanning one column still reads every page of the table. A columnar format such as Parquet lets a query skip the columns it does not need and compresses each column well, because values in one column are similar. Vectorized engines such as Photon then process thousands of rows per batch so the CPU can use SIMD instructions. The cost shows up on point updates: without deletion vectors, changing a single row in a Delta table rewrites the entire Parquet file that contains it. See [[Columnar Storage]] and [[Photon]].
 > - **Isolation and concurrency differ.** OLTP systems need fine-grained row locks or MVCC so thousands of tiny transactions do not block each other. Analytical tables use optimistic concurrency at the file or table level: Delta tables default to WriteSerializable isolation, offer Serializable, and add row-level concurrency to reduce conflicts between concurrent writers.
 > - **HTAP.** Hybrid transactional/analytical processing tries to serve both from one system, often by keeping a row store and a column replica in sync. Lakebase plus synced tables is Databricks' version of the pattern: two engines, one governed platform.
-> - **MOLAP vs. ROLAP.**[^unverified] Early OLAP products precomputed "cubes" (MOLAP) for fast slicing. Relational OLAP (ROLAP) ran the same queries on star schemas in a database. Modern columnar engines made cubes largely unnecessary, and [[Metric Views]] and [[Semantic Layer|semantic layers]] now play the role cubes did.
+> - **MOLAP vs. ROLAP.** Multidimensional OLAP (MOLAP) servers store multidimensional data directly in special structures such as arrays, often called cubes. Relational OLAP (ROLAP) servers keep the data in a relational database, usually in star or snowflake schemas, and map multidimensional operations to SQL. On Databricks, [[Metric Views]] and [[Semantic Layer|semantic layers]] fill the role of defining measures once and slicing them by dimensions at query time.
 > - **The freshness gap.** The classic split meant analytics was always a day behind. [[Change Data Capture]] and streaming ingestion shrink it to minutes or seconds. See [[Batch vs Streaming]].
 
 ## Common misconceptions
@@ -195,5 +195,8 @@ What is HTAP?::Hybrid transactional/analytical processing: serving both workload
 > - [Isolation levels: WriteSerializable and Serializable (AWS)](https://docs.databricks.com/aws/en/optimizations/isolation/isolation-levels)
 > - [Isolation levels (Azure Databricks)](https://learn.microsoft.com/en-us/azure/databricks/optimizations/isolation/isolation-levels)
 > - [Row-level concurrency (AWS)](https://docs.databricks.com/aws/en/optimizations/isolation/row-level-concurrency)
-
-[^unverified]: Unconfirmed: not yet checked against an official or primary source.
+> - [Chaudhuri and Dayal, "An Overview of Data Warehousing and OLAP Technology", ACM SIGMOD Record 26(1), March 1997](https://dl.acm.org/doi/10.1145/248603.248616)
+> - [What is Parquet? (Databricks glossary)](https://www.databricks.com/glossary/what-is-parquet)
+> - [What is Photon? (AWS)](https://docs.databricks.com/aws/en/compute/photon)
+> - [Deletion vectors (AWS)](https://docs.databricks.com/aws/en/delta/deletion-vectors)
+> - [Unity Catalog metric views (AWS)](https://docs.databricks.com/aws/en/metric-views/)

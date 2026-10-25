@@ -66,9 +66,9 @@ Mastery: `INPUT[inlineSelect(option(new), option(learning), option(solid)):maste
 
 ## Background
 
-**CSV** (comma-separated values) was in use long before any formal specification[^unverified]. It is widespread because it is the simplest way to get a table from one program to another. RFC 4180, published in October 2005, documented the common format and registered the `text/csv` media type, but it is an informational document, not a standard, and the RFC itself notes there is no single master specification. Programs still disagree on details.
+**CSV** (comma-separated values) was in use long before any formal specification: RFC 4180 notes that spreadsheet programs had exchanged CSV data "for quite some time" while the format had "never been formally documented". It is widespread because it is the simplest way to get a table from one program to another. RFC 4180, published in October 2005, documented the common format and registered the `text/csv` media type, but it is an informational document, not a standard, and the RFC itself notes there is no single master specification. Programs still disagree on details.
 
-**JSON** (JavaScript Object Notation) grew out of JavaScript's syntax for objects in the early 2000s[^unverified] and became the default way web services exchange data. It is formally specified today in RFC 8259 (December 2017) and ECMA-404. Compared with CSV, it handles nested data (an order with a list of items) that CSV cannot, and it carries field names with every record.
+**JSON** (JavaScript Object Notation) is derived from the object literals of JavaScript (as defined in the third edition of the ECMAScript standard), was first documented as an IETF RFC in RFC 4627 (July 2006), and became the default way web services exchange data. It is formally specified today in RFC 8259 (December 2017) and ECMA-404. Compared with CSV, it handles nested data (an order with a list of items) that CSV cannot, and it carries field names with every record.
 
 Both formats are widely used because **people can read them and nearly every tool can write them.**
 
@@ -158,9 +158,9 @@ SELECT * FROM read_files(
 
 > [!bridge]- In Databricks today
 > - **One-off and SQL reads:** the `read_files` table-valued function (Databricks SQL and Databricks Runtime 13.3 LTS and above). Databricks recommends it over the older `USING CSV` / `USING JSON` syntax because it accepts a schema and more options.
-> - **Repeated loads of new files:** [[Auto Loader]] and [[COPY INTO]] pick up only files they have not seen yet[^unverified].
+> - **Repeated loads of new files:** [[Auto Loader]] and [[COPY INTO]] pick up only files they have not seen yet: Auto Loader tracks discovered files in its checkpoint, and `COPY INTO` skips files that were already loaded.
 > - **Keeping JSON flexible:** store it in a `VARIANT` column (see [[Structured vs Unstructured Data]]).
-> - **Bad rows:** CSV read modes include `PERMISSIVE` (keep going, null out bad fields) and `FAILFAST` (stop at the first bad row). Unparseable data can be captured in a rescued data column[^unverified] instead of being lost. See [[Schema Enforcement and Evolution]].
+> - **Bad rows:** CSV read modes include `PERMISSIVE` (keep going, null out bad fields) and `FAILFAST` (stop at the first bad row). In `PERMISSIVE` mode, fields that cannot be parsed can be captured in the rescued data column (Databricks Runtime 8.3 and above) instead of being lost. See [[Schema Enforcement and Evolution]].
 
 ## Cloud differences
 
@@ -212,5 +212,6 @@ Which Databricks function reads CSV and JSON files with SQL?::`read_files`.
 > - [Read and write JSON files (AWS)](https://docs.databricks.com/aws/en/query/formats/json)
 > - [Work with files in Unity Catalog volumes (AWS)](https://docs.databricks.com/aws/en/volumes/volume-files)
 > - [Ingest data as semi-structured variant type (Azure Databricks)](https://learn.microsoft.com/en-us/azure/databricks/ingestion/variant)
-
-[^unverified]: Unconfirmed: not yet checked against an official or primary source.
+> - [RFC 4627: The application/json Media Type for JSON (July 2006)](https://www.rfc-editor.org/rfc/rfc4627)
+> - [What is Auto Loader? (AWS)](https://docs.databricks.com/aws/en/ingestion/cloud-object-storage/auto-loader/)
+> - [Get started using COPY INTO to load data (AWS)](https://docs.databricks.com/aws/en/ingestion/cloud-object-storage/copy-into/)

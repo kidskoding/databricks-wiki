@@ -139,7 +139,7 @@ with open("/Volumes/clinic/raw/bookings/2026-03-03.json", "w") as f:
         f.write(json.dumps(row) + "\n")       # JSON Lines: one record per line
 ```
 
-Databricks itself is also controlled through a REST API. Listing clusters with the [[Databricks CLI]] or with `curl`[^unverified]:
+Databricks itself is also controlled through a REST API. Listing clusters with the [[Databricks CLI]] or with `curl` (the Clusters API endpoint is `GET /api/2.1/clusters/list`):
 
 ```bash
 # Uses OAuth or a token configured for the CLI
@@ -147,7 +147,7 @@ databricks clusters list
 
 # The same call over raw HTTP
 curl -s -H "Authorization: Bearer $DATABRICKS_TOKEN" \
-  "https://$DATABRICKS_HOST/api/2.0/clusters/list"
+  "https://$DATABRICKS_HOST/api/2.1/clusters/list"
 ```
 
 ## Small-business considerations
@@ -167,7 +167,7 @@ curl -s -H "Authorization: Bearer $DATABRICKS_TOKEN" \
 ## Cloud differences
 
 > [!azure]- Azure Databricks
-> Azure Databricks also accepts Microsoft Entra ID tokens for its REST API[^unverified]. Workspace URLs and OAuth endpoints differ from AWS and Google Cloud, so check the Azure Databricks authentication docs before copying examples.
+> Azure Databricks also accepts Microsoft Entra ID access tokens, for users and service principals, to authenticate REST API calls. Workspace URLs and OAuth endpoints differ from AWS and Google Cloud, so check the Azure Databricks authentication docs before copying examples.
 
 > [!aws]- Databricks on AWS
 > OAuth and PAT authentication work as described in Advanced topics. Endpoint paths are documented on the AWS docs pages.
@@ -191,7 +191,7 @@ curl -s -H "Authorization: Bearer $DATABRICKS_TOKEN" \
 > An API exposes only what the vendor chooses, in the shape the vendor chooses, with rate limits. A database connection lets you run arbitrary SQL. SaaS vendors almost always offer the former, not the latter.
 
 > [!confusion] "REST API" and "API" are not synonyms
-> REST is one architectural style for web APIs. Other styles include GraphQL, gRPC, and SOAP[^unverified]. Most SaaS data APIs are REST-style.
+> REST is one architectural style for web APIs. Other approaches include GraphQL (a query language for APIs), gRPC (a remote procedure call framework), and SOAP (an XML-based messaging protocol). Most SaaS data APIs are REST-style.
 
 ## Recall
 
@@ -225,5 +225,9 @@ After how many days of non-use does Databricks revoke a personal access token?::
 > - [Authorize user access with OAuth (Azure Databricks)](https://learn.microsoft.com/en-us/azure/databricks/dev-tools/auth/oauth-u2m)
 > - [Authorize user access with OAuth (GCP)](https://docs.databricks.com/gcp/en/dev-tools/auth/oauth-u2m)
 > - [Roy T. Fielding, Architectural Styles and the Design of Network-based Software Architectures (dissertation, UC Irvine, 2000)](https://ics.uci.edu/~fielding/pubs/dissertation/top.htm)
-
-[^unverified]: Unconfirmed: not yet checked against an official or primary source.
+> - [List clusters: GET /api/2.1/clusters/list (Databricks REST API reference)](https://docs.databricks.com/api/workspace/clusters/list)
+> - [Databricks CLI commands (AWS)](https://docs.databricks.com/aws/en/dev-tools/cli/commands)
+> - [Get Microsoft Entra ID tokens manually (Azure Databricks)](https://learn.microsoft.com/en-us/azure/databricks/dev-tools/auth/user-aad-token)
+> - [What is GraphQL? (graphql.org)](https://graphql.org/)
+> - [Introduction to gRPC (grpc.io)](https://grpc.io/docs/what-is-grpc/introduction/)
+> - [SOAP Version 1.2 Part 1: Messaging Framework (W3C Recommendation)](https://www.w3.org/TR/soap12-part1/)

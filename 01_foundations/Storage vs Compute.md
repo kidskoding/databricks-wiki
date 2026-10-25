@@ -80,7 +80,7 @@ In a traditional database server, the disks that hold the data and the processor
 - **They must stay on.** Switching off the server makes the data unavailable.
 - **They compete.** A heavy report and a nightly load share the same CPU, memory, and disks.
 
-Early [[The Three Vs of Big Data|big data]] systems such as [[HDFS]] also stored data on the same machines that processed it[^unverified], to move computation to the data. That design reduced network traffic but kept the coupling. See [[Apache Hadoop]].
+Early [[The Three Vs of Big Data|big data]] systems such as [[HDFS]] also stored data on the same machines that processed it, on the principle that "moving computation is cheaper than moving data". That design reduced network traffic but kept the coupling. See [[Apache Hadoop]].
 
 Cloud [[Object Storage|object storage]] changed the economics. Storage became a separate, durable, pay-per-gigabyte service, reachable over the network from any number of machines. Compute became something that can start for a job and stop afterward.
 
@@ -149,14 +149,14 @@ files = dbutils.fs.ls("/Volumes/bakery/raw/pos_exports/")
 
 > [!smallbiz] Small-business considerations
 > - **Storage is rarely the cost to worry about.** A small business's data usually amounts to gigabytes, not terabytes. Compute that runs longer than needed is the usual cause of unexpected bills.
-> - **Make compute stop when idle.** Use [[Auto Termination|auto termination]] on clusters and auto stop[^unverified] on [[SQL Warehouses|SQL warehouses]], or use [[Serverless Compute|serverless]] options that start and stop automatically.
+> - **Make compute stop when idle.** Use [[Auto Termination|auto termination]] on clusters and auto stop on [[SQL Warehouses|SQL warehouses]] (an idle warehouse keeps accruing DBU and cloud instance charges until it stops), or use [[Serverless Compute|serverless]] options that start and stop automatically.
 > - **Keep one copy of data.** Point every tool at the same tables instead of exporting copies to each tool.
 >
 > The meter for each part is explained in [[How Databricks Pricing Works]]; rates are on the official pricing page.
 
 > [!bridge]- In Databricks today
 > - **Storage:** tables are files in cloud object storage, governed by [[Unity Catalog]]. Non-tabular files live in [[Volumes]]. See [[Managed vs External Tables]] for who manages the storage location.
-> - **Compute:** [[Compute Types|compute types]] include all-purpose clusters, jobs compute[^unverified], [[SQL Warehouses|SQL warehouses]], and [[Serverless Compute|serverless compute]]. All of them read the same governed data. Some features run only on serverless; for example, Lakeflow Connect's managed SaaS connectors run only on serverless infrastructure.
+> - **Compute:** [[Compute Types|compute types]] include classic all-purpose compute, classic jobs compute, [[SQL Warehouses|SQL warehouses]], and [[Serverless Compute|serverless compute]] for notebooks, jobs, and pipelines. All of them read the same governed data. Some features run only on serverless; for example, Lakeflow Connect's managed SaaS connectors run only on serverless infrastructure.
 > - **Platform split:** Databricks also separates its own management services from the machines that process data. See [[Control Plane and Compute Plane]].
 > - **Operational databases too:** [[Lakebase]], Databricks' managed Postgres service, was released as generally available on January 22, 2026 with autoscaling and scale-to-zero compute.
 
@@ -175,7 +175,7 @@ files = dbutils.fs.ls("/Volumes/bakery/raw/pos_exports/")
 
 > [!deepdive]- Advanced topics (301–401)
 > - **The network is the new disk.** Separated compute reads data over the network, which has higher [[Latency|latency]] than local disk. Engines compensate with columnar formats that read less data, [[Data Skipping|data skipping]] from file statistics, and local [[Caching|caching]] of hot files on the compute nodes.
-> - **Object storage is not a file system.**[^unverified] Object stores offer `PUT`, `GET`, `LIST`, and `DELETE` on whole objects, with no in-place edits and no atomic rename of directories. Table formats such as [[Delta Lake]] add a transaction log so that a set of immutable files behaves like a table with [[ACID Transactions|ACID transactions]]. This is the core idea of chapter 05.
+> - **Object storage is not a file system.** Object stores such as Amazon S3, Azure Blob Storage, and Google Cloud Storage are key-value stores: you `PUT`, `GET`, and `LIST` whole objects, updating an object usually means rewriting it, renames of objects or "directories" are not cheap, and updates across several objects are not atomic. (ADLS Gen2 adds directories and atomic renames, but atomic updates across many files still need a table format.) Table formats such as [[Delta Lake]] add a transaction log so that a set of immutable files behaves like a table with [[ACID Transactions|ACID transactions]]. This is the core idea of chapter 05.
 > - **Elastic compute needs stateless design.** If any node can disappear, results must be written to storage, not kept on local disks. Streaming jobs persist progress in a [[Checkpoint|checkpoint]] in storage for the same reason.
 > - **Data gravity and egress.** Compute should run in the same cloud [[Region|region]] as the data. Reading across regions or clouds adds latency and [[Egress|egress]] charges.
 > - **Separation inside OLTP databases.** Some modern Postgres services separate the storage layer from the compute nodes, which enables scale-to-zero and fast branching. Lakebase's GA feature list (autoscaling, scale-to-zero, instant branching, point-in-time recovery) follows this pattern.
@@ -214,5 +214,8 @@ Which Databricks feature separates its management services from the machines tha
 > - [Lakebase release notes (AWS)](https://docs.databricks.com/aws/en/release-notes/lakebase/)
 > - [Streaming on serverless compute (Azure Databricks)](https://learn.microsoft.com/en-us/azure/databricks/compute/serverless/streaming)
 > - [NIST SP 800-145, The NIST Definition of Cloud Computing (PDF)](https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-145.pdf)
-
-[^unverified]: Unconfirmed: not yet checked against an official or primary source.
+> - [HDFS Architecture: Moving computation is cheaper than moving data (hadoop.apache.org)](https://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html)
+> - [Create a SQL warehouse: Auto stop (AWS)](https://docs.databricks.com/aws/en/compute/sql-warehouse/create)
+> - [Compute (AWS)](https://docs.databricks.com/aws/en/compute/)
+> - [Configure compute for jobs (AWS)](https://docs.databricks.com/aws/en/jobs/compute)
+> - [Armbrust et al., "Delta Lake: High-Performance ACID Table Storage over Cloud Object Stores", PVLDB 13(12), 2020](https://www.vldb.org/pvldb/vol13/p3411-armbrust.pdf)
