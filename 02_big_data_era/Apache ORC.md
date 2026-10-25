@@ -76,7 +76,7 @@ ORC initially shipped inside Hive. Because depending on the large Hive JAR pulle
 | **Lightweight indexes** | Column statistics at file, stripe, and row-group level allow readers to skip data |
 | **Compression** | Type-specific encodings plus a general compression codec |
 | **Types** | Full Hive type system, including complex types (struct, list, map, union) |
-| **Hive ACID** | Hive transactional tables (`UPDATE`, `DELETE`) are implemented on ORC |
+| **Hive ACID** | Hive full ACID transactional tables (`UPDATE`, `DELETE`) are implemented on ORC |
 | **Implementations** | Java, plus a C++ reader and writer developed under the Apache project |
 
 **ORC compared with Parquet:**
@@ -162,7 +162,7 @@ GROUP BY event_type;
 
 > [!deepdive]- Advanced topics (301–401)
 > - **Three levels of statistics.** File-level, stripe-level, and row-group-level statistics let readers skip progressively finer units of data.
-> - **Hive ACID internals.** Hive transactional tables store base ORC files plus delta files for inserts, updates, and deletes, merged at read time and consolidated by compaction. This design is Hive-specific; [[Delta Lake]] provides transactions through a separate log over Parquet files.
+> - **Hive ACID internals.** Hive full ACID tables store a base directory plus delta directories of ORC files for inserts, updates, and deletes. Readers merge base and delta files at read time, and compaction consolidates them. This design is Hive-specific; [[Delta Lake]] provides transactions through a separate log over Parquet files.
 > - **Schema merging.** When reading many ORC files with differing schemas, the `mergeSchema` option (default `false`) controls whether Spark merges them.
 > - **Engine affinity.** ORC readers in Hive-centric engines were heavily optimized. Spark supports ORC, but most Spark and Databricks optimization work, including Delta features, targets Parquet.
 
@@ -206,4 +206,5 @@ What does Databricks recommend when migrating ORC data from Hive?::Converting it
 > - [Spark API options reference (AWS)](https://docs.databricks.com/aws/en/spark/api-options)
 > - [Get started using COPY INTO to load data (AWS)](https://docs.databricks.com/aws/en/ingestion/cloud-object-storage/copy-into/)
 > - [Apache Hive: Metastore administration (transactions and compaction)](https://hive.apache.org/docs/latest/admin/adminmanual-metastore-administration/)
-> - Unconfirmed: that Hive ACID transactional tables are implemented on ORC base and delta files. No allowed source was available to confirm the storage details during this research pass.
+> - [Apache Hive: ACID Transactions](https://hive.apache.org/docs/latest/user/hive-transactions/)
+> - [Apache Hive home page (full ACID for ORC tables)](https://hive.apache.org/)

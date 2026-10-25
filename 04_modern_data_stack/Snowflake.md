@@ -69,7 +69,7 @@ Mastery: `INPUT[inlineSelect(option(new), option(learning), option(solid)):maste
 
 Classic warehouses, and early cloud warehouses, store data on the same machines that run queries. Adding storage means adding compute, and idle machines still cost money. In the cloud, [[Object Storage|object storage]] is inexpensive and effectively unlimited, and compute can be provisioned on demand. Snowflake's design keeps the two apart so each scales independently and compute can suspend when idle.
 
-Snowflake was founded in 2012 by Benoît Dageville, Thierry Cruanes, and Marcin Żukowski, and launched its service publicly in 2014–2015. It runs on AWS, Microsoft Azure, and Google Cloud. These company-history dates are widely reported but were not confirmed against a primary source for this note.
+Snowflake was founded in 2012 (incorporated in Delaware in July 2012 as Snowflake Computing, Inc.), with Benoît Dageville among its co-founders, and first offered its platform for sale in 2014. It runs on AWS, Microsoft Azure, and Google Cloud.
 
 ## Overview
 
@@ -154,8 +154,8 @@ This pattern, with data loaded into one platform and read by many independent co
 
 > [!deepdive]- Advanced topics (301–401)
 > - **Micro-partitions vs Delta files.** Both are immutable columnar chunks with per-column statistics used for pruning. The difference is openness: Delta files are Parquet in your bucket, readable by any engine; standard Snowflake tables are readable only through Snowflake.
-> - **Clustering keys** in Snowflake (with automatic clustering as a paid background service) play the role [[Liquid Clustering]] plays in Delta.
-> - **Time travel and zero-copy cloning** are available on both platforms. See [[Time Travel]] and [[Zero-Copy]].
+> - **Clustering keys** in Snowflake (with Automatic Clustering, a Snowflake service that reclusters clustered tables in the background and consumes credits) play the role [[Liquid Clustering]] plays in Delta.
+> - **Time travel and zero-copy cloning** are available on both platforms. A Snowflake zero-copy clone initially shares the underlying storage of its source object. See [[Time Travel]] and [[Zero-Copy]].
 > - **Iceberg as common ground.** Both vendors support Apache Iceberg, so a table written by one engine can be read by another. Which catalog owns the table (a Snowflake catalog or Unity Catalog) becomes the main architectural decision. See [[Open Table Formats]] and [[Delta UniForm]].
 > - **Cost models differ in shape.** Snowflake bills credits for the time each warehouse runs; Databricks bills [[DBUs]] per compute-second. Neither is cheaper in general; workload shape decides. See [[How Databricks Pricing Works]].
 
@@ -194,5 +194,7 @@ What are the two ways Lakehouse Federation connects to Snowflake?::Query federat
 > - [What is query federation? (AWS)](https://docs.databricks.com/aws/en/query-federation/database-federation)
 > - [Connect to external databases and catalogs (Azure Databricks)](https://learn.microsoft.com/en-us/azure/databricks/query-federation/)
 > - [Connect to external databases and catalogs (GCP)](https://docs.databricks.com/gcp/en/query-federation)
->
-> **Unconfirmed:** Snowflake's founding year, founders, and 2014–2015 launch dates; zero-copy cloning; and the clustering-key and automatic-clustering details were not confirmed against Snowflake's own documentation in this pass.
+> - [Snowflake Inc. final IPO prospectus, Form 424(b)(4), September 2020 (SEC)](https://www.sec.gov/Archives/edgar/data/1640147/000162828020013667/snowflake424b4.htm)
+> - [Automatic Clustering (Snowflake docs)](https://docs.snowflake.com/en/user-guide/tables-auto-reclustering)
+> - [Data storage considerations: cloned table, schema, and database storage (Snowflake docs)](https://docs.snowflake.com/en/user-guide/tables-storage-considerations)
+> - [Cloning considerations (Snowflake docs)](https://docs.snowflake.com/en/user-guide/object-clone)

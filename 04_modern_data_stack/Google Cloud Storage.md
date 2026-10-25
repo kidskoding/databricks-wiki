@@ -150,9 +150,9 @@ SELECT * FROM read_files('gs://acme-lake/raw/orders/', format => 'csv', header =
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Strong consistency.** Cloud Storage provides strong consistency for reads after writes and for listings.
+> - **Strong consistency.** Cloud Storage provides strong global consistency for object read-after-write, read-after-metadata-update, read-after-delete, and for bucket and object listings.
 > - **No atomic rename on flat buckets.** Renaming a prefix means copying and deleting every object, the same issue as S3. Delta's log-based commits avoid relying on rename.
-> - **Uniform bucket-level access** disables per-object ACLs so that IAM alone governs the bucket. It simplifies audits and is the right default for a lakehouse bucket.
+> - **Uniform bucket-level access** disables ACLs for all resources in the bucket so that IAM alone governs access. It cannot be disabled after it has been active on a bucket for 90 consecutive days. It simplifies audits and is the right default for a lakehouse bucket.
 > - **BigQuery and GCS share data** through Apache Iceberg managed tables, whose files live in a bucket you own. This makes GCS a shared storage layer for BigQuery and Databricks. See [[Google BigQuery]].
 > - **Lifecycle rules** can change class or delete objects by age. As on other clouds, never tier a live Delta table's files to a colder class.
 
@@ -190,5 +190,10 @@ Where should a Databricks lakehouse bucket live?::In a single region, the same o
 > - [All you need to know about Cloud Storage (Google Cloud)](https://cloud.google.com/blog/topics/developers-practitioners/all-you-need-know-about-cloud-storage)
 > - [How to save on Google Cloud Storage costs (Google Cloud)](https://cloud.google.com/blog/products/storage-data-transfer/how-to-save-on-google-cloud-storage-costs)
 > - [Apache Iceberg managed tables (BigQuery docs)](https://docs.cloud.google.com/bigquery/docs/biglake-iceberg-tables-in-bigquery)
+> - [Bucket locations: region, dual-region, multi-region (Cloud Storage docs)](https://cloud.google.com/storage/docs/locations)
+> - [Hierarchical namespace (Cloud Storage docs)](https://cloud.google.com/storage/docs/hns-overview)
+> - [Uniform bucket-level access (Cloud Storage docs)](https://cloud.google.com/storage/docs/uniform-bucket-level-access)
+> - [Cloud Storage consistency (Cloud Storage docs)](https://cloud.google.com/storage/docs/consistency)
+> - [gcloud storage buckets create (Google Cloud SDK reference)](https://cloud.google.com/sdk/gcloud/reference/storage/buckets/create)
 >
-> **Unconfirmed:** dual-region locations, the optional hierarchical namespace for buckets, uniform bucket-level access behavior, strong consistency, and the exact `gcloud storage` flags were not confirmed against Google Cloud documentation in this pass. The Unity Catalog setup (a Databricks-generated service account) follows [[GCS Access via Unity Catalog]].
+> The Unity Catalog setup (a Databricks-generated service account) follows [[GCS Access via Unity Catalog]].

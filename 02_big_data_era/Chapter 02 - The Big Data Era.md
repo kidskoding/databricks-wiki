@@ -86,7 +86,7 @@ Most enterprises ran these components as a vendor distribution. [[Cloudera and H
 These limitations define the next chapters. [[Chapter 03 - Apache Spark|Chapter 03]] covers [[Apache Spark]], the in-memory engine from UC Berkeley that replaced MapReduce. Later chapters cover cloud [[Object Storage|object storage]] replacing HDFS, [[Delta Lake]] adding transactions on Parquet files, and [[Unity Catalog]] replacing the Hive Metastore.
 
 > [!note] Verification status
-> Historical facts in this chapter come from the original papers, Apache project documentation, and company filings. Some origin details (for example, Hadoop's early history at Nutch and Yahoo) could not be confirmed from an allowed source and are marked as unconfirmed in the individual notes.
+> Historical facts in this chapter come from the original papers, Apache project documentation and Apache Software Foundation board records, and company filings. Claims that no allowed source could confirm were removed from the individual notes.
 
 ## Notes in reading order
 

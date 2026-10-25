@@ -67,18 +67,18 @@ Most published comparisons target large enterprises with dedicated data teams. F
 
 ### Comparison
 
-> [!confusion] Scope of verification
-> The Databricks column is verified against Databricks documentation. The other columns are **general, unconfirmed descriptions** that were not checked against each vendor's documentation for this note. Features and pricing change often; consult each vendor's documentation, and see the vault notes [[Snowflake]], [[Google BigQuery]], and [[Microsoft Fabric and OneLake vs Databricks]].
+> [!confusion] Scope of the comparison
+> Each column was checked against that vendor's own documentation (see Sources). Cells marked "Check vendor docs" are intentionally left open because those capabilities change often. Features and pricing change; consult each vendor's documentation, and see the vault notes [[Snowflake]], [[Google BigQuery]], and [[Microsoft Fabric and OneLake vs Databricks]].
 
 | | Databricks | Snowflake | BigQuery | Microsoft Fabric | Power BI alone | Postgres | DuckDB / MotherDuck |
 |---|---|---|---|---|---|---|---|
-| **What it is** | Platform for storage, pipelines, SQL, BI, ML, and AI on one copy of the data | Cloud data platform with a SQL warehouse at its core | Google Cloud's data warehouse | Microsoft's all-in-one analytics service | Reporting and dashboard tool | Open-source relational database | Small analytics database that runs inside your program; MotherDuck is a hosted service built on it |
-| **Where it runs** | Azure, AWS, Google Cloud | Several clouds | Google Cloud | Microsoft | Microsoft | Anywhere | Your laptop or server, or MotherDuck's service |
-| **How you pay** | Pay-as-you-go usage in [[DBUs]] (billed per second), plus cloud costs; committed-use discounts available ([[How Databricks Pricing Works]]) | Usage-based | Usage or capacity based | Capacity based | Mostly per user | Server size | Free (DuckDB) or subscription (MotherDuck) |
+| **What it is** | Platform for storage, pipelines, SQL, BI, ML, and AI on one copy of the data | Cloud data platform with a SQL warehouse at its core | Google Cloud's serverless data warehouse | Microsoft's software-as-a-service (SaaS) analytics platform built on OneLake | Reporting and dashboard tool | Open-source object-relational database | Small analytics database that runs inside your program (in-process); MotherDuck is a serverless cloud data warehouse built on it |
+| **Where it runs** | Azure, AWS, Google Cloud | AWS, Azure, or Google Cloud (one platform per account) | Google Cloud (BigQuery Omni can query data stored in AWS and Azure) | Microsoft (SaaS) | Microsoft (SaaS) | Anywhere | Your laptop or server, or MotherDuck's service on AWS |
+| **How you pay** | Pay-as-you-go usage in [[DBUs]] (billed per second), plus cloud costs; committed-use discounts available ([[How Databricks Pricing Works]]) | Usage-based: compute consumes Snowflake credits, plus storage | On-demand (per data scanned) or capacity (slots) | Capacity (F SKUs) plus per-user licenses | Mostly per-user licenses (Pro, Premium Per User), or capacity | Server size | Free and open source under the MIT License (DuckDB); free and paid plans with usage-based pricing (MotherDuck) |
 | **Data format** | Open formats: [[Delta Lake]] and managed [[Apache Iceberg]] tables, governed by [[Unity Catalog]] | Check vendor docs | Check vendor docs | Check vendor docs | Its own model | Its own format | Its own files, plus common open files |
 | **Python, ML, AI** | Built in: [[Notebooks]], [[MLflow]], [[Agent Bricks]], [[Genie Agents]] | Check vendor docs | Check vendor docs | Check vendor docs | Limited | Outside tools | Through Python |
 | **Pipelines** | [[Lakeflow Connect]], [[Lakeflow Spark Declarative Pipelines]], [[Lakeflow Jobs]] | Check vendor docs | Check vendor docs | Check vendor docs | Report refresh | Outside tools | Outside tools |
-| **BI** | [[AI-BI Dashboards]] and Genie included; Power BI and Tableau connect too ([[Connecting Power BI]], [[Connecting Tableau and Other BI Tools]]) | Partner BI tools | Google and partner BI tools | Power BI built in | It *is* the BI | Any BI tool | Any BI tool |
+| **BI** | [[AI-BI Dashboards]] and Genie included; Power BI and Tableau connect too ([[Connecting Power BI]], [[Connecting Tableau and Other BI Tools]]) | Snowsight dashboards and partner BI tools such as Power BI | Google tools (Looker, Data Studio, Connected Sheets) and partner tools such as Tableau | Power BI built in | It *is* the BI | Any BI tool, including Power BI | Any BI tool |
 | **Best for a small team when...** | You want SQL, Python, ML, and AI on the same governed data, on any of three clouds | You are SQL-first and want a warehouse | You live in Google Cloud | You are Power BI-first and all-in on Microsoft | You have few clean sources and mostly need reports | You need an app database, or small analytics | One analyst, modest data, tight budget |
 | **Watch out for** | Someone must own setup, access, and the bill | Compare real workloads in a trial | Compare real workloads in a trial | Compare real workloads in a trial | It is not a full data platform | Large analytic scans | Shared, governed access for many people |
 
@@ -175,4 +175,18 @@ How should a small team compare shortlisted platforms?::Run the same representat
 > - [Databricks AI/BI (AWS)](https://docs.databricks.com/aws/en/ai-bi)
 > - [What is Lakeflow Connect? (GCP)](https://docs.databricks.com/gcp/en/ingestion/overview)
 > - [Databricks pay-as-you-go on AWS Marketplace (press release)](https://www.databricks.com/company/newsroom/press-releases/databricks-strengthens-scope-of-work-with-aws)
-> - Non-Databricks columns are general descriptions, unconfirmed against vendor documentation.
+> - [Supported cloud platforms (Snowflake docs)](https://docs.snowflake.com/en/user-guide/intro-cloud-platforms)
+> - [Understanding overall cost (Snowflake docs)](https://docs.snowflake.com/en/user-guide/cost-understanding-overall)
+> - [Visualizing data with dashboards (Snowflake docs)](https://docs.snowflake.com/en/user-guide/ui-snowsight-dashboards)
+> - [Introduction to BigQuery Omni (Google Cloud)](https://cloud.google.com/bigquery/docs/omni-introduction)
+> - [Understand slots (BigQuery docs)](https://cloud.google.com/bigquery/docs/slots)
+> - [Analyze data with Data Studio (BigQuery docs)](https://cloud.google.com/bigquery/docs/visualize-looker-studio)
+> - [What is Microsoft Fabric? (Microsoft Learn)](https://learn.microsoft.com/en-us/fabric/fundamentals/microsoft-fabric-overview)
+> - [Understand Microsoft Fabric licenses and capacity (Microsoft Learn)](https://learn.microsoft.com/en-us/fabric/enterprise/licenses)
+> - [Power BI service features by license type (Microsoft Learn)](https://learn.microsoft.com/en-us/power-bi/fundamentals/service-features-license-type)
+> - [Snowflake connector for Power Query (Microsoft Learn)](https://learn.microsoft.com/en-us/power-query/connectors/snowflake)
+> - [PostgreSQL connector for Power Query (Microsoft Learn)](https://learn.microsoft.com/en-us/power-query/connectors/postgresql)
+> - [About PostgreSQL (postgresql.org)](https://www.postgresql.org/about/)
+> - [Why DuckDB (duckdb.org)](https://duckdb.org/why_duckdb)
+> - [MotherDuck documentation: getting started](https://motherduck.com/docs/getting-started/)
+> - [MotherDuck pricing model (MotherDuck docs)](https://motherduck.com/docs/about-motherduck/billing/pricing/)

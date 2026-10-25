@@ -157,7 +157,7 @@ SELECT * FROM read_files('abfss://lake@acmestorage.dfs.core.windows.net/raw/orde
 > - **ACLs vs RBAC.** Azure role assignments (RBAC) grant access at account or container level; POSIX ACLs refine it per directory and file. With Unity Catalog, you normally grant the Access Connector broad RBAC on the container and do fine-grained control in Unity Catalog instead of in ACLs.
 > - **Error to recognize.** "Unsupported Azure Scheme: abfss" usually means the account lacks HNS or the endpoint is wrong.
 > - **Multi-protocol access.** Blob APIs and Data Lake APIs can address the same data in an HNS account, so non-Databricks tools can drop files where Databricks ingests them with [[Auto Loader]].
-> - **Account-level limits** (requests per second, ingress and egress throughput) apply per storage account. Very large platforms spread data over several accounts.
+> - **Account-level limits** (maximum request rate, ingress and egress throughput, capacity) apply per storage account. You can request higher capacity and ingress limits from Azure Support. Very large platforms spread data over several accounts.
 
 ## Common misconceptions
 
@@ -165,7 +165,7 @@ SELECT * FROM read_files('abfss://lake@acmestorage.dfs.core.windows.net/raw/orde
 > It is a Blob Storage account with hierarchical namespace enabled. Without HNS, you have plain Blob Storage, and `abfss://` external locations will not work.
 
 > [!confusion] `wasbs://` vs `abfss://`
-> `wasbs://` is the older Windows Azure Storage Blob driver for plain Blob Storage. For Databricks and ADLS, use `abfss://` with the `dfs.core.windows.net` endpoint.
+> `wasbs://` uses the Windows Azure Storage Blob (WASB) driver, which Microsoft has deprecated in favor of the Azure Blob Filesystem (ABFS) driver. For Databricks and ADLS, use `abfss://` with the `dfs.core.windows.net` endpoint.
 
 > [!confusion] An ADLS "container" is not a Docker container
 > In Azure Storage, a container is a top-level folder in a storage account. It has nothing to do with the software [[Container|containers]] used to package apps.
@@ -197,5 +197,9 @@ What are ADLS's AWS and Google Cloud equivalents?::Amazon S3 (s3://) and Google 
 > - [Connect to an ADLS external location (Azure Databricks)](https://learn.microsoft.com/en-us/azure/databricks/connect/unity-catalog/cloud-storage/external-locations-adls)
 > - [Mounting cloud object storage on Azure Databricks](https://learn.microsoft.com/en-us/azure/databricks/dbfs/mounts)
 > - [Access ADLS using Entra ID credential passthrough (legacy) (Azure Databricks)](https://learn.microsoft.com/en-us/azure/databricks/archive/credential-passthrough/adls-passthrough)
->
-> **Unconfirmed:** the exact Gen1 retirement date (reported as 29 February 2024), the `az storage account create` flags, the one-way HNS upgrade, the `wasbs://` driver history, and per-account scale limits were not confirmed against Microsoft documentation in this pass.
+> - [What is Azure Data Lake Storage Gen1? (retirement notice, Microsoft Learn)](https://learn.microsoft.com/en-us/azure/data-lake-store/data-lake-store-overview)
+> - [az storage account (Azure CLI reference)](https://learn.microsoft.com/en-us/cli/azure/storage/account)
+> - [Create a storage account (Microsoft Learn)](https://learn.microsoft.com/en-us/azure/storage/common/storage-account-create)
+> - [Upgrading Azure Blob Storage with Azure Data Lake Storage capabilities (Microsoft Learn)](https://learn.microsoft.com/en-us/azure/storage/blobs/upgrade-to-data-lake-storage-gen2)
+> - [Connect to Azure Blob Storage with WASB (legacy) (Azure Databricks)](https://learn.microsoft.com/en-us/azure/databricks/archive/storage/wasb-blob)
+> - [Scalability and performance targets for standard storage accounts (Microsoft Learn)](https://learn.microsoft.com/en-us/azure/storage/common/scalability-targets-standard-account)

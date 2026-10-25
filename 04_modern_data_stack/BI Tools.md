@@ -151,7 +151,7 @@ Databricks provides a Partner Connect guide for Tableau Desktop, and Tableau's D
 > Power BI connects with Microsoft Entra ID single sign-on, and Microsoft-specific integration (including publishing to the Power BI service) is covered in [[Power BI on Azure Databricks]]. The Azure version of the Partner Connect steps uses Entra ID sign-in instead of generic OAuth.
 
 > [!aws]- Databricks on AWS
-> Power BI, Tableau, and other tools connect with OAuth or tokens. For Power BI service scheduled refresh against a workspace with private networking, a Power BI gateway may be required.
+> Power BI, Tableau, and other tools connect with OAuth or tokens. If the workspace uses Private Link or IP access lists, the Power BI service may need a Power BI on-premises data gateway to reach it.
 
 > [!gcp]- Databricks on Google Cloud
 > Looker is Google Cloud's BI product and connects to Databricks SQL warehouses like other tools. Otherwise nothing differs.
@@ -200,5 +200,8 @@ Which three ways does Databricks document for connecting Power BI Desktop?::Part
 > - [Business intelligence tools (Azure Databricks)](https://learn.microsoft.com/en-us/azure/databricks/ai-bi/tools)
 > - [Business intelligence tools (GCP)](https://docs.databricks.com/gcp/en/ai-bi/tools)
 > - [Technology partners (AWS)](https://docs.databricks.com/aws/en/integrations)
->
-> **Unconfirmed:** the vendor table (Tableau owned by Salesforce, Looker by Google Cloud, LookML), the Power BI gateway note on AWS, and the exact Power BI menu labels were not checked against the vendors' own docs in this pass.
+> - [Troubleshoot Power BI with Databricks (AWS)](https://docs.databricks.com/aws/en/partners/bi/power-bi/troubleshooting)
+> - [Publish to the Power BI service from Databricks (AWS)](https://docs.databricks.com/aws/en/partners/bi/power-bi/service)
+> - [What is Microsoft Fabric? (Power BI workload, Microsoft Learn)](https://learn.microsoft.com/en-us/fabric/fundamentals/microsoft-fabric-overview)
+> - [Salesforce completes acquisition of Tableau (Salesforce press release, 2019)](https://www.salesforce.com/news/press-releases/2019/08/01/salesforce-completes-acquisition-of-tableau/)
+> - [What is LookML? (Looker documentation, Google Cloud)](https://cloud.google.com/looker/docs/what-is-lookml)

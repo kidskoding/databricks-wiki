@@ -160,20 +160,20 @@ The [[Checkpoint|checkpoint]] stores which offsets have been processed, so a res
 The Databricks Kafka connector works the same on every cloud. What differs is which managed Kafka service sits nearby and how the network reaches it.
 
 > [!azure]- Azure Databricks
-> Azure Event Hubs offers a Kafka-compatible endpoint, so the same `format("kafka")` code can read it. Confluent Cloud also runs on Azure. Make sure the brokers resolve and are reachable from your workspace's network ([[VNet Injection]], private endpoints).
+> Azure Event Hubs provides an Apache Kafka endpoint that speaks the Kafka protocol, so the same `format("kafka")` code can read it after you change the connection configuration. Confluent Cloud also runs on Azure. Make sure the brokers resolve and are reachable from your workspace's network ([[VNet Injection]], private endpoints).
 
 > [!aws]- Databricks on AWS
 > Amazon MSK (Managed Streaming for Apache Kafka) and Confluent Cloud are the usual choices. Keep the cluster in the same region and reach it over private networking ([[Customer-Managed VPC on AWS]], [[AWS PrivateLink]]).
 
 > [!gcp]- Databricks on Google Cloud
-> Google Cloud offers a managed Kafka service, and Confluent Cloud runs there too. Same rule: same region, private connectivity ([[Customer-Managed VPC on Google Cloud]]).
+> Google Cloud offers Managed Service for Apache Kafka, and Confluent Cloud runs there too. Same rule: same region, private connectivity ([[Customer-Managed VPC on Google Cloud]]).
 
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Partitions cap parallelism.** A Spark stream reading a 6-partition topic gets at most 6 parallel reads by default. Spark can split partitions further (`minPartitions`), but ordering is only guaranteed within a Kafka partition.
+> - **Partitions cap parallelism.** By default Spark maps each Kafka topic partition to one Spark partition, so a stream reading a 6-partition topic gets 6 parallel reads. Setting `minPartitions` higher than the topic's partition count makes Spark split large Kafka partitions into smaller pieces (the value is a hint, not exact). Ordering is only guaranteed within a Kafka partition.
 > - **Offsets live in the checkpoint, not in Kafka.** Structured Streaming tracks its own offsets in the checkpoint rather than committing consumer-group offsets. Deleting a checkpoint means re-deciding where to start (`startingOffsets`).
-> - **Data loss on retention.** If a stream is stopped longer than the topic's retention, the oldest unread events are gone. The `failOnDataLoss` option controls whether the stream errors out or skips ahead.
+> - **Data loss on retention.** If a stream is stopped longer than the topic's retention, the oldest unread events are gone. The `failOnDataLoss` option (default `true`) controls whether the query fails when data may have been lost, for example when offsets are out of range or a topic was deleted. Set it to `false` to continue instead.
 > - **Rate limiting.** `maxOffsetsPerTrigger` caps how much each micro-batch reads, which keeps the first run after a long outage from overwhelming the cluster.
 > - **Troubleshooting connections.** The Databricks Kafka FAQ recommends first verifying that the bootstrap hostname and port are correct and resolve from the Databricks network. Connection timeouts are usually network configuration issues.
 > - **KRaft replaces ZooKeeper.** Kafka 4.0 supports only KRaft mode; ZooKeeper mode is removed, and ZooKeeper-based clusters must migrate to KRaft before upgrading. Tools use `--bootstrap-server` instead of `--zookeeper`. Client applications, including Databricks, connect through bootstrap servers as before.
@@ -219,5 +219,7 @@ Does Databricks replace Kafka?::No. Kafka stays the transport; Databricks reads 
 > - [Apache Kafka 4.0.0 release announcement (kafka.apache.org)](https://kafka.apache.org/blog/2025/03/18/apache-kafka-4.0.0-release-announcement/)
 > - [Upgrading to Kafka 4.0 (kafka.apache.org)](https://kafka.apache.org/40/getting-started/upgrade/)
 > - [KRaft vs ZooKeeper (kafka.apache.org)](https://kafka.apache.org/40/getting-started/zk2kraft/)
->
-> **Unconfirmed:** the names of cloud-managed Kafka services (the Event Hubs Kafka endpoint, Amazon MSK, Google Cloud's managed Kafka service), and the `minPartitions` and `failOnDataLoss` option behavior, were not confirmed against official documentation in this pass.
+> - [Structured Streaming + Kafka Integration Guide (spark.apache.org)](https://spark.apache.org/docs/latest/streaming/structured-streaming-kafka-integration.html)
+> - [Azure Event Hubs for Apache Kafka (Microsoft Learn)](https://learn.microsoft.com/en-us/azure/event-hubs/azure-event-hubs-apache-kafka-overview)
+> - [What is Amazon MSK? (AWS documentation)](https://docs.aws.amazon.com/msk/latest/developerguide/what-is-msk.html)
+> - [Managed Service for Apache Kafka overview (Google Cloud)](https://cloud.google.com/managed-service-for-apache-kafka/docs/overview)

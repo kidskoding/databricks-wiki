@@ -174,14 +174,11 @@ target = DeltaTable.forName(spark, "shop.sales.customers")
 
 ## Advanced topics
 
-> [!todo] Verification pending
-> The Python `DeltaTable` builder example, the `QUALIFY` dedupe pattern, and the row-level conflict note below are not confirmed by the sources listed for this note.
-
 > [!deepdive]- Advanced topics (301–401)
 > - **How merge executes.** Delta first finds which target files contain matching rows (a join), then rewrites only those files. **Low shuffle merge**, on by default since Runtime 10.4, avoids reshuffling unchanged rows in those files, which keeps layout from [[Liquid Clustering|clustering]] intact.
 > - **Deletion vectors make merges much cheaper.** With [[Deletion Vectors]], updated and deleted rows are marked in a small side file instead of rewriting the whole Parquet file. That is the biggest single speed-up for frequent, small merges.
 > - **Prune the target.** Add filters to the `ON` clause that let Delta skip files, such as `AND t.ordered_at >= '2026-10-01'`. Without them, every merge scans the whole target to look for matches. [[Data Skipping|Data skipping]] and dynamic file pruning help only if the join keys or filters line up with the layout.
-> - **Conflicts.** Two concurrent merges into the same files conflict under optimistic concurrency. With deletion vectors and liquid clustering, Databricks can detect conflicts at row level for many cases, so concurrent merges on different rows can both succeed.
+> - **Conflicts.** Without row-level concurrency, two concurrent merges that modify the same data files conflict under optimistic concurrency, even if they change different rows. On Databricks Runtime 14.3 LTS and above, unpartitioned tables with [[Deletion Vectors|deletion vectors]] enabled get row-level concurrency automatically, so concurrent merges on different rows of the same file can both succeed.
 > - **Schema evolution.** `MERGE WITH SCHEMA EVOLUTION` adds new source columns. See [[Schema Enforcement and Evolution]].
 > - **Getting changes out.** After a merge, downstream jobs often want only the rows that changed. That is the [[Change Data Feed]].
 
@@ -214,6 +211,9 @@ Why is a keyed MERGE pipeline easy to rerun?::It is idempotent: merging the same
 
 > [!sources]- Sources (last verified: 2026-10-25)
 > - [MERGE INTO (Databricks SQL reference, AWS)](https://docs.databricks.com/aws/en/sql/language-manual/delta-merge-into)
+> - [Upsert into a Delta Lake table using merge (AWS)](https://docs.databricks.com/aws/en/delta/merge)
+> - [QUALIFY clause (Databricks SQL reference, AWS)](https://docs.databricks.com/aws/en/sql/language-manual/sql-ref-syntax-qry-select-qualify)
+> - [Row-level concurrency (AWS)](https://docs.databricks.com/aws/en/optimizations/isolation/row-level-concurrency)
 > - [Tutorial: Create and manage Delta Lake tables (AWS)](https://docs.databricks.com/aws/en/delta/tutorial)
 > - [Low shuffle merge on Databricks (AWS)](https://docs.databricks.com/aws/en/optimizations/low-shuffle-merge)
 > - [Use foreachBatch to write to arbitrary data sinks (GCP)](https://docs.databricks.com/gcp/en/structured-streaming/foreach)

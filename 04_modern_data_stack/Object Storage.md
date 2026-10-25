@@ -147,8 +147,8 @@ LIST 's3://acme-lake/curated/orders/';
 > - **Consistency.** Since December 2020, S3 provides strong read-after-write consistency for writes, overwrites, and listings. Before that, some operations were eventually consistent and lake engines needed workarounds. Delta Lake's transaction log does not rely on directory listings to determine table contents.
 > - **No atomic rename.** On flat namespaces, "renaming a folder" means copying every object. Hadoop-era commit protocols that relied on rename were slow and unsafe on S3. Delta's log-based commits avoid rename entirely; ADLS's hierarchical namespace makes directory renames atomic.
 > - **Request costs and small files.** Each `GET` and `LIST` is billed and has latency. Thousands of tiny files cost more and read slower than a few large ones, which is why compaction matters. See [[OPTIMIZE and VACUUM]].
-> - **Throughput scales with parallelism.** Object stores serve high aggregate [[Throughput|throughput]] across many concurrent readers, which suits Spark's many-task model.
-> - **Lifecycle rules** move old objects to colder tiers automatically. Never tier a live Delta table's files to an archive class; reads will fail or be slow until restored.
+> - **Throughput scales with parallelism.** Object stores serve high aggregate [[Throughput|throughput]] across many concurrent requests, which suits Spark's many-task model. For example, Amazon S3 supports at least 3,500 write and 5,500 read requests per second per partitioned prefix, with no limit on the number of prefixes.
+> - **Lifecycle rules** move old objects to colder tiers automatically. A lifecycle policy that archives a live Delta table's files can break queries, because the files are no longer readable until restored. Databricks archival support (Public Preview, Runtime 13.3 LTS and above) makes queries skip archived files when possible and fail early when they need them.
 
 ## Common misconceptions
 
@@ -186,5 +186,5 @@ Why are many small files bad on object storage?::Each request is billed and has 
 > - [Use the Azure Data Lake Storage URI (ABFS) (Microsoft Learn)](https://learn.microsoft.com/en-us/azure/storage/blobs/data-lake-storage-introduction-abfs-uri)
 > - [Storage classes (Google Cloud docs)](https://docs.cloud.google.com/storage/docs/storage-classes)
 > - [Connect to an ADLS external location (Azure Databricks)](https://learn.microsoft.com/en-us/azure/databricks/connect/unity-catalog/cloud-storage/external-locations-adls)
->
-> **Unconfirmed:** the request-rate, throughput, and lifecycle notes in Advanced topics are general guidance not re-checked against each provider's documentation.
+> - [Best practices design patterns: optimizing Amazon S3 performance (AWS documentation)](https://docs.aws.amazon.com/AmazonS3/latest/userguide/optimizing-performance.html)
+> - [Archival support in Databricks (AWS)](https://docs.databricks.com/aws/en/optimizations/archive-delta)

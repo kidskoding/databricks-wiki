@@ -62,7 +62,7 @@ Mastery: `INPUT[inlineSelect(option(new), option(learning), option(solid)):maste
 
 BigQuery is based on Dremel, a Google system for interactive SQL-like queries over very large datasets, described in the paper "Dremel: Interactive Analysis of Web-Scale Datasets" (VLDB 2010). Dremel addressed a limitation of batch systems such as those in the [[Google File System and MapReduce Papers|GFS and MapReduce papers]]: MapReduce jobs took minutes to hours, while analysts needed interactive response times.
 
-Google announced BigQuery in 2010 and made it generally available in 2011–2012; published accounts differ on the exact general-availability date, and these dates were not confirmed against a Google primary source for this note.
+Google launched BigQuery in 2010, the same year the Dremel paper appeared, as a publicly available analytics service backed by Dremel.
 
 BigQuery's defining characteristic is that there are **no clusters to manage**: no nodes to size, no indexes, and no maintenance operations for the user to run.
 
@@ -141,8 +141,8 @@ SELECT * FROM `myproject.staging.orders_raw`;
 
 > [!deepdive]- Advanced topics (301–401)
 > - **Dremel's design** combined nested columnar storage (encoding repeated and nested fields in columns) with a multi-level execution tree for aggregation. [[Apache Parquet]]'s encoding of nested data is based on the Dremel paper.
-> - **Slots and fairness.** Under capacity pricing, reservations are shared across projects, with idle slots lent to others. On-demand projects share a large pool with a per-project cap.
-> - **Bytes scanned vs bytes billed.** Partition pruning and clustering reduce billed bytes; `LIMIT` on its own does not.
+> - **Slots and fairness.** Within a reservation, BigQuery's fair scheduling shares slots equally among projects with running queries, then among jobs within a project. Under capacity pricing, idle slots are shared by default: queries in any reservation can use idle slots from other reservations in the same administration project, and the owner reclaims them when needed.
+> - **Bytes scanned vs bytes billed.** Partition pruning and clustering reduce billed bytes. On non-clustered tables, a `LIMIT` clause does not reduce compute costs.
 > - **Lock-in shape.** Native BigQuery tables are only readable through BigQuery's APIs. Iceberg managed tables are the escape hatch, and the reason the open table format debate matters.
 
 ## Common misconceptions
@@ -183,5 +183,6 @@ How can Databricks query BigQuery without copying data?::Lakehouse Federation qu
 > - [Lakehouse for Apache Iceberg, formerly BigLake (Google Cloud)](https://cloud.google.com/products/lakehouse)
 > - [What is query federation? (AWS)](https://docs.databricks.com/aws/en/query-federation/database-federation)
 > - [Connect to external databases and catalogs (GCP)](https://docs.databricks.com/gcp/en/query-federation)
->
-> **Unconfirmed:** BigQuery's 2010 announcement and 2011–2012 general-availability dates, the Dremel paper details (VLDB 2010; Parquet's nested encoding derived from it), and the slot-fairness and `LIMIT` billing notes in Advanced topics were not confirmed against a Google primary source in this pass.
+> - [Dremel: A Decade of Interactive SQL Analysis at Web Scale (VLDB 2020, Google authors)](https://www.vldb.org/pvldb/vol13/p3461-melnik.pdf)
+> - [Parquet motivation: record shredding from the Dremel paper (Apache Parquet)](https://parquet.apache.org/docs/overview/motivation/)
+> - [Control costs in BigQuery (BigQuery docs)](https://cloud.google.com/bigquery/docs/best-practices-costs)

@@ -84,7 +84,7 @@ The goal is a [[Single Source of Truth|single source of truth]]: one place where
 
 Two generations of warehouse are relevant to this chapter:
 
-1. **On-premises appliances** (Teradata, Oracle, IBM Netezza, Microsoft SQL Server). Hardware and software are purchased together, sized for peak load, and paid for whether busy or idle.
+1. **On-premises systems and appliances** (for example Teradata, Oracle Exadata, IBM Netezza, and Microsoft's SQL Server Parallel Data Warehouse appliance). Hardware and software are purchased together, sized for peak load, and paid for whether busy or idle.
 2. **Cloud warehouses** ([[Amazon Redshift]] in 2012–2013, [[Google BigQuery]], [[Snowflake]]). The vendor operates the infrastructure, and billing is by time or by query. The next three notes cover them.
 
 ## How it works
@@ -138,7 +138,7 @@ The warehouse runs this efficiently because it reads only the four columns the q
 ## Cloud differences
 
 > [!azure]- Azure Databricks
-> Microsoft's own warehouse lineage runs from SQL Server to Azure SQL Data Warehouse, then Azure Synapse Analytics, and now Microsoft Fabric's warehouse. Lakehouse Federation lists Azure Synapse (SQL Data Warehouse) and SQL Server as query federation sources. See [[Microsoft Fabric and OneLake vs Databricks]].
+> Microsoft's own warehouse lineage runs from SQL Server and its Parallel Data Warehouse appliance to Azure SQL Data Warehouse (now the dedicated SQL pool, formerly SQL DW, in Azure Synapse Analytics), and now Microsoft Fabric Data Warehouse. Lakehouse Federation lists Azure Synapse (SQL Data Warehouse) and SQL Server as query federation sources. See [[Microsoft Fabric and OneLake vs Databricks]].
 
 > [!aws]- Databricks on AWS
 > AWS's warehouse is [[Amazon Redshift]]. Federation and migration paths: [[Lakehouse Federation]], [[Hive Metastore Federation for AWS Glue]], [[Migrating from Amazon Redshift]].
@@ -149,7 +149,7 @@ The warehouse runs this efficiently because it reads only the four columns the q
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Top-down vs bottom-up design.** A top-down design (associated with Bill Inmon) builds a normalized enterprise warehouse first and derives [[Data Mart|data marts]] from it. A bottom-up design (associated with Ralph Kimball) builds conformed star-schema marts per business process. Most systems combine both. The [[Medallion Architecture]] (bronze, silver, gold) applies similar layering on a lakehouse.
+> - **Top-down vs bottom-up design.** A top-down design (Bill Inmon's approach) builds a normalized, enterprise-wide warehouse first and derives [[Data Mart|data marts]] from it as subsets. A bottom-up design (Ralph Kimball's approach) builds dimensional, star-schema marts for business units first and integrates them into a larger warehouse. Most systems combine both. The [[Medallion Architecture]] (bronze, silver, gold) applies similar layering on a lakehouse.
 > - **MPP.** Warehouses from Teradata to Redshift are *massively parallel processing* systems: shared-nothing nodes, each owning a slice of every table, joined by a fast network. Choosing how rows are distributed across nodes (distribution keys) was the central tuning skill, because a bad choice forces a [[Shuffles|shuffle]] on every join.
 > - **Coupled storage and compute.** In classic MPP, data lives on the compute nodes' disks. Adding storage means adding compute, and idle nodes still cost money. Snowflake, BigQuery, and later Redshift RA3 broke this coupling by keeping data in object storage or a managed storage layer. See [[Storage vs Compute]].
 > - **Closed formats.** A warehouse stores data in its own internal format. Only its engine can read it at full speed, which is why machine learning teams had to export data to files. The [[The Lakehouse Paper|lakehouse paper]] calls this out as lock-in and a source of staleness.
@@ -193,5 +193,9 @@ How can Databricks query an existing Snowflake or Redshift warehouse without cop
 > - [Snowflake key concepts and architecture (Snowflake docs)](https://docs.snowflake.com/en/user-guide/intro-key-concepts)
 > - [Amazon Redshift: ten years of continuous reinvention (Amazon Science)](https://amazon.science/latest-news/amazon-redshift-ten-years-of-continuous-reinvention)
 > - [Redshift RA3 nodes with managed storage (AWS)](https://aws.amazon.com/blogs/big-data/scale-your-cloud-data-warehouse-and-reduce-costs-with-the-new-amazon-redshift-ra3-nodes-with-managed-storage/)
->
-> **Unconfirmed:** the attribution of top-down and bottom-up warehouse design to Inmon and Kimball, the list of on-premises appliance vendors, and the Microsoft warehouse product lineage are standard industry history that was not checked against a primary source for this note.
+> - [Introduction to data warehouse architecture: Inmon vs. Kimball (Databricks)](https://www.databricks.com/discover/data-warehouse-architecture)
+> - [Data warehouse modeling techniques on the Databricks lakehouse (Databricks blog)](https://www.databricks.com/blog/2022/06/24/data-warehousing-modeling-techniques-and-their-implementation-on-the-databricks-lakehouse-platform.html)
+> - [Analytics Platform System (Parallel Data Warehouse) documentation (Microsoft Learn)](https://learn.microsoft.com/en-us/sql/analytics-platform-system/home-analytics-platform-system-aps-pdw)
+> - [What is dedicated SQL pool (formerly SQL DW) in Azure Synapse Analytics? (Microsoft Learn)](https://learn.microsoft.com/en-us/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is)
+> - [Oracle Exadata (Oracle)](https://www.oracle.com/engineered-systems/exadata/)
+> - [IBM Netezza Performance Server (IBM)](https://www.ibm.com/products/netezza)

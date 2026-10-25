@@ -105,7 +105,7 @@ sequenceDiagram
 ```
 
 - **Atomicity:** if the writer crashes before the commit, the new files are orphans that no version references. [[OPTIMIZE and VACUUM|VACUUM]] cleans them up later.
-- **Isolation:** readers always read one complete version. Writers use **optimistic concurrency control**: each writer assumes no conflict, and at commit time checks whether someone else committed changes to the same data first. If so, it retries or fails with a conflict error.
+- **Isolation:** readers always read one complete version. Writers use **optimistic concurrency control**: there are no locks, each writer reads a snapshot, and at commit time it checks whether a conflicting change was committed since that snapshot. If so, the write fails with a concurrent modification exception instead of corrupting data.
 - **Consistency:** the log also stores the schema and table constraints, so writes that break them are rejected (see [[Schema Enforcement and Evolution]]).
 - **Durability:** the commit file sits in the same durable object storage as the data.
 
@@ -140,12 +140,9 @@ WHEN NOT MATCHED THEN INSERT *;
 
 ## Advanced topics
 
-> [!todo] Verification pending
-> The optimistic-concurrency description in "How it works" and the isolation-level and conflict-detection details below are not confirmed by the sources listed for this note. Treat them as unconfirmed.
-
 > [!deepdive]- Advanced topics (301–401)
-> - **Isolation levels (unconfirmed).** Delta tables on Databricks support `WriteSerializable` (the default) and `Serializable`. WriteSerializable guarantees that writes are serializable but lets a reader see a snapshot that does not correspond to any serial order of all operations. It allows more concurrency. Set the stricter level with the table property `delta.isolationLevel`.
-> - **Conflict detection (unconfirmed).** Two writers conflict when they touch the same files. Layout features help: with [[Liquid Clustering]] and [[Deletion Vectors]], Databricks can detect conflicts at the row level for many operations, so two `UPDATE`s on different rows of the same file no longer collide.
+> - **Isolation levels.** Reads always use snapshot isolation. For writes, Delta tables on Databricks support `WriteSerializable` (the default) and `Serializable`. WriteSerializable makes only write operations serializable, so a reader can see a table state that never appears in the Delta log history. It allows more concurrency: appends that do not read the table never conflict under WriteSerializable but can conflict under Serializable. Set the stricter level with the table property `delta.isolationLevel`.
+> - **Conflict detection.** Without row-level concurrency, two writers conflict when they modify the same data files, even if they change different rows. Row-level concurrency is enabled automatically on Databricks Runtime 14.3 LTS and above for unpartitioned tables with [[Deletion Vectors]] enabled. It detects changes at the row level, so concurrent `MERGE`, `UPDATE`, or `DELETE` operations on different rows of the same file no longer collide. Metadata changes (protocol, table properties, schema) can still fail all concurrent writes.
 > - **The commit step depends on the object store.** A commit must fail if another writer already created the same version. How that is guaranteed differs between object stores, and on Databricks the platform handles it for you on every cloud.
 > - **Multi-statement and multi-table transactions.** Classic Delta transactions cover one statement on one table. Databricks now documents transactions that span several statements and tables (see the transactions page in the sources). Check the docs for the current status and limits on your runtime before relying on them.
 
@@ -163,7 +160,7 @@ What do the letters in ACID stand for?::Atomicity, Consistency, Isolation, Durab
 What does atomicity guarantee?::All of a transaction's changes take effect, or none do.
 Why did plain data lakes lack ACID?::Object storage only makes single-object writes atomic. It has no way to commit a group of files together or isolate readers from in-progress writes.
 How does a lakehouse table format make a multi-file write atomic?::It writes the data files first, then commits by atomically adding one new entry to the transaction log. The change is visible only once that entry exists.
-What concurrency approach does Delta Lake use?::Optimistic concurrency control: writers check for conflicting commits at commit time and retry or fail.
+What concurrency approach does Delta Lake use?::Optimistic concurrency control: no locks; writers check for conflicting commits at commit time and fail with a concurrent modification exception if one exists.
 What happens to files written by a job that crashes before committing?::They are never referenced by any table version, so readers ignore them, and VACUUM later deletes them.
 
 ## Next steps
@@ -176,6 +173,10 @@ What happens to files written by a job that crashes before committing?::They are
 > [[Open Table Formats]] describes the metadata layer that adds ACID transactions to files in object storage.
 
 > [!sources]- Sources (last verified: 2026-10-25)
+> - [What are ACID guarantees on Databricks? (AWS)](https://docs.databricks.com/aws/en/lakehouse/acid)
+> - [Isolation levels (WriteSerializable and Serializable) (AWS)](https://docs.databricks.com/aws/en/optimizations/isolation/isolation-levels)
+> - [Row-level concurrency (AWS)](https://docs.databricks.com/aws/en/optimizations/isolation/row-level-concurrency)
+> - [Isolation levels and write conflicts (AWS)](https://docs.databricks.com/aws/en/optimizations/isolation/)
 > - [Transactions (Azure Databricks)](https://learn.microsoft.com/en-us/azure/databricks/transactions/)
 > - [Transactions (Databricks, AWS)](https://docs.databricks.com/aws/en/transactions/)
 > - [MERGE INTO (Databricks SQL reference, AWS)](https://docs.databricks.com/aws/en/sql/language-manual/delta-merge-into)

@@ -70,7 +70,7 @@ Mastery: `INPUT[inlineSelect(option(new), option(learning), option(solid)):maste
 
 Apache Hadoop is a set of independent projects, each with its own release schedule. A production cluster needed compatible versions of 20 or more of them, plus installation, configuration, monitoring, security integration, and upgrade tooling. Most enterprises bought a **distribution**: a tested, versioned bundle with a support contract.
 
-Several vendors offered distributions. Cloudera and Hortonworks were the largest independent ones, and their competition shaped the Hadoop market in the 2010s. Their founding dates and early histories are unconfirmed against the sources used for this vault and are omitted here.
+Several vendors offered distributions. Cloudera and Hortonworks were the largest independent ones, and their competition shaped the Hadoop market in the 2010s. According to their SEC filings, Cloudera was incorporated in Delaware in June 2008, and Hortonworks was incorporated in Delaware in April 2011 and introduced its first product in 2012.
 
 ## Overview
 
@@ -91,6 +91,7 @@ Merger facts, from the companies' filings with the U.S. Securities and Exchange 
 | **Expected close** | First quarter of calendar 2019, subject to stockholder approval and regulatory clearance |
 | **Closed** | January 3, 2019 |
 | **Surviving name** | Cloudera |
+| **Afterward** | Cloudera was taken private by funds advised by Clayton, Dubilier & Rice and KKR; that merger closed on October 8, 2021 |
 
 The merger reflected a shrinking on-premises Hadoop market. Customers were moving storage to cloud [[Object Storage]] and processing to [[Apache Spark]] and cloud services, which reduced demand for two competing on-premises distributions. See [[The Pain of Hadoop]].
 
@@ -199,4 +200,7 @@ What is the difference between a distribution and a managed service?::A distribu
 > - [Apache Hadoop on Amazon EMR](https://docs.aws.amazon.com/emr/latest/ReleaseGuide/emr-hadoop.html)
 > - [Azure HDInsight retired versions](https://learn.microsoft.com/en-us/azure/hdinsight/hdinsight-retired-versions)
 > - [Managed Service for Apache Spark (formerly Dataproc)](https://cloud.google.com/products/managed-service-for-apache-spark)
-> - Unconfirmed: the distribution names and expansions (CDH, HDP), the founding dates of Cloudera and Hortonworks, and Cloudera's history after 2019. No allowed source was available to confirm them during this research pass.
+> - [Hortonworks Form 10-K, fiscal 2017 (SEC)](https://www.sec.gov/Archives/edgar/data/1610532/000119312518084131/d506884d10k.htm)
+> - [Cloudera Form 8-K filed October 8, 2021, completion of merger with Sky Parent Inc. (SEC)](https://www.sec.gov/Archives/edgar/data/1535379/000119312521294924/d223205d8k.htm)
+> - [CDH Overview, Cloudera Enterprise 6.3 (Cloudera documentation)](https://docs.cloudera.com/documentation/enterprise/6/6.3/topics/cdh_intro.html)
+> - [Security daemon setup best practices, part 1 (Cloudera blog; CDH expansion)](https://www.cloudera.com/blog/technical/best-practices-guide-for-systems-security-services-daemon-configuration-and-installation-part-1.html)

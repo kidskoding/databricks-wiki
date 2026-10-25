@@ -82,7 +82,7 @@ The facts that matter for data work:
 | S3 Express One Zone | Very [[Latency\|low-latency]] access in one zone | Single-AZ, not resilient to losing that zone |
 | S3 Glacier (Instant, Flexible, Deep Archive) | Backups and archives | Some classes need a restore before reading |
 
-- **Security:** private by default. Access is granted by [[IAM]] policies, bucket policies, and (for Databricks) a role that [[Unity Catalog]] assumes. [[Encryption at Rest|Encryption at rest]] is on by default (SSE-S3), with optional KMS keys (keys held in AWS Key Management Service).
+- **Security:** private by default. Access is granted by [[IAM]] policies, bucket policies, and (for Databricks) a role that [[Unity Catalog]] assumes. [[Encryption at Rest|Encryption at rest]] is on by default: since January 5, 2023, S3 encrypts all new uploads with S3-managed keys (SSE-S3), with optional KMS keys (keys held in AWS Key Management Service).
 - **Pricing:** per GB-month stored, per request, and per GB transferred out. See the official Amazon S3 pricing page (linked from the [S3 FAQs](https://aws.amazon.com/s3/faqs/)).
 
 ## How it works
@@ -151,14 +151,14 @@ aws s3 ls s3://acme-lake/raw/orders/ --recursive    # list keys under a prefix
 
 > [!deepdive]- Advanced topics (301–401)
 > - **The 2020 consistency change** removed a class of lake errors, such as a newly written file missing from a listing. Delta Lake does not rely on listings for correctness, because the [[Delta Transaction Log]] says exactly which files make up each version.
-> - **Concurrent writes.** Delta Lake commits require that two writers cannot create the same log entry. On S3, this historically required a coordination mechanism for multi-cluster writes to one table; Databricks provides this for its own compute.
-> - **Request rate scaling.** S3 scales throughput per key prefix. Spreading data across many prefixes (as partitioned and Delta layouts naturally do) avoids hot spots.
+> - **Concurrent writes.** Delta Lake commits require that two writers cannot create the same log entry, and S3 lacks the needed mutual exclusion. Open-source Delta Lake supports multi-cluster S3 writes only with an experimental LogStore that uses DynamoDB. On Databricks, a commit service in the control plane coordinates writes to S3 from multiple clusters.
+> - **Request rate scaling.** S3 supports at least 3,500 write and 5,500 read requests per second per partitioned prefix, with no limit on the number of prefixes. Spreading data across many prefixes (as partitioned and Delta layouts naturally do) avoids hot spots.
 > - **Lifecycle and versioning.** With versioning enabled, files removed by `VACUUM` remain as noncurrent versions and continue to incur storage charges. Pair versioning with a lifecycle rule that expires noncurrent versions.
 
 ## Common misconceptions
 
 > [!confusion] `s3://` vs `s3a://` vs `s3n://`
-> All three name S3. `s3n` and `s3a` come from open-source Hadoop connectors (`s3n` is long obsolete). On Databricks, write `s3://`.
+> All three name S3. `s3n` and `s3a` come from open-source Hadoop connectors; the `s3n` client is no longer available in Hadoop, and users must migrate to `s3a`. On Databricks, write `s3://`.
 
 > [!confusion] Bucket names are global, buckets are regional
 > A bucket name must be unique across all of AWS, but the bucket and its data live in one region.
@@ -190,5 +190,11 @@ What are S3's Azure and Google Cloud equivalents?::Azure Data Lake Storage (abfs
 > - [Amazon S3 now delivers strong read-after-write consistency (AWS, December 2020)](https://aws.amazon.com/about-aws/whats-new/2020/12/amazon-s3-now-delivers-strong-read-after-write-consistency-automatically-for-all-applications/)
 > - [Amazon S3 update: strong read-after-write consistency (AWS News Blog)](https://aws.amazon.com/blogs/aws/amazon-s3-update-strong-read-after-write-consistency/)
 > - [Twenty years of Amazon S3 (AWS News Blog)](https://aws.amazon.com/fr/blogs/aws/twenty-years-of-amazon-s3-and-building-whats-next/)
+> - [Default encryption FAQ (Amazon S3 User Guide)](https://docs.aws.amazon.com/AmazonS3/latest/userguide/default-encryption-faq.html)
+> - [Understanding and managing Amazon S3 storage classes (Amazon S3 User Guide)](https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-class-intro.html)
+> - [Optimizing Amazon S3 performance (Amazon S3 User Guide)](https://docs.aws.amazon.com/AmazonS3/latest/userguide/optimizing-performance.html)
+> - [Hadoop-AWS module: S3A connector (Apache Hadoop)](https://hadoop.apache.org/docs/stable/hadoop-aws/tools/hadoop-aws/index.html)
+> - [Storage configuration: Amazon S3 multi-cluster setup (Delta Lake docs)](https://docs.delta.io/latest/delta-storage.html)
+> - [Configure Databricks S3 commit service-related settings (AWS)](https://docs.databricks.com/aws/en/security/network/classic/s3-commit-service)
 >
-> **Unconfirmed:** default encryption (SSE-S3), the Intelligent-Tiering and Glacier Instant Retrieval class names, the `s3a`/`s3n` connector history, per-prefix request scaling, and the S3 coordination details for Delta were not confirmed against AWS or Databricks documentation in this pass. The S3 access path through Unity Catalog follows [[S3 Access via Unity Catalog]].
+> The S3 access path through Unity Catalog follows [[S3 Access via Unity Catalog]].

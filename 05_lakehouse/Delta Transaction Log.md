@@ -155,7 +155,7 @@ DESCRIBE DETAIL  shop.sales.orders;          -- location, file count, size, feat
 > - **Log retention is separate from data retention.** `delta.logRetentionDuration` (default 30 days) controls how long commit files are kept. `delta.deletedFileRetentionDuration` (default 7 days) controls when VACUUM may delete removed data files. Time travel needs both. See [[Time Travel]].
 > - **Tombstones.** A `remove` action is a tombstone. Checkpoints keep tombstones until they expire, so VACUUM knows which files are safe to delete.
 > - **Deletion vectors change what `add` means.** With [[Deletion Vectors]], an `add` can carry a pointer to a small bitmap of deleted rows, so a delete updates metadata instead of rewriting a file.
-> - **`txn` and idempotent streaming (unconfirmed detail).** Streaming writers record application transaction IDs in the log so a retried micro-batch is not committed twice, which supports [[Exactly-Once Processing|exactly-once]] writes to Delta sinks.
+> - **`txn` and idempotent streaming.** Streaming and other incremental writers record `appId` and `version` pairs (transaction identifiers) in the log atomically with their data changes, so a retried batch is not committed twice. The protocol cites the Delta sink for Spark Structured Streaming as an example, and this supports [[Exactly-Once Processing|exactly-once]] writes to Delta sinks.
 
 ## Common misconceptions
 

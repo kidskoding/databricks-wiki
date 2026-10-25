@@ -162,13 +162,10 @@ WHEN NOT MATCHED THEN INSERT *;
 
 ## Advanced topics
 
-> [!todo] Verification pending
-> The by-name vs. by-position rules, the column-mapping requirement for renames and drops, the streaming behavior, and the CHECK constraint example below are not confirmed by the sources listed for this note. Treat them as unconfirmed.
-
 > [!deepdive]- Advanced topics (301–401)
-> - **Enforcement checks names, not positions**, for `saveAsTable` and `MERGE ... SET *`. `INSERT INTO ... VALUES` and `INSERT INTO t SELECT` match by position unless you list columns or use `INSERT INTO t BY NAME`. Positional inserts are a common source of silently swapped columns.
-> - **Column mapping** (`delta.columnMapping.mode = 'name'`) decouples logical column names from the physical Parquet names, which is what makes `RENAME COLUMN` and `DROP COLUMN` metadata-only. It is required for [[Delta UniForm|Iceberg reads]]. Older readers that do not support the feature cannot read the table.
-> - **Streaming and schema changes.** A streaming read from a Delta table fails when the source schema changes in a non-additive way (rename, drop, type change). You restart it with a schema tracking location. Additive changes with `mergeSchema` flow through.
+> - **Some writes match columns by name, others by position.** `saveAsTable` and `MERGE ... UPDATE SET *` / `INSERT *` match columns by name. `INSERT INTO t SELECT ...` without a column list matches by position, in the order the table defines. List the columns or use `INSERT INTO t BY NAME` (Runtime 13.3 LTS and above) to match by name. Positional inserts are a common source of silently swapped columns. On Delta tables, nested struct fields are matched by position even with `BY NAME`.
+> - **Column mapping** (`delta.columnMapping.mode = 'name'`) decouples logical column names from the physical Parquet names, which is what makes `RENAME COLUMN` and `DROP COLUMN` metadata-only. It is required for [[Delta UniForm|Iceberg reads]]. It needs reader protocol version 2 and writer version 5 or above, and reading the table requires Databricks Runtime 10.4 LTS or above, so older readers cannot read it.
+> - **Streaming and schema changes.** A streaming read from a Delta table fails if the table's schema changes after the stream starts. For most schema changes, restarting the stream resolves the mismatch. On Databricks Runtime 12.2 LTS and below, you cannot stream from a table with column mapping that has had non-additive changes such as renamed or dropped columns.
 > - **Recent fixes.** The June 2026 Databricks SQL release notes fix `MERGE WITH SCHEMA EVOLUTION` with `WHEN MATCHED THEN DELETE` and with nested columns referenced by alias. The May 2026 notes changed how NULL structs are handled during evolution. Pin behavior with tests if you depend on edge cases.
 > - **Constraints go further than types.** `ALTER TABLE ... ADD CONSTRAINT valid_total CHECK (total >= 0)` and `NOT NULL` make Delta reject rows that break business rules. For pipeline-level rules with metrics, see [[Expectations and Data Quality]].
 
@@ -201,6 +198,12 @@ Schema-on-read vs schema-on-write: which does Delta use?::Schema-on-write, with 
 > [[MERGE and Upserts]] covers updating existing rows and inserting new ones in a single statement.
 
 > [!sources]- Sources (last verified: 2026-10-25)
+> - [Rename and drop columns with Delta Lake column mapping (AWS)](https://docs.databricks.com/aws/en/tables/features/column-mapping)
+> - [INSERT (Databricks SQL reference, AWS)](https://docs.databricks.com/aws/en/sql/language-manual/sql-ref-syntax-dml-insert-into)
+> - [Constraints on Databricks (AWS)](https://docs.databricks.com/aws/en/tables/constraints)
+> - [Delta table streaming reads and writes (AWS)](https://docs.databricks.com/aws/en/structured-streaming/delta-lake)
+> - [Read Delta tables with Iceberg clients (AWS)](https://docs.databricks.com/aws/en/delta/iceberg-reads)
+> - [DataFrameWriter.saveAsTable (PySpark API reference)](https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.DataFrameWriter.saveAsTable.html)
 > - [Schema enforcement (AWS)](https://docs.databricks.com/aws/en/tables/schema-enforcement)
 > - [Schema evolution in Databricks (AWS)](https://docs.databricks.com/aws/en/data-engineering/schema-evolution)
 > - [Update table schemas with schema evolution (AWS)](https://docs.databricks.com/aws/en/tables/update-schema)

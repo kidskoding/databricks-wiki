@@ -74,7 +74,7 @@ Three changes broke that model:
 - **Continuous arrival.** Servers, ad systems, and later phones and sensors ([[IoT]]) produced data all day instead of once per night.
 - **New formats.** Much of the new data was not tabular: log lines, web pages, JSON documents, images. See [[Structured vs Unstructured Data]] and [[CSV and JSON]].
 
-The volume, velocity, and variety framing is generally attributed to analyst Doug Laney in a 2001 META Group research note. This attribution is unconfirmed against the sources used for this vault.
+The NIST Big Data Interoperability Framework lists volume, velocity, variety, and variability as the characteristics "known colloquially as the Vs of Big Data."
 
 ## Overview
 
@@ -177,4 +177,4 @@ In a lakehouse, which features address velocity?::Structured Streaming and Auto 
 > [!sources]- Sources (last verified: 2026-10-25)
 > - [The Google File System (SOSP 2003, peer-reviewed paper)](https://www.cs.rochester.edu/meetings/sosp2003/papers/p125-ghemawat.pdf)
 > - [What is Delta Lake in Databricks? (AWS)](https://docs.databricks.com/aws/en/delta)
-> - Unconfirmed: the attribution of the three Vs to Doug Laney (2001). No allowed source was available to confirm it during this research pass.
+> - [NIST Big Data Interoperability Framework: Volume 1, Definitions (NIST SP 1500-1r2, 2019)](https://doi.org/10.6028/NIST.SP.1500-1r2)

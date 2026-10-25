@@ -128,7 +128,7 @@ A third, `DatabricksCreateJobsOperator`, creates or resets a job definition and 
 > Do not deploy Airflow only to schedule Databricks work. Operating Airflow means maintaining a scheduler, workers, a metadata database, and upgrades, which is significant overhead for a team with one data person. [[Lakeflow Jobs]] is built into Databricks, schedules notebooks, SQL, pipelines, and dbt, retries, alerts, and has no extra infrastructure. Keep Airflow only if you already run it for many non-Databricks systems, and then let it trigger Databricks jobs rather than micromanage them.
 
 > [!bridge]- In Databricks today
-> Airflow's job lives in **[[Lakeflow Jobs]]** (formerly Databricks Workflows): multi-task jobs with dependencies, schedules, file-arrival and table-update triggers, retries, notifications, and run history, all inside the workspace. See [[Tasks Triggers and Schedules]]. Jobs can be defined as code with [[Declarative Automation Bundles]] and deployed through [[CI-CD for Data Pipelines|CI/CD]], which covers Airflow's "pipelines as code" strength.
+> Airflow's job lives in **[[Lakeflow Jobs]]** (formerly Databricks Workflows): multi-task jobs with dependencies, time-based schedules, table-update, file-arrival, and continuous triggers, retries, notifications, and run history, all inside the workspace. See [[Tasks Triggers and Schedules]]. Jobs can be defined as code with [[Declarative Automation Bundles]] and deployed through [[CI-CD for Data Pipelines|CI/CD]], which covers Airflow's "pipelines as code" strength.
 >
 > Airflow remains supported. Databricks documents orchestrating Lakeflow Jobs from Airflow with the Databricks provider: `DatabricksRunNowOperator` for existing jobs, `DatabricksSubmitRunOperator` for one-off runs and pipelines. A common pattern is to use Airflow for cross-system orchestration and Lakeflow Jobs for orchestration within Databricks. Moving off Airflow is covered in [[Migrating ETL Tools]].
 
@@ -138,10 +138,10 @@ A third, `DatabricksCreateJobsOperator`, creates or resets a job definition and 
 > The Databricks provider and the Lakeflow Jobs integration are the same. On Azure, many teams use [[Azure Data Factory with Databricks|Azure Data Factory]] as the cross-system orchestrator instead of Airflow, and Microsoft Fabric also offers Apache Airflow jobs that can trigger Azure Databricks jobs. Authenticate with a [[Users Groups and Service Principals|service principal]] through Microsoft Entra ID.
 
 > [!aws]- Databricks on AWS
-> Same provider and operators. AWS offers a managed Airflow service (Amazon MWAA). Use a Databricks service principal with OAuth for the Airflow connection, not a personal token.
+> Same provider and operators. AWS offers a managed Airflow service, Amazon Managed Workflows for Apache Airflow (MWAA). Use a Databricks service principal with OAuth for the Airflow connection, not a personal token.
 
 > [!gcp]- Databricks on Google Cloud
-> Same provider and operators. Google Cloud's managed Airflow is Cloud Composer.
+> Same provider and operators. Google Cloud's managed Airflow is Managed Service for Apache Airflow (formerly Cloud Composer).
 
 ## Advanced topics
 
@@ -190,5 +190,6 @@ Why must Airflow tasks be idempotent?::Airflow retries and backfills, so a task 
 > - [Databricks operators API reference (Airflow Databricks provider docs)](https://airflow.apache.org/docs/apache-airflow-providers-databricks/stable/_api/airflow/providers/databricks/operators/databricks/index.html)
 > - [Databricks provider changelog (airflow.apache.org)](https://airflow.apache.org/docs/apache-airflow-providers-databricks/stable/changelog.html)
 > - [Orchestrate an Azure Databricks job with an Apache Airflow job (Microsoft Fabric)](https://learn.microsoft.com/en-us/fabric/data-factory/apache-airflow-jobs-run-databricks-job)
->
-> **Unconfirmed:** the managed Airflow service names (Amazon MWAA, Cloud Composer) and the list of Lakeflow Jobs trigger types were not re-checked against official documentation in this pass.
+> - [Automating jobs with schedules and triggers (AWS)](https://docs.databricks.com/aws/en/jobs/triggers)
+> - [What is Amazon Managed Workflows for Apache Airflow? (AWS documentation)](https://docs.aws.amazon.com/mwaa/latest/userguide/what-is-mwaa.html)
+> - [Managed Service for Apache Airflow overview (formerly Cloud Composer, Google Cloud)](https://cloud.google.com/composer/docs/composer-3/composer-overview)

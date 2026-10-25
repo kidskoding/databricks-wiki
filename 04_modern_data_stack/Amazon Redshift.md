@@ -64,8 +64,6 @@ Before cloud warehouses, an organization that needed a warehouse bought an appli
 
 AWS announced Redshift as a limited preview at re:Invent in **November 2012** and made it generally available in **February 2013**. It provides a [[Columnar Storage|columnar]], massively parallel processing (MPP) warehouse that is provisioned from the AWS console and billed by usage. Redshift uses a PostgreSQL-based SQL dialect and connects through PostgreSQL, JDBC, and ODBC drivers.
 
-Redshift was the first cloud data warehouse offered by a major cloud provider.
-
 ## Overview
 
 Redshift today comes in two deployment shapes:
@@ -148,9 +146,9 @@ Modern Redshift can pick distribution and sort keys automatically (`AUTO`), but 
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Distribution styles.** `KEY`, `EVEN`, `ALL`, and `AUTO`. `ALL` copies a small dimension table to every node to avoid data movement during joins, similar to a Spark [[Broadcast Join|broadcast join]].
-> - **Zone maps.** Redshift keeps min/max values per storage block, so a sort key on date lets a filter skip blocks. Delta Lake's file statistics and [[Liquid Clustering]] do the same job; see [[Data Skipping]].
-> - **VACUUM and ANALYZE.** Deleted rows are only marked, and sort order degrades as data arrives. Redshift runs automatic vacuum and analyze now, but the parallel to Delta's [[OPTIMIZE and VACUUM]] is direct.
+> - **Distribution styles.** `KEY`, `EVEN`, `ALL`, and `AUTO` (the default when none is specified). `ALL` copies a small dimension table to every node to avoid data movement during joins, similar to a Spark [[Broadcast Join|broadcast join]].
+> - **Zone maps.** Redshift stores columnar data in 1 MB blocks and keeps the min and max values of each block as metadata, so a sort key on date lets a range filter skip blocks. Delta Lake's file statistics and [[Liquid Clustering]] do the same job; see [[Data Skipping]].
+> - **VACUUM and ANALYZE.** Deleted rows are only marked for deletion, and sort order degrades as data arrives. Redshift now runs automatic table sort, `VACUUM DELETE`, and statistics updates (automatic analyze) in the background, but the parallel to Delta's [[OPTIMIZE and VACUUM]] is direct.
 > - **WLM.** Workload management queues separate ETL from dashboards. Concurrency scaling is attached per queue on provisioned clusters.
 > - **Lock-in shape.** Data in managed storage is in Redshift's format. Getting it out for other engines means `UNLOAD` to Parquet in S3, which is the additional ETL step described in the [[The Lakehouse Paper|lakehouse paper]].
 
@@ -192,5 +190,7 @@ How can Databricks query Redshift tables without copying them?::Lakehouse Federa
 > - [Top 10 performance tuning techniques for Amazon Redshift (AWS)](https://aws.amazon.com/blogs/big-data/top-10-performance-tuning-techniques-for-amazon-redshift/)
 > - [What is query federation? (AWS)](https://docs.databricks.com/aws/en/query-federation/database-federation)
 > - [Lakehouse Federation performance recommendations (AWS)](https://docs.databricks.com/aws/en/query-federation/performance-recommendations)
->
-> **Unconfirmed:** the specific distribution styles, zone-map behavior, and automatic vacuum/analyze details in Advanced topics, and the claim that Redshift was the first cloud warehouse from a major cloud provider, were not re-checked against the Redshift documentation in this pass.
+> - [Distribution styles (Amazon Redshift Database Developer Guide)](https://docs.aws.amazon.com/redshift/latest/dg/c_choosing_dist_sort.html)
+> - [Sort keys (Amazon Redshift Database Developer Guide)](https://docs.aws.amazon.com/redshift/latest/dg/t_Sorting_data.html)
+> - [Vacuuming tables (Amazon Redshift Database Developer Guide)](https://docs.aws.amazon.com/redshift/latest/dg/t_Reclaiming_storage_space202.html)
+> - [Analyzing tables (Amazon Redshift Database Developer Guide)](https://docs.aws.amazon.com/redshift/latest/dg/t_Analyzing_tables.html)

@@ -76,20 +76,17 @@ Because so many vendors adopted it, Iceberg became the common language for shari
 
 ## Overview
 
-> [!todo] Verification pending
-> The layer names in the metadata table below are not confirmed against the sources listed for this note. Check the Apache Iceberg spec for the exact file structure.
-
 An Iceberg table is data files plus a **tree of metadata**:
 
 | Layer | File type | Holds |
 |---|---|---|
 | Catalog pointer | (in the catalog) | Which metadata file is current |
 | Metadata file | JSON | Schema, partition spec, snapshot list, properties |
-| Manifest list | Avro | One per snapshot: which manifests it uses, with partition summaries |
+| Manifest list | Avro | One per snapshot (spec v1 to v3): which manifests it uses, with partition stats. Spec v4 replaces it with a root manifest. |
 | Manifest | Avro | A list of data (and delete) files with per-column stats |
 | Data files | Parquet (or ORC, Avro) | The rows |
 
-A commit writes new manifests and a new metadata file, then **atomically swaps the catalog pointer**. That swap is the transaction. This is why Iceberg always needs a catalog: Hive Metastore, AWS Glue, a REST catalog, or Unity Catalog.
+A commit writes new manifests and a new metadata file, then **atomically swaps the pointer** from the old metadata file to the new one. That swap is the transaction. In practice a catalog holds the pointer and performs the swap: Hive Metastore, AWS Glue, a REST catalog, or Unity Catalog. (The spec also defines file-system tables that commit by atomic rename, but it marks that scheme deprecated and unsafe on object stores.)
 
 **Spec versions.** The Iceberg spec page says versions 1, 2, and 3 are complete and adopted, and version 4 is in development. v2 added row-level deletes. **v3** adds deletion vectors (stored in Puffin files), row lineage, the `variant` type, geometry and geography types, nanosecond timestamps, and default column values.
 

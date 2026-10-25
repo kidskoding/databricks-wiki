@@ -66,7 +66,7 @@ Three requirements drove the data lake pattern:
 2. **Volume.** Warehouse storage is priced for curated data, which makes retaining years of raw logs costly. See [[The Three Vs of Big Data]].
 3. **New users.** Data scientists need raw, detailed data for [[Machine Learning Basics|machine learning]], not pre-aggregated summaries.
 
-The term "data lake" is generally attributed to James Dixon, then CTO of Pentaho, around 2010, who contrasted it with the [[Data Mart|data mart]] (this attribution was not confirmed against a primary source for this note). Early data lakes ran on [[HDFS]] in Hadoop clusters. Most later moved to cloud [[Object Storage|object storage]] such as [[Amazon S3]], [[Azure Data Lake Storage]], and [[Google Cloud Storage]], which costs less and does not require a running cluster to retain data.
+Early data lakes ran on [[HDFS]] in Hadoop clusters. Most later moved to cloud [[Object Storage|object storage]] such as [[Amazon S3]], [[Azure Data Lake Storage]], and [[Google Cloud Storage]], which costs less and does not require a running cluster to retain data.
 
 ## Overview
 
@@ -185,5 +185,4 @@ How does Databricks fix the data lake's reliability gap?::It stores lake files a
 > - [Lakehouse: A New Generation of Open Platforms (CIDR 2021)](https://vldb.org/cidrdb/2021/lakehouse-a-new-generation-of-open-platforms-that-unify-data-warehousing-and-advanced-analytics.html)
 > - [Lakehouse paper PDF (Databricks)](https://www.databricks.com/wp-content/uploads/2020/12/cidr_lakehouse.pdf)
 > - [Connect to an ADLS external location (Azure Databricks)](https://learn.microsoft.com/en-us/azure/databricks/connect/unity-catalog/cloud-storage/external-locations-adls)
->
-> **Unconfirmed:** the attribution of the term "data lake" to James Dixon (around 2010).
+

@@ -69,7 +69,6 @@ Cloud warehouses such as [[Snowflake]], [[Google BigQuery]], and [[Amazon Redshi
 
 dbt ("data build tool") was created at the analytics consultancy that became dbt Labs, around 2016. It defined a discipline, *analytics engineering*, and a workflow: SQL models in a [[Git]] repository, dependencies declared with `ref()`, tests and docs next to the code, and environments for development and production. It is the transformation layer of the modern data stack.
 
-
 ## Overview
 
 dbt is a **compiler and runner for SQL transformations**. It does not store or process data; it generates SQL and sends it to your platform.
@@ -177,7 +176,7 @@ dbt build      # run models and tests in dependency order
 
 > [!deepdive]- Advanced topics (301–401)
 > - **Materializations on Databricks.** Beyond `table`, `view`, and `incremental`, `dbt-databricks` can build Databricks [[Materialized Views|materialized views]] and [[Streaming Tables|streaming tables]], which are refreshed by Databricks' pipeline engine rather than by dbt rerunning SQL.
-> - **Incremental strategies.** On Delta, `merge` (the default for many setups), `append`, `insert_overwrite`, and `replace_where` map to Delta's [[MERGE and Upserts|MERGE]] and partition overwrite. Pick based on whether late-arriving data can change old rows.
+> - **Incremental strategies.** `dbt-databricks` supports six: `merge` (the default; matches on `unique_key` using Delta's [[MERGE and Upserts|MERGE]]), `append`, `insert_overwrite` (overwrites partitions, or the whole table without `partition_by`), `replace_where` (replaces rows matching `incremental_predicates`), `delete+insert` (v1.11 and above), and `microbatch`. Pick based on whether late-arriving data can change old rows.
 > - **Unity Catalog mapping.** dbt's `database` maps to a Unity Catalog *catalog*, and `schema` to a schema. Use separate catalogs (`dev`, `prod`) per target.
 > - **Python models** are supported and run as Databricks jobs; useful for one or two steps that SQL cannot express.
 > - **Lineage overlap.** dbt has its own model lineage; Unity Catalog captures column-level [[Data Lineage|lineage]] automatically from the queries dbt runs, including non-dbt consumers downstream.
@@ -222,5 +221,4 @@ Which Databricks feature overlaps most with dbt?::Lakeflow Spark Declarative Pip
 > - [Enable or disable partner OAuth applications (GCP)](https://docs.databricks.com/gcp/en/integrations/enable-disable-oauth)
 > - [On two years of dbt (dbt Labs)](https://www.getdbt.com/blog/on-two-years-of-dbt)
 > - [Fivetran + dbt Labs complete merger (dbt Labs)](https://www.getdbt.com/blog/fivetran-dbt-labs-complete-merger-to-create-the-data-infrastructure-for-trusted-ai-agents)
->
-> **Unconfirmed:** the company's former name (Fishtown Analytics) and the year of its rename to dbt Labs; the list of `dbt-databricks` materializations and incremental strategies in Advanced topics, which is from general dbt knowledge rather than the adapter documentation.
+> - [Databricks configurations (dbt documentation)](https://docs.getdbt.com/reference/resource-configs/databricks-configs)

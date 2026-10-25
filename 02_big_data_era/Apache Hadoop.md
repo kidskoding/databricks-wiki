@@ -70,7 +70,7 @@ Mastery: `INPUT[inlineSelect(option(new), option(learning), option(solid)):maste
 
 ## Background
 
-Hadoop originated in Apache Nutch, an [[Open Source|open-source]] web crawler (a program that downloads web pages), whose developers implemented a distributed file system and MapReduce based on Google's papers. The storage and processing code was later split out into a separate project named Hadoop, with Yahoo as an early, large-scale investor and user. The specific people, months, and Yahoo milestones of this origin are unconfirmed against the sources used for this vault.
+Hadoop originated in Apache Nutch, an [[Open Source|open-source]] web search engine and crawler (a program that downloads web pages). HDFS was originally built as infrastructure for Nutch. In early 2006, Doug Cutting proposed decoupling Nutch's distributed computing components (MapReduce and the Nutch Distributed File System, NDFS) into a new Apache Lucene sub-project named Hadoop. Its first committers included Mike Cafarella and Doug Cutting from Nutch. By mid-2006 Yahoo was contributing many developers to the project and had run Hadoop on clusters of over 600 machines.
 
 Confirmed milestones:
 
@@ -78,6 +78,7 @@ Confirmed milestones:
 |---|---|---|
 | 2003 | GFS paper published (SOSP) | Paper |
 | 2004 | MapReduce paper published (OSDI) | Paper |
+| Early 2006 | Nutch's MapReduce and NDFS code splits out into Hadoop, a sub-project of Apache Lucene | ASF board minutes, March 2006 |
 | January 2008 | Hadoop becomes an Apache top-level project, moving out from under Apache Lucene | ApacheCon Europe 2008 Hadoop presentation; Apache HBase history |
 | October 15, 2013 | Hadoop 2.2.0, the first generally available 2.x release, ships [[YARN]], HDFS high availability, HDFS federation, and HDFS snapshots | Apache Hadoop release announcement |
 | January 3, 2019 | Cloudera completes its merger with Hortonworks, the two largest Hadoop vendors | Cloudera SEC filing; see [[Cloudera and Hortonworks]] |
@@ -234,4 +235,6 @@ What is Google Cloud's managed Hadoop and Spark service now called?::Managed Ser
 > - [Azure HDInsight retired versions](https://learn.microsoft.com/en-us/azure/hdinsight/hdinsight-retired-versions)
 > - [Apache Hadoop on Amazon EMR](https://docs.aws.amazon.com/emr/latest/ReleaseGuide/emr-hadoop.html)
 > - [Managed Service for Apache Spark (formerly Dataproc)](https://cloud.google.com/products/managed-service-for-apache-spark)
-> - Unconfirmed: the Nutch origin details (Doug Cutting, Mike Cafarella), the 2006 split from Nutch, and Yahoo's 2006 investment. No allowed source was available to confirm them during this research pass.
+> - [HDFS Architecture (Apache Hadoop)](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html)
+> - [ASF board meeting minutes, 15 March 2006 (Lucene report)](https://www.apache.org/foundation/records/minutes/2006/board_minutes_2006_03_15.txt)
+> - [ASF board meeting minutes, Lucene PMC reports (19 July 2006 report)](https://whimsy.apache.org/board/minutes/Lucene.html)

@@ -67,7 +67,7 @@ Mastery: `INPUT[inlineSelect(option(new), option(learning), option(solid)):maste
 
 ## Background
 
-Early Hadoop data was mostly stored as text. Columnar options were tied to specific tools. In March 2013, Twitter and Cloudera announced Parquet as a joint open-source project to provide a columnar storage format for any project in the Hadoop ecosystem, regardless of processing framework, data model, or programming language. Twitter stated that it adopted the record shredding and assembly approach from Google's Dremel paper to store nested data in columns. Parquet 1.0 was released in July 2013. Parquet later became an Apache project. (Its graduation date is unconfirmed against the sources used for this vault.)
+Early Hadoop data was mostly stored as text. Columnar options were tied to specific tools. In March 2013, Twitter and Cloudera announced Parquet as a joint open-source project to provide a columnar storage format for any project in the Hadoop ecosystem, regardless of processing framework, data model, or programming language. Twitter stated that it adopted the record shredding and assembly approach from Google's Dremel paper to store nested data in columns. Parquet 1.0 was released in July 2013. Parquet later moved to the Apache Software Foundation, and on April 22, 2015 the ASF board approved the resolution establishing it as a top-level Apache project.
 
 ## Overview
 
@@ -194,6 +194,7 @@ Which row group size does the Parquet documentation suggest?::512 MB to 1 GB.
 > [[Apache ORC]] covers the columnar format created for Hive, Parquet's main counterpart in the Hadoop ecosystem.
 
 > [!sources]- Sources (last verified: 2026-10-25)
+> - [ASF board meeting minutes, 22 April 2015 (Establish the Apache Parquet Project)](https://www.apache.org/foundation/records/minutes/2015/board_minutes_2015_04_22.txt)
 > - [Announcing Parquet 1.0: columnar storage for Hadoop (Twitter Engineering)](https://blog.twitter.com/2013/announcing-parquet-10-columnar-storage-for-hadoop)
 > - [Apache Parquet: File format](https://parquet.apache.org/docs/file-format/)
 > - [Apache Parquet: Concepts](https://parquet.apache.org/docs/concepts/)

@@ -74,7 +74,7 @@ Mastery: `INPUT[inlineSelect(option(new), option(learning), option(solid)):maste
 
 ## Background
 
-Facebook's data infrastructure team built Hive to let analysts query data in Hadoop with a SQL-like language instead of custom MapReduce programs. Facebook released it as open source, and it became an Apache project. (The open-source release date, commonly given as 2008, is unconfirmed against the sources used for this vault.)
+Facebook's data infrastructure team built Hive to let analysts query data in Hadoop with a SQL-like language instead of custom MapReduce programs. Facebook open-sourced Hive in August 2008, and it became an Apache project.
 
 The VLDB 2009 paper *"Hive: A Warehousing Solution Over a Map-Reduce Framework"* (Thusoo et al., Facebook) describes the system. It reports that Facebook's Hive warehouse held over 700 TB across several thousand tables and was used by more than 100 people.
 
@@ -205,8 +205,8 @@ ORDER BY dt;
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Execution engines.** Hive originally compiled queries to MapReduce. Later versions added DAG-based engines that avoid writing every intermediate step to HDFS, and long-running daemons for interactive latency. (Specific engine names and versions are unconfirmed against the sources used for this vault.)
-> - **Transactions.** Hive tables were append-and-overwrite only for most of their history. Hive later added transactional tables with `UPDATE` and `DELETE`, implemented with delta files and background compaction that a metastore instance coordinates. [[Delta Lake]] and [[Apache Iceberg]] provide [[ACID Transactions]] in an engine-neutral way.
+> - **Execution engines.** Hive originally compiled queries to MapReduce. Later versions added Apache Tez, a YARN application framework that runs a query as a directed acyclic graph (DAG) of tasks instead of a chain of separate MapReduce jobs. Hive 2.0 added LLAP (Live Long and Process), long-lived daemons with data caching for interactive, low-latency queries.
+> - **Transactions.** Hive tables were append-and-overwrite only for most of their history. Hive later added transactional tables with `UPDATE` and `DELETE`, implemented with base and delta directories and background compaction that a metastore instance coordinates. Full ACID tables use ORC; other formats support insert-only transactional tables. [[Delta Lake]] and [[Apache Iceberg]] provide [[ACID Transactions]] in an engine-neutral way.
 > - **Over-partitioning.** Partitioning by a high-cardinality column creates very large numbers of directories and metastore entries, which slows query planning. The same mistake applies to Delta tables. Databricks provides [[Liquid Clustering]] as an alternative to directory partitioning.
 > - **Managed and external tables.** Hive's `EXTERNAL` keyword (dropping the table keeps the files) versus managed tables (dropping the table deletes the files) is the origin of [[Managed vs External Tables]] in Unity Catalog.
 
@@ -239,6 +239,10 @@ What size did the 2009 VLDB paper report for Facebook's Hive warehouse?::Over 70
 > [[Hive Metastore]] covers Hive's table catalog, the component that Spark and early Databricks adopted.
 
 > [!sources]- Sources (last verified: 2026-10-25)
+> - [Apache Hive home page (feature overview)](https://hive.apache.org/)
+> - [Apache Hive: Hive on Tez (design document)](https://hive.apache.org/development/designdocs/hive-on-tez/)
+> - [Apache Hive: LLAP (design document)](https://hive.apache.org/development/designdocs/llap/)
+> - [Apache Hive: ACID Transactions](https://hive.apache.org/docs/latest/user/hive-transactions/)
 > - [Hive: A Warehousing Solution Over a Map-Reduce Framework (VLDB 2009)](https://www.vldb.org/pvldb/vol2/vldb09-938.pdf)
 > - [Hive: A Petabyte Scale Data Warehouse Using Hadoop (ICDE 2010)](https://courses.cs.washington.edu/courses/csep544/21sp/papers/hive-icde-2010.pdf)
 > - [Apache Hive: Metastore administration](https://hive.apache.org/docs/latest/admin/adminmanual-metastore-administration/)

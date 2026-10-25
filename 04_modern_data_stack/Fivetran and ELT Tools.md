@@ -75,7 +75,7 @@ Mastery: `INPUT[inlineSelect(option(new), option(learning), option(solid)):maste
 
 Each SaaS application exposes data through its own [[APIs|API]], with its own authentication, pagination, rate limits, and schema changes. A hand-written extraction script per source breaks whenever the source changes a field or an API version, and a small team can maintain only a few of them.
 
-Cloud warehouses made it practical to load raw data first and transform it afterwards inside the warehouse: [[ETL vs ELT|ELT instead of ETL]]. Managed ELT vendors turned extraction and loading into a subscription service with prebuilt connectors. Fivetran is the best-known example; others include Airbyte, Stitch, Matillion, and Qlik. Together with [[dbt]] for transformation and [[BI Tools]] for reporting, these tools made up the core of the "modern data stack".
+Cloud warehouses made it practical to load raw data first and transform it afterwards inside the warehouse: [[ETL vs ELT|ELT instead of ETL]]. Managed ELT vendors turned extraction and loading into a subscription service with prebuilt connectors. Fivetran is the best-known example; others include Airbyte, Matillion, Qlik, and Hevo. Together with [[dbt]] for transformation and [[BI Tools]] for reporting, these tools made up the core of the "modern data stack".
 
 ## Overview
 
@@ -88,7 +88,7 @@ A managed ELT tool provides:
 | **Schema handling** | New source columns are added to destination tables automatically; deletes and renames are handled by documented rules |
 | **Scheduling and retries** | Syncs run on a schedule with automatic retries and alerts |
 | **Destinations** | Warehouses and lakehouses, including Databricks |
-| **Usage-based billing** | Most vendors bill by volume of rows changed or synced; see each vendor's pricing page |
+| **Usage-based billing** | Vendors typically bill by data volume; Fivetran, for example, meters monthly active rows (MAR). See each vendor's pricing page |
 
 The tool does extraction and loading only. Cleaning and modeling happen afterwards, in SQL or [[dbt]].
 
@@ -162,7 +162,7 @@ WHERE  AnnualRevenue > 1000000;
 > [!deepdive]- Advanced topics (301–401)
 > - **CDC mechanics.** Database connectors read the source's change log (for example SQL Server change tracking or change data capture) rather than querying full tables. Enabling these features on the source is a prerequisite and requires a database administrator.
 > - **Schema-change rules differ by connector.** For example, the Lakeflow Connect Salesforce connector treats a column rename as a delete plus an add, while the SQL Server connector requires a full refresh of affected tables after certain schema changes. Read the connector's limitations page before relying on automatic handling.
-> - **Soft deletes.** Many ELT tools mark deleted source rows with a flag column instead of deleting them. Downstream models must filter on that flag.
+> - **Soft deletes.** ELT tools often mark deleted source rows with a flag column instead of deleting them. Fivetran, for example, adds a `_fivetran_deleted` boolean column. Downstream models must filter on that flag.
 > - **Destination writes.** Third-party tools write through a SQL warehouse, so the warehouse's size and auto-stop setting affect both sync speed and Databricks cost.
 > - **Reverse direction.** Pushing modeled data back into SaaS tools is [[Reverse ETL]], a separate product category.
 
@@ -208,5 +208,9 @@ When did Fivetran and dbt Labs complete their merger?::1 June 2026.
 > - [SaaS connectors in Lakeflow Connect (GCP)](https://docs.databricks.com/gcp/en/ingestion/lakeflow-connect/saas-overview)
 > - [Managed connector FAQs (AWS)](https://docs.databricks.com/aws/en/ingestion/lakeflow-connect/faq)
 > - [Fivetran + dbt Labs complete merger (dbt Labs)](https://www.getdbt.com/blog/fivetran-dbt-labs-complete-merger-to-create-the-data-infrastructure-for-trusted-ai-agents)
->
-> **Unconfirmed:** the list of other ELT vendors (Airbyte, Stitch, Matillion, Qlik), the soft-delete behavior, and the volume-based billing model are general industry knowledge, not checked against each vendor's docs.
+> - [System columns and tables (Fivetran documentation)](https://fivetran.com/docs/core-concepts/system-columns-and-tables)
+> - [Usage-based pricing: Monthly Active Rows (Fivetran documentation)](https://fivetran.com/docs/usage-based-pricing)
+> - [Databricks Lakehouse destination connector (Airbyte documentation)](https://docs.airbyte.com/integrations/destinations/databricks)
+> - [Connect to Matillion Data Productivity Cloud (AWS)](https://docs.databricks.com/aws/en/partners/prep/matillion)
+> - [Connect to Qlik Replicate (AWS)](https://docs.databricks.com/aws/en/partners/ingestion/qlik)
+> - [Connect to Hevo Data (AWS)](https://docs.databricks.com/aws/en/partners/ingestion/hevo)

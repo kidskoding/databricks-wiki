@@ -65,13 +65,13 @@ Databricks is not the right fit when a smaller tool meets the business's current
 The table lists ten situations, the better fit for each, and the condition under which Databricks becomes the stronger option.
 
 > [!confusion] About the other products named here
-> The short descriptions of Power BI, Looker Studio, Postgres, DuckDB, MotherDuck, Snowflake, BigQuery, and Microsoft Fabric are general and **unconfirmed**: they were not checked against each vendor's documentation for this note. Consult each vendor's documentation for current features and pricing.
+> The short descriptions of Power BI, Data Studio (formerly Looker Studio), Postgres, DuckDB, MotherDuck, Snowflake, BigQuery, and Microsoft Fabric were checked against each vendor's documentation (see Sources). Features and pricing change often; consult each vendor's documentation before deciding.
 
 | # | Situation | Better fit | Databricks becomes the stronger option when |
 |---|---|---|---|
 | 1 | **All data is in one application** with adequate built-in reports (for example an online store, accounting package, or practice-management system) | The application's own reports or analytics add-on | A second or third system must be combined with it |
 | 2 | **Dashboards on a few clean sources** in a Microsoft environment | **Power BI** on its own | Refreshes become slow, logic is duplicated across reports, or Python and [[Machine Learning Basics\|machine learning (ML)]] are needed |
-| 3 | **Simple charts on Google data** (Sheets, GA4, Google Ads) | **Looker Studio** | Governed history, joins across many non-Google sources, or scheduled transformations are needed |
+| 3 | **Simple charts on Google data** (Sheets, GA4, Google Ads) | **Data Studio** (formerly Looker Studio), a no-cost Google tool | Governed history, joins across many non-Google sources, or scheduled transformations are needed |
 | 4 | **A database for an application** (orders, bookings, user accounts) | An operational database such as **Postgres** or MySQL | Heavy analytics on that data is also needed; replicate it to a [[The Lakehouse Idea\|lakehouse]] with [[Change Data Capture\|CDC]] (see [[OLTP vs OLAP]]). Databricks also offers [[Lakebase]] for operational data |
 | 5 | **A few gigabytes of analytics data** and one SQL user | **Postgres** as a small [[Data Warehouses\|warehouse]], or **DuckDB** locally (**MotherDuck** is a hosted service built on DuckDB) | Several people need shared, governed access, or data volume and schedules grow |
 | 6 | **A SQL-only team that needs only a warehouse** | **Snowflake** or **BigQuery** are established options | Python data engineering, ML, streaming, or AI agents are needed on the same data |
@@ -88,7 +88,7 @@ Evaluate the questions in order and stop at the first that applies.
 flowchart TD
   A{"Is all data<br/>in one application?"} -- yes --> A1["Use the application's reports"]
   A -- no --> B{"Only dashboards on<br/>a few clean sources?"}
-  B -- yes --> B1["Power BI or Looker Studio"]
+  B -- yes --> B1["Power BI or Data Studio"]
   B -- no --> C{"A few GB, one<br/>SQL user, no ML?"}
   C -- yes --> C1["Postgres or DuckDB / MotherDuck"]
   C -- no --> D{"SQL warehouse only,<br/>no Python, ML, or AI?"}
@@ -151,4 +151,12 @@ Why is starting with a smaller tool a low-risk choice?::The data and its definit
 > - [Sign up for Databricks: free trial vs Free Edition (AWS)](https://docs.databricks.com/aws/en/getting-started/free-trial-vs-free-edition)
 > - [Databricks Free Edition limitations (AWS)](https://docs.databricks.com/aws/en/getting-started/free-edition-limitations)
 > - [Managed database connectors (GCP)](https://docs.databricks.com/gcp/en/ingestion/lakeflow-connect/cdc-overview)
-> - Descriptions of non-Databricks products are general and unconfirmed against vendor documentation.
+> - [Welcome to Data Studio: Looker Studio is now called Data Studio (Google Cloud)](https://docs.cloud.google.com/data-studio/welcome)
+> - [Data Studio: connect to Google Ads (Google Cloud)](https://docs.cloud.google.com/data-studio/connect-to-google-ads)
+> - [Power BI service features by license type (Microsoft Learn)](https://learn.microsoft.com/en-us/power-bi/fundamentals/service-features-license-type)
+> - [What is Microsoft Fabric? (Microsoft Learn)](https://learn.microsoft.com/en-us/fabric/fundamentals/microsoft-fabric-overview)
+> - [About PostgreSQL (postgresql.org)](https://www.postgresql.org/about/)
+> - [Why DuckDB (duckdb.org)](https://duckdb.org/why_duckdb)
+> - [MotherDuck documentation: getting started](https://motherduck.com/docs/getting-started/)
+> - [Supported cloud platforms (Snowflake docs)](https://docs.snowflake.com/en/user-guide/intro-cloud-platforms)
+> - [Understand slots (BigQuery docs)](https://cloud.google.com/bigquery/docs/slots)
