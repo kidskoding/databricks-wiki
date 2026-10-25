@@ -18,3 +18,8 @@ public/
 Thumbs.db
 desktop.ini
 *~
+
+# Python caches from scripts/
+__pycache__/
+*.pyc
+.venv/
