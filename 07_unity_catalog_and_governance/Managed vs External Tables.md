@@ -205,3 +205,4 @@ At which levels can managed storage be set?::Metastore, catalog, or schema (most
 > - [Convert external or foreign Delta Lake tables to managed tables (AWS)](https://docs.databricks.com/aws/en/tables/convert-to-managed)
 > - [Predictive optimization for Unity Catalog managed tables (AWS)](https://docs.databricks.com/aws/en/optimizations/predictive-optimization)
 > - [Predictive optimization (Azure Databricks)](https://learn.microsoft.com/en-us/azure/databricks/optimizations/predictive-optimization)
+> - [UNDROP (AWS SQL reference)](https://docs.databricks.com/aws/en/sql/language-manual/sql-ref-syntax-ddl-undrop-table)

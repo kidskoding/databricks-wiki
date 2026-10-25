@@ -204,3 +204,5 @@ Where should connection passwords be stored?::In a secret scope, referenced with
 > - [Federated queries (Lakehouse Federation) SQL reference (AWS)](https://docs.databricks.com/aws/en/sql/language-manual/sql-ref-federated-queries)
 > - [Run federated queries on Microsoft SQL Server (Azure Databricks)](https://learn.microsoft.com/en-us/azure/databricks/query-federation/sql-server)
 > - [Upgrade a Databricks workspace to Unity Catalog (AWS)](https://docs.databricks.com/aws/en/data-governance/unity-catalog/upgrade/)
+> - [CREATE CONNECTION (AWS SQL reference)](https://docs.databricks.com/aws/en/sql/language-manual/sql-ref-syntax-ddl-create-connection)
+> - [Run federated queries on PostgreSQL (AWS)](https://docs.databricks.com/aws/en/query-federation/postgresql)

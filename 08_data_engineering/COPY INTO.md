@@ -161,7 +161,7 @@ The docs say COPY INTO is a good fit for loading thousands of files, and recomme
 > Nothing differs in the SQL. Point `FROM` at a volume or an `abfss://` path that a Unity Catalog [[Storage Credentials and External Locations|external location]] covers.
 
 > [!aws]- Databricks on AWS
-> Same SQL with `s3://` paths. Older docs show loading through an [[Instance Profiles|instance profile]] or temporary credentials (`WITH (CREDENTIAL ...)`). With Unity Catalog, use an external location or volume instead.
+> Same SQL with `s3://` paths. The reference also documents a `WITH (CREDENTIAL ...)` clause on the source, which takes a named storage credential or inline temporary credentials (`AWS_ACCESS_KEY`, `AWS_SECRET_KEY`, `AWS_SESSION_TOKEN`). Use it only when the path is not covered by an external location. Older docs also show loading through an [[Instance Profiles|instance profile]]. With Unity Catalog, use an external location or volume instead.
 
 > [!gcp]- Databricks on Google Cloud
 > Same SQL with `gs://` paths covered by an external location or a volume.
@@ -171,9 +171,9 @@ The docs say COPY INTO is a good fit for loading thousands of files, and recomme
 > [!deepdive]- Advanced topics (301–401)
 > - **Concurrency.** Concurrent COPY INTO runs into the same table succeed only if they work on distinct sets of files. Overlapping runs cause transaction conflicts.
 > - **Schemaless tables.** A table created with no columns can only be filled by COPY INTO at first. `INSERT INTO` and `MERGE INTO` are not supported on schemaless Delta tables.
-> - **Validation.** `COPY INTO ... VALIDATE 15 ROWS` (or `VALIDATE ALL`) parses and checks the data without writing, which is useful before a big first load.
+> - **Validation.** `VALIDATE 15 ROWS` (or `VALIDATE ALL`), placed after `FILEFORMAT`, checks the data without writing it to the table, which is useful before a big first load. The default is to validate all data to be loaded.
 > - **Modified files are skipped** by design, even if their content changed. If an upstream system rewrites files in place, either name files uniquely or use `force` deliberately.
-> - **Credentials.** With Unity Catalog, the permission to read the source comes from `READ FILES` on the external location or `READ VOLUME` on the volume, not from the compute.
+> - **Credentials.** With Unity Catalog, the permission to read the source comes from `READ FILES` on the external location (or on a named storage credential), or from `READ VOLUME` on the volume, not from the compute.
 
 ## Common misconceptions
 
@@ -209,4 +209,4 @@ How do you check data with COPY INTO without writing it?::Add `VALIDATE` (for ex
 > - [Common data loading patterns using COPY INTO (AWS)](https://docs.databricks.com/aws/en/ingestion/cloud-object-storage/copy-into/examples)
 > - [Tutorial: COPY INTO with Spark SQL (AWS)](https://docs.databricks.com/aws/en/ingestion/cloud-object-storage/copy-into/tutorial-notebook)
 > - [Load data using COPY INTO with an instance profile (AWS)](https://docs.databricks.com/aws/en/ingestion/cloud-object-storage/copy-into/tutorial-dbsql)
-> - **Unconfirmed:** the search budget ran out before these details could be re-checked against official docs, so treat them as unverified: the `VALIDATE` clause, the `READ FILES`/`READ VOLUME` privileges, the supported-format list, and the `WITH (CREDENTIAL ...)` note.
+> - [Unity Catalog privileges and securable objects (AWS)](https://docs.databricks.com/aws/en/data-governance/unity-catalog/manage-privileges/privileges)

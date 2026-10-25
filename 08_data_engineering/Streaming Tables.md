@@ -121,7 +121,7 @@ ALTER STREAMING TABLE shop.bronze.web_events
 DESCRIBE TABLE EXTENDED shop.bronze.web_events;           -- shows refresh info
 ```
 
-Instead of a fixed schedule you can use `TRIGGER ON UPDATE`, which refreshes when the upstream tables change.
+The cron string is a six-field Quartz expression (seconds first). Instead of a fixed schedule you can use `TRIGGER ON UPDATE`, which refreshes the table when an upstream source is updated, at most once every minute by default (set `AT MOST EVERY` for a longer minimum gap). The upstream sources must be Delta tables (including materialized views and streaming tables) or managed views over them, with no more than 10 upstream sources per table.
 
 ### Inside a pipeline, reading another table
 
@@ -162,20 +162,20 @@ FROM STREAM read_kafka(
 ## Cloud differences
 
 > [!azure]- Azure Databricks
-> Nothing differs in the SQL. For streaming sources, Azure Event Hubs exposes a Kafka-compatible endpoint, so `read_kafka` works against it.
+> Nothing differs in the SQL. For streaming sources, Azure Event Hubs provides an Apache Kafka compatible interface, so you read it with the Kafka connector.
 
 > [!aws]- Databricks on AWS
-> Nothing differs in the SQL. Amazon Kinesis and Amazon MSK (managed Kafka) are the common streaming sources.
+> Nothing differs in the SQL. Read Amazon Kinesis with `read_kinesis` and Amazon MSK (managed Kafka) with `read_kafka`.
 
 > [!gcp]- Databricks on Google Cloud
-> Nothing differs in the SQL. Google Cloud Pub/Sub is the common streaming source.
+> Nothing differs in the SQL. Read Google Cloud Pub/Sub with `read_pubsub`, which supports only streaming queries.
 
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Append-only assumption.** A streaming read of a Delta table expects appends. If the source table gets updates or deletes, the stream fails unless you skip those changes (`skipChangeCommits`) or read the source's change feed. For real changes, use AUTO CDC.
+> - **Append-only assumption.** A streaming read of a Delta table expects appends. If an `UPDATE`, `DELETE`, `MERGE INTO`, or overwrite modifies the source table, the stream fails unless you skip those changes (the `skipChangeCommits` reader option, which processes only appends) or read the source's change feed. For real changes, use AUTO CDC.
 > - **Changing the query.** Editing a streaming table's query only affects new data. Rows already written stay as they were. To apply new logic to history, run a full refresh (if the source still has the data).
-> - **Full refresh danger.** If the source is Kafka with 7 days of retention, a full refresh loses everything older than 7 days. Protect important bronze tables with the table property `pipelines.reset.allowed = false`.
+> - **Full refresh danger.** If the source is Kafka with 7 days of retention, a full refresh loses everything older than 7 days. Protect important bronze tables with the table property `pipelines.reset.allowed = false` (default `true`), which blocks full refreshes of that table.
 > - **Stateful operations.** Aggregations and joins in a streaming table need [[Watermark|watermarks]] to bound state. Without one, state grows forever. Often the better answer is to aggregate in a materialized view instead.
 > - **Python standalone tables.** You can create standalone tables from a notebook on serverless compute, but the docs note you can't refresh or schedule them with `REFRESH`, `SCHEDULE`, or `TRIGGER ON UPDATE` when defined with Python decorators. Define them in SQL or schedule the notebook as a job.
 
@@ -215,4 +215,10 @@ Streaming table or materialized view for a daily revenue aggregate?::Materialize
 > - [CREATE STREAMING TABLE (pipelines, Azure)](https://learn.microsoft.com/en-us/azure/databricks/ldp/developer/ldp-sql-ref-create-streaming-table)
 > - [Use Python with standalone pipelines (AWS)](https://docs.databricks.com/aws/en/sql/mv-st/using-python)
 > - [read_files table-valued function (Azure)](https://learn.microsoft.com/en-us/azure/databricks/sql/language-manual/functions/read_files)
-> - **Unconfirmed:** the search budget ran out before these details could be re-checked against official docs, so treat them as unverified: `read_kafka`, `skipChangeCommits`, the `pipelines.reset.allowed` property, the `ALTER SCHEDULE CRON` syntax, `TRIGGER ON UPDATE` semantics, and the Event Hubs/Kinesis/Pub/Sub notes.
+> - [ALTER STREAMING TABLE (AWS)](https://docs.databricks.com/aws/en/sql/language-manual/sql-ref-syntax-ddl-alter-streaming-table)
+> - [read_kafka table-valued function (AWS)](https://docs.databricks.com/aws/en/sql/language-manual/functions/read_kafka)
+> - [read_kinesis streaming table-valued function (AWS)](https://docs.databricks.com/aws/en/sql/language-manual/functions/read_kinesis)
+> - [read_pubsub streaming table-valued function (GCP)](https://docs.databricks.com/gcp/en/sql/language-manual/functions/read_pubsub)
+> - [Load data in pipelines, including Azure Event Hubs (Azure)](https://learn.microsoft.com/en-us/azure/databricks/ldp/load)
+> - [Delta table streaming reads and writes (AWS)](https://docs.databricks.com/aws/en/structured-streaming/delta-lake)
+> - [Pipeline properties reference (AWS)](https://docs.databricks.com/aws/en/ldp/properties)

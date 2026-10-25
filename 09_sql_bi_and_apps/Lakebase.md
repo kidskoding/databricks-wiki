@@ -73,7 +73,7 @@ Mastery: `INPUT[inlineSelect(option(new), option(learning), option(solid)):maste
 
 Analytical and transactional databases are built for different jobs. [[Relational Databases|Transactional databases]] such as PostgreSQL handle many small reads and writes with low latency. Lakehouse tables handle large scans and aggregations. Most companies run both, connected by [[ETL vs ELT|ETL]] jobs in one direction and [[Reverse ETL|reverse ETL]] tools in the other, with separate security for each.
 
-Lakebase brings the transactional database into the Databricks platform. It is based on PostgreSQL, and its storage is separated from compute, which enables autoscaling, scale-to-zero, and instant branching. (The Postgres company Neon, acquired by Databricks in 2025, underpins Lakebase; the acquisition year is unconfirmed against databricks.com news pages.)
+Lakebase brings the transactional database into the Databricks platform. It is based on PostgreSQL, and its storage is separated from compute, which enables autoscaling, scale-to-zero, and instant branching. Lakebase is built on technology from Neon, a serverless Postgres company that Databricks agreed to acquire in May 2025.
 
 ## Overview
 
@@ -234,3 +234,5 @@ What replaced Lakebase Provisioned instances?::The Autoscaling model (projects, 
 > - [Add a Lakebase resource to a Databricks app (AWS)](https://docs.databricks.com/aws/en/dev-tools/databricks-apps/lakebase)
 > - [Databricks Lakebase is now Generally Available (Databricks blog)](https://www.databricks.com/blog/databricks-lakebase-generally-available)
 > - [Reverse ETL with Lakebase (Databricks blog)](https://www.databricks.com/blog/reverse-etl-lakebase-activate-your-lakehouse-data-operational-analytics)
+> - [Databricks agrees to acquire Neon (May 14, 2025)](https://www.databricks.com/company/newsroom/press-releases/databricks-agrees-acquire-neon-help-developers-deliver-ai-systems)
+> - [Databricks launches Lakebase, built on Neon technology (June 11, 2025)](https://www.databricks.com/company/newsroom/press-releases/databricks-launches-lakebase-new-class-operational-database-ai-apps)

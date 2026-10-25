@@ -199,7 +199,7 @@ resources:
 >
 > Start with the smallest version of the example above: one connector, one pipeline, one nightly job, all on [[Serverless Compute|serverless compute]], so nothing runs (or bills) between runs.
 >
-> Lakeflow has no separate license fee. Connectors, pipelines, and jobs are billed by the compute they use, measured in [[DBUs]]. See [[How Databricks Pricing Works]] and [[Estimating Costs for a Small Business]].
+> Connectors, pipelines, and jobs are billed by the compute they use, measured in [[DBUs]]. Managed connector usage appears in the `system.billing.usage` system table with `billing_origin_product` set to `LAKEFLOW_CONNECT`. See [[How Databricks Pricing Works]] and [[Estimating Costs for a Small Business]].
 
 ## Cloud differences
 
@@ -218,7 +218,7 @@ resources:
 > - **Declarative vs procedural.** The docs draw the line clearly. Lakeflow Jobs is procedural: you say "run task A, then B". Pipelines are declarative: you say "table C is defined by this query", and the engine works out the order from the dependencies. Most production setups use both: a job that runs one or more pipelines plus a few notebook or SQL tasks.
 > - **Everything is a pipeline underneath.** Managed connectors in Lakeflow Connect run as ingestion pipelines, and Designer builds pipelines too. So the same event log, lineage, and monitoring apply to all of them.
 > - **Open core.** The declarative framework is in Apache Spark itself (`pyspark.pipelines`, Spark 4.1+). Databricks adds things on top, such as the AUTO CDC APIs, which the docs say are only available in Lakeflow pipelines.
-> - **Agents.** Databricks positions 2026 Lakeflow features around "agentic data engineering": [[Genie Code]] can write and debug pipeline code in the editor. Treat its output like any other code: review it and test it.
+> - **Agents.** Databricks positions 2026 Lakeflow features around "agentic data engineering". In the Lakeflow Pipelines Editor, [[Genie Code]] can explore data, generate and run pipeline code, and fix errors, asking you to approve its plan before it acts. Treat its output like any other code: review it and test it.
 
 ## Common misconceptions
 
@@ -234,7 +234,7 @@ What are the four parts of Lakeflow?::Lakeflow Connect (ingestion), Lakeflow Spa
 What was Lakeflow Jobs called before?::Databricks Workflows.
 What was Lakeflow Spark Declarative Pipelines called before?::Delta Live Tables (DLT), then Lakeflow Declarative Pipelines.
 Which Lakeflow piece is procedural and which is declarative?::Jobs is procedural (you order the tasks); pipelines are declarative (the engine orders the tables from their dependencies).
-How is Lakeflow billed?::By the compute it uses, in DBUs. There is no separate Lakeflow license.
+How is Lakeflow billed?::By the compute it uses, measured in DBUs.
 In which Apache Spark version did declarative pipelines arrive?::Spark 4.1, through the `pyspark.pipelines` module.
 Where should a small shop land exported files for Lakeflow to pick up?::In a Unity Catalog volume, such as `/Volumes/shop/bronze/landing/`.
 
@@ -260,4 +260,8 @@ Where should a small shop land exported files for Lakeflow to pick up?::In a Uni
 > - [Databricks on AWS GovCloud release notes 2025 (rename to Lakeflow Spark Declarative Pipelines)](https://docs.databricks.com/aws/en/release-notes/gov-cloud/2025)
 > - [Announcing the General Availability of Databricks Lakeflow (blog)](https://www.databricks.com/blog/announcing-general-availability-databricks-lakeflow)
 > - [Lakeflow: A new era of agentic data engineering (blog)](https://www.databricks.com/blog/lakeflow-new-era-agentic-data-engineering)
-> - **Unconfirmed:** the search budget ran out before these details could be re-checked against official docs, so treat them as unverified: the Assistant's role in writing pipeline code; the claim that Lakeflow has no separate license fee.
+> - [Use Genie Code for pipeline development (AWS)](https://docs.databricks.com/aws/en/ldp/de-agent)
+> - [Monitor managed ingestion pipeline cost (AWS)](https://docs.databricks.com/aws/en/ingestion/lakeflow-connect/monitor-costs)
+> - [Lakeflow Pipelines pricing](https://www.databricks.com/product/pricing/lakeflow-declarative-pipelines)
+> - [September 2026 release notes: Shopify connector (Beta) (AWS)](https://docs.databricks.com/aws/en/release-notes/product/2026/september)
+> - [Managed SaaS connectors (AWS)](https://docs.databricks.com/aws/en/ingestion/lakeflow-connect/saas-overview)

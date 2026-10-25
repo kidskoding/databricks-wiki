@@ -231,3 +231,4 @@ What replaces DBFS mounts?::Unity Catalog volumes and external locations.
 > - [Work with the legacy Hive metastore alongside Unity Catalog (AWS)](https://docs.databricks.com/aws/en/data-governance/unity-catalog/hive-metastore)
 > - [Database objects in the legacy Hive metastore (AWS)](https://docs.databricks.com/aws/en/database-objects/hive-metastore)
 > - [Convert external or foreign Delta Lake tables to managed tables (AWS)](https://docs.databricks.com/aws/en/tables/convert-to-managed)
+> - [SYNC (AWS SQL reference)](https://docs.databricks.com/aws/en/sql/language-manual/sql-ref-syntax-aux-sync)

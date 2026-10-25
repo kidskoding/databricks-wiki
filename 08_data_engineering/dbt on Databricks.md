@@ -179,22 +179,23 @@ resources:
             num_workers: 0
             node_type_id: ${var.small_node_type}
             spark_conf:
-              spark.master: "local[*]"
+              spark.master: "local[*, 4]"
+              spark.databricks.cluster.profile: singleNode
             custom_tags:
               ResourceClass: SingleNode
 ```
 
-The single-node job cluster runs only the dbt process; the SQL itself runs on the warehouse. `dbt build` runs models and tests in dependency order.
+The single-node job cluster settings (`num_workers: 0`, the `singleNode` profile, and the `SingleNode` tag) follow the Databricks dbt task example. Pick any supported runtime version and node type for your workspace. The cluster runs only the dbt process; the SQL itself runs on the warehouse. `dbt build` runs models, tests, snapshots, and seeds in dependency order. `data_tests` is the current dbt property name for tests in YAML.
 
 ### dbt or Lakeflow pipelines?
 
 | | dbt | [[Lakeflow Spark Declarative Pipelines\|Lakeflow pipelines]] |
 |---|---|---|
-| Language | SQL with Jinja templating | SQL or Python |
-| Incremental ingestion from files or streams | Limited | Built in (streaming tables, Auto Loader) |
-| CDC and SCD type 2 | Snapshots and custom incremental models | AUTO CDC |
-| Data quality | dbt tests (after build) | Expectations (inline) |
-| Portability | Runs on many warehouses | Databricks (core framework in Apache Spark) |
+| Language | SQL with Jinja templating; Python models also run on Databricks | SQL or Python |
+| Incremental ingestion from files or streams | Through the adapter's `streaming_table` materialization (requires Unity Catalog and serverless SQL warehouses) | Built in (streaming tables, Auto Loader) |
+| CDC and SCD type 2 | Snapshots (type 2 SCD) and incremental models | AUTO CDC |
+| Data quality | dbt data tests (run after each model in `dbt build`) | Expectations (inline) |
+| Portability | Runs on many data platforms through adapters | Databricks (core framework in Apache Spark) |
 
 A common split: pipelines for bronze and silver ingestion, dbt for gold business models.
 
@@ -257,4 +258,12 @@ What does `dbt build` do?::Runs models, tests, snapshots, and seeds in dependenc
 > - [Databricks configurations (dbt docs)](https://docs.getdbt.com/reference/resource-configs/databricks-configs)
 > - [Migrate from dbt-spark to dbt-databricks (dbt docs)](https://docs.getdbt.com/guides/migrate-from-spark-to-databricks)
 > - [About profiles.yml (dbt docs)](https://docs.getdbt.com/docs/local/profiles.yml)
-> - **Unconfirmed:** the search budget ran out before these details could be re-checked: the single-node job cluster settings and runtime version in the YAML (illustrative; adjust to your workspace), the `data_tests` key name, the per-cloud host formats, and the dbt-vs-pipelines comparison rows.
+> - [About data tests property (dbt docs)](https://docs.getdbt.com/reference/resource-properties/data-tests)
+> - [Add snapshots to your DAG (dbt docs)](https://docs.getdbt.com/docs/build/snapshots)
+> - [About dbt build command (dbt docs)](https://docs.getdbt.com/reference/commands/build)
+> - [Python models (dbt docs)](https://docs.getdbt.com/docs/build/python-models)
+> - [Databricks platform release notes, June 2025: AUTO CDC (AWS)](https://docs.databricks.com/aws/en/release-notes/product/2025/june)
+> - [Databricks Runtime release notes versions and compatibility (AWS)](https://docs.databricks.com/aws/en/release-notes/runtime/)
+> - [Get identifiers for workspace objects (AWS)](https://docs.databricks.com/aws/en/workspace/workspace-details)
+> - [Get identifiers for workspace objects (Azure)](https://learn.microsoft.com/en-us/azure/databricks/workspace/workspace-details)
+> - [Get identifiers for workspace objects (GCP)](https://docs.databricks.com/gcp/en/workspace/workspace-details)

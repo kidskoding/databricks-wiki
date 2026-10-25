@@ -242,12 +242,12 @@ databricks bundle run shop_etl -t dev --full-refresh-all
 
 > [!deepdive]- Advanced topics (301–401)
 > - **Flows.** A dataset can have more than one flow writing to it. `CREATE FLOW ... AS INSERT INTO` (SQL) or `@dp.append_flow` (Python) lets several sources append into one streaming table, such as orders from two Shopify stores. `@dp.update_flow` (GA June 2026) writes to sinks in update mode.
-> - **Incremental MVs need serverless.** Materialized views refresh incrementally only on serverless pipelines; on classic compute they fully recompute. See [[Materialized Views]].
-> - **Product editions on classic compute.** Classic pipelines have Core, Pro, and Advanced editions. Pro is needed for CDC and Advanced for expectations. Serverless pipelines include all features.
+> - **Incremental MVs need serverless.** Materialized views refresh incrementally only on serverless pipelines; on classic compute they always fully recompute. See [[Materialized Views]].
+> - **Product editions on classic compute.** Classic pipelines have Core, Pro, and Advanced editions. Pro is needed for CDC and Advanced for expectations. Serverless pipelines require the Advanced edition, so they include all features.
 > - **The event log** is queryable: `SELECT * FROM event_log(TABLE(shop.silver.orders_clean))`. Its `flow_progress` events hold row counts and expectation results. Use it to build quality dashboards.
 > - **2026 changes.** Release notes for 2026 add real-time mode for pipelines (Public Preview, May 2026), sinks GA, `import_checkpoint` to adopt an existing stream's checkpoint during migration, and a cap on concurrent updates.
 > - **Open source vs Databricks.** Apache Spark 4.1 ships `pyspark.pipelines`, so the same decorators run on open-source Spark. AUTO CDC, expectations UI, serverless, and the editor are Databricks additions.
-> - **Development mode.** Pipelines in development mode reuse compute between updates and don't retry, which speeds up iteration. Production mode retries and shuts compute down.
+> - **Run behavior.** Triggered updates started from the pipeline editor or monitoring UI use fast-start behavior: they reuse the cluster (two hours by default) and disable retries, which speeds up iteration. Updates started from jobs or the API, and all continuous updates, retry on recoverable errors and shut the cluster down after the run.
 
 ## Common misconceptions
 
@@ -298,4 +298,11 @@ Where can you query a pipeline's lineage and quality metrics?::The event log, fo
 > - [May 2026 release notes (AWS)](https://docs.databricks.com/aws/en/release-notes/product/2026/may)
 > - [June 2026 release notes (AWS)](https://docs.databricks.com/aws/en/release-notes/product/2026/june)
 > - [Databricks on AWS GovCloud release notes 2025](https://docs.databricks.com/aws/en/release-notes/gov-cloud/2025)
-> - **Unconfirmed:** the search budget ran out before these details could be re-checked against official docs, so treat them as unverified: Core/Pro/Advanced editions, development vs production mode behaviour, the `event_log()` query, `@dp.append_flow`, the `--full-refresh-all` flag, the **New > ETL pipeline** menu path, and incremental MV refresh requiring serverless.
+> - [Configure pipelines (AWS)](https://docs.databricks.com/aws/en/ldp/configure-pipeline)
+> - [Run a pipeline update (AWS)](https://docs.databricks.com/aws/en/ldp/updates)
+> - [Load and process data incrementally with Lakeflow pipeline flows (AWS)](https://docs.databricks.com/aws/en/ldp/flows)
+> - [CREATE FLOW (pipelines) (AWS)](https://docs.databricks.com/aws/en/ldp/developer/ldp-sql-ref-create-flow)
+> - [event_log table-valued function (AWS)](https://docs.databricks.com/aws/en/sql/language-manual/functions/event_log)
+> - [Pipeline event log (AWS)](https://docs.databricks.com/aws/en/ldp/monitor-event-logs)
+> - [Incremental refresh for materialized views (AWS)](https://docs.databricks.com/aws/en/optimizations/incremental-refresh)
+> - [bundle command group (AWS)](https://docs.databricks.com/aws/en/dev-tools/cli/bundle-commands)

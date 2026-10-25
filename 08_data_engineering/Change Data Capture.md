@@ -185,12 +185,12 @@ USING (
   QUALIFY ROW_NUMBER() OVER (PARTITION BY customer_id ORDER BY updated_at DESC) = 1
 ) AS s
 ON t.customer_id = s.customer_id
-WHEN MATCHED AND s.operation = 'DELETE' THEN DELETE
+WHEN MATCHED AND s.operation = 'DELETE' AND s.updated_at > t.updated_at THEN DELETE
 WHEN MATCHED AND s.updated_at > t.updated_at THEN UPDATE SET *
 WHEN NOT MATCHED AND s.operation != 'DELETE' THEN INSERT *;
 ```
 
-That works, but you must also track which batch you processed and handle deletes that arrive before inserts. AUTO CDC does both.
+That works, but you must also track which batch you processed and handle deletes that arrive before inserts. The Delta Lake MERGE docs recommend AUTO CDC in Lakeflow pipelines so that out-of-order records are handled correctly.
 
 ## Small-business considerations
 
@@ -200,22 +200,22 @@ That works, but you must also track which batch you processed and handle deletes
 ## Cloud differences
 
 > [!azure]- Azure Databricks
-> The AUTO CDC APIs are identical. Common sources are Azure SQL Database and SQL Managed Instance (through the SQL Server connector) and Azure Event Hubs carrying Debezium events through its Kafka endpoint.
+> The AUTO CDC APIs are identical. The SQL Server connector supports Azure SQL Database, Azure SQL Managed Instance, and SQL Server on Azure VMs, with Microsoft Entra ID authentication for the first two. Change events published to Azure Event Hubs are read through the Kafka connector.
 
 > [!aws]- Databricks on AWS
-> Identical APIs. Common sources are SQL Server on RDS, and AWS DMS or Debezium on Amazon MSK writing change files to S3.
+> Identical APIs. The SQL Server connector supports Amazon RDS for SQL Server and SQL Server on Amazon EC2. AWS DMS can also write full-load and CDC files to S3, which you then load with Auto Loader and apply with AUTO CDC.
 
 > [!gcp]- Databricks on Google Cloud
-> Identical APIs. Change events often arrive through Pub/Sub or as files in Cloud Storage.
+> Identical APIs. Change events can arrive through Pub/Sub (read with `read_pubsub`) or as files in Cloud Storage.
 
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Sequencing must be total.** `SEQUENCE BY` must give a strict order per key. If two changes share a timestamp, use a struct: `SEQUENCE BY STRUCT(updated_at, lsn)`.
-> - **Deletes and tombstones.** Deletes that arrive out of order are kept as tombstones for a while, so a late "insert" for a deleted key doesn't bring it back. For SCD type 2, the docs describe the deleted row being retained as a tombstone in the underlying Delta table, with a view that filters it out.
+> - **Sequencing must be total.** `SEQUENCE BY` must give a strict order per key, using sortable data types. If two changes share a timestamp, use a struct: `SEQUENCE BY STRUCT(updated_at, lsn)`. The struct orders by its first field, then by the next field on a tie.
+> - **Deletes and tombstones.** To handle out-of-order data, a deleted row is temporarily retained as a tombstone in the underlying Delta table, and a view filters the tombstones out. Retention defaults to two days and is set with the `pipelines.cdc.tombstoneGCThresholdInSeconds` table property.
 > - **Truncates** (`APPLY AS TRUNCATE WHEN`) are supported only for SCD type 1.
 > - **Bitemporal** storage (`STORED AS BITEMPORAL`) is in Beta and requires `SYSTEM SEQUENCE BY`.
-> - **Don't write to the target yourself.** The AUTO CDC target is owned by the flow. To fix data, fix the source or run a full refresh.
+> - **Writing to the target.** If the pipeline publishes to Unity Catalog, you can run `INSERT`, `UPDATE`, `DELETE`, and `MERGE` against an AUTO CDC target, but not statements that change its schema. For SCD type 2 targets, your DML must set valid `__START_AT` and `__END_AT` values. Downstream streams that read the modified table need `skipChangeCommits`.
 > - **Mixing flows.** Combining an AUTO CDC flow and a snapshot flow on the same target has restrictions. Check the advanced AUTO CDC page before designing that.
 > - **Reading changes downstream.** The target table can expose a [[Change Data Feed]] so the next layer can process only changed rows, too.
 
@@ -259,4 +259,9 @@ How do you break ties when two changes share a timestamp?::Sequence by a struct,
 > - [CREATE STREAMING TABLE ... FLOW AUTO CDC (Databricks SQL, AWS)](https://docs.databricks.com/aws/en/sql/language-manual/sql-ref-syntax-ddl-create-streaming-table-auto-cdc)
 > - [What happened to Delta Live Tables (DLT)? (AWS)](https://docs.databricks.com/aws/en/ldp/concepts/where-is-dlt)
 > - [Managed database connectors (GCP)](https://docs.databricks.com/gcp/en/ingestion/lakeflow-connect/cdc-overview)
-> - **Unconfirmed:** the search budget ran out before these details could be re-checked against official docs, so treat them as unverified: sequencing by `STRUCT(...)`, out-of-order delete handling for SCD type 1, the MERGE fallback, and the per-cloud source examples.
+> - [Upsert into a Delta Lake table using merge (AWS)](https://docs.databricks.com/aws/en/delta/merge)
+> - [MERGE INTO reference (AWS)](https://docs.databricks.com/aws/en/sql/language-manual/delta-merge-into)
+> - [SQL Server connector limitations (AWS)](https://docs.databricks.com/aws/en/ingestion/lakeflow-connect/sql-server-limits)
+> - [Using Amazon S3 as a target for AWS DMS (AWS)](https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.S3.html)
+> - [read_pubsub streaming table-valued function (GCP)](https://docs.databricks.com/gcp/en/sql/language-manual/functions/read_pubsub)
+> - [Load data in pipelines, including Azure Event Hubs (Azure)](https://learn.microsoft.com/en-us/azure/databricks/ldp/load)

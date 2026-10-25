@@ -112,7 +112,7 @@ def paid_daily_revenue(orders: DataFrame) -> DataFrame:
             .agg(F.sum("total").alias("revenue")))
 ```
 
-The pipeline file imports and calls it:
+The pipeline file imports and calls it. Lakeflow pipelines add the pipeline root folder to `sys.path`, so a module under that folder can be imported directly. This example assumes `src/` is the pipeline root folder:
 
 ```python
 from pyspark import pipelines as dp
@@ -163,7 +163,7 @@ def test_only_paid_orders_count(spark):
     assertDataFrameEqual(result, expected)
 ```
 
-Run locally with `pytest tests/unit`. To run the same tests against Databricks compute instead of local Spark, create the session with [[Databricks Connect]] (`from databricks.connect import DatabricksSession`).
+`revenue` is `DECIMAL(22,2)` because `sum` over `DECIMAL(p, s)` returns `DECIMAL(p + min(10, 31 - p), s)`. `assertDataFrameEqual` compares column types by default, so the expected schema must match. Run locally with `pytest tests/unit`. To run the same tests against Databricks compute instead of local Spark, create the session with [[Databricks Connect]] (`from databricks.connect import DatabricksSession`).
 
 ### 3. Table-level data tests as expectations
 
@@ -181,7 +181,7 @@ FROM orders_clean;
 
 ### 4. Reconciliation as a job task
 
-A SQL task at the end of the nightly [[Lakeflow Jobs|job]] can compare totals between layers and fail the run if they disagree:
+A SQL task at the end of the nightly [[Lakeflow Jobs|job]] can compare totals between layers and fail the run if they disagree. `assert_true(condition [, message])` returns `NULL` when the condition is true and raises a `USER_RAISED_EXCEPTION` error otherwise:
 
 ```sql
 -- post_refresh_checks.sql
@@ -259,4 +259,8 @@ What does an idempotency test check?::That running the pipeline twice on the sam
 > - [Declarative Automation Bundles FAQs (AWS)](https://docs.databricks.com/aws/en/dev-tools/bundles/faqs)
 > - [Develop pipelines with Declarative Automation Bundles (AWS)](https://docs.databricks.com/aws/en/dev-tools/bundles/pipelines-tutorial)
 > - [Use dbt transformations in Lakeflow Jobs (AWS)](https://docs.databricks.com/aws/en/jobs/how-to/use-dbt-in-workflows)
-> - **Unconfirmed:** the search budget ran out before these details could be re-checked: `pyspark.testing.assertDataFrameEqual`, the `databricks.connect.DatabricksSession` import, the `assert_true` SQL function, importing local modules into pipeline source files, and the result type `DECIMAL(22,2)` in the test.
+> - [pyspark.testing.assertDataFrameEqual (Apache Spark docs)](https://spark.apache.org/docs/latest/api/python/reference/api/pyspark.testing.assertDataFrameEqual.html)
+> - [Code examples for Databricks Connect for Python (AWS)](https://docs.databricks.com/aws/en/dev-tools/databricks-connect/python/examples)
+> - [assert_true function (AWS)](https://docs.databricks.com/aws/en/sql/language-manual/functions/assert_true)
+> - [sum aggregate function (AWS)](https://docs.databricks.com/aws/en/sql/language-manual/functions/sum)
+> - [Import Python modules from Git folders or workspace files (AWS)](https://docs.databricks.com/aws/en/ldp/import-workspace-files)

@@ -62,7 +62,7 @@ Mastery: `INPUT[inlineSelect(option(new), option(learning), option(solid)):maste
 > Lakeflow Jobs is the scheduler for data work. You list the steps, specify which steps wait for others, and choose when the job runs. It runs the steps, retries temporary failures, and sends a notification when a run fails.
 
 > [!renamed] Renamed
-> Lakeflow Jobs was called **Databricks Workflows**, and before that **Databricks Jobs**. The Workflows name changed to Lakeflow Jobs with the Lakeflow launch in 2025. The jobs [[System Tables|system tables]] show the same history: the `lakeflow` schema was previously called `workflow`, and both hold identical content. In the workspace UI, jobs live under **Jobs & Pipelines**.
+> Lakeflow Jobs was called **Databricks Workflows**, and before that **Databricks Jobs**. The rename took effect on June 11, 2025, when Lakeflow became generally available at the Data + AI Summit. The release note for that date reads "Databricks Jobs is now Lakeflow Jobs", and the GA announcement describes it as evolving Workflows into Lakeflow Jobs. No migration is required. The jobs [[System Tables|system tables]] show the same history: the `lakeflow` schema was previously called `workflow`, and both hold identical content. In the workspace UI, jobs live under **Jobs & Pipelines**.
 
 > [!analogy]- Analogy: a stage manager
 > | Theater | Lakeflow Jobs |
@@ -203,17 +203,17 @@ Many companies use both: Airflow or Azure Data Factory (ADF) at the top for cros
 > Lakeflow Jobs is the same. Azure-heavy teams often have [[Azure Data Factory with Databricks|Azure Data Factory]] pipelines that call Databricks jobs. That still works; a common move is to let ADF trigger one Databricks job and let Lakeflow Jobs handle the steps inside Databricks.
 
 > [!aws]- Databricks on AWS
-> Same features. Teams coming from Amazon MWAA (managed Airflow) or Step Functions can keep them for cross-service steps and call Databricks jobs through the API.
+> Same features. Teams on Amazon Managed Workflows for Apache Airflow (MWAA) can keep it for cross-service steps and trigger Databricks jobs with the Databricks provider's `DatabricksRunNowOperator`, which calls the Jobs `run-now` API.
 
 > [!gcp]- Databricks on Google Cloud
-> Same features. Cloud Composer (managed Airflow) can call Databricks jobs through the API in the same way.
+> Same features. Google's managed Airflow service (Cloud Composer, now named Managed Service for Apache Airflow) can trigger Databricks jobs with the same Databricks provider operators.
 
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
 > - **Pipeline tasks.** A pipeline task runs a pipeline update and succeeds or fails with it. Use it rather than scheduling the pipeline on its own, so ingestion, transformation, and reporting share one run history.
 > - **Disabled tasks.** You can disable a task to skip it without deleting it. The docs warn that an If/else condition task fails if the upstream task that supplies its condition value is disabled.
-> - **Concurrency.** `max_concurrent_runs: 1` stops a slow run overlapping the next scheduled one. Later runs can be queued instead of skipped.
+> - **Concurrency.** `max_concurrent_runs` defaults to 1, which stops a slow run overlapping the next scheduled one. Without queueing, Databricks skips a run that would exceed the limit. With queueing enabled (`queue: {enabled: true}`, the default for jobs created in the UI since April 15, 2024), the run waits in a queue for up to 48 hours instead.
 > - **Run as a service principal** in production, and give it only the grants it needs. Jobs owned by a person who leaves the company break.
 > - **Observability.** The `system.lakeflow` tables (`jobs`, `job_tasks`, `job_run_timeline`, `job_task_run_timeline`) let you build reliability and cost dashboards across every job in the account.
 
@@ -232,7 +232,7 @@ What is a job made of?::One or more tasks with dependencies between them, plus t
 Procedural or declarative: Lakeflow Jobs?::Procedural. You define the order of tasks.
 Which system table schema holds job run history?::`system.lakeflow` (previously `system.workflow`).
 Why run production jobs as a service principal?::So they don't depend on a person's account, and get only the permissions they need.
-What setting stops a job's runs from overlapping?::`max_concurrent_runs: 1`.
+What setting stops a job's runs from overlapping?::`max_concurrent_runs: 1` (the default for new jobs).
 When might you keep Airflow alongside Lakeflow Jobs?::When you must coordinate many systems outside Databricks.
 
 ## Next steps
@@ -256,4 +256,11 @@ When might you keep Airflow alongside Lakeflow Jobs?::When you must coordinate m
 > - [Jobs system table reference (Azure)](https://learn.microsoft.com/en-us/azure/databricks/admin/system-tables/jobs)
 > - [Automate jobs with schedules and triggers (AWS)](https://docs.databricks.com/aws/en/jobs/triggers)
 > - [Data engineering with Databricks (AWS)](https://docs.databricks.com/aws/en/data-engineering/)
-> - **Unconfirmed:** the search budget ran out before these details could be re-checked against official docs, so treat them as unverified: the exact date of the Workflows-to-Lakeflow Jobs rename, the YAML field names `max_retries`/`min_retry_interval_millis`/`max_concurrent_runs`, run queueing, the column names in `job_run_timeline`, and the AWS/GCP orchestrator comparisons.
+> - [Databricks platform release notes, June 2025 (AWS)](https://docs.databricks.com/aws/en/release-notes/product/2025/june)
+> - [Announcing the General Availability of Databricks Lakeflow (Databricks blog, June 12, 2025)](https://www.databricks.com/blog/announcing-general-availability-databricks-lakeflow)
+> - [Declarative Automation Bundles resources (AWS)](https://docs.databricks.com/aws/en/dev-tools/bundles/resources)
+> - [Jobs API: Create a new job](https://docs.databricks.com/api/workspace/jobs/create)
+> - [Configure and edit Lakeflow Jobs (AWS)](https://docs.databricks.com/aws/en/jobs/advanced)
+> - [Orchestrate Lakeflow Jobs with Apache Airflow (AWS)](https://docs.databricks.com/aws/en/jobs/how-to/use-airflow-with-jobs)
+> - [What is Amazon MWAA? (AWS docs)](https://docs.aws.amazon.com/mwaa/latest/userguide/what-is-mwaa.html)
+> - [Managed Airflow overview (Google Cloud docs)](https://cloud.google.com/composer/docs/composer-3/composer-overview)

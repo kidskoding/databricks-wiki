@@ -212,3 +212,5 @@ What do you need to create a policy?::Ownership of or MANAGE on the securable, p
 > - [Implement multi-domain column masking with sensitivity tiers (Azure Databricks)](https://learn.microsoft.com/en-us/azure/databricks/data-governance/unity-catalog/abac/multi-domain)
 > - [Secure new tables by default with control tags (GCP)](https://docs.databricks.com/gcp/en/data-governance/unity-catalog/abac/secure-by-default)
 > - [Performance considerations for row filter and column mask policies (AWS)](https://docs.databricks.com/aws/en/data-governance/unity-catalog/abac/performance)
+> - [CREATE POLICY (AWS SQL reference)](https://docs.databricks.com/aws/en/sql/language-manual/sql-ref-syntax-ddl-create-policy)
+> - [ALTER TABLE ... COLUMN clause, SET TAGS (AWS SQL reference)](https://docs.databricks.com/aws/en/sql/language-manual/sql-ref-syntax-ddl-alter-table-manage-column)

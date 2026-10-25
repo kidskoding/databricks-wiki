@@ -110,7 +110,7 @@ STORED AS SCD TYPE 2
 TRACK HISTORY ON * EXCEPT (email, phone);   -- email/phone changes overwrite, no new version
 ```
 
-`TRACK HISTORY ON` (Python: `track_history_column_list` / `track_history_except_column_list`) says which columns create a new version. By default every column does. Excluding noisy columns such as email keeps the table small.
+`TRACK HISTORY ON` (Python: `track_history_column_list` / `track_history_except_column_list`) specifies the subset of output columns whose changes generate a new history record. You can list the columns to track, or use `* EXCEPT (...)` to list the columns to exclude. The default is `TRACK HISTORY ON *`: a change to any output column creates a new version. Excluding noisy columns such as email keeps the table small.
 
 ### Type 2 in Python
 
@@ -169,8 +169,8 @@ The second query shows the purpose of type 2: each order is matched to the versi
 > - **Truncate** (`APPLY AS TRUNCATE WHEN`) is supported only for type 1.
 > - **Snapshots to type 2.** `create_auto_cdc_from_snapshot_flow(..., stored_as_scd_type=2)` builds history from a series of full extracts, which suits sources with no change log.
 > - **Bitemporal.** `STORED AS BITEMPORAL` (Beta, requires `SYSTEM SEQUENCE BY`) tracks both when something was true in the business and when the system learned of it.
-> - **Types 0, 3, 4, 6** exist in warehouse textbooks (never change; keep a "previous value" column; separate history table; hybrids). AUTO CDC implements types 1 and 2 directly. Model the others with ordinary SQL if you need them.
-> - **Surrogate keys.** Type 2 dimensions usually need a version key for fact tables to join on. You can derive one, for example `sha2(concat_ws('|', customer_id, CAST(__START_AT AS STRING)), 256)`, or join on the natural key plus time range as shown above.
+> - **Other SCD patterns.** AUTO CDC implements types 1 and 2 (plus bitemporal) directly. Model any other pattern with ordinary SQL if you need it.
+> - **Surrogate keys.** In classic dimensional modeling, each type 2 version gets a surrogate key so fact tables link to the right version. Databricks' dimensional modeling blog generates it with an identity column on a hand-built dimension table. Identity columns are not supported on AUTO CDC targets, so for those, join on the natural key plus time range as shown above.
 
 ## Common misconceptions
 
@@ -207,4 +207,7 @@ Why use type 2 for a sales region dimension?::So past sales stay attributed to t
 > - [AUTO CDC INTO (pipelines, Azure)](https://learn.microsoft.com/en-us/azure/databricks/ldp/developer/ldp-sql-ref-apply-changes-into)
 > - [Advanced AUTO CDC topics (AWS)](https://docs.databricks.com/aws/en/ldp/cdc-advanced)
 > - [AUTO CDC FLOW clause (Databricks SQL, GCP)](https://docs.databricks.com/gcp/en/sql/language-manual/sql-ref-syntax-ddl-create-streaming-table-auto-cdc)
-> - **Unconfirmed:** the search budget ran out before these details could be re-checked against official docs, so treat them as unverified: the `TRACK HISTORY ON` SQL clause wording, the textbook SCD types 0/3/4/6, and the surrogate-key pattern.
+> - [Pipeline limitations (AWS)](https://docs.databricks.com/aws/en/ldp/limitations)
+> - [Change data capture and snapshots (AWS)](https://docs.databricks.com/aws/en/data-engineering/what-is-cdc)
+> - [Implementing a Dimensional Data Warehouse with Databricks SQL: Part 1 (Databricks blog)](https://www.databricks.com/blog/implementing-dimensional-data-warehouse-databricks-sql-part-1)
+> - [Implementing a Dimensional Data Warehouse with Databricks SQL: Part 2 (Databricks blog)](https://www.databricks.com/blog/implementing-dimensional-data-warehouse-databricks-sql-part-2)

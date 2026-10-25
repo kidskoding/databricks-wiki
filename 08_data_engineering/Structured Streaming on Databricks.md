@@ -92,7 +92,9 @@ Real-time mode (RTM) is a Databricks trigger for operational workloads that need
 - RTM is supported only in `update` output mode.
 - `display()` with a real-time trigger requires Databricks Runtime 17.1 or above. Stream-to-stream joins with multiple other streams on the same cluster require Databricks Runtime 18 LTS or above.
 - For queries that repartition, set `spark.sql.execution.sortBeforeRepartition` to `false`, because sorting is not supported in repartition with RTM.
-- RTM for Spark Declarative Pipelines entered Public Preview in May 2026. The release status of RTM for direct Structured Streaming queries was not confirmed in this review; check the real-time mode page for your cloud.
+- RTM for direct Structured Streaming queries entered Public Preview on July 22, 2025. RTM for Spark Declarative Pipelines entered Public Preview on May 27, 2026. No general-availability announcement for either appears in the release notes through October 2026.
+- Direct RTM queries run on classic compute with Databricks Runtime 16.4 LTS or above. Serverless notebooks and jobs do not support them; use RTM in Lakeflow pipelines for serverless.
+- Supported sources are Kafka, Event Hubs (through the Kafka connector), Kinesis, and Amazon MSK. Supported sinks are Kafka, Event Hubs, and custom sinks through `forEach`. Delta and Pub/Sub are not supported as RTM sources or sinks.
 
 ## How it works
 
@@ -165,13 +167,13 @@ Run long-lived streams as a [[Lakeflow Jobs|job]] with a continuous trigger or w
 ## Cloud differences
 
 > [!azure]- Azure Databricks
-> Azure Event Hubs is the common event source and is usually read through its Kafka-compatible endpoint. Checkpoints live on ADLS Gen2 or in a volume. A real-time mode page is published on Microsoft Learn.
+> Azure Event Hubs is read through the Kafka connector. In Databricks Runtime 16.1 and above, the connector can authenticate to Event Hubs with a Unity Catalog service credential. Checkpoints live on ADLS Gen2 or in a volume. A real-time mode page is published on Microsoft Learn.
 
 > [!aws]- Databricks on AWS
-> Amazon MSK (managed Kafka) and Amazon Kinesis are the common event sources. Checkpoints live on S3 or in a volume.
+> Amazon MSK (managed Kafka) is read through the Kafka connector, and Amazon Kinesis through a built-in Kinesis connector. Real-time mode supports both as sources but not as sinks. Checkpoints live on S3 or in a volume.
 
 > [!gcp]- Databricks on Google Cloud
-> Google Cloud Pub/Sub and Kafka are the common event sources. Real-time mode setup and concept pages are published for GCP. Checkpoints live on Cloud Storage or in a volume.
+> Google Cloud Pub/Sub has a built-in connector with exactly-once processing semantics for rows from the subscriber. Kafka, including Google Cloud Managed Kafka, is read through the Kafka connector. Real-time mode does not support Pub/Sub. Checkpoints live on Cloud Storage or in a volume.
 
 ## Advanced topics
 
@@ -179,9 +181,9 @@ Run long-lived streams as a [[Lakeflow Jobs|job]] with a continuous trigger or w
 > - **One checkpoint per query.** Never share a checkpoint between queries or point a new query at an old checkpoint with different logic. Changing stateful operations usually requires a new checkpoint.
 > - **Checkpoint migration.** Lakeflow pipelines added `import_checkpoint` in 2026, which lets a pipeline adopt an existing stream's checkpoint so a migration from a hand-written stream to a pipeline does not reprocess data.
 > - **State size.** Aggregations, deduplication, and stream-stream joins keep state. Bound it with watermarks (`withWatermark("event_time", "10 minutes")`), or state grows without limit.
-> - **`foreachBatch`** turns each micro-batch into a batch DataFrame, which allows `MERGE` into Delta and writes to sinks without streaming support. It is not compatible with real-time mode's per-record processing.
+> - **`foreachBatch`** turns each micro-batch into a batch DataFrame, which allows `MERGE` into Delta and writes to sinks without streaming support. Real-time mode does not support `foreachBatch`; use `forEach` for custom sinks in real-time mode.
 > - **Monitoring.** Streaming queries report input rate, processing rate, and batch duration in the [[Spark UI]] and query progress events. Alert when processing rate falls below input rate for a sustained period.
-> - **Exactly-once** requires a replayable source (Kafka offsets, files) and an idempotent or transactional sink (Delta). Kafka sinks are at-least-once; consumers must tolerate duplicates.
+> - **Exactly-once** requires a replayable source (Kafka offsets, files) and an idempotent or transactional sink (Delta). Apache Kafka supports only at-least-once write semantics, so a Kafka sink can write duplicates; consumers must tolerate them, for example by deduplicating on a unique key.
 
 ## Common misconceptions
 
@@ -201,6 +203,7 @@ Which runtime is needed for `display()` with a real-time trigger?::Databricks Ru
 Which trigger runs a stream as a batch that stops when caught up?::`availableNow=True`.
 What bounds state in streaming aggregations?::A watermark.
 When did real-time mode for Spark Declarative Pipelines enter Public Preview?::May 2026.
+Can you use `foreachBatch` in real-time mode?::No. Use `forEach` for custom sinks instead.
 
 ## Next steps
 
@@ -222,4 +225,11 @@ When did real-time mode for Spark Declarative Pipelines enter Public Preview?::M
 > - [Structured Streaming concepts (AWS)](https://docs.databricks.com/aws/en/structured-streaming/concepts)
 > - [May 2026 release notes (AWS)](https://docs.databricks.com/aws/en/release-notes/product/2026/may)
 > - [Lakeflow pipelines release notes 2026 (AWS)](https://docs.databricks.com/aws/en/release-notes/dlt/2026)
-> - **Unconfirmed:** the search budget ran out before these details could be re-checked: the release status of real-time mode for direct Structured Streaming queries, the claim that `foreachBatch` is incompatible with real-time mode, Kafka sink delivery guarantees, and the per-cloud event-source notes.
+> - [Real-time mode reference (AWS)](https://docs.databricks.com/aws/en/structured-streaming/real-time/reference)
+> - [Set up real-time mode (AWS)](https://docs.databricks.com/aws/en/structured-streaming/real-time/setup)
+> - [July 2025 release notes (AWS)](https://docs.databricks.com/aws/en/release-notes/product/2025/july)
+> - [Structured Streaming + Kafka integration guide (Apache Spark)](https://spark.apache.org/docs/latest/streaming/structured-streaming-kafka-integration.html)
+> - [Stream processing with Apache Kafka (AWS)](https://docs.databricks.com/aws/en/connect/streaming/kafka)
+> - [Kafka authentication, including Event Hubs (Azure)](https://learn.microsoft.com/en-us/azure/databricks/connect/streaming/kafka/authentication)
+> - [Connect to Amazon Kinesis (AWS)](https://docs.databricks.com/aws/en/connect/streaming/kinesis)
+> - [Subscribe to Google Pub/Sub (GCP)](https://docs.databricks.com/gcp/en/connect/streaming/pub-sub)

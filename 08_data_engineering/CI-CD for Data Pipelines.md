@@ -142,6 +142,8 @@ targets:
       service_principal_name: 00000000-0000-0000-0000-000000000000
 ```
 
+`mode: development` prefixes deployed resource names with `[dev <your user name>]`, pauses schedules and triggers, and allows concurrent job runs. `mode: production` checks that pipelines are not in development mode and that the current Git branch matches any branch set in the target. `run_as` with `service_principal_name` (the service principal's application ID) makes deployed jobs run as that service principal, which Databricks recommends for production.
+
 Pipeline definitions reference the variable, so each target writes to its own catalog:
 
 ```yaml
@@ -196,7 +198,7 @@ jobs:
         run: databricks bundle deploy -t prod
 ```
 
-Authenticate CI as a [[Users Groups and Service Principals|service principal]] with OAuth machine-to-machine credentials, not a personal access token tied to a person. See [[Authentication - Tokens and OAuth]].
+Authenticate CI as a [[Users Groups and Service Principals|service principal]], not with a personal access token tied to a person. The example uses OAuth machine-to-machine credentials (`DATABRICKS_CLIENT_ID` and `DATABRICKS_CLIENT_SECRET`), which the CLI reads through unified authentication. The Databricks GitHub Actions docs also show workload identity federation (`DATABRICKS_AUTH_TYPE: github-oidc`), which removes the stored secret. `databricks/setup-cli` is the Databricks action that installs the CLI. The example assumes a `staging` target in `databricks.yml` in addition to `dev` and `prod`. See [[Authentication - Tokens and OAuth]].
 
 ## Small-business considerations
 
@@ -212,7 +214,7 @@ Authenticate CI as a [[Users Groups and Service Principals|service principal]] w
 ## Cloud differences
 
 > [!azure]- Azure Databricks
-> Azure teams often use **Azure DevOps Pipelines** instead of GitHub Actions; the steps are the same CLI commands. CI can authenticate with a Microsoft Entra ID service principal or a Databricks OAuth service principal. See [[Microsoft Entra ID Integration]].
+> Azure teams often use **Azure DevOps Pipelines** instead of GitHub Actions; the steps are the same CLI commands. The Azure Databricks example authenticates a Microsoft Entra ID service principal with an Azure Databricks OAuth secret (OAuth M2M). An Azure Resource Manager service connection or Databricks workload identity federation avoids managing that secret. Workspace hosts have the form `adb-<workspace-id>.<random-number>.azuredatabricks.net`. See [[Microsoft Entra ID Integration]].
 
 > [!aws]- Databricks on AWS
 > No bundle differences. Workspace hosts end in `cloud.databricks.com`. Workspaces themselves are often created with the [[Terraform Provider]]; bundles then manage what runs inside them.
@@ -225,7 +227,7 @@ Authenticate CI as a [[Users Groups and Service Principals|service principal]] w
 > [!deepdive]- Advanced topics (301–401)
 > - **Bundles vs Terraform.** Use the [[Terraform Provider]] for platform infrastructure (workspaces, networking, metastores) and bundles for workloads (jobs, pipelines, dashboards). The direct deployment engine broadens the resource types bundles can manage.
 > - **Separate dev and prod.** The bundle FAQ explains why dev and prod targets should stay separate. At minimum use separate catalogs; ideally separate workspaces with workspace-catalog binding (see [[Unity Catalog]]) so production data is reachable only from the production workspace.
-> - **Templates.** `databricks bundle init` offers templates, including Python, SQL, pipeline, and `dbt-sql` projects. Teams can publish custom templates to standardize new projects.
+> - **Templates.** `databricks bundle init` offers default templates, including `default-minimal`, `default-python`, `default-sql`, `default-scala`, `dbt-sql`, `mlops-stacks`, and `pydabs`. Teams can publish custom templates to standardize new projects.
 > - **Data in CI.** Integration tests need realistic data. Use a small, de-identified sample catalog for staging, or shallow clones of production tables where governance allows.
 > - **Rollbacks.** Redeploy an earlier Git commit to roll back code. Data changes are rolled back separately, for example with Delta [[Time Travel]] (`RESTORE TABLE`).
 
@@ -267,4 +269,10 @@ What should Terraform manage vs bundles?::Terraform manages platform infrastruct
 > - [Declarative Automation Bundles project templates (AWS)](https://docs.databricks.com/aws/en/dev-tools/bundles/templates)
 > - [Develop pipelines with Declarative Automation Bundles (AWS)](https://docs.databricks.com/aws/en/dev-tools/bundles/pipelines-tutorial)
 > - [Develop a job with Declarative Automation Bundles (Azure)](https://learn.microsoft.com/en-gb/azure/databricks/dev-tools/bundles/jobs-tutorial)
-> - **Unconfirmed:** the search budget ran out before these details could be re-checked: the GitHub Actions workflow (including the `databricks/setup-cli` action and the OAuth environment variable names), the `run_as.service_principal_name` field, `mode: development`/`production` behavior, the template names other than `dbt-sql`, and the Azure DevOps and Entra ID notes.
+> - [Declarative Automation Bundles deployment modes (AWS)](https://docs.databricks.com/aws/en/dev-tools/bundles/deployment-modes)
+> - [Specify a run identity for a Declarative Automation Bundles workflow (AWS)](https://docs.databricks.com/aws/en/dev-tools/bundles/run-as)
+> - [GitHub Actions (AWS)](https://docs.databricks.com/aws/en/dev-tools/ci-cd/github)
+> - [Authorize service principal access to Databricks with OAuth (AWS)](https://docs.databricks.com/aws/en/dev-tools/auth/oauth-m2m)
+> - [Continuous integration and delivery on Azure Databricks using Azure DevOps (Azure)](https://learn.microsoft.com/en-us/azure/databricks/dev-tools/ci-cd/azure-devops)
+> - [Get identifiers for workspace objects (AWS)](https://docs.databricks.com/aws/en/workspace/workspace-details)
+> - [Get identifiers for workspace objects (GCP)](https://docs.databricks.com/gcp/en/workspace/workspace-details)

@@ -164,7 +164,7 @@ WHERE event_type = 'flow_progress'
 ORDER BY timestamp DESC;
 ```
 
-The pipeline UI shows the same numbers per table. Put a [[SQL Alerts|SQL alert]] on that query to get an email when the drop rate jumps.
+The `event_log()` function can be called only by the owner of the streaming table or materialized view. The pipeline UI shows the same numbers per table, except for standalone tables created in Databricks SQL, where you query the event log instead. Put a [[SQL Alerts|SQL alert]] on that query to get an email when the drop rate jumps.
 
 ### Recommended actions by layer
 
@@ -188,17 +188,17 @@ The pipeline UI shows the same numbers per table. Put a [[SQL Alerts|SQL alert]]
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Fail is scoped to one flow.** A failing expectation stops that flow's update; the docs say it does not fail other flows in the pipeline. A job that depends on the pipeline will still see the pipeline update as failed.
+> - **Fail is scoped to one flow.** In a triggered pipeline, a failing expectation stops that flow, and the docs say it does not fail other parallel flows. In a continuous pipeline, it stops the flow and all flows that depend on it. Either way, the update does not succeed, and a person must fix the data or code before reprocessing.
 > - **Row-level only.** A constraint sees one row. For checks across rows (uniqueness, row counts, referential integrity), build a materialized view that computes the check (for example `COUNT(*) - COUNT(DISTINCT order_id) AS dupes`) and put an expectation on *that* view, such as `EXPECT (dupes = 0) ON VIOLATION FAIL UPDATE`. The docs' "advanced patterns" page shows this.
 > - **Rules as data.** Store rules in a Delta table and load them into the `expect_all_*` dictionary at pipeline start. Business users can then maintain rules without code changes.
-> - **Classic edition.** On classic compute, expectations need the Advanced product edition. Serverless pipelines include them.
-> - **Beyond pipelines.** For tables built without pipelines, Delta `CHECK` constraints (`ALTER TABLE ... ADD CONSTRAINT ... CHECK (...)`) reject writes that break a rule, and [[Data Quality Monitoring]] watches freshness, volume, and drift across the catalog.
+> - **Classic edition.** On classic compute, expectations need the Advanced product edition. Serverless pipelines require the Advanced edition, so they include them.
+> - **Beyond pipelines.** For tables built without pipelines, Delta `CHECK` constraints (`ALTER TABLE ... ADD CONSTRAINT ... CHECK (...)`) make a write fail when any row breaks the rule, and [[Data Quality Monitoring]] watches freshness, volume, and drift across the catalog.
 > - **dbt tests** are the dbt-world equivalent, running after a model builds. See [[dbt on Databricks]] and [[Testing Data Pipelines]].
 
 ## Common misconceptions
 
 > [!confusion] Expectations are not Delta CHECK constraints
-> A Delta `CHECK` constraint rejects the **whole write** if any row breaks it, and works on any Delta table. An expectation is a pipeline feature that can **warn, drop, or fail** per row, and records metrics.
+> A Delta `CHECK` constraint fails the **whole transaction** if any row breaks it, and works on any Delta table. `ADD CONSTRAINT` also checks existing rows before it adds the rule. An expectation is a pipeline feature that can **warn, drop, or fail** per row, and records metrics.
 
 > [!confusion] "Warn" still writes the bad rows
 > The default action only counts violations. If you need bad rows out of the table, use drop or quarantine.
@@ -230,4 +230,7 @@ What is the quarantine pattern?::Write rows that pass the rules to one table and
 > - [Best practices for Lakeflow pipelines (AWS)](https://docs.databricks.com/aws/en/ldp/best-practices/)
 > - [CREATE STREAMING TABLE (pipelines, AWS)](https://docs.databricks.com/aws/en/ldp/developer/ldp-sql-ref-create-streaming-table)
 > - [CREATE MATERIALIZED VIEW (pipelines, AWS)](https://docs.databricks.com/aws/en/ldp/developer/ldp-sql-ref-create-materialized-view)
-> - **Unconfirmed:** the search budget ran out before these details could be re-checked against official docs, so treat them as unverified: the `event_log()` query shape, the Advanced edition requirement on classic compute, and the Delta `CHECK` constraint comparison.
+> - [Pipeline event log (AWS)](https://docs.databricks.com/aws/en/ldp/monitor-event-logs)
+> - [event_log table-valued function (AWS)](https://docs.databricks.com/aws/en/sql/language-manual/functions/event_log)
+> - [Configure pipelines: choose a product edition (AWS)](https://docs.databricks.com/aws/en/ldp/configure-pipeline)
+> - [Constraints on Databricks (AWS)](https://docs.databricks.com/aws/en/tables/constraints)

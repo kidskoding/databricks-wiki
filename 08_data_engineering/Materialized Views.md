@@ -92,7 +92,7 @@ flowchart LR
   MV --> D[Dashboard]
 ```
 
-On each refresh the engine decides, per update, how to bring the result up to date. If the sources have change tracking (Delta row tracking or change data feed) and the query shape supports it (filters, projections, many aggregations and joins), it computes only the delta. Otherwise it recomputes in full. You get the same answer either way; the difference is cost.
+On each refresh a cost model decides how to bring the result up to date. An incremental refresh is possible only on serverless compute, from supported sources (Delta tables, materialized views, streaming tables, and Unity Catalog managed Iceberg tables), and for a supported query shape (`SELECT` expressions with deterministic functions, `WHERE`, `GROUP BY`, `UNION ALL`, inner and outer joins, and window functions with `PARTITION BY`). When incremental refresh is possible and cheaper, the engine processes only the changed data. Otherwise it recomputes in full. You get the same answer either way; the difference is cost.
 
 ### Standalone, in the SQL editor
 
@@ -149,22 +149,23 @@ def customer_ltv():
 ## Cloud differences
 
 > [!azure]- Azure Databricks
-> Nothing differs. Standalone MVs need serverless compute to be enabled for the workspace, which depends on the region. Check that your Azure region supports serverless.
+> Nothing differs. Standalone MVs need a serverless-enabled workspace in a region that supports serverless SQL warehouses. Check that your Azure region supports serverless.
 
 > [!aws]- Databricks on AWS
 > Nothing differs. The same serverless region check applies.
 
 > [!gcp]- Databricks on Google Cloud
-> Nothing differs. Serverless reached GCP later than the other clouds, so check region support.
+> Nothing differs. The same serverless region check applies.
 
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Incremental refresh needs serverless.** On classic pipeline compute, MVs always fully recompute.
-> - **Turn on row tracking** for source Delta tables (`delta.enableRowTracking = true`) so the engine can see what changed. Without change tracking, refreshes fall back to full recompute.
-> - **Non-deterministic functions** (such as `current_timestamp()` or `rand()`) in the query make incremental refresh impossible. Compute "today" in the dashboard query, not inside the MV.
-> - **Check what happened.** The pipeline event log records the refresh technique per update (for example a full recompute vs an incremental technique), which tells you why a refresh was slow.
-> - **Permissions.** Readers need `SELECT` on the MV only, not on the sources. That makes MVs a clean way to publish a summary to people who must not see the raw rows.
+> - **Incremental refresh needs serverless.** MVs that do not use serverless pipelines are always fully recomputed. Standalone MVs always refresh on a serverless pipeline; MVs in a pipeline need the pipeline set to serverless.
+> - **Enable change tracking on sources.** Some incremental techniques require row tracking on the source Delta tables. Databricks recommends enabling deletion vectors, row tracking, and change data feed on all MV source tables: `ALTER TABLE t SET TBLPROPERTIES (delta.enableDeletionVectors = true, delta.enableRowTracking = true, delta.enableChangeDataFeed = true)`.
+> - **Non-deterministic functions.** Time functions such as `current_date()` and `current_timestamp()` are supported in `WHERE` clauses. Other non-deterministic functions (such as `rand()`) prevent incremental refresh. So do recursive CTEs, sources such as volumes and foreign catalogs, and `SUM` or `AVG` over `FLOAT` or `DOUBLE` columns (cast to `DECIMAL` instead).
+> - **Check what happened.** Query the event log for `planning_information` events. Each records the chosen technique, such as `FULL_RECOMPUTE`, `NO_OP`, `ROW_BASED`, or `GROUP_AGGREGATE`. The pipeline editor's **Incrementalization** column shows the same per update. Run `EXPLAIN CREATE MATERIALIZED VIEW` to test a query before you create it.
+> - **Refresh policy.** `REFRESH POLICY` (`AUTO`, `INCREMENTAL`, `INCREMENTAL STRICT`, or `FULL`) controls whether a refresh may fall back to a full recompute. `INCREMENTAL STRICT` fails the refresh instead.
+> - **Permissions.** Readers need `SELECT` on the MV plus `USE CATALOG` and `USE SCHEMA` on its parents, not access to the sources. The owner needs `SELECT` on the sources. That makes MVs a clean way to publish a summary to people who must not see the raw rows.
 > - **dbt.** The dbt-databricks adapter can materialize a model as `materialized_view`. See [[dbt on Databricks]].
 
 ## Common misconceptions
@@ -179,9 +180,9 @@ def customer_ltv():
 
 What is a materialized view?::A table that stores a query's result and is refreshed by a pipeline so it matches the query.
 How is a materialized view different from a streaming table?::An MV reflects updates and deletes in its sources; a streaming table only processes new input once.
-Which compute is required for incremental MV refresh?::Serverless (classic pipelines always recompute in full).
+Which compute is required for incremental MV refresh?::Serverless (MVs that do not use serverless pipelines always recompute in full).
 How do you force a full recompute?::`REFRESH MATERIALIZED VIEW name FULL`.
-What can block incremental refresh?::Missing change tracking on sources, or non-deterministic functions such as `current_timestamp()` in the query.
+What can block incremental refresh?::Classic compute, missing row tracking on sources, unsupported sources or operators, or non-deterministic functions such as `rand()` (time functions are allowed in `WHERE`).
 Which Python decorator defines an MV in a pipeline?::`@dp.materialized_view`.
 
 ## Next steps
@@ -199,4 +200,10 @@ Which Python decorator defines an MV in a pipeline?::`@dp.materialized_view`.
 > - [Lakeflow pipelines Python language reference (AWS)](https://docs.databricks.com/aws/en/ldp/developer/python-ref)
 > - [Use Python with standalone pipelines (AWS)](https://docs.databricks.com/aws/en/sql/mv-st/using-python)
 > - [Best practices for Lakeflow pipelines (AWS)](https://docs.databricks.com/aws/en/ldp/best-practices/)
-> - **Unconfirmed:** the search budget ran out before these details could be re-checked against official docs, so treat them as unverified: the incremental-refresh rules (serverless only, row tracking, non-deterministic functions), `REFRESH ... FULL`, the event log's refresh-technique field, the permission note, and dbt's `materialized_view` materialization.
+> - [Incremental refresh for materialized views (AWS)](https://docs.databricks.com/aws/en/optimizations/incremental-refresh)
+> - [CREATE MATERIALIZED VIEW (Databricks SQL, AWS)](https://docs.databricks.com/aws/en/sql/language-manual/sql-ref-syntax-ddl-create-materialized-view)
+> - [REFRESH (MATERIALIZED VIEW or STREAMING TABLE) (AWS)](https://docs.databricks.com/aws/en/sql/language-manual/sql-ref-syntax-ddl-refresh-full)
+> - [Use standalone materialized views (AWS)](https://docs.databricks.com/aws/en/views/materialized)
+> - [Requirements for standalone pipelines (AWS)](https://docs.databricks.com/aws/en/sql/mv-st/compute)
+> - [Pipeline event log (AWS)](https://docs.databricks.com/aws/en/ldp/monitor-event-logs)
+> - [Databricks configurations (dbt docs)](https://docs.getdbt.com/reference/resource-configs/databricks-configs)

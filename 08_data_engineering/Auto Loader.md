@@ -74,7 +74,7 @@ Auto Loader solves all three as a [[Structured Streaming]] source called `cloudF
 
 ## Overview
 
-Auto Loader is a Structured Streaming source (`format("cloudFiles")`) that incrementally and efficiently processes new files as they arrive in cloud storage. It supports JSON, CSV, XML, Parquet, Avro, ORC, text, and binary files. It keeps the list of discovered files in a scalable key-value store inside the stream's checkpoint, which gives [[Exactly-Once Processing|exactly-once]] ingestion.
+Auto Loader is a Structured Streaming source (`format("cloudFiles")`) that incrementally and efficiently processes new files as they arrive in cloud storage. It supports JSON, CSV, XML, Parquet, Avro, ORC, text, and binary files, including pre-compressed files in these formats. It keeps the list of discovered files in a scalable key-value store inside the stream's checkpoint, which gives [[Exactly-Once Processing|exactly-once]] ingestion.
 
 It has two ways to discover new files:
 
@@ -139,17 +139,17 @@ FROM STREAM read_files(
 - Setting `cloudFiles.schemaLocation` turns on inference and evolution. Auto Loader stores schema history in a `_schemas` folder there. You can use the same folder as the checkpoint.
 - Inference samples the first files it finds (the docs give 50 GB or 1,000 files, whichever comes first).
 - For JSON and CSV, inferred columns are **strings** unless you set `cloudFiles.inferColumnTypes = true`. Use `cloudFiles.schemaHints` to pin types you already know.
-- Fields that don't fit the schema go into a `_rescued_data` column instead of being lost.
+- When Auto Loader infers the schema, it adds a `_rescued_data` column. Fields that don't fit the schema go there instead of being lost. Set the `rescuedDataColumn` option to rename it or to keep it when you supply a schema.
 
 When a new column appears, the behaviour depends on `cloudFiles.schemaEvolutionMode`:
 
 | Mode | What happens on a new column |
 |---|---|
 | `addNewColumns` (default when no schema is given) | Stream fails with an `UnknownFieldException`, the schema is updated, and the next restart includes the column |
-| `addNewColumnsWithTypeWidening` | Like `addNewColumns`, and also widens types (for example int to long) |
+| `addNewColumnsWithTypeWidening` | Like `addNewColumns`, and also widens types (for example int to long). Public Preview in Databricks Runtime 16.4 and above |
 | `rescue` | Schema never changes; new fields go to `_rescued_data` |
 | `failOnNewColumns` | Stream fails and stays failed until you change the schema |
-| `none` (default when you supply a schema) | New columns are ignored |
+| `none` (default when you supply a schema) | New columns are ignored and the stream does not fail. Data is not rescued unless `rescuedDataColumn` is set |
 
 The "fail then restart" design is deliberate: it makes schema changes visible. Databricks recommends running Auto Loader streams in [[Lakeflow Jobs]] with retries, so the job restarts automatically after a schema change. Pipelines do this for you.
 
@@ -176,10 +176,10 @@ The code is identical. What differs is where files land and what classic notific
 > [!deepdive]- Advanced topics (301–401)
 > - **File events vs classic notifications.** With file events, run each stream at least every 7 days to avoid falling back to a full directory listing. Classic notification mode can miss events, so the docs suggest `cloudFiles.backfillInterval` when you have strict completeness or [[SLA]] needs. That setting is not supported with file events.
 > - **Partition columns.** Columns inferred from folder names (`/date=2026-10-25/`) are not part of schema evolution. Set `cloudFiles.partitionColumns` explicitly.
-> - **Rate limits.** `cloudFiles.maxFilesPerTrigger` and `cloudFiles.maxBytesPerTrigger` cap each micro-batch, which helps with a large first backfill.
+> - **Rate limits.** `cloudFiles.maxFilesPerTrigger` (default 1000) and `cloudFiles.maxBytesPerTrigger` (a soft maximum) cap each micro-batch, which helps with a large first backfill. When both are set, the lower limit wins. In Databricks Runtime 18.0 and above, both are configured dynamically and do not need to be set.
 > - **File metadata.** `_metadata.file_path`, `_metadata.file_modification_time` and friends are available to every query. Keep the source file path in bronze for debugging.
 > - **Do not reuse checkpoints** between different sources or targets. A checkpoint belongs to exactly one query.
-> - **Modified files.** Auto Loader by default treats a file path as processed once. If a vendor overwrites a file with the same name, it is not reloaded unless you set `cloudFiles.allowOverwrites`, which can produce duplicates. Prefer unique file names (add a timestamp to every export).
+> - **Modified files.** Auto Loader by default treats a file path as processed once. If a vendor overwrites a file with the same name, it is not reloaded unless you set `cloudFiles.allowOverwrites` (default `false`), which can produce duplicates. Prefer unique file names (add a timestamp to every export).
 
 ## Common misconceptions
 
@@ -218,4 +218,4 @@ What does classic notification mode use on AWS, Azure, and GCP?::SNS and SQS on 
 > - [Configure Auto Loader for production workloads (AWS)](https://docs.databricks.com/aws/en/ingestion/cloud-object-storage/auto-loader/production)
 > - [Auto Loader best practices (GCP)](https://docs.databricks.com/gcp/en/ingestion/cloud-object-storage/auto-loader/best-practices)
 > - [read_files table-valued function (Azure)](https://learn.microsoft.com/en-us/azure/databricks/sql/language-manual/functions/read_files)
-> - **Unconfirmed:** the search budget ran out before these details could be re-checked against official docs, so treat them as unverified: the cloud services used by classic notification mode (SNS/SQS, Event Grid/Queue Storage, Pub/Sub), `cloudFiles.maxFilesPerTrigger`/`maxBytesPerTrigger`, `cloudFiles.allowOverwrites`, the `_rescued_data` column name, the `none` evolution mode, and the full list of supported formats.
+> - [Configure Auto Loader streams in file notification mode (AWS)](https://docs.databricks.com/aws/en/ingestion/cloud-object-storage/auto-loader/file-notification-mode)

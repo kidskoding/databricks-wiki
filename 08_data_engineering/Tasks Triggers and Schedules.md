@@ -90,6 +90,8 @@ Production pipelines are rarely linear. They fan out (load five stores in parall
 | If/else condition | Compares two values | Branching |
 | For each | Another task once per input | Loops over stores, dates, tables |
 
+The task-type menu also includes Visual data prep, Spark Submit, Dashboards, Power BI, SQL Alert, Clean Room notebook, and other specialized types. See [Configure and edit tasks](https://docs.databricks.com/aws/en/jobs/configure-task) for the current list.
+
 ### Dependencies and Run if
 
 A task runs when its dependencies finish. **Run if** decides which outcome counts:
@@ -155,7 +157,7 @@ resources:
           wait_after_last_change_seconds: 300
 ```
 
-The docs explain the timing controls: with both set, the trigger waits the minimum time between triggers, then waits the set time after the last change, so a burst of small writes produces one run.
+The docs explain the timing controls: with both set, the trigger waits the minimum time between triggers, then waits the set time after the last change, so a burst of small writes produces one run. Both settings accept 60 seconds or more. With several tables, `condition` is `ANY_UPDATED` or `ALL_UPDATED`.
 
 ### Passing values, branching, and looping
 
@@ -201,11 +203,11 @@ Later tasks read it with a dynamic value reference such as `{{tasks.count_new_or
             notebook_path: ../src/cleanup.py
 ```
 
-`outcome` applies only to dependencies on a `condition_task`: the dependent task runs only if the condition evaluated to that outcome.
+`outcome` applies only to dependencies on a `condition_task`: the dependent task runs only if the condition evaluated to that outcome. In `for_each_task`, `inputs` is a JSON array string or a reference to an array (at most 5,000 characters), `task` is the nested task, and `{{input}}` passes the current element to it.
 
 ### Retries
 
-Each task can retry a set number of times on error. Make tasks [[Idempotency|idempotent]] (safe to run twice) before you add retries: [[Auto Loader]], [[COPY INTO]], and pipelines already are; a plain `INSERT INTO` is not. In continuous mode Databricks retries automatically with exponential backoff.
+Each task can retry a set number of times on error (`max_retries`, with `min_retry_interval_millis` between attempts). For most configurations the default is no retries, and serverless jobs auto-optimize retries by default. Make tasks [[Idempotency|idempotent]] (safe to run twice) before you add retries: [[Auto Loader]], [[COPY INTO]], and pipelines already are; a plain `INSERT INTO` is not. In continuous mode Databricks retries automatically with exponential backoff.
 
 ## Small-business considerations
 
@@ -230,7 +232,7 @@ Each task can retry a set number of times on error. Make tasks [[Idempotency|ide
 > - **Trigger type in system tables.** `system.lakeflow.job_run_timeline` records a trigger type per run: `CRON`, `FILE_ARRIVAL`, `TABLE`, `CONTINUOUS`, and `ONETIME_RETRY` (a retry of an earlier failed run). Use it to tell scheduled runs from event-driven ones.
 > - **Dynamic value references** cover more than task values: job parameters, job and run IDs, start times, and the trigger time. Use the trigger time rather than `current_date()` for [[Backfill|backfills]] and reruns, so a rerun of Tuesday's run still processes Tuesday.
 > - **Disabled upstream tasks** break If/else tasks that read their values. Disable with care.
-> - **Fan-out limits.** For-each tasks have a concurrency setting; keep it modest when each iteration hits an external API with rate limits.
+> - **Fan-out limits.** The for-each `concurrency` setting accepts 1 to 100 parallel iterations, and the UI default is 1. Keep it modest when each iteration hits an external API with rate limits.
 
 ## Common misconceptions
 
@@ -272,4 +274,8 @@ Which trigger type marks a run that retried an earlier failure?::`ONETIME_RETRY`
 > - [Dynamic value references (AWS)](https://docs.databricks.com/aws/en/jobs/dynamic-value-references)
 > - [Disabled tasks in Lakeflow Jobs (AWS)](https://docs.databricks.com/aws/en/jobs/disabled-tasks)
 > - [Jobs system table reference (AWS)](https://docs.databricks.com/aws/en/admin/system-tables/jobs)
-> - **Unconfirmed:** the search budget ran out before these details could be re-checked against official docs, so treat them as unverified: the full task-type list (only notebooks, pipelines, managed connectors, SQL, dbt, Run Job, If/else, and for-each were confirmed), the YAML field names for `file_arrival`, `table_update` and `for_each_task`, `dbutils.jobs.taskValues.set`, and for-each concurrency limits.
+> - [Use a For each task to run another task in a loop (AWS)](https://docs.databricks.com/aws/en/jobs/for-each)
+> - [Use task values to pass information between tasks (AWS)](https://docs.databricks.com/aws/en/jobs/task-values)
+> - [Trigger jobs when new files arrive (AWS)](https://docs.databricks.com/aws/en/jobs/file-arrival-triggers)
+> - [Declarative Automation Bundles resources (AWS)](https://docs.databricks.com/aws/en/dev-tools/bundles/resources)
+> - [Jobs API: Create a new job](https://docs.databricks.com/api/workspace/jobs/create)
