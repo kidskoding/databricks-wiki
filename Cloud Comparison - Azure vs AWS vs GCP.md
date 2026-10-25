@@ -82,7 +82,7 @@ Most rows differ for one of three reasons:
 |---|---|---|---|
 | Customer-managed keys | Premium | Enterprise | Enterprise |
 | Private connectivity for classic compute | Premium | Enterprise | Enterprise |
-| [[Compliance Security Profile]] | Premium plus the Enhanced Security and Compliance add-on | Not stated in the vault; check the note | Not stated in the vault; check the note |
+| [[Compliance Security Profile]] | Premium plus the Enhanced Security and Compliance add-on | Enterprise plus the Enhanced Security and Compliance add-on | Enterprise plus the Enhanced Security and Compliance add-on |
 
 > [!confusion] Same idea, different names
 > | Idea | Azure | AWS | Google Cloud |
@@ -102,7 +102,7 @@ Most rows differ for one of three reasons:
 - For the cloud-neutral version of each topic, read [[Network Security Overview]], [[Encryption]], and [[Secrets Management]].
 
 > [!sources]- Sources (last verified: 2026-10-25)
-> Every cell restates a fact from the linked note. These are the official sources those notes cite.
+> Every cell restates a fact from the linked note, except the AWS and Google Cloud compliance security profile cells, which come directly from the official pages below. These are the official sources.
 > - [High-level architecture (Azure Databricks)](https://learn.microsoft.com/en-us/azure/databricks/getting-started/high-level-architecture)
 > - [High-level architecture (AWS)](https://docs.databricks.com/aws/en/getting-started/high-level-architecture)
 > - [High-level architecture (GCP)](https://docs.databricks.com/gcp/en/getting-started/high-level-architecture)
@@ -133,6 +133,8 @@ Most rows differ for one of three reasons:
 > - [Customer-managed keys for encryption (Azure)](https://learn.microsoft.com/en-us/azure/databricks/security/keys/customer-managed-keys)
 > - [Customer-managed keys for encryption (AWS)](https://docs.databricks.com/aws/en/security/keys/customer-managed-keys)
 > - [Customer-managed keys for encryption (GCP)](https://docs.databricks.com/gcp/en/security/keys/customer-managed-keys)
+> - [Configure enhanced security and compliance settings (AWS)](https://docs.databricks.com/aws/en/security/privacy/enhanced-security-compliance): Enterprise tier and the Enhanced Security and Compliance add-on required.
+> - [Configure enhanced security and compliance settings (GCP)](https://docs.databricks.com/gcp/en/security/privacy/enhanced-security-compliance): Enterprise tier and the Enhanced Security and Compliance add-on required.
 > - [Configure diagnostic log delivery (Azure Databricks)](https://learn.microsoft.com/en-us/azure/databricks/admin/account-settings/audit-log-delivery)
 > - [Configure audit log delivery (AWS)](https://docs.databricks.com/aws/en/admin/account-settings/audit-log-delivery)
 > - [Power BI with Azure Databricks](https://learn.microsoft.com/en-us/azure/databricks/partners/bi/power-bi/)

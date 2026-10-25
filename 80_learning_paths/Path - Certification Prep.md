@@ -24,10 +24,12 @@ related:
   - "[[Auto Loader]]"
   - "[[Databricks SQL]]"
   - "[[AI-BI Dashboards]]"
+  - "[[Genie Agents]]"
   - "[[MLflow]]"
   - "[[Feature Engineering and Feature Store]]"
   - "[[Retrieval-Augmented Generation]]"
   - "[[AI Search]]"
+  - "[[Lakebase]]"
   - "[[Declarative Automation Bundles]]"
   - "[[Path - Data Engineer]]"
   - "[[Path - Analyst]]"
@@ -45,7 +47,7 @@ clouds:
   - azure
   - gcp
 mastery: new
-last_verified:
+last_verified: 2026-10-25
 tags:
   - path
 ---
@@ -57,28 +59,45 @@ tags:
 > **Goal:** identify which exam fits you, which notes in this vault cover each topic area, and how to practice the hands-on skills the exams test.
 > **Outcome:** a study plan for one exam, mapped to notes you can read in order, with a workspace checkpoint for each stage.
 
-> [!warning] Check the exam list before you study
-> Databricks revises its exams and exam guides often, and has renamed many of the products they cover (see [[Databricks Product Names and Renames]]). The exam list and topic areas below reflect the vault author's knowledge as of mid-2026 and **were not re-verified against the official certification pages for this edition**. Before you book an exam, open the official Databricks certification page (on Databricks Academy), download the current exam guide for your exam, and compare its topic list with the tables here.
+> [!warning] Check the exam guide two weeks before your exam
+> The exam list, topic areas, and weights below were checked against the official Databricks certification pages and exam guides on 2026-10-25. Databricks updates exam guides without notice, and each guide asks you to re-check it two weeks before your exam date. Exam guides also lag product renames: several still say Genie spaces, Vector Search, Lakehouse Monitoring, or Databricks Asset Bundles. See [[Databricks Product Names and Renames]] and learn both names.
 
 ## Before you start
 
-Finish the role path that matches your exam first: [[Path - Data Engineer]], [[Path - Analyst]], [[Path - Data Scientist and ML Engineer]], or [[Path - AI App Developer]]. The exams test hands-on judgment more than definitions, so do every checkpoint in a real workspace. [[Databricks Free Edition and Trials|Free Edition]] covers most associate-level practice.
+Finish the role path that matches your exam first: [[Path - Data Engineer]], [[Path - Analyst]], [[Path - Data Scientist and ML Engineer]], or [[Path - AI App Developer]]. The exams test hands-on judgment more than definitions, so do every checkpoint in a real workspace. Each exam guide points to [[Databricks Free Edition and Trials|Free Edition]] for hands-on practice.
 
 ## The exams at a glance
 
-These are the certifications Databricks has offered in recent years, listed from the author's knowledge and **not confirmed** against the official pages for this edition. Exam names, levels, and recommended experience may have changed.
+Databricks lists eight certification exams on its certification page as of 2026-10-25. All are proctored, multiple-choice, delivered online or at a test center, valid for two years, and allow no test aids. Recertification means passing the current version of the exam. The Data Engineer Associate also has a shorter renewal exam. The registration fee is listed on each exam page.
 
-| Exam | Level | Recommended path | Core notes |
-|---|---|---|---|
-| Data Engineer Associate | Associate | [[Path - Data Engineer]] Stages 1 to 3 | [[Delta Lake]], [[Auto Loader]], [[Lakeflow Spark Declarative Pipelines]], [[Lakeflow Jobs]], [[Unity Catalog]] |
-| Data Engineer Professional | Professional | [[Path - Data Engineer]] Stages 4 and 5 | [[Change Data Capture]], [[Structured Streaming on Databricks]], [[Declarative Automation Bundles]], [[Liquid Clustering]] |
-| Data Analyst Associate | Associate | [[Path - Analyst]] | [[Databricks SQL]], [[SQL Warehouses]], [[AI-BI Dashboards]], [[Genie Agents]] |
-| Machine Learning Associate | Associate | [[Path - Data Scientist and ML Engineer]] Stages 1 and 2 | [[MLflow]], [[Experiment Tracking]], [[AutoML]], [[MLlib]] |
-| Machine Learning Professional | Professional | [[Path - Data Scientist and ML Engineer]] Stages 3 and 4 | [[Feature Engineering and Feature Store]], [[Models in Unity Catalog]], [[Model Serving]], [[Data Quality Monitoring]] |
-| Generative AI Engineer Associate | Associate | [[Path - AI App Developer]] | [[Retrieval-Augmented Generation]], [[AI Search]], [[Mosaic AI Agent Framework]], [[Agent Evaluation and Tracing]] |
-| Associate Developer for Apache Spark | Associate | [[Path - Data Engineer]] Stage 1 plus Spark rabbit holes | [[DataFrames]], [[Spark SQL]], [[Partitions]], [[Shuffles]] |
+| Exam | Level | Scored questions | Time | Current exam guide | Recommended path |
+|---|---|---|---|---|---|
+| Data Analyst Associate | Associate | 45 | 90 min | Version current as of October 30, 2025 | [[Path - Analyst]] |
+| Data Engineer Associate | Associate | 45 | 90 min | Exam published May 4, 2026; guide updated August 6, 2026 | [[Path - Data Engineer]] Stages 1 to 3 |
+| Data Engineer Professional | Professional | 60 | 120 min | Exam published October 9, 2026 | [[Path - Data Engineer]] Stages 4 and 5 |
+| Machine Learning Associate | Associate | 48 | 90 min | Exam published March 1, 2025 | [[Path - Data Scientist and ML Engineer]] Stages 1 and 2 |
+| Machine Learning Professional | Professional | 59 | 120 min | Exam published September 30, 2025 | [[Path - Data Scientist and ML Engineer]] Stages 3 and 4 |
+| Generative AI Engineer Associate | Associate | 45 | 90 min | Exam published March 18, 2026 | [[Path - AI App Developer]] |
+| Context Engineer Associate | Associate | 45 | 90 min | Exam published July 29, 2026 | [[Path - AI App Developer]] |
+| Associate Developer for Apache Spark | Associate | 45 | 90 min | Exam published October 8, 2026 | [[Path - Data Engineer]] Stage 1 plus Spark rabbit holes |
 
-Databricks has also offered shorter **accreditations** (unconfirmed for this edition: earlier examples included fundamentals and platform-architect badges). They are a suitable first step and map to [[Path - Absolute Beginner]] and [[Path - Platform Admin]]. Check the official page for which badges are current.
+Exams may also include unscored questions. They are not identified, and extra time is already included in the time limit.
+
+### Accreditations
+
+Accreditations are shorter assessments that earn a badge. The certification page lists:
+
+| Accreditation | Covers | Related path |
+|---|---|---|
+| Databricks Fundamentals | The lakehouse and the platform basics | [[Path - Absolute Beginner]] |
+| Generative AI Fundamentals | LLM concepts for an organization | [[Path - AI App Developer]] |
+| AI Agent Fundamentals | AI agent concepts | [[Path - AI App Developer]] |
+| AWS, Azure, and GCP Platform Architect | Deployment, security, and cloud integrations on one cloud | [[Path - AWS Deep Dive]], [[Path - Azure Deep Dive]], [[Path - Google Cloud Deep Dive]] |
+| Platform Administrator | The final assessment of the Data + AI Platform Administrator learning pathway | [[Path - Platform Admin]] |
+
+### Retired exams
+
+The Databricks Certified Hadoop Migration Architect exam is no longer available as of August 1, 2024.
 
 ## The route
 
@@ -86,8 +105,8 @@ Databricks has also offered shorter **accreditations** (unconfirmed for this edi
 
 **Goal:** learn the platform basics that appear on every exam.
 
-1. [[The Data Intelligence Platform]]: how Databricks describes its own platform, which exam questions reflect.
-2. [[Accounts and Workspaces]]: account versus workspace, a common question.
+1. [[The Data Intelligence Platform]]: how Databricks describes its own platform. Exam guides call it the Databricks Data + AI Platform or the Databricks Intelligence Platform.
+2. [[Accounts and Workspaces]]: account versus workspace.
 3. [[Control Plane and Compute Plane]] (201): what runs where.
 4. [[Compute Types]]: all-purpose, jobs, serverless, and SQL warehouses, and when to pick each.
 5. [[Delta Lake]]: the table format that most questions assume.
@@ -102,63 +121,79 @@ Databricks has also offered shorter **accreditations** (unconfirmed for this edi
 
 ### Stage 2: Your associate exam (201)
 
-**Goal:** cover the topic areas of one associate exam. Choose the list for your exam.
+**Goal:** cover the topic areas of one associate exam. Each table lists the exam's own sections and weights, with the vault notes that cover them.
 
-**Data Engineer Associate.** *Unconfirmed:* earlier exam guides grouped topics roughly as the platform, development and ingestion, data processing and transformation, productionizing pipelines, and governance.
+**Data Engineer Associate.** Code is in SQL where possible, otherwise Python.
 
-1. [[Auto Loader]]: incremental file ingestion, a frequent topic.
-2. [[COPY INTO]]: the simpler loader, and when it is sufficient.
-3. [[Lakeflow Connect]]: managed connectors.
-4. [[Lakeflow Spark Declarative Pipelines]]: declarative pipelines (formerly Delta Live Tables, and older exam material may still use that name).
-5. [[Streaming Tables]] and [[Materialized Views]]: the two pipeline dataset types.
-6. [[Expectations and Data Quality]]: warn, drop, or fail.
-7. [[MERGE and Upserts]]: incremental updates in SQL.
-8. [[Lakeflow Jobs]] and [[Tasks Triggers and Schedules]]: orchestration (formerly Workflows).
-9. [[Volumes]] and [[Managed vs External Tables]]: storage questions.
-10. [[OpenSharing]] and [[Lakehouse Federation]]: sharing and federation (OpenSharing was formerly Delta Sharing).
+| Topic area | Weight | Vault notes |
+|---|---|---|
+| Databricks Intelligence Platform | 6% | [[The Data Intelligence Platform]], [[Compute Types]], [[Serverless Compute]] |
+| Data Ingestion and Loading | 21% | [[Auto Loader]], [[COPY INTO]], [[Lakeflow Connect]], [[Volumes]] |
+| Data Transformation and Modeling | 22% | [[PySpark]], [[DataFrames]], [[Materialized Views]], [[Streaming Tables]], [[Expectations and Data Quality]], [[MERGE and Upserts]] |
+| Working with Lakeflow Jobs | 16% | [[Lakeflow Jobs]], [[Tasks Triggers and Schedules]] |
+| Implementing CI/CD | 10% | [[Git Folders and Workspace Files]], [[Declarative Automation Bundles]], [[Databricks CLI]] |
+| Troubleshooting, Monitoring, and Optimization | 10% | [[Spark UI]], [[Liquid Clustering]], [[Data Skew]], [[Spill]] |
+| Governance and Security | 15% | [[Managed vs External Tables]], [[Privileges and Grants]], [[Row Filters and Column Masks]], [[Attribute-Based Access Control]] |
 
-**Data Analyst Associate.** *Unconfirmed:* earlier exam guides grouped topics roughly as Databricks SQL, data management, SQL queries, visualization and dashboards, and analytics applications.
+**Data Analyst Associate.** The exam uses ANSI SQL. The exam guide does not list weights; the weights below come from the exam page.
 
-1. [[Databricks SQL]] and [[SQL Warehouses]]: the analyst workbench and its compute.
-2. [[SQL Editor]]: writing and sharing queries.
-3. [[Catalogs Schemas and Tables]]: data management.
-4. [[AI-BI Dashboards]]: dashboards, filters, and sharing.
-5. [[Genie Agents]]: natural-language analytics.
-6. [[SQL Alerts]]: alerting on results.
-7. [[Connecting Power BI]] and [[Partner Connect]]: BI tool integration.
-8. [[Star Schema]] and [[Slowly Changing Dimensions]]: modeling concepts.
+| Topic area | Weight | Vault notes |
+|---|---|---|
+| Understanding of Databricks Data + AI Platform | 11% | [[The Data Intelligence Platform]], [[Catalogs Schemas and Tables]], [[Databricks Marketplace]] |
+| Managing Data | 8% | [[Unity Catalog]], [[Data Lineage]] |
+| Importing Data | 5% | [[Auto Loader]], [[OpenSharing]], [[Databricks Marketplace]] |
+| Executing queries using Databricks SQL and Databricks SQL Warehouses | 20% | [[Databricks SQL]], [[SQL Warehouses]], [[SQL Editor]], [[Genie Code]], [[Lakehouse Federation]], [[Materialized Views]] |
+| Analyzing Queries | 15% | [[Photon]], [[Query Performance and Caching]], [[Time Travel]], [[Liquid Clustering]] |
+| Creating Dashboards and Visualizations in Databricks | 16% | [[AI-BI Dashboards]], [[SQL Alerts]] |
+| Developing, Sharing, and Maintaining AI/BI Genie spaces | 12% | [[Genie Agents]] (formerly Genie spaces) |
+| Data Modeling with Databricks SQL | 5% | [[Star Schema]], [[Slowly Changing Dimensions]] |
+| Securing Data | 8% | [[Privileges and Grants]], [[Row Filters and Column Masks]] |
 
-**Machine Learning Associate.** *Unconfirmed:* earlier exam guides grouped topics roughly as Databricks ML tooling, data preparation, model development, and deployment.
+**Machine Learning Associate.** ML code is in Python; other data code may be in SQL.
 
-1. [[Machine Learning Basics]]: the vocabulary.
-2. [[Notebooks]] and [[Libraries and Environments]]: the ML working environment.
-3. [[PySpark]] and [[DataFrames]]: data preparation at scale.
-4. [[MLflow]] and [[Experiment Tracking]]: logging and comparing runs.
-5. [[AutoML]]: baselines.
-6. [[MLlib]]: distributed training.
-7. [[Models in Unity Catalog]]: registering and aliasing.
-8. [[Feature Engineering and Feature Store]]: feature tables.
+| Topic area | Weight | Vault notes |
+|---|---|---|
+| Databricks Machine Learning | 38% | [[MLflow]], [[Experiment Tracking]], [[AutoML]], [[Feature Engineering and Feature Store]] |
+| ML Workflows | 19% | [[Machine Learning Basics]], [[PySpark]], [[DataFrames]] |
+| Model Development | 31% | [[MLlib]], [[Experiment Tracking]] |
+| Model Deployment | 12% | [[Models in Unity Catalog]], [[Model Serving]] |
 
-**Generative AI Engineer Associate.** *Unconfirmed:* earlier exam guides grouped topics roughly as designing applications, data preparation, application development, assembling and deploying, governance, and evaluation and monitoring.
+The ML Associate guide predates the AutoML change: AutoML is removed from Databricks Runtime 18.0 ML. Read [[AutoML]] for both the exam view and the current state.
 
-1. [[Generative AI and LLMs]]: core concepts.
-2. [[Retrieval-Augmented Generation]]: the main design pattern.
-3. [[AI Search]]: indexes and retrieval.
-4. [[Foundation Model APIs]]: choosing and calling models.
-5. [[Mosaic AI Agent Framework]]: building agents and chains.
-6. [[Model Serving]]: deploying them.
-7. [[Agent Evaluation and Tracing]]: judges, metrics, and traces.
-8. [[Unity Gateway]]: guardrails and governance.
+**Generative AI Engineer Associate.** ML code is in Python.
 
-**Associate Developer for Apache Spark.** *Unconfirmed:* earlier exam guides grouped topics roughly as Spark architecture, the DataFrame API, Spark SQL, and Structured Streaming basics.
+| Topic area | Weight | Vault notes |
+|---|---|---|
+| Design Applications | 14% | [[Generative AI and LLMs]], [[Prompt]], [[Agent Bricks]] |
+| Data Preparation | 14% | [[Retrieval-Augmented Generation]], [[Embedding]], [[Delta Lake]] |
+| Application Development | 30% | [[Mosaic AI Agent Framework]], [[Foundation Model APIs]], [[Unity Gateway]], [[Genie Agents]] |
+| Assembling and Deploying Apps | 22% | [[AI Search]] (the guide says Vector Search), [[Model Serving]], [[Models in Unity Catalog]], [[AI Functions in SQL]] |
+| Governance | 8% | [[Unity Catalog]], [[Unity Gateway]] |
+| Evaluation and Monitoring | 12% | [[Agent Evaluation and Tracing]], [[MLflow]] |
 
-1. [[Apache Spark]] and [[Driver and Executors]]: architecture.
-2. [[Lazy Evaluation]] and [[Transformations and Actions]]: the execution model.
-3. [[DataFrames]], [[PySpark]], and [[Spark SQL]]: the API.
-4. [[Partitions]] and [[Shuffles]]: performance basics.
-5. [[Adaptive Query Execution]]: runtime re-planning.
-6. [[Structured Streaming]]: streams as growing tables.
-7. [[Spark Connect]]: the client-server model.
+**Context Engineer Associate.** The newest exam (published July 29, 2026). It tests what an agent receives at inference time: instructions, retrieved knowledge, memory, tools, and compacted history. Code is in Python.
+
+| Topic area | Weight | Vault notes |
+|---|---|---|
+| Foundations of Context Engineering | 16% | [[AI Agent]], [[Generative AI and LLMs]], [[Token]] |
+| System Prompt and Instruction Design | 9% | [[Prompt]], [[Genie Agents]], [[Experiment Tracking]] |
+| Knowledge Retrieval and Genie Configuration | 20% | [[AI Search]], [[Retrieval-Augmented Generation]], [[Embedding]], [[Genie Agents]], [[Unity Catalog]] |
+| Memory Architecture with Lakebase and MLflow | 18% | [[Lakebase]], [[MLflow]], [[Agent Evaluation and Tracing]] |
+| Tool Design, MCP, and Agent Context | 13% | [[Agent Bricks]], [[Unity Gateway]], [[Mosaic AI Agent Framework]] |
+| Context Compression and Compaction | 11% | [[Agent Evaluation and Tracing]] (traces); no dedicated vault note |
+| Multi-Agent and Long-Horizon Task Design | 13% | [[Agent Bricks]], [[Mosaic AI Agent Framework]] |
+
+**Associate Developer for Apache Spark.** Code is in Python.
+
+| Topic area | Weight | Vault notes |
+|---|---|---|
+| Apache Spark Architecture and Components | 20% | [[Apache Spark]], [[Driver and Executors]], [[Jobs Stages and Tasks]], [[Lazy Evaluation]], [[Transformations and Actions]], [[Partitions]], [[Shuffles]] |
+| Using Spark SQL | 20% | [[Spark SQL]] |
+| Developing Apache Spark DataFrame/DataSet API Applications | 30% | [[DataFrames]], [[PySpark]], [[UDF]], [[Broadcast Join]] |
+| Troubleshooting and Tuning Apache Spark DataFrame API Applications | 10% | [[Adaptive Query Execution]], [[Spark UI]], [[Data Skew]] |
+| Structured Streaming | 10% | [[Structured Streaming]], [[Watermark]], [[Checkpoint]] |
+| Using Spark Connect to deploy applications | 5% | [[Spark Connect]] |
+| Using Pandas API on Apache Spark | 5% | [[Pandas]], [[Python for Data]] |
 
 > [!check] Checkpoint
 > Do the hands-on task for your exam in a workspace, without looking anything up:
@@ -166,35 +201,34 @@ Databricks has also offered shorter **accreditations** (unconfirmed for this edi
 > - **Data Analyst:** a dashboard with a filter and three visuals on a gold table, a Genie agent (formerly Genie space) on it, and an alert.
 > - **ML:** three tracked runs in MLflow, the best one registered in Unity Catalog with an alias and loaded by alias.
 > - **Generative AI:** an AI Search index on a chunk table, queried by a simple RAG chain, with one evaluation run logged to MLflow.
+> - **Context Engineer:** a Genie agent with instructions, sample questions, and trusted SQL; then an agent that keeps conversation state in Lakebase across two sessions, with its traces logged to MLflow.
 > - **Spark Developer:** a notebook that reads a sample table, does a join and a window function, writes the result partitioned or clustered, and shows `.explain()` before and after a `repartition`.
 
 ### Stage 3: Your professional exam (301 to 401)
 
 **Goal:** cover the production depth that professional exams add.
 
-**Data Engineer Professional.** *Unconfirmed:* earlier exam guides grouped topics roughly as data processing, modeling, security and governance, monitoring and logging, testing, and deployment.
+**Data Engineer Professional.** Code is in Python and SQL. The exam guide dated October 9, 2026 lists 60 scored questions in nine sections. The summary on the exam page still showed the previous outline (59 questions, ten sections) on 2026-10-25, so follow the guide.
 
-1. [[Change Data Capture]] (301): AUTO CDC and change feeds.
-2. [[Slowly Changing Dimensions]] (301): type 1 and type 2.
-3. [[Change Data Feed]] (301): row-level changes downstream.
-4. [[Structured Streaming on Databricks]] (301): checkpoints, watermarks, and Kafka.
-5. [[Liquid Clustering]] and [[OPTIMIZE and VACUUM]] (301): layout and maintenance.
-6. [[Row Filters and Column Masks]] (301): fine-grained security.
-7. [[System Tables]] and [[Audit Logs]]: monitoring and logging.
-8. [[Testing Data Pipelines]] (301): tests for data code.
-9. [[Declarative Automation Bundles]] and [[CI-CD for Data Pipelines]] (301): deployment.
-10. [[Spark UI]] and [[Query Performance and Caching]]: diagnosing slow jobs.
+| Topic area | Weight | Vault notes |
+|---|---|---|
+| Developing Code for Data Processing using Python and SQL | 23% | [[Declarative Automation Bundles]], [[Lakeflow Spark Declarative Pipelines]], [[Streaming Tables]], [[Materialized Views]], [[Change Data Capture]], [[Slowly Changing Dimensions]], [[Lakeflow Jobs]], [[Serverless Compute]], [[Testing Data Pipelines]], [[Structured Streaming on Databricks]] |
+| Data Ingestion & Acquisition | 12% | [[Auto Loader]], [[Lakeflow Connect]], [[OpenSharing]], [[Clean Rooms]], [[Lakehouse Federation]] |
+| Data Manipulation | 12% | [[Spark SQL]], [[PySpark]], [[AI Functions in SQL]], [[Expectations and Data Quality]] |
+| Monitoring and Alerting | 10% | [[System Tables]], [[SQL Alerts]], [[Lakeflow Jobs]] |
+| Cost & Performance Optimization | 15% | [[Liquid Clustering]], [[Deletion Vectors]], [[OPTIMIZE and VACUUM]], [[Caching]], [[Change Data Feed]], [[Query Performance and Caching]] |
+| Ensuring Data Security and Compliance | 8% | [[Privileges and Grants]], [[Attribute-Based Access Control]], [[Row Filters and Column Masks]], [[PII]], [[GDPR]] |
+| Data Governance | 5% | [[Unity Catalog]], [[Privileges and Grants]] |
+| Debugging and Deploying | 10% | [[Spark UI]], [[System Tables]], [[Declarative Automation Bundles]], [[Git Folders and Workspace Files]], [[CI-CD for Data Pipelines]] |
+| Data Modeling | 5% | [[Liquid Clustering]], [[Star Schema]], [[Materialized Views]], [[Metric Views]] |
 
-**Machine Learning Professional.** *Unconfirmed:* earlier exam guides grouped topics roughly as experimentation, model lifecycle management, deployment, and monitoring.
+**Machine Learning Professional.** The guide still uses the older names Databricks Asset Bundles and Lakehouse Monitoring.
 
-1. [[Feature Engineering and Feature Store]] (301): online and offline features.
-2. [[Models in Unity Catalog]]: lifecycle with aliases.
-3. [[Model Serving]]: real-time endpoints.
-4. [[Lakeflow Jobs]]: batch inference and retraining.
-5. [[Data Quality Monitoring]] (301): drift and inference monitoring.
-6. [[Declarative Automation Bundles]] (301): MLOps deployment.
-7. [[AI Runtime]] (301): scaling training.
-8. [[Agent Evaluation and Tracing]] (301): evaluation for LLM-based models.
+| Topic area | Weight | Vault notes |
+|---|---|---|
+| Model Development | 44% | [[MLlib]], [[MLflow]], [[Experiment Tracking]], [[Feature Engineering and Feature Store]], [[AI Runtime]] |
+| ML Ops | 44% | [[Models in Unity Catalog]], [[Declarative Automation Bundles]], [[Lakeflow Jobs]], [[Data Quality Monitoring]] (formerly Lakehouse Monitoring), [[Drift]] |
+| Model Deployment | 12% | [[Model Serving]], [[Models in Unity Catalog]] |
 
 > [!check] Checkpoint
 > **Data Engineer Professional:** convert your associate pipeline to AUTO CDC with SCD type 2, deploy it with a bundle to `dev` and `prod` targets, and add a row filter to the gold table. **ML Professional:** add a feature table to your model, deploy it to a serving endpoint (on a workspace that allows it), schedule batch scoring, and set up a monitor on the inference table.
@@ -203,7 +237,7 @@ Databricks has also offered shorter **accreditations** (unconfirmed for this edi
 
 **Goal:** close knowledge gaps and become familiar with the question style.
 
-1. [[Databricks Product Names and Renames]]: older exam prep material uses old product names, so learn both.
+1. [[Databricks Product Names and Renames]]: exam guides and older prep material use old product names, so learn both.
 2. [[Open Source vs Databricks - Who Replaced What]]: "which feature replaced X" questions.
 3. [[Compute Types]] and [[Serverless Compute]]: compute-choice scenario questions.
 4. [[Cost Optimization Checklist]]: "most cost-effective option" questions.
@@ -211,26 +245,34 @@ Databricks has also offered shorter **accreditations** (unconfirmed for this edi
 6. Your exam's Recall sections: review the `## Recall` flashcards in every note on your list with the Spaced Repetition plugin.
 
 > [!check] Checkpoint
-> Take the official practice exam or sample questions for your certification, if Databricks offers them. For every question you miss, find the vault note that covers it and add a flashcard to that note's Recall section in your own copy of the vault.
+> Work through the sample questions in your exam guide. For every question you miss, find the vault note that covers it and add a flashcard to that note's Recall section in your own copy of the vault.
 
 ## Rabbit holes
 
-- **Admin and architecture badges:** [[Path - Platform Admin]], then [[Path - Azure Deep Dive]], [[Path - AWS Deep Dive]], or [[Path - Google Cloud Deep Dive]] for your cloud.
+- **Admin and architecture accreditations:** [[Path - Platform Admin]], then [[Path - Azure Deep Dive]], [[Path - AWS Deep Dive]], or [[Path - Google Cloud Deep Dive]] for your cloud.
 - **History questions:** [[AMPLab and the Birth of Spark]], [[The Lakehouse Paper]], [[Timeline of Data Engineering]].
 - **Spark internals for the Spark exam:** [[Catalyst Optimizer]], [[Tungsten]], [[Jobs Stages and Tasks]], [[RDDs]].
 - **Table formats:** [[Apache Iceberg]], [[Delta UniForm]], [[Deletion Vectors]].
 
 ## You are done when
 
-- You have confirmed your exam's current name and topic list on the official certification page.
+- You have downloaded the current exam guide for your exam and compared its outline with the table above.
 - You can do the Stage 2 (or Stage 3) checkpoint for your exam from memory.
 - You know the current and old names of every product on your exam.
 - You have reviewed the Recall flashcards for every note on your list.
-- You consistently pass the official practice questions.
+- You answer the sample questions in your exam guide correctly and can explain why each wrong option is wrong.
 
 > [!nextup] Next
 > This is the last path. Return to [[start_here]] to choose another path, or read the story from the beginning.
 
-> [!sources]- Sources (not verified for this edition)
-> - The exam list and topic areas above come from the author's knowledge as of mid-2026. They could not be checked against the official Databricks certification pages when this note was written (October 2026), so `last_verified` is left blank on purpose. Verify them on the official Databricks certification page and in each exam's current exam guide before studying.
-> - Note-to-topic mappings were built on 2026-10-25 from the vault index (`llms.txt`). Product facts and official documentation links live in each linked note's `[!sources]` callout.
+> [!sources]- Sources (last verified: 2026-10-25)
+> - [Databricks Certification and Badging](https://www.databricks.com/learn/certification): exam list, accreditations, and the Hadoop Migration Architect retirement.
+> - [Data Analyst Associate](https://www.databricks.com/learn/certification/data-analyst-associate) and [exam guide (October 2025)](https://www.databricks.com/sites/default/files/2025-10/databricks-certified-data-analyst-associate-oct-2025.pdf)
+> - [Data Engineer Associate](https://www.databricks.com/learn/certification/data-engineer-associate) and [exam guide (August 2026)](https://www.databricks.com/sites/default/files/2026-10/Databricks-Certified-Data-Engineer-Associate-Exam-Guide-August-2026.pdf)
+> - [Data Engineer Professional](https://www.databricks.com/learn/certification/data-engineer-professional) and [exam guide (October 9, 2026)](https://www.databricks.com/sites/default/files/2026-10/Databricks-Certified-Data-Engineer-Professional-Exam-Guide-9-Oct-2026.pdf)
+> - [Machine Learning Associate](https://www.databricks.com/learn/certification/machine-learning-associate) and [exam guide](https://www.databricks.com/sites/default/files/2026-10/Databricks-Certified-Machine-Learning-Associate-Exam-Guide-August-2026.pdf)
+> - [Machine Learning Professional](https://www.databricks.com/learn/certification/machine-learning-professional) and [exam guide](https://www.databricks.com/sites/default/files/2026-10/databricks-certified-machine-learning-professional-exam-guide-august.pdf)
+> - [Generative AI Engineer Associate](https://www.databricks.com/learn/certification/genai-engineer-associate) and [exam guide](https://www.databricks.com/sites/default/files/2026-10/databricks-certified-gen-ai-associate-exam-guide-august-2026.pdf)
+> - [Context Engineer Associate](https://www.databricks.com/learn/certification/context-engineer-associate) and [exam guide](https://www.databricks.com/sites/default/files/2026-10/Databricks-Certified-Context-Engineer-Associate-Exam-Guide-August-2026.pdf)
+> - [Associate Developer for Apache Spark](https://www.databricks.com/learn/certification/apache-spark-developer-associate) and [exam guide](https://www.databricks.com/sites/default/files/2026-10/databricks-certified-associate-developer-apache-spark-exam-guide-august-2026.pdf)
+> - Note-to-topic mappings were built on 2026-10-25 from the exam outlines and the vault index (`llms.txt`). Product facts and documentation links live in each linked note's `[!sources]` callout.
