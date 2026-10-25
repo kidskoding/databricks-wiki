@@ -4,7 +4,7 @@ status: written
 part: 1
 level: 9
 section: SQL, BI & Apps
-summary: Analysts and app builders, covering Databricks SQL, dashboards, Genie, Power BI, Databricks Apps, and Lakebase.
+summary: Analysts and app builders, covering Databricks SQL, dashboards, Genie Agents, Power BI, Databricks Apps, and Lakebase.
 prev: "[[Testing Data Pipelines]]"
 next: "[[Databricks SQL]]"
 notes:

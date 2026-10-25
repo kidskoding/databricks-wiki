@@ -4,7 +4,7 @@ status: written
 level: 80
 section: Learning Paths
 depth: 101
-summary: From Excel and SQL to Databricks SQL, dashboards, Genie, and Power BI.
+summary: From Excel and SQL to Databricks SQL, dashboards, Genie Agents, and Power BI.
 personas:
   - analyst
 chapter: "[[Chapter 80 - Learning Paths]]"

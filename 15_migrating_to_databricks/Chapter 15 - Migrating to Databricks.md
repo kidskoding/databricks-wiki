@@ -65,7 +65,7 @@ At the end of this chapter, a business has a plan to move onto Databricks and tu
 |---|---|---|---|
 | 1 | [[Migration Strategy Overview]] | 101 Beginner | The phases of every migration, from assess and plan to coexist, ingest, convert, validate, switch over, and decommission. |
 | 2 | [[Assessing Your Current Data Estate]] | 201 Practitioner | Taking inventory of sources, tables, jobs, reports, users, and costs before moving anything. |
-| 3 | [[Migrating from Excel and Access]] | 101 Beginner | Moving a spreadsheet-run business into governed tables, with file uploads, Volumes, a first dashboard, and Genie. |
+| 3 | [[Migrating from Excel and Access]] | 101 Beginner | Moving a spreadsheet-run business into governed tables, with file uploads, Volumes, a first dashboard, and Genie Agents. |
 | 4 | [[Migrating from SQL Server]] | 201 Practitioner | Moving off an on-premises or Azure SQL Server, using federation first, Lakeflow Connect replication after, and Lakebridge for T-SQL. |
 | 5 | [[Migrating from Postgres and MySQL]] | 201 Practitioner | Moving app-database analytics from PostgreSQL or MySQL into the lakehouse without slowing the app down. |
 | 6 | [[Migrating from Snowflake]] | 301 Advanced | A Snowflake-to-Databricks playbook covering federation, Iceberg-based coexistence, data unloads, SQL conversion with Lakebridge, and reconciliation. |

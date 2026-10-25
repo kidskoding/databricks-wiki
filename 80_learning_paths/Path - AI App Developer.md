@@ -4,7 +4,7 @@ status: written
 level: 80
 section: Learning Paths
 depth: 201
-summary: LLMs, RAG, vector search, agents, Databricks Apps, and Lakebase.
+summary: LLMs, RAG, AI Search, agents, Databricks Apps, and Lakebase.
 personas:
   - ai-dev
 chapter: "[[Chapter 80 - Learning Paths]]"

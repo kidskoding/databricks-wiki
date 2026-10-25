@@ -4,7 +4,7 @@ status: written
 level: 15
 section: Migrating to Databricks
 depth: 101
-summary: Moving a spreadsheet-run business into governed tables, with file uploads, Volumes, a first dashboard, and Genie.
+summary: Moving a spreadsheet-run business into governed tables, with file uploads, Volumes, a first dashboard, and Genie Agents.
 personas:
   - solo
   - analyst

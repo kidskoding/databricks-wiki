@@ -58,10 +58,10 @@ Paths link only to existing notes. Some linked notes may still be stubs; those h
 |---|---|---|---|
 | 1 | [[Path - Absolute Beginner]] | 101 Beginner | Zero to "I get what Databricks is" in about 20 notes. |
 | 2 | [[Path - Business Owner]] | 101 Beginner | Everything a decision-maker needs, covering fit, cost, risk, and the first 30 days. |
-| 3 | [[Path - Analyst]] | 101 Beginner | From Excel and SQL to Databricks SQL, dashboards, Genie, and Power BI. |
+| 3 | [[Path - Analyst]] | 101 Beginner | From Excel and SQL to Databricks SQL, dashboards, Genie Agents, and Power BI. |
 | 4 | [[Path - Data Engineer]] | 201 Practitioner | Ingestion, the lakehouse, pipelines, orchestration, and CI/CD. |
 | 5 | [[Path - Data Scientist and ML Engineer]] | 201 Practitioner | Notebooks, Spark, MLflow, the feature store, and serving. |
-| 6 | [[Path - AI App Developer]] | 201 Practitioner | LLMs, RAG, vector search, agents, Databricks Apps, and Lakebase. |
+| 6 | [[Path - AI App Developer]] | 201 Practitioner | LLMs, RAG, AI Search, agents, Databricks Apps, and Lakebase. |
 | 7 | [[Path - Platform Admin]] | 301 Advanced | Accounts, identity, Unity Catalog, networking, and cost controls on your cloud. |
 | 8 | [[Path - One-Person Data Team]] | 101 Beginner | The shortest route for a small business with one data person doing every job. |
 | 9 | [[Path - Azure Deep Dive]] | 301 Advanced | Every Azure-specific rabbit hole in order. |
