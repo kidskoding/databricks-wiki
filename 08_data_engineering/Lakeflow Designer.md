@@ -20,7 +20,7 @@ related:
   - "[[Lakeflow]]"
   - "[[Lakeflow Spark Declarative Pipelines]]"
   - "[[Lakeflow Jobs]]"
-  - "[[Databricks Assistant]]"
+  - "[[Genie Code]]"
   - "[[Git Folders and Workspace Files]]"
   - "[[Lakebridge]]"
   - "[[Migrating ETL Tools]]"

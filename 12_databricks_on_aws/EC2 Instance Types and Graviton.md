@@ -24,7 +24,7 @@ related:
   - "[[Compute Policies]]"
   - "[[Cost Optimization Checklist]]"
   - "[[Availability Zone]]"
-  - "[[GPU Compute]]"
+  - "[[AI Runtime]]"
   - "[[Autoscaling]]"
 aliases:
   - Graviton
@@ -73,7 +73,7 @@ A classic cluster is a driver [[Node|node]] and worker nodes, each an EC2 instan
 | `r` (for example `r7gd`) | Memory | Large joins, caching, wide tables |
 | `c` (for example `c7gd`) | Compute | CPU-heavy transforms |
 | `i` (for example `i3`) | Local NVMe storage | Disk cache, shuffle-heavy work |
-| `g`, `p` | GPUs | ML training and inference; see [[GPU Compute]] |
+| `g`, `p` | GPUs | ML training and inference; see [[AI Runtime]] |
 
 The `g` in a name such as `m7g` marks Graviton; a `d` marks local NVMe storage.
 

@@ -10,7 +10,7 @@ personas:
   - engineer
 chapter: "[[Chapter 10 - AI and ML]]"
 prev: "[[Fine-Tuning]]"
-next: "[[GPU Compute]]"
+next: "[[AI Runtime]]"
 evolved_from:
   - "[[Expectations and Data Quality]]"
 evolved_into: []
@@ -190,7 +190,7 @@ What is the maximum table size for a snapshot profile?::4 TB.
 > **Unlocks next:** [[System Tables]], [[SQL Alerts]]
 
 > [!nextup] Next
-> [[GPU Compute]] covers the hardware behind deep learning and LLM work: GPU clusters and AI Runtime serverless GPUs.
+> [[AI Runtime]] covers the hardware behind deep learning and LLM work: GPU clusters and AI Runtime serverless GPUs.
 
 > [!sources]- Sources (last verified: 2026-10-25)
 > - [Data quality monitoring (AWS)](https://docs.databricks.com/aws/en/data-governance/unity-catalog/data-quality-monitoring/)

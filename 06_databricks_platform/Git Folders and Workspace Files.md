@@ -8,7 +8,7 @@ summary: Git folders sync workspace code with GitHub, GitLab, Bitbucket, Azure D
 personas:
   - engineer
 chapter: "[[Chapter 06 - The Databricks Platform]]"
-prev: "[[Databricks Assistant]]"
+prev: "[[Genie Code]]"
 next: "[[Declarative Automation Bundles]]"
 evolved_from:
   - "[[Git]]"
@@ -53,7 +53,7 @@ tags:
 Mastery: `INPUT[inlineSelect(option(new), option(learning), option(solid)):mastery]`
 
 > [!story] Context
-> [[Notebooks]] and [[Databricks Assistant|Genie Code]] make it fast to write code in the workspace. Once more than one person edits that code, it needs version control, code review, and a path from development to production. Git folders connect the workspace to a [[Git]] provider, and workspace files let you keep ordinary Python modules and config files next to notebooks.
+> [[Notebooks]] and [[Genie Code|Genie Code]] make it fast to write code in the workspace. Once more than one person edits that code, it needs version control, code review, and a path from development to production. Git folders connect the workspace to a [[Git]] provider, and workspace files let you keep ordinary Python modules and config files next to notebooks.
 
 > [!eli5] Summary
 > A Git folder is a folder in Databricks that stays in sync with a shared code library on a site such as GitHub. Workspace files are ordinary files, like Python scripts or settings files, that you keep in that folder alongside notebooks.

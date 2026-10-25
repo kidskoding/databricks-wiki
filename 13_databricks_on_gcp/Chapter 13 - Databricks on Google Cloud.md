@@ -52,16 +52,16 @@ tags:
 
 | # | Note | Depth | What it covers |
 |---|---|---|---|
-| 1 | [[Databricks on Google Cloud Overview]] | 101 Beginner | How Databricks runs on Google Cloud and what is different there. |
-| 2 | [[Account Setup on Google Cloud]] | 101 Beginner | Subscribing through Google Cloud Marketplace and creating the first workspace. |
-| 3 | [[Compute on Google Cloud]] | 301 Advanced | How classic clusters run on Compute Engine VMs (after the move off GKE). |
-| 4 | [[Customer-Managed VPC on Google Cloud]] | 301 Advanced | Bringing your own VPC and subnets for Databricks compute. |
-| 5 | [[Private Service Connect]] | 401 Expert | Private connectivity between your VPC and Databricks on Google Cloud. |
-| 6 | [[Google Service Accounts]] | 301 Advanced | How Databricks and clusters authenticate to Google Cloud resources. |
-| 7 | [[GCS Access via Unity Catalog]] | 301 Advanced | Storage credentials backed by Google service accounts for governed GCS access. |
-| 8 | [[BigQuery Integration]] | 201 Practitioner | Reading and writing BigQuery from Databricks, and federation. |
-| 9 | [[Google Cloud Marketplace and Billing]] | 201 Practitioner | Paying for Databricks through the Google Cloud bill. |
-| 10 | [[Customer-Managed Keys on Google Cloud]] | 401 Expert | Encrypting with Cloud KMS keys you control. |
+| 1 | [[Databricks on Google Cloud Overview]] | 101 Beginner | How Databricks runs on Google Cloud, sold through Google Cloud Marketplace, and what is different there. |
+| 2 | [[Account Setup on Google Cloud]] | 101 Beginner | Subscribing through Google Cloud Marketplace, activating the account, and creating the first serverless or classic workspace. |
+| 3 | [[Compute on Google Cloud]] | 301 Advanced | How classic clusters run on Compute Engine VMs (after the move off GKE), with machine types, preemptible VMs, and gcp_attributes. |
+| 4 | [[Customer-Managed VPC on Google Cloud]] | 301 Advanced | Bringing your own VPC and subnet (standalone or Shared VPC) for Databricks classic compute on Google Cloud. |
+| 5 | [[Private Service Connect]] | 401 Expert | Private front-end and back-end connectivity between your VPCs and Databricks on Google Cloud using PSC endpoints. |
+| 6 | [[Google Service Accounts]] | 301 Advanced | The workspace, compute, custom, and Unity Catalog service accounts that let Databricks and clusters authenticate to Google Cloud. |
+| 7 | [[GCS Access via Unity Catalog]] | 301 Advanced | Storage credentials backed by Databricks-generated Google service accounts, plus external locations, for governed GCS access. |
+| 8 | [[BigQuery Integration]] | 201 Practitioner | Reading and writing BigQuery with the Spark connector, and querying it in place through Lakehouse Federation. |
+| 9 | [[Google Cloud Marketplace and Billing]] | 201 Practitioner | Paying for Databricks through a Google Cloud Marketplace subscription on the Google Cloud bill, and where Compute Engine and storage costs appear. |
+| 10 | [[Customer-Managed Keys on Google Cloud]] | 401 Expert | Encrypting managed services, workspace GCS buckets, and Compute Engine disks with Cloud KMS keys you control, set at workspace creation. |
 
 <!-- GENERATED:reading-order END -->
 

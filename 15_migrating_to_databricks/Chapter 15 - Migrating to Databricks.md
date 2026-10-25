@@ -63,19 +63,19 @@ At the end of this chapter, a business has a plan to move onto Databricks and tu
 
 | # | Note | Depth | What it covers |
 |---|---|---|---|
-| 1 | [[Migration Strategy Overview]] | 101 Beginner | The phases of every migration, from assess and plan to move, validate, and switch over. |
-| 2 | [[Assessing Your Current Data Estate]] | 201 Practitioner | Taking inventory of sources, reports, users, and costs before moving anything. |
-| 3 | [[Migrating from Excel and Access]] | 101 Beginner | Moving a spreadsheet-run business into tables, with uploads, Volumes, and a first dashboard. |
-| 4 | [[Migrating from SQL Server]] | 201 Practitioner | Moving off an on-premises or Azure SQL Server, using federation first and Lakeflow Connect after. |
-| 5 | [[Migrating from Postgres and MySQL]] | 201 Practitioner | Moving app-database analytics into the lakehouse without hurting the app. |
-| 6 | [[Migrating from Snowflake]] | 301 Advanced | Code conversion, data movement, and Iceberg-based coexistence. |
-| 7 | [[Migrating from Amazon Redshift]] | 301 Advanced | Unloading to S3, converting SQL, and switching over workloads. |
-| 8 | [[Migrating from Google BigQuery]] | 301 Advanced | Federation, exports to GCS, and converting BigQuery SQL. |
-| 9 | [[Migrating from Hadoop]] | 301 Advanced | Moving HDFS data, Hive tables, and Spark jobs off an old cluster. |
-| 10 | [[Migrating ETL Tools]] | 301 Advanced | Converting SSIS, Informatica, Talend, and stored procedures. |
+| 1 | [[Migration Strategy Overview]] | 101 Beginner | The phases of every migration, from assess and plan to coexist, ingest, convert, validate, switch over, and decommission. |
+| 2 | [[Assessing Your Current Data Estate]] | 201 Practitioner | Taking inventory of sources, tables, jobs, reports, users, and costs before moving anything. |
+| 3 | [[Migrating from Excel and Access]] | 101 Beginner | Moving a spreadsheet-run business into governed tables, with file uploads, Volumes, a first dashboard, and Genie. |
+| 4 | [[Migrating from SQL Server]] | 201 Practitioner | Moving off an on-premises or Azure SQL Server, using federation first, Lakeflow Connect replication after, and Lakebridge for T-SQL. |
+| 5 | [[Migrating from Postgres and MySQL]] | 201 Practitioner | Moving app-database analytics from PostgreSQL or MySQL into the lakehouse without slowing the app down. |
+| 6 | [[Migrating from Snowflake]] | 301 Advanced | A Snowflake-to-Databricks playbook covering federation, Iceberg-based coexistence, data unloads, SQL conversion with Lakebridge, and reconciliation. |
+| 7 | [[Migrating from Amazon Redshift]] | 301 Advanced | A Redshift-to-Databricks playbook covering federation, UNLOAD to S3 as Parquet, SQL conversion with Lakebridge, and switch-over. |
+| 8 | [[Migrating from Google BigQuery]] | 301 Advanced | A BigQuery-to-Databricks playbook covering Storage API federation, EXPORT DATA to Cloud Storage, SQL conversion, and reconciliation. |
+| 9 | [[Migrating from Hadoop]] | 301 Advanced | Moving HDFS data, Hive tables, Spark jobs, and Oozie workflows off an on-premises Hadoop cluster into Databricks. |
+| 10 | [[Migrating ETL Tools]] | 301 Advanced | Converting SSIS, DataStage, Informatica, Talend, Airflow, and stored procedures into Databricks notebooks, SQL, pipelines, and jobs. |
 | 11 | [[Lakebridge]] | 301 Advanced | Databricks' free migration toolkit for profiling, SQL conversion, and data reconciliation. |
-| 12 | [[Migrating BI Reports]] | 201 Practitioner | Repointing Power BI and Tableau reports, or rebuilding them as AI-BI dashboards. |
-| 13 | [[Running Old and New in Parallel]] | 201 Practitioner | Parallel runs, reconciliation, and a safe switch-over plan. |
+| 12 | [[Migrating BI Reports]] | 201 Practitioner | Repointing Power BI and Tableau reports to Databricks SQL warehouses, or rebuilding them as AI/BI dashboards and Genie agents. |
+| 13 | [[Running Old and New in Parallel]] | 201 Practitioner | Parallel runs, reconciliation with Lakebridge and SQL, and a safe switch-over and rollback plan. |
 | 14 | [[Migration Checklist]] | 101 Beginner | A printable, start-to-finish checklist for a small business migration. |
 
 <!-- GENERATED:reading-order END -->

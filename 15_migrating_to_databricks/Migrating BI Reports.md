@@ -19,10 +19,10 @@ related:
   - "[[Connecting Tableau and Other BI Tools]]"
   - "[[Power BI on Azure Databricks]]"
   - "[[AI-BI Dashboards]]"
-  - "[[Genie]]"
+  - "[[Genie Agents]]"
   - "[[Metric Views]]"
   - "[[SQL Warehouses]]"
-  - "[[Databricks One]]"
+  - "[[Genie One]]"
   - "[[Semantic Layer]]"
   - "[[Partner Connect]]"
   - "[[Cutover]]"
@@ -64,7 +64,7 @@ Mastery: `INPUT[inlineSelect(option(new), option(learning), option(solid)):maste
 > |---|---|
 > | Keeping the TV and plugging in the new antenna | Repointing Power BI or Tableau to a SQL warehouse |
 > | Buying a smart TV with apps built in | Rebuilding as an AI/BI dashboard |
-> | Asking the TV a question by voice | A [[Genie]] agent |
+> | Asking the TV a question by voice | A [[Genie Agents]] agent |
 > | Checking every channel still comes through | Comparing report totals before switch-over |
 
 ## Background
@@ -81,7 +81,7 @@ BI tools hold more logic than people expect: calculated measures, filters, row-l
 |---|---|---|
 | **Repoint** Power BI or Tableau to Databricks | The BI tool stays; reports are complex or widely used | Low to medium |
 | **Rebuild** as an [[AI-BI Dashboards\|AI/BI dashboard]] | Simple reports; reducing BI licences; Databricks-native sharing | Medium |
-| **Replace** with a [[Genie]] agent | Ad hoc questions currently answered by many similar reports | Low |
+| **Replace** with a [[Genie Agents]] agent | Ad hoc questions currently answered by many similar reports | Low |
 | **Retire** | Nobody has opened the report recently | None |
 
 The Lakebridge Analyzer supports SSRS among its sources, which helps size an SSRS estate. No Lakebridge converter exists for BI reports.
@@ -132,7 +132,7 @@ See [[Connecting Tableau and Other BI Tools]].
 4. Publish. Choose **shared data permissions** (viewers query with the publisher's permissions) or **individual data permissions** (viewers use their own).
 5. Share with workspace users and groups, account users, or all account users. Add a refresh schedule and email or Slack subscriptions as needed.
 
-Business users can open published dashboards and Genie agents in [[Databricks One]].
+Business users can open published dashboards and Genie agents in [[Genie One]].
 
 ### Move business logic into the catalog
 

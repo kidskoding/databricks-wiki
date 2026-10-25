@@ -16,7 +16,7 @@ notes:
   - "[[AWS PrivateLink]]"
   - "[[Instance Profiles]]"
   - "[[S3 Access via Unity Catalog]]"
-  - "[[AWS Glue and Lake Formation Federation]]"
+  - "[[Hive Metastore Federation for AWS Glue]]"
   - "[[AWS Marketplace and Billing]]"
   - "[[EC2 Instance Types and Graviton]]"
   - "[[Customer-Managed Keys on AWS]]"
@@ -41,7 +41,7 @@ tags:
 
 **Classic building blocks.** A classic workspace is assembled from account-level configuration objects. A credential configuration holds the [[Cross-Account IAM Role]] that lets the control plane launch EC2 instances. A storage configuration holds the [[Workspace Storage Bucket]], an S3 bucket for workspace system data that should not hold production data. An optional network configuration places compute in a [[Customer-Managed VPC on AWS]] with at least two private subnets in different availability zones. [[AWS PrivateLink]] adds private front-end and back-end endpoints, controlled by private access settings, on the Enterprise plan.
 
-**Data access.** The legacy pattern attached [[Instance Profiles]] to clusters, which gave every user of a cluster the same S3 access. [[Unity Catalog]] replaced it with storage credentials backed by self-assuming IAM roles and external locations ([[S3 Access via Unity Catalog]]). Since January 20, 2025, Databricks blocks storage credentials whose roles are not self-assuming. Tables already registered in AWS Glue can be governed in place through catalog federation ([[AWS Glue and Lake Formation Federation]]).
+**Data access.** The legacy pattern attached [[Instance Profiles]] to clusters, which gave every user of a cluster the same S3 access. [[Unity Catalog]] replaced it with storage credentials backed by self-assuming IAM roles and external locations ([[S3 Access via Unity Catalog]]). Since January 20, 2025, Databricks blocks storage credentials whose roles are not self-assuming. Tables already registered in AWS Glue can be governed in place through catalog federation ([[Hive Metastore Federation for AWS Glue]]).
 
 **Cost and compute.** The Databricks charge (in DBUs) is billed by Databricks or through AWS Marketplace, while EC2, EBS, S3, and networking for classic compute appear on the AWS bill ([[AWS Marketplace and Billing]]). Instance choice, Arm-based Graviton types, fleet types, and spot with fallback are the main levers on classic cost ([[EC2 Instance Types and Graviton]]).
 
@@ -56,18 +56,18 @@ tags:
 | # | Note | Depth | What it covers |
 |---|---|---|---|
 | 1 | [[Databricks on AWS Overview]] | 101 Beginner | How Databricks runs on AWS, sold by Databricks directly or through AWS Marketplace. |
-| 2 | [[Account Setup on AWS]] | 101 Beginner | Signing up, creating a workspace, and quick setup versus manual setup. |
-| 3 | [[Cross-Account IAM Role]] | 301 Advanced | The IAM role that lets Databricks launch EC2 instances in your account. |
-| 4 | [[Workspace Storage Bucket]] | 201 Practitioner | The S3 bucket each workspace uses for its own system data. |
-| 5 | [[Customer-Managed VPC on AWS]] | 301 Advanced | Running classic compute in a VPC you create and control. |
-| 6 | [[AWS PrivateLink]] | 401 Expert | Private front-end and back-end connectivity between your VPC and Databricks. |
-| 7 | [[Instance Profiles]] | 301 Advanced | The legacy way clusters got S3 access, and why Unity Catalog replaced it. |
-| 8 | [[S3 Access via Unity Catalog]] | 301 Advanced | Storage credentials backed by IAM roles for governed S3 access. |
-| 9 | [[AWS Glue and Lake Formation Federation]] | 401 Expert | Reading tables registered in AWS Glue from Unity Catalog. |
-| 10 | [[AWS Marketplace and Billing]] | 201 Practitioner | Paying Databricks directly or through the AWS bill, plus EC2 costs. |
-| 11 | [[EC2 Instance Types and Graviton]] | 301 Advanced | Picking node types, spot instances, and ARM-based Graviton for price and performance. |
-| 12 | [[Customer-Managed Keys on AWS]] | 401 Expert | Encrypting managed services and workspace storage with AWS KMS keys. |
-| 13 | [[Databricks on AWS GovCloud]] | 401 Expert | Databricks for US public-sector and regulated workloads. |
+| 2 | [[Account Setup on AWS]] | 101 Beginner | Signing up, then creating a serverless workspace or a classic workspace with Quickstart, manual setup, or Terraform. |
+| 3 | [[Cross-Account IAM Role]] | 301 Advanced | The IAM role that lets the Databricks control plane launch and manage EC2 instances in your AWS account. |
+| 4 | [[Workspace Storage Bucket]] | 201 Practitioner | The S3 bucket a classic AWS workspace uses for its own system data, and why production data belongs elsewhere. |
+| 5 | [[Customer-Managed VPC on AWS]] | 301 Advanced | Running classic compute in a VPC you create and control, with subnet, security group, and egress requirements. |
+| 6 | [[AWS PrivateLink]] | 401 Expert | Private front-end and back-end connectivity between your VPCs and Databricks using VPC interface endpoints. |
+| 7 | [[Instance Profiles]] | 301 Advanced | The legacy way clusters got S3 access by attaching an IAM role to EC2 nodes, and why Unity Catalog replaced it. |
+| 8 | [[S3 Access via Unity Catalog]] | 301 Advanced | Storage credentials backed by self-assuming IAM roles, plus external locations, for governed S3 access. |
+| 9 | [[Hive Metastore Federation for AWS Glue]] | 401 Expert | Governing and reading tables registered in the AWS Glue Data Catalog from Unity Catalog through catalog federation. |
+| 10 | [[AWS Marketplace and Billing]] | 201 Practitioner | Paying Databricks directly or through AWS Marketplace, and where the EC2, EBS, S3, and networking costs of classic compute appear. |
+| 11 | [[EC2 Instance Types and Graviton]] | 301 Advanced | Picking EC2 node types, fleet types, spot instances, and Arm-based Graviton for classic compute price and performance. |
+| 12 | [[Customer-Managed Keys on AWS]] | 401 Expert | Encrypting managed services, the workspace storage bucket, and EBS volumes with AWS KMS keys you control. |
+| 13 | [[Databricks on AWS GovCloud]] | 401 Expert | The separate Databricks environment in AWS GovCloud (US) for FedRAMP High, DoD IL5, and other US public-sector workloads. |
 
 <!-- GENERATED:reading-order END -->
 

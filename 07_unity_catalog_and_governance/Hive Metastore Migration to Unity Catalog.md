@@ -16,7 +16,7 @@ evolved_from:
 evolved_into:
   - "[[Unity Catalog]]"
 cloud_equivalent:
-  - "[[AWS Glue and Lake Formation Federation]]"
+  - "[[Hive Metastore Federation for AWS Glue]]"
 related:
   - "[[Unity Catalog]]"
   - "[[Lakehouse Federation]]"
@@ -176,7 +176,7 @@ Check the current upgrade guide for the exact federation setup steps and stateme
 
 > [!aws]- Databricks on AWS
 > - Storage access moves from [[Instance Profiles|instance profiles]] to IAM-role storage credentials. See [[S3 Access via Unity Catalog]].
-> - Catalog federation also supports **AWS Glue**, so tables registered in Glue can be federated and upgraded in place. See [[AWS Glue and Lake Formation Federation]].
+> - Catalog federation also supports **AWS Glue**, so tables registered in Glue can be federated and upgraded in place. See [[Hive Metastore Federation for AWS Glue]].
 
 > [!gcp]- Databricks on Google Cloud
 > - Storage access moves to storage credentials backed by a Databricks-generated service account. See [[GCS Access via Unity Catalog]].

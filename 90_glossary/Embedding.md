@@ -6,7 +6,7 @@ section: Glossary
 depth: 101
 summary: "A vector of numbers that represents the meaning of text, images, or other items, so similar items have nearby vectors."
 related:
-  - "[[Vector Search]]"
+  - "[[AI Search]]"
   - "[[Retrieval-Augmented Generation]]"
   - "[[Generative AI and LLMs]]"
   - "[[Foundation Model APIs]]"
@@ -30,9 +30,9 @@ tags:
 
 **In data work:** An embedding model maps an input to a fixed-length vector, typically hundreds to a few thousand dimensions. The distance between vectors, often cosine similarity, measures semantic similarity. Embeddings support semantic search, recommendations, clustering, and [[Retrieval-Augmented Generation|RAG]]. Example: embedding product descriptions lets a search for "plants that tolerate shade" return ferns even when the word "shade" is absent.
 
-**In Databricks:** Databricks AI Search ([[Vector Search]], renamed in June 2026) can compute embeddings for a Delta Sync index: you choose a text column and an embedding model endpoint (a Databricks-managed model is selected by default), and the index stays in sync with the source table. Unchanged rows reuse existing embeddings on later syncs. You can also supply precomputed embeddings or serve a custom embedding model with [[Model Serving]]. The index is governed by [[Unity Catalog]] and provides the retrieval step for RAG and [[AI Agent|agents]].
+**In Databricks:** Databricks AI Search ([[AI Search]], renamed in June 2026) can compute embeddings for a Delta Sync index: you choose a text column and an embedding model endpoint (a Databricks-managed model is selected by default), and the index stays in sync with the source table. Unchanged rows reuse existing embeddings on later syncs. You can also supply precomputed embeddings or serve a custom embedding model with [[Model Serving]]. The index is governed by [[Unity Catalog]] and provides the retrieval step for RAG and [[AI Agent|agents]].
 
-Seen in: [[Vector Search]], [[Retrieval-Augmented Generation]], [[Generative AI and LLMs]], [[Model Serving]]
+Seen in: [[AI Search]], [[Retrieval-Augmented Generation]], [[Generative AI and LLMs]], [[Model Serving]]
 
 ## Recall
 

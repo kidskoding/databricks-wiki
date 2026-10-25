@@ -60,22 +60,22 @@ tags:
 
 | # | Note | Depth | What it covers |
 |---|---|---|---|
-| 1 | [[Azure Databricks Overview]] | 101 Beginner | What is different when Databricks is sold and run by Microsoft. |
-| 2 | [[First-Party Microsoft Service]] | 201 Practitioner | Microsoft support, the Azure portal, Azure billing, and why Azure Databricks is unusual among Databricks clouds. |
-| 3 | [[Creating an Azure Databricks Workspace]] | 101 Beginner | Step by step in the Azure portal, covering pricing tier, region, networking, and resource group. |
-| 4 | [[Managed Resource Group]] | 201 Practitioner | The locked resource group Azure creates to hold Databricks' VMs, disks, and storage. |
-| 5 | [[Microsoft Entra ID Integration]] | 201 Practitioner | Sign-in, automatic identity management, and service principals with Microsoft Entra ID. |
-| 6 | [[VNet Injection]] | 301 Advanced | Deploying Databricks compute into your own Azure virtual network. |
-| 7 | [[Secure Cluster Connectivity]] | 301 Advanced | No public IPs on cluster nodes, with all control traffic going outbound. |
-| 8 | [[Azure Private Link]] | 401 Expert | Private connections to the workspace and control plane without the public internet. |
-| 9 | [[ADLS and Access Connectors]] | 301 Advanced | How Unity Catalog reaches ADLS Gen2 through a managed identity. |
-| 10 | [[Azure Key Vault Secret Scopes]] | 301 Advanced | Using Azure Key Vault as the backing store for Databricks secrets. |
-| 11 | [[Azure Data Factory with Databricks]] | 201 Practitioner | Calling Databricks from ADF pipelines, and when to use Lakeflow instead. |
-| 12 | [[Microsoft Fabric and OneLake vs Databricks]] | 201 Practitioner | How Fabric and Azure Databricks overlap, compete, and integrate. |
-| 13 | [[Power BI on Azure Databricks]] | 201 Practitioner | Entra single sign-on into Power BI, publishing to the Power BI service, and DirectQuery tips. |
-| 14 | [[Azure Billing and Commit Units]] | 201 Practitioner | Pay-as-you-go on the Azure bill, pre-purchase plans, and Azure cost tools. |
-| 15 | [[Azure Monitor and Diagnostic Logs]] | 301 Advanced | Sending Databricks logs to Log Analytics, Storage, or Event Hubs. |
-| 16 | [[Customer-Managed Keys on Azure]] | 401 Expert | Encrypting managed services and storage with your own Key Vault keys. |
+| 1 | [[Azure Databricks Overview]] | 101 Beginner | What is different when Databricks is sold, billed, and run as a Microsoft Azure service. |
+| 2 | [[First-Party Microsoft Service]] | 201 Practitioner | Microsoft provisioning, billing, and support, and why Azure Databricks is unusual among Databricks clouds. |
+| 3 | [[Creating an Azure Databricks Workspace]] | 101 Beginner | Step by step in the Azure portal, CLI, or Bicep, covering pricing tier, workspace type, region, networking, and resource group. |
+| 4 | [[Managed Resource Group]] | 201 Practitioner | The locked resource group Azure creates to hold a classic workspace's VMs, disks, network resources, and workspace storage account. |
+| 5 | [[Microsoft Entra ID Integration]] | 201 Practitioner | Sign-in, automatic identity management, SCIM, conditional access, tokens, and service principals with Microsoft Entra ID. |
+| 6 | [[VNet Injection]] | 301 Advanced | Deploying Azure Databricks classic compute into your own Azure virtual network, with subnet sizing, delegation, NSG rules, and egress. |
+| 7 | [[Secure Cluster Connectivity]] | 301 Advanced | No public IPs on classic cluster nodes, with all control traffic initiated outbound to a relay, and the egress options that go with it. |
+| 8 | [[Azure Private Link]] | 401 Expert | Private endpoints for inbound (front-end), classic compute (back-end), and serverless connections to Azure Databricks without the public internet. |
+| 9 | [[ADLS and Access Connectors]] | 301 Advanced | How Unity Catalog reaches ADLS Gen2 through an Access Connector's managed identity, including storage behind firewalls. |
+| 10 | [[Azure Key Vault Secret Scopes]] | 301 Advanced | Using Azure Key Vault as the read-only backing store for a Databricks secret scope, with its permission model and limits. |
+| 11 | [[Azure Data Factory with Databricks]] | 201 Practitioner | Calling Azure Databricks from Azure Data Factory pipelines with the Job and Notebook activities, and when to use Lakeflow Jobs instead. |
+| 12 | [[Microsoft Fabric and OneLake vs Databricks]] | 201 Practitioner | How Microsoft Fabric and Azure Databricks overlap, how to choose between them, and how mirroring and OneLake federation connect them. |
+| 13 | [[Power BI on Azure Databricks]] | 201 Practitioner | Entra single sign-on from Power BI, the ADBC driver, publishing semantic models from Unity Catalog, and DirectQuery guidance. |
+| 14 | [[Azure Billing and Commit Units]] | 201 Practitioner | Pay-as-you-go billing on the Azure invoice, Databricks commit unit (DBCU) prepurchase plans, and Azure and Databricks cost tools. |
+| 15 | [[Azure Monitor and Diagnostic Logs]] | 301 Advanced | Sending Azure Databricks diagnostic (audit) logs to Log Analytics, Storage, or Event Hubs, and when to use the audit log system table instead. |
+| 16 | [[Customer-Managed Keys on Azure]] | 401 Expert | Encrypting Azure Databricks managed services, workspace storage (DBFS root), and managed disks with your own Azure Key Vault or Managed HSM keys. |
 
 <!-- GENERATED:reading-order END -->
 

@@ -12,7 +12,7 @@ notes:
   - "[[SQL Editor]]"
   - "[[Query Performance and Caching]]"
   - "[[AI-BI Dashboards]]"
-  - "[[Genie]]"
+  - "[[Genie Agents]]"
   - "[[Metric Views]]"
   - "[[SQL Alerts]]"
   - "[[Connecting Power BI]]"
@@ -21,7 +21,7 @@ notes:
   - "[[AI Functions in SQL]]"
   - "[[Databricks Apps]]"
   - "[[Lakebase]]"
-  - "[[Databricks One]]"
+  - "[[Genie One]]"
 last_verified: 2026-10-25
 tags:
   - chapter
@@ -43,10 +43,10 @@ In the [[The Two-Tier Architecture Problem|two-tier architecture]], serving busi
 | Group | Notes | What they provide |
 |---|---|---|
 | SQL analytics | [[Databricks SQL]], [[SQL Editor]], [[Query Performance and Caching]] | [[SQL Warehouses\|SQL warehouses]], a browser-based editor, query profiles, and caches |
-| Native BI | [[AI-BI Dashboards]], [[Genie]], [[Metric Views]], [[SQL Alerts]] | Dashboards, natural-language questions (Genie Agents), shared metric definitions, and threshold notifications |
+| Native BI | [[AI-BI Dashboards]], [[Genie Agents]], [[Metric Views]], [[SQL Alerts]] | Dashboards, natural-language questions (Genie Agents), shared metric definitions, and threshold notifications |
 | External BI tools | [[Connecting Power BI]], [[Connecting Tableau and Other BI Tools]], [[Partner Connect]] | Connections from Power BI, Tableau, Looker, Sigma, and Excel over [[JDBC and ODBC]] and native connectors |
 | AI and applications | [[AI Functions in SQL]], [[Databricks Apps]], [[Lakebase]] | [[LLM]] calls from SQL, hosted internal web apps, and a managed Postgres database for [[OLTP vs OLAP\|OLTP]] workloads |
-| Business-user entry point | [[Databricks One]] | Genie One (formerly Databricks One): one interface for dashboards, Genie Agents, and apps |
+| Business-user entry point | [[Genie One]] | Genie One (formerly Databricks One): one interface for dashboards, Genie Agents, and apps |
 
 Key points:
 
@@ -68,17 +68,17 @@ The chapter uses one running example: a three-store bakery whose owner reviews "
 | 1 | [[Databricks SQL]] | 101 Beginner | Databricks' data warehouse experience, with SQL warehouses, editor, dashboards, and alerts. |
 | 2 | [[SQL Editor]] | 101 Beginner | Writing, running, and sharing queries in the browser. |
 | 3 | [[Query Performance and Caching]] | 301 Advanced | Query profiles, result and disk caches, and why a query is slow. |
-| 4 | [[AI-BI Dashboards]] | 101 Beginner | Databricks' native dashboards, built with AI help and shareable with anyone. |
-| 5 | [[Genie]] | 101 Beginner | Genie Agents (formerly Genie spaces): asking questions of your data in plain English and getting answers and charts. |
+| 4 | [[AI-BI Dashboards]] | 101 Beginner | Databricks' native dashboards (formerly Lakeview), built on SQL warehouses with AI-assisted authoring and shareable across the account. |
+| 5 | [[Genie Agents]] | 101 Beginner | Genie Agents (formerly Genie spaces) answer plain-English questions about governed data with SQL, tables, and charts. |
 | 6 | [[Metric Views]] | 301 Advanced | Defining a business metric once in Unity Catalog so every tool computes it the same way. |
-| 7 | [[SQL Alerts]] | 201 Practitioner | Getting an email or Slack message when a number crosses a line. |
+| 7 | [[SQL Alerts]] | 201 Practitioner | Databricks SQL alerts run a query on a schedule and send an email, Slack, or Teams message when a value crosses a threshold. |
 | 8 | [[Connecting Power BI]] | 201 Practitioner | Live and import connections from Power BI to Databricks, and publishing from Unity Catalog. |
 | 9 | [[Connecting Tableau and Other BI Tools]] | 201 Practitioner | Tableau, Looker, Sigma, Excel, and anything with JDBC or ODBC. |
-| 10 | [[Partner Connect]] | 201 Practitioner | One-click trials and connections to Fivetran, dbt, Power BI, and other partners. |
+| 10 | [[Partner Connect]] | 201 Practitioner | Guided connections to Fivetran, dbt, Power BI, Tableau, Sigma, and other partners that provision the warehouse, service principal, and token for you. |
 | 11 | [[AI Functions in SQL]] | 201 Practitioner | Calling LLMs from plain SQL to classify, summarize, extract, and translate. |
 | 12 | [[Databricks Apps]] | 201 Practitioner | Hosting internal web apps in Streamlit, Dash, React, and others right next to your data. |
-| 13 | [[Lakebase]] | 301 Advanced | A managed Postgres database (OLTP) inside the lakehouse, for apps and agents. |
-| 14 | [[Databricks One]] | 101 Beginner | Genie One (formerly Databricks One): the simplified business-user home for dashboards, Genie Agents, and apps. |
+| 13 | [[Lakebase]] | 301 Advanced | A managed Postgres database (OLTP) inside the lakehouse, for apps and agents, generally available since January 22, 2026. |
+| 14 | [[Genie One]] | 101 Beginner | Genie One (formerly Databricks One), the simplified business-user home for dashboards, Genie Agents, and apps. |
 
 <!-- GENERATED:reading-order END -->
 

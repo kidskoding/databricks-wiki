@@ -26,7 +26,7 @@ related:
   - "[[AWS PrivateLink]]"
   - "[[EC2 Instance Types and Graviton]]"
   - "[[Customer-Managed Keys on AWS]]"
-  - "[[AWS Glue and Lake Formation Federation]]"
+  - "[[Hive Metastore Federation for AWS Glue]]"
   - "[[AWS Marketplace and Billing]]"
   - "[[Unity Catalog]]"
   - "[[Path - Platform Admin]]"
@@ -112,7 +112,7 @@ Read [[Path - Platform Admin]] first, or at least its Stages 1 to 3. You need an
 4. [[Customer-Managed Keys on AWS]] (401): KMS keys for managed services and workspace storage.
 5. [[Compliance Security Profile]] (401): hardened settings for HIPAA, PCI-DSS, and more.
 6. [[Databricks on AWS GovCloud]] (401): US public-sector and regulated workloads.
-7. [[AWS Glue and Lake Formation Federation]] (401): reading Glue-registered tables from Unity Catalog.
+7. [[Hive Metastore Federation for AWS Glue]] (401): reading Glue-registered tables from Unity Catalog.
 8. [[Audit Logs]] (301): log delivery and system tables.
 9. [[Terraform Provider]] (301): the usual way to automate all of the above.
 10. [[Disaster Recovery]] (401): multi-region plans on AWS.

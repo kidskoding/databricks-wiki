@@ -8,7 +8,7 @@ summary: Databricks AI Search (formerly Vector Search) finds text or images by m
 personas:
   - ai-dev
 chapter: "[[Chapter 10 - AI and ML]]"
-prev: "[[AI Gateway]]"
+prev: "[[Unity Gateway]]"
 next: "[[Retrieval-Augmented Generation]]"
 evolved_from:
   - "[[Index]]"
@@ -48,12 +48,12 @@ tags:
   - flashcards
 ---
 
-# Vector Search
+# AI Search
 
 Mastery: `INPUT[inlineSelect(option(new), option(learning), option(solid)):mastery]`
 
 > [!story] Context
-> [[AI Gateway|Unity Gateway]] governs calls to models. Before a model can answer from company documents, something has to find the right documents. Keyword search misses answers that use different words. AI Search finds documents by meaning.
+> [[Unity Gateway|Unity Gateway]] governs calls to models. Before a model can answer from company documents, something has to find the right documents. Keyword search misses answers that use different words. AI Search finds documents by meaning.
 
 > [!eli5] Summary
 > AI Search finds the pieces of text that mean the same thing as a question, even if they use different words. Ask "can I send back a plant?" and it finds the paragraph titled "Returns policy for live goods".

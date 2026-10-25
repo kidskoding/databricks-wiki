@@ -9,7 +9,7 @@ personas:
   - owner
   - ai-dev
 chapter: "[[Chapter 10 - AI and ML]]"
-prev: "[[GPU Compute]]"
+prev: "[[AI Runtime]]"
 next: "[[Chapter 11 - Azure Databricks]]"
 evolved_from:
   - "[[The Founding of Databricks]]"
@@ -22,7 +22,7 @@ related:
   - "[[LLM]]"
   - "[[Generative AI and LLMs]]"
   - "[[Model Serving]]"
-  - "[[GPU Compute]]"
+  - "[[AI Runtime]]"
   - "[[The Data Intelligence Platform]]"
   - "[[Timeline of Data Engineering]]"
   - "[[Vendor Lock-In]]"
@@ -53,7 +53,7 @@ tags:
 Mastery: `INPUT[inlineSelect(option(new), option(learning), option(solid)):mastery]`
 
 > [!story] Context
-> [[GPU Compute]] covered the hardware for training large models. In 2023 Databricks bought MosaicML, a company that specialized in training large models efficiently. This note covers that history, the open models that came out of it, and where that work lives in the platform today.
+> [[AI Runtime]] covered the hardware for training large models. In 2023 Databricks bought MosaicML, a company that specialized in training large models efficiently. This note covers that history, the open models that came out of it, and where that work lives in the platform today.
 
 > [!eli5] Summary
 > In 2023 Databricks bought a company called MosaicML that was good at building AI language models cheaply. Together they released free, open AI models anyone could use. Today the main result for customers is that Databricks can host many companies' AI models for you, and you can train your own on its computers.
@@ -116,7 +116,7 @@ The strategy shifted over three years:
 
 1. **Build open models** (MPT, DBRX) to show efficient training and to give customers models they could own.
 2. **Host many models.** As open and commercial models improved quickly, [[Foundation Model APIs]] began offering a broad catalog, including open models such as Llama, Gemma, GPT OSS, GLM, and DeepSeek, and partner models from OpenAI, Google, and Anthropic.
-3. **Govern and evaluate, whatever the model.** [[AI Gateway|Unity Gateway]], [[MLflow]] evaluation, and [[Agent Bricks]] work across providers, so a business can switch models without rebuilding its application.
+3. **Govern and evaluate, whatever the model.** [[Unity Gateway|Unity Gateway]], [[MLflow]] evaluation, and [[Agent Bricks]] work across providers, so a business can switch models without rebuilding its application.
 
 ## Small-business considerations
 
@@ -126,7 +126,7 @@ The strategy shifted over three years:
 > - **Open models reduce [[Vendor Lock-In|lock-in]]** for the model itself, but check each model's license and acceptable-use policy.
 
 > [!bridge]- In Databricks today
-> MosaicML's training service became Databricks Model Training and Foundation Model Fine-tuning, which is now end of life; custom training runs on [[GPU Compute|AI Runtime]]. Its serving work underpins [[Model Serving]] and [[Foundation Model APIs]]. DBRX is no longer offered on Foundation Model APIs. The open-source libraries (Composer, StreamingDataset, LLM Foundry) remain separate projects outside the Databricks product.
+> MosaicML's training service became Databricks Model Training and Foundation Model Fine-tuning, which is now end of life; custom training runs on [[AI Runtime|AI Runtime]]. Its serving work underpins [[Model Serving]] and [[Foundation Model APIs]]. DBRX is no longer offered on Foundation Model APIs. The open-source libraries (Composer, StreamingDataset, LLM Foundry) remain separate projects outside the Databricks product.
 
 ## Cloud differences
 

@@ -29,7 +29,7 @@ tags:
 
 **In data work:** An aggregation applies a function such as `SUM`, `COUNT`, `AVG`, `MIN`, or `MAX` to a group of rows and returns one row per group. In [[SQL]], the groups are defined with `GROUP BY`. The level of detail of the result is its grain. Example: a bakery with 40,000 receipt lines per month runs `SELECT store, sale_date, SUM(total) FROM sales GROUP BY store, sale_date` to get daily revenue per store.
 
-**In Databricks:** Aggregated tables usually form the gold layer of the [[Medallion Architecture]], which [[AI-BI Dashboards|dashboards]] and [[Genie]] query. [[Materialized Views]] store an aggregation and refresh it incrementally. [[Metric Views]] define measures (aggregate expressions) separately from the dimensions used to group them, so every tool computes a metric the same way. In [[Apache Spark]], a `GROUP BY` on a large table causes a [[Shuffles|shuffle]], because rows with the same key must be on the same executor.
+**In Databricks:** Aggregated tables usually form the gold layer of the [[Medallion Architecture]], which [[AI-BI Dashboards|dashboards]] and [[Genie Agents]] query. [[Materialized Views]] store an aggregation and refresh it incrementally. [[Metric Views]] define measures (aggregate expressions) separately from the dimensions used to group them, so every tool computes a metric the same way. In [[Apache Spark]], a `GROUP BY` on a large table causes a [[Shuffles|shuffle]], because rows with the same key must be on the same executor.
 
 Seen in: [[SQL]], [[Star Schema]], [[Materialized Views]], [[Metric Views]], [[Shuffles]]
 

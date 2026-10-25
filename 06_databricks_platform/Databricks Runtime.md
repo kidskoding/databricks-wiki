@@ -26,7 +26,7 @@ related:
   - "[[Scala]]"
   - "[[JVM]]"
   - "[[Spark Connect]]"
-  - "[[GPU Compute]]"
+  - "[[AI Runtime]]"
 aliases:
   - DBR
   - Databricks Runtime LTS
@@ -91,7 +91,7 @@ There are two main flavors:
 | Flavor | What is added | Use it for |
 |---|---|---|
 | **Databricks Runtime** | The standard stack | Data engineering, SQL, general Python |
-| **Databricks Runtime for Machine Learning** (DBR ML) | ML libraries such as PyTorch, TensorFlow, scikit-learn, XGBoost, plus [[MLflow]]; GPU builds for [[GPU Compute]] | Training and experimentation |
+| **Databricks Runtime for Machine Learning** (DBR ML) | ML libraries such as PyTorch, TensorFlow, scikit-learn, XGBoost, plus [[MLflow]]; GPU builds for [[AI Runtime]] | Training and experimentation |
 
 ### Versions and support (as of October 2026)
 

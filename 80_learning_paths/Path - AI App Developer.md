@@ -17,12 +17,12 @@ related:
   - "[[Generative AI and LLMs]]"
   - "[[Foundation Model APIs]]"
   - "[[AI Functions in SQL]]"
-  - "[[Vector Search]]"
+  - "[[AI Search]]"
   - "[[Retrieval-Augmented Generation]]"
   - "[[Agent Bricks]]"
   - "[[Mosaic AI Agent Framework]]"
   - "[[Agent Evaluation and Tracing]]"
-  - "[[AI Gateway]]"
+  - "[[Unity Gateway]]"
   - "[[Model Serving]]"
   - "[[Databricks Apps]]"
   - "[[Lakebase]]"
@@ -79,7 +79,7 @@ You should write Python comfortably and know what a REST API is. Prior LLM exper
 **Goal:** make the model answer from your documents instead of guessing.
 
 1. [[Retrieval-Augmented Generation]] (201): the pattern, step by step.
-2. [[Vector Search]] (201): indexes that find text by meaning.
+2. [[AI Search]] (201): indexes that find text by meaning.
 3. [[Delta Lake]]: the chunk table that the index syncs from.
 4. [[Change Data Feed]] (301): what keeps a Delta Sync index up to date.
 5. [[Lakeflow Spark Declarative Pipelines]] (201): parsing and chunking documents on a schedule.
@@ -97,7 +97,7 @@ You should write Python comfortably and know what a REST API is. Prior LLM exper
 3. [[Agent Evaluation and Tracing]] (301): LLM judges, evaluation sets, and traces.
 4. [[Model Serving]] (201): the endpoint your agent runs on.
 5. [[Models in Unity Catalog]] (201): versioning and aliasing the agent like any model.
-6. [[AI Gateway]] (301): rate limits, logging, guardrails, and external providers.
+6. [[Unity Gateway]] (301): rate limits, logging, guardrails, and external providers.
 
 > [!check] Checkpoint
 > Write a tool-calling agent that uses your Vector Search index as a retrieval tool and a Unity Catalog SQL function as a second tool. Log it with MLflow, run it on ten test questions with tracing on, and run an evaluation with built-in judges. Fix one failure and re-run the evaluation to show the score moved.
@@ -119,9 +119,9 @@ You should write Python comfortably and know what a REST API is. Prior LLM exper
 
 ## Rabbit holes
 
-- **The models themselves:** [[Machine Learning Basics]], [[GPU Compute]], [[Hallucination]], [[Prompt]], [[Token]].
+- **The models themselves:** [[Machine Learning Basics]], [[AI Runtime]], [[Hallucination]], [[Prompt]], [[Token]].
 - **Data plumbing for agents:** [[Lakeflow Jobs]], [[Lakeflow Connect]], [[Lakehouse Federation]].
-- **Business-user front ends:** [[Genie]] and [[Databricks One]].
+- **Business-user front ends:** [[Genie Agents]] and [[Genie One]].
 - **Security for AI:** [[Serverless Network Security]], [[Secrets Management]], [[Row Filters and Column Masks]].
 - **Your cloud:** network and identity specifics in [[Path - Azure Deep Dive]], [[Path - AWS Deep Dive]], and [[Path - Google Cloud Deep Dive]].
 - **Exams:** the Generative AI Engineer track in [[Path - Certification Prep]].

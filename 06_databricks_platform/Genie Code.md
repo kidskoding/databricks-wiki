@@ -16,7 +16,7 @@ evolved_from: []
 evolved_into: []
 cloud_equivalent: []
 related:
-  - "[[Genie]]"
+  - "[[Genie Agents]]"
   - "[[Notebooks]]"
   - "[[SQL Editor]]"
   - "[[AI-BI Dashboards]]"
@@ -24,9 +24,10 @@ related:
   - "[[Unity Catalog]]"
   - "[[LLM]]"
   - "[[AI Agent]]"
-  - "[[Databricks One]]"
+  - "[[Genie One]]"
   - "[[Databricks Product Names and Renames]]"
 aliases:
+  - Databricks Assistant
   - Genie Code
   - Assistant
   - Databricks AI Assistant
@@ -34,7 +35,7 @@ prereqs:
   - "[[Notebooks]]"
   - "[[Unity Catalog]]"
 unlocks:
-  - "[[Genie]]"
+  - "[[Genie Agents]]"
   - "[[AI-BI Dashboards]]"
   - "[[Lakeflow Spark Declarative Pipelines]]"
 clouds:
@@ -48,7 +49,7 @@ tags:
   - flashcards
 ---
 
-# Databricks Assistant (Genie Code)
+# Genie Code
 
 Mastery: `INPUT[inlineSelect(option(new), option(learning), option(solid)):mastery]`
 
@@ -81,7 +82,7 @@ Genie Code is the developer-facing member of the Genie product family. It is eas
 | Product | Audience | What it does | Former name |
 |---|---|---|---|
 | **Genie Code** | Engineers, analysts, data scientists | Generates and runs code, builds pipelines and dashboards, debugs errors | Databricks Assistant |
-| **[[Genie\|Genie Agents]]** | Business users, configured by data teams | Answers business questions about curated data in a chat interface | Genie spaces (renamed July 2026) |
+| **[[Genie Agents\|Genie Agents]]** | Business users, configured by data teams | Answers business questions about curated data in a chat interface | Genie spaces (renamed July 2026) |
 | **Genie One** | Business users | Simplified chat interface for business users | |
 
 Genie Code helps build Genie Agents. When you create a Genie Agent, Genie Code launches automatically and suggests context such as table descriptions and example queries.
@@ -159,7 +160,7 @@ flowchart LR
 ## Common misconceptions
 
 > [!confusion] Genie Code is not Genie
-> **Genie Code** (formerly Databricks Assistant) is for people who write code. **[[Genie]]**, through Genie Agents (formerly Genie spaces), is for business users who ask questions of curated data without writing code.
+> **Genie Code** (formerly Databricks Assistant) is for people who write code. **[[Genie Agents]]**, through Genie Agents (formerly Genie spaces), is for business users who ask questions of curated data without writing code.
 
 > [!confusion] Genie Code does not bypass permissions
 > It cannot read tables or columns that you cannot read. Generated code runs under your identity.
@@ -181,7 +182,7 @@ Can Genie Code read a table you have no grant on?::No. It uses only metadata you
 
 > [!path] Learning path
 > **Needs first:** [[Notebooks]], [[Unity Catalog]]
-> **Unlocks next:** [[Genie]], [[AI-BI Dashboards]], [[Lakeflow Spark Declarative Pipelines]]
+> **Unlocks next:** [[Genie Agents]], [[AI-BI Dashboards]], [[Lakeflow Spark Declarative Pipelines]]
 
 > [!nextup] Next
 > [[Git Folders and Workspace Files]] covers putting notebooks and code under Git version control.

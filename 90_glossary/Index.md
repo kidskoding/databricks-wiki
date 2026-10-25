@@ -9,7 +9,7 @@ related:
   - "[[Relational Databases]]"
   - "[[Data Skipping]]"
   - "[[Liquid Clustering]]"
-  - "[[Vector Search]]"
+  - "[[AI Search]]"
   - "[[Lakebase]]"
   - "[[OLTP vs OLAP]]"
 aliases:
@@ -30,9 +30,9 @@ tags:
 
 **In data work:** In a [[Relational Databases|relational database]] such as PostgreSQL or SQL Server, an index (commonly a B-tree) on a column lets a query such as `WHERE customer_id = 1182` locate matching rows in a few steps. Indexes speed up reads but slow down writes and consume storage. They suit [[OLTP vs OLAP|OLTP]] workloads that fetch a few rows at a time. Analytical queries that scan many rows rely more on [[Columnar Storage|columnar]] layout and file statistics.
 
-**In Databricks:** [[Delta Lake]] tables do not use B-tree indexes. They rely on [[Data Skipping|data skipping]] with per-file statistics, and on [[Liquid Clustering]] to colocate related rows. [[Lakebase]], the managed PostgreSQL database, supports standard PostgreSQL indexes for application lookups. In Databricks AI Search ([[Vector Search]]), an index stores [[Embedding|embeddings]] for similarity search; Delta Sync indexes stay synchronized with a source table, and Direct Vector Access indexes are updated through the API.
+**In Databricks:** [[Delta Lake]] tables do not use B-tree indexes. They rely on [[Data Skipping|data skipping]] with per-file statistics, and on [[Liquid Clustering]] to colocate related rows. [[Lakebase]], the managed PostgreSQL database, supports standard PostgreSQL indexes for application lookups. In Databricks AI Search ([[AI Search]]), an index stores [[Embedding|embeddings]] for similarity search; Delta Sync indexes stay synchronized with a source table, and Direct Vector Access indexes are updated through the API.
 
-Seen in: [[Relational Databases]], [[Data Skipping]], [[Liquid Clustering]], [[Vector Search]], [[Lakebase]]
+Seen in: [[Relational Databases]], [[Data Skipping]], [[Liquid Clustering]], [[AI Search]], [[Lakebase]]
 
 ## Recall
 

@@ -22,7 +22,7 @@ related:
   - "[[Data Warehouses]]"
   - "[[Generative AI and LLMs]]"
   - "[[Embedding]]"
-  - "[[Vector Search]]"
+  - "[[AI Search]]"
   - "[[Schema Enforcement and Evolution]]"
 aliases:
   - Structured Data
@@ -140,7 +140,7 @@ FROM read_files('/Volumes/clinic/raw/referrals/', format => 'binaryFile', fileNa
 > [!bridge]- In Databricks today
 > - **Structured** data becomes [[Delta Lake]] tables in [[Unity Catalog]].
 > - **Semi-structured** data can be stored in a `VARIANT` column, which Databricks recommends over keeping JSON as plain strings. Databricks SQL and recent Databricks Runtime versions support it (the docs give 15.3 in one place and 15.4 in another).
-> - **Unstructured** files live in Unity Catalog [[Volumes]], with the same permissions model as tables. Functions such as `ai_parse_document` (PDF, DOC/DOCX, PPT/PPTX, TIFF) turn documents into structured output, and a newer `FILE` data type for file references is in Beta as of October 2026. See [[AI Functions in SQL]] and [[Vector Search]].
+> - **Unstructured** files live in Unity Catalog [[Volumes]], with the same permissions model as tables. Functions such as `ai_parse_document` (PDF, DOC/DOCX, PPT/PPTX, TIFF) turn documents into structured output, and a newer `FILE` data type for file references is in Beta as of October 2026. See [[AI Functions in SQL]] and [[AI Search]].
 
 ## Cloud differences
 

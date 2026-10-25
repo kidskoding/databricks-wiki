@@ -28,6 +28,7 @@ related:
   - "[[Compute Policies]]"
   - "[[Lakeflow Jobs]]"
 aliases:
+  - GPU Compute
   - AI Runtime
   - Serverless GPU compute
   - GPU-enabled compute
@@ -49,7 +50,7 @@ tags:
   - flashcards
 ---
 
-# GPU Compute
+# AI Runtime
 
 Mastery: `INPUT[inlineSelect(option(new), option(learning), option(solid)):mastery]`
 

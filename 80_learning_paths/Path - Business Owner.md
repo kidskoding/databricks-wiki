@@ -21,7 +21,7 @@ related:
   - "[[Estimating Costs for a Small Business]]"
   - "[[Databricks vs Alternatives for Small Teams]]"
   - "[[Choosing a Cloud for Databricks]]"
-  - "[[Genie]]"
+  - "[[Genie Agents]]"
   - "[[Unity Catalog]]"
   - "[[Building a Business Case]]"
   - "[[Your First 30 Days on Databricks]]"
@@ -94,10 +94,10 @@ Nothing technical. Have two things nearby: a rough list of the systems your busi
 
 **Goal:** see the tools your staff will open every day.
 
-1. [[Databricks One]]: the simple home page for business users.
+1. [[Genie One]]: the simple home page for business users.
 2. [[Databricks SQL]]: the analyst's workbench inside Databricks.
 3. [[AI-BI Dashboards]]: native dashboards that can be shared with people outside the workspace.
-4. [[Genie]]: plain-English questions for the people who will never write SQL.
+4. [[Genie Agents]]: plain-English questions for the people who will never write SQL.
 5. [[SQL Alerts]] (201): an email or Slack message when a number crosses a line.
 6. [[Generative AI and LLMs]]: what the AI features are, and what they are not.
 7. [[Agent Bricks]]: building an AI helper by describing its job.

@@ -75,7 +75,7 @@ The platform features covered in this vault (Unity Catalog, Lakeflow, Databricks
 | Commitment options | Databricks commit unit (DBCU) prepurchase, 1 or 3 years ([[Azure Billing and Commit Units]]) | Databricks commit contracts; Marketplace usage can bill against an AWS EDP commitment ([[AWS Marketplace and Billing]]) | Databricks commit contracts ([[Google Cloud Marketplace and Billing]]) |
 | Identity | Microsoft Entra ID ([[Microsoft Entra ID Integration]]) | Your identity provider via [[SCIM Provisioning\|SCIM]] | Your identity provider; [[Google Service Accounts]] for storage access |
 | Storage | [[Azure Data Lake Storage]] | [[Amazon S3]] | [[Google Cloud Storage]] |
-| Typical integrations | Power BI, Azure Data Factory, SQL Server ([[Azure Data Factory with Databricks]], [[Power BI on Azure Databricks]]) | AWS Glue and other AWS services ([[AWS Glue and Lake Formation Federation]]) | BigQuery ([[BigQuery Integration]]) |
+| Typical integrations | Power BI, Azure Data Factory, SQL Server ([[Azure Data Factory with Databricks]], [[Power BI on Azure Databricks]]) | AWS Glue and other AWS services ([[Hive Metastore Federation for AWS Glue]]) | BigQuery ([[BigQuery Integration]]) |
 | Deep dive | [[Chapter 11 - Azure Databricks]] | [[Chapter 12 - Databricks on AWS]] | [[Chapter 13 - Databricks on Google Cloud]] |
 
 ## How it works

@@ -151,17 +151,17 @@ Depth: 101 beginner, 201 practitioner, 301 advanced, 401 expert.
 - [Compute Types](06_databricks_platform/Compute%20Types.md) [101]: The map of Databricks compute, covering all-purpose, jobs, serverless, and SQL warehouses.
 - [All-Purpose Compute](06_databricks_platform/All-Purpose%20Compute.md) [201]: Interactive clusters for notebooks and exploration, which you create, share, and must remember to stop.
 - [Jobs Compute](06_databricks_platform/Jobs%20Compute.md) [201]: Clusters that spin up for one scheduled job and then disappear, at a lower price.
-- [Serverless Compute](06_databricks_platform/Serverless%20Compute.md) [101]: Compute Databricks runs for you that starts in seconds and has no clusters to manage.
-- [SQL Warehouses](06_databricks_platform/SQL%20Warehouses.md) [101]: Compute built for SQL and BI, in serverless, pro, and classic types.
-- [Notebooks](06_databricks_platform/Notebooks.md) [101]: Documents that mix code, results, charts, and text.
-- [Databricks Assistant](06_databricks_platform/Databricks%20Assistant.md) [101]: The built-in AI helper that writes, explains, and fixes code and queries.
-- [Git Folders and Workspace Files](06_databricks_platform/Git%20Folders%20and%20Workspace%20Files.md) [201]: Connecting the workspace to GitHub, GitLab, or Azure DevOps.
-- [Declarative Automation Bundles](06_databricks_platform/Declarative%20Automation%20Bundles.md) [301]: Infrastructure-as-code for jobs, pipelines, and apps as YAML in Git (formerly Databricks Asset Bundles).
-- [Databricks CLI](06_databricks_platform/Databricks%20CLI.md) [201]: The command-line tool for scripting everything in Databricks.
-- [Databricks SDKs and REST API](06_databricks_platform/Databricks%20SDKs%20and%20REST%20API.md) [301]: Programmatic control of Databricks from Python, Java, Go, and plain HTTP.
-- [Databricks Connect](06_databricks_platform/Databricks%20Connect.md) [301]: Running code from your laptop IDE against Databricks compute.
-- [DBUs](06_databricks_platform/DBUs.md) [101]: The Databricks Unit, the meter that every Databricks bill counts in.
-- [Libraries and Environments](06_databricks_platform/Libraries%20and%20Environments.md) [201]: Installing Python packages and pinning dependencies on classic and serverless compute.
+- [Serverless Compute](06_databricks_platform/Serverless%20Compute.md) [101]: Compute that Databricks runs and scales for you, starting in seconds with no clusters to configure.
+- [SQL Warehouses](06_databricks_platform/SQL%20Warehouses.md) [101]: Compute built for SQL queries, dashboards, and BI tools, in serverless, pro, and classic types.
+- [Notebooks](06_databricks_platform/Notebooks.md) [101]: Web documents that mix runnable code cells in Python, SQL, Scala, or R with results, charts, and text.
+- [Genie Code](06_databricks_platform/Genie%20Code.md) [101]: The built-in AI coding and data agent, renamed from Databricks Assistant to Genie Code in March 2026.
+- [Git Folders and Workspace Files](06_databricks_platform/Git%20Folders%20and%20Workspace%20Files.md) [201]: Git folders sync workspace code with GitHub, GitLab, Bitbucket, Azure DevOps, or CodeCommit; workspace files store code beside notebooks.
+- [Declarative Automation Bundles](06_databricks_platform/Declarative%20Automation%20Bundles.md) [301]: Infrastructure as code for jobs, pipelines, and apps, defined as YAML in Git and deployed with `databricks bundle` (formerly Databricks Asset Bundles).
+- [Databricks CLI](06_databricks_platform/Databricks%20CLI.md) [201]: The `databricks` command-line tool for scripting workspaces and accounts, authenticating, and deploying bundles.
+- [Databricks SDKs and REST API](06_databricks_platform/Databricks%20SDKs%20and%20REST%20API.md) [301]: Programmatic control of Databricks through the REST API and the official SDKs for Python, Java, Go, and JavaScript (plus an R SDK from Databricks Labs).
+- [Databricks Connect](06_databricks_platform/Databricks%20Connect.md) [301]: A client library, built on Spark Connect, that runs Spark code from your local IDE on Databricks clusters or serverless compute.
+- [DBUs](06_databricks_platform/DBUs.md) [101]: The Databricks Unit (DBU), a normalized unit of processing power per hour that Databricks usage is measured and priced in.
+- [Libraries and Environments](06_databricks_platform/Libraries%20and%20Environments.md) [201]: How to install Python, JAR, and R packages and pin dependencies with notebook-scoped libraries, compute-scoped libraries, and serverless environments.
 
 ## Unity Catalog & Governance
 
@@ -213,40 +213,40 @@ Depth: 101 beginner, 201 practitioner, 301 advanced, 401 expert.
 - [Databricks SQL](09_sql_bi_and_apps/Databricks%20SQL.md) [101]: Databricks' data warehouse experience, with SQL warehouses, editor, dashboards, and alerts.
 - [SQL Editor](09_sql_bi_and_apps/SQL%20Editor.md) [101]: Writing, running, and sharing queries in the browser.
 - [Query Performance and Caching](09_sql_bi_and_apps/Query%20Performance%20and%20Caching.md) [301]: Query profiles, result and disk caches, and why a query is slow.
-- [AI-BI Dashboards](09_sql_bi_and_apps/AI-BI%20Dashboards.md) [101]: Databricks' native dashboards, built with AI help and shareable with anyone.
-- [Genie](09_sql_bi_and_apps/Genie.md) [101]: Asking questions of your data in plain English and getting answers and charts.
+- [AI-BI Dashboards](09_sql_bi_and_apps/AI-BI%20Dashboards.md) [101]: Databricks' native dashboards (formerly Lakeview), built on SQL warehouses with AI-assisted authoring and shareable across the account.
+- [Genie Agents](09_sql_bi_and_apps/Genie%20Agents.md) [101]: Genie Agents (formerly Genie spaces) answer plain-English questions about governed data with SQL, tables, and charts.
 - [Metric Views](09_sql_bi_and_apps/Metric%20Views.md) [301]: Defining a business metric once in Unity Catalog so every tool computes it the same way.
-- [SQL Alerts](09_sql_bi_and_apps/SQL%20Alerts.md) [201]: Getting an email or Slack message when a number crosses a line.
+- [SQL Alerts](09_sql_bi_and_apps/SQL%20Alerts.md) [201]: Databricks SQL alerts run a query on a schedule and send an email, Slack, or Teams message when a value crosses a threshold.
 - [Connecting Power BI](09_sql_bi_and_apps/Connecting%20Power%20BI.md) [201]: Live and import connections from Power BI to Databricks, and publishing from Unity Catalog.
 - [Connecting Tableau and Other BI Tools](09_sql_bi_and_apps/Connecting%20Tableau%20and%20Other%20BI%20Tools.md) [201]: Tableau, Looker, Sigma, Excel, and anything with JDBC or ODBC.
-- [Partner Connect](09_sql_bi_and_apps/Partner%20Connect.md) [201]: One-click trials and connections to Fivetran, dbt, Power BI, and other partners.
+- [Partner Connect](09_sql_bi_and_apps/Partner%20Connect.md) [201]: Guided connections to Fivetran, dbt, Power BI, Tableau, Sigma, and other partners that provision the warehouse, service principal, and token for you.
 - [AI Functions in SQL](09_sql_bi_and_apps/AI%20Functions%20in%20SQL.md) [201]: Calling LLMs from plain SQL to classify, summarize, extract, and translate.
 - [Databricks Apps](09_sql_bi_and_apps/Databricks%20Apps.md) [201]: Hosting internal web apps in Streamlit, Dash, React, and others right next to your data.
-- [Lakebase](09_sql_bi_and_apps/Lakebase.md) [301]: A managed Postgres database (OLTP) inside the lakehouse, for apps and agents.
-- [Databricks One](09_sql_bi_and_apps/Databricks%20One.md) [101]: The simplified business-user home for dashboards, Genie, and apps.
+- [Lakebase](09_sql_bi_and_apps/Lakebase.md) [301]: A managed Postgres database (OLTP) inside the lakehouse, for apps and agents, generally available since January 22, 2026.
+- [Genie One](09_sql_bi_and_apps/Genie%20One.md) [101]: Genie One (formerly Databricks One), the simplified business-user home for dashboards, Genie Agents, and apps.
 
 ## AI & ML
 
-- [Chapter 10 - AI and ML](10_ai_and_ml/Chapter%2010%20-%20AI%20and%20ML.md): From classic machine learning to agents, covering MLflow, serving, vector search, and Agent Bricks.
-- [Machine Learning Basics](10_ai_and_ml/Machine%20Learning%20Basics.md) [101]: Teaching software from examples, covering training, models, features, and predictions.
-- [Generative AI and LLMs](10_ai_and_ml/Generative%20AI%20and%20LLMs.md) [101]: What large language models are, and why business data makes them useful.
-- [Feature Engineering and Feature Store](10_ai_and_ml/Feature%20Engineering%20and%20Feature%20Store.md) [301]: Reusable, governed model inputs, kept consistent between training and serving.
-- [MLflow](10_ai_and_ml/MLflow.md) [101]: The open-source platform for tracking, packaging, evaluating, and deploying models and agents.
-- [Experiment Tracking](10_ai_and_ml/Experiment%20Tracking.md) [201]: Logging every training run's parameters, metrics, and artifacts.
-- [Models in Unity Catalog](10_ai_and_ml/Models%20in%20Unity%20Catalog.md) [201]: Versioning, aliasing, and governing models like any other table.
-- [AutoML](10_ai_and_ml/AutoML.md) [101]: Letting Databricks try models for you and hand back a notebook.
-- [Model Serving](10_ai_and_ml/Model%20Serving.md) [201]: Turning a model into a live, autoscaling API endpoint.
-- [Foundation Model APIs](10_ai_and_ml/Foundation%20Model%20APIs.md) [201]: Pay-per-token access to hosted open and partner LLMs inside Databricks.
-- [AI Gateway](10_ai_and_ml/AI%20Gateway.md) [301]: Governing, rate-limiting, logging, and guarding every LLM call, including to external providers.
-- [Vector Search](10_ai_and_ml/Vector%20Search.md) [201]: Finding similar text or images by meaning, the retrieval half of RAG.
-- [Retrieval-Augmented Generation](10_ai_and_ml/Retrieval-Augmented%20Generation.md) [201]: Giving an LLM your documents at question time so it answers from facts.
-- [Agent Bricks](10_ai_and_ml/Agent%20Bricks.md) [101]: Describing an AI agent's job in plain language and letting Databricks build, evaluate, and tune it.
-- [Mosaic AI Agent Framework](10_ai_and_ml/Mosaic%20AI%20Agent%20Framework.md) [301]: Building custom agents in code with tools, MLflow tracing, and deployment.
-- [Agent Evaluation and Tracing](10_ai_and_ml/Agent%20Evaluation%20and%20Tracing.md) [301]: Measuring agent quality with judges and traces in MLflow.
-- [Fine-Tuning](10_ai_and_ml/Fine-Tuning.md) [401]: Further training a foundation model on your own examples, and when not to bother.
-- [Data Quality Monitoring](10_ai_and_ml/Data%20Quality%20Monitoring.md) [301]: Watching tables and model inputs for drift, freshness, and anomalies (formerly Lakehouse Monitoring).
-- [GPU Compute](10_ai_and_ml/GPU%20Compute.md) [301]: GPU clusters and serverless GPUs for deep learning and LLM work.
-- [MosaicML and Open Models](10_ai_and_ml/MosaicML%20and%20Open%20Models.md) [201]: Databricks' 2023 MosaicML acquisition, DBRX, and its open-model strategy.
+- [Chapter 10 - AI and ML](10_ai_and_ml/Chapter%2010%20-%20AI%20and%20ML.md): From classic machine learning to agents, covering MLflow, Model Serving, Unity Gateway, AI Search, and Agent Bricks.
+- [Machine Learning Basics](10_ai_and_ml/Machine%20Learning%20Basics.md) [101]: Teaching software from examples, covering training, models, features, labels, and predictions, and where each step lives in Databricks.
+- [Generative AI and LLMs](10_ai_and_ml/Generative%20AI%20and%20LLMs.md) [101]: What large language models are, why they need your business data to be useful, and the Databricks tools for each way of using them.
+- [Feature Engineering and Feature Store](10_ai_and_ml/Feature%20Engineering%20and%20Feature%20Store.md) [301]: Reusable, governed model inputs in Unity Catalog, kept consistent between training and serving, with Lakebase-backed online stores.
+- [MLflow](10_ai_and_ml/MLflow.md) [101]: The open-source platform for tracking, packaging, evaluating, tracing, and deploying ML models and GenAI agents, managed on Databricks.
+- [Experiment Tracking](10_ai_and_ml/Experiment%20Tracking.md) [201]: Logging every training run's parameters, metrics, and artifacts in MLflow experiments, so results can be compared and reproduced.
+- [Models in Unity Catalog](10_ai_and_ml/Models%20in%20Unity%20Catalog.md) [201]: Versioning, aliasing, and governing ML models as Unity Catalog objects, the default MLflow registry since MLflow 3.
+- [AutoML](10_ai_and_ml/AutoML.md) [101]: Letting Databricks train and compare models for you and hand back notebooks, now removed from Databricks Runtime 18.0 ML onward.
+- [Model Serving](10_ai_and_ml/Model%20Serving.md) [201]: Turning a registered model into a live, autoscaling REST endpoint on serverless CPU or GPU compute.
+- [Foundation Model APIs](10_ai_and_ml/Foundation%20Model%20APIs.md) [201]: Pay-per-token and provisioned-throughput access to Databricks-hosted open and partner LLMs, through an OpenAI-compatible API.
+- [Unity Gateway](10_ai_and_ml/Unity%20Gateway.md) [301]: Unity Gateway (formerly AI Gateway) governs, rate-limits, logs, and guards every model and MCP call, including calls to external providers.
+- [AI Search](10_ai_and_ml/AI%20Search.md) [201]: Databricks AI Search (formerly Vector Search) finds text or images by meaning, the retrieval half of RAG, with indexes synced from Delta tables.
+- [Retrieval-Augmented Generation](10_ai_and_ml/Retrieval-Augmented%20Generation.md) [201]: Giving an LLM your documents at question time so it answers from facts, built on Databricks with document parsing, AI Search, and MLflow evaluation.
+- [Agent Bricks](10_ai_and_ml/Agent%20Bricks.md) [101]: Databricks' agent platform, launched in 2025 for building agents from a task description and refocused in 2026 on code-first agents with the Agent Bricks CLI and Agent Runtime.
+- [Mosaic AI Agent Framework](10_ai_and_ml/Mosaic%20AI%20Agent%20Framework.md) [301]: The earlier code-first agent tooling (ResponsesAgent, MLflow AgentServer on Databricks Apps, Model Serving deployment), now legacy and mapped to Agent Bricks.
+- [Agent Evaluation and Tracing](10_ai_and_ml/Agent%20Evaluation%20and%20Tracing.md) [301]: Measuring agent and RAG quality in MLflow 3 with traces, LLM judges, custom scorers, human feedback, and production monitoring.
+- [Fine-Tuning](10_ai_and_ml/Fine-Tuning.md) [401]: Further training a foundation model on your own examples, when not to bother, and how to do it on AI Runtime now that Foundation Model Fine-tuning is end of life.
+- [Data Quality Monitoring](10_ai_and_ml/Data%20Quality%20Monitoring.md) [301]: Watching tables and model inputs for freshness, completeness, and drift with anomaly detection and data profiling (formerly Lakehouse Monitoring).
+- [AI Runtime](10_ai_and_ml/AI%20Runtime.md) [301]: GPU clusters on Databricks Runtime ML and AI Runtime serverless GPUs (A10 and H100) for deep learning, fine-tuning, and LLM work.
+- [MosaicML and Open Models](10_ai_and_ml/MosaicML%20and%20Open%20Models.md) [201]: Databricks' 2023 MosaicML acquisition, the MPT and DBRX open models, and how that technology lives on in hosted models, serving, and AI Runtime.
 
 ## Azure Databricks
 
@@ -262,42 +262,42 @@ Depth: 101 beginner, 201 practitioner, 301 advanced, 401 expert.
 - [ADLS and Access Connectors](11_azure_databricks/ADLS%20and%20Access%20Connectors.md) [301]: How Unity Catalog reaches ADLS Gen2 through an Access Connector's managed identity, including storage behind firewalls.
 - [Azure Key Vault Secret Scopes](11_azure_databricks/Azure%20Key%20Vault%20Secret%20Scopes.md) [301]: Using Azure Key Vault as the read-only backing store for a Databricks secret scope, with its permission model and limits.
 - [Azure Data Factory with Databricks](11_azure_databricks/Azure%20Data%20Factory%20with%20Databricks.md) [201]: Calling Azure Databricks from Azure Data Factory pipelines with the Job and Notebook activities, and when to use Lakeflow Jobs instead.
-- [Microsoft Fabric and OneLake vs Databricks](11_azure_databricks/Microsoft%20Fabric%20and%20OneLake%20vs%20Databricks.md) [201]: How Fabric and Azure Databricks overlap, compete, and integrate.
-- [Power BI on Azure Databricks](11_azure_databricks/Power%20BI%20on%20Azure%20Databricks.md) [201]: Entra single sign-on into Power BI, publishing to the Power BI service, and DirectQuery tips.
-- [Azure Billing and Commit Units](11_azure_databricks/Azure%20Billing%20and%20Commit%20Units.md) [201]: Pay-as-you-go on the Azure bill, pre-purchase plans, and Azure cost tools.
-- [Azure Monitor and Diagnostic Logs](11_azure_databricks/Azure%20Monitor%20and%20Diagnostic%20Logs.md) [301]: Sending Databricks logs to Log Analytics, Storage, or Event Hubs.
-- [Customer-Managed Keys on Azure](11_azure_databricks/Customer-Managed%20Keys%20on%20Azure.md) [401]: Encrypting managed services and storage with your own Key Vault keys.
+- [Microsoft Fabric and OneLake vs Databricks](11_azure_databricks/Microsoft%20Fabric%20and%20OneLake%20vs%20Databricks.md) [201]: How Microsoft Fabric and Azure Databricks overlap, how to choose between them, and how mirroring and OneLake federation connect them.
+- [Power BI on Azure Databricks](11_azure_databricks/Power%20BI%20on%20Azure%20Databricks.md) [201]: Entra single sign-on from Power BI, the ADBC driver, publishing semantic models from Unity Catalog, and DirectQuery guidance.
+- [Azure Billing and Commit Units](11_azure_databricks/Azure%20Billing%20and%20Commit%20Units.md) [201]: Pay-as-you-go billing on the Azure invoice, Databricks commit unit (DBCU) prepurchase plans, and Azure and Databricks cost tools.
+- [Azure Monitor and Diagnostic Logs](11_azure_databricks/Azure%20Monitor%20and%20Diagnostic%20Logs.md) [301]: Sending Azure Databricks diagnostic (audit) logs to Log Analytics, Storage, or Event Hubs, and when to use the audit log system table instead.
+- [Customer-Managed Keys on Azure](11_azure_databricks/Customer-Managed%20Keys%20on%20Azure.md) [401]: Encrypting Azure Databricks managed services, workspace storage (DBFS root), and managed disks with your own Azure Key Vault or Managed HSM keys.
 
 ## Databricks on AWS
 
 - [Chapter 12 - Databricks on AWS](12_databricks_on_aws/Chapter%2012%20-%20Databricks%20on%20AWS.md): Databricks on Amazon Web Services, covering cross-account roles, customer-managed VPCs, PrivateLink, and S3.
 - [Databricks on AWS Overview](12_databricks_on_aws/Databricks%20on%20AWS%20Overview.md) [101]: How Databricks runs on AWS, sold by Databricks directly or through AWS Marketplace.
-- [Account Setup on AWS](12_databricks_on_aws/Account%20Setup%20on%20AWS.md) [101]: Signing up, creating a workspace, and quick setup versus manual setup.
-- [Cross-Account IAM Role](12_databricks_on_aws/Cross-Account%20IAM%20Role.md) [301]: The IAM role that lets Databricks launch EC2 instances in your account.
-- [Workspace Storage Bucket](12_databricks_on_aws/Workspace%20Storage%20Bucket.md) [201]: The S3 bucket each workspace uses for its own system data.
-- [Customer-Managed VPC on AWS](12_databricks_on_aws/Customer-Managed%20VPC%20on%20AWS.md) [301]: Running classic compute in a VPC you create and control.
-- [AWS PrivateLink](12_databricks_on_aws/AWS%20PrivateLink.md) [401]: Private front-end and back-end connectivity between your VPC and Databricks.
-- [Instance Profiles](12_databricks_on_aws/Instance%20Profiles.md) [301]: The legacy way clusters got S3 access, and why Unity Catalog replaced it.
-- [S3 Access via Unity Catalog](12_databricks_on_aws/S3%20Access%20via%20Unity%20Catalog.md) [301]: Storage credentials backed by IAM roles for governed S3 access.
-- [AWS Glue and Lake Formation Federation](12_databricks_on_aws/AWS%20Glue%20and%20Lake%20Formation%20Federation.md) [401]: Reading tables registered in AWS Glue from Unity Catalog.
-- [AWS Marketplace and Billing](12_databricks_on_aws/AWS%20Marketplace%20and%20Billing.md) [201]: Paying Databricks directly or through the AWS bill, plus EC2 costs.
-- [EC2 Instance Types and Graviton](12_databricks_on_aws/EC2%20Instance%20Types%20and%20Graviton.md) [301]: Picking node types, spot instances, and ARM-based Graviton for price and performance.
-- [Customer-Managed Keys on AWS](12_databricks_on_aws/Customer-Managed%20Keys%20on%20AWS.md) [401]: Encrypting managed services and workspace storage with AWS KMS keys.
-- [Databricks on AWS GovCloud](12_databricks_on_aws/Databricks%20on%20AWS%20GovCloud.md) [401]: Databricks for US public-sector and regulated workloads.
+- [Account Setup on AWS](12_databricks_on_aws/Account%20Setup%20on%20AWS.md) [101]: Signing up, then creating a serverless workspace or a classic workspace with Quickstart, manual setup, or Terraform.
+- [Cross-Account IAM Role](12_databricks_on_aws/Cross-Account%20IAM%20Role.md) [301]: The IAM role that lets the Databricks control plane launch and manage EC2 instances in your AWS account.
+- [Workspace Storage Bucket](12_databricks_on_aws/Workspace%20Storage%20Bucket.md) [201]: The S3 bucket a classic AWS workspace uses for its own system data, and why production data belongs elsewhere.
+- [Customer-Managed VPC on AWS](12_databricks_on_aws/Customer-Managed%20VPC%20on%20AWS.md) [301]: Running classic compute in a VPC you create and control, with subnet, security group, and egress requirements.
+- [AWS PrivateLink](12_databricks_on_aws/AWS%20PrivateLink.md) [401]: Private front-end and back-end connectivity between your VPCs and Databricks using VPC interface endpoints.
+- [Instance Profiles](12_databricks_on_aws/Instance%20Profiles.md) [301]: The legacy way clusters got S3 access by attaching an IAM role to EC2 nodes, and why Unity Catalog replaced it.
+- [S3 Access via Unity Catalog](12_databricks_on_aws/S3%20Access%20via%20Unity%20Catalog.md) [301]: Storage credentials backed by self-assuming IAM roles, plus external locations, for governed S3 access.
+- [Hive Metastore Federation for AWS Glue](12_databricks_on_aws/Hive%20Metastore%20Federation%20for%20AWS%20Glue.md) [401]: Governing and reading tables registered in the AWS Glue Data Catalog from Unity Catalog through catalog federation.
+- [AWS Marketplace and Billing](12_databricks_on_aws/AWS%20Marketplace%20and%20Billing.md) [201]: Paying Databricks directly or through AWS Marketplace, and where the EC2, EBS, S3, and networking costs of classic compute appear.
+- [EC2 Instance Types and Graviton](12_databricks_on_aws/EC2%20Instance%20Types%20and%20Graviton.md) [301]: Picking EC2 node types, fleet types, spot instances, and Arm-based Graviton for classic compute price and performance.
+- [Customer-Managed Keys on AWS](12_databricks_on_aws/Customer-Managed%20Keys%20on%20AWS.md) [401]: Encrypting managed services, the workspace storage bucket, and EBS volumes with AWS KMS keys you control.
+- [Databricks on AWS GovCloud](12_databricks_on_aws/Databricks%20on%20AWS%20GovCloud.md) [401]: The separate Databricks environment in AWS GovCloud (US) for FedRAMP High, DoD IL5, and other US public-sector workloads.
 
 ## Databricks on Google Cloud
 
 - [Chapter 13 - Databricks on Google Cloud](13_databricks_on_gcp/Chapter%2013%20-%20Databricks%20on%20Google%20Cloud.md): Databricks on GCP, covering Google service accounts, Private Service Connect, GCS, and BigQuery.
-- [Databricks on Google Cloud Overview](13_databricks_on_gcp/Databricks%20on%20Google%20Cloud%20Overview.md) [101]: How Databricks runs on Google Cloud and what is different there.
-- [Account Setup on Google Cloud](13_databricks_on_gcp/Account%20Setup%20on%20Google%20Cloud.md) [101]: Subscribing through Google Cloud Marketplace and creating the first workspace.
-- [Compute on Google Cloud](13_databricks_on_gcp/Compute%20on%20Google%20Cloud.md) [301]: How classic clusters run on Compute Engine VMs (after the move off GKE).
-- [Customer-Managed VPC on Google Cloud](13_databricks_on_gcp/Customer-Managed%20VPC%20on%20Google%20Cloud.md) [301]: Bringing your own VPC and subnets for Databricks compute.
-- [Private Service Connect](13_databricks_on_gcp/Private%20Service%20Connect.md) [401]: Private connectivity between your VPC and Databricks on Google Cloud.
-- [Google Service Accounts](13_databricks_on_gcp/Google%20Service%20Accounts.md) [301]: How Databricks and clusters authenticate to Google Cloud resources.
-- [GCS Access via Unity Catalog](13_databricks_on_gcp/GCS%20Access%20via%20Unity%20Catalog.md) [301]: Storage credentials backed by Google service accounts for governed GCS access.
-- [BigQuery Integration](13_databricks_on_gcp/BigQuery%20Integration.md) [201]: Reading and writing BigQuery from Databricks, and federation.
-- [Google Cloud Marketplace and Billing](13_databricks_on_gcp/Google%20Cloud%20Marketplace%20and%20Billing.md) [201]: Paying for Databricks through the Google Cloud bill.
-- [Customer-Managed Keys on Google Cloud](13_databricks_on_gcp/Customer-Managed%20Keys%20on%20Google%20Cloud.md) [401]: Encrypting with Cloud KMS keys you control.
+- [Databricks on Google Cloud Overview](13_databricks_on_gcp/Databricks%20on%20Google%20Cloud%20Overview.md) [101]: How Databricks runs on Google Cloud, sold through Google Cloud Marketplace, and what is different there.
+- [Account Setup on Google Cloud](13_databricks_on_gcp/Account%20Setup%20on%20Google%20Cloud.md) [101]: Subscribing through Google Cloud Marketplace, activating the account, and creating the first serverless or classic workspace.
+- [Compute on Google Cloud](13_databricks_on_gcp/Compute%20on%20Google%20Cloud.md) [301]: How classic clusters run on Compute Engine VMs (after the move off GKE), with machine types, preemptible VMs, and gcp_attributes.
+- [Customer-Managed VPC on Google Cloud](13_databricks_on_gcp/Customer-Managed%20VPC%20on%20Google%20Cloud.md) [301]: Bringing your own VPC and subnet (standalone or Shared VPC) for Databricks classic compute on Google Cloud.
+- [Private Service Connect](13_databricks_on_gcp/Private%20Service%20Connect.md) [401]: Private front-end and back-end connectivity between your VPCs and Databricks on Google Cloud using PSC endpoints.
+- [Google Service Accounts](13_databricks_on_gcp/Google%20Service%20Accounts.md) [301]: The workspace, compute, custom, and Unity Catalog service accounts that let Databricks and clusters authenticate to Google Cloud.
+- [GCS Access via Unity Catalog](13_databricks_on_gcp/GCS%20Access%20via%20Unity%20Catalog.md) [301]: Storage credentials backed by Databricks-generated Google service accounts, plus external locations, for governed GCS access.
+- [BigQuery Integration](13_databricks_on_gcp/BigQuery%20Integration.md) [201]: Reading and writing BigQuery with the Spark connector, and querying it in place through Lakehouse Federation.
+- [Google Cloud Marketplace and Billing](13_databricks_on_gcp/Google%20Cloud%20Marketplace%20and%20Billing.md) [201]: Paying for Databricks through a Google Cloud Marketplace subscription on the Google Cloud bill, and where Compute Engine and storage costs appear.
+- [Customer-Managed Keys on Google Cloud](13_databricks_on_gcp/Customer-Managed%20Keys%20on%20Google%20Cloud.md) [401]: Encrypting managed services, workspace GCS buckets, and Compute Engine disks with Cloud KMS keys you control, set at workspace creation.
 
 ## Admin, Security & Cost
 
@@ -325,19 +325,19 @@ Depth: 101 beginner, 201 practitioner, 301 advanced, 401 expert.
 ## Migrating to Databricks
 
 - [Chapter 15 - Migrating to Databricks](15_migrating_to_databricks/Chapter%2015%20-%20Migrating%20to%20Databricks.md): Playbooks for moving a business onto Databricks from spreadsheets, databases, warehouses, and Hadoop.
-- [Migration Strategy Overview](15_migrating_to_databricks/Migration%20Strategy%20Overview.md) [101]: The phases of every migration, from assess and plan to coexist, move, convert, validate, switch over, and switch off.
+- [Migration Strategy Overview](15_migrating_to_databricks/Migration%20Strategy%20Overview.md) [101]: The phases of every migration, from assess and plan to coexist, ingest, convert, validate, switch over, and decommission.
 - [Assessing Your Current Data Estate](15_migrating_to_databricks/Assessing%20Your%20Current%20Data%20Estate.md) [201]: Taking inventory of sources, tables, jobs, reports, users, and costs before moving anything.
 - [Migrating from Excel and Access](15_migrating_to_databricks/Migrating%20from%20Excel%20and%20Access.md) [101]: Moving a spreadsheet-run business into governed tables, with file uploads, Volumes, a first dashboard, and Genie.
 - [Migrating from SQL Server](15_migrating_to_databricks/Migrating%20from%20SQL%20Server.md) [201]: Moving off an on-premises or Azure SQL Server, using federation first, Lakeflow Connect replication after, and Lakebridge for T-SQL.
 - [Migrating from Postgres and MySQL](15_migrating_to_databricks/Migrating%20from%20Postgres%20and%20MySQL.md) [201]: Moving app-database analytics from PostgreSQL or MySQL into the lakehouse without slowing the app down.
-- [Migrating from Snowflake](15_migrating_to_databricks/Migrating%20from%20Snowflake.md) [301]: Code conversion, data movement, and Iceberg-based coexistence.
-- [Migrating from Amazon Redshift](15_migrating_to_databricks/Migrating%20from%20Amazon%20Redshift.md) [301]: Unloading to S3, converting SQL, and switching over workloads.
-- [Migrating from Google BigQuery](15_migrating_to_databricks/Migrating%20from%20Google%20BigQuery.md) [301]: Federation, exports to GCS, and converting BigQuery SQL.
-- [Migrating from Hadoop](15_migrating_to_databricks/Migrating%20from%20Hadoop.md) [301]: Moving HDFS data, Hive tables, and Spark jobs off an old cluster.
-- [Migrating ETL Tools](15_migrating_to_databricks/Migrating%20ETL%20Tools.md) [301]: Converting SSIS, Informatica, Talend, and stored procedures.
+- [Migrating from Snowflake](15_migrating_to_databricks/Migrating%20from%20Snowflake.md) [301]: A Snowflake-to-Databricks playbook covering federation, Iceberg-based coexistence, data unloads, SQL conversion with Lakebridge, and reconciliation.
+- [Migrating from Amazon Redshift](15_migrating_to_databricks/Migrating%20from%20Amazon%20Redshift.md) [301]: A Redshift-to-Databricks playbook covering federation, UNLOAD to S3 as Parquet, SQL conversion with Lakebridge, and switch-over.
+- [Migrating from Google BigQuery](15_migrating_to_databricks/Migrating%20from%20Google%20BigQuery.md) [301]: A BigQuery-to-Databricks playbook covering Storage API federation, EXPORT DATA to Cloud Storage, SQL conversion, and reconciliation.
+- [Migrating from Hadoop](15_migrating_to_databricks/Migrating%20from%20Hadoop.md) [301]: Moving HDFS data, Hive tables, Spark jobs, and Oozie workflows off an on-premises Hadoop cluster into Databricks.
+- [Migrating ETL Tools](15_migrating_to_databricks/Migrating%20ETL%20Tools.md) [301]: Converting SSIS, DataStage, Informatica, Talend, Airflow, and stored procedures into Databricks notebooks, SQL, pipelines, and jobs.
 - [Lakebridge](15_migrating_to_databricks/Lakebridge.md) [301]: Databricks' free migration toolkit for profiling, SQL conversion, and data reconciliation.
-- [Migrating BI Reports](15_migrating_to_databricks/Migrating%20BI%20Reports.md) [201]: Repointing Power BI and Tableau reports, or rebuilding them as AI-BI dashboards.
-- [Running Old and New in Parallel](15_migrating_to_databricks/Running%20Old%20and%20New%20in%20Parallel.md) [201]: Parallel runs, reconciliation, and a safe switch-over plan.
+- [Migrating BI Reports](15_migrating_to_databricks/Migrating%20BI%20Reports.md) [201]: Repointing Power BI and Tableau reports to Databricks SQL warehouses, or rebuilding them as AI/BI dashboards and Genie agents.
+- [Running Old and New in Parallel](15_migrating_to_databricks/Running%20Old%20and%20New%20in%20Parallel.md) [201]: Parallel runs, reconciliation with Lakebridge and SQL, and a safe switch-over and rollback plan.
 - [Migration Checklist](15_migrating_to_databricks/Migration%20Checklist.md) [101]: A printable, start-to-finish checklist for a small business migration.
 
 ## Learning Paths

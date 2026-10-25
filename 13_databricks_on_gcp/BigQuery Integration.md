@@ -14,7 +14,7 @@ next: "[[Google Cloud Marketplace and Billing]]"
 evolved_from: []
 evolved_into: []
 cloud_equivalent:
-  - "[[AWS Glue and Lake Formation Federation]]"
+  - "[[Hive Metastore Federation for AWS Glue]]"
   - "[[Microsoft Fabric and OneLake vs Databricks]]"
 related:
   - "[[Google BigQuery]]"

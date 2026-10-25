@@ -23,8 +23,8 @@ related:
   - "[[Apache Spark]]"
   - "[[Delta Lake]]"
   - "[[Unity Catalog]]"
-  - "[[Databricks One]]"
-  - "[[Genie]]"
+  - "[[Genie One]]"
+  - "[[Genie Agents]]"
   - "[[Serverless Compute]]"
 aliases:
   - What is Databricks
@@ -63,7 +63,7 @@ Mastery: `INPUT[inlineSelect(option(new), option(learning), option(solid)):maste
 > | Stoves, paid for by the gas burned | Compute, billed in [[DBUs]] |
 > | Recipe cards | [[Notebooks]], [[SQL]] queries, and [[Lakeflow Jobs\|scheduled jobs]] |
 > | Head chef's inventory and access list | [[Unity Catalog]] |
-> | Front-of-house menu | [[AI-BI Dashboards\|Dashboards]] and [[Genie]] |
+> | Front-of-house menu | [[AI-BI Dashboards\|Dashboards]] and [[Genie Agents]] |
 
 ## Background
 
@@ -81,7 +81,7 @@ Databricks is a cloud data platform delivered as a managed service on Microsoft 
 | Ingest | Copy data from applications and databases on a schedule | Lakeflow Connect | [[Lakeflow Connect]] |
 | Transform | Turn raw exports into trusted tables | Lakeflow Spark Declarative Pipelines, Lakeflow Jobs | [[Lakeflow Spark Declarative Pipelines]], [[Lakeflow Jobs]] |
 | Govern | Control access and track where values come from | Unity Catalog | [[Unity Catalog]] |
-| Analyze | SQL, dashboards, natural-language questions | Databricks SQL, AI/BI dashboards, Genie | [[Databricks SQL]], [[AI-BI Dashboards]], [[Genie]] |
+| Analyze | SQL, dashboards, natural-language questions | Databricks SQL, AI/BI dashboards, Genie | [[Databricks SQL]], [[AI-BI Dashboards]], [[Genie Agents]] |
 | Predict and automate | Forecasts, machine learning, AI agents | Mosaic AI, MLflow, Agent Bricks | [[MLflow]], [[Agent Bricks]] |
 
 Two properties matter most to a business reader:
@@ -119,7 +119,7 @@ LIMIT  5;
 
 The same table can then feed a dashboard, a scheduled alert, and a forecast without copying data between systems.
 
-Business users do not need to use notebooks or compute settings. **Genie One** (formerly Databricks One, renamed in 2026) is the simplified interface where they open dashboards, ask questions in natural language, and use apps. See [[Databricks One]] and [[Genie]].
+Business users do not need to use notebooks or compute settings. **Genie One** (formerly Databricks One, renamed in 2026) is the simplified interface where they open dashboards, ask questions in natural language, and use apps. See [[Genie One]] and [[Genie Agents]].
 
 ## Small-business considerations
 

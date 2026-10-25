@@ -79,7 +79,7 @@ This shapes every setup decision on AWS:
 | Network | Databricks-managed VPC or a [[Customer-Managed VPC on AWS]] | [[AWS PrivateLink]] for private connectivity |
 | Data access | Unity Catalog storage credentials backed by IAM roles | [[S3 Access via Unity Catalog]] |
 | Legacy data access | [[Instance Profiles]] attached to clusters | Replaced by Unity Catalog |
-| Other catalogs | AWS Glue federation | [[AWS Glue and Lake Formation Federation]] |
+| Other catalogs | AWS Glue federation | [[Hive Metastore Federation for AWS Glue]] |
 | Compute | EC2 instance types, Graviton, spot | [[EC2 Instance Types and Graviton]] |
 | Keys | AWS KMS | [[Customer-Managed Keys on AWS]] |
 | Regulated US public sector | Separate GovCloud environment | [[Databricks on AWS GovCloud]] |

@@ -149,7 +149,7 @@ You should know your cloud's basics: IAM or Entra ID, virtual networks, and obje
 - **Private connectivity:** [[Azure Private Link]], [[AWS PrivateLink]], [[Private Service Connect]].
 - **Keys you own:** [[Customer-Managed Keys on Azure]], [[Customer-Managed Keys on AWS]], [[Customer-Managed Keys on Google Cloud]].
 - **Sharing and partners:** [[OpenSharing]] and [[Clean Rooms]].
-- **AI governance:** [[AI Gateway]] and [[Models in Unity Catalog]].
+- **AI governance:** [[Unity Gateway]] and [[Models in Unity Catalog]].
 - **Automation in CI:** [[Declarative Automation Bundles]], [[Databricks SDKs and REST API]], [[CI-CD for Data Pipelines]].
 - **Regulated workloads:** [[Databricks on AWS GovCloud]], [[HIPAA]], [[SOC 2]].
 

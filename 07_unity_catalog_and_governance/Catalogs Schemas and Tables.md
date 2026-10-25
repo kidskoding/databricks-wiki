@@ -156,7 +156,7 @@ The Unity Catalog best practices docs suggest catalogs as the main unit of data 
 ## Small-business considerations
 
 > [!smallbiz] Small-business considerations
-> Use three to five catalogs, not one per person. A layout like `raw` / `analytics` / `sandbox`, with schemas named after source systems in `raw` (`raw.shopify`, `raw.quickbooks`) and after business topics in `analytics` (`analytics.sales`, `analytics.inventory`), is straightforward to document. Add a `COMMENT` to every catalog, schema, and important table; [[Genie]] and the [[Databricks Assistant]] read those comments when answering questions in plain English.
+> Use three to five catalogs, not one per person. A layout like `raw` / `analytics` / `sandbox`, with schemas named after source systems in `raw` (`raw.shopify`, `raw.quickbooks`) and after business topics in `analytics` (`analytics.sales`, `analytics.inventory`), is straightforward to document. Add a `COMMENT` to every catalog, schema, and important table; [[Genie Agents]] and the [[Genie Code]] read those comments when answering questions in plain English.
 
 ## Cloud differences
 

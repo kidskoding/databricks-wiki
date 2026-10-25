@@ -23,7 +23,7 @@ related:
   - "[[BI Tools]]"
   - "[[Dashboard]]"
   - "[[AI-BI Dashboards]]"
-  - "[[Genie]]"
+  - "[[Genie Agents]]"
   - "[[Connecting Power BI]]"
   - "[[Data Quality]]"
 aliases:
@@ -133,7 +133,7 @@ The formula and the query express the same idea. The difference is in the surrou
 > [!bridge]- In Databricks today
 > - **Reading Excel files:** Databricks has a built-in Excel reader (`read_files` with `format => 'excel'`, or `spark.read.excel`) on Databricks Runtime 17.1 and above. It reads one sheet at a time, returns formulas as their computed values, keeps only the top-left value of merged cells, and can target a sheet or range with `dataAddress`. Excel files can also be ingested from SharePoint. Check the docs for current release status.
 > - **Replacing the master spreadsheet:** a [[Delta Lake]] table in [[Unity Catalog]], with grants per group.
-> - **Replacing the pivot-table report:** [[AI-BI Dashboards]], or [[Genie]] for asking questions in plain English.
+> - **Replacing the pivot-table report:** [[AI-BI Dashboards]], or [[Genie Agents]] for asking questions in plain English.
 > - **Keeping Excel as the front end:** Excel and [[Connecting Power BI|Power BI]] can query Databricks tables directly through [[SQL Warehouses]] and the [[JDBC and ODBC|ODBC]] driver[^unverified].
 
 ## Cloud differences

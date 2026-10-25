@@ -16,7 +16,7 @@ evolved_from:
   - "[[JDBC and ODBC]]"
 evolved_into: []
 cloud_equivalent:
-  - "[[AWS Glue and Lake Formation Federation]]"
+  - "[[Hive Metastore Federation for AWS Glue]]"
   - "[[BigQuery Integration]]"
 related:
   - "[[Catalogs Schemas and Tables]]"
@@ -150,7 +150,7 @@ The SQL and the two federation types are the same. The **list of sources differs
 > - Catalog federation includes **OneLake**, which lets you read Microsoft Fabric data in place. See [[Microsoft Fabric and OneLake vs Databricks]].
 
 > [!aws]- Databricks on AWS
-> - The AWS docs also list **AWS Glue** for catalog federation, so tables registered in Glue can be governed through Unity Catalog. See [[AWS Glue and Lake Formation Federation]].
+> - The AWS docs also list **AWS Glue** for catalog federation, so tables registered in Glue can be governed through Unity Catalog. See [[Hive Metastore Federation for AWS Glue]].
 > - Amazon Redshift is a query federation source.
 
 > [!gcp]- Databricks on Google Cloud

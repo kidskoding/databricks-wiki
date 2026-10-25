@@ -11,13 +11,13 @@ personas:
   - scientist
 chapter: "[[Chapter 06 - The Databricks Platform]]"
 prev: "[[SQL Warehouses]]"
-next: "[[Databricks Assistant]]"
+next: "[[Genie Code]]"
 evolved_from:
   - "[[Python for Data]]"
 evolved_into: []
 cloud_equivalent: []
 related:
-  - "[[Databricks Assistant]]"
+  - "[[Genie Code]]"
   - "[[Serverless Compute]]"
   - "[[All-Purpose Compute]]"
   - "[[Libraries and Environments]]"
@@ -35,7 +35,7 @@ prereqs:
   - "[[Accounts and Workspaces]]"
   - "[[Compute Types]]"
 unlocks:
-  - "[[Databricks Assistant]]"
+  - "[[Genie Code]]"
   - "[[Git Folders and Workspace Files]]"
   - "[[Libraries and Environments]]"
   - "[[Lakeflow Jobs]]"
@@ -82,7 +82,7 @@ A Databricks notebook is a sequence of **cells**. Each cell holds code or Markdo
 | **Multiple languages** | Python, SQL, Scala, and R. Each notebook has a default language, and a cell can override it. |
 | **Attach to compute** | Run on [[Serverless Compute\|serverless compute]], [[All-Purpose Compute\|all-purpose compute]], or a [[SQL Warehouses\|SQL warehouse]] for SQL. |
 | **Rich output** | Tables, built-in visualizations, and widgets for parameters. |
-| **AI help** | [[Databricks Assistant\|Genie Code]] generates, explains, and fixes code in cells. |
+| **AI help** | [[Genie Code\|Genie Code]] generates, explains, and fixes code in cells. |
 | **Version control** | Built-in version history, plus [[Git Folders and Workspace Files\|Git folders]] for Git. |
 | **Scheduling** | A notebook can run as a task in [[Lakeflow Jobs]]. |
 | **File format** | New notebooks are created as `.ipynb` (Jupyter) files by default since December 20, 2024. |
@@ -195,10 +195,10 @@ Where does a `%sh` command run?::On the driver node only.
 
 > [!path] Learning path
 > **Needs first:** [[Accounts and Workspaces]], [[Compute Types]]
-> **Unlocks next:** [[Databricks Assistant]], [[Git Folders and Workspace Files]], [[Libraries and Environments]], [[Lakeflow Jobs]]
+> **Unlocks next:** [[Genie Code]], [[Git Folders and Workspace Files]], [[Libraries and Environments]], [[Lakeflow Jobs]]
 
 > [!nextup] Next
-> [[Databricks Assistant]] (now Genie Code) covers the AI helper built into notebooks that writes, explains, and fixes code.
+> [[Genie Code]] (now Genie Code) covers the AI helper built into notebooks that writes, explains, and fixes code.
 
 > [!sources]- Sources (last verified: 2026-10-25)
 > - [Develop code in Databricks notebooks (AWS)](https://docs.databricks.com/aws/en/notebooks/notebooks-code)

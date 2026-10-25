@@ -135,7 +135,7 @@ On Parquet files in a bucket, each of these statements requires a custom job tha
 > The swamp pattern and its cure are the same on every cloud. On Azure, a swamp usually looks like many ADLS containers with storage-key access shared around; the cure is Unity Catalog over [[ADLS and Access Connectors|Access Connectors]].
 
 > [!aws]- Databricks on AWS
-> Same pattern. On AWS, look for buckets accessed through broad [[Instance Profiles|instance profiles]] and an AWS Glue catalog out of sync with S3; see [[AWS Glue and Lake Formation Federation]] for bringing Glue under Unity Catalog.
+> Same pattern. On AWS, look for buckets accessed through broad [[Instance Profiles|instance profiles]] and an AWS Glue catalog out of sync with S3; see [[Hive Metastore Federation for AWS Glue]] for bringing Glue under Unity Catalog.
 
 > [!gcp]- Databricks on Google Cloud
 > Same pattern and cure; nothing GCP-specific differs.

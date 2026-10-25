@@ -19,11 +19,11 @@ evolved_into: []
 cloud_equivalent: []
 related:
   - "[[AI Agent]]"
-  - "[[Genie]]"
+  - "[[Genie Agents]]"
   - "[[Databricks Apps]]"
   - "[[Agent Evaluation and Tracing]]"
-  - "[[AI Gateway]]"
-  - "[[Vector Search]]"
+  - "[[Unity Gateway]]"
+  - "[[AI Search]]"
   - "[[AI Functions in SQL]]"
   - "[[Databricks CLI]]"
   - "[[Users Groups and Service Principals]]"
@@ -81,7 +81,7 @@ Mastery: `INPUT[inlineSelect(option(new), option(learning), option(solid)):maste
 
 ## Background
 
-Early agent projects stitched together a framework, a hosting service, a vector database, secrets, and logging, each with its own setup. Databricks first offered the [[Mosaic AI Agent Framework]] for code-based agents deployed on Model Serving, then Agent Bricks for task-based agents built from a description. In October 2026 Databricks consolidated: no-code agents moved to Genie Agents ([[Genie]]), and Agent Bricks became the code-first developer platform, with older servers and deployment targets moved to a Legacy section that maps each one to its replacement.
+Early agent projects stitched together a framework, a hosting service, a vector database, secrets, and logging, each with its own setup. Databricks first offered the [[Mosaic AI Agent Framework]] for code-based agents deployed on Model Serving, then Agent Bricks for task-based agents built from a description. In October 2026 Databricks consolidated: no-code agents moved to Genie Agents ([[Genie Agents]]), and Agent Bricks became the code-first developer platform, with older servers and deployment targets moved to a Legacy section that maps each one to its replacement.
 
 ## Overview
 
@@ -109,7 +109,7 @@ Which option to use:
 
 | Need | Use |
 |---|---|
-| A business user wants a data Q&A or task agent without code | Genie Agents ([[Genie]]) |
+| A business user wants a data Q&A or task agent without code | Genie Agents ([[Genie Agents]]) |
 | A developer builds a custom agent in code | Agent Bricks CLI and Agent Runtime |
 | Batch extraction or classification over a table | [[AI Functions in SQL]] (`ai_extract`, `ai_query`) |
 | Existing Knowledge Assistant or Supervisor Agent | Keeps running as legacy; see the Legacy agent offerings page |
@@ -159,7 +159,7 @@ For an existing agent project, the CLI prepares migration instructions that a co
 > - **One developer?** The Agent Bricks CLI removes most hosting and identity setup. Start with one narrow agent, such as order status.
 > - **Limit what the agent can do.** Give its service principal read access to the specific tables it needs. Avoid write access until evaluation is solid.
 > - **Evaluate before launch** with real customer questions ([[Agent Evaluation and Tracing]]).
-> - **Cost drivers:** the Databricks App compute that hosts the agent, model tokens through [[AI Gateway|Unity Gateway]], and any AI Search endpoint. See [[How Databricks Pricing Works]].
+> - **Cost drivers:** the Databricks App compute that hosts the agent, model tokens through [[Unity Gateway|Unity Gateway]], and any AI Search endpoint. See [[How Databricks Pricing Works]].
 
 ## Cloud differences
 

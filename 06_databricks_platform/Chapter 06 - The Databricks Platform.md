@@ -20,7 +20,7 @@ notes:
   - "[[Serverless Compute]]"
   - "[[SQL Warehouses]]"
   - "[[Notebooks]]"
-  - "[[Databricks Assistant]]"
+  - "[[Genie Code]]"
   - "[[Git Folders and Workspace Files]]"
   - "[[Declarative Automation Bundles]]"
   - "[[Databricks CLI]]"
@@ -58,7 +58,7 @@ Compute is the largest topic in the chapter, because it drives both performance 
 
 [[Compute Types]] gives the decision map. Databricks recommends serverless wherever it is available and classic compute when a workload needs something serverless does not support, such as R, RDD APIs, or init scripts.
 
-The next group of notes covers how code is written. [[Notebooks]] mix Python, SQL, Scala, and R cells with results and Markdown, and are stored as `.ipynb` files by default. [[Databricks Assistant]], renamed Genie Code in March 2026, is the AI agent inside notebooks and editors that writes, runs, and fixes code using Unity Catalog metadata.
+The next group of notes covers how code is written. [[Notebooks]] mix Python, SQL, Scala, and R cells with results and Markdown, and are stored as `.ipynb` files by default. [[Genie Code]], renamed Genie Code in March 2026, is the AI agent inside notebooks and editors that writes, runs, and fixes code using Unity Catalog metadata.
 
 The chapter then moves from interactive work to software engineering practice:
 
@@ -79,25 +79,25 @@ At the end of this chapter, you can create compute, write and version code, depl
 | # | Note | Depth | What it covers |
 |---|---|---|---|
 | 1 | [[The Founding of Databricks]] | 101 Beginner | How Spark's creators started a company in 2013 to run Spark in the cloud. |
-| 2 | [[The Data Intelligence Platform]] | 101 Beginner | Databricks' name for the lakehouse plus AI that understands your data. |
+| 2 | [[The Data Intelligence Platform]] | 101 Beginner | Databricks' name for the lakehouse plus AI that understands your data (now often called the Data + AI Platform). |
 | 3 | [[Accounts and Workspaces]] | 101 Beginner | The account is the company, and a workspace is a room where teams work. |
 | 4 | [[Control Plane and Compute Plane]] | 201 Practitioner | What Databricks runs for you, versus what runs in your cloud account or in serverless. |
 | 5 | [[Databricks Runtime]] | 201 Practitioner | The tuned Spark plus libraries image every classic cluster boots, and its LTS versions. |
 | 6 | [[Photon]] | 301 Advanced | Databricks' C++ query engine that speeds up SQL and DataFrame work. |
 | 7 | [[Compute Types]] | 101 Beginner | The map of Databricks compute, covering all-purpose, jobs, serverless, and SQL warehouses. |
-| 8 | [[All-Purpose Compute]] | 201 Practitioner | Interactive clusters for notebooks and exploration. |
+| 8 | [[All-Purpose Compute]] | 201 Practitioner | Interactive clusters for notebooks and exploration, which you create, share, and must remember to stop. |
 | 9 | [[Jobs Compute]] | 201 Practitioner | Clusters that spin up for one scheduled job and then disappear, at a lower price. |
-| 10 | [[Serverless Compute]] | 101 Beginner | Compute Databricks runs for you that starts in seconds and has no clusters to manage. |
-| 11 | [[SQL Warehouses]] | 101 Beginner | Compute built for SQL and BI, in serverless, pro, and classic types. |
-| 12 | [[Notebooks]] | 101 Beginner | Documents that mix code, results, charts, and text. |
-| 13 | [[Databricks Assistant]] | 101 Beginner | The built-in AI helper that writes, explains, and fixes code and queries. |
-| 14 | [[Git Folders and Workspace Files]] | 201 Practitioner | Connecting the workspace to GitHub, GitLab, or Azure DevOps. |
-| 15 | [[Declarative Automation Bundles]] | 301 Advanced | Infrastructure-as-code for jobs, pipelines, and apps as YAML in Git (formerly Databricks Asset Bundles). |
-| 16 | [[Databricks CLI]] | 201 Practitioner | The command-line tool for scripting everything in Databricks. |
-| 17 | [[Databricks SDKs and REST API]] | 301 Advanced | Programmatic control of Databricks from Python, Java, Go, and plain HTTP. |
-| 18 | [[Databricks Connect]] | 301 Advanced | Running code from your laptop IDE against Databricks compute. |
-| 19 | [[DBUs]] | 101 Beginner | The Databricks Unit, the meter that every Databricks bill counts in. |
-| 20 | [[Libraries and Environments]] | 201 Practitioner | Installing Python packages and pinning dependencies on classic and serverless compute. |
+| 10 | [[Serverless Compute]] | 101 Beginner | Compute that Databricks runs and scales for you, starting in seconds with no clusters to configure. |
+| 11 | [[SQL Warehouses]] | 101 Beginner | Compute built for SQL queries, dashboards, and BI tools, in serverless, pro, and classic types. |
+| 12 | [[Notebooks]] | 101 Beginner | Web documents that mix runnable code cells in Python, SQL, Scala, or R with results, charts, and text. |
+| 13 | [[Genie Code]] | 101 Beginner | The built-in AI coding and data agent, renamed from Databricks Assistant to Genie Code in March 2026. |
+| 14 | [[Git Folders and Workspace Files]] | 201 Practitioner | Git folders sync workspace code with GitHub, GitLab, Bitbucket, Azure DevOps, or CodeCommit; workspace files store code beside notebooks. |
+| 15 | [[Declarative Automation Bundles]] | 301 Advanced | Infrastructure as code for jobs, pipelines, and apps, defined as YAML in Git and deployed with `databricks bundle` (formerly Databricks Asset Bundles). |
+| 16 | [[Databricks CLI]] | 201 Practitioner | The `databricks` command-line tool for scripting workspaces and accounts, authenticating, and deploying bundles. |
+| 17 | [[Databricks SDKs and REST API]] | 301 Advanced | Programmatic control of Databricks through the REST API and the official SDKs for Python, Java, Go, and JavaScript (plus an R SDK from Databricks Labs). |
+| 18 | [[Databricks Connect]] | 301 Advanced | A client library, built on Spark Connect, that runs Spark code from your local IDE on Databricks clusters or serverless compute. |
+| 19 | [[DBUs]] | 101 Beginner | The Databricks Unit (DBU), a normalized unit of processing power per hour that Databricks usage is measured and priced in. |
+| 20 | [[Libraries and Environments]] | 201 Practitioner | How to install Python, JAR, and R packages and pin dependencies with notebook-scoped libraries, compute-scoped libraries, and serverless environments. |
 
 <!-- GENERATED:reading-order END -->
 

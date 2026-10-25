@@ -9,7 +9,7 @@ personas:
   - ai-dev
 chapter: "[[Chapter 10 - AI and ML]]"
 prev: "[[Model Serving]]"
-next: "[[AI Gateway]]"
+next: "[[Unity Gateway]]"
 evolved_from:
   - "[[Model Serving]]"
   - "[[MosaicML and Open Models]]"
@@ -19,7 +19,7 @@ related:
   - "[[LLM]]"
   - "[[Token]]"
   - "[[Embedding]]"
-  - "[[AI Gateway]]"
+  - "[[Unity Gateway]]"
   - "[[AI Functions in SQL]]"
   - "[[Generative AI and LLMs]]"
   - "[[Retrieval-Augmented Generation]]"
@@ -33,7 +33,7 @@ prereqs:
   - "[[Model Serving]]"
   - "[[Generative AI and LLMs]]"
 unlocks:
-  - "[[AI Gateway]]"
+  - "[[Unity Gateway]]"
   - "[[Retrieval-Augmented Generation]]"
   - "[[Agent Bricks]]"
 clouds:
@@ -88,7 +88,7 @@ Limits and policies to know:
 - **Retirement.** Databricks publishes an AI models maintenance policy with retirement dates and recommended replacements. For example, DeepSeek V4 Pro (0813) has a pay-per-token retirement date of October 30, 2026, with DeepSeek V4.1 Flash recommended.
 - **Compliance.** A separate page lists which models are covered under compliance profiles.
 
-In Unity Gateway, Databricks-provided model services are registered in the `system.ai` schema of Unity Catalog, so access to them is governed with grants. See [[AI Gateway]].
+In Unity Gateway, Databricks-provided model services are registered in the `system.ai` schema of Unity Catalog, so access to them is governed with grants. See [[Unity Gateway]].
 
 ## How it works
 
@@ -124,7 +124,7 @@ Current Unity Gateway quickstarts use a different base URL, `https://<workspace-
 
 Inside a Databricks notebook, the `databricks-openai` package configures authentication and the base URL automatically.
 
-Embedding models are called the same way through `client.embeddings.create(...)`, which [[Vector Search|AI Search]] uses to embed documents.
+Embedding models are called the same way through `client.embeddings.create(...)`, which [[AI Search|AI Search]] uses to embed documents.
 
 Batch in SQL:
 
@@ -187,10 +187,10 @@ What happens to hosted models over time?::They are retired on a published schedu
 
 > [!path] Learning path
 > **Needs first:** [[Model Serving]], [[Generative AI and LLMs]]
-> **Unlocks next:** [[AI Gateway]], [[Retrieval-Augmented Generation]], [[Agent Bricks]]
+> **Unlocks next:** [[Unity Gateway]], [[Retrieval-Augmented Generation]], [[Agent Bricks]]
 
 > [!nextup] Next
-> [[AI Gateway]] covers Unity Gateway, which governs, rate-limits, logs, and guards every model call, including calls to outside providers.
+> [[Unity Gateway]] covers Unity Gateway, which governs, rate-limits, logs, and guards every model call, including calls to outside providers.
 
 > [!sources]- Sources (last verified: 2026-10-25)
 > - [Supported models for Foundation Model APIs (AWS)](https://docs.databricks.com/aws/en/machine-learning/foundation-model-apis/supported-models)

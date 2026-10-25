@@ -16,7 +16,7 @@ evolved_into: []
 cloud_equivalent: []
 related:
   - "[[AI-BI Dashboards]]"
-  - "[[Genie]]"
+  - "[[Genie Agents]]"
   - "[[Databricks Apps]]"
   - "[[Accounts and Workspaces]]"
   - "[[Users Groups and Service Principals]]"
@@ -32,7 +32,7 @@ aliases:
   - Databricks One UI
 prereqs:
   - "[[AI-BI Dashboards]]"
-  - "[[Genie]]"
+  - "[[Genie Agents]]"
   - "[[Accounts and Workspaces]]"
 unlocks:
   - "[[Path - Business Owner]]"
@@ -53,7 +53,7 @@ tags:
 Mastery: `INPUT[inlineSelect(option(new), option(learning), option(solid)):mastery]`
 
 > [!story] Context
-> This chapter built [[AI-BI Dashboards]], [[Genie]] Agents, and [[Databricks Apps]] on top of [[Lakebase]] and governed tables. Business users should not need to navigate notebooks, compute, or catalogs to find them. Genie One is the single entry point that shows business users only what has been shared with them.
+> This chapter built [[AI-BI Dashboards]], [[Genie Agents]] Agents, and [[Databricks Apps]] on top of [[Lakebase]] and governed tables. Business users should not need to navigate notebooks, compute, or catalogs to find them. Genie One is the single entry point that shows business users only what has been shared with them.
 
 > [!eli5] Summary
 > Genie One is the simple home page of Databricks for people who use data but do not build with it. It shows the dashboards, chat assistants, and apps shared with you, and lets you ask questions in plain language. Technical settings stay out of view.
@@ -72,7 +72,7 @@ Genie One gives those users a separate, simplified interface. Databricks describ
 | Capability | Description |
 |---|---|
 | **Dashboards** | Published [[AI-BI Dashboards]] shared with the user |
-| **Genie Agents** | Conversational agents over data (formerly Genie spaces). See [[Genie]]. |
+| **Genie Agents** | Conversational agents over data (formerly Genie spaces). See [[Genie Agents]]. |
 | **Chat** | Ask questions in plain language from the Genie One home page |
 | **Apps** | [[Databricks Apps]] shared with the user |
 | **Account-level view** | A unified view across all workspaces in the account |
@@ -182,7 +182,7 @@ What does Genie One show a user?::Only the dashboards, Genie Agents, and apps ex
 ## Next steps
 
 > [!path] Learning path
-> **Needs first:** [[AI-BI Dashboards]], [[Genie]], [[Accounts and Workspaces]]
+> **Needs first:** [[AI-BI Dashboards]], [[Genie Agents]], [[Accounts and Workspaces]]
 > **Unlocks next:** [[Path - Business Owner]], [[Chapter 10 - AI and ML]]
 
 > [!nextup] Next

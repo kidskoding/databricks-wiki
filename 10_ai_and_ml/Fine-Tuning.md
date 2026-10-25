@@ -16,7 +16,7 @@ evolved_from:
 evolved_into: []
 cloud_equivalent: []
 related:
-  - "[[GPU Compute]]"
+  - "[[AI Runtime]]"
   - "[[GPU]]"
   - "[[Training]]"
   - "[[Overfitting]]"
@@ -32,10 +32,10 @@ aliases:
 prereqs:
   - "[[Generative AI and LLMs]]"
   - "[[Agent Evaluation and Tracing]]"
-  - "[[GPU Compute]]"
+  - "[[AI Runtime]]"
 unlocks:
   - "[[Model Serving]]"
-  - "[[GPU Compute]]"
+  - "[[AI Runtime]]"
 clouds:
   - aws
   - azure
@@ -58,7 +58,7 @@ Mastery: `INPUT[inlineSelect(option(new), option(learning), option(solid)):maste
 > Fine-tuning is extra coaching for an AI model that already knows how to write. You show it hundreds or thousands of examples of exactly how your business wants answers written, and it learns that style. It is slower and costlier than giving the model better instructions, so it is usually the last thing to try.
 
 > [!renamed] Status change: Foundation Model Fine-tuning is end of life
-> **Foundation Model Fine-tuning** (also called **Mosaic AI Model Training**, part of Databricks Model Training) has reached end of life. The `databricks_genai` package and the fine-tuning UI are no longer available. Databricks recommends **AI Runtime**, its serverless GPU compute, for training and fine-tuning foundation models. See [[GPU Compute]].
+> **Foundation Model Fine-tuning** (also called **Mosaic AI Model Training**, part of Databricks Model Training) has reached end of life. The `databricks_genai` package and the fine-tuning UI are no longer available. Databricks recommends **AI Runtime**, its serverless GPU compute, for training and fine-tuning foundation models. See [[AI Runtime]].
 
 > [!analogy]- Analogy: training a new hire's writing style
 > | Coaching | Fine-tuning |
@@ -114,7 +114,7 @@ Steps on Databricks today:
 1. **Prove the need.** Run an evaluation set against the base model with good prompts and RAG. Record the scores ([[Agent Evaluation and Tracing]]).
 2. **Prepare data.** Store prompt and ideal-response pairs in a Delta table. Hold back a validation split.
 3. **Pick a small open model.** Databricks' AI Runtime tutorial fine-tunes Qwen3.5-0.8B on serverless GPU with an H100 accelerator and then serves it.
-4. **Train on AI Runtime.** Attach a notebook to serverless GPU compute ([[GPU Compute]]), and train with a standard library (for example Hugging Face Transformers or TRL). Log metrics and checkpoints with [[MLflow]].
+4. **Train on AI Runtime.** Attach a notebook to serverless GPU compute ([[AI Runtime]]), and train with a standard library (for example Hugging Face Transformers or TRL). Log metrics and checkpoints with [[MLflow]].
 5. **Register** the model in [[Models in Unity Catalog]].
 6. **Serve** it on a GPU [[Model Serving]] endpoint, or use provisioned throughput where the model family is supported.
 7. **Evaluate** the fine-tuned model against the base model on the same evaluation set. Ship only if it wins.
@@ -163,7 +163,7 @@ trainer.train()
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Multi-GPU and multi-node.** Notebook multi-GPU training on AI Runtime is supported on H100 nodes (8x H100); multi-node training uses the AI Runtime CLI. See [[GPU Compute]].
+> - **Multi-GPU and multi-node.** Notebook multi-GPU training on AI Runtime is supported on H100 nodes (8x H100); multi-node training uses the AI Runtime CLI. See [[AI Runtime]].
 > - **Evaluation leakage.** Keep evaluation questions out of the training data, or scores will be inflated.
 > - **Catastrophic forgetting.** Heavy fine-tuning on a narrow task can degrade general ability. Include some general examples or use parameter-efficient methods.
 > - **Licenses.** Open models carry their own licenses and acceptable-use policies; check them before commercial use.
@@ -191,8 +191,8 @@ Why compare against the base model after fine-tuning?::To confirm the fine-tuned
 ## Next steps
 
 > [!path] Learning path
-> **Needs first:** [[Generative AI and LLMs]], [[Agent Evaluation and Tracing]], [[GPU Compute]]
-> **Unlocks next:** [[Model Serving]], [[GPU Compute]]
+> **Needs first:** [[Generative AI and LLMs]], [[Agent Evaluation and Tracing]], [[AI Runtime]]
+> **Unlocks next:** [[Model Serving]], [[AI Runtime]]
 
 > [!nextup] Next
 > [[Data Quality Monitoring]] covers how to watch tables, features, and model predictions for freshness, completeness, and drift once models are in production.

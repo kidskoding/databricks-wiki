@@ -27,6 +27,7 @@ related:
   - "[[Apache Hive]]"
   - "[[Data Catalog]]"
 aliases:
+  - AWS Glue and Lake Formation Federation
   - Glue federation
   - Hive metastore federation for AWS Glue
   - Catalog federation (Glue)
@@ -47,7 +48,7 @@ tags:
   - flashcards
 ---
 
-# AWS Glue and Lake Formation Federation
+# Hive Metastore Federation for AWS Glue
 
 Mastery: `INPUT[inlineSelect(option(new), option(learning), option(solid)):mastery]`
 

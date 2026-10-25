@@ -27,7 +27,7 @@ related:
   - "[[Spot Instances]]"
   - "[[Libraries and Environments]]"
   - "[[Spark UI]]"
-  - "[[GPU Compute]]"
+  - "[[AI Runtime]]"
 aliases:
   - All-purpose cluster
   - Interactive cluster

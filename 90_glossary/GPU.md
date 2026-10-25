@@ -6,7 +6,7 @@ section: Glossary
 depth: 101
 summary: "A graphics processing unit: a processor with thousands of parallel cores, used to train and run deep-learning models and LLMs."
 related:
-  - "[[GPU Compute]]"
+  - "[[AI Runtime]]"
   - "[[Fine-Tuning]]"
   - "[[Model Serving]]"
   - "[[Generative AI and LLMs]]"
@@ -29,9 +29,9 @@ tags:
 
 **In data work:** GPUs were designed for graphics, which applies the same arithmetic to many pixels at once. Neural networks consist mostly of the same kind of operation (large matrix multiplications), so GPUs train and run them far faster than CPUs. GPUs are scarce and comparatively expensive. SQL, ETL, and classic machine learning on tabular data usually run efficiently on CPUs; deep learning and [[LLM]] fine-tuning or hosting usually require GPUs.
 
-**In Databricks:** Classic compute offers GPU instance types with GPU-enabled Databricks Runtime ML. **AI Runtime** is serverless GPU compute for deep learning, with A10 and H100 GPUs and PyTorch and CUDA preinstalled; it is in Public Preview as of October 2026 ([[GPU Compute]]). [[Model Serving]] offers GPU workload types for custom models, with availability that varies by cloud and region. For large LLMs, Databricks recommends [[Foundation Model APIs]] over custom GPU serving. See [[Fine-Tuning]].
+**In Databricks:** Classic compute offers GPU instance types with GPU-enabled Databricks Runtime ML. **AI Runtime** is serverless GPU compute for deep learning, with A10 and H100 GPUs and PyTorch and CUDA preinstalled; it is in Public Preview as of October 2026 ([[AI Runtime]]). [[Model Serving]] offers GPU workload types for custom models, with availability that varies by cloud and region. For large LLMs, Databricks recommends [[Foundation Model APIs]] over custom GPU serving. See [[Fine-Tuning]].
 
-Seen in: [[GPU Compute]], [[Fine-Tuning]], [[Model Serving]], [[Generative AI and LLMs]]
+Seen in: [[AI Runtime]], [[Fine-Tuning]], [[Model Serving]], [[Generative AI and LLMs]]
 
 ## Recall
 

@@ -19,7 +19,7 @@ related:
   - "[[Generative AI and LLMs]]"
   - "[[Foundation Model APIs]]"
   - "[[Model Serving]]"
-  - "[[AI Gateway]]"
+  - "[[Unity Gateway]]"
   - "[[LLM]]"
   - "[[Prompt]]"
   - "[[Token]]"
@@ -201,7 +201,7 @@ FROM shop.feedback.reviews;
 > - **Custom endpoints.** For a custom model endpoint without a schema, the signature includes `returnType` to declare the output type.
 > - **Batch at scale.** For large backfills, run them in a pipeline or job, and use `failOnError => false` so one malformed row does not stop the run.
 > - **Pipelines and Designer.** AI Functions can be used inside [[Lakeflow Spark Declarative Pipelines]] to label new rows incrementally, and [[Lakeflow Designer]] exposes them as built-in operators.
-> - **Governance.** Calls to endpoints can be governed and logged with [[AI Gateway]]. Because outputs are model predictions, treat them as estimates and validate a sample (see [[Hallucination]]).
+> - **Governance.** Calls to endpoints can be governed and logged with [[Unity Gateway]]. Because outputs are model predictions, treat them as estimates and validate a sample (see [[Hallucination]]).
 
 ## Common misconceptions
 

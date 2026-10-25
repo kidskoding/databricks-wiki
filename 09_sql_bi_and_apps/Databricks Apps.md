@@ -20,8 +20,8 @@ related:
   - "[[Users Groups and Service Principals]]"
   - "[[SQL Warehouses]]"
   - "[[Model Serving]]"
-  - "[[Genie]]"
-  - "[[Databricks One]]"
+  - "[[Genie Agents]]"
+  - "[[Genie One]]"
   - "[[Declarative Automation Bundles]]"
   - "[[Git Folders and Workspace Files]]"
   - "[[Secrets Management]]"
@@ -81,7 +81,7 @@ A Databricks app is a web application that runs as a containerized service on th
 | **Resources** | Existing Databricks resources the app may use, such as a [[SQL Warehouses\|SQL warehouse]], a [[Lakebase]] database, a [[Model Serving]] endpoint, or a secret. Apps use existing resources and cannot create new ones. |
 | **Compute sizes** | Medium (default), Large, and XLarge |
 | **Deployment** | From workspace files, from a Git repository (Git-backed deployments are generally available), or with [[Declarative Automation Bundles]] |
-| **Access** | Users open apps from the workspace or from [[Databricks One\|Genie One]] |
+| **Access** | Users open apps from the workspace or from [[Genie One\|Genie One]] |
 
 ### Compute sizes
 

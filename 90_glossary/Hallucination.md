@@ -9,9 +9,9 @@ related:
   - "[[Generative AI and LLMs]]"
   - "[[Retrieval-Augmented Generation]]"
   - "[[Agent Evaluation and Tracing]]"
-  - "[[AI Gateway]]"
-  - "[[Vector Search]]"
-  - "[[Genie]]"
+  - "[[Unity Gateway]]"
+  - "[[AI Search]]"
+  - "[[Genie Agents]]"
 aliases:
   - "hallucinations"
   - "confabulation"
@@ -29,9 +29,9 @@ tags:
 
 **In data work:** [[LLM|Large language models]] generate likely text from learned patterns rather than retrieving verified facts, so they can produce fluent but incorrect output: invented figures, nonexistent citations, or fabricated policies. The risk is highest for private or recent information the model was not trained on. Mitigations are grounding answers in retrieved documents, requiring citations, restricting the model to defined tools, and systematic evaluation.
 
-**In Databricks:** [[Retrieval-Augmented Generation]] grounds answers in documents retrieved with Databricks AI Search ([[Vector Search]]). In [[MLflow]] 3, the built-in `RetrievalGroundedness` judge checks whether a response is supported by the retrieved context, and `RetrievalRelevance` checks whether the context fits the request ([[Agent Evaluation and Tracing]]). [[AI Gateway]] guardrails provide safety filtering, PII detection, and topic restrictions on supported endpoints. [[Genie]] answers by generating SQL that can be inspected.
+**In Databricks:** [[Retrieval-Augmented Generation]] grounds answers in documents retrieved with Databricks AI Search ([[AI Search]]). In [[MLflow]] 3, the built-in `RetrievalGroundedness` judge checks whether a response is supported by the retrieved context, and `RetrievalRelevance` checks whether the context fits the request ([[Agent Evaluation and Tracing]]). [[Unity Gateway]] guardrails provide safety filtering, PII detection, and topic restrictions on supported endpoints. [[Genie Agents]] answers by generating SQL that can be inspected.
 
-Seen in: [[Generative AI and LLMs]], [[Retrieval-Augmented Generation]], [[Agent Evaluation and Tracing]], [[Genie]]
+Seen in: [[Generative AI and LLMs]], [[Retrieval-Augmented Generation]], [[Agent Evaluation and Tracing]], [[Genie Agents]]
 
 ## Recall
 

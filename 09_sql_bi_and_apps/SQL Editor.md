@@ -16,7 +16,7 @@ cloud_equivalent: []
 related:
   - "[[Databricks SQL]]"
   - "[[SQL Warehouses]]"
-  - "[[Databricks Assistant]]"
+  - "[[Genie Code]]"
   - "[[Notebooks]]"
   - "[[AI-BI Dashboards]]"
   - "[[Unity Catalog]]"
@@ -71,7 +71,7 @@ The SQL editor puts all of this inside the workspace. Queries are saved in the w
 
 ## Overview
 
-The **new SQL editor** is the default editor in [[Databricks SQL]]. Databricks announced it as generally available on **August 14, 2025**, with multiple statement results, inline execution history, real-time collaboration, and deeper [[Databricks Assistant]] integration. Its main parts:
+The **new SQL editor** is the default editor in [[Databricks SQL]]. Databricks announced it as generally available on **August 14, 2025**, with multiple statement results, inline execution history, real-time collaboration, and deeper [[Genie Code]] integration. Its main parts:
 
 | Part | What it gives you |
 |---|---|
@@ -94,7 +94,7 @@ flowchart LR
   C --> G["Execution history<br/>and query profile"]
 ```
 
-**Writing.** Autocomplete suggests table and column names from Unity Catalog. **Query snippets** (added May 2025) let you save reusable fragments such as a `JOIN` or `CASE` pattern and insert them through autocomplete. You create them from the View menu. The [[Databricks Assistant]] (renamed Genie Code in March 2026) writes, explains, or fixes a query from a plain-English request.
+**Writing.** Autocomplete suggests table and column names from Unity Catalog. **Query snippets** (added May 2025) let you save reusable fragments such as a `JOIN` or `CASE` pattern and insert them through autocomplete. You create them from the View menu. The [[Genie Code]] (renamed Genie Code in March 2026) writes, explains, or fixes a query from a plain-English request.
 
 **Running.** You can run a whole script or a selection. If the script holds several statements, the results pane lets you step through each statement's output.
 
@@ -146,7 +146,7 @@ Running both statements produces two result tabs: a daily trend that you can tur
 > - **Who can see a profile.** You must own the query or hold at least `CAN MONITOR` on the warehouse.
 > - **Editor vs notebook.** A [[Notebooks|notebook]] attached to a SQL warehouse can also run SQL. Use the editor for analyst work and saved queries, and notebooks when SQL is mixed with Python or markdown explanation.
 > - **Default warehouse.** A preselected default warehouse helps cost control: new users run on the small shared warehouse instead of starting a large one.
-> - **Genie Code.** The [[Databricks Assistant]] was renamed Genie Code on March 11, 2026. Older screenshots show the Assistant name.
+> - **Genie Code.** The [[Genie Code]] was renamed Genie Code on March 11, 2026. Older screenshots show the Assistant name.
 
 ## Common misconceptions
 

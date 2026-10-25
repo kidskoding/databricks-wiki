@@ -21,8 +21,8 @@ related:
   - "[[Volumes]]"
   - "[[Catalogs Schemas and Tables]]"
   - "[[AI-BI Dashboards]]"
-  - "[[Genie]]"
-  - "[[Databricks One]]"
+  - "[[Genie Agents]]"
+  - "[[Genie One]]"
   - "[[Single Source of Truth]]"
   - "[[CSV and JSON]]"
   - "[[Databricks Free Edition and Trials]]"
@@ -37,7 +37,7 @@ prereqs:
   - "[[SQL]]"
 unlocks:
   - "[[AI-BI Dashboards]]"
-  - "[[Genie]]"
+  - "[[Genie Agents]]"
   - "[[Volumes]]"
 clouds:
   - aws
@@ -68,7 +68,7 @@ Mastery: `INPUT[inlineSelect(option(new), option(learning), option(solid)):maste
 > | The library's document drawer | A [[Volumes\|Volume]] for original files |
 > | Floor and shelf | [[Catalogs Schemas and Tables\|Catalog and schema]], for example `finance.sales` |
 > | A noticeboard that updates itself | An [[AI-BI Dashboards\|AI/BI dashboard]] |
-> | A librarian who answers questions | [[Genie]] |
+> | A librarian who answers questions | [[Genie Agents]] |
 
 ## Background
 
@@ -91,7 +91,7 @@ Four concepts cover most of the move:
 | An Excel sheet or an Access table | A **table** in [[Unity Catalog]], such as `finance.sales.orders` | One copy, typed columns, history ([[Time Travel]]), permissions |
 | A folder of files on a shared drive | A **[[Volumes\|Volume]]**, such as `/Volumes/finance/sales/raw_files/` | Governed files that SQL can load |
 | A pivot table or chart | An **[[AI-BI Dashboards\|AI/BI dashboard]]** | Refreshes from the table; shared with users and groups |
-| Asking the one person who knows the spreadsheet | A **[[Genie]] agent** (formerly Genie space) | Plain-English questions answered with generated SQL |
+| Asking the one person who knows the spreadsheet | A **[[Genie Agents]] agent** (formerly Genie space) | Plain-English questions answered with generated SQL |
 
 Access is both a database and an application. Its **tables** become Databricks tables, its **saved queries** become SQL views, and its **forms and reports** are rebuilt, usually as dashboards, or as a small [[Databricks Apps|Databricks App]] if people enter data through forms.
 
@@ -204,7 +204,7 @@ To get data out of Access, export each table to a text (CSV) file with field nam
 5. Publish. Publishing creates a snapshot that viewers see; later edits stay in the draft until you publish again.
 6. Share with users or groups. Choose shared data permissions (viewers use the publisher's permissions) or individual data permissions (viewers use their own).
 
-Business users who only read dashboards can use [[Databricks One]].
+Business users who only read dashboards can use [[Genie One]].
 
 ### Step 6: create a Genie agent
 
@@ -273,7 +273,7 @@ What were Genie spaces renamed to in 2026?::Genie Agents.
 
 > [!path] Learning path
 > **Needs first:** [[Spreadsheets]], [[What Is Data]], [[SQL]]
-> **Unlocks next:** [[AI-BI Dashboards]], [[Genie]], [[Volumes]]
+> **Unlocks next:** [[AI-BI Dashboards]], [[Genie Agents]], [[Volumes]]
 
 > [!nextup] Next
 > [[Migrating from SQL Server]] covers the most common next source: querying SQL Server in place, then replicating it with Lakeflow Connect.

@@ -11,7 +11,7 @@ personas:
   - security
 chapter: "[[Chapter 10 - AI and ML]]"
 prev: "[[Foundation Model APIs]]"
-next: "[[Vector Search]]"
+next: "[[AI Search]]"
 evolved_from:
   - "[[Model Serving]]"
 evolved_into: []
@@ -52,7 +52,7 @@ tags:
   - flashcards
 ---
 
-# AI Gateway
+# Unity Gateway
 
 Mastery: `INPUT[inlineSelect(option(new), option(learning), option(solid)):mastery]`
 
@@ -191,10 +191,10 @@ What replaced creating external model endpoints on Model Serving?::Model provide
 
 > [!path] Learning path
 > **Needs first:** [[Foundation Model APIs]], [[Unity Catalog]], [[Privileges and Grants]]
-> **Unlocks next:** [[Vector Search]], [[Retrieval-Augmented Generation]], [[Agent Bricks]]
+> **Unlocks next:** [[AI Search]], [[Retrieval-Augmented Generation]], [[Agent Bricks]]
 
 > [!nextup] Next
-> [[Vector Search]] covers Databricks AI Search, which finds documents by meaning: the retrieval half of RAG.
+> [[AI Search]] covers Databricks AI Search, which finds documents by meaning: the retrieval half of RAG.
 
 > [!sources]- Sources (last verified: 2026-10-25)
 > - [Unity Gateway (AWS)](https://docs.databricks.com/aws/en/unity-gateway/)

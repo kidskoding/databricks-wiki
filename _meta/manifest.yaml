@@ -608,7 +608,7 @@ chapters:
         depth: 101
         personas: [everyone, engineer, scientist]
         summary: Documents that mix code, results, charts, and text.
-      - title: Databricks Assistant
+      - title: Genie Code
         depth: 101
         personas: [everyone, analyst, engineer]
         summary: The built-in AI helper that writes, explains, and fixes code and queries.
@@ -829,7 +829,7 @@ chapters:
     part: 1
     title: SQL BI and Apps
     section: SQL, BI & Apps
-    summary: Analysts and app builders, covering Databricks SQL, dashboards, Genie, Power BI, Databricks Apps, and Lakebase.
+    summary: Analysts and app builders, covering Databricks SQL, dashboards, Genie Agents, Power BI, Databricks Apps, and Lakebase.
     notes:
       - title: Databricks SQL
         depth: 101
@@ -851,7 +851,7 @@ chapters:
         summary: Databricks' native dashboards, built with AI help and shareable with anyone.
         evolved_from: [BI Tools]
         aliases: [AI/BI Dashboards, Lakeview Dashboards]
-      - title: Genie
+      - title: Genie Agents
         depth: 101
         personas: [owner, analyst]
         summary: Asking questions of your data in plain English and getting answers and charts.
@@ -890,10 +890,10 @@ chapters:
         personas: [ai-dev, engineer]
         summary: A managed Postgres database (OLTP) inside the lakehouse, for apps and agents.
         related: [OLTP vs OLAP, Databricks Apps]
-      - title: Databricks One
+      - title: Genie One
         depth: 101
         personas: [owner, analyst]
-        summary: The simplified business-user home for dashboards, Genie, and apps.
+        summary: The simplified business-user home for dashboards, Genie Agents, and apps.
 
   - folder: 10_ai_and_ml
     number: "10"
@@ -941,12 +941,12 @@ chapters:
         depth: 201
         personas: [ai-dev]
         summary: Pay-per-token access to hosted open and partner LLMs inside Databricks.
-      - title: AI Gateway
+      - title: Unity Gateway
         depth: 301
         personas: [ai-dev, admin, security]
         summary: Governing, rate-limiting, logging, and guarding every LLM call, including to external providers.
         aliases: [External Models]
-      - title: Vector Search
+      - title: AI Search
         depth: 201
         personas: [ai-dev]
         summary: Finding similar text or images by meaning, the retrieval half of RAG.
@@ -976,7 +976,7 @@ chapters:
         personas: [scientist, engineer]
         summary: Watching tables and model inputs for drift, freshness, and anomalies (formerly Lakehouse Monitoring).
         aliases: [Lakehouse Monitoring]
-      - title: GPU Compute
+      - title: AI Runtime
         depth: 301
         personas: [scientist, admin]
         summary: GPU clusters and serverless GPUs for deep learning and LLM work.
@@ -1114,7 +1114,7 @@ chapters:
         summary: Storage credentials backed by IAM roles for governed S3 access.
         cloud_equivalent: [ADLS and Access Connectors, GCS Access via Unity Catalog]
         related: [Amazon S3]
-      - title: AWS Glue and Lake Formation Federation
+      - title: Hive Metastore Federation for AWS Glue
         depth: 401
         personas: [admin, engineer]
         summary: Reading tables registered in AWS Glue from Unity Catalog.
@@ -1373,7 +1373,7 @@ chapters:
       - title: Path - Analyst
         depth: 101
         personas: [analyst]
-        summary: From Excel and SQL to Databricks SQL, dashboards, Genie, and Power BI.
+        summary: From Excel and SQL to Databricks SQL, dashboards, Genie Agents, and Power BI.
       - title: Path - Data Engineer
         depth: 201
         personas: [engineer]

@@ -169,7 +169,7 @@ Unity Catalog vends short-lived storage credentials to the external client, so i
 > Managed Iceberg tables store files in ADLS Gen2. Azure-native Iceberg readers vary by service; check each tool's support for Iceberg REST catalogs before you design around it.
 
 > [!aws]- Databricks on AWS
-> Iceberg is common on AWS (Athena, EMR, Glue, Redshift). Unity Catalog can read Iceberg tables registered in AWS Glue as **foreign** tables (see [[AWS Glue and Lake Formation Federation]]), and AWS engines can read UC tables through the Iceberg REST endpoint.
+> Iceberg is common on AWS (Athena, EMR, Glue, Redshift). Unity Catalog can read Iceberg tables registered in AWS Glue as **foreign** tables (see [[Hive Metastore Federation for AWS Glue]]), and AWS engines can read UC tables through the Iceberg REST endpoint.
 
 > [!gcp]- Databricks on Google Cloud
 > BigQuery supports Iceberg tables, so Iceberg (or UniForm) is the usual bridge between Databricks and BigQuery. See [[BigQuery Integration]].

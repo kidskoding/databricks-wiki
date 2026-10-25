@@ -22,7 +22,7 @@ related:
   - "[[Retrieval-Augmented Generation]]"
   - "[[Agent Bricks]]"
   - "[[Mosaic AI Agent Framework]]"
-  - "[[AI Gateway]]"
+  - "[[Unity Gateway]]"
   - "[[Data Quality Monitoring]]"
   - "[[SQL Warehouses]]"
 aliases:

@@ -66,11 +66,11 @@ A role in this note is a job function, not a permission level. Databricks grants
 
 | Role | Vault persona | Main Databricks tools | Example questions | Learning path |
 |---|---|---|---|---|
-| Business owner or executive | `owner` | [[Databricks One\|Genie One]], [[AI-BI Dashboards]], [[Genie]] | Which locations grew this quarter? What is the sales forecast for next month? | [[Path - Business Owner]] |
+| Business owner or executive | `owner` | [[Genie One\|Genie One]], [[AI-BI Dashboards]], [[Genie Agents]] | Which locations grew this quarter? What is the sales forecast for next month? | [[Path - Business Owner]] |
 | Analyst or BI developer | `analyst` | [[SQL Editor]], [[SQL Warehouses]], [[AI-BI Dashboards]], [[Metric Views]], [[Connecting Power BI\|Power BI]] | What is the repeat-customer rate by channel? | [[Path - Analyst]] |
 | Data engineer | `engineer` | [[Lakeflow Connect]], [[Lakeflow Spark Declarative Pipelines]], [[Lakeflow Jobs]], [[Notebooks]] | Did the overnight load complete, and is the data complete? | [[Path - Data Engineer]] |
 | Data scientist or ML engineer | `scientist` | [[Notebooks]], [[MLflow]], [[AutoML]], [[Feature Engineering and Feature Store]], [[Model Serving]] | Which customers are likely to churn? | [[Path - Data Scientist and ML Engineer]] |
-| AI or application developer | `ai-dev` | [[Agent Bricks]], [[Mosaic AI Agent Framework]], [[Vector Search]], [[Databricks Apps]], [[Lakebase]] | Can staff query the policy manual and receive cited answers? | [[Path - AI App Developer]] |
+| AI or application developer | `ai-dev` | [[Agent Bricks]], [[Mosaic AI Agent Framework]], [[AI Search]], [[Databricks Apps]], [[Lakebase]] | Can staff query the policy manual and receive cited answers? | [[Path - AI App Developer]] |
 | Platform or cloud admin | `admin` | [[Account Console]], [[Compute Policies]], [[SCIM Provisioning]], [[Declarative Automation Bundles]] | Who has access to production? Does all compute shut down when idle? | [[Path - Platform Admin]] |
 | Security, privacy, or compliance lead | `security` | [[Unity Catalog]], [[Row Filters and Column Masks]], [[Audit Logs]], [[Data Classification]] | Who accessed patient records last week? | [[Path - Platform Admin]] |
 | Finance or FinOps | `finance` | [[Budgets and Usage Dashboards]], [[System Tables]], [[Tagging for Chargeback]] | What did data workloads cost last month, and which team incurred the cost? | [[Cost Management Basics]] |
@@ -123,7 +123,7 @@ GRANT ALL PRIVILEGES ON SCHEMA analytics.sales TO `engineers`;
 ## Small-business considerations
 
 > [!smallbiz] Small-business considerations
-> A 5–50 person company usually has two effective roles: a few people who view results (owner and managers) and one or two people who build. Create groups from the start (for example `viewers`, `builders`, `admins`); this has no cost and avoids a later clean-up. Viewers can work entirely in [[Databricks One|Genie One]] without learning compute or notebooks. Plan for the builder to spend regular time on administration and cost review.
+> A 5–50 person company usually has two effective roles: a few people who view results (owner and managers) and one or two people who build. Create groups from the start (for example `viewers`, `builders`, `admins`); this has no cost and avoids a later clean-up. Viewers can work entirely in [[Genie One|Genie One]] without learning compute or notebooks. Plan for the builder to spend regular time on administration and cost review.
 
 ## Cloud differences
 

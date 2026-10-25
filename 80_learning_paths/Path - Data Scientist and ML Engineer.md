@@ -25,7 +25,7 @@ related:
   - "[[Models in Unity Catalog]]"
   - "[[Model Serving]]"
   - "[[Data Quality Monitoring]]"
-  - "[[GPU Compute]]"
+  - "[[AI Runtime]]"
   - "[[Path - Data Engineer]]"
   - "[[Path - AI App Developer]]"
   - "[[Path - Certification Prep]]"
@@ -110,7 +110,7 @@ You should know Python and pandas and have trained at least one scikit-learn mod
 
 **Goal:** know when you need GPUs and when a foundation model does the job.
 
-1. [[GPU Compute]] (301): GPU clusters and serverless GPUs.
+1. [[AI Runtime]] (301): GPU clusters and serverless GPUs.
 2. [[Generative AI and LLMs]]: what changes when the model is a language model.
 3. [[Foundation Model APIs]] (201): hosted LLMs you call by the token.
 4. [[Agent Evaluation and Tracing]] (301): measuring LLM quality with judges and traces in MLflow.
@@ -125,7 +125,7 @@ You should know Python and pandas and have trained at least one scikit-learn mod
 - **Spark performance for ML:** [[Partitions]], [[Shuffles]], [[Spark UI]], [[Photon]].
 - **Feature pipelines:** [[Lakeflow Spark Declarative Pipelines]] and [[Change Data Feed]].
 - **Working from your IDE:** [[Databricks Connect]] and [[Git Folders and Workspace Files]].
-- **Governance of AI:** [[AI Gateway]] and [[Unity Catalog]].
+- **Governance of AI:** [[Unity Gateway]] and [[Unity Catalog]].
 - **Cloud GPUs and node types:** [[EC2 Instance Types and Graviton]], [[Compute on Google Cloud]], and the cloud routes [[Path - Azure Deep Dive]], [[Path - AWS Deep Dive]], [[Path - Google Cloud Deep Dive]].
 - **Exams:** the ML Associate and Professional tracks in [[Path - Certification Prep]].
 

@@ -9,7 +9,7 @@ personas:
   - analyst
   - engineer
 chapter: "[[Chapter 09 - SQL BI and Apps]]"
-prev: "[[Genie]]"
+prev: "[[Genie Agents]]"
 next: "[[SQL Alerts]]"
 evolved_from:
   - "[[Semantic Layer]]"
@@ -17,7 +17,7 @@ evolved_into: []
 cloud_equivalent: []
 related:
   - "[[Unity Catalog]]"
-  - "[[Genie]]"
+  - "[[Genie Agents]]"
   - "[[AI-BI Dashboards]]"
   - "[[Connecting Power BI]]"
   - "[[Materialized Views]]"
@@ -39,7 +39,7 @@ prereqs:
   - "[[Star Schema]]"
   - "[[Aggregation]]"
 unlocks:
-  - "[[Genie]]"
+  - "[[Genie Agents]]"
   - "[[AI-BI Dashboards]]"
   - "[[Connecting Power BI]]"
   - "[[SQL Alerts]]"
@@ -59,7 +59,7 @@ tags:
 Mastery: `INPUT[inlineSelect(option(new), option(learning), option(solid)):mastery]`
 
 > [!story] Context
-> [[Genie]] Agents and [[AI-BI Dashboards]] both compute numbers such as revenue. If each tool, and each analyst, writes its own `SUM(...)` with its own filters, the same question returns different answers. A metric view defines each measure once in [[Unity Catalog]], and every tool queries that definition.
+> [[Genie Agents]] Agents and [[AI-BI Dashboards]] both compute numbers such as revenue. If each tool, and each analyst, writes its own `SUM(...)` with its own filters, the same question returns different answers. A metric view defines each measure once in [[Unity Catalog]], and every tool queries that definition.
 
 > [!eli5] Summary
 > A metric view is a single, shared definition of the numbers a business tracks, such as revenue or average order size, and the ways it can be broken down, such as by store or by day. Every dashboard, chat tool, and report reads the same definition, so everyone gets the same answer.
@@ -90,7 +90,7 @@ A metric view is a Unity Catalog object, defined in [[YAML]], that separates **m
 | `filter` | A filter applied to every query, such as `status = 'completed'` |
 | `dimensions` | Named expressions to group or filter by, such as a store name or the month of an order date |
 | `measures` | Named aggregate expressions, such as `SUM(amount)`, queried with `MEASURE()` |
-| Semantic metadata | Display names, formats, and synonyms that help BI tools and [[Genie]] interpret the data (added October 2, 2025) |
+| Semantic metadata | Display names, formats, and synonyms that help BI tools and [[Genie Agents]] interpret the data (added October 2, 2025) |
 | Materialization | Optional precomputed [[Materialized Views\|materialized views]] that the engine uses automatically |
 
 ### Status and requirements
@@ -235,7 +235,7 @@ How does a metric view differ from a materialized view?::A metric view stores de
 
 > [!path] Learning path
 > **Needs first:** [[SQL]], [[Unity Catalog]], [[Star Schema]], [[Aggregation]]
-> **Unlocks next:** [[Genie]], [[AI-BI Dashboards]], [[Connecting Power BI]], [[SQL Alerts]]
+> **Unlocks next:** [[Genie Agents]], [[AI-BI Dashboards]], [[Connecting Power BI]], [[SQL Alerts]]
 
 > [!nextup] Next
 > [[SQL Alerts]] watches a number, such as yesterday's revenue for each store, and sends a notification when it crosses a threshold.

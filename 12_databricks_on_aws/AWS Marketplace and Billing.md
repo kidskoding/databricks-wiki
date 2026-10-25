@@ -9,7 +9,7 @@ personas:
   - finance
   - owner
 chapter: "[[Chapter 12 - Databricks on AWS]]"
-prev: "[[AWS Glue and Lake Formation Federation]]"
+prev: "[[Hive Metastore Federation for AWS Glue]]"
 next: "[[EC2 Instance Types and Graviton]]"
 evolved_from: []
 evolved_into: []
@@ -51,7 +51,7 @@ tags:
 Mastery: `INPUT[inlineSelect(option(new), option(learning), option(solid)):mastery]`
 
 > [!story] Context
-> [[AWS Glue and Lake Formation Federation]] finished the data access topics. Every one of those workloads costs money in two places: Databricks charges for usage, and AWS charges for the infrastructure that classic compute uses. This note shows where each charge appears and how to choose a payment route.
+> [[Hive Metastore Federation for AWS Glue]] finished the data access topics. Every one of those workloads costs money in two places: Databricks charges for usage, and AWS charges for the infrastructure that classic compute uses. This note shows where each charge appears and how to choose a payment route.
 
 > [!eli5] Summary
 > Using Databricks on AWS can produce two bills. One is for Databricks itself. The other is Amazon's bill for the computers and storage that run in your account. You can pay the Databricks part with a card, through Amazon's bill, or with a contract.

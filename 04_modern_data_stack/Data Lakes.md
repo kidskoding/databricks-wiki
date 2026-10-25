@@ -141,7 +141,7 @@ This code has no transactional guarantees. If the `overwrite` fails partway, rea
 > Azure lakes live in [[Azure Data Lake Storage]] (a storage account with hierarchical namespace enabled), addressed as `abfss://container@account.dfs.core.windows.net/path`.
 
 > [!aws]- Databricks on AWS
-> AWS lakes live in [[Amazon S3]] buckets, addressed as `s3://bucket/path`. AWS Glue Data Catalog and Lake Formation often act as the lake's catalog; see [[AWS Glue and Lake Formation Federation]].
+> AWS lakes live in [[Amazon S3]] buckets, addressed as `s3://bucket/path`. AWS Glue Data Catalog and Lake Formation often act as the lake's catalog; see [[Hive Metastore Federation for AWS Glue]].
 
 > [!gcp]- Databricks on Google Cloud
 > Google Cloud lakes live in [[Google Cloud Storage]] buckets, addressed as `gs://bucket/path`.

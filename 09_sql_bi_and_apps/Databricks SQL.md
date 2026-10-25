@@ -27,7 +27,7 @@ related:
   - "[[Unity Catalog]]"
   - "[[The Two-Tier Architecture Problem]]"
   - "[[DBUs]]"
-  - "[[Genie]]"
+  - "[[Genie Agents]]"
   - "[[Connecting Power BI]]"
 aliases:
   - DBSQL

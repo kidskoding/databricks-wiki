@@ -10,7 +10,7 @@ related:
   - "[[Experiment Tracking]]"
   - "[[AutoML]]"
   - "[[Fine-Tuning]]"
-  - "[[GPU Compute]]"
+  - "[[AI Runtime]]"
   - "[[MLflow]]"
 aliases:
   - "model training"
@@ -30,7 +30,7 @@ tags:
 
 **In data work:** Training (or fitting) feeds a [[Model|model]] historical examples, measures how wrong its predictions are against the [[Label|labels]], and adjusts its internal parameters to reduce that error, over and over. The data is split so part of it is held back to test whether the model generalizes or is [[Overfitting|overfitting]]. Training can take seconds for a small model on a laptop or weeks on thousands of [[GPU|GPUs]] for a large language model. Using the trained model on new data is [[Inference|inference]]. A bike shop might train a model on three years of sales to predict demand per model per month.
 
-**In Databricks:** On Databricks you train with libraries such as scikit-learn, XGBoost, or PyTorch in [[Notebooks]], on CPU or [[GPU Compute]], and log each run with [[MLflow]] ([[Experiment Tracking]]). [[AutoML]] runs many training trials for you. For large language models, [[Fine-Tuning]] continues training a pre-trained model on your own data. Trained models are registered in [[Models in Unity Catalog]].
+**In Databricks:** On Databricks you train with libraries such as scikit-learn, XGBoost, or PyTorch in [[Notebooks]], on CPU or [[AI Runtime]], and log each run with [[MLflow]] ([[Experiment Tracking]]). [[AutoML]] runs many training trials for you. For large language models, [[Fine-Tuning]] continues training a pre-trained model on your own data. Trained models are registered in [[Models in Unity Catalog]].
 
 Seen in: [[Machine Learning Basics]], [[Experiment Tracking]], [[AutoML]], [[Fine-Tuning]]
 

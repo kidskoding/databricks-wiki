@@ -27,8 +27,8 @@ related:
   - "[[AI Agent]]"
   - "[[Foundation Model APIs]]"
   - "[[AI Functions in SQL]]"
-  - "[[Genie]]"
-  - "[[Databricks Assistant]]"
+  - "[[Genie Agents]]"
+  - "[[Genie Code]]"
   - "[[MosaicML and Open Models]]"
 aliases:
   - GenAI
@@ -92,13 +92,13 @@ There are four common ways to put an LLM to work, from simplest to most involved
 | Approach | What you do | On Databricks |
 |---|---|---|
 | **Prompting** | Write clear instructions and examples | AI Playground, [[Foundation Model APIs]], [[AI Functions in SQL]] (`ai_query`) |
-| **Retrieval (RAG)** | Fetch relevant documents and add them to the prompt | [[Vector Search\|AI Search]], [[Retrieval-Augmented Generation]] |
-| **Agents** | Let the model call tools, such as SQL queries or APIs, in a loop | [[Agent Bricks]], [[Mosaic AI Agent Framework]], Genie Agents ([[Genie]]) |
-| **Fine-tuning** | Further train a model on your own examples | [[Fine-Tuning]] on [[GPU Compute\|AI Runtime]] |
+| **Retrieval (RAG)** | Fetch relevant documents and add them to the prompt | [[AI Search\|AI Search]], [[Retrieval-Augmented Generation]] |
+| **Agents** | Let the model call tools, such as SQL queries or APIs, in a loop | [[Agent Bricks]], [[Mosaic AI Agent Framework]], Genie Agents ([[Genie Agents]]) |
+| **Fine-tuning** | Further train a model on your own examples | [[Fine-Tuning]] on [[AI Runtime\|AI Runtime]] |
 
 Databricks guidance is to start with prompting, add retrieval when the model needs knowledge that changes, and fine-tune only when the gap is behavior or output format rather than knowledge.
 
-Databricks also uses LLMs inside the product. [[Genie]] answers business questions by generating SQL. Genie Code, formerly [[Databricks Assistant]] (renamed March 11, 2026), writes and runs code, builds pipelines and dashboards, and debugs errors in notebooks and editors.
+Databricks also uses LLMs inside the product. [[Genie Agents]] answers business questions by generating SQL. Genie Code, formerly [[Genie Code]] (renamed March 11, 2026), writes and runs code, builds pipelines and dashboards, and debugs errors in notebooks and editors.
 
 ## How it works
 
@@ -150,13 +150,13 @@ FROM shop.silver.support_emails;
 > - **Good first uses:** sorting incoming email, summarizing reviews, drafting replies from past answers, extracting fields from invoices, and a support assistant over help documents.
 > - **Keep a human in the loop** for anything sent to customers until evaluation shows the quality is consistent.
 > - **Use hosted models.** Pay-per-token [[Foundation Model APIs]] require no GPUs and no training.
-> - **Do not paste sensitive data into public chat tools.** Calls through Databricks stay under workspace governance, and [[AI Gateway|Unity Gateway]] can log and filter them.
+> - **Do not paste sensitive data into public chat tools.** Calls through Databricks stay under workspace governance, and [[Unity Gateway|Unity Gateway]] can log and filter them.
 > - **Cost drivers:** LLM usage is metered in input and output tokens. Long prompts and long documents cost more. See [[How Databricks Pricing Works]].
 
 ## Cloud differences
 
 > [!azure]- Azure Databricks
-> The GenAI tools work the same way. Model availability varies by region, and some models are offered only in specific US or EU regions. Azure OpenAI and Azure AI Foundry models can be reached as external providers through [[AI Gateway|Unity Gateway]].
+> The GenAI tools work the same way. Model availability varies by region, and some models are offered only in specific US or EU regions. Azure OpenAI and Azure AI Foundry models can be reached as external providers through [[Unity Gateway|Unity Gateway]].
 
 > [!aws]- Databricks on AWS
 > Same tools. Amazon Bedrock models can be reached as an external provider through Unity Gateway. Model lists differ by region.
@@ -182,7 +182,7 @@ FROM shop.silver.support_emails;
 > Knowledge that changes, such as policies or inventory, belongs in retrieval. Fine-tuning changes style and behavior.
 
 > [!confusion] Genie and Genie Code are different products
-> [[Genie]] (Genie One and Genie Agents) answers business questions about data. Genie Code, formerly Databricks Assistant, helps people write code inside the workspace.
+> [[Genie Agents]] (Genie One and Genie Agents) answers business questions about data. Genie Code, formerly Databricks Assistant, helps people write code inside the workspace.
 
 ## Recall
 

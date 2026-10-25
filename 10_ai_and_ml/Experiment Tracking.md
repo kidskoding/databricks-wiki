@@ -20,7 +20,7 @@ related:
   - "[[Overfitting]]"
   - "[[AutoML]]"
   - "[[Notebooks]]"
-  - "[[GPU Compute]]"
+  - "[[AI Runtime]]"
   - "[[Agent Evaluation and Tracing]]"
 aliases:
   - MLflow Tracking
@@ -152,7 +152,7 @@ print(best.loc[:, ["run_id", "params.max_depth", "metrics.val_mae"]])
 
 > [!deepdive]- Advanced topics (301–401)
 > - **Autologging and fluent runs.** Behavior around `mlflow.start_run()` and autologging has changed between versions and pages. If autologged content is missing from a manually started run, call `mlflow.autolog()` explicitly before training.
-> - **Nested runs.** Use nested runs for hyperparameter sweeps (one parent, many children). On [[GPU Compute|AI Runtime]], calling a distributed function inside an active run creates a nested child run.
+> - **Nested runs.** Use nested runs for hyperparameter sweeps (one parent, many children). On [[AI Runtime|AI Runtime]], calling a distributed function inside an active run creates a nested child run.
 > - **Notebook code on AI Runtime.** Code run directly in an attached notebook does not create a run automatically; use `mlflow.start_run()` or autologging.
 > - **Experiment permissions.** Experiments have their own access controls (for example, can read, can edit, can manage). Grant to groups.
 > - **Where data is stored.** Databricks documents options for where MLflow data is stored; review them when you need runs and artifacts in a specific location.

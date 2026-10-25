@@ -20,7 +20,7 @@ related:
   - "[[Connecting Power BI]]"
   - "[[Connecting Tableau and Other BI Tools]]"
   - "[[Power BI on Azure Databricks]]"
-  - "[[Genie]]"
+  - "[[Genie Agents]]"
   - "[[Metric Views]]"
   - "[[Semantic Layer]]"
   - "[[Dashboard]]"
@@ -133,13 +133,13 @@ Databricks provides a Partner Connect guide for Tableau Desktop, and Tableau's D
 
 > [!smallbiz] Small-business considerations
 > - **Start with the tool the business already owns.** If the company has Microsoft 365 licenses that include Power BI, use Power BI against a Databricks SQL warehouse.
-> - **Consider native dashboards first.** [[AI-BI Dashboards]] and [[Genie]] are built into Databricks, so there is no second license or second copy of data, and sharing uses Unity Catalog permissions.
+> - **Consider native dashboards first.** [[AI-BI Dashboards]] and [[Genie Agents]] are built into Databricks, so there is no second license or second copy of data, and sharing uses Unity Catalog permissions.
 > - **Define metrics once.** Put shared definitions in the gold tables or in [[Metric Views]], not separately in each report.
 > - **Control refresh cost.** Every DirectQuery interaction or scheduled refresh runs on the SQL warehouse. Set an auto-stop on the warehouse and schedule refreshes no more often than needed.
 
 > [!bridge]- In Databricks today
 > Databricks provides native BI features and also serves external BI tools:
-> - **Native:** [[AI-BI Dashboards]] for dashboards and [[Genie]] for natural-language questions over governed tables, both running on SQL warehouses. [[Metric Views]] define business metrics in Unity Catalog so that native and external tools use the same definitions.
+> - **Native:** [[AI-BI Dashboards]] for dashboards and [[Genie Agents]] for natural-language questions over governed tables, both running on SQL warehouses. [[Metric Views]] define business metrics in Unity Catalog so that native and external tools use the same definitions.
 > - **External tools:** Power BI, Tableau, Looker, and other tools connect through SQL warehouses. Power BI and Tableau tiles are available in [[Partner Connect]]. See [[Connecting Power BI]] and [[Connecting Tableau and Other BI Tools]].
 > - **Migration:** moving reports between tools is covered in [[Migrating BI Reports]].
 

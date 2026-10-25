@@ -70,24 +70,24 @@ At the end of this chapter, data is cataloged, secured, traced, and shareable. G
 | # | Note | Depth | What it covers |
 |---|---|---|---|
 | 1 | [[Unity Catalog]] | 101 Beginner | Databricks' governance layer for permissions, discovery, lineage, and auditing across every workspace. |
-| 2 | [[Metastore]] | 201 Practitioner | The top-level Unity Catalog container, one per region. |
-| 3 | [[Three-Level Namespace]] | 101 Beginner | catalog.schema.table, the address of everything. |
-| 4 | [[Catalogs Schemas and Tables]] | 101 Beginner | The securable objects in Unity Catalog and how to organize them. |
-| 5 | [[Managed vs External Tables]] | 201 Practitioner | Who owns the files, and what happens when you drop a table. |
-| 6 | [[Volumes]] | 201 Practitioner | Governed folders for non-table files like CSVs, images, and PDFs. |
-| 7 | [[Storage Credentials and External Locations]] | 301 Advanced | How Unity Catalog is allowed to reach your cloud storage. |
-| 8 | [[Privileges and Grants]] | 201 Practitioner | GRANT and REVOKE, privilege inheritance, and ownership. |
-| 9 | [[Row Filters and Column Masks]] | 301 Advanced | Showing each person only the rows and values they are allowed to see. |
-| 10 | [[Attribute-Based Access Control]] | 301 Advanced | Policies driven by tags instead of per-table grants. |
-| 11 | [[Data Lineage]] | 201 Practitioner | An automatic map of where every column came from and where it goes. |
-| 12 | [[Audit Logs]] | 301 Advanced | A record of who did what and when, across the account. |
-| 13 | [[System Tables]] | 201 Practitioner | Databricks' own operational data (billing, audit, lineage, compute) as queryable tables. |
-| 14 | [[Lakehouse Federation]] | 201 Practitioner | Querying Postgres, SQL Server, Snowflake, and others in place, without copying. |
-| 15 | [[OpenSharing]] | 201 Practitioner | The open protocol, formerly Delta Sharing, for sharing live data and AI assets with anyone. |
-| 16 | [[Clean Rooms]] | 301 Advanced | Two companies analyzing combined data without seeing each other's raw records. |
-| 17 | [[Databricks Marketplace]] | 201 Practitioner | Finding and getting datasets, models, and apps from other providers. |
-| 18 | [[Data Classification]] | 301 Advanced | Automatically finding and tagging sensitive data like PII. |
-| 19 | [[Hive Metastore Migration to Unity Catalog]] | 301 Advanced | Upgrading older workspaces off the legacy Hive metastore. |
+| 2 | [[Metastore]] | 201 Practitioner | The top-level Unity Catalog container, one per region, that holds every catalog, credential, share, and connection. |
+| 3 | [[Three-Level Namespace]] | 101 Beginner | catalog.schema.table, the three-part address of every table, view, volume, function, and model. |
+| 4 | [[Catalogs Schemas and Tables]] | 101 Beginner | The securable objects in Unity Catalog (catalogs, schemas, tables, views, volumes, functions, models) and how to organize them. |
+| 5 | [[Managed vs External Tables]] | 201 Practitioner | Who owns the files, and what happens when you drop a table. Managed is the default and recommended choice. |
+| 6 | [[Volumes]] | 201 Practitioner | Governed folders for non-table files like CSVs, images, PDFs, and model artifacts, addressed as /Volumes/catalog/schema/volume. |
+| 7 | [[Storage Credentials and External Locations]] | 301 Advanced | How Unity Catalog is allowed to reach your cloud storage, with credentials held by the catalog instead of by clusters. |
+| 8 | [[Privileges and Grants]] | 201 Practitioner | GRANT and REVOKE on securable objects, how privileges inherit down the tree, and how ownership and MANAGE work. |
+| 9 | [[Row Filters and Column Masks]] | 301 Advanced | SQL functions attached to a table that show each person only the rows and column values they are allowed to see. |
+| 10 | [[Attribute-Based Access Control]] | 301 Advanced | Policies driven by governed tags, set once on a catalog or schema, that filter rows and mask columns on every matching table. |
+| 11 | [[Data Lineage]] | 201 Practitioner | An automatic, column-level map of where every table and column came from and where it goes, captured by Unity Catalog at runtime. |
+| 12 | [[Audit Logs]] | 301 Advanced | A record of who did what and when across the account, queryable as system.access.audit or delivered to your own storage. |
+| 13 | [[System Tables]] | 201 Practitioner | Databricks' own operational data (billing, audit, lineage, compute, jobs, queries) as queryable tables in the system catalog. |
+| 14 | [[Lakehouse Federation]] | 201 Practitioner | Querying Postgres, SQL Server, Snowflake, BigQuery, and other databases and catalogs in place through Unity Catalog, without copying. |
+| 15 | [[OpenSharing]] | 201 Practitioner | The open protocol, formerly Delta Sharing, for sharing live data and AI assets with anyone, on Databricks or not, without copying. |
+| 16 | [[Clean Rooms]] | 301 Advanced | A governed, serverless environment where up to ten organizations run approved analysis on combined data without seeing each other's raw records. |
+| 17 | [[Databricks Marketplace]] | 201 Practitioner | An open marketplace for finding and getting datasets, ML models, and other data products from providers, delivered through OpenSharing. |
+| 18 | [[Data Classification]] | 301 Advanced | A Unity Catalog feature that scans catalogs for sensitive data such as PII and can tag matching columns automatically. |
+| 19 | [[Hive Metastore Migration to Unity Catalog]] | 301 Advanced | Upgrading older workspaces from the legacy Hive metastore to Unity Catalog with federation, SYNC, CLONE, and the UCX utilities. |
 
 <!-- GENERATED:reading-order END -->
 

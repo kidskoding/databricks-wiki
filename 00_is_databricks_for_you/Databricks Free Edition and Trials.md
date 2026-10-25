@@ -97,7 +97,7 @@ Quotas can change; check the official limitations page before relying on a speci
 | Quota behavior | When a quota is exceeded, compute shuts down until the quota resets; data and settings are retained |
 | Terms | Non-commercial use only |
 
-Verifying a LinkedIn profile raises some limits but does not remove them. Free Edition includes notebooks, SQL, [[Unity Catalog]], [[Lakeflow]] pipelines and jobs, [[AI-BI Dashboards|dashboards]], and [[Genie]].
+Verifying a LinkedIn profile raises some limits but does not remove them. Free Edition includes notebooks, SQL, [[Unity Catalog]], [[Lakeflow]] pipelines and jobs, [[AI-BI Dashboards|dashboards]], and [[Genie Agents]].
 
 ### Free trial limits
 

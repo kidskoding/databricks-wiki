@@ -20,7 +20,7 @@ related:
   - "[[Databricks SQL]]"
   - "[[SQL Editor]]"
   - "[[AI-BI Dashboards]]"
-  - "[[Genie]]"
+  - "[[Genie Agents]]"
   - "[[Photon]]"
   - "[[Query Performance and Caching]]"
   - "[[JDBC and ODBC]]"
@@ -80,7 +80,7 @@ General-purpose clusters can run SQL, but they are not tuned for high concurrenc
 
 ## Overview
 
-A SQL warehouse runs SQL from the [[SQL Editor]], [[AI-BI Dashboards]], [[Genie]], notebooks attached to a warehouse, [[Lakeflow Jobs]] SQL tasks, and external [[BI Tools]]. There are three types:
+A SQL warehouse runs SQL from the [[SQL Editor]], [[AI-BI Dashboards]], [[Genie Agents]], notebooks attached to a warehouse, [[Lakeflow Jobs]] SQL tasks, and external [[BI Tools]]. There are three types:
 
 | | Serverless | Pro | Classic |
 |---|---|---|---|

@@ -25,7 +25,7 @@ related:
   - "[[Lakehouse Federation]]"
   - "[[Three-Level Namespace]]"
   - "[[Managed vs External Tables]]"
-  - "[[AWS Glue and Lake Formation Federation]]"
+  - "[[Hive Metastore Federation for AWS Glue]]"
   - "[[Data Swamps]]"
 aliases:
   - HMS
@@ -171,7 +171,7 @@ SHOW TABLES IN hive_metastore.default;
 > The `hive_metastore` catalog and Hive metastore federation work as described above; the Azure Databricks documentation covers both. Federation supports external metastores backed by MySQL, SQL Server, or PostgreSQL.
 
 > [!aws]- Databricks on AWS
-> In addition to Hive metastores, Unity Catalog can federate an **AWS Glue** catalog as a read-only foreign catalog. See [[AWS Glue and Lake Formation Federation]].
+> In addition to Hive metastores, Unity Catalog can federate an **AWS Glue** catalog as a read-only foreign catalog. See [[Hive Metastore Federation for AWS Glue]].
 
 > [!gcp]- Databricks on Google Cloud
 > The `hive_metastore` catalog works the same way, and legacy external-metastore documentation exists for Google Cloud. Federation feature availability varies by cloud; check the Google Cloud edition of the Databricks documentation before planning a federated migration.

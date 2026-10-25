@@ -10,7 +10,7 @@ personas:
   - engineer
 chapter: "[[Chapter 12 - Databricks on AWS]]"
 prev: "[[Instance Profiles]]"
-next: "[[AWS Glue and Lake Formation Federation]]"
+next: "[[Hive Metastore Federation for AWS Glue]]"
 evolved_from:
   - "[[Instance Profiles]]"
 evolved_into: []
@@ -36,7 +36,7 @@ prereqs:
   - "[[IAM]]"
   - "[[Amazon S3]]"
 unlocks:
-  - "[[AWS Glue and Lake Formation Federation]]"
+  - "[[Hive Metastore Federation for AWS Glue]]"
   - "[[Managed vs External Tables]]"
   - "[[Volumes]]"
 clouds:
@@ -190,10 +190,10 @@ What does the user's compute receive when reading a table?::Short-lived credenti
 
 > [!path] Learning path
 > **Needs first:** [[Storage Credentials and External Locations]], [[IAM]], [[Amazon S3]]
-> **Unlocks next:** [[AWS Glue and Lake Formation Federation]], [[Managed vs External Tables]], [[Volumes]]
+> **Unlocks next:** [[Hive Metastore Federation for AWS Glue]], [[Managed vs External Tables]], [[Volumes]]
 
 > [!nextup] Next
-> [[AWS Glue and Lake Formation Federation]] uses the same IAM-role pattern to govern tables already registered in AWS Glue.
+> [[Hive Metastore Federation for AWS Glue]] uses the same IAM-role pattern to govern tables already registered in AWS Glue.
 
 > [!sources]- Sources (last verified: 2026-10-25)
 > - [Create a storage credential and external location for S3 using Catalog Explorer or SQL (AWS)](https://docs.databricks.com/aws/en/connect/unity-catalog/cloud-storage/s3/s3-external-location-manual)

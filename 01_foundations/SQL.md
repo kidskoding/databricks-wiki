@@ -23,7 +23,7 @@ related:
   - "[[Aggregation]]"
   - "[[SQL Editor]]"
   - "[[SQL Warehouses]]"
-  - "[[Genie]]"
+  - "[[Genie Agents]]"
   - "[[AI Functions in SQL]]"
   - "[[dbt]]"
   - "[[Metric Views]]"
@@ -93,7 +93,7 @@ Why it is still the most important data skill:
 - **It is everywhere.** Databases, warehouses, Spark, Databricks, BI tools, and even spreadsheet add-ons speak it.
 - **It describes intent, so engines can improve under you.** The same `SELECT` from 1995 runs on a distributed engine today, and runs faster.
 - **It is readable by the business.** An accountant can check a SQL query's logic in a way they cannot check a 300-line script.
-- **AI tools generate it.** Plain-English assistants like [[Genie]] and [[Databricks Assistant]] write SQL for you, so being able to read and verify SQL matters more, not less.
+- **AI tools generate it.** Plain-English assistants like [[Genie Agents]] and [[Genie Code]] write SQL for you, so being able to read and verify SQL matters more, not less.
 
 ## How it works
 
@@ -139,7 +139,7 @@ FROM bakery.sales.daily_revenue;
 ## Small-business considerations
 
 > [!smallbiz] Small-business considerations
-> If one person on the team learns one technical skill, make it SQL. A week of practice covers `SELECT`, `WHERE`, `GROUP BY`, and `JOIN`, which answer most business questions. It pays off in every tool: your POS's reporting, Power BI, and Databricks all use it. Even if you use plain-English tools like [[Genie]], knowing SQL lets you check that the answer is right.
+> If one person on the team learns one technical skill, make it SQL. A week of practice covers `SELECT`, `WHERE`, `GROUP BY`, and `JOIN`, which answer most business questions. It pays off in every tool: your POS's reporting, Power BI, and Databricks all use it. Even if you use plain-English tools like [[Genie Agents]], knowing SQL lets you check that the answer is right.
 
 > [!bridge]- In Databricks today
 > - **[[Databricks SQL]]** is the SQL experience for analysts: the [[SQL Editor]], [[SQL Warehouses]] as compute, dashboards, and alerts.

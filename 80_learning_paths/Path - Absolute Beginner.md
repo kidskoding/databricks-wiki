@@ -25,7 +25,7 @@ related:
   - "[[Notebooks]]"
   - "[[Unity Catalog]]"
   - "[[Medallion Architecture]]"
-  - "[[Genie]]"
+  - "[[Genie Agents]]"
   - "[[Path - Business Owner]]"
   - "[[Path - Analyst]]"
   - "[[Path - Data Engineer]]"
@@ -123,7 +123,7 @@ You need nothing but curiosity and a browser. No SQL, no Python, no cloud accoun
 2. [[Three-Level Namespace]]: `catalog.schema.table`, the address of everything.
 3. [[Medallion Architecture]]: bronze, silver, and gold layers from raw to business-ready.
 4. [[AI-BI Dashboards]]: charts built in Databricks and shared with anyone.
-5. [[Genie]]: ask a question in plain English and get an answer and a chart.
+5. [[Genie Agents]]: ask a question in plain English and get an answer and a chart.
 6. [[Time Travel]] (201): look at a table as it was before, and undo mistakes.
 
 > [!check] Checkpoint
@@ -133,7 +133,7 @@ You need nothing but curiosity and a browser. No SQL, no Python, no cloud accoun
 
 - **More history:** [[AMPLab and the Birth of Spark]], [[The Founding of Databricks]], [[Apache Hadoop]], and the [[Timeline of Data Engineering]].
 - **More basics:** [[Structured vs Unstructured Data]], [[Spreadsheets]], [[Relational Databases]], [[Python for Data]], [[Data Warehouses]], [[Data Lakes]].
-- **AI in one sitting:** [[Machine Learning Basics]], [[Generative AI and LLMs]], [[Databricks Assistant]].
+- **AI in one sitting:** [[Machine Learning Basics]], [[Generative AI and LLMs]], [[Genie Code]].
 - **Money:** [[How Databricks Pricing Works]] and [[DBUs]].
 - **Your cloud:** [[Choosing a Cloud for Databricks]], then [[Azure Databricks Overview]], [[Databricks on AWS Overview]], or [[Databricks on Google Cloud Overview]]. The full cloud routes are [[Path - Azure Deep Dive]], [[Path - AWS Deep Dive]], and [[Path - Google Cloud Deep Dive]].
 - **Name changes:** [[Databricks Product Names and Renames]], because Databricks renames things often.

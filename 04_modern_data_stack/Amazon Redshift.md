@@ -21,7 +21,7 @@ related:
   - "[[Snowflake]]"
   - "[[Amazon S3]]"
   - "[[Lakehouse Federation]]"
-  - "[[AWS Glue and Lake Formation Federation]]"
+  - "[[Hive Metastore Federation for AWS Glue]]"
   - "[[Columnar Storage]]"
   - "[[The Two-Tier Architecture Problem]]"
   - "[[SQL Warehouses]]"
@@ -137,7 +137,7 @@ Modern Redshift can pick distribution and sort keys automatically (`AUTO`), but 
 ## Cloud differences
 
 > [!aws]- Databricks on AWS
-> Redshift is AWS-only. On Databricks on AWS you can federate it, read the S3 data it unloads, or migrate from it. See [[S3 Access via Unity Catalog]] and [[AWS Glue and Lake Formation Federation]].
+> Redshift is AWS-only. On Databricks on AWS you can federate it, read the S3 data it unloads, or migrate from it. See [[S3 Access via Unity Catalog]] and [[Hive Metastore Federation for AWS Glue]].
 
 > [!azure]- Azure Databricks
 > Redshift does not run on Azure. Lakehouse Federation can still reach a Redshift endpoint over the network if routing allows, but [[Egress|egress]] and latency make this a migration path rather than a design. Azure's own equivalent is Synapse or the Microsoft Fabric warehouse.

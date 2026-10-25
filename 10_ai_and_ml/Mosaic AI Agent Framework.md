@@ -23,8 +23,8 @@ related:
   - "[[Databricks Apps]]"
   - "[[Declarative Automation Bundles]]"
   - "[[Model Serving]]"
-  - "[[Vector Search]]"
-  - "[[AI Gateway]]"
+  - "[[AI Search]]"
+  - "[[Unity Gateway]]"
 aliases:
   - Agent Framework
   - Databricks Agent Framework

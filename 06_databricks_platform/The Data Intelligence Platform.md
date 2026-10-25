@@ -21,8 +21,8 @@ related:
   - "[[Unity Catalog]]"
   - "[[Lakeflow]]"
   - "[[Databricks SQL]]"
-  - "[[Genie]]"
-  - "[[Databricks Assistant]]"
+  - "[[Genie Agents]]"
+  - "[[Genie Code]]"
   - "[[Lakebase]]"
   - "[[Agent Bricks]]"
   - "[[Databricks Apps]]"
@@ -89,12 +89,12 @@ Think of it in three layers:
 |---|---|---|
 | **Open storage** | Your data, in open formats, in your cloud account | [[Delta Lake]], [[Apache Iceberg]], [[Delta UniForm]], [[Volumes]] |
 | **Unified governance** | One catalog, one permission model, lineage, audit | [[Unity Catalog]], [[System Tables]], [[OpenSharing]] |
-| **Workloads on shared compute** | Everything people actually do | [[Lakeflow]] (ingest, pipelines, jobs), [[Databricks SQL]], [[AI-BI Dashboards]], [[Genie]], [[Lakebase]], [[Databricks Apps]], Mosaic AI ([[Model Serving]], [[Agent Bricks]]) |
+| **Workloads on shared compute** | Everything people actually do | [[Lakeflow]] (ingest, pipelines, jobs), [[Databricks SQL]], [[AI-BI Dashboards]], [[Genie Agents]], [[Lakebase]], [[Databricks Apps]], Mosaic AI ([[Model Serving]], [[Agent Bricks]]) |
 
 The "intelligence" sits across all three layers. Users meet it as:
 
-- **[[Databricks Assistant]]**: an AI helper in notebooks and the SQL editor that writes, explains, and fixes code (renamed Genie Code in 2026).
-- **[[Genie]]**: a chat interface where business users ask questions about data in plain language.
+- **[[Genie Code]]**: an AI helper in notebooks and the SQL editor that writes, explains, and fixes code (renamed Genie Code in 2026).
+- **[[Genie Agents]]**: a chat interface where business users ask questions about data in plain language.
 - **AI-generated documentation**: suggested table and column comments in Unity Catalog.
 - **Engine features that tune themselves**: for example, predictive optimization that runs [[OPTIMIZE and VACUUM]] for you, and [[Liquid Clustering]] that picks clustering keys automatically.
 
@@ -132,7 +132,7 @@ LIMIT 10;
 > The pitch to a small company is "one platform instead of five tools". In practice:
 > - Your data lands in one place (often your own cloud storage).
 > - The same tables feed your [[Dashboard|dashboards]], your spreadsheets via [[BI Tools]], and any AI experiments.
-> - Business users can try [[Genie]] to ask questions directly, if someone first documents the key tables.
+> - Business users can try [[Genie Agents]] to ask questions directly, if someone first documents the key tables.
 >
 > The platform is broad, and you will not use most of it. Start with SQL, a few pipelines, and dashboards. Billing is usage-based in [[DBUs]]; see [[How Databricks Pricing Works]] rather than any number quoted in a blog post.
 
@@ -158,7 +158,7 @@ LIMIT 10;
 ## Common confusions
 
 > [!confusion] "Data intelligence" is not one AI product
-> It is the name for the whole platform with AI features built in. The individual AI products are [[Databricks Assistant]], [[Genie]], AI functions, and Mosaic AI.
+> It is the name for the whole platform with AI features built in. The individual AI products are [[Genie Code]], [[Genie Agents]], AI functions, and Mosaic AI.
 
 > [!confusion] Lakehouse vs Data Intelligence Platform
 > The [[The Lakehouse Idea|lakehouse]] is the architecture (open tables that work as both lake and warehouse). The Data Intelligence Platform is Databricks' product built on that architecture, plus governance and AI.

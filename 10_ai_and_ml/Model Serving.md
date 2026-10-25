@@ -23,8 +23,8 @@ related:
   - "[[Latency]]"
   - "[[Throughput]]"
   - "[[Feature Engineering and Feature Store]]"
-  - "[[AI Gateway]]"
-  - "[[GPU Compute]]"
+  - "[[Unity Gateway]]"
+  - "[[AI Runtime]]"
   - "[[Data Quality Monitoring]]"
   - "[[Authentication - Tokens and OAuth]]"
 aliases:
@@ -36,7 +36,7 @@ prereqs:
   - "[[APIs]]"
 unlocks:
   - "[[Foundation Model APIs]]"
-  - "[[AI Gateway]]"
+  - "[[Unity Gateway]]"
   - "[[Data Quality Monitoring]]"
 clouds:
   - aws
@@ -83,7 +83,7 @@ Model Serving exposes models as [[REST]] endpoints. Endpoint types:
 |---|---|---|
 | **Custom model endpoints** | Your MLflow models from Unity Catalog (scikit-learn, XGBoost, PyTorch, custom Python) on CPU or GPU | This note |
 | **Foundation Model API endpoints** | Databricks-hosted LLMs and embedding models | [[Foundation Model APIs]] |
-| **External model endpoints** (legacy) | Proxies to providers such as OpenAI; now handled by model provider services in Unity Gateway | [[AI Gateway]] |
+| **External model endpoints** (legacy) | Proxies to providers such as OpenAI; now handled by model provider services in Unity Gateway | [[Unity Gateway]] |
 | **Feature Serving endpoints** | Feature values without a model | [[Feature Engineering and Feature Store]] |
 | **Agent endpoints** (legacy for new agents) | Agents deployed to Model Serving | [[Mosaic AI Agent Framework]] |
 
@@ -196,7 +196,7 @@ How can SQL users score a table against an endpoint?::With the `ai_query` functi
 
 > [!path] Learning path
 > **Needs first:** [[Models in Unity Catalog]], [[APIs]]
-> **Unlocks next:** [[Foundation Model APIs]], [[AI Gateway]], [[Data Quality Monitoring]]
+> **Unlocks next:** [[Foundation Model APIs]], [[Unity Gateway]], [[Data Quality Monitoring]]
 
 > [!nextup] Next
 > [[Foundation Model APIs]] uses the same serving infrastructure to host large language models that Databricks runs for you.

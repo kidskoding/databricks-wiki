@@ -164,13 +164,13 @@ The split by date matters. For forecasting, test data must come after training d
 ## Cloud differences
 
 > [!azure]- Azure Databricks
-> The ML workflow is the same on all three clouds. Only the GPU virtual machine families differ (see [[GPU Compute]]). Azure Machine Learning is a separate Microsoft service and is not required to do ML on Azure Databricks.
+> The ML workflow is the same on all three clouds. Only the GPU virtual machine families differ (see [[AI Runtime]]). Azure Machine Learning is a separate Microsoft service and is not required to do ML on Azure Databricks.
 
 > [!aws]- Databricks on AWS
-> No differences in the ML workflow. GPU instance families are listed in [[GPU Compute]].
+> No differences in the ML workflow. GPU instance families are listed in [[AI Runtime]].
 
 > [!gcp]- Databricks on Google Cloud
-> No differences in the ML workflow. GPU machine types and regional availability are listed in [[GPU Compute]].
+> No differences in the ML workflow. GPU machine types and regional availability are listed in [[AI Runtime]].
 
 ## Advanced topics
 
@@ -178,7 +178,7 @@ The split by date matters. For forecasting, test data must come after training d
 > - **Train, validation, and test splits.** Tune on the validation set and report on the test set exactly once. For time series, use rolling or expanding windows.
 > - **Leakage.** A feature that would not be known at prediction time (for example, "refund issued" when predicting churn) inflates accuracy. Point-in-time joins in [[Feature Engineering and Feature Store]] prevent it.
 > - **Training-serving skew.** Features computed differently in training and in production degrade accuracy. Using the same feature definitions for both is the purpose of a feature store.
-> - **Distributed training.** Most tabular models fit on one machine. Spark MLlib, Ray, and distributed PyTorch on [[GPU Compute]] are for data or models that do not.
+> - **Distributed training.** Most tabular models fit on one machine. Spark MLlib, Ray, and distributed PyTorch on [[AI Runtime]] are for data or models that do not.
 > - **Choosing a metric.** Mean absolute error is easy to explain for forecasts. For imbalanced classification, such as fraud, accuracy is misleading; use precision, recall, or area under the precision-recall curve.
 
 ## Common misconceptions

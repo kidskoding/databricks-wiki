@@ -25,7 +25,7 @@ related:
   - "[[Compute Policies]]"
   - "[[Auto Termination]]"
   - "[[Autoscaling]]"
-  - "[[GPU Compute]]"
+  - "[[AI Runtime]]"
   - "[[Unity Catalog]]"
   - "[[DBUs]]"
   - "[[Cost Management Basics]]"
@@ -90,7 +90,7 @@ One kind of cluster cannot do all of these well and cheaply. So Databricks offer
 | **[[Serverless Compute]]** | Notebooks, jobs, and [[Lakeflow Spark Declarative Pipelines\|pipelines]] with no cluster settings | Serverless (Databricks) | Seconds | Databricks |
 | **[[SQL Warehouses]]** | SQL queries, dashboards, BI tools | Serverless, or classic/pro in your cloud | Seconds (serverless) to minutes | Databricks tunes it; you pick size and scaling |
 
-Other compute you will meet later: **instance pools** (pre-warmed idle VMs that make classic clusters start faster), [[GPU Compute]] for deep learning, compute for [[Model Serving]], and compute for [[Databricks Apps]] and [[Lakebase]].
+Other compute you will meet later: **instance pools** (pre-warmed idle VMs that make classic clusters start faster), [[AI Runtime]] for deep learning, compute for [[Model Serving]], and compute for [[Databricks Apps]] and [[Lakebase]].
 
 ### Access modes: who can share a cluster
 

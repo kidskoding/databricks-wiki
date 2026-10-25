@@ -26,7 +26,7 @@ related:
   - "[[Databricks SDKs and REST API]]"
   - "[[Unity Catalog]]"
   - "[[Migrating BI Reports]]"
-  - "[[Genie]]"
+  - "[[Genie Agents]]"
 aliases:
   - Connecting Tableau
   - Tableau and Databricks

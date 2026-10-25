@@ -23,7 +23,7 @@ related:
   - "[[Auto Loader]]"
   - "[[COPY INTO]]"
   - "[[Libraries and Environments]]"
-  - "[[Vector Search]]"
+  - "[[AI Search]]"
   - "[[Object Storage]]"
   - "[[Databricks CLI]]"
 aliases:
@@ -133,7 +133,7 @@ df = pd.read_csv("/Volumes/raw/shop/landing/2026-10-24/orders.csv")
 Typical uses:
 
 - **Landing zone** for [[Ingestion|ingestion]]: files arrive in a volume, then [[Auto Loader]] or [[COPY INTO]] loads them into a table.
-- **Unstructured data for AI**: PDFs and images for [[Retrieval-Augmented Generation]] and [[Vector Search]].
+- **Unstructured data for AI**: PDFs and images for [[Retrieval-Augmented Generation]] and [[AI Search]].
 - **Libraries and init scripts**: wheels and JARs referenced from compute. See [[Libraries and Environments]].
 - **Exports**: CSVs written out for a partner or an accountant.
 

@@ -60,9 +60,9 @@ This chapter answers a practical question before the rest of the vault explains 
 | 4 | [[Signs You Have Outgrown Spreadsheets]] | 101 Beginner | The warning signs that a business needs a real data platform instead of Excel, Access, or one reporting tool. |
 | 5 | [[When Databricks Is Not the Right Fit]] | 101 Beginner | An honest list of situations where a simpler or cheaper tool is the better choice. |
 | 6 | [[Databricks vs Alternatives for Small Teams]] | 201 Practitioner | How Databricks compares with Snowflake, BigQuery, Microsoft Fabric, Power BI alone, and plain Postgres for a small team. |
-| 7 | [[How Databricks Pricing Works]] | 101 Beginner | DBUs, cloud bills, serverless versus classic, and why there are two invoices. |
+| 7 | [[How Databricks Pricing Works]] | 101 Beginner | DBUs, SKUs, serverless versus classic, committed use, and why there are usually two bills. |
 | 8 | [[Estimating Costs for a Small Business]] | 201 Practitioner | A worked, back-of-the-envelope monthly cost estimate for a small company's first workloads. |
-| 9 | [[Databricks Free Edition and Trials]] | 101 Beginner | The free ways to try Databricks, what each one includes, and what it leaves out. |
+| 9 | [[Databricks Free Edition and Trials]] | 101 Beginner | The free ways to try Databricks (Free Edition and the 14-day trial), what each one includes, and what it leaves out. |
 | 10 | [[Choosing a Cloud for Databricks]] | 101 Beginner | How to pick Azure, AWS, or Google Cloud, based mostly on what the business already uses. |
 | 11 | [[Your First 30 Days on Databricks]] | 101 Beginner | A week-by-week plan from sign-up to the first trusted dashboard. |
 | 12 | [[Building a Business Case]] | 201 Practitioner | How to justify Databricks to a boss or a board, covering costs, savings, risks, and a proof of concept. |

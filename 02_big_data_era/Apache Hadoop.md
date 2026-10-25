@@ -176,7 +176,7 @@ The component mapping is the same on all clouds. The differences are the target 
 > [!aws]- Databricks on AWS
 > - HDFS data moves to **Amazon S3** (`s3://bucket/path`).
 > - AWS's managed Hadoop service is **Amazon EMR**, which runs Hadoop ecosystem applications on EC2.
-> - Unity Catalog can federate an AWS Glue catalog used by older Hive setups. See [[AWS Glue and Lake Formation Federation]].
+> - Unity Catalog can federate an AWS Glue catalog used by older Hive setups. See [[Hive Metastore Federation for AWS Glue]].
 
 > [!gcp]- Databricks on Google Cloud
 > - HDFS data moves to **Google Cloud Storage** (`gs://bucket/path`).

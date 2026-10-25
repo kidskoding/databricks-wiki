@@ -22,7 +22,7 @@ related:
   - "[[Lakeflow Connect]]"
   - "[[Lakeflow Jobs]]"
   - "[[AI-BI Dashboards]]"
-  - "[[Genie]]"
+  - "[[Genie Agents]]"
   - "[[Budgets and Usage Dashboards]]"
   - "[[Privileges and Grants]]"
   - "[[Running Old and New in Parallel]]"
@@ -138,8 +138,8 @@ flowchart LR
 1. Build gold tables at the grain the report needs, for example one row per location per day (see [[Data Modeling Basics]] and [[Star Schema]]).
 2. Define key measures once as [[Metric Views|metric views]] so every consumer uses the same definitions.
 3. Build an [[AI-BI Dashboards|AI/BI dashboard]] that reproduces the report.
-4. Create a [[Genie]] Agent on the gold tables, with sample questions and business rules.
-5. Share the dashboard with the `viewers` group, who open it in [[Databricks One|Genie One]]. If the business uses Power BI, connect it instead (see [[Connecting Power BI]]).
+4. Create a [[Genie Agents]] Agent on the gold tables, with sample questions and business rules.
+5. Share the dashboard with the `viewers` group, who open it in [[Genie One|Genie One]]. If the business uses Power BI, connect it instead (see [[Connecting Power BI]]).
 
 ### Week 4: Quality, cost, and decision
 

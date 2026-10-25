@@ -27,7 +27,7 @@ related:
   - "[[MLflow]]"
   - "[[Feature Engineering and Feature Store]]"
   - "[[Retrieval-Augmented Generation]]"
-  - "[[Vector Search]]"
+  - "[[AI Search]]"
   - "[[Declarative Automation Bundles]]"
   - "[[Path - Data Engineer]]"
   - "[[Path - Analyst]]"
@@ -72,10 +72,10 @@ These are the certifications Databricks has offered in recent years, listed from
 |---|---|---|---|
 | Data Engineer Associate | Associate | [[Path - Data Engineer]] Stages 1 to 3 | [[Delta Lake]], [[Auto Loader]], [[Lakeflow Spark Declarative Pipelines]], [[Lakeflow Jobs]], [[Unity Catalog]] |
 | Data Engineer Professional | Professional | [[Path - Data Engineer]] Stages 4 and 5 | [[Change Data Capture]], [[Structured Streaming on Databricks]], [[Declarative Automation Bundles]], [[Liquid Clustering]] |
-| Data Analyst Associate | Associate | [[Path - Analyst]] | [[Databricks SQL]], [[SQL Warehouses]], [[AI-BI Dashboards]], [[Genie]] |
+| Data Analyst Associate | Associate | [[Path - Analyst]] | [[Databricks SQL]], [[SQL Warehouses]], [[AI-BI Dashboards]], [[Genie Agents]] |
 | Machine Learning Associate | Associate | [[Path - Data Scientist and ML Engineer]] Stages 1 and 2 | [[MLflow]], [[Experiment Tracking]], [[AutoML]], [[MLlib]] |
 | Machine Learning Professional | Professional | [[Path - Data Scientist and ML Engineer]] Stages 3 and 4 | [[Feature Engineering and Feature Store]], [[Models in Unity Catalog]], [[Model Serving]], [[Data Quality Monitoring]] |
-| Generative AI Engineer Associate | Associate | [[Path - AI App Developer]] | [[Retrieval-Augmented Generation]], [[Vector Search]], [[Mosaic AI Agent Framework]], [[Agent Evaluation and Tracing]] |
+| Generative AI Engineer Associate | Associate | [[Path - AI App Developer]] | [[Retrieval-Augmented Generation]], [[AI Search]], [[Mosaic AI Agent Framework]], [[Agent Evaluation and Tracing]] |
 | Associate Developer for Apache Spark | Associate | [[Path - Data Engineer]] Stage 1 plus Spark rabbit holes | [[DataFrames]], [[Spark SQL]], [[Partitions]], [[Shuffles]] |
 
 Databricks has also offered shorter **accreditations** (unconfirmed for this edition: earlier examples included fundamentals and platform-architect badges). They are a good first step and map well to [[Path - Absolute Beginner]] and [[Path - Platform Admin]]. Check the official page for which badges are current.
@@ -123,7 +123,7 @@ Databricks has also offered shorter **accreditations** (unconfirmed for this edi
 2. [[SQL Editor]]: writing and sharing queries.
 3. [[Catalogs Schemas and Tables]]: data management.
 4. [[AI-BI Dashboards]]: dashboards, filters, and sharing.
-5. [[Genie]]: natural-language analytics.
+5. [[Genie Agents]]: natural-language analytics.
 6. [[SQL Alerts]]: alerting on results.
 7. [[Connecting Power BI]] and [[Partner Connect]]: BI tool integration.
 8. [[Star Schema]] and [[Slowly Changing Dimensions]]: modeling concepts.
@@ -143,12 +143,12 @@ Databricks has also offered shorter **accreditations** (unconfirmed for this edi
 
 1. [[Generative AI and LLMs]]: core concepts.
 2. [[Retrieval-Augmented Generation]]: the main design pattern.
-3. [[Vector Search]]: indexes and retrieval.
+3. [[AI Search]]: indexes and retrieval.
 4. [[Foundation Model APIs]]: choosing and calling models.
 5. [[Mosaic AI Agent Framework]]: building agents and chains.
 6. [[Model Serving]]: deploying them.
 7. [[Agent Evaluation and Tracing]]: judges, metrics, and traces.
-8. [[AI Gateway]]: guardrails and governance.
+8. [[Unity Gateway]]: guardrails and governance.
 
 **Associate Developer for Apache Spark.** *Unconfirmed:* earlier exam guides grouped topics roughly as Spark architecture, the DataFrame API, Spark SQL, and Structured Streaming basics.
 
@@ -193,7 +193,7 @@ Databricks has also offered shorter **accreditations** (unconfirmed for this edi
 4. [[Lakeflow Jobs]]: batch inference and retraining.
 5. [[Data Quality Monitoring]] (301): drift and inference monitoring.
 6. [[Declarative Automation Bundles]] (301): MLOps deployment.
-7. [[GPU Compute]] (301): scaling training.
+7. [[AI Runtime]] (301): scaling training.
 8. [[Agent Evaluation and Tracing]] (301): evaluation for LLM-based models.
 
 > [!check] Checkpoint

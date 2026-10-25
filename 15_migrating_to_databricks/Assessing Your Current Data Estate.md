@@ -198,7 +198,7 @@ Add value, effort, and decision columns to the inventory and sort:
 > Azure estates often include SQL Server, Azure SQL, Synapse dedicated SQL pools, Azure Data Factory, and Power BI. The Lakebridge Profiler supports Synapse and legacy dedicated SQL pools, and the Analyzer reads ADF, SSIS, and SSRS exports.
 
 > [!aws]- Databricks on AWS
-> AWS estates often combine Redshift, RDS or Aurora databases, Glue jobs, and files in S3. The Profiler supports Redshift. Existing Glue catalogs can be read through [[AWS Glue and Lake Formation Federation|Glue federation]], so list them as sources.
+> AWS estates often combine Redshift, RDS or Aurora databases, Glue jobs, and files in S3. The Profiler supports Redshift. Existing Glue catalogs can be read through [[Hive Metastore Federation for AWS Glue|Glue federation]], so list them as sources.
 
 > [!gcp]- Databricks on Google Cloud
 > GCP estates usually center on BigQuery and Cloud Storage. The Profiler supports BigQuery, and `INFORMATION_SCHEMA.JOBS` provides per-table usage.

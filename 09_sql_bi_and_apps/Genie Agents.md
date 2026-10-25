@@ -18,10 +18,10 @@ cloud_equivalent: []
 related:
   - "[[AI-BI Dashboards]]"
   - "[[Metric Views]]"
-  - "[[Databricks One]]"
+  - "[[Genie One]]"
   - "[[SQL Warehouses]]"
   - "[[Unity Catalog]]"
-  - "[[Databricks Assistant]]"
+  - "[[Genie Code]]"
   - "[[Semantic Layer]]"
   - "[[Hallucination]]"
   - "[[AI Agent]]"
@@ -41,7 +41,7 @@ prereqs:
   - "[[AI-BI Dashboards]]"
 unlocks:
   - "[[Metric Views]]"
-  - "[[Databricks One]]"
+  - "[[Genie One]]"
   - "[[Agent Bricks]]"
 clouds:
   - aws
@@ -65,7 +65,7 @@ Mastery: `INPUT[inlineSelect(option(new), option(learning), option(solid)):maste
 > A Genie Agent is a chat window connected to a chosen set of company tables. You type a question in everyday words, and it writes the database query, runs it, and returns a table or chart. A data expert teaches it the company's terms and checks its answers.
 
 > [!renamed] Renamed
-> **Genie spaces** (also called **AI/BI Genie**) were renamed **Genie Agents** in July 2026 (platform release notes dated July 8; AI/BI release notes dated July 9). Databricks states the capabilities did not change. This note keeps the filename `Genie`. Related 2026 renames: Databricks Assistant became **Genie Code** (March 11, 2026), and Databricks One became **Genie One** (see [[Databricks One]]).
+> **Genie spaces** (also called **AI/BI Genie**) were renamed **Genie Agents** in July 2026 (platform release notes dated July 8; AI/BI release notes dated July 9). Databricks states the capabilities did not change. This note keeps the filename `Genie`. Related 2026 renames: Databricks Assistant became **Genie Code** (March 11, 2026), and Databricks One became **Genie One** (see [[Genie One]]).
 
 ## Background
 
@@ -92,7 +92,7 @@ Additional facts:
 
 - The **Genie Agents API** (Conversation API) became generally available on April 9, 2026. It lets other applications, such as a chat bot, send questions to an agent.
 - Every published [[AI-BI Dashboards|AI/BI dashboard]] includes a companion Genie Agent.
-- Business users reach Genie Agents through [[Databricks One|Genie One]] and the Genie mobile app.
+- Business users reach Genie Agents through [[Genie One|Genie One]] and the Genie mobile app.
 
 ## How it works
 
@@ -193,7 +193,7 @@ Who is billed for Genie usage through January 31, 2027?::Only service principals
 
 > [!path] Learning path
 > **Needs first:** [[SQL]], [[Unity Catalog]], [[SQL Warehouses]], [[AI-BI Dashboards]]
-> **Unlocks next:** [[Metric Views]], [[Databricks One]], [[Agent Bricks]]
+> **Unlocks next:** [[Metric Views]], [[Genie One]], [[Agent Bricks]]
 
 > [!nextup] Next
 > [[Metric Views]] defines measures such as revenue once in Unity Catalog, so Genie Agents, dashboards, and BI tools compute them the same way.

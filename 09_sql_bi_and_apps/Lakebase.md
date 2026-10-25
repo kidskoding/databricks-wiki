@@ -10,7 +10,7 @@ personas:
   - engineer
 chapter: "[[Chapter 09 - SQL BI and Apps]]"
 prev: "[[Databricks Apps]]"
-next: "[[Databricks One]]"
+next: "[[Genie One]]"
 evolved_from:
   - "[[Relational Databases]]"
 evolved_into: []
@@ -212,7 +212,7 @@ What replaced Lakebase Provisioned instances?::The Autoscaling model (projects, 
 > **Unlocks next:** [[Databricks Apps]], [[Mosaic AI Agent Framework]], [[Migrating from Postgres and MySQL]], [[Path - AI App Developer]]
 
 > [!nextup] Next
-> [[Databricks One]] covers Genie One, the business-user interface where people find the dashboards, Genie Agents, and apps built in this chapter.
+> [[Genie One]] covers Genie One, the business-user interface where people find the dashboards, Genie Agents, and apps built in this chapter.
 
 > [!sources]- Sources (last verified: 2026-10-25)
 > - [Lakebase release notes (AWS)](https://docs.databricks.com/aws/en/release-notes/lakebase/)

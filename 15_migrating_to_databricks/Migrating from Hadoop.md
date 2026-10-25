@@ -203,7 +203,7 @@ Lakebridge's Switch transpiler (experimental) has built-in prompts for Python, S
 > Target ADLS Gen2 (`abfss://`), governed through an [[ADLS and Access Connectors|Access Connector]]. Microsoft documents Azure Data Box for offline transfer of large HDFS estates, and Azure Data Factory has an HDFS connector for copy activities. Teams leaving HDInsight follow the same steps.
 
 > [!aws]- Databricks on AWS
-> Target S3 through a Unity Catalog storage credential ([[S3 Access via Unity Catalog]]). AWS Prescriptive Guidance documents DistCp from on-premises HDFS to S3 over [[AWS PrivateLink]]. Amazon EMR's S3DistCp is an AWS-optimized variant for teams leaving EMR. Existing Glue catalogs can be federated ([[AWS Glue and Lake Formation Federation]]).
+> Target S3 through a Unity Catalog storage credential ([[S3 Access via Unity Catalog]]). AWS Prescriptive Guidance documents DistCp from on-premises HDFS to S3 over [[AWS PrivateLink]]. Amazon EMR's S3DistCp is an AWS-optimized variant for teams leaving EMR. Existing Glue catalogs can be federated ([[Hive Metastore Federation for AWS Glue]]).
 
 > [!gcp]- Databricks on Google Cloud
 > Target Cloud Storage (`gs://`) through [[GCS Access via Unity Catalog]]. DistCp works with the Cloud Storage connector for Hadoop. Teams leaving Dataproc follow the same steps.

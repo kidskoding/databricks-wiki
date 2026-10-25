@@ -205,7 +205,7 @@ For Informatica, Talend, Alteryx, and other visual tools without a converter:
 > SSIS and Azure Data Factory are the most common ETL sources. Lakebridge supports packages running on the ADF SSIS Integration Runtime. Many teams keep ADF for orchestration during the transition and call Databricks jobs from it.
 
 > [!aws]- Databricks on AWS
-> AWS Glue jobs are PySpark or Scala scripts. Switch has built-in prompts for PySpark and Scala, and Glue catalogs can be federated ([[AWS Glue and Lake Formation Federation]]). Managed Airflow (MWAA) DAGs can call Databricks jobs during the transition.
+> AWS Glue jobs are PySpark or Scala scripts. Switch has built-in prompts for PySpark and Scala, and Glue catalogs can be federated ([[Hive Metastore Federation for AWS Glue]]). Managed Airflow (MWAA) DAGs can call Databricks jobs during the transition.
 
 > [!gcp]- Databricks on Google Cloud
 > Dataflow, Dataproc, and Cloud Composer (Airflow) are common sources. Composer DAGs can call Databricks jobs, and Switch can convert DAGs to Jobs YAML.

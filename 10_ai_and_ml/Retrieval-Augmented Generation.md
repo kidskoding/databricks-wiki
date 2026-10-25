@@ -9,10 +9,10 @@ personas:
   - ai-dev
   - owner
 chapter: "[[Chapter 10 - AI and ML]]"
-prev: "[[Vector Search]]"
+prev: "[[AI Search]]"
 next: "[[Agent Bricks]]"
 evolved_from:
-  - "[[Vector Search]]"
+  - "[[AI Search]]"
   - "[[Generative AI and LLMs]]"
 evolved_into:
   - "[[Agent Bricks]]"
@@ -31,7 +31,7 @@ related:
 aliases:
   - RAG
 prereqs:
-  - "[[Vector Search]]"
+  - "[[AI Search]]"
   - "[[Foundation Model APIs]]"
   - "[[Generative AI and LLMs]]"
 unlocks:
@@ -54,7 +54,7 @@ tags:
 Mastery: `INPUT[inlineSelect(option(new), option(learning), option(solid)):mastery]`
 
 > [!story] Context
-> [[Vector Search|AI Search]] finds the passages that match a question. An LLM writes fluent answers but does not know your business. Retrieval-augmented generation (RAG) connects the two: retrieve the right passages, then ask the model to answer only from them.
+> [[AI Search|AI Search]] finds the passages that match a question. An LLM writes fluent answers but does not know your business. Retrieval-augmented generation (RAG) connects the two: retrieve the right passages, then ask the model to answer only from them.
 
 > [!eli5] Summary
 > RAG is an open-book exam for AI. Before the AI answers, the system looks up the relevant pages in your own documents and hands them over, so the answer is based on your facts instead of the AI's memory.
@@ -81,8 +81,8 @@ A RAG application has two pipelines:
 
 | Pipeline | Steps | Databricks tools |
 |---|---|---|
-| **Data pipeline** (offline) | Ingest files, parse, chunk, embed, index | [[Lakeflow Connect]] (for example SharePoint), [[Volumes]], `ai_parse_document`, `ai_prep_search` (Beta), [[Vector Search\|AI Search]] |
-| **Serving chain** (per question) | Embed question, retrieve chunks, build prompt, call LLM, return answer with sources | AI Search, [[Foundation Model APIs]], [[AI Gateway\|Unity Gateway]], [[Agent Bricks]] |
+| **Data pipeline** (offline) | Ingest files, parse, chunk, embed, index | [[Lakeflow Connect]] (for example SharePoint), [[Volumes]], `ai_parse_document`, `ai_prep_search` (Beta), [[AI Search\|AI Search]] |
+| **Serving chain** (per question) | Embed question, retrieve chunks, build prompt, call LLM, return answer with sources | AI Search, [[Foundation Model APIs]], [[Unity Gateway\|Unity Gateway]], [[Agent Bricks]] |
 | **Quality loop** | Trace, evaluate, collect feedback, fix | [[MLflow]] tracing and judges ([[Agent Evaluation and Tracing]]) |
 
 Chunking strategies described in the Databricks docs include fixed-size, paragraph-based, format-specific (Markdown or HTML headers), and semantic chunking. The docs note that naive fixed-size splitting rarely holds up in production.
@@ -125,7 +125,7 @@ LATERAL VIEW explode(ai_prep_search(doc)) AS chunk;
 
 `ai_prep_search` is in Beta, and its exact output columns are documented on its reference page. Add a primary key column if the output does not include one, and enable Change Data Feed on the table.
 
-**2. Index** the table with a Delta Sync index (see [[Vector Search]]).
+**2. Index** the table with a Delta Sync index (see [[AI Search]]).
 
 **3. Answer questions** in Python:
 
@@ -210,7 +210,7 @@ Why tell the model to say "I do not know"?::So it does not invent answers when t
 ## Next steps
 
 > [!path] Learning path
-> **Needs first:** [[Vector Search]], [[Foundation Model APIs]], [[Generative AI and LLMs]]
+> **Needs first:** [[AI Search]], [[Foundation Model APIs]], [[Generative AI and LLMs]]
 > **Unlocks next:** [[Agent Bricks]], [[Mosaic AI Agent Framework]], [[Agent Evaluation and Tracing]]
 
 > [!nextup] Next

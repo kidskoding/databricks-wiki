@@ -24,7 +24,7 @@ related:
   - "[[Lakeflow Spark Declarative Pipelines]]"
   - "[[Lakeflow Jobs]]"
   - "[[AI-BI Dashboards]]"
-  - "[[Genie]]"
+  - "[[Genie Agents]]"
   - "[[Cost Optimization Checklist]]"
   - "[[Migration Checklist]]"
   - "[[Path - Business Owner]]"
@@ -100,7 +100,7 @@ Basic SQL and a working knowledge of your business's systems. That is all. Start
 2. [[Expectations and Data Quality]] (201): catch bad rows before the boss sees them.
 3. [[Lakeflow Jobs]]: schedule it and get an email if it fails.
 4. [[AI-BI Dashboards]]: the weekly report, rebuilt once.
-5. [[Genie]]: let people ask their own questions.
+5. [[Genie Agents]]: let people ask their own questions.
 6. [[SQL Alerts]] (201): be told when a number looks wrong.
 7. [[AutoML]]: a quick forecast or churn model when someone asks.
 

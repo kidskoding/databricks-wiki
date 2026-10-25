@@ -74,7 +74,7 @@ The checklist groups ten indicators. Count one point for each indicator that app
 | 7 | **Uncontrolled access** | Payroll or patient data circulates as email attachments that cannot be revoked | Permissions, [[Row Filters and Column Masks\|column masks]], and [[Audit Logs\|audit logs]] |
 | 8 | **Cross-system questions** | Attributing repeat customers to ad campaigns requires joining four systems | [[Join\|Joins]] across all sources in [[SQL]] |
 | 9 | **Stale dashboards** | A reporting tool refreshes from a file that was not updated | Dashboards that query current tables ([[AI-BI Dashboards]]) |
-| 10 | **New requirements** | The business wants a forecast, a churn score, or an AI assistant on its own data | ML and AI on the same tables ([[MLflow]], [[Genie]]) |
+| 10 | **New requirements** | The business wants a forecast, a churn score, or an AI assistant on its own data | ML and AI on the same tables ([[MLflow]], [[Genie Agents]]) |
 
 ### Interpreting the score
 

@@ -188,7 +188,7 @@ resources:
             pipeline_id: ${resources.pipelines.shop_etl.id}
 ```
 
-**5. Use it.** A dashboard or [[Genie]] space reads `shop.gold.daily_summary`. That is [[Chapter 09 - SQL BI and Apps|chapter 09]].
+**5. Use it.** A dashboard or [[Genie Agents]] space reads `shop.gold.daily_summary`. That is [[Chapter 09 - SQL BI and Apps|chapter 09]].
 
 ## Small-business considerations
 
@@ -212,7 +212,7 @@ resources:
 > - **Declarative vs procedural.** The docs draw the line clearly. Lakeflow Jobs is procedural: you say "run task A, then B". Pipelines are declarative: you say "table C is defined by this query", and the engine works out the order from the dependencies. Most production setups use both: a job that runs one or more pipelines plus a few notebook or SQL tasks.
 > - **Everything is a pipeline underneath.** Managed connectors in Lakeflow Connect run as ingestion pipelines, and Designer builds pipelines too. So the same event log, lineage, and monitoring apply to all of them.
 > - **Open core.** The declarative framework is in Apache Spark itself (`pyspark.pipelines`, Spark 4.1+). Databricks adds things on top, such as the AUTO CDC APIs, which the docs say are only available in Lakeflow pipelines.
-> - **Agents.** Databricks positions 2026 Lakeflow features around "agentic data engineering": the [[Databricks Assistant]] can write and debug pipeline code in the editor. Treat its output like any other code: review it and test it.
+> - **Agents.** Databricks positions 2026 Lakeflow features around "agentic data engineering": the [[Genie Code]] can write and debug pipeline code in the editor. Treat its output like any other code: review it and test it.
 
 ## Common misconceptions
 

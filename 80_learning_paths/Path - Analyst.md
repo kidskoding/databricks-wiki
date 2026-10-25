@@ -21,7 +21,7 @@ related:
   - "[[SQL Editor]]"
   - "[[Three-Level Namespace]]"
   - "[[AI-BI Dashboards]]"
-  - "[[Genie]]"
+  - "[[Genie Agents]]"
   - "[[Connecting Power BI]]"
   - "[[Materialized Views]]"
   - "[[Metric Views]]"
@@ -95,7 +95,7 @@ You should be comfortable with a spreadsheet and know `SELECT`, `WHERE`, and `GR
 5. [[Catalogs Schemas and Tables]]: how those objects are organized and secured.
 6. [[Delta Lake]]: the format under every table, and why updates are safe.
 7. [[Medallion Architecture]]: bronze, silver, gold, and why you should mostly read gold.
-8. [[Databricks Assistant]]: the AI helper that writes and explains SQL.
+8. [[Genie Code]]: the AI helper that writes and explains SQL.
 
 > [!check] Checkpoint
 > Upload a CSV with **New > Add or upload data**. Then build a gold table from it with `CREATE OR REPLACE TABLE ... AS SELECT`, add a description with `COMMENT ON TABLE`, and ask the Assistant to explain one of your queries. Find the table in **Catalog** by its three-part name.
@@ -105,9 +105,9 @@ You should be comfortable with a spreadsheet and know `SELECT`, `WHERE`, and `GR
 **Goal:** ship answers people can use.
 
 1. [[AI-BI Dashboards]]: native dashboards, built with AI help.
-2. [[Genie]]: plain-English questions for business users.
+2. [[Genie Agents]]: plain-English questions for business users.
 3. [[SQL Alerts]] (201): notify someone when a number crosses a line.
-4. [[Databricks One]]: the simple home where business users find your work.
+4. [[Genie One]]: the simple home where business users find your work.
 5. [[Connecting Power BI]] (201): import, DirectQuery, and publishing from Unity Catalog.
 6. [[Connecting Tableau and Other BI Tools]] (201): Tableau, Looker, Excel, and anything with JDBC or ODBC.
 7. [[Time Travel]] (201): answer "what did this table say last Tuesday?".

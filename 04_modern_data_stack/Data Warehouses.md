@@ -141,7 +141,7 @@ The warehouse runs this efficiently because it reads only the four columns the q
 > Microsoft's own warehouse lineage runs from SQL Server to Azure SQL Data Warehouse, then Azure Synapse Analytics, and now Microsoft Fabric's warehouse. Lakehouse Federation lists Azure Synapse (SQL Data Warehouse) and SQL Server as query federation sources. See [[Microsoft Fabric and OneLake vs Databricks]].
 
 > [!aws]- Databricks on AWS
-> AWS's warehouse is [[Amazon Redshift]]. Federation and migration paths: [[Lakehouse Federation]], [[AWS Glue and Lake Formation Federation]], [[Migrating from Amazon Redshift]].
+> AWS's warehouse is [[Amazon Redshift]]. Federation and migration paths: [[Lakehouse Federation]], [[Hive Metastore Federation for AWS Glue]], [[Migrating from Amazon Redshift]].
 
 > [!gcp]- Databricks on Google Cloud
 > Google's warehouse is [[Google BigQuery]]. See [[BigQuery Integration]] and [[Migrating from Google BigQuery]].

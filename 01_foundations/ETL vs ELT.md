@@ -167,7 +167,7 @@ In production, the same steps are usually declared in a pipeline that loads only
 > Many Azure customers already use Azure Data Factory for extraction and orchestration, and it can call Databricks notebooks and jobs[^unverified]. See [[Azure Data Factory with Databricks]].
 
 > [!aws]- Databricks on AWS
-> AWS Glue is a common existing ETL tool. Its catalog can be federated into Unity Catalog[^unverified]. See [[AWS Glue and Lake Formation Federation]].
+> AWS Glue is a common existing ETL tool. Its catalog can be federated into Unity Catalog[^unverified]. See [[Hive Metastore Federation for AWS Glue]].
 
 > [!gcp]- Databricks on Google Cloud
 > BigQuery is a common source or destination. See [[BigQuery Integration]].

@@ -5,7 +5,7 @@ part: 1
 level: 10
 section: AI & ML
 summary: From classic machine learning to agents, covering MLflow, Model Serving, Unity Gateway, AI Search, and Agent Bricks.
-prev: "[[Databricks One]]"
+prev: "[[Genie One]]"
 next: "[[Machine Learning Basics]]"
 notes:
   - "[[Machine Learning Basics]]"
@@ -17,15 +17,15 @@ notes:
   - "[[AutoML]]"
   - "[[Model Serving]]"
   - "[[Foundation Model APIs]]"
-  - "[[AI Gateway]]"
-  - "[[Vector Search]]"
+  - "[[Unity Gateway]]"
+  - "[[AI Search]]"
   - "[[Retrieval-Augmented Generation]]"
   - "[[Agent Bricks]]"
   - "[[Mosaic AI Agent Framework]]"
   - "[[Agent Evaluation and Tracing]]"
   - "[[Fine-Tuning]]"
   - "[[Data Quality Monitoring]]"
-  - "[[GPU Compute]]"
+  - "[[AI Runtime]]"
   - "[[MosaicML and Open Models]]"
 last_verified: 2026-10-25
 tags:
@@ -35,7 +35,7 @@ tags:
 # Chapter 10 - AI and ML
 
 > [!story] Previously
-> [[Chapter 09 - SQL BI and Apps|Chapter 09]] put governed tables in front of business users through Databricks SQL, dashboards, Genie, apps, and [[Databricks One]]. Those tools describe what already happened. This chapter covers the tools that predict, generate, and act on the same data.
+> [[Chapter 09 - SQL BI and Apps|Chapter 09]] put governed tables in front of business users through Databricks SQL, dashboards, Genie, apps, and [[Genie One]]. Those tools describe what already happened. This chapter covers the tools that predict, generate, and act on the same data.
 
 **From classic machine learning to agents, covering MLflow, Model Serving, Unity Gateway, AI Search, and Agent Bricks.**
 
@@ -47,13 +47,13 @@ This chapter covers machine learning and generative AI on Databricks, in the ord
 
 **The model lifecycle.** [[MLflow]], which Databricks open-sourced in 2018, records every training run ([[Experiment Tracking]]). Version 3, released in June 2025, adds tracing and evaluation for GenAI apps. Trained models are registered as versioned, governed objects with movable aliases such as `@Champion` ([[Models in Unity Catalog]]). [[AutoML]] runs baseline trials automatically, although the Databricks Runtime 18.0 ML release notes list it as removed. [[Model Serving]] exposes registered models as autoscaling REST endpoints.
 
-**Hosted LLMs and governance.** [[Foundation Model APIs]] provide Databricks-hosted open and partner models, billed per token or by provisioned throughput, through an OpenAI-compatible API. [[AI Gateway|Unity Gateway]] (formerly AI Gateway, renamed April 2026, generally available August 2026) applies permissions, rate limits, guardrails, and usage logging to every model and MCP call, including calls to external providers.
+**Hosted LLMs and governance.** [[Foundation Model APIs]] provide Databricks-hosted open and partner models, billed per token or by provisioned throughput, through an OpenAI-compatible API. [[Unity Gateway|Unity Gateway]] (formerly AI Gateway, renamed April 2026, generally available August 2026) applies permissions, rate limits, guardrails, and usage logging to every model and MCP call, including calls to external providers.
 
-**Grounding answers in company data.** Databricks AI Search ([[Vector Search]], renamed June 1, 2026) finds documents by meaning, using indexes kept in sync with Delta tables. [[Retrieval-Augmented Generation]] combines retrieved passages with an LLM so answers come from company documents rather than from the model's training data.
+**Grounding answers in company data.** Databricks AI Search ([[AI Search]], renamed June 1, 2026) finds documents by meaning, using indexes kept in sync with Delta tables. [[Retrieval-Augmented Generation]] combines retrieved passages with an LLM so answers come from company documents rather than from the model's training data.
 
 **Agents.** [[Agent Bricks]] launched in 2025 as a way to build agents from a task description. In October 2026 Databricks refocused it on code-first development with the Agent Bricks CLI and Agent Runtime, and moved its no-code role to Genie Agents. The earlier [[Mosaic AI Agent Framework]] tooling is now legacy and maps to Agent Bricks. [[Agent Evaluation and Tracing]] measures quality with MLflow traces, LLM judges, and human review.
 
-**Specialized and operational topics.** [[Fine-Tuning]] adapts a model's behavior with your own examples; the managed Foundation Model Fine-tuning service is end of life, and fine-tuning now runs on AI Runtime. [[Data Quality Monitoring]] (formerly Lakehouse Monitoring) watches tables and model predictions for freshness, completeness, and drift. [[GPU Compute]] covers classic GPU clusters and AI Runtime serverless GPUs. [[MosaicML and Open Models]] closes the chapter with the 2023 acquisition, the MPT and DBRX models, and Databricks' shift to hosting many models.
+**Specialized and operational topics.** [[Fine-Tuning]] adapts a model's behavior with your own examples; the managed Foundation Model Fine-tuning service is end of life, and fine-tuning now runs on AI Runtime. [[Data Quality Monitoring]] (formerly Lakehouse Monitoring) watches tables and model predictions for freshness, completeness, and drift. [[AI Runtime]] covers classic GPU clusters and AI Runtime serverless GPUs. [[MosaicML and Open Models]] closes the chapter with the 2023 acquisition, the MPT and DBRX models, and Databricks' shift to hosting many models.
 
 **Two small-business examples run through the chapter.** A garden center builds a **demand forecast**: features from daily sales, a model tracked in MLflow and registered with a `Champion` alias, a nightly batch job, and drift monitoring on the predictions. An online plant shop builds a **support assistant over its help documents**: documents parsed and indexed in AI Search, a RAG chain calling a hosted model through Unity Gateway, an evaluation set of real customer questions, and traces reviewed by the support lead.
 
@@ -67,25 +67,25 @@ This chapter ends Part 1, the story of the platform. Part 2 covers the clouds, s
 
 | # | Note | Depth | What it covers |
 |---|---|---|---|
-| 1 | [[Machine Learning Basics]] | 101 Beginner | Teaching software from examples, covering training, models, features, and predictions. |
-| 2 | [[Generative AI and LLMs]] | 101 Beginner | What large language models are, and why business data makes them useful. |
-| 3 | [[Feature Engineering and Feature Store]] | 301 Advanced | Reusable, governed model inputs, kept consistent between training and serving. |
-| 4 | [[MLflow]] | 101 Beginner | The open-source platform for tracking, packaging, evaluating, and deploying models and agents. |
-| 5 | [[Experiment Tracking]] | 201 Practitioner | Logging every training run's parameters, metrics, and artifacts. |
-| 6 | [[Models in Unity Catalog]] | 201 Practitioner | Versioning, aliasing, and governing models like any other table. |
-| 7 | [[AutoML]] | 101 Beginner | Letting Databricks try models for you and hand back a notebook. |
-| 8 | [[Model Serving]] | 201 Practitioner | Turning a model into a live, autoscaling API endpoint. |
-| 9 | [[Foundation Model APIs]] | 201 Practitioner | Pay-per-token access to hosted open and partner LLMs inside Databricks. |
-| 10 | [[AI Gateway]] | 301 Advanced | Governing, rate-limiting, logging, and guarding every LLM call, including to external providers. |
-| 11 | [[Vector Search]] | 201 Practitioner | Finding similar text or images by meaning, the retrieval half of RAG. |
-| 12 | [[Retrieval-Augmented Generation]] | 201 Practitioner | Giving an LLM your documents at question time so it answers from facts. |
-| 13 | [[Agent Bricks]] | 101 Beginner | Describing an AI agent's job in plain language and letting Databricks build, evaluate, and tune it. |
-| 14 | [[Mosaic AI Agent Framework]] | 301 Advanced | Building custom agents in code with tools, MLflow tracing, and deployment. |
-| 15 | [[Agent Evaluation and Tracing]] | 301 Advanced | Measuring agent quality with judges and traces in MLflow. |
-| 16 | [[Fine-Tuning]] | 401 Expert | Further training a foundation model on your own examples, and when not to bother. |
-| 17 | [[Data Quality Monitoring]] | 301 Advanced | Watching tables and model inputs for drift, freshness, and anomalies (formerly Lakehouse Monitoring). |
-| 18 | [[GPU Compute]] | 301 Advanced | GPU clusters and serverless GPUs for deep learning and LLM work. |
-| 19 | [[MosaicML and Open Models]] | 201 Practitioner | Databricks' 2023 MosaicML acquisition, DBRX, and its open-model strategy. |
+| 1 | [[Machine Learning Basics]] | 101 Beginner | Teaching software from examples, covering training, models, features, labels, and predictions, and where each step lives in Databricks. |
+| 2 | [[Generative AI and LLMs]] | 101 Beginner | What large language models are, why they need your business data to be useful, and the Databricks tools for each way of using them. |
+| 3 | [[Feature Engineering and Feature Store]] | 301 Advanced | Reusable, governed model inputs in Unity Catalog, kept consistent between training and serving, with Lakebase-backed online stores. |
+| 4 | [[MLflow]] | 101 Beginner | The open-source platform for tracking, packaging, evaluating, tracing, and deploying ML models and GenAI agents, managed on Databricks. |
+| 5 | [[Experiment Tracking]] | 201 Practitioner | Logging every training run's parameters, metrics, and artifacts in MLflow experiments, so results can be compared and reproduced. |
+| 6 | [[Models in Unity Catalog]] | 201 Practitioner | Versioning, aliasing, and governing ML models as Unity Catalog objects, the default MLflow registry since MLflow 3. |
+| 7 | [[AutoML]] | 101 Beginner | Letting Databricks train and compare models for you and hand back notebooks, now removed from Databricks Runtime 18.0 ML onward. |
+| 8 | [[Model Serving]] | 201 Practitioner | Turning a registered model into a live, autoscaling REST endpoint on serverless CPU or GPU compute. |
+| 9 | [[Foundation Model APIs]] | 201 Practitioner | Pay-per-token and provisioned-throughput access to Databricks-hosted open and partner LLMs, through an OpenAI-compatible API. |
+| 10 | [[Unity Gateway]] | 301 Advanced | Unity Gateway (formerly AI Gateway) governs, rate-limits, logs, and guards every model and MCP call, including calls to external providers. |
+| 11 | [[AI Search]] | 201 Practitioner | Databricks AI Search (formerly Vector Search) finds text or images by meaning, the retrieval half of RAG, with indexes synced from Delta tables. |
+| 12 | [[Retrieval-Augmented Generation]] | 201 Practitioner | Giving an LLM your documents at question time so it answers from facts, built on Databricks with document parsing, AI Search, and MLflow evaluation. |
+| 13 | [[Agent Bricks]] | 101 Beginner | Databricks' agent platform, launched in 2025 for building agents from a task description and refocused in 2026 on code-first agents with the Agent Bricks CLI and Agent Runtime. |
+| 14 | [[Mosaic AI Agent Framework]] | 301 Advanced | The earlier code-first agent tooling (ResponsesAgent, MLflow AgentServer on Databricks Apps, Model Serving deployment), now legacy and mapped to Agent Bricks. |
+| 15 | [[Agent Evaluation and Tracing]] | 301 Advanced | Measuring agent and RAG quality in MLflow 3 with traces, LLM judges, custom scorers, human feedback, and production monitoring. |
+| 16 | [[Fine-Tuning]] | 401 Expert | Further training a foundation model on your own examples, when not to bother, and how to do it on AI Runtime now that Foundation Model Fine-tuning is end of life. |
+| 17 | [[Data Quality Monitoring]] | 301 Advanced | Watching tables and model inputs for freshness, completeness, and drift with anomaly detection and data profiling (formerly Lakehouse Monitoring). |
+| 18 | [[AI Runtime]] | 301 Advanced | GPU clusters on Databricks Runtime ML and AI Runtime serverless GPUs (A10 and H100) for deep learning, fine-tuning, and LLM work. |
+| 19 | [[MosaicML and Open Models]] | 201 Practitioner | Databricks' 2023 MosaicML acquisition, the MPT and DBRX open models, and how that technology lives on in hosted models, serving, and AI Runtime. |
 
 <!-- GENERATED:reading-order END -->
 
