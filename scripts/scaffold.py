@@ -69,10 +69,22 @@ def stub_body(note, ch):
     return "\n".join(body)
 
 
+def note_summary(ch, n):
+    """Prefer the summary in the note's own frontmatter: it is the source of truth once written."""
+    path = ROOT / ch["folder"] / f"{n['title']}.md"
+    if path.exists():
+        text = path.read_text()
+        if text.startswith("---\n"):
+            meta = yaml.safe_load(text[4:text.find("\n---", 4)]) or {}
+            if meta.get("summary"):
+                return str(meta["summary"]).replace("|", "\\|")
+    return n["summary"]
+
+
 def reading_order_block(ch):
     rows = [GEN_START, "", "| # | Note | Depth | What it covers |", "|---|---|---|---|"]
     for i, n in enumerate(ch["notes"], 1):
-        rows.append(f"| {i} | [[{n['title']}]] | {DEPTH_LABEL[n['depth']]} | {n['summary']} |")
+        rows.append(f"| {i} | [[{n['title']}]] | {DEPTH_LABEL[n['depth']]} | {note_summary(ch, n)} |")
     rows += ["", GEN_END]
     return "\n".join(rows)
 
