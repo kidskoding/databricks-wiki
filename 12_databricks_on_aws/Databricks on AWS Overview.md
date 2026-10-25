@@ -52,7 +52,7 @@ tags:
 Mastery: `INPUT[inlineSelect(option(new), option(learning), option(solid)):mastery]`
 
 > [!story] Context
-> [[Chapter 12 - Databricks on AWS]] opens Part 2's second cloud. [[Chapter 11 - Azure Databricks|Chapter 11]] covered Databricks as a first-party Microsoft service. On AWS, Databricks is a separate company's product that runs inside your AWS account through IAM roles you grant it.
+> [[Chapter 12 - Databricks on AWS]] opens Part 2's second cloud. [[Chapter 11 - Azure Databricks|Chapter 11]] covered Databricks as a first-party Microsoft service. On AWS, Databricks is a separate company's product that runs inside your AWS account through [[IAM]] roles you grant it.
 
 > [!eli5] Summary
 > Databricks on AWS is the Databricks platform running on Amazon's cloud. Databricks runs the main website and services. When you choose to, the computers that process your data run in your own AWS account, and your data stays in your own storage buckets.
@@ -65,23 +65,25 @@ This shapes every setup decision on AWS:
 
 - **Identity** comes from Databricks account identities and your [[Identity Provider|identity provider]], not from AWS IAM users.
 - **Access to your AWS account** goes through [[IAM]] roles that you create and that Databricks assumes.
-- **Billing** has two parts: the Databricks charge (in [[DBUs]]) and the AWS charges for the EC2, EBS, S3, and networking that classic compute uses.
+- **Billing** has two parts: the Databricks charge (in [[DBUs]]) and the AWS charges for the EC2 (virtual machines), EBS (disks), [[Amazon S3|S3]] (storage), and networking that classic compute uses.
 
 ## Overview
+
+Databricks on AWS is the Databricks platform deployed on Amazon Web Services, bought from Databricks or through AWS Marketplace and connected to your AWS account through IAM roles.
 
 | Area | On AWS | Note |
 |---|---|---|
 | Sign-up | Express setup (email only), existing AWS account, or AWS Marketplace | [[Account Setup on AWS]] |
 | Account console | `https://accounts.cloud.databricks.com` | [[Account Console]] |
-| Workspace types | **Serverless** (no resources in your account) or **classic** (compute in your VPC) | [[Accounts and Workspaces]] |
+| Workspace types | **Serverless** (no resources in your account) or **classic** (compute in your [[VPC and VNet\|VPC]]) | [[Accounts and Workspaces]] |
 | Launching classic compute | A [[Cross-Account IAM Role]] that Databricks assumes | |
 | Workspace system data | A [[Workspace Storage Bucket]] in S3 (classic) or Databricks-managed default storage (serverless) | |
 | Network | Databricks-managed VPC or a [[Customer-Managed VPC on AWS]] | [[AWS PrivateLink]] for private connectivity |
 | Data access | Unity Catalog storage credentials backed by IAM roles | [[S3 Access via Unity Catalog]] |
 | Legacy data access | [[Instance Profiles]] attached to clusters | Replaced by Unity Catalog |
 | Other catalogs | AWS Glue federation | [[Hive Metastore Federation for AWS Glue]] |
-| Compute | EC2 instance types, Graviton, spot | [[EC2 Instance Types and Graviton]] |
-| Keys | AWS KMS | [[Customer-Managed Keys on AWS]] |
+| Compute | EC2 instance types, Graviton, [[Spot Instances\|spot]] | [[EC2 Instance Types and Graviton]] |
+| Keys | AWS KMS (Key Management Service) | [[Customer-Managed Keys on AWS]] |
 | Regulated US public sector | Separate GovCloud environment | [[Databricks on AWS GovCloud]] |
 
 **Serverless workspaces** became generally available on AWS on January 29, 2026. They include serverless compute and Databricks-managed default storage, so you can start without creating any AWS resources.

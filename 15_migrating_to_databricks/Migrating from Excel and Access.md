@@ -61,9 +61,9 @@ Mastery: `INPUT[inlineSelect(option(new), option(learning), option(solid)):maste
 > Today the business runs on many separate spreadsheet files that people copy, email, and overwrite. Moving to Databricks puts each list (customers, orders, products) in one shared place. Everyone sees the same numbers, nobody overwrites anyone else, and people can ask questions in plain English.
 
 > [!analogy]- Analogy: from personal notebooks to one library
-> | Spreadsheet world | Databricks |
+> | Library | Databricks |
 > |---|---|
-> | Personal notebooks that disagree | Excel files |
+> | Personal notebooks that disagree | Today's Excel files |
 > | One official ledger on a library shelf | A table |
 > | The library's document drawer | A [[Volumes\|Volume]] for original files |
 > | Floor and shelf | [[Catalogs Schemas and Tables\|Catalog and schema]], for example `finance.sales` |
@@ -84,14 +84,16 @@ Tables provide a [[Single Source of Truth|single source of truth]], history, per
 
 ## Overview
 
+Migrating from Excel and Access means moving spreadsheet and Access data into governed [[Unity Catalog]] tables, then rebuilding reports as views, dashboards, and Genie Agents.
+
 Four concepts cover most of the move:
 
 | Spreadsheet world | Databricks | Benefit |
 |---|---|---|
-| An Excel sheet or an Access table | A **table** in [[Unity Catalog]], such as `finance.sales.orders` | One copy, typed columns, history ([[Time Travel]]), permissions |
+| An Excel sheet or an Access table | A **table** in [[Unity Catalog]], such as `finance.sales.orders` | One copy, [[Data Type\|typed]] columns, history ([[Time Travel]]), permissions |
 | A folder of files on a shared drive | A **[[Volumes\|Volume]]**, such as `/Volumes/finance/sales/raw_files/` | Governed files that SQL can load |
 | A pivot table or chart | An **[[AI-BI Dashboards\|AI/BI dashboard]]** | Refreshes from the table; shared with users and groups |
-| Asking the one person who knows the spreadsheet | A **[[Genie Agents]] agent** (formerly Genie space) | Plain-English questions answered with generated SQL |
+| Asking the one person who knows the spreadsheet | A **[[Genie Agents\|Genie Agent]]** (formerly Genie space) | Plain-English questions answered with generated SQL |
 
 Access is both a database and an application. Its **tables** become Databricks tables, its **saved queries** become SQL views, and its **forms and reports** are rebuilt, usually as dashboards, or as a small [[Databricks Apps|Databricks App]] if people enter data through forms.
 
@@ -243,7 +245,7 @@ Table and column descriptions in Catalog Explorer improve answer accuracy. Datab
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Data entry needs a new home.** Dashboards are read-only. If people entered data through Access forms, give them a small app ([[Databricks Apps]]) backed by a table or an OLTP database such as [[Lakebase]], rather than letting them edit tables directly.
+> - **Data entry needs a new home.** Dashboards are read-only. If people entered data through Access forms, give them a small app ([[Databricks Apps]]) backed by a table or an OLTP database (built for day-to-day transactions) such as [[Lakebase]], rather than letting them edit tables directly.
 > - **Schema drift in weekly files.** When someone adds a column to next week's file, [[Auto Loader]] can evolve the schema. Decide whether that should fail or be accepted; see [[Schema Enforcement and Evolution]].
 > - **Money needs DECIMAL.** Use `DECIMAL(p, s)` for currency, never `DOUBLE`, or totals drift by fractions of a cent.
 > - **Keep the raw files.** Original files in a Volume provide an audit trail and allow a table rebuild if a load goes wrong.

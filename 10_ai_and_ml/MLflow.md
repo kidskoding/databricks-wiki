@@ -52,7 +52,7 @@ tags:
 Mastery: `INPUT[inlineSelect(option(new), option(learning), option(solid)):mastery]`
 
 > [!story] Context
-> [[Feature Engineering and Feature Store]] gave models consistent inputs. The next problem is the models themselves: which run produced which model, with which settings, and how good it was. MLflow is the record-keeping layer for that work, and in version 3 it also covers GenAI apps and agents.
+> [[Feature Engineering and Feature Store]] gave models consistent inputs. The next problem is the models themselves: which run produced which model, with which settings, and how good it was. MLflow is the record-keeping layer for that work, and in version 3 it also covers [[Generative AI and LLMs|GenAI]] apps and [[AI Agent|agents]].
 
 > [!eli5] Summary
 > MLflow is a lab notebook for AI work that fills itself in. Every time someone trains a model or tests an AI assistant, it writes down what they tried, how well it worked, and keeps a copy of the result, so the team can compare attempts and ship the best one.
@@ -65,24 +65,26 @@ Mastery: `INPUT[inlineSelect(option(new), option(learning), option(solid)):maste
 > | Labeled sample in the freezer | Logged model (LoggedModel) |
 > | Approved sample shelf with version labels | Model registry in [[Models in Unity Catalog\|Unity Catalog]] |
 > | Video of each step in a procedure | Trace |
-> | Inspector's checklist | Evaluation with scorers and LLM judges |
+> | Inspector's checklist | Evaluation with scorers and [[LLM]] judges |
 
 ## Background
 
-Before MLflow, ML teams tracked experiments in spreadsheets and file names such as `model_final_v3_really_final.pkl`. Each library saved models in its own format, so deploying a scikit-learn model and a TensorFlow model needed different code.
+Before MLflow, ML teams tracked experiments in spreadsheets and file names such as `model_final_v3_really_final.pkl`. Each library saved models in its own format, so deploying a scikit-learn model and a TensorFlow model (two popular ML libraries) needed different code.
 
-Databricks announced MLflow on June 5, 2018 as an open-source alpha with three components: **Tracking** (log runs), **Projects** (package code), and **Models** (a standard model format with "flavors" for each library). In 2020 MLflow joined the [[Linux Foundation]]. MLflow 3 was released in June 2025 (the MLflow release page is dated June 11, 2025). Databricks describes it as redesigned for GenAI, adding tracing, LLM-judge evaluation, and prompt and app versioning.
+Databricks announced MLflow on June 5, 2018 as an [[Open Source|open-source]] alpha (early release) with three components: **Tracking** (log runs), **Projects** (package code), and **Models** (a standard model format with "flavors" for each library). In 2020 MLflow joined the [[Linux Foundation]]. MLflow 3 was released in June 2025 (the MLflow release page is dated June 11, 2025). Databricks describes it as redesigned for GenAI, adding tracing, LLM-judge evaluation (language models that score answers), and prompt and app versioning.
 
 ## Overview
+
+MLflow is an open-source platform for tracking, packaging, registering, and evaluating machine learning models and GenAI apps.
 
 MLflow on Databricks is **managed MLflow**: the tracking server, UI, and storage are built into every workspace, and the model registry is Unity Catalog. Components in MLflow 3:
 
 | Component | What it does | Note |
 |---|---|---|
-| **Tracking** | Logs runs: parameters, metrics, artifacts | [[Experiment Tracking]] |
+| **Tracking** | Logs runs: parameters, metrics, artifacts (output files such as models and plots) | [[Experiment Tracking]] |
 | **Models and LoggedModel** | A standard packaging format; in MLflow 3, a `LoggedModel` is a first-class object that links to runs, metrics, traces, and evaluations | This note |
 | **Model registry** | Versions and aliases for models; default registry URI in MLflow 3 is `databricks-uc` | [[Models in Unity Catalog]] |
-| **Tracing** | Records each step of a GenAI app or agent, with autologging for 20+ frameworks | [[Agent Evaluation and Tracing]] |
+| **Tracing** | Records each step of a GenAI app or agent, with automatic logging (autologging) for 20+ frameworks | [[Agent Evaluation and Tracing]] |
 | **Evaluation** | `mlflow.genai.evaluate()` runs scorers and LLM judges against a dataset | [[Agent Evaluation and Tracing]] |
 | **Prompt registry and app versions** | Version prompts and link traces to an app version | [[Agent Evaluation and Tracing]] |
 | **Production monitoring** (Beta) | Runs scorers on a sample of live traces | [[Agent Evaluation and Tracing]] |

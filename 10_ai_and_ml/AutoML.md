@@ -56,7 +56,7 @@ Mastery: `INPUT[inlineSelect(option(new), option(learning), option(solid)):maste
 > AutoML is a "try everything for me" button. You point it at a table and say which column to predict, and it trains many different models, ranks them, and gives you the code for the best one so you can read it and change it.
 
 > [!renamed] Status change
-> The Databricks Runtime 18.0 for Machine Learning release notes state that **AutoML has been removed**. Earlier ML runtimes, including Databricks Runtime 16.4 LTS ML, still include it. A separate **serverless forecasting** experience (Public Preview as of October 2026) runs through the Model Training UI. Databricks has not published, in the sources reviewed, a single replacement for classification and regression AutoML. Check the release notes of the runtime you use.
+> The [[Databricks Runtime]] 18.0 for Machine Learning release notes state that **AutoML has been removed**. Earlier ML runtimes, including Databricks Runtime 16.4 LTS ML (long-term support), still include it. A separate **serverless forecasting** experience (Public Preview as of October 2026) runs through the Model Training UI. Databricks has not published, in the sources reviewed, a single replacement for classification and regression AutoML. Check the release notes of the runtime you use.
 
 > [!analogy]- Analogy: a test kitchen
 > | Test kitchen | AutoML |
@@ -72,22 +72,24 @@ Building a first model involves the same steps every time: explore the data, han
 
 ## Overview
 
-AutoML supports three problem types:
+AutoML is a Databricks tool that automatically trains and compares many models on a table and returns the results as editable notebooks.
+
+It supports three problem types:
 
 | Problem type | Python API | Notes |
 |---|---|---|
 | Classification | `automl.classify()` | Predicts a category, such as churn yes or no |
 | Regression | `automl.regress()` | Predicts a number, such as order value |
-| Forecasting | `automl.forecast()` | Predicts values over future time steps; classic compute only |
+| Forecasting | `automl.forecast()` | Predicts values over future time steps; [[Compute Types\|classic compute]] only |
 
 On classic compute, AutoML:
 
-1. Splits the data into training, validation, and test sets.
+1. Splits the data into training, validation, and test sets (see [[Machine Learning Basics]]).
 2. Trains models with several open-source algorithms and tunes them.
 3. Logs every trial to an [[MLflow]] experiment.
 4. Imports a data exploration notebook and the best trial's notebook into your workspace. For classification and regression, other trials' notebooks are saved as MLflow artifacts; for classic forecasting, all trial notebooks are imported.
 
-**Serverless forecasting** (Public Preview) is different. It runs in the Model Training UI on Databricks-managed compute, registers models and artifacts in Unity Catalog, uses statistical models plus the DeepAR neural network, and produces a batch inference notebook for the best model instead of source notebooks for every trial.
+**Serverless forecasting** (Public Preview) is different. It runs in the Model Training UI on Databricks-managed compute, registers models and artifacts in Unity Catalog, uses statistical models plus the DeepAR neural network, and produces a batch [[Inference|inference]] notebook for the best model instead of source notebooks for every trial.
 
 ## How it works
 
@@ -127,7 +129,7 @@ Open the best trial's notebook from the experiment page, review it, and register
 
 > [!smallbiz] Small-business considerations
 > - **Use it for a baseline.** AutoML is a fast way to see whether a table can predict anything useful before investing more time.
-> - **Check your runtime first.** New clusters on Databricks Runtime 18.0 ML or later do not include AutoML. For forecasting, try serverless forecasting in the UI; for classification or regression, the generated notebooks from an older runtime or a hand-written scikit-learn model are alternatives.
+> - **Check your runtime first.** New clusters on Databricks Runtime 18.0 ML or later do not include AutoML. For forecasting, try serverless forecasting in the UI; for classification or regression, the generated notebooks from an older runtime or a hand-written scikit-learn (a popular Python machine learning library) model are alternatives.
 > - **Read the generated notebook.** It shows which columns mattered and how missing values were handled.
 > - **Set a timeout.** `timeout_minutes` caps how long trials run, which caps compute cost.
 

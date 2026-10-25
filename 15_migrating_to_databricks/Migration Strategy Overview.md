@@ -78,16 +78,16 @@ Migrations usually fail for organizational reasons, not technical ones:
 
 - **Incomplete inventory.** A report depends on a table that nobody listed, so it was never moved.
 - **Single big-bang switch-over.** Everything moves in one weekend, and there is no way back when the numbers disagree on Monday.
-- **Copied code instead of converted code.** SQL written for one engine runs on another with different rules for dates, nulls, or text comparison, and totals drift.
+- **Copied code instead of converted code.** SQL written for one engine runs on another with different rules for dates, [[Null|nulls]], or text comparison, and totals drift.
 - **No decommission date.** The last few jobs never move, so the company pays for two platforms indefinitely.
 
 A phase plan with an exit gate on each phase addresses all four. The phases are the same for a folder of spreadsheets and for a ten-year-old data warehouse. Only the tools change.
 
-Databricks' own guidance frames warehouse migration as consolidation rather than removal of the warehouse function. Its migration docs state that most warehouse queries and dashboards run with minimal refactoring once the initial data migration and governance setup are complete.
+Databricks' own guidance frames warehouse migration as consolidation rather than removal of the warehouse function. Its migration docs state that most warehouse queries and dashboards run with minimal refactoring (code rewriting) once the initial data migration and governance setup are complete.
 
 ## Overview
 
-A migration strategy consists of two decisions and a phase plan.
+A migration strategy is the plan for moving a business's data, code, and reports to Databricks. It consists of two decisions and a phase plan.
 
 **Decision 1: how much to change during the move**
 
@@ -124,7 +124,7 @@ flowchart LR
 | 2 | **Land the platform** | Create the workspace, catalogs, groups, storage, and networking | [[Your First 30 Days on Databricks]], per-cloud setup notes | A user can sign in and query a test table |
 | 3 | **Coexist** | Query the old system from Databricks without copying data | [[Lakehouse Federation]] | Analysts can join old and new data in one query |
 | 4 | **Ingest** | Copy history once, then keep changes flowing | [[Lakeflow Connect]], [[Auto Loader]], [[COPY INTO]], [[Fivetran and ELT Tools\|partner tools]] | Tables land on schedule with expected row counts |
-| 5 | **Convert code** | Translate SQL, stored procedures, and ETL jobs | [[Lakebridge]] transpilers, the agentic code converter | Converted code runs without errors |
+| 5 | **Convert code** | Translate SQL, stored procedures (saved database code), and [[ETL vs ELT\|ETL]] jobs | [[Lakebridge]] transpilers, the agentic code converter | Converted code runs without errors |
 | 6 | **Validate** | Compare old and new outputs | Lakebridge Reconcile, SQL `EXCEPT` checks | Agreed tolerance met for every table in the wave |
 | 7 | **Switch over** | Point reports and users at Databricks; freeze the old path | [[Migrating BI Reports]], [[Cutover]] plan | Business sign-off after a parallel run |
 | 8 | **Decommission** | Stop old jobs, archive, cancel licences | [[Migration Checklist]] | The old system is read-only, then removed |
@@ -159,7 +159,7 @@ Federated queries are read-only. The source still does the work for each query.
 
 Databricks provides two code conversion paths:
 
-- **[[Lakebridge]]**, a free Databricks Labs toolkit with deterministic transpilers (Morpheus, BladeBridge) and an experimental LLM-based transpiler (Switch). It runs from the [[Databricks CLI]].
+- **[[Lakebridge]]**, a free Databricks Labs toolkit with deterministic (rule-based) transpilers, which translate code automatically (Morpheus, BladeBridge), and an experimental [[LLM]]-based transpiler (Switch). It runs from the [[Databricks CLI]].
 - **The agentic code converter**, an in-workspace converter in Beta as of October 2026. Its docs list T-SQL, Snowflake, Redshift, Oracle, BigQuery, and Teradata SQL as sources. A workspace admin enables it on the **Previews** page.
 
 ### Validate with numbers

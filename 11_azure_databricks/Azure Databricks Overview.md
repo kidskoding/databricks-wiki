@@ -73,17 +73,19 @@ Azure Databricks removes those steps. Databricks announced it in preview in Nove
 
 ## Overview
 
-Azure Databricks is the same [[The Data Intelligence Platform|Data Intelligence Platform]] described in [[Chapter 06 - The Databricks Platform|chapter 06]]: [[Unity Catalog]], [[Lakeflow]], [[Databricks SQL]], [[Notebooks]], [[MLflow]], and the rest. SQL, Python, and the REST APIs behave the same. The Azure-specific parts are the integration points:
+Azure Databricks is Databricks offered as a first-party Microsoft Azure service.
+
+The platform is the same [[The Data Intelligence Platform|Data Intelligence Platform]] described in [[Chapter 06 - The Databricks Platform|chapter 06]]: [[Unity Catalog]], [[Lakeflow]], [[Databricks SQL]], [[Notebooks]], [[MLflow]], and the rest. SQL, Python, and the REST APIs behave the same. The Azure-specific parts are the integration points:
 
 | Area | Azure implementation | Note |
 |---|---|---|
 | **Provisioning** | An Azure resource of type `Microsoft.Databricks/workspaces` | [[Creating an Azure Databricks Workspace]] |
 | **Billing** | Microsoft bills usage under your Azure subscription terms; Databricks commit units can be prepurchased | [[Azure Billing and Commit Units]] |
 | **Identity** | Microsoft Entra ID is built in | [[Microsoft Entra ID Integration]] |
-| **Classic compute** | Azure VMs in a [[Managed Resource Group\|managed resource group]] or your own VNet | [[Managed Resource Group]], [[VNet Injection]] |
-| **Network security** | NSGs, NAT gateway, Azure Private Link | [[Secure Cluster Connectivity]], [[Azure Private Link]] |
+| **Classic compute** | Azure [[Virtual Machine\|VMs]] in a [[Managed Resource Group\|managed resource group]] or your own [[VPC and VNet\|VNet]] | [[Managed Resource Group]], [[VNet Injection]] |
+| **Network security** | Network security groups (NSGs, traffic rules), NAT gateway (shared outbound address), Azure Private Link | [[Secure Cluster Connectivity]], [[Azure Private Link]] |
 | **Storage access** | [[Azure Data Lake Storage\|ADLS Gen2]] through an Access Connector (`Microsoft.Databricks/accessConnectors`) | [[ADLS and Access Connectors]] |
-| **Secrets and keys** | Azure Key Vault and Azure Key Vault Managed HSM | [[Azure Key Vault Secret Scopes]], [[Customer-Managed Keys on Azure]] |
+| **Secrets and keys** | Azure Key Vault and Azure Key Vault Managed HSM (hardware security module) | [[Azure Key Vault Secret Scopes]], [[Customer-Managed Keys on Azure]] |
 | **Integrations** | Azure Data Factory, Microsoft Fabric, Power BI | [[Azure Data Factory with Databricks]], [[Microsoft Fabric and OneLake vs Databricks]], [[Power BI on Azure Databricks]] |
 | **Logging** | Azure Monitor diagnostic settings, plus [[System Tables\|system tables]] | [[Azure Monitor and Diagnostic Logs]] |
 
@@ -134,7 +136,7 @@ az databricks workspace list --resource-group rg-data-prod --output table
 > Databricks is sold directly by Databricks or through AWS Marketplace, and workspaces are created in the Databricks account console. Databricks accesses your AWS account through a [[Cross-Account IAM Role|cross-account IAM role]] and a [[Workspace Storage Bucket|workspace S3 bucket]]. See [[Databricks on AWS Overview]].
 
 > [!gcp]- Databricks on Google Cloud
-> You subscribe through Google Cloud Marketplace and create workspaces in the Databricks account console. Databricks creates GCS buckets in your project and authenticates with [[Google Service Accounts|Google service accounts]]. See [[Databricks on Google Cloud Overview]].
+> You subscribe through Google Cloud Marketplace and create workspaces in the Databricks account console. Databricks creates [[Google Cloud Storage|Cloud Storage (GCS)]] buckets in your project and authenticates with [[Google Service Accounts|Google service accounts]]. See [[Databricks on Google Cloud Overview]].
 
 ## Advanced topics
 

@@ -51,7 +51,7 @@ tags:
 Mastery: `INPUT[inlineSelect(option(new), option(learning), option(solid)):mastery]`
 
 > [!story] Context
-> [[First-Party Microsoft Service]] establishes that an Azure Databricks workspace is an Azure resource. You create it with Azure tools: the Azure portal, the Azure CLI, Bicep or ARM templates, PowerShell, or Terraform.
+> [[First-Party Microsoft Service]] establishes that an Azure Databricks workspace is an Azure resource. You create it with Azure tools: the Azure portal, the Azure CLI, Bicep or ARM templates (Azure's infrastructure-as-code formats), PowerShell, or Terraform.
 
 > [!eli5] Summary
 > Creating a workspace means filling in a short form on Microsoft's cloud website: a name, a location, and the kind of workspace. After a few minutes you open the workspace and sign in with your normal work account.
@@ -66,20 +66,20 @@ Mastery: `INPUT[inlineSelect(option(new), option(learning), option(solid)):maste
 
 ## Background
 
-A [[Accounts and Workspaces|workspace]] is the environment where users run notebooks, jobs, SQL, and dashboards. On AWS and Google Cloud, workspaces are created from the Databricks account console. On Azure, a workspace is an Azure resource of type `Microsoft.Databricks/workspaces` in a subscription and resource group you choose. The subscription must not be an Azure Free Trial subscription.
+A [[Accounts and Workspaces|workspace]] is the environment where users run notebooks, jobs, SQL, and dashboards. On AWS and Google Cloud, workspaces are created from the Databricks account console. On Azure, a workspace is an Azure resource of type `Microsoft.Databricks/workspaces` in a subscription and resource group (a folder for related Azure resources) you choose. The subscription must not be an Azure Free Trial subscription.
 
 ## Overview
 
-Creating a workspace requires six decisions:
+An Azure Databricks workspace is created as an Azure resource, and creating one requires six decisions:
 
 | Decision | Options | Recommendation (2026) |
 |---|---|---|
 | **Subscription and resource group** | Any subscription you can deploy to | A dedicated resource group, for example `rg-databricks-prod` |
 | **Workspace name** | Any valid Azure resource name | A descriptive name, for example `dbw-contoso-prod-eus2` |
 | **Region** | Any region that offers Azure Databricks | The region of your data and users. Keep the workspace, storage, and [[Metastore\|metastore]] in one [[Region\|region]] |
-| **Pricing tier** | Premium, or Trial (Premium with 14 days of free DBUs) | Premium. Standard is retired |
+| **Pricing tier** | Premium, or Trial (Premium with 14 days of free [[DBUs]]) | Premium. Standard is retired |
 | **Workspace type** | Serverless, or classic (`Hybrid` compute mode) | Serverless unless you need classic clusters |
-| **Networking (classic only)** | Databricks-managed VNet or your own VNet ([[VNet Injection]]); secure cluster connectivity on or off | Your own VNet, with secure cluster connectivity on |
+| **Networking (classic only)** | Databricks-managed [[VPC and VNet\|VNet]] or your own VNet ([[VNet Injection]]); [[Secure Cluster Connectivity\|secure cluster connectivity]] on or off | Your own VNet, with secure cluster connectivity on |
 
 ### Pricing tier
 
@@ -89,7 +89,7 @@ New workspaces must be created on the **Premium** tier starting **April 1, 2026*
 
 | Type | Compute | Storage | Customer-managed network |
 |---|---|---|---|
-| **Serverless** | [[Serverless Compute]] only | Default storage, a Databricks-managed object store used for workspace data and the default catalog | Not supported |
+| **Serverless** | [[Serverless Compute]] only | Default storage, a Databricks-managed [[Object Storage\|object store]] used for workspace data and the default catalog | Not supported |
 | **Classic (Hybrid)** | Serverless plus classic clusters that run as VMs in your subscription | Workspace storage account in the [[Managed Resource Group\|managed resource group]], plus your own storage | Supported (VNet injection) |
 
 Constraints:
@@ -199,7 +199,7 @@ Parameter shapes differ between API versions (newer preview versions add a `type
 > A new workspace has no running compute. Charges begin when a SQL warehouse, notebook, job, or cluster runs.
 
 > [!confusion] The Trial tier is not Databricks Free Edition
-> The **Trial** tier is a Premium workspace in your Azure subscription with 14 days of free DBUs. **Databricks Free Edition** is a separate no-cost offering with usage limits and no SLA. See [[Databricks Free Edition and Trials]].
+> The **Trial** tier is a Premium workspace in your Azure subscription with 14 days of free DBUs. **Databricks Free Edition** is a separate no-cost offering with usage limits and no [[SLA]]. See [[Databricks Free Edition and Trials]].
 
 ## Recall
 

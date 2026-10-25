@@ -63,7 +63,7 @@ Mastery: `INPUT[inlineSelect(option(new), option(learning), option(solid)):maste
 > Agent Bricks is the part of Databricks for making AI helpers that do jobs, such as looking up an order and drafting a reply. Developers write the helper's logic, and Databricks gives it a safe place to run, a login of its own, memory, and a record of everything it did. People who do not code build similar helpers in Genie Agents instead.
 
 > [!renamed] What changed in 2026
-> - **June 2025:** Databricks introduced Agent Bricks as a way to describe a task in plain language, connect data, and have Databricks build the agent, generate evaluations and LLM judges, and optimize for quality and cost. Task types included **Knowledge Assistant**, **Information Extraction**, **Custom LLM**, and **Multi-Agent Supervisor** (later **Supervisor Agent**).
+> - **June 2025:** Databricks introduced Agent Bricks as a way to describe a task in plain language, connect data, and have Databricks build the agent, generate evaluations and [[LLM]] judges (models that score another model's answers), and optimize for quality and cost. Task types included **Knowledge Assistant**, **Information Extraction**, **Custom LLM**, and **Multi-Agent Supervisor** (later **Supervisor Agent**).
 > - **July 8, 2026:** Genie Spaces were renamed **Genie Agents**, the recommended no-code option.
 > - **October 12, 2026:** Knowledge Assistant and Supervisor Agent became **legacy** offerings. The Agent Bricks docs now focus on **code-first** development with the **Agent Bricks CLI** (Beta) and **Agent Runtime**. Custom LLM is legacy and in Beta; for custom text tasks Databricks recommends AI Functions such as `ai_query`. The Supervisor API reached end of life on September 30, 2026.
 > - **Information Extraction:** status differs across pages; `ai_extract` is generally available. Check the docs before planning on the Information Extraction brick.
@@ -76,12 +76,12 @@ Mastery: `INPUT[inlineSelect(option(new), option(learning), option(solid)):maste
 > | Staff ID number | The app's service principal (agent identity) |
 > | Notebook of past customer conversations | Managed sessions and memory |
 > | Keys to specific rooms | Tool bindings and Unity Catalog grants |
-> | Call recordings for quality review | MLflow tracing |
+> | Call recordings for quality review | [[MLflow]] tracing |
 > | Onboarding checklist | `agent.toml` |
 
 ## Background
 
-Early agent projects stitched together a framework, a hosting service, a vector database, secrets, and logging, each with its own setup. Databricks first offered the [[Mosaic AI Agent Framework]] for code-based agents deployed on Model Serving, then Agent Bricks for task-based agents built from a description. In October 2026 Databricks consolidated: no-code agents moved to Genie Agents ([[Genie Agents]]), and Agent Bricks became the code-first developer platform, with older servers and deployment targets moved to a Legacy section that maps each one to its replacement.
+Early agent projects stitched together a framework, a hosting service, a vector database (see [[AI Search]]), secrets, and logging, each with its own setup. Databricks first offered the [[Mosaic AI Agent Framework]] for code-based agents deployed on [[Model Serving]], then Agent Bricks for task-based agents built from a description. In October 2026 Databricks consolidated: no-code agents moved to [[Genie Agents]], and Agent Bricks became the code-first developer platform, with older servers and deployment targets moved to a Legacy section that maps each one to its replacement.
 
 ## Overview
 
@@ -92,14 +92,14 @@ A deployed agent has three layers:
 | Layer | What it is | Example |
 |---|---|---|
 | **Framework or harness** | Your agent logic | LangGraph, OpenAI Agents SDK |
-| **Agent server** | Exposes the invocation API and stores each run's state so runs survive crashes or restarts | `DurableAgentServer` (recommended) |
-| **Agent Runtime** | Managed hosting on [[Databricks Apps]]: an authenticated endpoint per deployment, an agent identity tied to the app's service principal, durable runs, and scaling from 1 to 5 instances | Created by `agentbricks deploy` |
+| **Agent server** | Exposes the API that callers use to run the agent, and stores each run's state so runs survive crashes or restarts | `DurableAgentServer` (recommended) |
+| **Agent Runtime** | Managed hosting on [[Databricks Apps]]: an authenticated endpoint per deployment, an agent identity tied to the app's [[Users Groups and Service Principals\|service principal]], durable runs, and scaling from 1 to 5 instances | Created by `agentbricks deploy` |
 
 The **Agent Bricks CLI** (`databricks-agentbricks`, Beta):
 
 | Command | Does |
 |---|---|
-| `agentbricks init` | Scaffolds a project from a template (LangGraph or OpenAI Agents SDK) and writes `agent.toml` |
+| `agentbricks init` | Creates a starter project from a template (LangGraph or OpenAI Agents SDK) and writes `agent.toml` |
 | `agentbricks dev` | Runs the agent locally against Databricks model serving |
 | `agentbricks deploy` | Provisions declared resources, grants the agent's service principal access, configures tracing, and deploys as a Databricks App |
 
@@ -109,7 +109,7 @@ Which option to use:
 
 | Need | Use |
 |---|---|
-| A business user wants a data Q&A or task agent without code | Genie Agents ([[Genie Agents]]) |
+| A business user wants a data Q&A or task agent without code | [[Genie Agents]] |
 | A developer builds a custom agent in code | Agent Bricks CLI and Agent Runtime |
 | Batch extraction or classification over a table | [[AI Functions in SQL]] (`ai_extract`, `ai_query`) |
 | Existing Knowledge Assistant or Supervisor Agent | Keeps running as legacy; see the Legacy agent offerings page |
@@ -130,12 +130,12 @@ flowchart LR
 
 Set up an order-status agent for a small online shop:
 
-1. Install the [[Databricks CLI]] and authenticate to the workspace. Install Python 3.10 or later and `uv`.
+1. Install the [[Databricks CLI]] and authenticate to the workspace. Install Python 3.10 or later and `uv` (a Python package manager).
 2. Install the Agent Bricks CLI:
    ```bash
    pip install databricks-agentbricks
    ```
-3. Scaffold a project from a template:
+3. Create a starter project from a template:
    ```bash
    agentbricks init
    ```
@@ -159,7 +159,7 @@ For an existing agent project, the CLI prepares migration instructions that a co
 > - **One developer?** The Agent Bricks CLI removes most hosting and identity setup. Start with one narrow agent, such as order status.
 > - **Limit what the agent can do.** Give its service principal read access to the specific tables it needs. Avoid write access until evaluation is solid.
 > - **Evaluate before launch** with real customer questions ([[Agent Evaluation and Tracing]]).
-> - **Cost drivers:** the Databricks App compute that hosts the agent, model tokens through [[Unity Gateway|Unity Gateway]], and any AI Search endpoint. See [[How Databricks Pricing Works]].
+> - **Cost drivers:** the Databricks App compute that hosts the agent, model [[Token|tokens]] through [[Unity Gateway]], and any AI Search endpoint. See [[How Databricks Pricing Works]].
 
 ## Cloud differences
 
@@ -178,7 +178,7 @@ For an existing agent project, the CLI prepares migration instructions that a co
 > - **Durable runs.** `DurableAgentServer` keeps each run's state in a Runtime Store, so long tasks can resume after a restart.
 > - **Agent identity.** Each deployment acts as the app's service principal, so the agent sees what that principal can see. If the agent must respect each end user's permissions, check the Databricks Apps authorization docs for user-level access before deploying.
 > - **Legacy paths.** The MLflow AgentServer, LongRunningAgentServer, and agents deployed to Model Serving are listed as legacy, each with a mapped replacement. See [[Mosaic AI Agent Framework]].
-> - **Tools through MCP.** Unity Gateway MCP services expose governed tools; jailbreak screening for MCP tool calls is in Beta.
+> - **Tools through MCP.** Unity Gateway MCP (Model Context Protocol, a standard for connecting tools to AI models) services expose governed tools; jailbreak screening for MCP tool calls is in Beta.
 > - **Sources disagree on maturity.** Some pages label the CLI Beta and others experimental, and the default model differs across pages.
 
 ## Common misconceptions

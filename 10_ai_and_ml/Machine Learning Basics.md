@@ -74,7 +74,7 @@ Mastery: `INPUT[inlineSelect(option(new), option(learning), option(solid)):maste
 
 Traditional software follows rules a programmer writes: "if the order total is over 100, apply free shipping". Many business questions have no clean rule. How many bags of potting soil will sell next week? Which customers are about to stop ordering? Which support email is a complaint? The answer depends on many signals at once, and the relationship changes over time.
 
-Statistics and machine learning answer these questions by fitting a model to historical data. Before the lakehouse, this work usually happened on a data scientist's laptop or on a separate ML platform. Data was exported from the warehouse into CSV files, models were trained on a sample, and the result was handed to engineers to rebuild in production. Open-source libraries such as scikit-learn and, for large data, Spark's [[MLlib]] made the algorithms available, but tracking experiments, versioning models, and deploying them stayed manual.
+Statistics and machine learning answer these questions by fitting a model to historical data. Before the lakehouse, this work usually happened on a data scientist's laptop or on a separate ML platform. Data was exported from the warehouse into CSV files, models were trained on a sample, and the result was handed to engineers to rebuild in production. [[Open Source|Open-source]] libraries such as scikit-learn (a popular Python ML library) and, for large data, Spark's [[MLlib]] made the algorithms available, but tracking experiments, versioning models, and deploying them stayed manual.
 
 Databricks puts these steps on the same platform as the data, so the tables, the training code, the models, and the predictions share one set of permissions in [[Unity Catalog]].
 
@@ -87,10 +87,10 @@ Machine learning (ML) is the practice of training a [[Model|model]] from example
 | **Feature** | An input the model uses | Day of week, last week's sales, is it a holiday |
 | **Label** | The known answer the model learns to predict | Units sold that day |
 | **Training** | Fitting the model to labeled examples | Learning from three years of daily sales |
-| **Model** | The learned function from features to a prediction | A gradient-boosted tree |
+| **Model** | The learned function from features to a prediction | A gradient-boosted tree (many small decision trees combined) |
 | **Inference** | Using the model on new inputs | Forecasting the next 14 days |
 | **Evaluation** | Measuring accuracy on data the model has not seen | Error on the last 8 weeks, held back |
-| **Overfitting** | Memorizing training data instead of the pattern | Great on history, wrong on next month |
+| **[[Overfitting]]** | Memorizing training data instead of the pattern | Great on history, wrong on next month |
 | **Drift** | New data stops looking like the training data | A new competitor changes buying habits |
 
 Common problem types:
@@ -98,7 +98,7 @@ Common problem types:
 | Type | Predicts | Example |
 |---|---|---|
 | Regression | A number | Next month's revenue |
-| Classification | A category | Will this customer churn (yes or no) |
+| Classification | A category | Will this customer churn, meaning stop buying (yes or no) |
 | Forecasting | A number over future time steps | Daily demand per product for two weeks |
 | Clustering | Groups with no labels | Customer segments |
 | Generative | New text, images, or code | A reply to a support email (see [[Generative AI and LLMs]]) |
@@ -124,7 +124,7 @@ Each stage maps to a note in this chapter:
 1. **Prepare features.** Turn raw tables into model inputs. See [[Feature Engineering and Feature Store]].
 2. **Train and track.** Train in a [[Notebooks|notebook]] on [[Databricks Runtime]] for Machine Learning, which preinstalls libraries such as scikit-learn, XGBoost, PyTorch, and [[MLflow]]. Every run is logged. See [[Experiment Tracking]], or let [[AutoML]] run the trials.
 3. **Register.** Save the chosen model as a versioned object in Unity Catalog. See [[Models in Unity Catalog]].
-4. **Deploy.** Score a table on a schedule with a [[Lakeflow Jobs|job]], or expose a REST endpoint with [[Model Serving]].
+4. **Deploy.** Score a table on a schedule with a [[Lakeflow Jobs|job]], or expose a [[REST]] endpoint with [[Model Serving]].
 5. **Monitor.** Watch input and prediction tables for drift. See [[Data Quality Monitoring]].
 
 ### Worked example: a weekly demand forecast

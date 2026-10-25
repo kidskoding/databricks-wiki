@@ -53,22 +53,24 @@ tags:
 Mastery: `INPUT[inlineSelect(option(new), option(learning), option(solid)):mastery]`
 
 > [!story] Context
-> [[Chapter 13 - Databricks on Google Cloud]] covers the third cloud. On AWS ([[Chapter 12 - Databricks on AWS|chapter 12]]), Databricks reaches your account through IAM roles. On Google Cloud, it reaches your project through Google service accounts, and you buy it through Google Cloud Marketplace.
+> [[Chapter 13 - Databricks on Google Cloud]] covers the third cloud. On AWS ([[Chapter 12 - Databricks on AWS|chapter 12]]), Databricks reaches your account through [[IAM]] roles. On Google Cloud, it reaches your project through [[Google Service Accounts|Google service accounts]], and you buy it through Google Cloud Marketplace.
 
 > [!eli5] Summary
 > Databricks on Google Cloud is the Databricks platform running on Google's cloud. You sign up through Google's app store for business software, and the cost appears on your Google Cloud bill. Your data stays in your own Google storage.
 
 ## Background
 
-Databricks launched on Google Cloud in February 2021, the newest of its three clouds (see [[The Founding of Databricks]]). The launch was built with Google, and at launch Databricks described it as built on Google Kubernetes Engine (GKE). Current documentation describes classic compute as Compute Engine VMs; see [[Compute on Google Cloud]].
+Databricks launched on Google Cloud in February 2021, the newest of its three clouds (see [[The Founding of Databricks]]). The launch was built with Google, and at launch Databricks described it as built on Google [[Kubernetes]] Engine (GKE). Current documentation describes classic compute as Compute Engine VMs (Google Cloud [[Virtual Machine|virtual machines]]); see [[Compute on Google Cloud]].
 
 Three things make Google Cloud different:
 
 - **Purchase and billing** go through **Google Cloud Marketplace** to a Google Cloud billing account.
-- **Cloud identity** for Databricks in your project is a set of **Google service accounts**, not IAM roles or managed identities.
+- **Cloud identity** for Databricks in your project is a set of **Google service accounts**, not IAM roles or [[Managed Identity|managed identities]].
 - **Google services** such as [[Google BigQuery|BigQuery]] are first-class integration targets.
 
 ## Overview
+
+Databricks on Google Cloud is the Databricks platform deployed on Google Cloud, purchased through Google Cloud Marketplace and connected to your project through Google service accounts.
 
 | Area | On Google Cloud | Note |
 |---|---|---|
@@ -77,12 +79,12 @@ Three things make Google Cloud different:
 | Workspace types | **Serverless** (Databricks-managed default storage) or **classic** (compute in your project) | [[Accounts and Workspaces]] |
 | Classic compute | Compute Engine VMs in your project | [[Compute on Google Cloud]] |
 | Cloud identity | Workspace service account, `databricks-compute` service account, optional custom service accounts | [[Google Service Accounts]] |
-| Workspace system data | Two GCS buckets in your project (classic) | [[Workspace Storage Bucket]] covers the AWS equivalent |
-| Network | Databricks-managed VPC or [[Customer-Managed VPC on Google Cloud]] (recommended for new workspaces) | |
+| Workspace system data | Two [[Google Cloud Storage\|Cloud Storage (GCS)]] buckets in your project (classic) | [[Workspace Storage Bucket]] covers the AWS equivalent |
+| Network | Databricks-managed [[VPC and VNet\|VPC]] or [[Customer-Managed VPC on Google Cloud]] (recommended for new workspaces) | |
 | Private connectivity | [[Private Service Connect]] | |
 | Data access | Unity Catalog storage credentials backed by Databricks-generated service accounts | [[GCS Access via Unity Catalog]] |
 | BigQuery | Spark connector and Lakehouse Federation | [[BigQuery Integration]] |
-| Keys | Cloud KMS, added at workspace creation | [[Customer-Managed Keys on Google Cloud]] |
+| Keys | Cloud KMS (Key Management Service), added at workspace creation | [[Customer-Managed Keys on Google Cloud]] |
 | Billing | Google Cloud bill | [[Google Cloud Marketplace and Billing]] |
 
 ## How it works
@@ -108,7 +110,7 @@ flowchart LR
 ```
 
 1. The **control plane** runs in Databricks' Google Cloud environment.
-2. **Serverless compute** runs in Databricks' account in the same region as your workspace. It reaches Cloud Storage and BigQuery through Private Google Access, not Private Service Connect.
+2. **Serverless compute** runs in Databricks' account in the same region as your workspace. It reaches Cloud Storage and BigQuery through Private Google Access (private routing to Google services), not Private Service Connect.
 3. **Classic compute** runs as Compute Engine VMs inside a VPC in your project. Databricks manages it through a workspace service account created in your project.
 4. **Unity Catalog** governs data in your buckets through storage credentials.
 

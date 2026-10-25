@@ -59,9 +59,11 @@ Mastery: `INPUT[inlineSelect(option(new), option(learning), option(solid)):maste
 
 ## Background
 
-A Databricks account on AWS holds workspaces, identities, and [[Unity Catalog]] metastores (see [[Accounts and Workspaces]]). Earlier, every workspace needed AWS resources in your account: an IAM role, an S3 bucket, and a VPC. Since serverless workspaces became generally available (January 29, 2026), a workspace can exist without any of these.
+A Databricks account on AWS holds workspaces, identities, and [[Unity Catalog]] metastores (see [[Accounts and Workspaces]]). Earlier, every workspace needed AWS resources in your account: an [[IAM]] role (an AWS permission identity), an [[Amazon S3|S3]] bucket (storage), and a [[VPC and VNet|VPC]] (private network). Since serverless workspaces became generally available (January 29, 2026), a workspace can exist without any of these.
 
 ## Overview
+
+Account setup on AWS has two steps: signing up for a Databricks account, then creating a workspace, either serverless or classic.
 
 ### Ways to sign up
 
@@ -72,14 +74,14 @@ A Databricks account on AWS holds workspaces, identities, and [[Unity Catalog]] 
 | **AWS Marketplace** | An AWS account with Marketplace access | Pay-as-you-go on the AWS bill after the trial |
 | **Contract** | A Databricks account team | Invoice or commit |
 
-Express setup creates a **serverless workspace** with trial credits valid for 14 days. Trial limits include serverless compute for notebooks, jobs, and pipelines capped at 50 DBUs per hour, and no GPUs. To keep going, choose **Manage trial** in the workspace top bar and add a credit card or link an AWS account for Marketplace billing.
+Express setup creates a **serverless workspace** with trial credits valid for 14 days. Trial limits include serverless compute for notebooks, jobs, and pipelines capped at 50 [[DBUs]] per hour, and no [[GPU|GPUs]]. To keep going, choose **Manage trial** in the workspace top bar and add a credit card or link an AWS account for Marketplace billing.
 
 ### Ways to create a workspace
 
 | Method | Creates in your AWS account | Best for |
 |---|---|---|
 | **Serverless workspace** (account console) | Nothing | Most new users and small teams |
-| **Classic, AWS Quickstart** (CloudFormation) | IAM roles, S3 bucket, VPC | A first classic workspace |
+| **Classic, AWS Quickstart** (CloudFormation, the AWS infrastructure-as-code service) | IAM roles, S3 bucket, VPC | A first classic workspace |
 | **Classic, automated configuration** | IAM roles, S3 bucket, networking, through temporary access | A guided classic setup |
 | **Classic, manual configuration** | Whatever you created yourself | Your own VPC, IAM policies, or existing buckets |
 | **Account API, CLI, or Terraform** | Whatever your code creates | Repeatable, production deployments |

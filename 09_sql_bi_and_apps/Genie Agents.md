@@ -65,11 +65,11 @@ Mastery: `INPUT[inlineSelect(option(new), option(learning), option(solid)):maste
 > A Genie Agent is a chat window connected to a chosen set of company tables. You type a question in everyday words, and it writes the database query, runs it, and returns a table or chart. A data expert teaches it the company's terms and checks its answers.
 
 > [!renamed] Renamed
-> **Genie spaces** (also called **AI/BI Genie**) were renamed **Genie Agents** in July 2026 (platform release notes dated July 8; AI/BI release notes dated July 9). Databricks states the capabilities did not change. This note keeps the filename `Genie`. Related 2026 renames: Databricks Assistant became **Genie Code** (March 11, 2026), and Databricks One became **Genie One** (see [[Genie One]]).
+> **Genie spaces** (also called **AI/BI Genie**) were renamed **Genie Agents** in July 2026 (platform release notes dated July 8; AI/BI release notes dated July 9). Databricks states the capabilities did not change. Related 2026 renames: Databricks Assistant became **Genie Code** (March 11, 2026), and Databricks One became **Genie One** (see [[Genie One]]).
 
 ## Background
 
-Self-service BI tools let business users filter and drill into prepared dashboards, but a question outside the prepared views still goes to an analyst as a request. [[Generative AI and LLMs|Large language models]] can translate a question into SQL, but without context they guess at table meanings, join paths, and business terms, which produces wrong answers (see [[Hallucination]]).
+Self-service [[BI Tools|BI tools]] let business users filter and drill into prepared dashboards, but a question outside the prepared views still goes to an analyst as a request. [[Generative AI and LLMs|Large language models]] can translate a question into SQL, but without context they guess at table meanings, join paths, and business terms, which produces wrong answers (see [[Hallucination]]).
 
 Genie Agents combine an LLM with curated context that a domain expert provides: selected tables, descriptions, example queries, and instructions. Answers are SQL queries that run on a [[SQL Warehouses|SQL warehouse]] under [[Unity Catalog]] governance, so the user can inspect the query behind each answer.
 
@@ -81,7 +81,7 @@ A Genie Agent is a configured, shareable conversational interface over a specifi
 |---|---|
 | **Data sources** | Up to 50 tables, views, or [[Metric Views\|metric views]] |
 | **SQL warehouse** | A pro or serverless SQL warehouse runs the generated queries |
-| **Knowledge store** | Curated semantic definitions: table and column descriptions, synonyms, and join relationships |
+| **Knowledge store** | Curated definitions of what the data means: table and column descriptions, synonyms, and join relationships |
 | **Example SQL queries** | Reference answers. Genie selects relevant examples from the agent's query library. |
 | **Trusted assets** | Parameterized example queries and SQL functions whose logic an author has verified. Answers that use them are labeled **Trusted**. |
 | **Instructions** | Plain-text business rules and terminology. Databricks recommends them as a last resort, after documentation, SQL expressions, and examples. |
@@ -92,7 +92,7 @@ Additional facts:
 
 - The **Genie Agents API** (Conversation API) became generally available on April 9, 2026. It lets other applications, such as a chat bot, send questions to an agent.
 - Every published [[AI-BI Dashboards|AI/BI dashboard]] includes a companion Genie Agent.
-- Business users reach Genie Agents through [[Genie One|Genie One]] and the Genie mobile app.
+- Business users reach Genie Agents through [[Genie One]] and the Genie mobile app.
 
 ## How it works
 
@@ -144,7 +144,7 @@ Benchmarks do not change what Genie knows. Only the knowledge store, examples, t
 ## Small-business considerations
 
 > [!smallbiz] Small-business considerations
-> - **Start narrow.** One agent over five to ten gold tables (for example, sales, stores, and products) answers more accurately than one agent over every table.
+> - **Start narrow.** One agent over five to ten gold tables (see [[Medallion Architecture]]) (for example, sales, stores, and products) answers more accurately than one agent over every table.
 > - **Define metrics first.** If revenue is defined in a [[Metric Views|metric view]], Genie uses that definition instead of inferring one.
 > - **Write five example queries** for the questions the owner asks most. This is usually the largest accuracy gain.
 > - **Teach users to check the SQL** behind an answer before acting on an unexpected number.

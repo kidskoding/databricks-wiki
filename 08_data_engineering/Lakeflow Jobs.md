@@ -75,11 +75,13 @@ Mastery: `INPUT[inlineSelect(option(new), option(learning), option(solid)):maste
 
 ## Background
 
-Before a built-in orchestrator, teams scheduled Databricks work from outside: cron on a server, [[Apache Airflow]], or [[Azure Data Factory with Databricks|Azure Data Factory]]. That works, but you run and secure another system, credentials have to be shared with it, and the orchestrator can't see inside Databricks (which table a task wrote, what compute it used).
+Before a built-in [[Orchestration|orchestrator]], teams scheduled Databricks work from outside: cron (the standard Unix scheduler) on a server, [[Apache Airflow]], or [[Azure Data Factory with Databricks|Azure Data Factory]]. That works, but you run and secure another system, credentials have to be shared with it, and the orchestrator can't see inside Databricks (which table a task wrote, what compute it used).
 
-Lakeflow Jobs puts orchestration in the platform. It knows about notebooks, pipelines, connectors, SQL warehouses, and Unity Catalog tables, so it can, for example, start a job when a table changes.
+Lakeflow Jobs puts orchestration in the platform. It knows about notebooks, pipelines, connectors, [[SQL Warehouses|SQL warehouses]], and Unity Catalog tables, so it can, for example, start a job when a table changes.
 
 ## Overview
+
+Lakeflow Jobs is the Databricks orchestrator: it runs notebooks, pipelines, SQL queries, and other work in a set order, on a schedule or trigger, with retries and notifications.
 
 A **job** is a set of **tasks** with dependencies between them, which forms a [[DAG]]. The docs describe a job as consisting of one or more tasks that run notebooks, pipelines, managed connectors, SQL queries, machine learning training, and model deployment and inference.
 
@@ -87,7 +89,7 @@ The main pieces:
 
 | Piece | What it is | More in |
 |---|---|---|
-| **Task** | One unit of work: notebook, pipeline, SQL, dbt, Python script or wheel, JAR, another job, and more | [[Tasks Triggers and Schedules]] |
+| **Task** | One unit of work: notebook, pipeline, SQL, dbt, Python script or wheel (packaged Python code), JAR (packaged Java or Scala code), another job, and more | [[Tasks Triggers and Schedules]] |
 | **Dependencies** | "Run B after A", plus conditions such as "run if any failed" | [[Tasks Triggers and Schedules]] |
 | **Control flow** | If/else condition tasks and for-each loops | [[Tasks Triggers and Schedules]] |
 | **Trigger** | Schedule (cron), file arrival, table update, or continuous | [[Tasks Triggers and Schedules]] |
@@ -100,7 +102,7 @@ Lakeflow Jobs is procedural: you say what runs in which order. [[Lakeflow Spark 
 
 ## How it works
 
-The nightly job for our Shopify and QuickBooks shop:
+The nightly job for the example Shopify and QuickBooks shop:
 
 ```mermaid
 flowchart LR
@@ -181,12 +183,19 @@ WHERE result_state = 'FAILED'
 | Orchestrates other systems | Some (API calls from notebooks, webhooks) | Hundreds of providers |
 | Best when | Most work happens in Databricks | Many systems outside Databricks need coordinating |
 
-Many companies use both: Airflow or ADF at the top for cross-system steps, and Lakeflow Jobs inside Databricks.
+Many companies use both: Airflow or Azure Data Factory (ADF) at the top for cross-system steps, and Lakeflow Jobs inside Databricks.
 
 ## Small-business considerations
 
 > [!smallbiz] Small-business considerations
-> One nightly job is usually the whole orchestration story. Keep it simple: one job per business process (for example "nightly sales refresh"), a failure email to a shared inbox, two retries on anything that talks to the outside world, and serverless compute so there are no clusters to size. Run it as a service principal rather than your own login, so it keeps working if you leave. The job itself costs nothing extra; you pay for the compute its tasks use (see [[How Databricks Pricing Works]]).
+> A small business usually needs one nightly job. Recommended setup:
+> - One job per business process (for example "nightly sales refresh").
+> - A failure email to a shared inbox.
+> - Two retries on anything that talks to the outside world.
+> - Serverless compute, so there are no clusters to size.
+> - Run as a service principal rather than your own login, so the job keeps working if you leave.
+>
+> The job itself costs nothing extra; you pay for the compute its tasks use (see [[How Databricks Pricing Works]]).
 
 ## Cloud differences
 

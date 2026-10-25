@@ -67,13 +67,22 @@ Mastery: `INPUT[inlineSelect(option(new), option(learning), option(solid)):maste
 
 ## Background
 
-Extracting data from a SaaS application requires handling OAuth tokens that expire, API rate limits, pagination, deleted records, new fields that appear without warning, and retries when the API is down. Databases add another requirement: re-copying a large table every night is slow and costly, so incremental loads need [[Change Data Capture|CDC]].
+Extracting data from a [[SaaS PaaS and IaaS|SaaS]] application requires handling:
 
-Teams used to either write these scripts themselves or pay a separate ingestion vendor. Both meant another system to secure and another place where lineage stopped. Lakeflow Connect puts the connectors inside Databricks, so the data lands straight in governed tables.
+- [[OAuth]] tokens that expire
+- API rate limits
+- Pagination (fetching results one page at a time)
+- Deleted records
+- New fields that appear without warning
+- Retries when the API is down Databases add another requirement: re-copying a large table every night is slow and costly, so incremental loads need [[Change Data Capture|CDC]].
+
+Teams used to either write these scripts themselves or pay a separate ingestion vendor. Both meant another system to secure and another place where [[Data Lineage|lineage]] stopped. Lakeflow Connect puts the connectors inside Databricks, so the data lands straight in governed tables.
 
 ## Overview
 
-Databricks says managed connectors "extend Lakeflow pipelines functionality to also include source-specific authentication, CDC, edge case handling, long-term API maintenance, automated retries, automated schema evolution". Under the hood, each managed connector is an **ingestion pipeline** that writes [[Streaming Tables|streaming tables]].
+Lakeflow Connect is the Databricks component that copies data from external applications, databases, and files into [[Unity Catalog]] tables.
+
+Databricks says managed connectors "extend Lakeflow pipelines functionality to also include source-specific authentication, CDC, edge case handling, long-term API maintenance, automated retries, automated schema evolution" (see [[Schema Enforcement and Evolution]]). Under the hood, each managed connector is an **ingestion pipeline** that writes [[Streaming Tables|streaming tables]].
 
 Lakeflow Connect covers four kinds of connector:
 
@@ -82,7 +91,7 @@ Lakeflow Connect covers four kinds of connector:
 | **Managed SaaS connectors** | Salesforce, Workday, ServiceNow, Google Analytics, SharePoint, Shopify | Pick objects in a UI or bundle. Databricks runs and maintains it. |
 | **Managed database connectors** | Microsoft SQL Server | CDC or snapshot from a database, through an ingestion gateway |
 | **Query-based connectors** | Databases with a reliable "last updated" column | Incremental pulls by querying the source directly, with no CDC setup |
-| **Standard connectors** | [[Auto Loader]] for files, Kafka and other streams, `read_files` | You write the pipeline code; more control, more work |
+| **Standard connectors** | [[Auto Loader]] for files, [[Apache Kafka\|Kafka]] and other streams, `read_files` | You write the pipeline code; more control, more work |
 
 ### Connector status as of October 2026
 
@@ -122,8 +131,8 @@ flowchart LR
 ```
 
 1. **Connection.** An admin creates a Unity Catalog **connection** that stores the credentials (OAuth for SaaS, a login for databases). Users who have `USE CONNECTION` can build pipelines from it without seeing the secret.
-2. **Ingestion pipeline.** You choose source objects and a destination catalog and schema. For SaaS sources the serverless pipeline calls the API directly.
-3. **Gateway (databases only).** For SQL Server, an **ingestion gateway** runs on classic compute close to the database, reads snapshots and change tracking or CDC data, and stages it in a [[Volumes|volume]]. The ingestion pipeline then applies those changes to the destination tables.
+2. **Ingestion pipeline.** You choose source objects and a destination catalog and schema. For SaaS sources the [[Serverless Compute|serverless]] pipeline calls the API directly.
+3. **Gateway (databases only).** For SQL Server, an **ingestion gateway** runs on classic compute (compute in your own cloud account; see [[Compute Types]]) close to the database, reads snapshots and change tracking or CDC data, and stages it in a [[Volumes|volume]]. The ingestion pipeline then applies those changes to the destination tables.
 4. **Schedule.** You run the pipeline from a [[Lakeflow Jobs|job]], for example nightly or every 15 minutes.
 
 You can build all of this in the UI (**Data ingestion** in the sidebar). For a repeatable setup, define it in a [[Declarative Automation Bundles|bundle]]. A sketch of a Salesforce ingestion pipeline (the connection is created first in Catalog Explorer):

@@ -61,7 +61,7 @@ Mastery: `INPUT[inlineSelect(option(new), option(learning), option(solid)):maste
 > | Kitchen | Lakeflow |
 > |---|---|
 > | Delivery dock that receives supplies | [[Lakeflow Connect]] |
-> | Prep line that turns ingredients into dishes | [[Lakeflow Spark Declarative Pipelines]] (bronze, silver, gold) |
+> | Prep line that turns ingredients into dishes | [[Lakeflow Spark Declarative Pipelines]] ([[Medallion Architecture\|bronze, silver, gold]]) |
 > | Ticket rail that sets the order and timing | [[Lakeflow Jobs]] |
 > | Picture menu for staff who do not cook | [[Lakeflow Designer]] |
 
@@ -70,19 +70,21 @@ Mastery: `INPUT[inlineSelect(option(new), option(learning), option(solid)):maste
 Before Lakeflow, a typical data team combined:
 
 - an [[Ingestion|ingestion]] tool (often [[Fivetran and ELT Tools|Fivetran]] or hand-written scripts) to copy data from apps and databases,
-- Spark notebooks or [[dbt]] to transform it,
-- an orchestrator such as [[Apache Airflow]] or [[Azure Data Factory with Databricks|Azure Data Factory]] to run it on a schedule,
+- [[Apache Spark|Spark]] [[Notebooks|notebooks]] or [[dbt]] to transform it,
+- an [[Orchestration|orchestrator]] such as [[Apache Airflow]] or [[Azure Data Factory with Databricks|Azure Data Factory]] to run it on a schedule,
 - and something else again for data quality checks and alerts.
 
-Each tool had its own login, its own bill, its own permissions, and its own idea of what a "failed run" meant. When a number on a [[Dashboard|dashboard]] looked wrong, you had to trace it across four systems. Lakeflow folds those jobs into the platform, under [[Unity Catalog]], so lineage, permissions, and monitoring cover the whole path from source to report.
+Each tool had its own login, its own bill, its own permissions, and its own idea of what a "failed run" meant. When a number on a [[Dashboard|dashboard]] looked wrong, you had to trace it across four systems. Lakeflow folds those jobs into the platform, under [[Unity Catalog]], so [[Data Lineage|lineage]], permissions, and monitoring cover the whole path from source to report.
 
 ## Overview
+
+Lakeflow is the Databricks product family for bringing data in, transforming it, and running that work on a schedule.
 
 Databricks describes Lakeflow as "a unified solution for ingestion, transformation, and orchestration of your data". It is a family name, not one feature. As of October 2026 it has four members:
 
 | Piece | Job | Replaces (roughly) | Note |
 |---|---|---|---|
-| **Lakeflow Connect** | Pull data in from SaaS apps, databases, files, and streams | Fivetran, Airbyte, custom scripts | [[Lakeflow Connect]], [[Auto Loader]] |
+| **Lakeflow Connect** | Pull data in from [[SaaS PaaS and IaaS\|SaaS]] apps, databases, files, and streams | Fivetran, Airbyte, custom scripts | [[Lakeflow Connect]], [[Auto Loader]] |
 | **Lakeflow Spark Declarative Pipelines** | Declare the tables you want; Databricks works out the order, retries, and incremental updates | Hand-written Spark jobs, some dbt | [[Lakeflow Spark Declarative Pipelines]] |
 | **Lakeflow Jobs** | Schedule and chain tasks of any kind | Airflow, cron, ADF | [[Lakeflow Jobs]] |
 | **Lakeflow Designer** | Build pipelines visually, with AI help, without code | Alteryx-style tools | [[Lakeflow Designer]] |
@@ -188,12 +190,16 @@ resources:
             pipeline_id: ${resources.pipelines.shop_etl.id}
 ```
 
-**5. Use it.** A dashboard or [[Genie Agents]] space reads `shop.gold.daily_summary`. That is [[Chapter 09 - SQL BI and Apps|chapter 09]].
+**5. Use it.** A dashboard or [[Genie Agents|Genie Agent]] reads `shop.gold.daily_summary`. That is [[Chapter 09 - SQL BI and Apps|chapter 09]].
 
 ## Small-business considerations
 
 > [!smallbiz] Small-business considerations
-> Lakeflow lets a one-person data team run production pipelines without hosting an orchestrator, licensing a separate ingestion tool, or writing retry logic. Start with the smallest version of the example above: one connector, one pipeline, one nightly job, all on [[Serverless Compute|serverless compute]], so nothing runs (or bills) between runs. Lakeflow has no separate license fee. Connectors, pipelines, and jobs are billed by the compute they use, measured in [[DBUs]]. See [[How Databricks Pricing Works]] and [[Estimating Costs for a Small Business]].
+> Lakeflow lets a one-person data team run production pipelines without hosting an orchestrator, licensing a separate ingestion tool, or writing retry logic.
+>
+> Start with the smallest version of the example above: one connector, one pipeline, one nightly job, all on [[Serverless Compute|serverless compute]], so nothing runs (or bills) between runs.
+>
+> Lakeflow has no separate license fee. Connectors, pipelines, and jobs are billed by the compute they use, measured in [[DBUs]]. See [[How Databricks Pricing Works]] and [[Estimating Costs for a Small Business]].
 
 ## Cloud differences
 
@@ -212,7 +218,7 @@ resources:
 > - **Declarative vs procedural.** The docs draw the line clearly. Lakeflow Jobs is procedural: you say "run task A, then B". Pipelines are declarative: you say "table C is defined by this query", and the engine works out the order from the dependencies. Most production setups use both: a job that runs one or more pipelines plus a few notebook or SQL tasks.
 > - **Everything is a pipeline underneath.** Managed connectors in Lakeflow Connect run as ingestion pipelines, and Designer builds pipelines too. So the same event log, lineage, and monitoring apply to all of them.
 > - **Open core.** The declarative framework is in Apache Spark itself (`pyspark.pipelines`, Spark 4.1+). Databricks adds things on top, such as the AUTO CDC APIs, which the docs say are only available in Lakeflow pipelines.
-> - **Agents.** Databricks positions 2026 Lakeflow features around "agentic data engineering": the [[Genie Code]] can write and debug pipeline code in the editor. Treat its output like any other code: review it and test it.
+> - **Agents.** Databricks positions 2026 Lakeflow features around "agentic data engineering": [[Genie Code]] can write and debug pipeline code in the editor. Treat its output like any other code: review it and test it.
 
 ## Common misconceptions
 

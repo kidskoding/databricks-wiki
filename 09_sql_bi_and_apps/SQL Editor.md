@@ -65,11 +65,13 @@ Mastery: `INPUT[inlineSelect(option(new), option(learning), option(solid)):maste
 
 ## Background
 
-Before a browser-based editor, analysts on a data platform usually installed a desktop SQL client, configured a driver and credentials, and saved queries as `.sql` files on their own laptop. Sharing meant emailing files. Nobody could see which query produced the number in last week's slide.
+Before a browser-based editor, analysts on a data platform usually installed a desktop SQL client, configured a database driver (connection software) and credentials, and saved queries as `.sql` files on their own laptop. Sharing meant emailing files. Nobody could see which query produced the number in last week's slide.
 
 The SQL editor puts all of this inside the workspace. Queries are saved in the workspace, they run on governed compute, permissions come from [[Unity Catalog]], and sharing is a link.
 
 ## Overview
+
+The SQL editor is the page in the Databricks workspace for writing, running, saving, and sharing SQL queries.
 
 The **new SQL editor** is the default editor in [[Databricks SQL]]. Databricks announced it as generally available on **August 14, 2025**, with multiple statement results, inline execution history, real-time collaboration, and deeper [[Genie Code]] integration. Its main parts:
 
@@ -78,15 +80,15 @@ The **new SQL editor** is the default editor in [[Databricks SQL]]. Databricks a
 | **Header** | The run button and the catalog picker (moved to the header in July 2025 to give more room for typing) |
 | **Compute selector** | Which SQL warehouse runs the query. A workspace default warehouse can be preselected (Beta as of August 2025). |
 | **Schema browser** | The catalogs, schemas, and tables you are allowed to see |
-| **Editor** | Autocomplete, query snippets, parameters, and the Assistant |
+| **Editor** | Autocomplete, query snippets, parameters, and [[Genie Code]] |
 | **Results pane** | One tab per statement, charts, column profiling, and downloads |
-| **Execution history** | Earlier runs, their results, timings, and query profiles |
+| **Execution history** | Earlier runs, their results, timings, and [[Query Performance and Caching\|query profiles]] |
 
 ## How it works
 
 ```mermaid
 flowchart LR
-  A["Type SQL<br/>(with snippets and Assistant)"] --> B["Pick a SQL warehouse"]
+  A["Type SQL<br/>(with snippets and Genie Code)"] --> B["Pick a SQL warehouse"]
   B --> C["Run"]
   C --> D["Results pane<br/>one tab per statement"]
   D --> E["Chart, profile,<br/>or download"]
@@ -94,13 +96,13 @@ flowchart LR
   C --> G["Execution history<br/>and query profile"]
 ```
 
-**Writing.** Autocomplete suggests table and column names from Unity Catalog. **Query snippets** (added May 2025) let you save reusable fragments such as a `JOIN` or `CASE` pattern and insert them through autocomplete. You create them from the View menu. The [[Genie Code]] (renamed Genie Code in March 2026) writes, explains, or fixes a query from a plain-English request.
+**Writing.** Autocomplete suggests table and column names from Unity Catalog. **Query snippets** (added May 2025) let you save reusable fragments such as a `JOIN` or `CASE` pattern and insert them through autocomplete. You create them from the View menu. [[Genie Code]] (formerly Databricks Assistant, renamed in March 2026) writes, explains, or fixes a query from a plain-English request.
 
 **Running.** You can run a whole script or a selection. If the script holds several statements, the results pane lets you step through each statement's output.
 
 **Parameters.** Date and timestamp parameters offer preset ranges such as *This week* and *Last 30 days* (July 2025), so one saved query can serve many date windows.
 
-**Reading results.** Since May 1, 2026 you can select column headers in a results table and open the selection details to see **profiling statistics** for those columns. This is a fast way to spot nulls or strange values before you trust a number. Results can be exported as CSV, TSV, or Excel files up to 5 GB.
+**Reading results.** Since May 1, 2026 you can select column headers in a results table and open the selection details to see **profiling statistics** for those columns. This is a fast way to spot [[Null|nulls]] or strange values before you trust a number. Results can be exported as CSV, TSV, or Excel files up to 5 GB.
 
 **History.** Inline execution history (July 2025) lets you open earlier results without rerunning, open past [[Query Performance and Caching|query profiles]], and compare run times and statuses.
 
@@ -146,7 +148,7 @@ Running both statements produces two result tabs: a daily trend that you can tur
 > - **Who can see a profile.** You must own the query or hold at least `CAN MONITOR` on the warehouse.
 > - **Editor vs notebook.** A [[Notebooks|notebook]] attached to a SQL warehouse can also run SQL. Use the editor for analyst work and saved queries, and notebooks when SQL is mixed with Python or markdown explanation.
 > - **Default warehouse.** A preselected default warehouse helps cost control: new users run on the small shared warehouse instead of starting a large one.
-> - **Genie Code.** The [[Genie Code]] was renamed Genie Code on March 11, 2026. Older screenshots show the Assistant name.
+> - **Genie Code.** Databricks Assistant was renamed [[Genie Code]] on March 11, 2026. Older screenshots show the Assistant name.
 
 ## Common misconceptions
 
@@ -154,7 +156,7 @@ Running both statements produces two result tabs: a daily trend that you can tur
 > Closing the editor tab does not stop the warehouse, and stopping the warehouse does not lose your saved queries. The editor is the front end. The [[SQL Warehouses|SQL warehouse]] is the engine, and it stops on its own auto-stop timer.
 
 > [!confusion] "New SQL editor" vs the legacy editor
-> Older docs and screenshots show a legacy editor. The "new SQL editor" is now the GA default. If a tutorial's buttons do not match the current UI, the tutorial was likely written for the legacy editor.
+> Older docs and screenshots show a legacy editor. The "new SQL editor" is now the generally available (GA) default. If a tutorial's buttons do not match the current UI, the tutorial was likely written for the legacy editor.
 
 ## Recall
 

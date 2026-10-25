@@ -62,20 +62,22 @@ On Google Cloud, a Databricks account is tied to a **Google Cloud billing accoun
 
 ## Overview
 
+Account setup on Google Cloud means subscribing to Databricks through Google Cloud Marketplace, then creating a workspace in the Databricks account console.
+
 ### Prerequisites
 
 | Requirement | Detail |
 |---|---|
 | Billing account | A Google Cloud billing account |
 | Billing role | **Billing Administrator** on the billing account (or its organization) |
-| Project role | **Viewer** on the project linked to the billing account, for the Marketplace subscription |
+| Project role | **Viewer** on the project (a Google Cloud container for resources) linked to the billing account, for the Marketplace subscription |
 | Email | A business email; trial limits apply to personal emails |
 | Workspace project | A project for the workspace. It does not need to be the project used for the subscription |
 
 ### Trial
 
 - Trial credits cover Databricks usage for **14 days**.
-- Google Cloud bills its own resources (VMs, disks, buckets, networking) separately, during and after the trial, for classic workspaces in your project.
+- Google Cloud bills its own resources ([[Virtual Machine|VMs]], disks, buckets, networking) separately, during and after the trial, for classic workspaces in your project.
 - The default serverless trial workspace does not create billable resources in your project.
 
 ## How it works
@@ -109,7 +111,7 @@ gcloud billing projects link acme-dbx-billing --billing-account=0123AB-4567CD-89
 1. Sign in to `https://accounts.gcp.databricks.com` as an account admin.
 2. Click **Workspaces**, then **Create workspace**.
 3. In **Basics**, enter the workspace name, region, and the Google Cloud project ID.
-4. Optionally open **Advanced** to choose a customer-managed VPC, Private Service Connect, or encryption keys.
+4. Optionally open **Advanced** to choose a [[Customer-Managed VPC on Google Cloud|customer-managed VPC]], [[Private Service Connect]], or [[Customer-Managed Keys on Google Cloud|encryption keys]].
 5. Click **Create workspace**. Workspace configurations cannot be modified after creation.
 
 Databricks recommends that the workspace creator have `roles/owner` on the workspace project and, for a customer-managed VPC, on the VPC project.

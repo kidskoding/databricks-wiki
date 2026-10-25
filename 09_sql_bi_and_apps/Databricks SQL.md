@@ -77,7 +77,7 @@ Chapter 04 ended with [[The Two-Tier Architecture Problem]]: companies kept a [[
 
 ## Overview
 
-Databricks SQL (often shortened to **DBSQL**) is a set of tools that share one engine:
+Databricks SQL (often shortened to **DBSQL**) is the Databricks product for running SQL analytics and BI directly on lakehouse tables. It is a set of tools that share one engine:
 
 | Piece | What it does | Note |
 |---|---|---|
@@ -96,8 +96,8 @@ Databricks documents three main SQL warehouse types (plus a beta *Lakehouse Real
 
 | Type | Where the compute runs | Start-up time | Extras | When to pick it |
 |---|---|---|---|---|
-| **Serverless** | Databricks' account | About 2–6 seconds | Photon, Predictive IO, Intelligent Workload Management | The recommended default for most work |
-| **Pro** | Your cloud account | About 4 minutes | Photon, Predictive IO | Serverless not available in your region, or you need custom networking (for example federation or hybrid connections) |
+| **Serverless** | Databricks' account | About 2–6 seconds | Photon, Predictive IO (faster reads), Intelligent Workload Management (automatic scaling) | The recommended default for most work |
+| **Pro** | Your cloud account | About 4 minutes | Photon, Predictive IO | Serverless not available in your region, or you need custom networking (for example [[Lakehouse Federation\|federation]] or hybrid connections) |
 | **Classic** | Your cloud account | About 4 minutes | Photon | Basic, older setups |
 
 In the UI the default type is serverless, but a warehouse created through the API with default parameters is classic.
@@ -120,7 +120,12 @@ flowchart LR
 3. Photon reads only the files it needs (helped by [[Data Skipping|data skipping]] and caches) and computes the answer.
 4. The result goes back to whoever asked. Repeated questions can be answered from a cache without running again.
 
-**Sizing.** Classic and pro warehouses come in T-shirt sizes from 2X-Small to 5X-Large, and the number of workers doubles at each step. You set how many clusters they may scale to, and Databricks allows one cluster per 10 concurrent queries. For serverless, the docs advise starting with one larger warehouse and sizing down later, and increasing the size if queries [[Spill|spill]] to disk. The 5X-Large size is in Public Preview for pro and serverless as of October 2026.
+**Sizing.**
+
+- Classic and pro warehouses come in T-shirt sizes from 2X-Small to 5X-Large, and the number of workers doubles at each step.
+- You set how many [[Cluster|clusters]] they may scale to, and Databricks allows one cluster per 10 concurrent queries.
+- For serverless, the docs advise starting with one larger warehouse and sizing down later, and increasing the size if queries [[Spill|spill]] to disk.
+- The 5X-Large size is in Public Preview for pro and serverless as of October 2026.
 
 A first query an analyst might run, on a store-sales table:
 
@@ -153,12 +158,12 @@ The query uses standard ANSI-style SQL. Most SQL written for SQL Server, Postgre
 The SQL, the editor, and the warehouse types are the same on all three clouds. The differences are about where compute runs and what is available:
 
 > [!azure]- Azure Databricks
-> - Pro and classic warehouses run as VMs in your Azure subscription, and Azure's docs list Azure-specific driver and worker instance types for each size.
+> - Pro and classic warehouses run as [[Virtual Machine|VMs]] in your Azure subscription, and Azure's docs list Azure-specific driver and worker instance types for each size.
 > - Serverless availability depends on the Azure [[Region|region]]. If it is missing, pro is the documented fallback.
-> - Power BI is a common client on Azure and uses Microsoft Entra ID sign-in. See [[Power BI on Azure Databricks]].
+> - Power BI is a common client on Azure and uses [[Microsoft Entra ID Integration|Microsoft Entra ID]] sign-in. See [[Power BI on Azure Databricks]].
 
 > [!aws]- Databricks on AWS
-> - Pro and classic warehouses run as EC2 instances in your AWS account, and serverless runs in Databricks' account. See [[Serverless Network Security]] for how serverless reaches your data.
+> - Pro and classic warehouses run as [[EC2 Instance Types and Graviton|EC2 instances]] (AWS virtual machines) in your AWS account, and serverless runs in Databricks' account. See [[Serverless Network Security]] for how serverless reaches your data.
 
 > [!gcp]- Databricks on Google Cloud
 > - The model is the same. Check the GCP docs for which warehouse types and sizes your region offers before you plan around serverless.
@@ -170,7 +175,7 @@ The SQL, the editor, and the warehouse types are the same on all three clouds. T
 > - **Predictive IO** (pro and serverless) speeds up reads on Delta tables. Classic has Photon but not Predictive IO.
 > - **Custom networking** is the main reason to keep pro. Classic and pro sit in your own network, so they can reach private sources that serverless cannot reach without extra network configuration.
 > - **Warehouse metadata as data.** A warehouses [[System Tables|system table]] records warehouse configuration over time, which helps with cost reviews.
-> - **API defaults differ from UI defaults.** Infrastructure-as-code that creates warehouses (see [[Terraform Provider]]) should set the type explicitly.
+> - **API defaults differ from UI defaults.** [[Infrastructure as Code|Infrastructure-as-code]] that creates warehouses (see [[Terraform Provider]]) should set the type explicitly.
 
 ## Common misconceptions
 

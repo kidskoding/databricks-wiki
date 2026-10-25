@@ -72,13 +72,15 @@ A flat list of thousands of tables is hard to navigate. Without a clear structur
 
 ## Overview
 
-A **securable object** is anything in Unity Catalog you can grant privileges on. The ones that hold data form the hierarchy:
+Catalogs and schemas are the two container levels in Unity Catalog, and tables, views, volumes, functions, and models are the objects stored inside them.
+
+A **securable object** is anything in Unity Catalog you can [[Privileges and Grants|grant privileges]] on. The ones that hold data form the hierarchy:
 
 | Object | Lives in | What it is |
 |---|---|---|
-| **Catalog** | Metastore | Top-level container. Usually maps to an environment, business unit, or source. |
+| **Catalog** | [[Metastore]] | Top-level container. Usually maps to an environment, business unit, or source. |
 | **Schema** | Catalog | Second-level container for related objects. Also called a database. |
-| **Table** | Schema | Rows and columns. Managed or external, usually [[Delta Lake]] or [[Apache Iceberg]]. |
+| **Table** | Schema | Rows and columns. [[Managed vs External Tables\|Managed or external]], usually [[Delta Lake]] or [[Apache Iceberg]]. |
 | **View** | Schema | A saved query over other tables. Holds no data. |
 | **[[Materialized Views\|Materialized view]]** | Schema | A query whose results are precomputed and kept up to date. |
 | **[[Streaming Tables\|Streaming table]]** | Schema | A table fed incrementally by a pipeline. |
@@ -140,7 +142,7 @@ SHOW TABLES IN analytics.sales;
 
 You can also browse all of this in **Catalog Explorer**, the UI for Unity Catalog, which shows each object's columns, sample data, owner, permissions, lineage, and history.
 
-Every catalog and schema can carry **ownership** (the principal who can grant on it), **comments**, **tags**, and an optional **managed storage location**. A catalog can also be **bound** to specific workspaces.
+Every catalog and schema can carry **ownership** (the user, group, or [[Users Groups and Service Principals|service principal]] who can grant on it), **comments**, **tags**, and an optional **managed storage location**. A catalog can also be **bound** to specific workspaces.
 
 ### Common layouts
 
@@ -156,7 +158,7 @@ The Unity Catalog best practices docs suggest catalogs as the main unit of data 
 ## Small-business considerations
 
 > [!smallbiz] Small-business considerations
-> Use three to five catalogs, not one per person. A layout like `raw` / `analytics` / `sandbox`, with schemas named after source systems in `raw` (`raw.shopify`, `raw.quickbooks`) and after business topics in `analytics` (`analytics.sales`, `analytics.inventory`), is straightforward to document. Add a `COMMENT` to every catalog, schema, and important table; [[Genie Agents]] and the [[Genie Code]] read those comments when answering questions in plain English.
+> Use three to five catalogs, not one per person. A layout like `raw` / `analytics` / `sandbox`, with schemas named after source systems in `raw` (`raw.shopify`, `raw.quickbooks`) and after business topics in `analytics` (`analytics.sales`, `analytics.inventory`), is straightforward to document. Add a `COMMENT` to every catalog, schema, and important table; [[Genie Agents]] and [[Genie Code]] read those comments when answering questions in plain English.
 
 ## Cloud differences
 

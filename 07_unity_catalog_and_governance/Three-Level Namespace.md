@@ -66,11 +66,11 @@ Mastery: `INPUT[inlineSelect(option(new), option(learning), option(solid)):maste
 
 With two levels (`schema.table`) and one Hive metastore per workspace, names collided. Teams used prefixes such as `prod_sales_orders` and `dev_sales_orders` to separate them, and a typo could write to the wrong one.
 
-The **catalog** level provides a place to separate environments (dev and prod), business units (finance and marketing), or data sources (a federated Postgres database), while keeping table names short and identical across them.
+The **catalog** level provides a place to separate environments (dev and prod), business units (finance and marketing), or data sources (an outside Postgres database connected through [[Lakehouse Federation]]), while keeping table names short and identical across them.
 
 ## Overview
 
-In Unity Catalog every data object is addressed as:
+The three-level namespace is the naming scheme Unity Catalog uses to give every data object one unique address. Every object is addressed as:
 
 ```text
 catalog.schema.object
@@ -79,7 +79,7 @@ catalog.schema.object
 | Level | What it holds | Example |
 |---|---|---|
 | **Catalog** | Schemas. The first level under the [[Metastore]]. | `prod` |
-| **Schema** (also called *database*) | Tables, views, [[Volumes|volumes]], functions, models | `prod.sales` |
+| **Schema** (also called *database*) | Tables, views, [[Volumes\|volumes]], functions, models | `prod.sales` |
 | **Object** | The thing you query, read, or call | `prod.sales.orders` |
 
 The same pattern covers every object type:

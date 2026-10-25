@@ -59,7 +59,7 @@ tags:
 Mastery: `INPUT[inlineSelect(option(new), option(learning), option(solid)):mastery]`
 
 > [!story] Context
-> [[Genie Agents]] Agents and [[AI-BI Dashboards]] both compute numbers such as revenue. If each tool, and each analyst, writes its own `SUM(...)` with its own filters, the same question returns different answers. A metric view defines each measure once in [[Unity Catalog]], and every tool queries that definition.
+> [[Genie Agents]] and [[AI-BI Dashboards]] both compute numbers such as revenue. If each tool, and each analyst, writes its own `SUM(...)` with its own filters, the same question returns different answers. A metric view defines each measure once in [[Unity Catalog]], and every tool queries that definition.
 
 > [!eli5] Summary
 > A metric view is a single, shared definition of the numbers a business tracks, such as revenue or average order size, and the ways it can be broken down, such as by store or by day. Every dashboard, chat tool, and report reads the same definition, so everyone gets the same answer.

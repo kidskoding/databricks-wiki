@@ -61,28 +61,32 @@ Mastery: `INPUT[inlineSelect(option(new), option(learning), option(solid)):maste
 
 ## Background
 
-Traditional databases and warehouses were often bought as fixed licences or appliances. Databricks uses consumption pricing: you pay for what runs. This removes up-front cost, but it also means an idle cluster, an oversized warehouse, or a runaway job adds cost until someone notices. Cost management on Databricks consists of measuring usage, attributing it to owners, setting limits, and tuning workloads.
+Traditional databases and warehouses were often bought as fixed licences or appliances. Databricks uses consumption pricing: you pay for what runs. This removes up-front cost, but it also means an idle cluster, an oversized warehouse, or a runaway job adds cost until someone notices.
 
 ## Overview
 
-**The meter.** Databricks usage is measured in [[DBUs|Databricks Units (DBUs)]], a normalized unit of processing capacity. Pay-as-you-go accounts pay per DBU at per-second granularity, with no up-front cost. The DBU rate depends on the product (for example jobs, SQL, model serving), the compute type, the plan, and the cloud and region. Current rates are on the [Databricks pricing page](https://www.databricks.com/product/pricing). This vault does not state prices.
+Cost management on Databricks consists of measuring usage, attributing it to owners, setting limits, and tuning workloads.
+
+**The meter.** Databricks usage is measured in [[DBUs|Databricks Units (DBUs)]], a normalized unit of processing capacity. Pay-as-you-go accounts pay per DBU at per-second granularity, with no up-front cost.
+
+The DBU rate depends on the product (for example jobs, SQL, model serving), the compute type, the plan, and the cloud and region. Current rates are on the [Databricks pricing page](https://www.databricks.com/product/pricing). This vault does not state prices.
 
 **Two bills for classic compute, one for serverless.**
 
 | Compute | Databricks charge | Cloud provider charge |
 |---|---|---|
-| **Classic** (all-purpose, jobs, classic SQL warehouses) | DBUs | VMs, disks, networking, and storage, billed by the cloud provider in your account |
+| **Classic** (all-purpose, jobs, classic SQL warehouses) | DBUs | [[Virtual Machine\|VMs]], disks, networking, and storage, billed by the cloud provider in your account |
 | **Serverless** (serverless SQL, jobs, notebooks, pipelines) | DBUs at a rate that includes the underlying compute | No VM charge; storage and some networking still apply |
 
 The serverless DBU rate is higher than the classic rate for the same product, because it includes the infrastructure. Compare **total** cost, not DBU rate alone. See [[How Databricks Pricing Works]].
 
 **Where the money goes.** In most accounts, spend concentrates in a few categories:
 
-1. **Interactive clusters** left running between uses.
+1. **Interactive clusters** ([[All-Purpose Compute]]) left running between uses.
 2. **SQL warehouses** sized larger than needed, or with long auto-stop times.
 3. **Scheduled jobs** that run more often, or on bigger compute, than required.
-4. **Model serving and AI features**, which have their own SKUs.
-5. **Storage and egress** on the cloud bill: object storage, and data transferred across regions or to the internet.
+4. **Model serving and AI features**, which have their own SKUs (billing product codes).
+5. **Storage and [[Egress|egress]]** on the cloud bill: [[Object Storage|object storage]], and data transferred across regions or to the internet.
 
 **Plan tier.** Databricks has announced that Standard tier workspaces are being upgraded to the Premium tier, with dates given as 1 October 2025 for AWS and GCP and 1 October 2026 for Azure. Confirm the status for your account on the pricing page or with your account team.
 
@@ -116,7 +120,7 @@ Cloud provider charges for classic compute do not appear in this table. Review t
 
 ### The first five controls
 
-1. **Set auto-termination on every interactive cluster**, ideally enforced with a [[Compute Policies|compute policy]]. Databricks' cost guidance uses one hour as an example idle time; shorter is common for small teams.
+1. **Set [[Auto Termination|auto-termination]] on every interactive cluster**, ideally enforced with a [[Compute Policies|compute policy]]. Databricks' cost guidance uses one hour as an example idle time; shorter is common for small teams.
 2. **Use serverless** for SQL warehouses and jobs where available. It stops when idle and requires no sizing of VMs.
 3. **Create a budget** with email alerts in the account console. See [[Budgets and Usage Dashboards]].
 4. **Tag compute and serverless usage** with a team or project key. See [[Tagging for Chargeback]].

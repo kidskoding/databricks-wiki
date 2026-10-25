@@ -53,13 +53,13 @@ tags:
 Mastery: `INPUT[inlineSelect(option(new), option(learning), option(solid)):mastery]`
 
 > [!story] Context
-> This chapter built [[AI-BI Dashboards]], [[Genie Agents]] Agents, and [[Databricks Apps]] on top of [[Lakebase]] and governed tables. Business users should not need to navigate notebooks, compute, or catalogs to find them. Genie One is the single entry point that shows business users only what has been shared with them.
+> This chapter built [[AI-BI Dashboards]], [[Genie Agents]], and [[Databricks Apps]] on top of [[Lakebase]] and governed tables. Business users should not need to navigate notebooks, compute, or catalogs to find them. Genie One is the single entry point that shows business users only what has been shared with them.
 
 > [!eli5] Summary
 > Genie One is the simple home page of Databricks for people who use data but do not build with it. It shows the dashboards, chat assistants, and apps shared with you, and lets you ask questions in plain language. Technical settings stay out of view.
 
 > [!renamed] Renamed
-> This interface was introduced as **Databricks One**. In **April 2026** Databricks renamed it **Genie**, to reflect that Genie is central to the experience. In **June 2026** it was renamed again, to **Genie One**. Databricks states the capabilities are unchanged. This note keeps the filename `Databricks One`. Some pages also call it the **Genie UI**.
+> This interface was introduced as **Databricks One**. In **April 2026** Databricks renamed it **Genie**, to reflect that Genie is central to the experience. In **June 2026** it was renamed again, to **Genie One**. Databricks states the capabilities are unchanged. Some pages also call it the **Genie UI**.
 
 ## Background
 
@@ -68,6 +68,8 @@ The standard Databricks workspace is built for builders: it shows notebooks, com
 Genie One gives those users a separate, simplified interface. Databricks describes it as a single entry point for interacting with data and AI without navigating technical concepts such as compute, queries, models, or notebooks.
 
 ## Overview
+
+Genie One is the simplified Databricks interface for business users: it shows only the dashboards, Genie Agents, and apps shared with them.
 
 | Capability | Description |
 |---|---|
@@ -84,7 +86,7 @@ Users see only assets explicitly shared with them, and Unity Catalog permissions
 
 | Level | URL | Who can use it |
 |---|---|---|
-| **Account-level Genie One** | The `/one` path on the account console, for example `accounts.cloud.databricks.com/one`, or the Genie entry on the account landing page | All account users. To view data from a workspace, the user needs the **Consumer access** entitlement in that workspace. |
+| **Account-level Genie One** | The `/one` path on the account console, for example `accounts.cloud.databricks.com/one`, or the Genie entry on the account landing page | All account users. To view data from a workspace, the user needs the **Consumer access** entitlement (a permission to use part of the workspace) in that workspace. |
 | **Workspace-level Genie One** | `https://<workspace-url>/one?o=<workspace-id>` | Members of that workspace with at least one workspace entitlement |
 
 In September 2026, a Beta added **account-only user access**: users from a registered [[Identity Provider|identity provider]] can use account-level Genie One without being assigned to a workspace or granted Consumer access.
@@ -139,7 +141,7 @@ GRANT SELECT      ON SCHEMA  shop.analytics  TO `viewers`;
 ## Cloud differences
 
 > [!azure]- Azure Databricks
-> - Genie One works the same as on other clouds. Users sign in with Microsoft Entra ID, and conditional access and MFA policies apply. See [[Microsoft Entra ID Integration]].
+> - Genie One works the same as on other clouds. Users sign in with Microsoft Entra ID, and conditional access and multi-factor authentication (MFA) policies apply. See [[Microsoft Entra ID Integration]].
 > - The account console URL differs from AWS. Use the Genie entry on the Azure Databricks account landing page or the `/one` path documented for Azure.
 
 > [!aws]- Databricks on AWS

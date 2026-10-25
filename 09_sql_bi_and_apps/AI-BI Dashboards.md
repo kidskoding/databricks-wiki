@@ -84,7 +84,9 @@ AI/BI dashboards do not support every legacy feature. To move dashboards from ot
 
 ## Overview
 
-An AI/BI dashboard has three parts: datasets, a canvas of widgets, and a publishing configuration.
+An AI/BI dashboard is the built-in Databricks tool for building, publishing, and sharing pages of charts and filters over governed data.
+
+It has three parts: datasets, a canvas of widgets, and a publishing configuration.
 
 | Capability | Description |
 |---|---|
@@ -92,11 +94,11 @@ An AI/BI dashboard has three parts: datasets, a canvas of widgets, and a publish
 | **Visualizations** | Charts, counters, tables, and maps built from a dataset. In draft mode you can view the SQL a widget runs, including applied filters. |
 | **Filters** | Global, page-level, or widget-level filters. For small datasets, field filters run in the browser without rerunning the query. |
 | **Parameters** | Values defined on the **Data** tab and exposed to viewers through filter widgets |
-| **AI-assisted authoring** | Genie Code (formerly [[Genie Code]]) plans and builds visualizations, multi-page layouts, and filters, and fixes errors |
-| **Companion Genie Agent** | Each published dashboard includes a [[Genie Agents]] Agent so viewers can ask questions that the charts do not answer |
+| **AI-assisted authoring** | [[Genie Code]] (formerly Databricks Assistant) plans and builds visualizations, multi-page layouts, and filters, and fixes errors |
+| **Companion Genie Agent** | Each published dashboard includes a companion [[Genie Agents\|Genie Agent]] so viewers can ask questions that the charts do not answer |
 | **Sharing** | Share with users and groups in the account, including account users who are not workspace members (view-only) |
 | **Schedules and subscriptions** | Refresh on a schedule and send snapshots by email, Slack, or Microsoft Teams |
-| **Embedding** | Embed published dashboards in other websites or apps through an iframe |
+| **Embedding** | Embed published dashboards in other websites or apps through an iframe (an HTML element that shows one web page inside another) |
 
 Dashboards run their queries on a [[SQL Warehouses|SQL warehouse]], which you select when you create or publish the dashboard.
 

@@ -62,6 +62,8 @@ Each playbook in this chapter follows the same phases from [[Migration Strategy 
 
 ## Overview
 
+The migration checklist is a phase-by-phase list of the tasks for moving a business's data and reports to Databricks.
+
 | Phase | Goal | Detail |
 |---|---|---|
 | 1. Assess | Know what exists and what is used | [[Assessing Your Current Data Estate]] |
@@ -77,9 +79,9 @@ Each playbook in this chapter follows the same phases from [[Migration Strategy 
 
 ### Phase 1: assess
 
-- [ ] List every source system: databases, warehouses, file shares, spreadsheets, SaaS apps.
+- [ ] List every source system: databases, warehouses, file shares, spreadsheets, [[SaaS PaaS and IaaS|SaaS]] apps.
 - [ ] List every table, view, and file that reports depend on, with owner and last-read date.
-- [ ] List every scheduled job, stored procedure, and ETL package.
+- [ ] List every scheduled job, stored procedure (saved database code), and [[ETL vs ELT|ETL]] package.
 - [ ] List every report and dashboard, with its audience and last-opened date.
 - [ ] Record current costs: licences, servers, cloud bills, support contracts.
 - [ ] Record freshness expectations ("sales by 7 a.m.").
@@ -94,24 +96,24 @@ Each playbook in this chapter follows the same phases from [[Migration Strategy 
 - [ ] Choose a cloud and region close to the source data ([[Choosing a Cloud for Databricks]]).
 - [ ] Create the workspace and confirm Unity Catalog is enabled.
 - [ ] Create catalogs by purpose (for example `raw`, `analytics`, `sandbox`, or `dev` and `prod`).
-- [ ] Sync users and groups from the identity provider; grant to groups only.
+- [ ] Sync users and groups from the [[Identity Provider|identity provider]]; grant to groups only.
 - [ ] Map old database roles to Unity Catalog grants.
 - [ ] Configure network access from Databricks compute to each source.
-- [ ] Store source credentials in a secret scope.
+- [ ] Store source credentials in a secret scope (a protected store for passwords and keys).
 - [ ] Set up a budget and usage dashboard ([[Budgets and Usage Dashboards]]).
 - [ ] Create a serverless SQL warehouse with auto-stop.
 
 ### Phase 3: coexist
 
 - [ ] Create a Unity Catalog connection to each source database or warehouse.
-- [ ] Create foreign catalogs and grant read access to the right groups.
-- [ ] Point federation at a read replica where one exists.
+- [ ] Create [[Catalogs Schemas and Tables|foreign catalogs]] and grant read access to the right groups.
+- [ ] Point federation at a read replica (a read-only copy of the database) where one exists.
 - [ ] Build the first new dashboard on federated data.
 
 ### Phase 4: ingest
 
 - [ ] Choose a method per table: managed connector, file export plus Auto Loader, or scheduled federated copy.
-- [ ] Prepare the source for change capture where needed (change tracking, CDC, logical replication, binlog).
+- [ ] Prepare the source for change capture where needed (change tracking, [[Change Data Capture|CDC]], logical replication, binlog).
 - [ ] Load history once; record the cutoff point.
 - [ ] Start incremental loads from that cutoff; check for gaps and duplicates.
 - [ ] Schedule pipelines as Lakeflow Jobs with failure notifications.
@@ -120,12 +122,12 @@ Each playbook in this chapter follows the same phases from [[Migration Strategy 
 ### Phase 5: convert
 
 - [ ] Export views, procedures, and ETL packages to files.
-- [ ] Split monolithic SQL files with the SQL Splitter.
-- [ ] Transpile with the recommended Lakebridge transpiler, or the agentic code converter.
+- [ ] Split large, single-file SQL scripts with the SQL Splitter.
+- [ ] Transpile (automatically translate the code) with the recommended Lakebridge transpiler, or the agentic code converter.
 - [ ] Fix every error and review every warning.
 - [ ] Rewrite unsupported parts (script tasks, unsupported components).
-- [ ] Replace `FLOAT` money columns with `DECIMAL`; check collation and time zones.
-- [ ] Put converted code in Git and deploy with bundles.
+- [ ] Replace `FLOAT` money columns with `DECIMAL`; check collation (text sorting and comparison rules) and time zones.
+- [ ] Put converted code in [[Git]] and deploy with [[Declarative Automation Bundles|bundles]].
 
 ### Phase 6: validate
 
