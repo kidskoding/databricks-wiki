@@ -1,17 +1,60 @@
 ---
 type: hub
-status: stub
+status: written
 summary: Which notes each persona should read, generated from note frontmatter.
-related: []
-last_verified:
+related:
+  - "[[Chapter 80 - Learning Paths]]"
+  - "[[Who Uses Databricks - Roles]]"
+  - "[[Path - Absolute Beginner]]"
+  - "[[Path - Business Owner]]"
+  - "[[Path - Analyst]]"
+  - "[[Path - Data Engineer]]"
+  - "[[Path - Data Scientist and ML Engineer]]"
+  - "[[Path - AI App Developer]]"
+  - "[[Path - Platform Admin]]"
+  - "[[Path - One-Person Data Team]]"
+  - "[[Path - Certification Prep]]"
+  - "[[start_here]]"
+last_verified: 2026-10-25
 tags:
   - hub
 ---
 
 # Persona Map
 
-> [!todo] Stub
-> Which notes each persona should read, generated from note frontmatter.
+> [!eli5] What this page is
+> Different people need different parts of this notebook. A shop owner wants to know what it costs and whether it fits. An engineer wants to know how the pipes work. This page sorts every note by the kind of person it helps most, so you can skip what you do not need.
+
+## What a persona is
+
+A **persona** is a reader type: a job you do, not a person you are. Most people wear more than one hat. The one data person at a small business is an analyst, an engineer, and an admin at the same time, so read more than one section if that is you.
+
+Every concept note lists its personas in its frontmatter (`personas:`). The tables below are built from that field by `scripts/build_index.py`, sorted from beginner (`101`) to expert (`401`). A note tagged for a persona is one that persona will get real value from. It is not a ban on everyone else.
+
+| Persona key | Who it is | Guided path |
+|---|---|---|
+| `everyone` | Anyone new to data, with no background | [[Path - Absolute Beginner]] |
+| `owner` | A business owner or executive deciding on Databricks | [[Path - Business Owner]] |
+| `analyst` | An analyst or BI developer who lives in Excel, SQL, or Power BI | [[Path - Analyst]] |
+| `engineer` | A data engineer who builds ingestion and pipelines | [[Path - Data Engineer]] |
+| `scientist` | A data scientist or ML engineer | [[Path - Data Scientist and ML Engineer]] |
+| `ai-dev` | An AI or application developer building agents and apps | [[Path - AI App Developer]] |
+| `admin` | A platform or cloud admin who sets up accounts, identity, and networking | [[Path - Platform Admin]], then [[Path - Azure Deep Dive\|Azure]], [[Path - AWS Deep Dive\|AWS]], or [[Path - Google Cloud Deep Dive\|Google Cloud]] |
+| `security` | A security, privacy, or compliance lead | [[Path - Platform Admin]] |
+| `finance` | Finance or FinOps, who watches the bill | [[Path - Business Owner]], then [[Cost Management Basics]] |
+| `solo` | The one-person data team at a small business | [[Path - One-Person Data Team]] |
+
+Studying for an exam? [[Path - Certification Prep]] maps the notes to each Databricks certification.
+
+## How to use the map
+
+1. **Pick your row** in the table above. If you are unsure which job you are doing, [[Who Uses Databricks - Roles]] describes each one.
+2. **Prefer the guided path** when one exists. A path is a curated, ordered route. The tables below are the complete list, in depth order, and they are better for filling gaps than for a first read.
+3. **Read the 101s first.** Each note's `[!eli5]` block is the one-minute answer, and its collapsed "Going deeper" box holds the expert detail.
+4. **Follow the graph.** When a note mentions an idea you do not know, its links and `prereqs` take you back to it. The [[Timeline of Data Engineering]] shows where each tool sits in the story.
+
+> [!info] This table is generated
+> Do not edit the persona tables by hand. Change a note's `personas:` frontmatter, then run `python3 scripts/build_index.py`, and the tables below rebuild. Notes still marked `status: stub` appear here too, because the plan is fixed even before every note is written.
 
 <!-- GENERATED:persona-map START (scripts/build_index.py) -->
 
@@ -52,8 +95,8 @@ tags:
 | 101 | [[Notebooks]] | Documents that mix code, results, charts, and text. |
 | 101 | [[Databricks Assistant]] | The built-in AI helper that writes, explains, and fixes code and queries. |
 | 101 | [[Unity Catalog]] | Databricks' governance layer for permissions, discovery, lineage, and auditing across every workspace. |
-| 101 | [[Three-Level Namespace]] | catalog.schema.table, the address of everything. |
-| 101 | [[Catalogs Schemas and Tables]] | The securable objects in Unity Catalog and how to organize them. |
+| 101 | [[Three-Level Namespace]] | catalog.schema.table, the three-part address of every table, view, volume, function, and model. |
+| 101 | [[Catalogs Schemas and Tables]] | The securable objects in Unity Catalog (catalogs, schemas, tables, views, volumes, functions, models) and how to organize them. |
 | 101 | [[Machine Learning Basics]] | Teaching software from examples, covering training, models, features, and predictions. |
 | 101 | [[Generative AI and LLMs]] | What large language models are, and why business data makes them useful. |
 | 101 | [[Azure Databricks Overview]] | What is different when Databricks is sold and run by Microsoft. |
@@ -132,8 +175,8 @@ tags:
 | 101 | [[Medallion Architecture]] | Bronze (raw), silver (cleaned), and gold (business-ready) layers of tables. |
 | 101 | [[SQL Warehouses]] | Compute built for SQL and BI, in serverless, pro, and classic types. |
 | 101 | [[Databricks Assistant]] | The built-in AI helper that writes, explains, and fixes code and queries. |
-| 101 | [[Three-Level Namespace]] | catalog.schema.table, the address of everything. |
-| 101 | [[Catalogs Schemas and Tables]] | The securable objects in Unity Catalog and how to organize them. |
+| 101 | [[Three-Level Namespace]] | catalog.schema.table, the three-part address of every table, view, volume, function, and model. |
+| 101 | [[Catalogs Schemas and Tables]] | The securable objects in Unity Catalog (catalogs, schemas, tables, views, volumes, functions, models) and how to organize them. |
 | 101 | [[Lakeflow Designer]] | A no-code, drag-and-drop pipeline builder with AI help. |
 | 101 | [[Databricks SQL]] | Databricks' data warehouse experience, with SQL warehouses, editor, dashboards, and alerts. |
 | 101 | [[SQL Editor]] | Writing, running, and sharing queries in the browser. |
@@ -149,7 +192,7 @@ tags:
 | 201 | [[Star Schema]] | Fact and dimension tables, the classic shape for analytics. |
 | 201 | [[Apache Hive]] | SQL on Hadoop, which made big data queryable by analysts. |
 | 201 | [[Columnar Storage]] | Storing data column by column so analytics reads only what it needs. |
-| 201 | [[Amazon Redshift]] | AWS's cloud data warehouse, launched in 2012. |
+| 201 | [[Amazon Redshift]] | AWS's cloud data warehouse, previewed in 2012 and generally available in 2013. |
 | 201 | [[Snowflake]] | The cloud warehouse that separated storage and compute, and Databricks' best-known rival. |
 | 201 | [[Google BigQuery]] | Google's serverless warehouse. |
 | 201 | [[dbt]] | SQL transformations with software engineering habits like version control and tests. |
@@ -198,7 +241,7 @@ tags:
 | 101 | [[Medallion Architecture]] | Bronze (raw), silver (cleaned), and gold (business-ready) layers of tables. |
 | 101 | [[Notebooks]] | Documents that mix code, results, charts, and text. |
 | 101 | [[Databricks Assistant]] | The built-in AI helper that writes, explains, and fixes code and queries. |
-| 101 | [[Three-Level Namespace]] | catalog.schema.table, the address of everything. |
+| 101 | [[Three-Level Namespace]] | catalog.schema.table, the three-part address of every table, view, volume, function, and model. |
 | 101 | [[Lakeflow]] | Databricks' umbrella for ingestion (Connect), transformation (Pipelines), and orchestration (Jobs). |
 | 101 | [[Lakeflow Connect]] | Managed connectors for Salesforce, SQL Server, Google Analytics, and other common sources. |
 | 101 | [[Lakeflow Jobs]] | Databricks' built-in orchestrator for scheduled multi-task workflows (formerly Workflows). |
@@ -222,7 +265,7 @@ tags:
 | 201 | [[Partitions]] | How Spark slices data so many machines can work on it at once. |
 | 201 | [[Structured Streaming]] | Spark's engine for treating a live stream like a table that keeps growing. |
 | 201 | [[Spark UI]] | The built-in web page for seeing what a Spark job did and why it was slow. |
-| 201 | [[Amazon Redshift]] | AWS's cloud data warehouse, launched in 2012. |
+| 201 | [[Amazon Redshift]] | AWS's cloud data warehouse, previewed in 2012 and generally available in 2013. |
 | 201 | [[Snowflake]] | The cloud warehouse that separated storage and compute, and Databricks' best-known rival. |
 | 201 | [[Google BigQuery]] | Google's serverless warehouse. |
 | 201 | [[Apache Kafka]] | The event-streaming backbone that moves live data between systems. |
@@ -241,7 +284,7 @@ tags:
 | 201 | [[Git Folders and Workspace Files]] | Connecting the workspace to GitHub, GitLab, or Azure DevOps. |
 | 201 | [[Databricks CLI]] | The command-line tool for scripting everything in Databricks. |
 | 201 | [[Libraries and Environments]] | Installing Python packages and pinning dependencies on classic and serverless compute. |
-| 201 | [[Managed vs External Tables]] | Who owns the files, and what happens when you drop a table. |
+| 201 | [[Managed vs External Tables]] | Who owns the files, and what happens when you drop a table. Managed is the default and recommended choice. |
 | 201 | [[Volumes]] | Governed folders for non-table files like CSVs, images, and PDFs. |
 | 201 | [[Data Lineage]] | An automatic map of where every column came from and where it goes. |
 | 201 | [[Lakehouse Federation]] | Querying Postgres, SQL Server, Snowflake, and others in place, without copying. |
@@ -388,8 +431,8 @@ tags:
 | 201 | [[Apache Iceberg]] | The Netflix-born table format, Delta's main rival, now first-class in Unity Catalog. |
 | 201 | [[Control Plane and Compute Plane]] | What Databricks runs for you, versus what runs in your cloud account or in serverless. |
 | 201 | [[Databricks CLI]] | The command-line tool for scripting everything in Databricks. |
-| 201 | [[Metastore]] | The top-level Unity Catalog container, one per region. |
-| 201 | [[Managed vs External Tables]] | Who owns the files, and what happens when you drop a table. |
+| 201 | [[Metastore]] | The top-level Unity Catalog container, one per region, that holds every catalog, credential, share, and connection. |
+| 201 | [[Managed vs External Tables]] | Who owns the files, and what happens when you drop a table. Managed is the default and recommended choice. |
 | 201 | [[Privileges and Grants]] | GRANT and REVOKE, privilege inheritance, and ownership. |
 | 201 | [[System Tables]] | Databricks' own operational data (billing, audit, lineage, compute) as queryable tables. |
 | 201 | [[Models in Unity Catalog]] | Versioning, aliasing, and governing models like any other table. |
@@ -559,3 +602,8 @@ tags:
 | 201 | [[Migrating from Postgres and MySQL]] | Moving app-database analytics into the lakehouse without hurting the app. |
 
 <!-- GENERATED:persona-map END -->
+
+> [!sources]- Sources (last verified: 2026-10-25)
+> - Persona definitions: `_meta/manifest.yaml` (`personas:`) in this vault.
+> - Table generator: `scripts/build_index.py` (`write_persona_map`) in this vault.
+> - Each note's own `[!sources]` callout holds the official documentation behind it.
