@@ -1,15 +1,22 @@
 # Databricks Brain: Obsidian vault conventions
 
-A second brain for Databricks, written by a Databricks student fellow (UIUC). It teaches Databricks bottom-up to someone with no background. It will also be shown publicly in a blog post, so every note must read well and look polished.
+A second brain for Databricks, written by a Databricks student fellow (UIUC). It teaches Databricks bottom-up to someone with no background, all the way to expert depth. The core audience includes small businesses (mom-and-pop shops, small teams, the one data person) who are considering a move to Databricks. It will also be shown publicly in a blog post, so every note must read well and look polished. Agents read it too: see `AGENTS.md` for how the vault is navigated, indexed, and extended.
 
 ## Structure
 
 - **The vault is one story, told in chronological order.** Each chapter covers an era or problem, the tools that solved it, and the new pain that led to the next chapter. Pre-Databricks history (Hadoop, Spark, Kafka, Airflow, lakes and warehouses) comes first. Databricks arrives in chapter 06 as the answer to that history.
 - `start_here.md` is the home dashboard and table of contents. It links to the chapter notes.
 - Each folder holds one chapter note (`Chapter NN - Title.md`, `type: chapter`) that lists its concept notes in reading order. Those lists define the planned note names.
-- Every planned concept note already exists as a stub (`status: stub`). Writing a note means filling in the stub, keeping its frontmatter links and setting `status: written`.
-- Folders are named `nn_name` (lowercase, underscores, no spaces or `&`, so they are easy to `cd` into) and numbered in story order (`01_foundations` → `14_admin_security_and_cost`). Keep this format for any new folder. `01`–`10` are Part 1 (the story); `11`–`14` are Part 2 (the clouds). Azure Databricks is a full chapter, not a footnote: it is a first-party Microsoft service with its own identity, networking, billing, and integrations.
-- Hub notes at the root (`Timeline of Data Engineering.md`, `Open Source vs Databricks - Who Replaced What.md`) tie the story together.
+- `_meta/manifest.yaml` is the blueprint: every chapter and planned note, with its depth, summary, personas, and key edges. `python3 scripts/scaffold.py` creates any missing stubs from it.
+- Every planned note already exists as a stub (`status: stub`). Writing a note means filling in the stub, keeping its frontmatter links and setting `status: written`.
+- Folders are named `nn_name` (lowercase, underscores, no spaces or `&`, so they are easy to `cd` into) and numbered in story order. Keep this format for any new folder.
+  - `00_is_databricks_for_you` is Part 0, the front door for business readers.
+  - `01`–`10` are Part 1 (the story).
+  - `11`–`14` are Part 2 (the clouds and administration). Azure Databricks is a full chapter, not a footnote: it is a first-party Microsoft service with its own identity, networking, billing, and integrations.
+  - `15_migrating_to_databricks` is Part 3 (moving in).
+  - `80_learning_paths` holds one path note per persona (`type: path`, from `_templates/Path.md`).
+- Hub notes at the root (`Timeline of Data Engineering.md`, `Open Source vs Databricks - Who Replaced What.md`, `Cloud Comparison - Azure vs AWS vs GCP.md`, `Databricks Product Names and Renames.md`, `Persona Map.md`) tie the story together.
+- After any edit, run `python3 scripts/build_index.py`. It regenerates `llms.txt`, `_meta/vault_index.json`, and the Persona Map table, and it fails on unresolved links. Commit the regenerated files.
 - `90_glossary/` holds one short plain-English note per jargon term.
 - `_templates/Concept.md` is the note template. Every concept note follows its section order.
 
@@ -32,9 +39,14 @@ The graph view is a core feature, so links live in frontmatter properties as wel
 - Give per-cloud differences in the `[!azure]`, `[!aws]`, `[!gcp]` callouts. Skip a cloud only if nothing differs, and say so.
 - Keep flashcards (`Question::Answer`) in the `## Recall` section, outside callouts, so the Spaced Repetition plugin parses them.
 - Escape pipes in wiki links inside tables: `[[Note\|alias]]`.
+- `depth` sets how advanced a note is: `101` beginner, `201` practitioner, `301` advanced, `401` expert. Every note still opens in plain English. Expert material goes in the collapsed `[!deepdive]-` box so beginners can skip it.
+- `summary` is one plain-English line, which agents and `llms.txt` use. `personas` lists who the note is for (keys in the manifest).
+- Every concept note has a `[!smallbiz]` callout: what it means for a 5–50 person company, when to care, and when to skip.
+- When a product was renamed, add a `[!renamed]` callout near the top with the old names, and list them in `aliases`.
+- Never state prices. Explain the meter and link to the official pricing page.
 - Frontmatter `level` is the folder number, `section` is the human-readable section name (for example `Unity Catalog & Governance`). The dashboard groups by these.
 - `Unity Catalog.md` in `07_unity_catalog_and_governance/` is the reference example for tone, depth, and format.
 
 ## Styling
 
-Custom callouts (`story`, `nextup`, `bridge`, `eli5`, `analogy`, `azure`, `aws`, `gcp`, `confusion`, `recall`, `path`, `sources`) are defined in `.obsidian/snippets/databricks-brain.css`. Add new callout types there, not inline.
+Custom callouts (`story`, `nextup`, `bridge`, `eli5`, `analogy`, `azure`, `aws`, `gcp`, `confusion`, `recall`, `path`, `sources`, `smallbiz`, `deepdive`, `persona`, `check`, `renamed`) are defined in `.obsidian/snippets/databricks-brain.css`. Add new callout types there, not inline.

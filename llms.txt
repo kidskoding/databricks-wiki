@@ -1,0 +1,361 @@
+# Databricks Brain
+
+> An Obsidian knowledge graph that teaches Databricks from zero to expert, told as one story:
+> pre-Databricks history (chapters 01-05), the Databricks platform (06-10), the three clouds and
+> administration (11-14), migrating a business (15), plus a front door for business readers (00),
+> learning paths by persona (80), and a glossary (90).
+
+Agent instructions: AGENTS.md. Full typed graph: _meta/vault_index.json. Blueprint: _meta/manifest.yaml.
+Depth: 101 beginner, 201 practitioner, 301 advanced, 401 expert.
+
+
+## Hubs
+
+- [Cloud Comparison - Azure vs AWS vs GCP](Cloud%20Comparison%20-%20Azure%20vs%20AWS%20vs%20GCP.md): The same Databricks concept side by side on all three clouds, covering identity, network, storage, keys, and billing.
+- [Databricks Product Names and Renames](Databricks%20Product%20Names%20and%20Renames.md): Current product names, old names, and when they changed. Check here before trusting any name.
+- [Open Source vs Databricks - Who Replaced What](Open%20Source%20vs%20Databricks%20-%20Who%20Replaced%20What.md): Each open-source tool next to the Databricks feature that does its job today.
+- [Persona Map](Persona%20Map.md): Which notes each persona should read, generated from note frontmatter.
+- [Timeline of Data Engineering](Timeline%20of%20Data%20Engineering.md): Every milestone from relational databases to agents, in one timeline that links into the story.
+- [start_here](start_here.md): The home page. Pick a door by who you are, or read the whole story from chapter 00.
+
+## Is Databricks for You?
+
+- [Chapter 00 - Is Databricks for You](00_is_databricks_for_you/Chapter%2000%20-%20Is%20Databricks%20for%20You.md): The front door. Who uses Databricks, what it costs, when it fits a small business, and when it does not.
+- [What Databricks Is in Plain English](00_is_databricks_for_you/What%20Databricks%20Is%20in%20Plain%20English.md) [101]: Databricks in one page, with no jargon, for someone who has never heard of it.
+- [Who Uses Databricks - Roles](00_is_databricks_for_you/Who%20Uses%20Databricks%20-%20Roles.md) [101]: The eight job roles that log in to Databricks, what each one does there, and which tools they use.
+- [Who Uses Databricks - Business Types](00_is_databricks_for_you/Who%20Uses%20Databricks%20-%20Business%20Types.md) [101]: Kinds of businesses, from e-commerce to clinics to factories, that get real value from Databricks, with example use cases.
+- [Signs You Have Outgrown Spreadsheets](00_is_databricks_for_you/Signs%20You%20Have%20Outgrown%20Spreadsheets.md) [101]: The warning signs that a business needs a real data platform instead of Excel, Access, or one reporting tool.
+- [When Databricks Is Not the Right Fit](00_is_databricks_for_you/When%20Databricks%20Is%20Not%20the%20Right%20Fit.md) [101]: An honest list of situations where a simpler or cheaper tool is the better choice.
+- [Databricks vs Alternatives for Small Teams](00_is_databricks_for_you/Databricks%20vs%20Alternatives%20for%20Small%20Teams.md) [201]: How Databricks compares with Snowflake, BigQuery, Microsoft Fabric, Power BI alone, and plain Postgres for a small team.
+- [How Databricks Pricing Works](00_is_databricks_for_you/How%20Databricks%20Pricing%20Works.md) [101]: DBUs, cloud bills, serverless versus classic, and why there are two invoices.
+- [Estimating Costs for a Small Business](00_is_databricks_for_you/Estimating%20Costs%20for%20a%20Small%20Business.md) [201]: A worked, back-of-the-envelope monthly cost estimate for a small company's first workloads.
+- [Databricks Free Edition and Trials](00_is_databricks_for_you/Databricks%20Free%20Edition%20and%20Trials.md) [101]: The free ways to try Databricks, what each one includes, and what it leaves out.
+- [Choosing a Cloud for Databricks](00_is_databricks_for_you/Choosing%20a%20Cloud%20for%20Databricks.md) [101]: How to pick Azure, AWS, or Google Cloud, based mostly on what the business already uses.
+- [Your First 30 Days on Databricks](00_is_databricks_for_you/Your%20First%2030%20Days%20on%20Databricks.md) [101]: A week-by-week plan from sign-up to the first trusted dashboard.
+- [Building a Business Case](00_is_databricks_for_you/Building%20a%20Business%20Case.md) [201]: How to justify Databricks to a boss or a board, covering costs, savings, risks, and a proof of concept.
+
+## Foundations
+
+- [Chapter 01 - Foundations](01_foundations/Chapter%2001%20-%20Foundations.md): The words and ideas everything else is built on, such as data, tables, SQL, files, and the cloud.
+- [What Is Data](01_foundations/What%20Is%20Data.md) [101]: Data as recorded facts, and why businesses keep it.
+- [Structured vs Unstructured Data](01_foundations/Structured%20vs%20Unstructured%20Data.md) [101]: Tables versus documents, images, audio, and logs, and the semi-structured data in between.
+- [Files and File Formats](01_foundations/Files%20and%20File%20Formats.md) [101]: What a file format is and why the choice of format decides how fast and cheap data is to use.
+- [CSV and JSON](01_foundations/CSV%20and%20JSON.md) [101]: The two most common plain-text data formats and their limits at scale.
+- [Spreadsheets](01_foundations/Spreadsheets.md) [101]: Why Excel runs the world, and where it breaks.
+- [Relational Databases](01_foundations/Relational%20Databases.md) [101]: Tables with rules and relationships, managed by software like Postgres, MySQL, and SQL Server.
+- [SQL](01_foundations/SQL.md) [101]: The language for asking databases questions, and why it is still the most important data skill.
+- [Primary and Foreign Keys](01_foundations/Primary%20and%20Foreign%20Keys.md) [101]: How rows get IDs and how tables point at each other.
+- [OLTP vs OLAP](01_foundations/OLTP%20vs%20OLAP.md) [201]: Systems that run the business versus systems that analyze it.
+- [Data Modeling Basics](01_foundations/Data%20Modeling%20Basics.md) [201]: Deciding which tables to have and how they connect, covering normalization, entities, and grain.
+- [Star Schema](01_foundations/Star%20Schema.md) [201]: Fact and dimension tables, the classic shape for analytics.
+- [Servers and the Cloud](01_foundations/Servers%20and%20the%20Cloud.md) [101]: Computers you rent by the minute from Microsoft, Amazon, or Google.
+- [Storage vs Compute](01_foundations/Storage%20vs%20Compute.md) [101]: The split between where data sits and what crunches it, the most important idea in modern data.
+- [Python for Data](01_foundations/Python%20for%20Data.md) [101]: Why Python and pandas became the default language for data work.
+- [APIs](01_foundations/APIs.md) [101]: How software talks to other software, and how most SaaS data gets pulled out.
+- [ETL vs ELT](01_foundations/ETL%20vs%20ELT.md) [101]: Extract, transform, load, and why the order flipped in the cloud.
+- [Batch vs Streaming](01_foundations/Batch%20vs%20Streaming.md) [101]: Processing data in scheduled chunks versus continuously as it arrives.
+
+## The Big Data Era
+
+- [Chapter 02 - The Big Data Era](02_big_data_era/Chapter%2002%20-%20The%20Big%20Data%20Era.md): When data outgrew one computer, from Google's papers to Hadoop and the pain that came with it.
+- [The Three Vs of Big Data](02_big_data_era/The%20Three%20Vs%20of%20Big%20Data.md) [101]: Volume, velocity, and variety, the three ways data got too big for one machine.
+- [Scaling Up vs Scaling Out](02_big_data_era/Scaling%20Up%20vs%20Scaling%20Out.md) [101]: Buying a bigger computer versus using many small ones.
+- [Distributed Systems](02_big_data_era/Distributed%20Systems.md) [201]: Many computers acting as one, and the new failure modes that come with it.
+- [Google File System and MapReduce Papers](02_big_data_era/Google%20File%20System%20and%20MapReduce%20Papers.md) [201]: The 2003 and 2004 Google papers that started the big data era.
+- [Apache Hadoop](02_big_data_era/Apache%20Hadoop.md) [101]: The open-source system that let ordinary companies store and process huge data on cheap machines.
+- [HDFS](02_big_data_era/HDFS.md) [201]: Hadoop's distributed file system, which splits files into replicated blocks across many machines.
+- [MapReduce](02_big_data_era/MapReduce.md) [201]: Hadoop's map-then-reduce processing model, which was powerful, slow, and painful to write.
+- [YARN](02_big_data_era/YARN.md) [301]: Hadoop's resource manager, which decides which job gets which machines.
+- [Apache Hive](02_big_data_era/Apache%20Hive.md) [201]: SQL on Hadoop, which made big data queryable by analysts.
+- [Hive Metastore](02_big_data_era/Hive%20Metastore.md) [201]: The table directory Hive introduced, which Spark and early Databricks inherited.
+- [Apache HBase](02_big_data_era/Apache%20HBase.md) [301]: A fast key-value database on top of HDFS, modeled after Google Bigtable.
+- [Cloudera and Hortonworks](02_big_data_era/Cloudera%20and%20Hortonworks.md) [201]: The companies that sold supported Hadoop, and why they merged in 2019.
+- [Columnar Storage](02_big_data_era/Columnar%20Storage.md) [201]: Storing data column by column so analytics reads only what it needs.
+- [Apache Parquet](02_big_data_era/Apache%20Parquet.md) [201]: The open columnar file format underneath Delta Lake, Iceberg, and most of the lakehouse.
+- [Apache ORC](02_big_data_era/Apache%20ORC.md) [301]: Hive's columnar format, Parquet's sibling and rival.
+- [The Pain of Hadoop](02_big_data_era/The%20Pain%20of%20Hadoop.md) [101]: Why Hadoop clusters became slow, expensive, and hard to staff, which set the stage for Spark and the cloud.
+
+## Apache Spark
+
+- [Chapter 03 - Apache Spark](03_apache_spark/Chapter%2003%20-%20Apache%20Spark.md): The faster, friendlier engine born at UC Berkeley that replaced MapReduce and became Databricks' foundation.
+- [AMPLab and the Birth of Spark](03_apache_spark/AMPLab%20and%20the%20Birth%20of%20Spark.md) [101]: How a Berkeley research lab built Spark in 2009, and how its creators went on to found Databricks.
+- [Apache Spark](03_apache_spark/Apache%20Spark.md) [101]: The open-source engine for processing big data in memory across a cluster.
+- [RDDs](03_apache_spark/RDDs.md) [301]: Resilient distributed datasets, Spark's original low-level building block.
+- [Lazy Evaluation](03_apache_spark/Lazy%20Evaluation.md) [201]: Why Spark plans the whole job before running any of it.
+- [Transformations and Actions](03_apache_spark/Transformations%20and%20Actions.md) [201]: The two kinds of Spark operations, ones that describe work and ones that trigger it.
+- [DataFrames](03_apache_spark/DataFrames.md) [101]: Tables in code, the main way people use Spark today.
+- [Spark SQL](03_apache_spark/Spark%20SQL.md) [101]: Running SQL on Spark, the bridge from Hive to Databricks SQL.
+- [Catalyst Optimizer](03_apache_spark/Catalyst%20Optimizer.md) [301]: The query planner that rewrites your code into a faster plan.
+- [Tungsten](03_apache_spark/Tungsten.md) [401]: Spark's memory and code-generation engine work, the precursor to Photon.
+- [Driver and Executors](03_apache_spark/Driver%20and%20Executors.md) [201]: The boss process and the worker processes in every Spark cluster.
+- [Partitions](03_apache_spark/Partitions.md) [201]: How Spark slices data so many machines can work on it at once.
+- [Shuffles](03_apache_spark/Shuffles.md) [301]: Moving data between machines, the most expensive thing Spark does.
+- [Jobs Stages and Tasks](03_apache_spark/Jobs%20Stages%20and%20Tasks.md) [301]: How Spark breaks one query into units of work you can see in the Spark UI.
+- [PySpark](03_apache_spark/PySpark.md) [101]: Spark from Python, the most-used Spark interface.
+- [Structured Streaming](03_apache_spark/Structured%20Streaming.md) [201]: Spark's engine for treating a live stream like a table that keeps growing.
+- [MLlib](03_apache_spark/MLlib.md) [201]: Spark's built-in machine-learning library.
+- [Adaptive Query Execution](03_apache_spark/Adaptive%20Query%20Execution.md) [301]: Spark re-planning a query mid-flight based on what it learns.
+- [Spark Connect](03_apache_spark/Spark%20Connect.md) [301]: The client-server split that lets thin clients talk to Spark remotely.
+- [Spark UI](03_apache_spark/Spark%20UI.md) [201]: The built-in web page for seeing what a Spark job did and why it was slow.
+
+## The Modern Data Stack
+
+- [Chapter 04 - The Modern Data Stack](04_modern_data_stack/Chapter%2004%20-%20The%20Modern%20Data%20Stack.md): Cloud warehouses, data lakes, Kafka, Airflow, and dbt, and the messy two-tier world they created.
+- [Data Warehouses](04_modern_data_stack/Data%20Warehouses.md) [101]: A database built for analytics, which is clean, fast, and expensive.
+- [Amazon Redshift](04_modern_data_stack/Amazon%20Redshift.md) [201]: AWS's cloud data warehouse, launched in 2012.
+- [Snowflake](04_modern_data_stack/Snowflake.md) [201]: The cloud warehouse that separated storage and compute, and Databricks' best-known rival.
+- [Google BigQuery](04_modern_data_stack/Google%20BigQuery.md) [201]: Google's serverless warehouse.
+- [Data Lakes](04_modern_data_stack/Data%20Lakes.md) [101]: Dumping every file into cheap storage first and figuring it out later.
+- [Object Storage](04_modern_data_stack/Object%20Storage.md) [101]: Cheap, effectively unlimited cloud file storage, which is the floor the lakehouse stands on.
+- [Amazon S3](04_modern_data_stack/Amazon%20S3.md) [101]: AWS object storage, the original cloud data lake.
+- [Azure Data Lake Storage](04_modern_data_stack/Azure%20Data%20Lake%20Storage.md) [101]: Azure's object storage built for analytics (ADLS Gen2).
+- [Google Cloud Storage](04_modern_data_stack/Google%20Cloud%20Storage.md) [101]: Google Cloud's object storage.
+- [Data Swamps](04_modern_data_stack/Data%20Swamps.md) [101]: What a data lake becomes without rules, with no trust, no quality, and no one knowing what is where.
+- [Apache Kafka](04_modern_data_stack/Apache%20Kafka.md) [201]: The event-streaming backbone that moves live data between systems.
+- [Apache Airflow](04_modern_data_stack/Apache%20Airflow.md) [201]: The open-source scheduler that runs pipelines as DAGs written in Python.
+- [dbt](04_modern_data_stack/dbt.md) [201]: SQL transformations with software engineering habits like version control and tests.
+- [Fivetran and ELT Tools](04_modern_data_stack/Fivetran%20and%20ELT%20Tools.md) [201]: Managed connectors that copy SaaS and database data into a warehouse.
+- [BI Tools](04_modern_data_stack/BI%20Tools.md) [101]: Power BI, Tableau, Looker, and friends, the charts at the end of every pipeline.
+- [The Two-Tier Architecture Problem](04_modern_data_stack/The%20Two-Tier%20Architecture%20Problem.md) [101]: Running a lake and a warehouse side by side means two copies, two bills, stale data, and no AI on warehouse data.
+
+## The Lakehouse
+
+- [Chapter 05 - The Lakehouse](05_lakehouse/Chapter%2005%20-%20The%20Lakehouse.md): Warehouse reliability on lake storage, through Delta Lake, open table formats, and the medallion architecture.
+- [The Lakehouse Idea](05_lakehouse/The%20Lakehouse%20Idea.md) [101]: One copy of data in open files on cheap storage, with warehouse-grade reliability and speed.
+- [The Lakehouse Paper](05_lakehouse/The%20Lakehouse%20Paper.md) [301]: The 2021 CIDR paper that named and argued for the lakehouse.
+- [ACID Transactions](05_lakehouse/ACID%20Transactions.md) [201]: The four guarantees that stop half-written, conflicting, or lost data.
+- [Open Table Formats](05_lakehouse/Open%20Table%20Formats.md) [201]: A metadata layer over Parquet files that turns a folder into a real table.
+- [Delta Lake](05_lakehouse/Delta%20Lake.md) [101]: Databricks' open-source table format and the default for every table on the platform.
+- [Delta Transaction Log](05_lakehouse/Delta%20Transaction%20Log.md) [301]: The _delta_log folder of JSON commits that makes Delta Lake transactional.
+- [Time Travel](05_lakehouse/Time%20Travel.md) [201]: Querying a table as it was yesterday, and undoing mistakes.
+- [Schema Enforcement and Evolution](05_lakehouse/Schema%20Enforcement%20and%20Evolution.md) [201]: Rejecting bad columns, and safely adding new ones.
+- [MERGE and Upserts](05_lakehouse/MERGE%20and%20Upserts.md) [201]: Insert-or-update in one statement, the workhorse of incremental pipelines.
+- [Apache Iceberg](05_lakehouse/Apache%20Iceberg.md) [201]: The Netflix-born table format, Delta's main rival, now first-class in Unity Catalog.
+- [Apache Hudi](05_lakehouse/Apache%20Hudi.md) [301]: The Uber-born table format focused on upserts and incremental processing.
+- [Delta UniForm](05_lakehouse/Delta%20UniForm.md) [301]: Writing Delta tables that Iceberg readers can also read.
+- [Medallion Architecture](05_lakehouse/Medallion%20Architecture.md) [101]: Bronze (raw), silver (cleaned), and gold (business-ready) layers of tables.
+- [Liquid Clustering](05_lakehouse/Liquid%20Clustering.md) [301]: Self-organizing data layout that replaced partitioning and Z-ordering for most tables.
+- [Deletion Vectors](05_lakehouse/Deletion%20Vectors.md) [401]: Marking rows deleted instead of rewriting whole files.
+- [Change Data Feed](05_lakehouse/Change%20Data%20Feed.md) [301]: A row-level log of what changed in a Delta table, for downstream incremental processing.
+- [OPTIMIZE and VACUUM](05_lakehouse/OPTIMIZE%20and%20VACUUM.md) [301]: Compacting small files and deleting old ones, and Predictive Optimization doing it for you.
+
+## Databricks Platform
+
+- [Chapter 06 - The Databricks Platform](06_databricks_platform/Chapter%2006%20-%20The%20Databricks%20Platform.md): Databricks arrives. Accounts, workspaces, compute, notebooks, and the tools for building on it.
+- [The Founding of Databricks](06_databricks_platform/The%20Founding%20of%20Databricks.md) [101]: How Spark's creators started a company in 2013 to run Spark in the cloud.
+- [The Data Intelligence Platform](06_databricks_platform/The%20Data%20Intelligence%20Platform.md) [101]: Databricks' name for the lakehouse plus AI that understands your data.
+- [Accounts and Workspaces](06_databricks_platform/Accounts%20and%20Workspaces.md) [101]: The account is the company, and a workspace is a room where teams work.
+- [Control Plane and Compute Plane](06_databricks_platform/Control%20Plane%20and%20Compute%20Plane.md) [201]: What Databricks runs for you, versus what runs in your cloud account or in serverless.
+- [Databricks Runtime](06_databricks_platform/Databricks%20Runtime.md) [201]: The tuned Spark plus libraries image every classic cluster boots, and its LTS versions.
+- [Photon](06_databricks_platform/Photon.md) [301]: Databricks' C++ query engine that speeds up SQL and DataFrame work.
+- [Compute Types](06_databricks_platform/Compute%20Types.md) [101]: The map of Databricks compute, covering all-purpose, jobs, serverless, and SQL warehouses.
+- [All-Purpose Compute](06_databricks_platform/All-Purpose%20Compute.md) [201]: Interactive clusters for notebooks and exploration.
+- [Jobs Compute](06_databricks_platform/Jobs%20Compute.md) [201]: Clusters that spin up for one scheduled job and then disappear, at a lower price.
+- [Serverless Compute](06_databricks_platform/Serverless%20Compute.md) [101]: Compute Databricks runs for you that starts in seconds and has no clusters to manage.
+- [SQL Warehouses](06_databricks_platform/SQL%20Warehouses.md) [101]: Compute built for SQL and BI, in serverless, pro, and classic types.
+- [Notebooks](06_databricks_platform/Notebooks.md) [101]: Documents that mix code, results, charts, and text.
+- [Databricks Assistant](06_databricks_platform/Databricks%20Assistant.md) [101]: The built-in AI helper that writes, explains, and fixes code and queries.
+- [Git Folders and Workspace Files](06_databricks_platform/Git%20Folders%20and%20Workspace%20Files.md) [201]: Connecting the workspace to GitHub, GitLab, or Azure DevOps.
+- [Declarative Automation Bundles](06_databricks_platform/Declarative%20Automation%20Bundles.md) [301]: Infrastructure-as-code for jobs, pipelines, and apps as YAML in Git (formerly Databricks Asset Bundles).
+- [Databricks CLI](06_databricks_platform/Databricks%20CLI.md) [201]: The command-line tool for scripting everything in Databricks.
+- [Databricks SDKs and REST API](06_databricks_platform/Databricks%20SDKs%20and%20REST%20API.md) [301]: Programmatic control of Databricks from Python, Java, Go, and plain HTTP.
+- [Databricks Connect](06_databricks_platform/Databricks%20Connect.md) [301]: Running code from your laptop IDE against Databricks compute.
+- [DBUs](06_databricks_platform/DBUs.md) [101]: The Databricks Unit, the meter that every Databricks bill counts in.
+- [Libraries and Environments](06_databricks_platform/Libraries%20and%20Environments.md) [201]: Installing Python packages and pinning dependencies on classic and serverless compute.
+
+## Unity Catalog & Governance
+
+- [Chapter 07 - Unity Catalog and Governance](07_unity_catalog_and_governance/Chapter%2007%20-%20Unity%20Catalog%20and%20Governance.md): One place to find, secure, track, and share every data and AI asset.
+- [Unity Catalog](07_unity_catalog_and_governance/Unity%20Catalog.md) [101]: Databricks' governance layer for permissions, discovery, lineage, and auditing across every workspace.
+- [Metastore](07_unity_catalog_and_governance/Metastore.md) [201]: The top-level Unity Catalog container, one per region.
+- [Three-Level Namespace](07_unity_catalog_and_governance/Three-Level%20Namespace.md) [101]: catalog.schema.table, the address of everything.
+- [Catalogs Schemas and Tables](07_unity_catalog_and_governance/Catalogs%20Schemas%20and%20Tables.md) [101]: The securable objects in Unity Catalog and how to organize them.
+- [Managed vs External Tables](07_unity_catalog_and_governance/Managed%20vs%20External%20Tables.md) [201]: Who owns the files, and what happens when you drop a table.
+- [Volumes](07_unity_catalog_and_governance/Volumes.md) [201]: Governed folders for non-table files like CSVs, images, and PDFs.
+- [Storage Credentials and External Locations](07_unity_catalog_and_governance/Storage%20Credentials%20and%20External%20Locations.md) [301]: How Unity Catalog is allowed to reach your cloud storage.
+- [Privileges and Grants](07_unity_catalog_and_governance/Privileges%20and%20Grants.md) [201]: GRANT and REVOKE, privilege inheritance, and ownership.
+- [Row Filters and Column Masks](07_unity_catalog_and_governance/Row%20Filters%20and%20Column%20Masks.md) [301]: Showing each person only the rows and values they are allowed to see.
+- [Attribute-Based Access Control](07_unity_catalog_and_governance/Attribute-Based%20Access%20Control.md) [301]: Policies driven by tags instead of per-table grants.
+- [Data Lineage](07_unity_catalog_and_governance/Data%20Lineage.md) [201]: An automatic map of where every column came from and where it goes.
+- [Audit Logs](07_unity_catalog_and_governance/Audit%20Logs.md) [301]: A record of who did what and when, across the account.
+- [System Tables](07_unity_catalog_and_governance/System%20Tables.md) [201]: Databricks' own operational data (billing, audit, lineage, compute) as queryable tables.
+- [Lakehouse Federation](07_unity_catalog_and_governance/Lakehouse%20Federation.md) [201]: Querying Postgres, SQL Server, Snowflake, and others in place, without copying.
+- [OpenSharing](07_unity_catalog_and_governance/OpenSharing.md) [201]: The open protocol, formerly Delta Sharing, for sharing live data and AI assets with anyone.
+- [Clean Rooms](07_unity_catalog_and_governance/Clean%20Rooms.md) [301]: Two companies analyzing combined data without seeing each other's raw records.
+- [Databricks Marketplace](07_unity_catalog_and_governance/Databricks%20Marketplace.md) [201]: Finding and getting datasets, models, and apps from other providers.
+- [Data Classification](07_unity_catalog_and_governance/Data%20Classification.md) [301]: Automatically finding and tagging sensitive data like PII.
+- [Hive Metastore Migration to Unity Catalog](07_unity_catalog_and_governance/Hive%20Metastore%20Migration%20to%20Unity%20Catalog.md) [301]: Upgrading older workspaces off the legacy Hive metastore.
+
+## Data Engineering
+
+- [Chapter 08 - Data Engineering](08_data_engineering/Chapter%2008%20-%20Data%20Engineering.md): Getting data in, cleaning it, and running it on schedule with Lakeflow.
+- [Lakeflow](08_data_engineering/Lakeflow.md) [101]: Databricks' umbrella for ingestion (Connect), transformation (Pipelines), and orchestration (Jobs).
+- [Lakeflow Connect](08_data_engineering/Lakeflow%20Connect.md) [101]: Managed connectors for Salesforce, SQL Server, Google Analytics, and other common sources.
+- [Auto Loader](08_data_engineering/Auto%20Loader.md) [201]: Incrementally ingesting new files as they land in cloud storage.
+- [COPY INTO](08_data_engineering/COPY%20INTO.md) [201]: The simple SQL command for loading files into a table once.
+- [Lakeflow Spark Declarative Pipelines](08_data_engineering/Lakeflow%20Spark%20Declarative%20Pipelines.md) [201]: Declaring the tables you want and letting Databricks run, retry, and track the pipeline (formerly Delta Live Tables).
+- [Streaming Tables](08_data_engineering/Streaming%20Tables.md) [201]: Tables that keep themselves up to date from a stream or growing source.
+- [Materialized Views](08_data_engineering/Materialized%20Views.md) [201]: Precomputed query results that refresh incrementally.
+- [Expectations and Data Quality](08_data_engineering/Expectations%20and%20Data%20Quality.md) [201]: Rules on your data that warn, drop, or stop the pipeline when broken.
+- [Change Data Capture](08_data_engineering/Change%20Data%20Capture.md) [301]: Copying only what changed in a source database, with AUTO CDC.
+- [Slowly Changing Dimensions](08_data_engineering/Slowly%20Changing%20Dimensions.md) [301]: SCD type 1 and type 2, which decide whether to keep history when a customer moves.
+- [Lakeflow Jobs](08_data_engineering/Lakeflow%20Jobs.md) [101]: Databricks' built-in orchestrator for scheduled multi-task workflows (formerly Workflows).
+- [Tasks Triggers and Schedules](08_data_engineering/Tasks%20Triggers%20and%20Schedules.md) [201]: Task types, dependencies, file-arrival and table-update triggers, and retries.
+- [Lakeflow Designer](08_data_engineering/Lakeflow%20Designer.md) [101]: A no-code, drag-and-drop pipeline builder with AI help.
+- [Structured Streaming on Databricks](08_data_engineering/Structured%20Streaming%20on%20Databricks.md) [301]: Running Spark streams on Databricks, covering Kafka sources, checkpoints, and real-time mode.
+- [dbt on Databricks](08_data_engineering/dbt%20on%20Databricks.md) [201]: Running dbt projects against Databricks SQL, and as job tasks.
+- [CI-CD for Data Pipelines](08_data_engineering/CI-CD%20for%20Data%20Pipelines.md) [301]: Dev, staging, and prod, with tests and automated deployment for data code.
+- [Testing Data Pipelines](08_data_engineering/Testing%20Data%20Pipelines.md) [301]: Unit tests, data tests, and expectations for code that moves data.
+
+## SQL, BI & Apps
+
+- [Chapter 09 - SQL BI and Apps](09_sql_bi_and_apps/Chapter%2009%20-%20SQL%20BI%20and%20Apps.md): Analysts and app builders, covering Databricks SQL, dashboards, Genie, Power BI, Databricks Apps, and Lakebase.
+- [Databricks SQL](09_sql_bi_and_apps/Databricks%20SQL.md) [101]: Databricks' data warehouse experience, with SQL warehouses, editor, dashboards, and alerts.
+- [SQL Editor](09_sql_bi_and_apps/SQL%20Editor.md) [101]: Writing, running, and sharing queries in the browser.
+- [Query Performance and Caching](09_sql_bi_and_apps/Query%20Performance%20and%20Caching.md) [301]: Query profiles, result and disk caches, and why a query is slow.
+- [AI-BI Dashboards](09_sql_bi_and_apps/AI-BI%20Dashboards.md) [101]: Databricks' native dashboards, built with AI help and shareable with anyone.
+- [Genie](09_sql_bi_and_apps/Genie.md) [101]: Asking questions of your data in plain English and getting answers and charts.
+- [Metric Views](09_sql_bi_and_apps/Metric%20Views.md) [301]: Defining a business metric once in Unity Catalog so every tool computes it the same way.
+- [SQL Alerts](09_sql_bi_and_apps/SQL%20Alerts.md) [201]: Getting an email or Slack message when a number crosses a line.
+- [Connecting Power BI](09_sql_bi_and_apps/Connecting%20Power%20BI.md) [201]: Live and import connections from Power BI to Databricks, and publishing from Unity Catalog.
+- [Connecting Tableau and Other BI Tools](09_sql_bi_and_apps/Connecting%20Tableau%20and%20Other%20BI%20Tools.md) [201]: Tableau, Looker, Sigma, Excel, and anything with JDBC or ODBC.
+- [Partner Connect](09_sql_bi_and_apps/Partner%20Connect.md) [201]: One-click trials and connections to Fivetran, dbt, Power BI, and other partners.
+- [AI Functions in SQL](09_sql_bi_and_apps/AI%20Functions%20in%20SQL.md) [201]: Calling LLMs from plain SQL to classify, summarize, extract, and translate.
+- [Databricks Apps](09_sql_bi_and_apps/Databricks%20Apps.md) [201]: Hosting internal web apps in Streamlit, Dash, React, and others right next to your data.
+- [Lakebase](09_sql_bi_and_apps/Lakebase.md) [301]: A managed Postgres database (OLTP) inside the lakehouse, for apps and agents.
+- [Databricks One](09_sql_bi_and_apps/Databricks%20One.md) [101]: The simplified business-user home for dashboards, Genie, and apps.
+
+## AI & ML
+
+- [Chapter 10 - AI and ML](10_ai_and_ml/Chapter%2010%20-%20AI%20and%20ML.md): From classic machine learning to agents, covering MLflow, serving, vector search, and Agent Bricks.
+- [Machine Learning Basics](10_ai_and_ml/Machine%20Learning%20Basics.md) [101]: Teaching software from examples, covering training, models, features, and predictions.
+- [Generative AI and LLMs](10_ai_and_ml/Generative%20AI%20and%20LLMs.md) [101]: What large language models are, and why business data makes them useful.
+- [Feature Engineering and Feature Store](10_ai_and_ml/Feature%20Engineering%20and%20Feature%20Store.md) [301]: Reusable, governed model inputs, kept consistent between training and serving.
+- [MLflow](10_ai_and_ml/MLflow.md) [101]: The open-source platform for tracking, packaging, evaluating, and deploying models and agents.
+- [Experiment Tracking](10_ai_and_ml/Experiment%20Tracking.md) [201]: Logging every training run's parameters, metrics, and artifacts.
+- [Models in Unity Catalog](10_ai_and_ml/Models%20in%20Unity%20Catalog.md) [201]: Versioning, aliasing, and governing models like any other table.
+- [AutoML](10_ai_and_ml/AutoML.md) [101]: Letting Databricks try models for you and hand back a notebook.
+- [Model Serving](10_ai_and_ml/Model%20Serving.md) [201]: Turning a model into a live, autoscaling API endpoint.
+- [Foundation Model APIs](10_ai_and_ml/Foundation%20Model%20APIs.md) [201]: Pay-per-token access to hosted open and partner LLMs inside Databricks.
+- [AI Gateway](10_ai_and_ml/AI%20Gateway.md) [301]: Governing, rate-limiting, logging, and guarding every LLM call, including to external providers.
+- [Vector Search](10_ai_and_ml/Vector%20Search.md) [201]: Finding similar text or images by meaning, the retrieval half of RAG.
+- [Retrieval-Augmented Generation](10_ai_and_ml/Retrieval-Augmented%20Generation.md) [201]: Giving an LLM your documents at question time so it answers from facts.
+- [Agent Bricks](10_ai_and_ml/Agent%20Bricks.md) [101]: Describing an AI agent's job in plain language and letting Databricks build, evaluate, and tune it.
+- [Mosaic AI Agent Framework](10_ai_and_ml/Mosaic%20AI%20Agent%20Framework.md) [301]: Building custom agents in code with tools, MLflow tracing, and deployment.
+- [Agent Evaluation and Tracing](10_ai_and_ml/Agent%20Evaluation%20and%20Tracing.md) [301]: Measuring agent quality with judges and traces in MLflow.
+- [Fine-Tuning](10_ai_and_ml/Fine-Tuning.md) [401]: Further training a foundation model on your own examples, and when not to bother.
+- [Data Quality Monitoring](10_ai_and_ml/Data%20Quality%20Monitoring.md) [301]: Watching tables and model inputs for drift, freshness, and anomalies (formerly Lakehouse Monitoring).
+- [GPU Compute](10_ai_and_ml/GPU%20Compute.md) [301]: GPU clusters and serverless GPUs for deep learning and LLM work.
+- [MosaicML and Open Models](10_ai_and_ml/MosaicML%20and%20Open%20Models.md) [201]: Databricks' 2023 MosaicML acquisition, DBRX, and its open-model strategy.
+
+## Azure Databricks
+
+- [Chapter 11 - Azure Databricks](11_azure_databricks/Chapter%2011%20-%20Azure%20Databricks.md): Databricks as a first-party Microsoft service, with its own identity, networking, billing, and integrations.
+- [Azure Databricks Overview](11_azure_databricks/Azure%20Databricks%20Overview.md) [101]: What is different when Databricks is sold and run by Microsoft.
+- [First-Party Microsoft Service](11_azure_databricks/First-Party%20Microsoft%20Service.md) [201]: Microsoft support, the Azure portal, Azure billing, and why Azure Databricks is unusual among Databricks clouds.
+- [Creating an Azure Databricks Workspace](11_azure_databricks/Creating%20an%20Azure%20Databricks%20Workspace.md) [101]: Step by step in the Azure portal, covering pricing tier, region, networking, and resource group.
+- [Managed Resource Group](11_azure_databricks/Managed%20Resource%20Group.md) [201]: The locked resource group Azure creates to hold Databricks' VMs, disks, and storage.
+- [Microsoft Entra ID Integration](11_azure_databricks/Microsoft%20Entra%20ID%20Integration.md) [201]: Sign-in, automatic identity management, and service principals with Microsoft Entra ID.
+- [VNet Injection](11_azure_databricks/VNet%20Injection.md) [301]: Deploying Databricks compute into your own Azure virtual network.
+- [Secure Cluster Connectivity](11_azure_databricks/Secure%20Cluster%20Connectivity.md) [301]: No public IPs on cluster nodes, with all control traffic going outbound.
+- [Azure Private Link](11_azure_databricks/Azure%20Private%20Link.md) [401]: Private connections to the workspace and control plane without the public internet.
+- [ADLS and Access Connectors](11_azure_databricks/ADLS%20and%20Access%20Connectors.md) [301]: How Unity Catalog reaches ADLS Gen2 through a managed identity.
+- [Azure Key Vault Secret Scopes](11_azure_databricks/Azure%20Key%20Vault%20Secret%20Scopes.md) [301]: Using Azure Key Vault as the backing store for Databricks secrets.
+- [Azure Data Factory with Databricks](11_azure_databricks/Azure%20Data%20Factory%20with%20Databricks.md) [201]: Calling Databricks from ADF pipelines, and when to use Lakeflow instead.
+- [Microsoft Fabric and OneLake vs Databricks](11_azure_databricks/Microsoft%20Fabric%20and%20OneLake%20vs%20Databricks.md) [201]: How Fabric and Azure Databricks overlap, compete, and integrate.
+- [Power BI on Azure Databricks](11_azure_databricks/Power%20BI%20on%20Azure%20Databricks.md) [201]: Entra single sign-on into Power BI, publishing to the Power BI service, and DirectQuery tips.
+- [Azure Billing and Commit Units](11_azure_databricks/Azure%20Billing%20and%20Commit%20Units.md) [201]: Pay-as-you-go on the Azure bill, pre-purchase plans, and Azure cost tools.
+- [Azure Monitor and Diagnostic Logs](11_azure_databricks/Azure%20Monitor%20and%20Diagnostic%20Logs.md) [301]: Sending Databricks logs to Log Analytics, Storage, or Event Hubs.
+- [Customer-Managed Keys on Azure](11_azure_databricks/Customer-Managed%20Keys%20on%20Azure.md) [401]: Encrypting managed services and storage with your own Key Vault keys.
+
+## Databricks on AWS
+
+- [Chapter 12 - Databricks on AWS](12_databricks_on_aws/Chapter%2012%20-%20Databricks%20on%20AWS.md): Databricks on Amazon Web Services, covering cross-account roles, customer-managed VPCs, PrivateLink, and S3.
+- [Databricks on AWS Overview](12_databricks_on_aws/Databricks%20on%20AWS%20Overview.md) [101]: How Databricks runs on AWS, sold by Databricks directly or through AWS Marketplace.
+- [Account Setup on AWS](12_databricks_on_aws/Account%20Setup%20on%20AWS.md) [101]: Signing up, creating a workspace, and quick setup versus manual setup.
+- [Cross-Account IAM Role](12_databricks_on_aws/Cross-Account%20IAM%20Role.md) [301]: The IAM role that lets Databricks launch EC2 instances in your account.
+- [Workspace Storage Bucket](12_databricks_on_aws/Workspace%20Storage%20Bucket.md) [201]: The S3 bucket each workspace uses for its own system data.
+- [Customer-Managed VPC on AWS](12_databricks_on_aws/Customer-Managed%20VPC%20on%20AWS.md) [301]: Running classic compute in a VPC you create and control.
+- [AWS PrivateLink](12_databricks_on_aws/AWS%20PrivateLink.md) [401]: Private front-end and back-end connectivity between your VPC and Databricks.
+- [Instance Profiles](12_databricks_on_aws/Instance%20Profiles.md) [301]: The legacy way clusters got S3 access, and why Unity Catalog replaced it.
+- [S3 Access via Unity Catalog](12_databricks_on_aws/S3%20Access%20via%20Unity%20Catalog.md) [301]: Storage credentials backed by IAM roles for governed S3 access.
+- [AWS Glue and Lake Formation Federation](12_databricks_on_aws/AWS%20Glue%20and%20Lake%20Formation%20Federation.md) [401]: Reading tables registered in AWS Glue from Unity Catalog.
+- [AWS Marketplace and Billing](12_databricks_on_aws/AWS%20Marketplace%20and%20Billing.md) [201]: Paying Databricks directly or through the AWS bill, plus EC2 costs.
+- [EC2 Instance Types and Graviton](12_databricks_on_aws/EC2%20Instance%20Types%20and%20Graviton.md) [301]: Picking node types, spot instances, and ARM-based Graviton for price and performance.
+- [Customer-Managed Keys on AWS](12_databricks_on_aws/Customer-Managed%20Keys%20on%20AWS.md) [401]: Encrypting managed services and workspace storage with AWS KMS keys.
+- [Databricks on AWS GovCloud](12_databricks_on_aws/Databricks%20on%20AWS%20GovCloud.md) [401]: Databricks for US public-sector and regulated workloads.
+
+## Databricks on Google Cloud
+
+- [Chapter 13 - Databricks on Google Cloud](13_databricks_on_gcp/Chapter%2013%20-%20Databricks%20on%20Google%20Cloud.md): Databricks on GCP, covering Google service accounts, Private Service Connect, GCS, and BigQuery.
+- [Databricks on Google Cloud Overview](13_databricks_on_gcp/Databricks%20on%20Google%20Cloud%20Overview.md) [101]: How Databricks runs on Google Cloud and what is different there.
+- [Account Setup on Google Cloud](13_databricks_on_gcp/Account%20Setup%20on%20Google%20Cloud.md) [101]: Subscribing through Google Cloud Marketplace and creating the first workspace.
+- [Compute on Google Cloud](13_databricks_on_gcp/Compute%20on%20Google%20Cloud.md) [301]: How classic clusters run on Compute Engine VMs (after the move off GKE).
+- [Customer-Managed VPC on Google Cloud](13_databricks_on_gcp/Customer-Managed%20VPC%20on%20Google%20Cloud.md) [301]: Bringing your own VPC and subnets for Databricks compute.
+- [Private Service Connect](13_databricks_on_gcp/Private%20Service%20Connect.md) [401]: Private connectivity between your VPC and Databricks on Google Cloud.
+- [Google Service Accounts](13_databricks_on_gcp/Google%20Service%20Accounts.md) [301]: How Databricks and clusters authenticate to Google Cloud resources.
+- [GCS Access via Unity Catalog](13_databricks_on_gcp/GCS%20Access%20via%20Unity%20Catalog.md) [301]: Storage credentials backed by Google service accounts for governed GCS access.
+- [BigQuery Integration](13_databricks_on_gcp/BigQuery%20Integration.md) [201]: Reading and writing BigQuery from Databricks, and federation.
+- [Google Cloud Marketplace and Billing](13_databricks_on_gcp/Google%20Cloud%20Marketplace%20and%20Billing.md) [201]: Paying for Databricks through the Google Cloud bill.
+- [Customer-Managed Keys on Google Cloud](13_databricks_on_gcp/Customer-Managed%20Keys%20on%20Google%20Cloud.md) [401]: Encrypting with Cloud KMS keys you control.
+
+## Admin, Security & Cost
+
+- [Chapter 14 - Admin Security and Cost](14_admin_security_and_cost/Chapter%2014%20-%20Admin%20Security%20and%20Cost.md): Running Databricks safely and cheaply, covering identity, networking, encryption, compliance, and FinOps.
+- [Account Console](14_admin_security_and_cost/Account%20Console.md) [201]: The account-level admin site for workspaces, users, metastores, and billing.
+- [Users Groups and Service Principals](14_admin_security_and_cost/Users%20Groups%20and%20Service%20Principals.md) [201]: The three kinds of identity, and why groups should own everything.
+- [SCIM Provisioning](14_admin_security_and_cost/SCIM%20Provisioning.md) [301]: Syncing users and groups automatically from Entra ID, Okta, or another IdP.
+- [Single Sign-On](14_admin_security_and_cost/Single%20Sign-On.md) [201]: Logging in with your company identity provider.
+- [Authentication - Tokens and OAuth](14_admin_security_and_cost/Authentication%20-%20Tokens%20and%20OAuth.md) [301]: Personal access tokens versus OAuth, and machine-to-machine authentication.
+- [Admin Roles](14_admin_security_and_cost/Admin%20Roles.md) [201]: Account admins, workspace admins, and metastore admins, and who can do what.
+- [Compute Policies](14_admin_security_and_cost/Compute%20Policies.md) [201]: Guardrails on what clusters people can create (formerly cluster policies).
+- [Secrets Management](14_admin_security_and_cost/Secrets%20Management.md) [201]: Keeping passwords and keys out of notebooks with secret scopes.
+- [Network Security Overview](14_admin_security_and_cost/Network%20Security%20Overview.md) [301]: The map of front-end, back-end, and serverless network controls on every cloud.
+- [IP Access Lists](14_admin_security_and_cost/IP%20Access%20Lists.md) [301]: Allowing workspace access only from known networks.
+- [Serverless Network Security](14_admin_security_and_cost/Serverless%20Network%20Security.md) [401]: Network connectivity configurations, private endpoints, and egress control for serverless.
+- [Encryption](14_admin_security_and_cost/Encryption.md) [301]: Encryption at rest and in transit, and where customer-managed keys fit.
+- [Compliance Security Profile](14_admin_security_and_cost/Compliance%20Security%20Profile.md) [401]: Hardened settings for HIPAA, PCI-DSS, FedRAMP, and other standards.
+- [Cost Management Basics](14_admin_security_and_cost/Cost%20Management%20Basics.md) [101]: Where Databricks money goes, and the first five things to check.
+- [Budgets and Usage Dashboards](14_admin_security_and_cost/Budgets%20and%20Usage%20Dashboards.md) [201]: Budget alerts and built-in cost dashboards from system tables.
+- [Tagging for Chargeback](14_admin_security_and_cost/Tagging%20for%20Chargeback.md) [201]: Tagging compute and jobs so every dollar maps to a team or project.
+- [Cost Optimization Checklist](14_admin_security_and_cost/Cost%20Optimization%20Checklist.md) [201]: A practical list covering auto-termination, serverless, spot, sizing, Photon, and more.
+- [Terraform Provider](14_admin_security_and_cost/Terraform%20Provider.md) [301]: Managing accounts, workspaces, and permissions as code.
+- [Disaster Recovery](14_admin_security_and_cost/Disaster%20Recovery.md) [401]: Backups, multi-region strategies, and what Databricks does and does not cover.
+
+## Migrating to Databricks
+
+- [Chapter 15 - Migrating to Databricks](15_migrating_to_databricks/Chapter%2015%20-%20Migrating%20to%20Databricks.md): Playbooks for moving a business onto Databricks from spreadsheets, databases, warehouses, and Hadoop.
+- [Migration Strategy Overview](15_migrating_to_databricks/Migration%20Strategy%20Overview.md) [101]: The phases of every migration, from assess and plan to move, validate, and switch over.
+- [Assessing Your Current Data Estate](15_migrating_to_databricks/Assessing%20Your%20Current%20Data%20Estate.md) [201]: Taking inventory of sources, reports, users, and costs before moving anything.
+- [Migrating from Excel and Access](15_migrating_to_databricks/Migrating%20from%20Excel%20and%20Access.md) [101]: Moving a spreadsheet-run business into tables, with uploads, Volumes, and a first dashboard.
+- [Migrating from SQL Server](15_migrating_to_databricks/Migrating%20from%20SQL%20Server.md) [201]: Moving off an on-premises or Azure SQL Server, using federation first and Lakeflow Connect after.
+- [Migrating from Postgres and MySQL](15_migrating_to_databricks/Migrating%20from%20Postgres%20and%20MySQL.md) [201]: Moving app-database analytics into the lakehouse without hurting the app.
+- [Migrating from Snowflake](15_migrating_to_databricks/Migrating%20from%20Snowflake.md) [301]: Code conversion, data movement, and Iceberg-based coexistence.
+- [Migrating from Amazon Redshift](15_migrating_to_databricks/Migrating%20from%20Amazon%20Redshift.md) [301]: Unloading to S3, converting SQL, and switching over workloads.
+- [Migrating from Google BigQuery](15_migrating_to_databricks/Migrating%20from%20Google%20BigQuery.md) [301]: Federation, exports to GCS, and converting BigQuery SQL.
+- [Migrating from Hadoop](15_migrating_to_databricks/Migrating%20from%20Hadoop.md) [301]: Moving HDFS data, Hive tables, and Spark jobs off an old cluster.
+- [Migrating ETL Tools](15_migrating_to_databricks/Migrating%20ETL%20Tools.md) [301]: Converting SSIS, Informatica, Talend, and stored procedures.
+- [Lakebridge](15_migrating_to_databricks/Lakebridge.md) [301]: Databricks' free migration toolkit for profiling, SQL conversion, and data reconciliation.
+- [Migrating BI Reports](15_migrating_to_databricks/Migrating%20BI%20Reports.md) [201]: Repointing Power BI and Tableau reports, or rebuilding them as AI-BI dashboards.
+- [Running Old and New in Parallel](15_migrating_to_databricks/Running%20Old%20and%20New%20in%20Parallel.md) [201]: Parallel runs, reconciliation, and a safe switch-over plan.
+- [Migration Checklist](15_migrating_to_databricks/Migration%20Checklist.md) [101]: A printable, start-to-finish checklist for a small business migration.
+
+## Learning Paths
+
+- [Chapter 80 - Learning Paths](80_learning_paths/Chapter%2080%20-%20Learning%20Paths.md): Curated routes through the graph for each kind of reader, from total beginner to expert.
+- [Path - Absolute Beginner](80_learning_paths/Path%20-%20Absolute%20Beginner.md) [101]: Zero to "I get what Databricks is" in about 20 notes.
+- [Path - Business Owner](80_learning_paths/Path%20-%20Business%20Owner.md) [101]: Everything a decision-maker needs, covering fit, cost, risk, and the first 30 days.
+- [Path - Analyst](80_learning_paths/Path%20-%20Analyst.md) [101]: From Excel and SQL to Databricks SQL, dashboards, Genie, and Power BI.
+- [Path - Data Engineer](80_learning_paths/Path%20-%20Data%20Engineer.md) [201]: Ingestion, the lakehouse, pipelines, orchestration, and CI/CD.
+- [Path - Data Scientist and ML Engineer](80_learning_paths/Path%20-%20Data%20Scientist%20and%20ML%20Engineer.md) [201]: Notebooks, Spark, MLflow, the feature store, and serving.
+- [Path - AI App Developer](80_learning_paths/Path%20-%20AI%20App%20Developer.md) [201]: LLMs, RAG, vector search, agents, Databricks Apps, and Lakebase.
+- [Path - Platform Admin](80_learning_paths/Path%20-%20Platform%20Admin.md) [301]: Accounts, identity, Unity Catalog, networking, and cost controls on your cloud.
+- [Path - One-Person Data Team](80_learning_paths/Path%20-%20One-Person%20Data%20Team.md) [101]: The shortest route for a small business with one data person doing every job.
+- [Path - Azure Deep Dive](80_learning_paths/Path%20-%20Azure%20Deep%20Dive.md) [301]: Every Azure-specific rabbit hole in order.
+- [Path - AWS Deep Dive](80_learning_paths/Path%20-%20AWS%20Deep%20Dive.md) [301]: Every AWS-specific rabbit hole in order.
+- [Path - Google Cloud Deep Dive](80_learning_paths/Path%20-%20Google%20Cloud%20Deep%20Dive.md) [301]: Every Google Cloud-specific rabbit hole in order.
+- [Path - Certification Prep](80_learning_paths/Path%20-%20Certification%20Prep.md) [301]: Which Databricks certifications exist and which notes map to each exam.
+
+## Glossary
+
+[AI Agent](90_glossary/AI%20Agent.md), [Aggregation](90_glossary/Aggregation.md), [Apache Software Foundation](90_glossary/Apache%20Software%20Foundation.md), [Auto Termination](90_glossary/Auto%20Termination.md), [Autoscaling](90_glossary/Autoscaling.md), [Availability Zone](90_glossary/Availability%20Zone.md), [Backfill](90_glossary/Backfill.md), [Broadcast Join](90_glossary/Broadcast%20Join.md), [Bytes and Data Sizes](90_glossary/Bytes%20and%20Data%20Sizes.md), [CI-CD](90_glossary/CI-CD.md), [Caching](90_glossary/Caching.md), [Checkpoint](90_glossary/Checkpoint.md), [Cluster](90_glossary/Cluster.md), [Compression](90_glossary/Compression.md), [Container](90_glossary/Container.md), [Cutover](90_glossary/Cutover.md), [DAG](90_glossary/DAG.md), [Dashboard](90_glossary/Dashboard.md), [Data Catalog](90_glossary/Data%20Catalog.md), [Data Governance](90_glossary/Data%20Governance.md), [Data Lake vs Data Swamp](90_glossary/Data%20Lake%20vs%20Data%20Swamp.md), [Data Mart](90_glossary/Data%20Mart.md), [Data Mesh](90_glossary/Data%20Mesh.md), [Data Pipeline](90_glossary/Data%20Pipeline.md), [Data Quality](90_glossary/Data%20Quality.md), [Data Skew](90_glossary/Data%20Skew.md), [Data Skipping](90_glossary/Data%20Skipping.md), [Data Type](90_glossary/Data%20Type.md), [Denormalization](90_glossary/Denormalization.md), [Dimension Table](90_glossary/Dimension%20Table.md), [Drift](90_glossary/Drift.md), [Egress](90_glossary/Egress.md), [Embedding](90_glossary/Embedding.md), [Encryption at Rest](90_glossary/Encryption%20at%20Rest.md), [Encryption in Transit](90_glossary/Encryption%20in%20Transit.md), [Event](90_glossary/Event.md), [Exactly-Once Processing](90_glossary/Exactly-Once%20Processing.md), [Fact Table](90_glossary/Fact%20Table.md), [Fault Tolerance](90_glossary/Fault%20Tolerance.md), [Feature](90_glossary/Feature.md), [Firewall](90_glossary/Firewall.md), [GDPR](90_glossary/GDPR.md), [GPU](90_glossary/GPU.md), [Git](90_glossary/Git.md), [HIPAA](90_glossary/HIPAA.md), [Hallucination](90_glossary/Hallucination.md), [IAM](90_glossary/IAM.md), [Idempotency](90_glossary/Idempotency.md), [Identity Provider](90_glossary/Identity%20Provider.md), [Index](90_glossary/Index.md), [Inference](90_glossary/Inference.md), [Infrastructure as Code](90_glossary/Infrastructure%20as%20Code.md), [Ingestion](90_glossary/Ingestion.md), [IoT](90_glossary/IoT.md), [JDBC and ODBC](90_glossary/JDBC%20and%20ODBC.md), [JVM](90_glossary/JVM.md), [Join](90_glossary/Join.md), [KPI](90_glossary/KPI.md), [Kubernetes](90_glossary/Kubernetes.md), [LLM](90_glossary/LLM.md), [Label](90_glossary/Label.md), [Latency](90_glossary/Latency.md), [Least Privilege](90_glossary/Least%20Privilege.md), [Lift and Shift](90_glossary/Lift%20and%20Shift.md), [Linux Foundation](90_glossary/Linux%20Foundation.md), [Managed Identity](90_glossary/Managed%20Identity.md), [Message Queue](90_glossary/Message%20Queue.md), [Metadata](90_glossary/Metadata.md), [Model](90_glossary/Model.md), [Node](90_glossary/Node.md), [None](90_glossary/None.md), [Normalization](90_glossary/Normalization.md), [OAuth](90_glossary/OAuth.md), [Open Source](90_glossary/Open%20Source.md), [Orchestration](90_glossary/Orchestration.md), [Overfitting](90_glossary/Overfitting.md), [PII](90_glossary/PII.md), [Pandas](90_glossary/Pandas.md), [Partition Pruning](90_glossary/Partition%20Pruning.md), [Prompt](90_glossary/Prompt.md), [Proof of Concept](90_glossary/Proof%20of%20Concept.md), [Public vs Private IP](90_glossary/Public%20vs%20Private%20IP.md), [Query](90_glossary/Query.md), [REST](90_glossary/REST.md), [Region](90_glossary/Region.md), [Replication](90_glossary/Replication.md), [Reverse ETL](90_glossary/Reverse%20ETL.md), [Role-Based Access Control](90_glossary/Role-Based%20Access%20Control.md), [SLA](90_glossary/SLA.md), [SOC 2](90_glossary/SOC%202.md), [SaaS PaaS and IaaS](90_glossary/SaaS%20PaaS%20and%20IaaS.md), [Scala](90_glossary/Scala.md), [Scalability](90_glossary/Scalability.md), [Schema](90_glossary/Schema.md), [Semantic Layer](90_glossary/Semantic%20Layer.md), [Serialization](90_glossary/Serialization.md), [Single Source of Truth](90_glossary/Single%20Source%20of%20Truth.md), [Spill](90_glossary/Spill.md), [Spot Instances](90_glossary/Spot%20Instances.md), [Subnet](90_glossary/Subnet.md), [Throughput](90_glossary/Throughput.md), [Token](90_glossary/Token.md), [Total Cost of Ownership](90_glossary/Total%20Cost%20of%20Ownership.md), [Training](90_glossary/Training.md), [UDF](90_glossary/UDF.md), [VPC and VNet](90_glossary/VPC%20and%20VNet.md), [Vendor Lock-In](90_glossary/Vendor%20Lock-In.md), [Virtual Machine](90_glossary/Virtual%20Machine.md), [Watermark](90_glossary/Watermark.md), [Webhook](90_glossary/Webhook.md), [YAML](90_glossary/YAML.md), [Z-Ordering](90_glossary/Z-Ordering.md), [Zero-Copy](90_glossary/Zero-Copy.md)

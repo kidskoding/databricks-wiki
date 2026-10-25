@@ -1,0 +1,41 @@
+filters:
+  and:
+    - 'type == "concept" || type == "path"'
+formulas:
+  verified: 'if(last_verified, last_verified, "not yet")'
+properties:
+  file.name:
+    displayName: Note
+  formula.verified:
+    displayName: Last verified
+views:
+  - type: table
+    name: By chapter
+    groupBy:
+      property: section
+      direction: ASC
+    order:
+      - file.name
+      - depth
+      - status
+      - mastery
+      - formula.verified
+  - type: table
+    name: Still stubs
+    filters:
+      and:
+        - 'status == "stub"'
+    order:
+      - file.name
+      - section
+      - depth
+  - type: table
+    name: My review queue
+    filters:
+      and:
+        - 'mastery != "solid"'
+        - 'status == "written"'
+    order:
+      - file.name
+      - section
+      - mastery

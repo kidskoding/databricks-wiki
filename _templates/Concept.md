@@ -3,6 +3,9 @@ type: concept
 status: written
 level: 
 section: 
+depth: 101
+summary: 
+personas: []
 chapter: "[[ ]]"
 prev: "[[ ]]"
 next: "[[ ]]"
@@ -24,10 +27,10 @@ tags: [concept, flashcards]
 Mastery: `INPUT[inlineSelect(option(new), option(learning), option(solid)):mastery]`
 
 > [!story] Previously
-> 1–3 sentences linking back to the note or chapter before this one. What problem are we carrying forward?
+> 1–3 sentences linking back to the `prev` note. What problem are we carrying forward?
 
 > [!eli5] In one breath
-> 2–3 sentences. No jargon. If a jargon word is unavoidable, link it to its glossary note.
+> 2–3 sentences. No jargon at all.
 
 > [!analogy] Analogy: <everyday thing>
 > Map the everyday thing to the real concept, piece by piece.
@@ -47,6 +50,11 @@ flowchart LR
   A[Input] --> B[This concept] --> C[Result]
 ```
 
+Explain the moving parts. Show real code or SQL where it helps (short, runnable, commented).
+
+> [!smallbiz] For a small business
+> What this means for a 5–50 person company with one data person. When to care, when to skip, what it costs.
+
 > [!bridge]- In Databricks today
 > Only for pre-Databricks tools (Hadoop, Kafka, Airflow, dbt...). Where does this job live in Databricks now, and does the old tool still plug in?
 
@@ -60,6 +68,11 @@ flowchart LR
 
 > [!gcp]- Databricks on Google Cloud
 > GCP-specific names, services, and setup.
+
+## Going deeper
+
+> [!deepdive]- Expert notes (301–401)
+> Internals, limits, edge cases, performance and design trade-offs. The things an expert knows that a beginner does not need yet.
 
 ## Common confusions
 

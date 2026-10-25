@@ -1,12 +1,19 @@
 {
   "collapse-filter": true,
-  "search": "-path:_templates",
+  "search": "-path:_templates -path:_meta",
   "showTags": false,
   "showAttachments": false,
   "hideUnresolved": false,
   "showOrphans": true,
   "collapse-color-groups": false,
   "colorGroups": [
+    {
+      "query": "path:00_is_databricks_for_you",
+      "color": {
+        "a": 1,
+        "rgb": 1483594
+      }
+    },
     {
       "query": "path:01_foundations",
       "color": {
@@ -75,6 +82,27 @@
       "color": {
         "a": 1,
         "rgb": 12131356
+      }
+    },
+    {
+      "query": "path:15_migrating_to_databricks",
+      "color": {
+        "a": 1,
+        "rgb": 889992
+      }
+    },
+    {
+      "query": "path:80_learning_paths",
+      "color": {
+        "a": 1,
+        "rgb": 5195493
+      }
+    },
+    {
+      "query": "[type:hub] OR file:start_here",
+      "color": {
+        "a": 1,
+        "rgb": 16436245
       }
     },
     {

@@ -10,6 +10,9 @@ body {
   --dbx-amber: 217, 119, 6;
   --dbx-slate: 100, 116, 139;
   --dbx-sepia: 146, 64, 14;
+  --dbx-green: 22, 163, 74;
+  --dbx-violet: 124, 58, 237;
+  --dbx-indigo: 79, 70, 229;
 }
 
 /* ---------- Custom callouts ---------- */
@@ -72,6 +75,36 @@ body {
 .callout[data-callout="sources"] {
   --callout-color: var(--dbx-slate);
   --callout-icon: lucide-book-open;
+}
+
+/* Small-business angle on a concept: cost, effort, when to care. */
+.callout[data-callout="smallbiz"] {
+  --callout-color: var(--dbx-green);
+  --callout-icon: lucide-store;
+}
+
+/* Collapsed 301-401 material inside a note, so beginners can skip it. */
+.callout[data-callout="deepdive"] {
+  --callout-color: var(--dbx-violet);
+  --callout-icon: lucide-microscope;
+}
+
+/* Who a learning path or front-door note is written for. */
+.callout[data-callout="persona"] {
+  --callout-color: var(--dbx-indigo);
+  --callout-icon: lucide-user-round;
+}
+
+/* Hands-on checkpoint at the end of a learning-path stage. */
+.callout[data-callout="check"] {
+  --callout-color: var(--dbx-green);
+  --callout-icon: lucide-circle-check;
+}
+
+/* Renamed product: the old name readers will still see in blogs and code. */
+.callout[data-callout="renamed"] {
+  --callout-color: var(--dbx-amber);
+  --callout-icon: lucide-tag;
 }
 
 /* ---------- Headings ---------- */

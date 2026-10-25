@@ -1,0 +1,1539 @@
+# Databricks Brain: master manifest.
+#
+# This file is the blueprint for the vault: every chapter, every planned note,
+# and the strongest edges between them. `scripts/scaffold.py` reads it to create
+# missing stubs. After a note exists, its own frontmatter is the source of truth;
+# `scripts/build_index.py` reads the notes (not this file) to build the agent index.
+#
+# Per-note keys:
+#   title           note name (also the filename, so no / : ? characters)
+#   depth           101 beginner, 201 practitioner, 301 advanced, 401 expert
+#   summary         one plain-English line; agents and llms.txt read it
+#   personas        who cares most (see personas list below)
+#   aliases         other names, including old product names
+#   related, evolved_from, evolved_into, cloud_equivalent: note titles
+
+personas:
+  everyone: Anyone new to data
+  owner: Business owner or executive
+  analyst: Analyst or BI developer
+  engineer: Data engineer
+  scientist: Data scientist or ML engineer
+  ai-dev: AI or application developer
+  admin: Platform or cloud admin
+  security: Security, privacy, or compliance lead
+  finance: Finance or FinOps
+  solo: One-person data team at a small business
+
+chapters:
+
+  - folder: 00_is_databricks_for_you
+    number: "00"
+    part: 0
+    title: Is Databricks for You
+    section: Is Databricks for You?
+    summary: The front door. Who uses Databricks, what it costs, when it fits a small business, and when it does not.
+    notes:
+      - title: What Databricks Is in Plain English
+        depth: 101
+        personas: [everyone, owner]
+        summary: Databricks in one page, with no jargon, for someone who has never heard of it.
+        related: [The Data Intelligence Platform, The Lakehouse Idea]
+      - title: Who Uses Databricks - Roles
+        depth: 101
+        personas: [everyone, owner]
+        summary: The eight job roles that log in to Databricks, what each one does there, and which tools they use.
+        related: [Path - Business Owner, Path - Analyst, Path - Data Engineer, Path - Platform Admin]
+      - title: Who Uses Databricks - Business Types
+        depth: 101
+        personas: [owner, solo]
+        summary: Kinds of businesses, from e-commerce to clinics to factories, that get real value from Databricks, with example use cases.
+        related: [Who Uses Databricks - Roles, Signs You Have Outgrown Spreadsheets]
+      - title: Signs You Have Outgrown Spreadsheets
+        depth: 101
+        personas: [owner, analyst, solo]
+        summary: The warning signs that a business needs a real data platform instead of Excel, Access, or one reporting tool.
+        related: [Spreadsheets, Migrating from Excel and Access]
+      - title: When Databricks Is Not the Right Fit
+        depth: 101
+        personas: [owner, solo, finance]
+        summary: An honest list of situations where a simpler or cheaper tool is the better choice.
+        related: [Databricks vs Alternatives for Small Teams]
+      - title: Databricks vs Alternatives for Small Teams
+        depth: 201
+        personas: [owner, solo, analyst]
+        summary: How Databricks compares with Snowflake, BigQuery, Microsoft Fabric, Power BI alone, and plain Postgres for a small team.
+        related: [Snowflake, Google BigQuery, Microsoft Fabric and OneLake vs Databricks]
+      - title: How Databricks Pricing Works
+        depth: 101
+        personas: [owner, finance, solo]
+        summary: DBUs, cloud bills, serverless versus classic, and why there are two invoices.
+        related: [DBUs, Cost Management Basics, Serverless Compute]
+      - title: Estimating Costs for a Small Business
+        depth: 201
+        personas: [owner, finance, solo]
+        summary: A worked, back-of-the-envelope monthly cost estimate for a small company's first workloads.
+        related: [How Databricks Pricing Works, Cost Optimization Checklist]
+      - title: Databricks Free Edition and Trials
+        depth: 101
+        personas: [everyone, solo]
+        summary: The free ways to try Databricks, what each one includes, and what it leaves out.
+      - title: Choosing a Cloud for Databricks
+        depth: 101
+        personas: [owner, admin, solo]
+        summary: How to pick Azure, AWS, or Google Cloud, based mostly on what the business already uses.
+        related: [Azure Databricks Overview, Databricks on AWS Overview, Databricks on Google Cloud Overview, Cloud Comparison - Azure vs AWS vs GCP]
+      - title: Your First 30 Days on Databricks
+        depth: 101
+        personas: [solo, owner, engineer]
+        summary: A week-by-week plan from sign-up to the first trusted dashboard.
+        related: [Migration Strategy Overview, Path - One-Person Data Team]
+      - title: Building a Business Case
+        depth: 201
+        personas: [owner, finance]
+        summary: How to justify Databricks to a boss or a board, covering costs, savings, risks, and a proof of concept.
+        related: [Estimating Costs for a Small Business, Proof of Concept]
+
+  - folder: 01_foundations
+    number: "01"
+    part: 1
+    title: Foundations
+    section: Foundations
+    summary: The words and ideas everything else is built on, such as data, tables, SQL, files, and the cloud.
+    notes:
+      - title: What Is Data
+        depth: 101
+        personas: [everyone]
+        summary: Data as recorded facts, and why businesses keep it.
+      - title: Structured vs Unstructured Data
+        depth: 101
+        personas: [everyone]
+        summary: Tables versus documents, images, audio, and logs, and the semi-structured data in between.
+      - title: Files and File Formats
+        depth: 101
+        personas: [everyone]
+        summary: What a file format is and why the choice of format decides how fast and cheap data is to use.
+        evolved_into: [Apache Parquet]
+      - title: CSV and JSON
+        depth: 101
+        personas: [everyone]
+        summary: The two most common plain-text data formats and their limits at scale.
+        related: [Files and File Formats]
+      - title: Spreadsheets
+        depth: 101
+        personas: [everyone, analyst]
+        summary: Why Excel runs the world, and where it breaks.
+        evolved_into: [Relational Databases]
+      - title: Relational Databases
+        depth: 101
+        personas: [everyone]
+        summary: Tables with rules and relationships, managed by software like Postgres, MySQL, and SQL Server.
+        evolved_into: [Data Warehouses]
+      - title: SQL
+        depth: 101
+        personas: [everyone, analyst]
+        summary: The language for asking databases questions, and why it is still the most important data skill.
+        evolved_into: [Spark SQL, Databricks SQL]
+      - title: Primary and Foreign Keys
+        depth: 101
+        personas: [analyst, engineer]
+        summary: How rows get IDs and how tables point at each other.
+      - title: OLTP vs OLAP
+        depth: 201
+        personas: [analyst, engineer]
+        summary: Systems that run the business versus systems that analyze it.
+        related: [Relational Databases, Data Warehouses, Lakebase]
+      - title: Data Modeling Basics
+        depth: 201
+        personas: [analyst, engineer]
+        summary: Deciding which tables to have and how they connect, covering normalization, entities, and grain.
+      - title: Star Schema
+        depth: 201
+        personas: [analyst, engineer]
+        summary: Fact and dimension tables, the classic shape for analytics.
+        related: [Data Modeling Basics, Medallion Architecture]
+      - title: Servers and the Cloud
+        depth: 101
+        personas: [everyone]
+        summary: Computers you rent by the minute from Microsoft, Amazon, or Google.
+        related: [Choosing a Cloud for Databricks]
+      - title: Storage vs Compute
+        depth: 101
+        personas: [everyone]
+        summary: The split between where data sits and what crunches it, the most important idea in modern data.
+        evolved_into: [Control Plane and Compute Plane]
+      - title: Python for Data
+        depth: 101
+        personas: [everyone, scientist, engineer]
+        summary: Why Python and pandas became the default language for data work.
+        evolved_into: [PySpark]
+      - title: APIs
+        depth: 101
+        personas: [everyone, engineer]
+        summary: How software talks to other software, and how most SaaS data gets pulled out.
+        related: [Databricks SDKs and REST API]
+      - title: ETL vs ELT
+        depth: 101
+        personas: [engineer, analyst]
+        summary: Extract, transform, load, and why the order flipped in the cloud.
+        evolved_into: [Lakeflow]
+      - title: Batch vs Streaming
+        depth: 101
+        personas: [engineer]
+        summary: Processing data in scheduled chunks versus continuously as it arrives.
+        evolved_into: [Structured Streaming]
+
+  - folder: 02_big_data_era
+    number: "02"
+    part: 1
+    title: The Big Data Era
+    section: The Big Data Era
+    summary: When data outgrew one computer, from Google's papers to Hadoop and the pain that came with it.
+    notes:
+      - title: The Three Vs of Big Data
+        depth: 101
+        personas: [everyone]
+        summary: Volume, velocity, and variety, the three ways data got too big for one machine.
+      - title: Scaling Up vs Scaling Out
+        depth: 101
+        personas: [everyone, engineer]
+        summary: Buying a bigger computer versus using many small ones.
+      - title: Distributed Systems
+        depth: 201
+        personas: [engineer]
+        summary: Many computers acting as one, and the new failure modes that come with it.
+      - title: Google File System and MapReduce Papers
+        depth: 201
+        personas: [engineer]
+        summary: The 2003 and 2004 Google papers that started the big data era.
+        evolved_into: [Apache Hadoop]
+      - title: Apache Hadoop
+        depth: 101
+        personas: [engineer]
+        summary: The open-source system that let ordinary companies store and process huge data on cheap machines.
+        evolved_into: [Apache Spark, The Lakehouse Idea]
+      - title: HDFS
+        depth: 201
+        personas: [engineer]
+        summary: Hadoop's distributed file system, which splits files into replicated blocks across many machines.
+        evolved_into: [Object Storage]
+      - title: MapReduce
+        depth: 201
+        personas: [engineer]
+        summary: Hadoop's map-then-reduce processing model, which was powerful, slow, and painful to write.
+        evolved_into: [Apache Spark]
+      - title: YARN
+        depth: 301
+        personas: [engineer, admin]
+        summary: Hadoop's resource manager, which decides which job gets which machines.
+        evolved_into: [Serverless Compute]
+      - title: Apache Hive
+        depth: 201
+        personas: [engineer, analyst]
+        summary: SQL on Hadoop, which made big data queryable by analysts.
+        evolved_into: [Spark SQL, Unity Catalog]
+      - title: Hive Metastore
+        depth: 201
+        personas: [engineer, admin]
+        summary: The table directory Hive introduced, which Spark and early Databricks inherited.
+        evolved_into: [Unity Catalog]
+        related: [Hive Metastore Migration to Unity Catalog]
+      - title: Apache HBase
+        depth: 301
+        personas: [engineer]
+        summary: A fast key-value database on top of HDFS, modeled after Google Bigtable.
+      - title: Cloudera and Hortonworks
+        depth: 201
+        personas: [owner, engineer]
+        summary: The companies that sold supported Hadoop, and why they merged in 2019.
+      - title: Columnar Storage
+        depth: 201
+        personas: [engineer, analyst]
+        summary: Storing data column by column so analytics reads only what it needs.
+        evolved_into: [Apache Parquet]
+      - title: Apache Parquet
+        depth: 201
+        personas: [engineer]
+        summary: The open columnar file format underneath Delta Lake, Iceberg, and most of the lakehouse.
+        evolved_into: [Delta Lake]
+      - title: Apache ORC
+        depth: 301
+        personas: [engineer]
+        summary: Hive's columnar format, Parquet's sibling and rival.
+      - title: The Pain of Hadoop
+        depth: 101
+        personas: [everyone, owner]
+        summary: Why Hadoop clusters became slow, expensive, and hard to staff, which set the stage for Spark and the cloud.
+        evolved_into: [Apache Spark]
+
+  - folder: 03_apache_spark
+    number: "03"
+    part: 1
+    title: Apache Spark
+    section: Apache Spark
+    summary: The faster, friendlier engine born at UC Berkeley that replaced MapReduce and became Databricks' foundation.
+    notes:
+      - title: AMPLab and the Birth of Spark
+        depth: 101
+        personas: [everyone]
+        summary: How a Berkeley research lab built Spark in 2009, and how its creators went on to found Databricks.
+        evolved_into: [The Founding of Databricks]
+      - title: Apache Spark
+        depth: 101
+        personas: [everyone, engineer]
+        summary: The open-source engine for processing big data in memory across a cluster.
+        evolved_from: [MapReduce]
+        evolved_into: [Databricks Runtime]
+      - title: RDDs
+        depth: 301
+        personas: [engineer]
+        summary: Resilient distributed datasets, Spark's original low-level building block.
+        evolved_into: [DataFrames]
+      - title: Lazy Evaluation
+        depth: 201
+        personas: [engineer, scientist]
+        summary: Why Spark plans the whole job before running any of it.
+      - title: Transformations and Actions
+        depth: 201
+        personas: [engineer, scientist]
+        summary: The two kinds of Spark operations, ones that describe work and ones that trigger it.
+        related: [Lazy Evaluation]
+      - title: DataFrames
+        depth: 101
+        personas: [engineer, scientist, analyst]
+        summary: Tables in code, the main way people use Spark today.
+        evolved_from: [RDDs]
+      - title: Spark SQL
+        depth: 101
+        personas: [analyst, engineer]
+        summary: Running SQL on Spark, the bridge from Hive to Databricks SQL.
+        evolved_from: [Apache Hive]
+        evolved_into: [Databricks SQL]
+      - title: Catalyst Optimizer
+        depth: 301
+        personas: [engineer]
+        summary: The query planner that rewrites your code into a faster plan.
+      - title: Tungsten
+        depth: 401
+        personas: [engineer]
+        summary: Spark's memory and code-generation engine work, the precursor to Photon.
+        evolved_into: [Photon]
+      - title: Driver and Executors
+        depth: 201
+        personas: [engineer, admin]
+        summary: The boss process and the worker processes in every Spark cluster.
+      - title: Partitions
+        depth: 201
+        personas: [engineer]
+        summary: How Spark slices data so many machines can work on it at once.
+      - title: Shuffles
+        depth: 301
+        personas: [engineer]
+        summary: Moving data between machines, the most expensive thing Spark does.
+        related: [Partitions, Adaptive Query Execution]
+      - title: Jobs Stages and Tasks
+        depth: 301
+        personas: [engineer]
+        summary: How Spark breaks one query into units of work you can see in the Spark UI.
+        related: [Spark UI]
+      - title: PySpark
+        depth: 101
+        personas: [engineer, scientist]
+        summary: Spark from Python, the most-used Spark interface.
+        evolved_from: [Python for Data]
+      - title: Structured Streaming
+        depth: 201
+        personas: [engineer]
+        summary: Spark's engine for treating a live stream like a table that keeps growing.
+        evolved_from: [Batch vs Streaming]
+        evolved_into: [Structured Streaming on Databricks]
+      - title: MLlib
+        depth: 201
+        personas: [scientist]
+        summary: Spark's built-in machine-learning library.
+        evolved_into: [MLflow]
+      - title: Adaptive Query Execution
+        depth: 301
+        personas: [engineer]
+        summary: Spark re-planning a query mid-flight based on what it learns.
+      - title: Spark Connect
+        depth: 301
+        personas: [engineer, ai-dev]
+        summary: The client-server split that lets thin clients talk to Spark remotely.
+        related: [Serverless Compute]
+      - title: Spark UI
+        depth: 201
+        personas: [engineer]
+        summary: The built-in web page for seeing what a Spark job did and why it was slow.
+
+  - folder: 04_modern_data_stack
+    number: "04"
+    part: 1
+    title: The Modern Data Stack
+    section: The Modern Data Stack
+    summary: Cloud warehouses, data lakes, Kafka, Airflow, and dbt, and the messy two-tier world they created.
+    notes:
+      - title: Data Warehouses
+        depth: 101
+        personas: [everyone, analyst]
+        summary: A database built for analytics, which is clean, fast, and expensive.
+        evolved_from: [Relational Databases]
+        evolved_into: [The Lakehouse Idea]
+      - title: Amazon Redshift
+        depth: 201
+        personas: [analyst, engineer]
+        summary: AWS's cloud data warehouse, launched in 2012.
+        related: [Migrating from Amazon Redshift]
+      - title: Snowflake
+        depth: 201
+        personas: [analyst, engineer, owner]
+        summary: The cloud warehouse that separated storage and compute, and Databricks' best-known rival.
+        related: [Migrating from Snowflake, Databricks vs Alternatives for Small Teams]
+      - title: Google BigQuery
+        depth: 201
+        personas: [analyst, engineer]
+        summary: Google's serverless warehouse.
+        related: [BigQuery Integration, Migrating from Google BigQuery]
+      - title: Data Lakes
+        depth: 101
+        personas: [everyone, engineer]
+        summary: Dumping every file into cheap storage first and figuring it out later.
+        evolved_into: [The Lakehouse Idea]
+      - title: Object Storage
+        depth: 101
+        personas: [everyone, engineer]
+        summary: Cheap, effectively unlimited cloud file storage, which is the floor the lakehouse stands on.
+        evolved_from: [HDFS]
+      - title: Amazon S3
+        depth: 101
+        personas: [engineer, admin]
+        summary: AWS object storage, the original cloud data lake.
+        cloud_equivalent: [Azure Data Lake Storage, Google Cloud Storage]
+      - title: Azure Data Lake Storage
+        depth: 101
+        personas: [engineer, admin]
+        summary: Azure's object storage built for analytics (ADLS Gen2).
+        cloud_equivalent: [Amazon S3, Google Cloud Storage]
+        aliases: [ADLS, ADLS Gen2]
+      - title: Google Cloud Storage
+        depth: 101
+        personas: [engineer, admin]
+        summary: Google Cloud's object storage.
+        cloud_equivalent: [Amazon S3, Azure Data Lake Storage]
+        aliases: [GCS]
+      - title: Data Swamps
+        depth: 101
+        personas: [everyone, owner]
+        summary: What a data lake becomes without rules, with no trust, no quality, and no one knowing what is where.
+        evolved_into: [Unity Catalog, Delta Lake]
+      - title: Apache Kafka
+        depth: 201
+        personas: [engineer]
+        summary: The event-streaming backbone that moves live data between systems.
+        related: [Structured Streaming on Databricks]
+      - title: Apache Airflow
+        depth: 201
+        personas: [engineer]
+        summary: The open-source scheduler that runs pipelines as DAGs written in Python.
+        evolved_into: [Lakeflow Jobs]
+      - title: dbt
+        depth: 201
+        personas: [analyst, engineer]
+        summary: SQL transformations with software engineering habits like version control and tests.
+        related: [dbt on Databricks]
+      - title: Fivetran and ELT Tools
+        depth: 201
+        personas: [engineer, solo]
+        summary: Managed connectors that copy SaaS and database data into a warehouse.
+        evolved_into: [Lakeflow Connect]
+      - title: BI Tools
+        depth: 101
+        personas: [analyst, owner]
+        summary: Power BI, Tableau, Looker, and friends, the charts at the end of every pipeline.
+        evolved_into: [AI-BI Dashboards]
+      - title: The Two-Tier Architecture Problem
+        depth: 101
+        personas: [everyone, owner]
+        summary: Running a lake and a warehouse side by side means two copies, two bills, stale data, and no AI on warehouse data.
+        evolved_into: [The Lakehouse Idea]
+
+  - folder: 05_lakehouse
+    number: "05"
+    part: 1
+    title: The Lakehouse
+    section: The Lakehouse
+    summary: Warehouse reliability on lake storage, through Delta Lake, open table formats, and the medallion architecture.
+    notes:
+      - title: The Lakehouse Idea
+        depth: 101
+        personas: [everyone, owner]
+        summary: One copy of data in open files on cheap storage, with warehouse-grade reliability and speed.
+        evolved_from: [Data Lakes, Data Warehouses, The Two-Tier Architecture Problem]
+        evolved_into: [The Data Intelligence Platform]
+      - title: The Lakehouse Paper
+        depth: 301
+        personas: [engineer]
+        summary: The 2021 CIDR paper that named and argued for the lakehouse.
+      - title: ACID Transactions
+        depth: 201
+        personas: [engineer]
+        summary: The four guarantees that stop half-written, conflicting, or lost data.
+      - title: Open Table Formats
+        depth: 201
+        personas: [engineer, admin]
+        summary: A metadata layer over Parquet files that turns a folder into a real table.
+        related: [Delta Lake, Apache Iceberg, Apache Hudi]
+      - title: Delta Lake
+        depth: 101
+        personas: [engineer, analyst]
+        summary: Databricks' open-source table format and the default for every table on the platform.
+        evolved_from: [Apache Parquet, Data Swamps]
+        aliases: [Delta, Delta table, Delta tables]
+      - title: Delta Transaction Log
+        depth: 301
+        personas: [engineer]
+        summary: The _delta_log folder of JSON commits that makes Delta Lake transactional.
+      - title: Time Travel
+        depth: 201
+        personas: [engineer, analyst]
+        summary: Querying a table as it was yesterday, and undoing mistakes.
+      - title: Schema Enforcement and Evolution
+        depth: 201
+        personas: [engineer]
+        summary: Rejecting bad columns, and safely adding new ones.
+      - title: MERGE and Upserts
+        depth: 201
+        personas: [engineer]
+        summary: Insert-or-update in one statement, the workhorse of incremental pipelines.
+        related: [Change Data Capture]
+      - title: Apache Iceberg
+        depth: 201
+        personas: [engineer, admin]
+        summary: The Netflix-born table format, Delta's main rival, now first-class in Unity Catalog.
+        related: [Delta UniForm, Open Table Formats]
+      - title: Apache Hudi
+        depth: 301
+        personas: [engineer]
+        summary: The Uber-born table format focused on upserts and incremental processing.
+      - title: Delta UniForm
+        depth: 301
+        personas: [engineer, admin]
+        summary: Writing Delta tables that Iceberg readers can also read.
+        aliases: [UniForm]
+      - title: Medallion Architecture
+        depth: 101
+        personas: [engineer, analyst, solo]
+        summary: Bronze (raw), silver (cleaned), and gold (business-ready) layers of tables.
+        related: [Lakeflow Spark Declarative Pipelines, Star Schema]
+      - title: Liquid Clustering
+        depth: 301
+        personas: [engineer]
+        summary: Self-organizing data layout that replaced partitioning and Z-ordering for most tables.
+        evolved_from: [Partitions]
+      - title: Deletion Vectors
+        depth: 401
+        personas: [engineer]
+        summary: Marking rows deleted instead of rewriting whole files.
+      - title: Change Data Feed
+        depth: 301
+        personas: [engineer]
+        summary: A row-level log of what changed in a Delta table, for downstream incremental processing.
+        related: [Change Data Capture]
+      - title: OPTIMIZE and VACUUM
+        depth: 301
+        personas: [engineer, admin]
+        summary: Compacting small files and deleting old ones, and Predictive Optimization doing it for you.
+        aliases: [Predictive Optimization]
+
+  - folder: 06_databricks_platform
+    number: "06"
+    part: 1
+    title: The Databricks Platform
+    section: Databricks Platform
+    summary: Databricks arrives. Accounts, workspaces, compute, notebooks, and the tools for building on it.
+    notes:
+      - title: The Founding of Databricks
+        depth: 101
+        personas: [everyone, owner]
+        summary: How Spark's creators started a company in 2013 to run Spark in the cloud.
+        evolved_from: [AMPLab and the Birth of Spark]
+      - title: The Data Intelligence Platform
+        depth: 101
+        personas: [everyone, owner]
+        summary: Databricks' name for the lakehouse plus AI that understands your data.
+        evolved_from: [The Lakehouse Idea]
+      - title: Accounts and Workspaces
+        depth: 101
+        personas: [everyone, admin]
+        summary: The account is the company, and a workspace is a room where teams work.
+        related: [Account Console]
+      - title: Control Plane and Compute Plane
+        depth: 201
+        personas: [admin, security]
+        summary: What Databricks runs for you, versus what runs in your cloud account or in serverless.
+        evolved_from: [Storage vs Compute]
+      - title: Databricks Runtime
+        depth: 201
+        personas: [engineer, scientist]
+        summary: The tuned Spark plus libraries image every classic cluster boots, and its LTS versions.
+        evolved_from: [Apache Spark]
+        aliases: [DBR]
+      - title: Photon
+        depth: 301
+        personas: [engineer, admin]
+        summary: Databricks' C++ query engine that speeds up SQL and DataFrame work.
+        evolved_from: [Tungsten]
+      - title: Compute Types
+        depth: 101
+        personas: [everyone, admin, solo]
+        summary: The map of Databricks compute, covering all-purpose, jobs, serverless, and SQL warehouses.
+      - title: All-Purpose Compute
+        depth: 201
+        personas: [engineer, scientist]
+        summary: Interactive clusters for notebooks and exploration.
+      - title: Jobs Compute
+        depth: 201
+        personas: [engineer, finance]
+        summary: Clusters that spin up for one scheduled job and then disappear, at a lower price.
+      - title: Serverless Compute
+        depth: 101
+        personas: [everyone, solo, finance]
+        summary: Compute Databricks runs for you that starts in seconds and has no clusters to manage.
+        evolved_from: [YARN]
+      - title: SQL Warehouses
+        depth: 101
+        personas: [analyst, admin]
+        summary: Compute built for SQL and BI, in serverless, pro, and classic types.
+      - title: Notebooks
+        depth: 101
+        personas: [everyone, engineer, scientist]
+        summary: Documents that mix code, results, charts, and text.
+      - title: Databricks Assistant
+        depth: 101
+        personas: [everyone, analyst, engineer]
+        summary: The built-in AI helper that writes, explains, and fixes code and queries.
+      - title: Git Folders and Workspace Files
+        depth: 201
+        personas: [engineer]
+        summary: Connecting the workspace to GitHub, GitLab, or Azure DevOps.
+        aliases: [Repos, Databricks Repos]
+      - title: Declarative Automation Bundles
+        depth: 301
+        personas: [engineer, admin]
+        summary: Infrastructure-as-code for jobs, pipelines, and apps as YAML in Git (formerly Databricks Asset Bundles).
+        aliases: [Databricks Asset Bundles, DABs, Asset Bundles]
+        related: [CI-CD for Data Pipelines, Terraform Provider]
+      - title: Databricks CLI
+        depth: 201
+        personas: [engineer, admin]
+        summary: The command-line tool for scripting everything in Databricks.
+      - title: Databricks SDKs and REST API
+        depth: 301
+        personas: [engineer, ai-dev, admin]
+        summary: Programmatic control of Databricks from Python, Java, Go, and plain HTTP.
+        related: [APIs]
+      - title: Databricks Connect
+        depth: 301
+        personas: [engineer, ai-dev]
+        summary: Running code from your laptop IDE against Databricks compute.
+        evolved_from: [Spark Connect]
+      - title: DBUs
+        depth: 101
+        personas: [finance, owner, admin]
+        summary: The Databricks Unit, the meter that every Databricks bill counts in.
+        aliases: [DBU, Databricks Unit]
+        related: [How Databricks Pricing Works]
+      - title: Libraries and Environments
+        depth: 201
+        personas: [engineer, scientist]
+        summary: Installing Python packages and pinning dependencies on classic and serverless compute.
+
+  - folder: 07_unity_catalog_and_governance
+    number: "07"
+    part: 1
+    title: Unity Catalog and Governance
+    section: Unity Catalog & Governance
+    summary: One place to find, secure, track, and share every data and AI asset.
+    notes:
+      - title: Unity Catalog
+        depth: 101
+        personas: [everyone, admin, security]
+        summary: Databricks' governance layer for permissions, discovery, lineage, and auditing across every workspace.
+        evolved_from: [Hive Metastore, Data Swamps]
+        aliases: [UC]
+      - title: Metastore
+        depth: 201
+        personas: [admin]
+        summary: The top-level Unity Catalog container, one per region.
+      - title: Three-Level Namespace
+        depth: 101
+        personas: [everyone, analyst, engineer]
+        summary: catalog.schema.table, the address of everything.
+      - title: Catalogs Schemas and Tables
+        depth: 101
+        personas: [everyone, analyst]
+        summary: The securable objects in Unity Catalog and how to organize them.
+      - title: Managed vs External Tables
+        depth: 201
+        personas: [engineer, admin]
+        summary: Who owns the files, and what happens when you drop a table.
+      - title: Volumes
+        depth: 201
+        personas: [engineer, scientist]
+        summary: Governed folders for non-table files like CSVs, images, and PDFs.
+      - title: Storage Credentials and External Locations
+        depth: 301
+        personas: [admin, security]
+        summary: How Unity Catalog is allowed to reach your cloud storage.
+      - title: Privileges and Grants
+        depth: 201
+        personas: [admin, security]
+        summary: GRANT and REVOKE, privilege inheritance, and ownership.
+      - title: Row Filters and Column Masks
+        depth: 301
+        personas: [security, admin]
+        summary: Showing each person only the rows and values they are allowed to see.
+      - title: Attribute-Based Access Control
+        depth: 301
+        personas: [security, admin]
+        summary: Policies driven by tags instead of per-table grants.
+        aliases: [ABAC]
+      - title: Data Lineage
+        depth: 201
+        personas: [engineer, security, analyst]
+        summary: An automatic map of where every column came from and where it goes.
+      - title: Audit Logs
+        depth: 301
+        personas: [security, admin]
+        summary: A record of who did what and when, across the account.
+      - title: System Tables
+        depth: 201
+        personas: [admin, finance, security]
+        summary: Databricks' own operational data (billing, audit, lineage, compute) as queryable tables.
+      - title: Lakehouse Federation
+        depth: 201
+        personas: [analyst, engineer, solo]
+        summary: Querying Postgres, SQL Server, Snowflake, and others in place, without copying.
+      - title: OpenSharing
+        depth: 201
+        personas: [engineer, owner]
+        summary: The open protocol, formerly Delta Sharing, for sharing live data and AI assets with anyone.
+        aliases: [Delta Sharing]
+      - title: Clean Rooms
+        depth: 301
+        personas: [owner, security]
+        summary: Two companies analyzing combined data without seeing each other's raw records.
+      - title: Databricks Marketplace
+        depth: 201
+        personas: [owner, analyst]
+        summary: Finding and getting datasets, models, and apps from other providers.
+      - title: Data Classification
+        depth: 301
+        personas: [security]
+        summary: Automatically finding and tagging sensitive data like PII.
+      - title: Hive Metastore Migration to Unity Catalog
+        depth: 301
+        personas: [admin, engineer]
+        summary: Upgrading older workspaces off the legacy Hive metastore.
+        evolved_from: [Hive Metastore]
+
+  - folder: 08_data_engineering
+    number: "08"
+    part: 1
+    title: Data Engineering
+    section: Data Engineering
+    summary: Getting data in, cleaning it, and running it on schedule with Lakeflow.
+    notes:
+      - title: Lakeflow
+        depth: 101
+        personas: [engineer, solo]
+        summary: Databricks' umbrella for ingestion (Connect), transformation (Pipelines), and orchestration (Jobs).
+        evolved_from: [ETL vs ELT]
+      - title: Lakeflow Connect
+        depth: 101
+        personas: [engineer, solo]
+        summary: Managed connectors for Salesforce, SQL Server, Google Analytics, and other common sources.
+        evolved_from: [Fivetran and ELT Tools]
+      - title: Auto Loader
+        depth: 201
+        personas: [engineer]
+        summary: Incrementally ingesting new files as they land in cloud storage.
+      - title: COPY INTO
+        depth: 201
+        personas: [engineer, analyst]
+        summary: The simple SQL command for loading files into a table once.
+      - title: Lakeflow Spark Declarative Pipelines
+        depth: 201
+        personas: [engineer]
+        summary: Declaring the tables you want and letting Databricks run, retry, and track the pipeline (formerly Delta Live Tables).
+        aliases: [Delta Live Tables, DLT, Lakeflow Declarative Pipelines, SDP]
+      - title: Streaming Tables
+        depth: 201
+        personas: [engineer]
+        summary: Tables that keep themselves up to date from a stream or growing source.
+      - title: Materialized Views
+        depth: 201
+        personas: [engineer, analyst]
+        summary: Precomputed query results that refresh incrementally.
+      - title: Expectations and Data Quality
+        depth: 201
+        personas: [engineer]
+        summary: Rules on your data that warn, drop, or stop the pipeline when broken.
+      - title: Change Data Capture
+        depth: 301
+        personas: [engineer]
+        summary: Copying only what changed in a source database, with AUTO CDC.
+        related: [MERGE and Upserts, Change Data Feed]
+        aliases: [CDC]
+      - title: Slowly Changing Dimensions
+        depth: 301
+        personas: [engineer, analyst]
+        summary: SCD type 1 and type 2, which decide whether to keep history when a customer moves.
+        aliases: [SCD, SCD Type 2]
+      - title: Lakeflow Jobs
+        depth: 101
+        personas: [engineer, solo]
+        summary: Databricks' built-in orchestrator for scheduled multi-task workflows (formerly Workflows).
+        evolved_from: [Apache Airflow]
+        aliases: [Databricks Workflows, Workflows, Databricks Jobs]
+      - title: Tasks Triggers and Schedules
+        depth: 201
+        personas: [engineer]
+        summary: Task types, dependencies, file-arrival and table-update triggers, and retries.
+      - title: Lakeflow Designer
+        depth: 101
+        personas: [analyst, solo]
+        summary: A no-code, drag-and-drop pipeline builder with AI help.
+      - title: Structured Streaming on Databricks
+        depth: 301
+        personas: [engineer]
+        summary: Running Spark streams on Databricks, covering Kafka sources, checkpoints, and real-time mode.
+        evolved_from: [Structured Streaming]
+      - title: dbt on Databricks
+        depth: 201
+        personas: [analyst, engineer]
+        summary: Running dbt projects against Databricks SQL, and as job tasks.
+        evolved_from: [dbt]
+      - title: CI-CD for Data Pipelines
+        depth: 301
+        personas: [engineer, admin]
+        summary: Dev, staging, and prod, with tests and automated deployment for data code.
+        related: [Declarative Automation Bundles, Git Folders and Workspace Files]
+      - title: Testing Data Pipelines
+        depth: 301
+        personas: [engineer]
+        summary: Unit tests, data tests, and expectations for code that moves data.
+
+  - folder: 09_sql_bi_and_apps
+    number: "09"
+    part: 1
+    title: SQL BI and Apps
+    section: SQL, BI & Apps
+    summary: Analysts and app builders, covering Databricks SQL, dashboards, Genie, Power BI, Databricks Apps, and Lakebase.
+    notes:
+      - title: Databricks SQL
+        depth: 101
+        personas: [analyst, owner]
+        summary: Databricks' data warehouse experience, with SQL warehouses, editor, dashboards, and alerts.
+        evolved_from: [Spark SQL, SQL]
+        aliases: [DBSQL]
+      - title: SQL Editor
+        depth: 101
+        personas: [analyst]
+        summary: Writing, running, and sharing queries in the browser.
+      - title: Query Performance and Caching
+        depth: 301
+        personas: [analyst, engineer]
+        summary: Query profiles, result and disk caches, and why a query is slow.
+      - title: AI-BI Dashboards
+        depth: 101
+        personas: [analyst, owner]
+        summary: Databricks' native dashboards, built with AI help and shareable with anyone.
+        evolved_from: [BI Tools]
+        aliases: [AI/BI Dashboards, Lakeview Dashboards]
+      - title: Genie
+        depth: 101
+        personas: [owner, analyst]
+        summary: Asking questions of your data in plain English and getting answers and charts.
+        aliases: [AI/BI Genie, Genie spaces]
+      - title: Metric Views
+        depth: 301
+        personas: [analyst, engineer]
+        summary: Defining a business metric once in Unity Catalog so every tool computes it the same way.
+      - title: SQL Alerts
+        depth: 201
+        personas: [analyst, owner]
+        summary: Getting an email or Slack message when a number crosses a line.
+      - title: Connecting Power BI
+        depth: 201
+        personas: [analyst]
+        summary: Live and import connections from Power BI to Databricks, and publishing from Unity Catalog.
+      - title: Connecting Tableau and Other BI Tools
+        depth: 201
+        personas: [analyst]
+        summary: Tableau, Looker, Sigma, Excel, and anything with JDBC or ODBC.
+      - title: Partner Connect
+        depth: 201
+        personas: [solo, engineer]
+        summary: One-click trials and connections to Fivetran, dbt, Power BI, and other partners.
+      - title: AI Functions in SQL
+        depth: 201
+        personas: [analyst, ai-dev]
+        summary: Calling LLMs from plain SQL to classify, summarize, extract, and translate.
+        aliases: [ai_query]
+      - title: Databricks Apps
+        depth: 201
+        personas: [ai-dev, solo]
+        summary: Hosting internal web apps in Streamlit, Dash, React, and others right next to your data.
+      - title: Lakebase
+        depth: 301
+        personas: [ai-dev, engineer]
+        summary: A managed Postgres database (OLTP) inside the lakehouse, for apps and agents.
+        related: [OLTP vs OLAP, Databricks Apps]
+      - title: Databricks One
+        depth: 101
+        personas: [owner, analyst]
+        summary: The simplified business-user home for dashboards, Genie, and apps.
+
+  - folder: 10_ai_and_ml
+    number: "10"
+    part: 1
+    title: AI and ML
+    section: AI & ML
+    summary: From classic machine learning to agents, covering MLflow, serving, vector search, and Agent Bricks.
+    notes:
+      - title: Machine Learning Basics
+        depth: 101
+        personas: [everyone, scientist]
+        summary: Teaching software from examples, covering training, models, features, and predictions.
+      - title: Generative AI and LLMs
+        depth: 101
+        personas: [everyone, ai-dev, owner]
+        summary: What large language models are, and why business data makes them useful.
+      - title: Feature Engineering and Feature Store
+        depth: 301
+        personas: [scientist]
+        summary: Reusable, governed model inputs, kept consistent between training and serving.
+      - title: MLflow
+        depth: 101
+        personas: [scientist, ai-dev]
+        summary: The open-source platform for tracking, packaging, evaluating, and deploying models and agents.
+        evolved_from: [MLlib]
+      - title: Experiment Tracking
+        depth: 201
+        personas: [scientist]
+        summary: Logging every training run's parameters, metrics, and artifacts.
+      - title: Models in Unity Catalog
+        depth: 201
+        personas: [scientist, admin]
+        summary: Versioning, aliasing, and governing models like any other table.
+        aliases: [Model Registry]
+      - title: AutoML
+        depth: 101
+        personas: [analyst, scientist, solo]
+        summary: Letting Databricks try models for you and hand back a notebook.
+      - title: Model Serving
+        depth: 201
+        personas: [scientist, ai-dev]
+        summary: Turning a model into a live, autoscaling API endpoint.
+        aliases: [Mosaic AI Model Serving]
+      - title: Foundation Model APIs
+        depth: 201
+        personas: [ai-dev]
+        summary: Pay-per-token access to hosted open and partner LLMs inside Databricks.
+      - title: AI Gateway
+        depth: 301
+        personas: [ai-dev, admin, security]
+        summary: Governing, rate-limiting, logging, and guarding every LLM call, including to external providers.
+        aliases: [External Models]
+      - title: Vector Search
+        depth: 201
+        personas: [ai-dev]
+        summary: Finding similar text or images by meaning, the retrieval half of RAG.
+      - title: Retrieval-Augmented Generation
+        depth: 201
+        personas: [ai-dev, owner]
+        summary: Giving an LLM your documents at question time so it answers from facts.
+        aliases: [RAG]
+      - title: Agent Bricks
+        depth: 101
+        personas: [ai-dev, owner, solo]
+        summary: Describing an AI agent's job in plain language and letting Databricks build, evaluate, and tune it.
+      - title: Mosaic AI Agent Framework
+        depth: 301
+        personas: [ai-dev]
+        summary: Building custom agents in code with tools, MLflow tracing, and deployment.
+      - title: Agent Evaluation and Tracing
+        depth: 301
+        personas: [ai-dev]
+        summary: Measuring agent quality with judges and traces in MLflow.
+      - title: Fine-Tuning
+        depth: 401
+        personas: [scientist, ai-dev]
+        summary: Further training a foundation model on your own examples, and when not to bother.
+      - title: Data Quality Monitoring
+        depth: 301
+        personas: [scientist, engineer]
+        summary: Watching tables and model inputs for drift, freshness, and anomalies (formerly Lakehouse Monitoring).
+        aliases: [Lakehouse Monitoring]
+      - title: GPU Compute
+        depth: 301
+        personas: [scientist, admin]
+        summary: GPU clusters and serverless GPUs for deep learning and LLM work.
+      - title: MosaicML and Open Models
+        depth: 201
+        personas: [owner, ai-dev]
+        summary: Databricks' 2023 MosaicML acquisition, DBRX, and its open-model strategy.
+
+  - folder: 11_azure_databricks
+    number: "11"
+    part: 2
+    title: Azure Databricks
+    section: Azure Databricks
+    summary: Databricks as a first-party Microsoft service, with its own identity, networking, billing, and integrations.
+    notes:
+      - title: Azure Databricks Overview
+        depth: 101
+        personas: [everyone, admin, owner]
+        summary: What is different when Databricks is sold and run by Microsoft.
+        cloud_equivalent: [Databricks on AWS Overview, Databricks on Google Cloud Overview]
+      - title: First-Party Microsoft Service
+        depth: 201
+        personas: [owner, admin, finance]
+        summary: Microsoft support, the Azure portal, Azure billing, and why Azure Databricks is unusual among Databricks clouds.
+      - title: Creating an Azure Databricks Workspace
+        depth: 101
+        personas: [admin, solo]
+        summary: Step by step in the Azure portal, covering pricing tier, region, networking, and resource group.
+        cloud_equivalent: [Account Setup on AWS, Account Setup on Google Cloud]
+      - title: Managed Resource Group
+        depth: 201
+        personas: [admin]
+        summary: The locked resource group Azure creates to hold Databricks' VMs, disks, and storage.
+      - title: Microsoft Entra ID Integration
+        depth: 201
+        personas: [admin, security]
+        summary: Sign-in, automatic identity management, and service principals with Microsoft Entra ID.
+        aliases: [Azure Active Directory, Azure AD, AAD]
+        related: [SCIM Provisioning, Single Sign-On]
+      - title: VNet Injection
+        depth: 301
+        personas: [admin, security]
+        summary: Deploying Databricks compute into your own Azure virtual network.
+        cloud_equivalent: [Customer-Managed VPC on AWS, Customer-Managed VPC on Google Cloud]
+      - title: Secure Cluster Connectivity
+        depth: 301
+        personas: [admin, security]
+        summary: No public IPs on cluster nodes, with all control traffic going outbound.
+      - title: Azure Private Link
+        depth: 401
+        personas: [admin, security]
+        summary: Private connections to the workspace and control plane without the public internet.
+        cloud_equivalent: [AWS PrivateLink, Private Service Connect]
+      - title: ADLS and Access Connectors
+        depth: 301
+        personas: [admin, engineer]
+        summary: How Unity Catalog reaches ADLS Gen2 through a managed identity.
+        cloud_equivalent: [S3 Access via Unity Catalog, GCS Access via Unity Catalog]
+        related: [Azure Data Lake Storage, Storage Credentials and External Locations]
+      - title: Azure Key Vault Secret Scopes
+        depth: 301
+        personas: [admin, engineer, security]
+        summary: Using Azure Key Vault as the backing store for Databricks secrets.
+        related: [Secrets Management]
+      - title: Azure Data Factory with Databricks
+        depth: 201
+        personas: [engineer]
+        summary: Calling Databricks from ADF pipelines, and when to use Lakeflow instead.
+      - title: Microsoft Fabric and OneLake vs Databricks
+        depth: 201
+        personas: [owner, analyst, admin]
+        summary: How Fabric and Azure Databricks overlap, compete, and integrate.
+      - title: Power BI on Azure Databricks
+        depth: 201
+        personas: [analyst]
+        summary: Entra single sign-on into Power BI, publishing to the Power BI service, and DirectQuery tips.
+        related: [Connecting Power BI]
+      - title: Azure Billing and Commit Units
+        depth: 201
+        personas: [finance, owner]
+        summary: Pay-as-you-go on the Azure bill, pre-purchase plans, and Azure cost tools.
+        cloud_equivalent: [AWS Marketplace and Billing, Google Cloud Marketplace and Billing]
+      - title: Azure Monitor and Diagnostic Logs
+        depth: 301
+        personas: [admin, security]
+        summary: Sending Databricks logs to Log Analytics, Storage, or Event Hubs.
+      - title: Customer-Managed Keys on Azure
+        depth: 401
+        personas: [security]
+        summary: Encrypting managed services and storage with your own Key Vault keys.
+        cloud_equivalent: [Customer-Managed Keys on AWS, Customer-Managed Keys on Google Cloud]
+
+  - folder: 12_databricks_on_aws
+    number: "12"
+    part: 2
+    title: Databricks on AWS
+    section: Databricks on AWS
+    summary: Databricks on Amazon Web Services, covering cross-account roles, customer-managed VPCs, PrivateLink, and S3.
+    notes:
+      - title: Databricks on AWS Overview
+        depth: 101
+        personas: [everyone, admin, owner]
+        summary: How Databricks runs on AWS, sold by Databricks directly or through AWS Marketplace.
+        cloud_equivalent: [Azure Databricks Overview, Databricks on Google Cloud Overview]
+      - title: Account Setup on AWS
+        depth: 101
+        personas: [admin, solo]
+        summary: Signing up, creating a workspace, and quick setup versus manual setup.
+        cloud_equivalent: [Creating an Azure Databricks Workspace, Account Setup on Google Cloud]
+      - title: Cross-Account IAM Role
+        depth: 301
+        personas: [admin, security]
+        summary: The IAM role that lets Databricks launch EC2 instances in your account.
+      - title: Workspace Storage Bucket
+        depth: 201
+        personas: [admin]
+        summary: The S3 bucket each workspace uses for its own system data.
+      - title: Customer-Managed VPC on AWS
+        depth: 301
+        personas: [admin, security]
+        summary: Running classic compute in a VPC you create and control.
+        cloud_equivalent: [VNet Injection, Customer-Managed VPC on Google Cloud]
+      - title: AWS PrivateLink
+        depth: 401
+        personas: [admin, security]
+        summary: Private front-end and back-end connectivity between your VPC and Databricks.
+        cloud_equivalent: [Azure Private Link, Private Service Connect]
+      - title: Instance Profiles
+        depth: 301
+        personas: [admin, engineer]
+        summary: The legacy way clusters got S3 access, and why Unity Catalog replaced it.
+      - title: S3 Access via Unity Catalog
+        depth: 301
+        personas: [admin, engineer]
+        summary: Storage credentials backed by IAM roles for governed S3 access.
+        cloud_equivalent: [ADLS and Access Connectors, GCS Access via Unity Catalog]
+        related: [Amazon S3]
+      - title: AWS Glue and Lake Formation Federation
+        depth: 401
+        personas: [admin, engineer]
+        summary: Reading tables registered in AWS Glue from Unity Catalog.
+      - title: AWS Marketplace and Billing
+        depth: 201
+        personas: [finance, owner]
+        summary: Paying Databricks directly or through the AWS bill, plus EC2 costs.
+        cloud_equivalent: [Azure Billing and Commit Units, Google Cloud Marketplace and Billing]
+      - title: EC2 Instance Types and Graviton
+        depth: 301
+        personas: [admin, finance]
+        summary: Picking node types, spot instances, and ARM-based Graviton for price and performance.
+      - title: Customer-Managed Keys on AWS
+        depth: 401
+        personas: [security]
+        summary: Encrypting managed services and workspace storage with AWS KMS keys.
+        cloud_equivalent: [Customer-Managed Keys on Azure, Customer-Managed Keys on Google Cloud]
+      - title: Databricks on AWS GovCloud
+        depth: 401
+        personas: [security, admin]
+        summary: Databricks for US public-sector and regulated workloads.
+
+  - folder: 13_databricks_on_gcp
+    number: "13"
+    part: 2
+    title: Databricks on Google Cloud
+    section: Databricks on Google Cloud
+    summary: Databricks on GCP, covering Google service accounts, Private Service Connect, GCS, and BigQuery.
+    notes:
+      - title: Databricks on Google Cloud Overview
+        depth: 101
+        personas: [everyone, admin, owner]
+        summary: How Databricks runs on Google Cloud and what is different there.
+        cloud_equivalent: [Azure Databricks Overview, Databricks on AWS Overview]
+      - title: Account Setup on Google Cloud
+        depth: 101
+        personas: [admin, solo]
+        summary: Subscribing through Google Cloud Marketplace and creating the first workspace.
+        cloud_equivalent: [Creating an Azure Databricks Workspace, Account Setup on AWS]
+      - title: Compute on Google Cloud
+        depth: 301
+        personas: [admin]
+        summary: How classic clusters run on Compute Engine VMs (after the move off GKE).
+      - title: Customer-Managed VPC on Google Cloud
+        depth: 301
+        personas: [admin, security]
+        summary: Bringing your own VPC and subnets for Databricks compute.
+        cloud_equivalent: [VNet Injection, Customer-Managed VPC on AWS]
+      - title: Private Service Connect
+        depth: 401
+        personas: [admin, security]
+        summary: Private connectivity between your VPC and Databricks on Google Cloud.
+        cloud_equivalent: [Azure Private Link, AWS PrivateLink]
+        aliases: [PSC]
+      - title: Google Service Accounts
+        depth: 301
+        personas: [admin, security]
+        summary: How Databricks and clusters authenticate to Google Cloud resources.
+      - title: GCS Access via Unity Catalog
+        depth: 301
+        personas: [admin, engineer]
+        summary: Storage credentials backed by Google service accounts for governed GCS access.
+        cloud_equivalent: [ADLS and Access Connectors, S3 Access via Unity Catalog]
+        related: [Google Cloud Storage]
+      - title: BigQuery Integration
+        depth: 201
+        personas: [analyst, engineer]
+        summary: Reading and writing BigQuery from Databricks, and federation.
+        related: [Google BigQuery]
+      - title: Google Cloud Marketplace and Billing
+        depth: 201
+        personas: [finance, owner]
+        summary: Paying for Databricks through the Google Cloud bill.
+        cloud_equivalent: [Azure Billing and Commit Units, AWS Marketplace and Billing]
+      - title: Customer-Managed Keys on Google Cloud
+        depth: 401
+        personas: [security]
+        summary: Encrypting with Cloud KMS keys you control.
+        cloud_equivalent: [Customer-Managed Keys on Azure, Customer-Managed Keys on AWS]
+
+  - folder: 14_admin_security_and_cost
+    number: "14"
+    part: 2
+    title: Admin Security and Cost
+    section: Admin, Security & Cost
+    summary: Running Databricks safely and cheaply, covering identity, networking, encryption, compliance, and FinOps.
+    notes:
+      - title: Account Console
+        depth: 201
+        personas: [admin]
+        summary: The account-level admin site for workspaces, users, metastores, and billing.
+        related: [Accounts and Workspaces]
+      - title: Users Groups and Service Principals
+        depth: 201
+        personas: [admin, security]
+        summary: The three kinds of identity, and why groups should own everything.
+      - title: SCIM Provisioning
+        depth: 301
+        personas: [admin]
+        summary: Syncing users and groups automatically from Entra ID, Okta, or another IdP.
+      - title: Single Sign-On
+        depth: 201
+        personas: [admin, security]
+        summary: Logging in with your company identity provider.
+      - title: Authentication - Tokens and OAuth
+        depth: 301
+        personas: [admin, engineer, security]
+        summary: Personal access tokens versus OAuth, and machine-to-machine authentication.
+      - title: Admin Roles
+        depth: 201
+        personas: [admin]
+        summary: Account admins, workspace admins, and metastore admins, and who can do what.
+      - title: Compute Policies
+        depth: 201
+        personas: [admin, finance]
+        summary: Guardrails on what clusters people can create (formerly cluster policies).
+        aliases: [Cluster Policies]
+      - title: Secrets Management
+        depth: 201
+        personas: [engineer, security]
+        summary: Keeping passwords and keys out of notebooks with secret scopes.
+      - title: Network Security Overview
+        depth: 301
+        personas: [admin, security]
+        summary: The map of front-end, back-end, and serverless network controls on every cloud.
+        related: [VNet Injection, Customer-Managed VPC on AWS, Customer-Managed VPC on Google Cloud]
+      - title: IP Access Lists
+        depth: 301
+        personas: [admin, security]
+        summary: Allowing workspace access only from known networks.
+      - title: Serverless Network Security
+        depth: 401
+        personas: [admin, security]
+        summary: Network connectivity configurations, private endpoints, and egress control for serverless.
+      - title: Encryption
+        depth: 301
+        personas: [security]
+        summary: Encryption at rest and in transit, and where customer-managed keys fit.
+        related: [Customer-Managed Keys on Azure, Customer-Managed Keys on AWS, Customer-Managed Keys on Google Cloud]
+      - title: Compliance Security Profile
+        depth: 401
+        personas: [security]
+        summary: Hardened settings for HIPAA, PCI-DSS, FedRAMP, and other standards.
+      - title: Cost Management Basics
+        depth: 101
+        personas: [finance, owner, admin, solo]
+        summary: Where Databricks money goes, and the first five things to check.
+        related: [DBUs, How Databricks Pricing Works]
+      - title: Budgets and Usage Dashboards
+        depth: 201
+        personas: [finance, admin]
+        summary: Budget alerts and built-in cost dashboards from system tables.
+      - title: Tagging for Chargeback
+        depth: 201
+        personas: [finance, admin]
+        summary: Tagging compute and jobs so every dollar maps to a team or project.
+      - title: Cost Optimization Checklist
+        depth: 201
+        personas: [finance, admin, solo]
+        summary: A practical list covering auto-termination, serverless, spot, sizing, Photon, and more.
+      - title: Terraform Provider
+        depth: 301
+        personas: [admin]
+        summary: Managing accounts, workspaces, and permissions as code.
+        related: [Declarative Automation Bundles]
+      - title: Disaster Recovery
+        depth: 401
+        personas: [admin, security]
+        summary: Backups, multi-region strategies, and what Databricks does and does not cover.
+
+  - folder: 15_migrating_to_databricks
+    number: "15"
+    part: 3
+    title: Migrating to Databricks
+    section: Migrating to Databricks
+    summary: Playbooks for moving a business onto Databricks from spreadsheets, databases, warehouses, and Hadoop.
+    notes:
+      - title: Migration Strategy Overview
+        depth: 101
+        personas: [owner, solo, engineer]
+        summary: The phases of every migration, from assess and plan to move, validate, and switch over.
+      - title: Assessing Your Current Data Estate
+        depth: 201
+        personas: [solo, engineer, owner]
+        summary: Taking inventory of sources, reports, users, and costs before moving anything.
+      - title: Migrating from Excel and Access
+        depth: 101
+        personas: [solo, analyst, owner]
+        summary: Moving a spreadsheet-run business into tables, with uploads, Volumes, and a first dashboard.
+        evolved_from: [Spreadsheets]
+      - title: Migrating from SQL Server
+        depth: 201
+        personas: [engineer, solo]
+        summary: Moving off an on-premises or Azure SQL Server, using federation first and Lakeflow Connect after.
+      - title: Migrating from Postgres and MySQL
+        depth: 201
+        personas: [engineer, solo]
+        summary: Moving app-database analytics into the lakehouse without hurting the app.
+      - title: Migrating from Snowflake
+        depth: 301
+        personas: [engineer, owner]
+        summary: Code conversion, data movement, and Iceberg-based coexistence.
+        related: [Snowflake]
+      - title: Migrating from Amazon Redshift
+        depth: 301
+        personas: [engineer]
+        summary: Unloading to S3, converting SQL, and switching over workloads.
+        related: [Amazon Redshift]
+      - title: Migrating from Google BigQuery
+        depth: 301
+        personas: [engineer]
+        summary: Federation, exports to GCS, and converting BigQuery SQL.
+        related: [Google BigQuery]
+      - title: Migrating from Hadoop
+        depth: 301
+        personas: [engineer, admin]
+        summary: Moving HDFS data, Hive tables, and Spark jobs off an old cluster.
+        related: [Apache Hadoop, Hive Metastore Migration to Unity Catalog]
+      - title: Migrating ETL Tools
+        depth: 301
+        personas: [engineer]
+        summary: Converting SSIS, Informatica, Talend, and stored procedures.
+      - title: Lakebridge
+        depth: 301
+        personas: [engineer]
+        summary: Databricks' free migration toolkit for profiling, SQL conversion, and data reconciliation.
+      - title: Migrating BI Reports
+        depth: 201
+        personas: [analyst]
+        summary: Repointing Power BI and Tableau reports, or rebuilding them as AI-BI dashboards.
+      - title: Running Old and New in Parallel
+        depth: 201
+        personas: [engineer, owner]
+        summary: Parallel runs, reconciliation, and a safe switch-over plan.
+      - title: Migration Checklist
+        depth: 101
+        personas: [owner, solo, engineer]
+        summary: A printable, start-to-finish checklist for a small business migration.
+
+  - folder: 80_learning_paths
+    number: "80"
+    part: 4
+    title: Learning Paths
+    section: Learning Paths
+    summary: Curated routes through the graph for each kind of reader, from total beginner to expert.
+    note_type: path
+    notes:
+      - title: Path - Absolute Beginner
+        depth: 101
+        personas: [everyone]
+        summary: Zero to "I get what Databricks is" in about 20 notes.
+      - title: Path - Business Owner
+        depth: 101
+        personas: [owner]
+        summary: Everything a decision-maker needs, covering fit, cost, risk, and the first 30 days.
+      - title: Path - Analyst
+        depth: 101
+        personas: [analyst]
+        summary: From Excel and SQL to Databricks SQL, dashboards, Genie, and Power BI.
+      - title: Path - Data Engineer
+        depth: 201
+        personas: [engineer]
+        summary: Ingestion, the lakehouse, pipelines, orchestration, and CI/CD.
+      - title: Path - Data Scientist and ML Engineer
+        depth: 201
+        personas: [scientist]
+        summary: Notebooks, Spark, MLflow, the feature store, and serving.
+      - title: Path - AI App Developer
+        depth: 201
+        personas: [ai-dev]
+        summary: LLMs, RAG, vector search, agents, Databricks Apps, and Lakebase.
+      - title: Path - Platform Admin
+        depth: 301
+        personas: [admin, security]
+        summary: Accounts, identity, Unity Catalog, networking, and cost controls on your cloud.
+      - title: Path - One-Person Data Team
+        depth: 101
+        personas: [solo]
+        summary: The shortest route for a small business with one data person doing every job.
+      - title: Path - Azure Deep Dive
+        depth: 301
+        personas: [admin]
+        summary: Every Azure-specific rabbit hole in order.
+      - title: Path - AWS Deep Dive
+        depth: 301
+        personas: [admin]
+        summary: Every AWS-specific rabbit hole in order.
+      - title: Path - Google Cloud Deep Dive
+        depth: 301
+        personas: [admin]
+        summary: Every Google Cloud-specific rabbit hole in order.
+      - title: Path - Certification Prep
+        depth: 301
+        personas: [engineer, analyst, scientist]
+        summary: Which Databricks certifications exist and which notes map to each exam.
+
+hubs:
+  - title: Timeline of Data Engineering
+    summary: Every milestone from relational databases to agents, in one timeline that links into the story.
+  - title: Open Source vs Databricks - Who Replaced What
+    summary: Each open-source tool next to the Databricks feature that does its job today.
+  - title: Cloud Comparison - Azure vs AWS vs GCP
+    summary: The same Databricks concept side by side on all three clouds, covering identity, network, storage, keys, and billing.
+  - title: Databricks Product Names and Renames
+    summary: Current product names, old names, and when they changed. Check here before trusting any name.
+  - title: Persona Map
+    summary: Which notes each persona should read, generated from note frontmatter.
+
+glossary:
+  - Bytes and Data Sizes
+  - Metadata
+  - Schema
+  - Query
+  - Index
+  - Join
+  - Aggregation
+  - Null
+  - Data Type
+  - Normalization
+  - Denormalization
+  - Fact Table
+  - Dimension Table
+  - Data Mart
+  - Semantic Layer
+  - KPI
+  - Dashboard
+  - Single Source of Truth
+  - Cluster
+  - Node
+  - Virtual Machine
+  - Container
+  - Kubernetes
+  - JVM
+  - Scala
+  - Open Source
+  - Apache Software Foundation
+  - Linux Foundation
+  - Vendor Lock-In
+  - SaaS PaaS and IaaS
+  - Region
+  - Availability Zone
+  - Latency
+  - Throughput
+  - Scalability
+  - Fault Tolerance
+  - Replication
+  - Idempotency
+  - Serialization
+  - Compression
+  - Data Pipeline
+  - Orchestration
+  - DAG
+  - Ingestion
+  - Backfill
+  - Data Quality
+  - Data Governance
+  - Data Catalog
+  - Data Lake vs Data Swamp
+  - Data Mesh
+  - Reverse ETL
+  - Zero-Copy
+  - Message Queue
+  - Event
+  - Checkpoint
+  - Watermark
+  - Exactly-Once Processing
+  - IoT
+  - Partition Pruning
+  - Data Skipping
+  - Z-Ordering
+  - Caching
+  - Data Skew
+  - Broadcast Join
+  - Spill
+  - UDF
+  - Git
+  - CI-CD
+  - Infrastructure as Code
+  - YAML
+  - REST
+  - JDBC and ODBC
+  - Webhook
+  - Identity Provider
+  - OAuth
+  - Role-Based Access Control
+  - Least Privilege
+  - Managed Identity
+  - IAM
+  - PII
+  - HIPAA
+  - GDPR
+  - SOC 2
+  - Encryption at Rest
+  - Encryption in Transit
+  - VPC and VNet
+  - Subnet
+  - Firewall
+  - Public vs Private IP
+  - Egress
+  - Autoscaling
+  - Auto Termination
+  - Spot Instances
+  - Total Cost of Ownership
+  - Proof of Concept
+  - Lift and Shift
+  - Cutover
+  - SLA
+  - LLM
+  - Token
+  - Prompt
+  - Embedding
+  - AI Agent
+  - Hallucination
+  - Inference
+  - Training
+  - Feature
+  - Label
+  - Overfitting
+  - GPU
+  - Model
+  - Drift
+  - Pandas
