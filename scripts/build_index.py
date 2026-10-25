@@ -81,6 +81,8 @@ def main():
                 edges.append({"source": title, "target": t, "type": key})
                 if t not in titles:
                     unresolved[t].add(title)
+        if "\u2014" in n["body"] or "\u2014" in json.dumps(m, default=str, ensure_ascii=False):
+            errors.append(f"em dash found: {n['path']}")
         body_links = sorted(set(m_.group(1).strip() for m_ in LINK_RE.finditer(n["body"])))
         for t in body_links:
             if t not in titles:

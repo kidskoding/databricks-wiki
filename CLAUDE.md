@@ -40,7 +40,9 @@ The graph view is a core feature, so links live in frontmatter properties as wel
 
   Do not use or cite content farms, SEO blogs, Medium posts, Wikipedia, forums, or AI-generated summaries. If a trusted source cannot confirm a fact, leave it out or mark it unconfirmed. Databricks renames products often (Delta Live Tables → Lakeflow Spark Declarative Pipelines, Workflows → Lakeflow Jobs, Databricks Asset Bundles → Declarative Automation Bundles, Delta Sharing → OpenSharing). Never write product names from memory without checking.
 - List sources in the collapsed `[!sources]` callout and set `last_verified` in frontmatter to the date you checked.
-- **Write like developer documentation.** The notes read like professional reference docs (the style of the Databricks, Stripe, or MDN docs), not like a blog or a chat:
+- **Write like developer documentation.** The notes read like professional reference docs in the style of the Cloudflare, Vercel, and Databricks docs, not like a blog or a chat:
+  - **Never use em dashes (U+2014).** Use a period, comma, colon, or parentheses instead. Do not substitute a spaced en dash or double hyphen. `scripts/build_index.py` fails on any em dash.
+  - Open each page with one sentence that says what the thing is. Follow with short sections a reader can scan, and put procedures in numbered steps with one action per step.
   - Neutral, precise, declarative. Present tense, active voice, second person for instructions ("Run `OPTIMIZE`...").
   - Short paragraphs, one idea each. Lead with the definition, then the details.
   - No hype, rhetorical questions, jokes, exclamation marks, filler ("simply", "just", "magic", "game-changer"), or narrative scene-setting.
