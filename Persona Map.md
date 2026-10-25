@@ -135,7 +135,7 @@ Studying for an exam? [[Path - Certification Prep]] maps the notes to each Datab
 | 101 | [[Databricks on Google Cloud Overview]] | How Databricks runs on Google Cloud, sold through Google Cloud Marketplace, and what is different there. |
 | 101 | [[Cost Management Basics]] | Where Databricks spend comes from, how it is metered, and the first five controls to set. |
 | 101 | [[Migration Strategy Overview]] | The phases of every migration, from assess and plan to coexist, ingest, convert, validate, switch over, and decommission. |
-| 101 | [[Migrating from Excel and Access]] | Moving a spreadsheet-run business into governed tables, with file uploads, Volumes, a first dashboard, and Genie. |
+| 101 | [[Migrating from Excel and Access]] | Moving a spreadsheet-run business into governed tables, with file uploads, Volumes, a first dashboard, and Genie Agents. |
 | 101 | [[Migration Checklist]] | A printable, start-to-finish checklist for a small business migration. |
 | 101 | [[Path - Business Owner]] | Everything a decision-maker needs, covering fit, cost, risk, and the first 30 days. |
 | 201 | [[Databricks vs Alternatives for Small Teams]] | How Databricks compares with Snowflake, BigQuery, Microsoft Fabric, Power BI alone, and plain Postgres for a small team. |
@@ -184,8 +184,8 @@ Studying for an exam? [[Path - Certification Prep]] maps the notes to each Datab
 | 101 | [[Genie Agents]] | Genie Agents (formerly Genie spaces) answer plain-English questions about governed data with SQL, tables, and charts. |
 | 101 | [[Genie One]] | Genie One (formerly Databricks One), the simplified business-user home for dashboards, Genie Agents, and apps. |
 | 101 | [[AutoML]] | Letting Databricks train and compare models for you and hand back notebooks, now removed from Databricks Runtime 18.0 ML onward. |
-| 101 | [[Migrating from Excel and Access]] | Moving a spreadsheet-run business into governed tables, with file uploads, Volumes, a first dashboard, and Genie. |
-| 101 | [[Path - Analyst]] | From Excel and SQL to Databricks SQL, dashboards, Genie, and Power BI. |
+| 101 | [[Migrating from Excel and Access]] | Moving a spreadsheet-run business into governed tables, with file uploads, Volumes, a first dashboard, and Genie Agents. |
+| 101 | [[Path - Analyst]] | From Excel and SQL to Databricks SQL, dashboards, Genie Agents, and Power BI. |
 | 201 | [[Databricks vs Alternatives for Small Teams]] | How Databricks compares with Snowflake, BigQuery, Microsoft Fabric, Power BI alone, and plain Postgres for a small team. |
 | 201 | [[OLTP vs OLAP]] | Systems that run the business versus systems that analyze it. |
 | 201 | [[Data Modeling Basics]] | Deciding which tables to have and how they connect, covering normalization, entities, and grain. |
@@ -395,7 +395,7 @@ Studying for an exam? [[Path - Certification Prep]] maps the notes to each Datab
 | 201 | [[AI Search]] | Databricks AI Search (formerly Vector Search) finds text or images by meaning, the retrieval half of RAG, with indexes synced from Delta tables. |
 | 201 | [[Retrieval-Augmented Generation]] | Giving an LLM your documents at question time so it answers from facts, built on Databricks with document parsing, AI Search, and MLflow evaluation. |
 | 201 | [[MosaicML and Open Models]] | Databricks' 2023 MosaicML acquisition, the MPT and DBRX open models, and how that technology lives on in hosted models, serving, and AI Runtime. |
-| 201 | [[Path - AI App Developer]] | LLMs, RAG, vector search, agents, Databricks Apps, and Lakebase. |
+| 201 | [[Path - AI App Developer]] | LLMs, RAG, AI Search, agents, Databricks Apps, and Lakebase. |
 | 301 | [[Spark Connect]] | The client-server protocol that lets thin clients run Spark DataFrame code on a remote Spark server. |
 | 301 | [[Databricks SDKs and REST API]] | Programmatic control of Databricks through the REST API and the official SDKs for Python, Java, Go, and JavaScript (plus an R SDK from Databricks Labs). |
 | 301 | [[Databricks Connect]] | A client library, built on Spark Connect, that runs Spark code from your local IDE on Databricks clusters or serverless compute. |
@@ -587,7 +587,7 @@ Studying for an exam? [[Path - Certification Prep]] maps the notes to each Datab
 | 101 | [[Account Setup on Google Cloud]] | Subscribing through Google Cloud Marketplace, activating the account, and creating the first serverless or classic workspace. |
 | 101 | [[Cost Management Basics]] | Where Databricks spend comes from, how it is metered, and the first five controls to set. |
 | 101 | [[Migration Strategy Overview]] | The phases of every migration, from assess and plan to coexist, ingest, convert, validate, switch over, and decommission. |
-| 101 | [[Migrating from Excel and Access]] | Moving a spreadsheet-run business into governed tables, with file uploads, Volumes, a first dashboard, and Genie. |
+| 101 | [[Migrating from Excel and Access]] | Moving a spreadsheet-run business into governed tables, with file uploads, Volumes, a first dashboard, and Genie Agents. |
 | 101 | [[Migration Checklist]] | A printable, start-to-finish checklist for a small business migration. |
 | 101 | [[Path - One-Person Data Team]] | The shortest route for a small business with one data person doing every job. |
 | 201 | [[Databricks vs Alternatives for Small Teams]] | How Databricks compares with Snowflake, BigQuery, Microsoft Fabric, Power BI alone, and plain Postgres for a small team. |

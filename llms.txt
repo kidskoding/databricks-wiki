@@ -209,7 +209,7 @@ Depth: 101 beginner, 201 practitioner, 301 advanced, 401 expert.
 
 ## SQL, BI & Apps
 
-- [Chapter 09 - SQL BI and Apps](09_sql_bi_and_apps/Chapter%2009%20-%20SQL%20BI%20and%20Apps.md): Analysts and app builders, covering Databricks SQL, dashboards, Genie, Power BI, Databricks Apps, and Lakebase.
+- [Chapter 09 - SQL BI and Apps](09_sql_bi_and_apps/Chapter%2009%20-%20SQL%20BI%20and%20Apps.md): Analysts and app builders, covering Databricks SQL, dashboards, Genie Agents, Power BI, Databricks Apps, and Lakebase.
 - [Databricks SQL](09_sql_bi_and_apps/Databricks%20SQL.md) [101]: Databricks' data warehouse experience, with SQL warehouses, editor, dashboards, and alerts.
 - [SQL Editor](09_sql_bi_and_apps/SQL%20Editor.md) [101]: Writing, running, and sharing queries in the browser.
 - [Query Performance and Caching](09_sql_bi_and_apps/Query%20Performance%20and%20Caching.md) [301]: Query profiles, result and disk caches, and why a query is slow.
@@ -327,7 +327,7 @@ Depth: 101 beginner, 201 practitioner, 301 advanced, 401 expert.
 - [Chapter 15 - Migrating to Databricks](15_migrating_to_databricks/Chapter%2015%20-%20Migrating%20to%20Databricks.md): Playbooks for moving a business onto Databricks from spreadsheets, databases, warehouses, and Hadoop.
 - [Migration Strategy Overview](15_migrating_to_databricks/Migration%20Strategy%20Overview.md) [101]: The phases of every migration, from assess and plan to coexist, ingest, convert, validate, switch over, and decommission.
 - [Assessing Your Current Data Estate](15_migrating_to_databricks/Assessing%20Your%20Current%20Data%20Estate.md) [201]: Taking inventory of sources, tables, jobs, reports, users, and costs before moving anything.
-- [Migrating from Excel and Access](15_migrating_to_databricks/Migrating%20from%20Excel%20and%20Access.md) [101]: Moving a spreadsheet-run business into governed tables, with file uploads, Volumes, a first dashboard, and Genie.
+- [Migrating from Excel and Access](15_migrating_to_databricks/Migrating%20from%20Excel%20and%20Access.md) [101]: Moving a spreadsheet-run business into governed tables, with file uploads, Volumes, a first dashboard, and Genie Agents.
 - [Migrating from SQL Server](15_migrating_to_databricks/Migrating%20from%20SQL%20Server.md) [201]: Moving off an on-premises or Azure SQL Server, using federation first, Lakeflow Connect replication after, and Lakebridge for T-SQL.
 - [Migrating from Postgres and MySQL](15_migrating_to_databricks/Migrating%20from%20Postgres%20and%20MySQL.md) [201]: Moving app-database analytics from PostgreSQL or MySQL into the lakehouse without slowing the app down.
 - [Migrating from Snowflake](15_migrating_to_databricks/Migrating%20from%20Snowflake.md) [301]: A Snowflake-to-Databricks playbook covering federation, Iceberg-based coexistence, data unloads, SQL conversion with Lakebridge, and reconciliation.
@@ -345,10 +345,10 @@ Depth: 101 beginner, 201 practitioner, 301 advanced, 401 expert.
 - [Chapter 80 - Learning Paths](80_learning_paths/Chapter%2080%20-%20Learning%20Paths.md): Curated routes through the graph for each kind of reader, from total beginner to expert.
 - [Path - Absolute Beginner](80_learning_paths/Path%20-%20Absolute%20Beginner.md) [101]: Zero to "I get what Databricks is" in about 20 notes.
 - [Path - Business Owner](80_learning_paths/Path%20-%20Business%20Owner.md) [101]: Everything a decision-maker needs, covering fit, cost, risk, and the first 30 days.
-- [Path - Analyst](80_learning_paths/Path%20-%20Analyst.md) [101]: From Excel and SQL to Databricks SQL, dashboards, Genie, and Power BI.
+- [Path - Analyst](80_learning_paths/Path%20-%20Analyst.md) [101]: From Excel and SQL to Databricks SQL, dashboards, Genie Agents, and Power BI.
 - [Path - Data Engineer](80_learning_paths/Path%20-%20Data%20Engineer.md) [201]: Ingestion, the lakehouse, pipelines, orchestration, and CI/CD.
 - [Path - Data Scientist and ML Engineer](80_learning_paths/Path%20-%20Data%20Scientist%20and%20ML%20Engineer.md) [201]: Notebooks, Spark, MLflow, the feature store, and serving.
-- [Path - AI App Developer](80_learning_paths/Path%20-%20AI%20App%20Developer.md) [201]: LLMs, RAG, vector search, agents, Databricks Apps, and Lakebase.
+- [Path - AI App Developer](80_learning_paths/Path%20-%20AI%20App%20Developer.md) [201]: LLMs, RAG, AI Search, agents, Databricks Apps, and Lakebase.
 - [Path - Platform Admin](80_learning_paths/Path%20-%20Platform%20Admin.md) [301]: Accounts, identity, Unity Catalog, networking, and cost controls on your cloud.
 - [Path - One-Person Data Team](80_learning_paths/Path%20-%20One-Person%20Data%20Team.md) [101]: The shortest route for a small business with one data person doing every job.
 - [Path - Azure Deep Dive](80_learning_paths/Path%20-%20Azure%20Deep%20Dive.md) [301]: Every Azure-specific rabbit hole in order.
