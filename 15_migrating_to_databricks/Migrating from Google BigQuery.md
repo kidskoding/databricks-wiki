@@ -188,7 +188,7 @@ Common differences:
 
 1. Run Lakebridge Reconcile with the BigQuery connection. `schema` reports log a warning for columns whose types cannot be compared exactly, such as `BIGNUMERIC`, `TIME`, `RANGE`, and nested `JSON`.
 2. Run old and new in parallel ([[Running Old and New in Parallel]]).
-3. Repoint Looker, Looker Studio, or other BI tools to a [[SQL Warehouses|SQL warehouse]] ([[Migrating BI Reports]]).
+3. Repoint Looker, Data Studio (formerly Looker Studio), or other BI tools to a [[SQL Warehouses|SQL warehouse]] ([[Migrating BI Reports]]).
 4. Delete datasets after the retention period, and cancel slot reservations or commitments.
 
 ## Small-business considerations
