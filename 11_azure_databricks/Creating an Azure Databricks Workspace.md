@@ -83,7 +83,7 @@ An Azure Databricks workspace is created as an Azure resource, and creating one 
 
 ### Pricing tier
 
-New workspaces must be created on the **Premium** tier starting **April 1, 2026**. Remaining Standard tier workspaces were scheduled to be upgraded to Premium automatically on **October 1, 2026**. Premium includes all Standard features plus [[Unity Catalog]], access controls, audit logs, and the network security features covered in this chapter. Access control settings are disabled by default on workspaces upgraded from Standard; an admin must enable them. Notebooks, users, and cluster configurations are retained during an upgrade, but active clusters might be terminated.
+New workspaces must be created on the **Premium** tier starting **April 1, 2026**. Remaining Standard tier workspaces are upgraded to Premium automatically in a phased rollout that starts **October 1, 2026**. Premium includes all Standard features plus [[Unity Catalog]], access controls, audit logs, and the network security features covered in this chapter. Access control settings are disabled by default on workspaces upgraded from Standard; an admin must enable them. Notebooks, users, and cluster configurations are retained during an upgrade, but active clusters might be terminated.
 
 ### Workspace type
 
@@ -204,7 +204,7 @@ Parameter shapes differ between API versions (newer preview versions add a `type
 ## Recall
 
 Which pricing tier must new Azure Databricks workspaces use from April 1, 2026?::Premium (or Trial, which is Premium with 14 days of free DBUs).
-What happened to remaining Standard tier workspaces on October 1, 2026?::They were scheduled for automatic upgrade to Premium.
+What happens to remaining Azure Standard tier workspaces starting October 1, 2026?::They are upgraded automatically to Premium in a phased rollout.
 What is a serverless workspace preconfigured with?::Serverless compute and default storage.
 Can a workspace's compute mode be changed after creation?::No.
 Which Azure CLI command creates a workspace?::`az databricks workspace create`, from the `databricks` CLI extension.

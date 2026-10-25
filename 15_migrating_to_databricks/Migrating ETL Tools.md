@@ -154,6 +154,7 @@ Databricks SQL supports stored procedures. `CREATE PROCEDURE` persists a SQL scr
 ```sql
 CREATE OR REPLACE PROCEDURE analytics.etl.load_daily_sales(IN run_date DATE)
 LANGUAGE SQL
+SQL SECURITY INVOKER
 AS BEGIN
   DELETE FROM analytics.sales.daily_sales WHERE sale_date = run_date;
   INSERT INTO analytics.sales.daily_sales
@@ -163,10 +164,10 @@ AS BEGIN
   GROUP BY sale_date, store_id;
 END;
 
-CALL analytics.etl.load_daily_sales(DATE'2026-10-24');
+CALL analytics.etl.load_daily_sales(DATE '2026-10-24');
 ```
 
-Procedure calls can nest up to 64 levels. The body is checked for syntax when the procedure is created, and for semantics only when it runs.
+`LANGUAGE SQL` and one of `SQL SECURITY INVOKER` or `SQL SECURITY DEFINER` are required. Procedure calls can nest up to 64 levels. The body is checked for syntax when the procedure is created, and for semantics only when it runs.
 
 Morpheus converts T-SQL, Snowflake, and Synapse procedures; BladeBridge covers Oracle, Teradata, Netezza, SQL Server, Synapse, and Redshift. Both target Databricks SQL scripting. Use Switch for procedures with heavy business logic.
 
@@ -205,10 +206,10 @@ For Informatica, Talend, Alteryx, and other visual tools without a converter:
 > SSIS and Azure Data Factory are the most common ETL sources. Lakebridge supports packages running on the ADF SSIS Integration Runtime. Many teams keep ADF for orchestration during the transition and call Databricks jobs from it.
 
 > [!aws]- Databricks on AWS
-> AWS Glue jobs are PySpark or Scala scripts. Switch has built-in prompts for PySpark and Scala, and Glue catalogs can be federated ([[Hive Metastore Federation for AWS Glue]]). Managed Airflow (MWAA) DAGs can call Databricks jobs during the transition.
+> AWS Glue Spark jobs are scripts in Python (PySpark) or Scala; Glue also runs Python shell jobs. Switch has built-in prompts for PySpark, Python, and Scala, and Glue catalogs can be federated ([[Hive Metastore Federation for AWS Glue]]). Amazon Managed Workflows for Apache Airflow (MWAA) DAGs can trigger Databricks jobs with the Airflow Databricks provider's `DatabricksRunNowOperator` during the transition.
 
 > [!gcp]- Databricks on Google Cloud
-> Dataflow, Dataproc, and Cloud Composer (Airflow) are common sources. Composer DAGs can call Databricks jobs, and Switch can convert DAGs to Jobs YAML.
+> Typical sources are Dataflow (Apache Beam) pipelines, Spark and Hadoop jobs on Managed Service for Apache Spark (formerly Dataproc), and Airflow DAGs on Managed Service for Apache Airflow (formerly Cloud Composer). Airflow DAGs can trigger Databricks jobs through the Airflow Databricks provider, and Switch can convert DAGs to Jobs YAML.
 
 ## Advanced topics
 
@@ -263,4 +264,10 @@ According to Databricks, which ETL pipelines need the most refactoring?::Pipelin
 > - [Lakebridge Switch transpiler (Databricks Labs, GitHub)](https://github.com/databrickslabs/lakebridge/blob/main/docs/lakebridge/docs/transpile/pluggable_transpilers/switch/index.mdx)
 > - [Lakebridge Analyzer guide (Databricks Labs, GitHub)](https://github.com/databrickslabs/lakebridge/blob/main/docs/lakebridge/docs/assessment/analyzer/index.mdx)
 > - [Lakebridge FAQ (Databricks Labs, GitHub)](https://github.com/databrickslabs/lakebridge/blob/main/docs/lakebridge/docs/faq.mdx)
-> - **Unconfirmed:** the `CREATE PROCEDURE` example syntax (`LANGUAGE SQL`, `IN` parameter form) was written from the reference summaries and not run; the AWS Glue, MWAA, Dataflow, and Composer notes in Cloud differences were not checked against cloud provider docs in this pass.
+> - [CREATE PROCEDURE (AWS)](https://docs.databricks.com/aws/en/sql/language-manual/sql-ref-syntax-ddl-create-procedure)
+> - [Configuring job properties for Spark jobs in AWS Glue (AWS)](https://docs.aws.amazon.com/glue/latest/dg/add-job.html)
+> - [What is Amazon MWAA? (AWS)](https://docs.aws.amazon.com/mwaa/latest/userguide/what-is-mwaa.html)
+> - [DatabricksRunNowOperator (Apache Airflow)](https://airflow.apache.org/docs/apache-airflow-providers-databricks/stable/operators/run_now.html)
+> - [Dataflow overview (Google Cloud)](https://cloud.google.com/dataflow/docs/overview)
+> - [Managed Service for Apache Spark overview (Google Cloud)](https://cloud.google.com/dataproc/docs/concepts/overview)
+> - [Managed Service for Apache Airflow overview (Google Cloud)](https://cloud.google.com/composer/docs/composer-3/composer-overview)

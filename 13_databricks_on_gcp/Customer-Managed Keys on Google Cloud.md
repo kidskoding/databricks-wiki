@@ -71,9 +71,9 @@ Rules from the GCP docs:
 - **Symmetric key in the workspace region.**
 - **One key, two uses.** You can use the same Cloud KMS key for managed services and workspace storage.
 - **Key configurations are account objects.** One configuration can be attached to one or more workspaces.
-- **Creation time only (classic).** An encryption key configuration can be added only during workspace creation. The serverless workspace guidance differs: it says adding a key at creation is supported through the API or Terraform, and the account console can add one afterward. Check the current page for your workspace type.
+- **Creation time only (classic).** In a classic workspace, an encryption key configuration can be added only during workspace creation. In a serverless workspace, only the managed services key applies; you can add it at creation (through the API or Terraform only) or afterward from the account console with **Update workspace**.
 - **Permissions.** The person registering the key needs `cloudkms.cryptoKeys.getIamPolicy` and `cloudkms.cryptoKeys.setIamPolicy` on it, so Databricks can grant its service agents access.
-- **Status.** The GCP CMK configuration page has been marked Public Preview in the docs. Confirm the current status.
+- **Status.** Customer-managed keys for managed services and workspace storage on Google Cloud are in **Public Preview** (as of October 2026).
 
 ## How it works
 
@@ -154,7 +154,7 @@ gcloud kms keys add-iam-policy-binding dbx-prod --keyring=dbx-keys --location=us
 > - **No re-encryption of history.** As on other clouds, a managed services key protects future writes; existing data is not re-encrypted.
 > - **Revocation.** Disabling the key or removing Databricks' access makes the workspace's protected data inaccessible, starting with control-plane data.
 > - **SQL data.** Queries, query history, and query results are managed services data. A dedicated GCP page covers their encryption.
-> - **Unity Catalog.** A separate GCP page covers customer-managed keys for Unity Catalog. Check its scope and status before relying on it.
+> - **Unity Catalog.** A separate GCP page covers customer-managed keys for Unity Catalog, configured per catalog so each catalog can use its own key. It also requires the Enterprise tier.
 > - **Your own buckets.** Business-data buckets registered in Unity Catalog are encrypted by their own Cloud Storage settings, not by Databricks key configurations. See [[GCS Access via Unity Catalog]].
 > - **Key location.** The key must be in the same region as the workspace. Choose the key ring location to match.
 

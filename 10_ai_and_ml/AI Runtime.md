@@ -119,7 +119,8 @@ Distributed training across the GPUs of one node, migrating from the old package
 # After (AI Runtime SDK, GPU environment version 6+)
 from databricks.air import distributed
 
-@distributed(num_accelerators=8, accelerator_type="H100")
+# Uses every GPU on the attached node by default; pass num_accelerators to use fewer.
+@distributed()
 def train():
     import torch
     ...  # standard PyTorch DDP training loop
@@ -127,7 +128,7 @@ def train():
 train.distributed()
 ```
 
-The import and argument changes follow the AI Runtime migration notes; the decorator uses every GPU on the node by default, and the notebook's accelerator must match `accelerator_type`. Calling a distributed function inside an active MLflow run creates a nested child run.
+Distributed training needs an 8xH100 or 8xB300 accelerator. The decorator uses all eight GPUs by default, and `accelerator_type` is optional because it is detected from the accelerator the notebook is attached to. When you do set it, the AI Runtime SDK uses values such as `"GPU_8xH100"` instead of the old `"H100"`. Each `.distributed()` call creates an MLflow run, or a nested child run if one is already active.
 
 ## Small-business considerations
 

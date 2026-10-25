@@ -79,7 +79,7 @@ Databricks on Google Cloud is the Databricks platform deployed on Google Cloud, 
 | Workspace types | **Serverless** (Databricks-managed default storage) or **classic** (compute in your project) | [[Accounts and Workspaces]] |
 | Classic compute | Compute Engine VMs in your project | [[Compute on Google Cloud]] |
 | Cloud identity | Workspace service account, `databricks-compute` service account, optional custom service accounts | [[Google Service Accounts]] |
-| Workspace system data | Two [[Google Cloud Storage\|Cloud Storage (GCS)]] buckets in your project (classic) | [[Workspace Storage Bucket]] covers the AWS equivalent |
+| Workspace system data | Two [[Google Cloud Storage\|Cloud Storage (GCS)]] buckets in your project (classic), plus a third for the workspace catalog if Unity Catalog was enabled automatically | [[Workspace Storage Bucket]] covers the AWS equivalent |
 | Network | Databricks-managed [[VPC and VNet\|VPC]] or [[Customer-Managed VPC on Google Cloud]] (recommended for new workspaces) | |
 | Private connectivity | [[Private Service Connect]] | |
 | Data access | Unity Catalog storage credentials backed by Databricks-generated service accounts | [[GCS Access via Unity Catalog]] |
@@ -178,6 +178,7 @@ Which VPC type does Databricks recommend for new GCP classic workspaces?::A cust
 > [[Account Setup on Google Cloud]] walks through the Marketplace subscription and the first workspace.
 
 > [!sources]- Sources (last verified: 2026-10-25)
+> - [Databricks architecture overview: workspace storage (GCP)](https://docs.databricks.com/gcp/en/getting-started/overview)
 > - [High-level architecture (GCP)](https://docs.databricks.com/gcp/en/getting-started/high-level-architecture)
 > - [Create a classic workspace (GCP)](https://docs.databricks.com/gcp/en/admin/workspace/create-workspace)
 > - [Create a serverless workspace (GCP)](https://docs.databricks.com/gcp/en/admin/workspace/serverless-workspaces)

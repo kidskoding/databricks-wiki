@@ -113,19 +113,28 @@ A 15-person online plant shop has 300 help center articles and a returns policy 
 **1. Parse and chunk in SQL** (files are in the `shop.support.docs` volume):
 
 ```sql
-CREATE OR REPLACE TABLE shop.support.help_chunks AS
+CREATE OR REPLACE TABLE shop.support.help_chunks
+TBLPROPERTIES (delta.enableChangeDataFeed = true) AS
 WITH parsed AS (
   SELECT path, ai_parse_document(content) AS doc
   FROM READ_FILES('/Volumes/shop/support/docs/', format => 'binaryFile')
+),
+prepped AS (
+  SELECT path, ai_prep_search(doc) AS result
+  FROM parsed
 )
-SELECT path, chunk.*
-FROM parsed
-LATERAL VIEW explode(ai_prep_search(doc)) AS chunk;
+SELECT
+  chunk.value:chunk_id::STRING          AS chunk_id,
+  chunk.value:chunk_to_retrieve::STRING AS chunk_to_retrieve,
+  chunk.value:chunk_to_embed::STRING    AS chunk_to_embed,
+  prepped.path                          AS source_uri
+FROM prepped,
+  LATERAL variant_explode(prepped.result:document.contents) AS chunk;
 ```
 
-`ai_prep_search` is in Beta, and its exact output columns are documented on its reference page. Add a primary key column if the output does not include one, and enable Change Data Feed on the table.
+`ai_prep_search` is in Beta and requires Databricks Runtime 18.2 or above. It returns one `VARIANT` per document; `variant_explode` turns its `document.contents` array into one row per chunk. `chunk_to_retrieve` is the raw chunk text, and `chunk_to_embed` is the same text enriched with document context (title, section header, page number) for embedding. Change Data Feed is enabled so the index can sync incrementally.
 
-**2. Index** the table with a Delta Sync index (see [[AI Search]]).
+**2. Index** the table with a Delta Sync index (see [[AI Search]]), using `chunk_id` as the primary key and `chunk_to_embed` as the embedding source column.
 
 **3. Answer questions** in Python:
 
@@ -134,13 +143,13 @@ import os
 from openai import OpenAI
 from databricks.ai_search.client import AISearchClient
 
-index = AISearchClient().get_index(endpoint_name="support-search",
-                                   index_name="shop.support.help_chunks_index")
+index = AISearchClient().get_index(index_name="shop.support.help_chunks_index")
 llm = OpenAI(api_key=os.environ["DATABRICKS_TOKEN"],
              base_url="https://<workspace-url>/serving-endpoints")
 
 def answer(question: str) -> str:
-    hits = index.similarity_search(query_text=question, columns=["path", "text"],
+    hits = index.similarity_search(query_text=question,
+                                   columns=["source_uri", "chunk_to_retrieve"],
                                    num_results=4, query_type="hybrid")
     context = "\n\n".join(f"[{r[0]}]\n{r[1]}" for r in hits["result"]["data_array"])
     resp = llm.chat.completions.create(
@@ -154,7 +163,7 @@ def answer(question: str) -> str:
     return resp.choices[0].message.content
 ```
 
-The column names (`path`, `text`) must match the chunk table. To build the same assistant without writing the chain, use a Genie Agent or [[Agent Bricks]].
+The column names (`source_uri`, `chunk_to_retrieve`) must match the chunk table. To build the same assistant without writing the chain, use a Genie Agent or [[Agent Bricks]].
 
 ## Small-business considerations
 
@@ -221,6 +230,8 @@ Why tell the model to say "I do not know"?::So it does not invent answers when t
 > - [AI Search retrieval quality guide (AWS)](https://docs.databricks.com/aws/en/ai-search/retrieval-quality)
 > - [ai_prep_search function (AWS)](https://docs.databricks.com/aws/en/sql/language-manual/functions/ai_prep_search)
 > - [ai_prep_search function (Azure Databricks)](https://learn.microsoft.com/en-us/azure/databricks/sql/language-manual/functions/ai_prep_search)
+> - [AI Search Python SDK example usage (AWS)](https://docs.databricks.com/aws/en/ai-search/vector-search-python-sdk-example)
+> - [Query an AI Search index (AWS)](https://docs.databricks.com/aws/en/vector-search/query-vector-search)
 > - [Document Parsing (AWS)](https://docs.databricks.com/aws/en/generative-ai/agent-bricks/document-parsing)
 > - [Downstream RAG use case with SharePoint (AWS)](https://docs.databricks.com/aws/en/ingestion/lakeflow-connect/sharepoint-rag)
 > - [Transform unstructured data using AI Functions (AWS)](https://docs.databricks.com/aws/en/large-language-models/ai-functions)

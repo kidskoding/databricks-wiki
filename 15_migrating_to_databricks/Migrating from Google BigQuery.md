@@ -122,7 +122,7 @@ databricks labs lakebridge execute-database-profiler
 Requirements and behavior:
 
 - Databricks Runtime 16.1 or later in standard or dedicated access mode, or a pro or serverless SQL warehouse.
-- The connector reads through the **BigQuery Storage API**, not JDBC. Large scans read data directly; joins and aggregates can be materialized in BigQuery first.
+- The connector reads through the **BigQuery Storage API**, not JDBC. Tables are read directly from storage by default; views and external tables are always materialized in BigQuery first. Pushdown of aggregates, joins, and limits needs materialization enabled.
 - Network rules must allow the BigQuery REST API, the Google authentication endpoints, and the Storage API endpoint. The **Test connection** button does not exercise the Storage API, so it can succeed while queries fail.
 - Join pushdown is generally available and enabled by default for BigQuery.
 
@@ -174,11 +174,11 @@ Common differences:
 |---|---|---|
 | `` `project.dataset.table` `` | `catalog.schema.table` | Map projects or datasets to catalogs and schemas |
 | `SAFE_CAST(x AS INT64)` | `try_cast(x AS BIGINT)` | |
-| `INT64`, `FLOAT64` | `BIGINT`, `DOUBLE` | |
-| `NUMERIC` | `DECIMAL(38, 9)` | Check precision and scale |
+| `INT64`, `FLOAT64` | `BIGINT`, `DOUBLE` | Federation maps them to `LongType` and `DoubleType` |
+| `NUMERIC` | `DECIMAL(38, 9)` | BigQuery's default precision and scale; a parameterized `NUMERIC(P, S)` keeps its declared values |
 | `BIGNUMERIC`, `TIME`, `RANGE` | No direct equivalent | Reconcile cannot compare these exactly |
 | `STRUCT`, `ARRAY` | `STRUCT`, `ARRAY` | |
-| `UNNEST(arr)` | `explode(arr)` | |
+| `UNNEST(arr)` | `explode(arr)` | Both return one row per array element |
 | `SELECT * EXCEPT (col)` | `SELECT * EXCEPT (col)` | Supported |
 | `QUALIFY` | `QUALIFY` | Supported |
 | `DATE_TRUNC(d, MONTH)` | `date_trunc('MONTH', d)` | Argument order differs |
@@ -215,7 +215,7 @@ Common differences:
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Storage API versus materialization.** Simple scans stream directly through the Storage API. Queries with joins or aggregates may be materialized in BigQuery first, which uses BigQuery compute and a temporary table.
+> - **Storage API versus materialization.** By default, table reads stream directly through the Storage API, with only simple filters and projections pushed down. Views and external tables are always materialized. Enable materialization per catalog (`forceMaterialization`) or per query (`materializationEnabled`) for aggregate, join, and limit pushdown, small results from large tables, or cross-region data. Materialization writes results to a BigQuery dataset and incurs BigQuery compute charges.
 > - **Partitioned and clustered tables.** BigQuery partitioning and clustering do not carry over. Use [[Liquid Clustering]] on the Delta target.
 > - **Nested data.** Keep `STRUCT` and `ARRAY` columns as Databricks complex types rather than flattening them during migration. Flatten in the silver layer if needed.
 > - **Reconcile type gaps.** For BigQuery types that Reconcile cannot compare exactly, add custom transformations in the reconcile config or drop those columns from the comparison and check them separately.
@@ -266,4 +266,8 @@ How can you run BigQuery-dialect SQL from Databricks without a foreign catalog?:
 > - [Lakebridge overview and supported sources (Databricks Labs, GitHub)](https://github.com/databrickslabs/lakebridge/blob/main/docs/lakebridge/docs/overview.mdx)
 > - [Lakebridge Reconcile guide (Databricks Labs, GitHub)](https://github.com/databrickslabs/lakebridge/blob/main/docs/lakebridge/docs/reconcile/index.mdx)
 > - [Lakebridge changelog (Databricks Labs, GitHub)](https://github.com/databrickslabs/lakebridge/blob/main/CHANGELOG.md)
-> - **Unconfirmed:** the GoogleSQL to Databricks type mappings (`NUMERIC` precision, `INT64`, `FLOAT64`), the `DATE_TRUNC` and `UNNEST` rows, and the materialization details in Advanced topics were not re-checked in this pass.
+> - [GoogleSQL data types (BigQuery docs)](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-types)
+> - [GoogleSQL date functions: DATE_TRUNC (BigQuery docs)](https://cloud.google.com/bigquery/docs/reference/standard-sql/date_functions)
+> - [GoogleSQL query syntax: UNNEST operator (BigQuery docs)](https://cloud.google.com/bigquery/docs/reference/standard-sql/query-syntax)
+> - [date_trunc function (AWS)](https://docs.databricks.com/aws/en/sql/language-manual/functions/date_trunc)
+> - [explode table-valued generator function (AWS)](https://docs.databricks.com/aws/en/sql/language-manual/functions/explode)

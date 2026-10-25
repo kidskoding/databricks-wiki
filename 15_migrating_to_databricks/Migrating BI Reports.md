@@ -109,7 +109,7 @@ Steps for an existing report:
 
 1. Recreate the source tables or views in Unity Catalog with the same column names and types.
 2. In Power BI Desktop, change the data source to the Databricks SQL warehouse.
-3. Choose **DirectQuery** for large or frequently changing tables, or **Import** for small, slowly changing ones.
+3. Keep **Import** as the default storage mode. Microsoft recommends **DirectQuery** when data changes too often for scheduled refresh, is too large to import, or must stay under source-enforced row-level security.
 4. Refresh, compare totals with the old report, and republish.
 
 See [[Connecting Power BI]] and, on Azure, [[Power BI on Azure Databricks]].
@@ -167,16 +167,16 @@ GROUP BY ALL;
 > Power BI is the most common BI tool. Publishing to the Power BI service and the Azure Databricks connector use Microsoft Entra ID; see [[Power BI on Azure Databricks]].
 
 > [!aws]- Databricks on AWS
-> Power BI, Tableau, and Amazon QuickSight connect through the SQL warehouse endpoint. Publishing to the Power BI service is also documented on AWS and requires a Microsoft Entra ID sign-in on the Power BI side.
+> Power BI, Tableau, and Amazon Quick Sight connect through the SQL warehouse endpoint. Quick Sight's Databricks data source takes the warehouse hostname and HTTP path. Publishing to the Power BI service is also documented on AWS and requires a Microsoft Entra ID sign-in on the Power BI side.
 
 > [!gcp]- Databricks on Google Cloud
-> Tableau and Looker are common. Tableau steps are the same as on other clouds. Looker connects to the SQL warehouse as a database connection.
+> Tableau steps are the same as on other clouds. Looker connects to a SQL warehouse as a database connection (**Admin > Connections > Add Connection**), using the warehouse's server hostname, port, and HTTP path.
 
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **DirectQuery and warehouse sizing.** DirectQuery sends every visual's query to the warehouse. Size the warehouse for report concurrency, and use [[Query Performance and Caching|result caching]] and aggregated tables.
-> - **Row-level security.** Rules defined in Power BI roles or Tableau user filters can move to Unity Catalog [[Row Filters and Column Masks]] when viewers query with their own identities (individual data permissions, or per-user OAuth).
+> - **DirectQuery and warehouse sizing.** In DirectQuery mode each visual sends one or more queries to the warehouse. Size the warehouse for report concurrency, and use [[Query Performance and Caching|result caching]] and aggregated tables.
+> - **Row-level security.** Unity Catalog [[Row Filters and Column Masks]] evaluate at query time for the identity that runs the query. Rules from Power BI roles or Tableau user filters can move into Unity Catalog when viewers query as themselves: individual data permissions on AI/BI dashboards, or single sign-on (SSO) for Power BI DirectQuery reports, which passes each user's Microsoft Entra ID credentials. With shared data permissions, the publisher's permissions apply.
 > - **Dataset caching.** AI/BI dashboard datasets under 100 MB and 100,000 rows can be cached.
 > - **Embedding and automation.** Published dashboards can be embedded with iframes, and managed through Git, [[Declarative Automation Bundles]], and REST APIs.
 > - **Naming.** The docs renamed Genie spaces to **Genie Agents** in 2026, and the business-user Genie experience to **Genie One** on June 9, 2026.
@@ -197,7 +197,7 @@ Which Tableau authentication method is recommended?::OAuth; a personal access to
 What is the difference between shared and individual data permissions on a published dashboard?::Shared: viewers query with the publisher's permissions. Individual: viewers query with their own credentials.
 Where should repeated business measures live after migration?::In Unity Catalog views or metric views, not in each report.
 Which Lakebridge component supports SSRS?::The Analyzer (assessment only; there is no BI report converter).
-When should you use DirectQuery rather than Import in Power BI?::For large or frequently changing tables.
+When does Microsoft recommend DirectQuery rather than Import in Power BI?::When data changes too often for scheduled refresh, is too large to import, or must stay under source-enforced row-level security. Import is the default.
 
 ## Next steps
 
@@ -223,4 +223,7 @@ When should you use DirectQuery rather than Import in Power BI?::For large or fr
 > - [Genie Agents (AWS)](https://docs.databricks.com/aws/en/genie-agents)
 > - [AI/BI and Genie One release notes 2026 (AWS)](https://docs.databricks.com/aws/en/ai-bi/release-notes/2026)
 > - [Lakebridge Analyzer guide (Databricks Labs, GitHub)](https://github.com/databrickslabs/lakebridge/blob/main/docs/lakebridge/docs/assessment/analyzer/index.mdx)
-> - **Unconfirmed:** the DirectQuery and Import guidance, the QuickSight and Looker remarks, and the row-level security migration pattern were not checked against official docs in this pass.
+> - [DirectQuery in Power BI (Microsoft Learn)](https://learn.microsoft.com/en-us/power-bi/connect-data/desktop-directquery-about)
+> - [Using Databricks in Quick Sight (AWS)](https://docs.aws.amazon.com/quicksight/latest/user/quicksight-databricks.html)
+> - [Connect to Looker (GCP)](https://docs.databricks.com/gcp/en/partners/bi/looker)
+> - [Row filters and column masks (AWS)](https://docs.databricks.com/aws/en/tables/row-and-column-filters)

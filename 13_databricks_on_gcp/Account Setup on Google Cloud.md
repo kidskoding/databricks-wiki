@@ -168,7 +168,7 @@ resource "databricks_mws_workspaces" "prod" {
 > [!deepdive]- Advanced topics (301–401)
 > - **Least-privilege workspace creation.** Security-conscious accounts can create workspaces with a creator service account that has custom IAM roles, calling the Account API. The creator then needs only read-level permissions to validate settings, and you pre-create resources and grants yourself. Databricks still recommends the standard flow for most deployments.
 > - **Service account roles do not inherit.** A service account you create does not inherit your roles. Grant it roles on the project explicitly.
-> - **What workspace creation makes.** A classic workspace creates a workspace service account with custom roles, two GCS buckets, and (if Databricks-managed) a VPC. See [[Google Service Accounts]].
+> - **What workspace creation makes.** A classic workspace creates a workspace service account with custom roles, two GCS buckets (three if the workspace was enabled for Unity Catalog automatically), and (if Databricks-managed) a VPC. See [[Google Service Accounts]].
 > - **Orders.** The Google order number appears in the account console under **Settings**, **Subscription & billing**, and matches the listing's **Manage orders** page.
 > - **Terraform networks.** In `databricks_mws_networks`, the GKE secondary range arguments of `gcp_managed_network_config` are deprecated and can be removed from templates.
 
@@ -200,6 +200,7 @@ Which Terraform block names the workspace's Google Cloud project?::`cloud_resour
 > [[Compute on Google Cloud]] explains how classic clusters run on Compute Engine VMs in the workspace project.
 
 > [!sources]- Sources (last verified: 2026-10-25)
+> - [Databricks architecture overview: workspace storage (GCP)](https://docs.databricks.com/gcp/en/getting-started/overview)
 > - [Start a Databricks free trial on Google Cloud](https://docs.databricks.com/gcp/en/admin/account-settings-gcp/create-subscription)
 > - [Sign up for Databricks for free (GCP)](https://docs.databricks.com/gcp/en/getting-started/free-trial)
 > - [Manage your subscription (GCP)](https://docs.databricks.com/gcp/en/admin/account-settings/account)

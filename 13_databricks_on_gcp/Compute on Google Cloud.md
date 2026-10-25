@@ -63,7 +63,7 @@ Mastery: `INPUT[inlineSelect(option(new), option(learning), option(solid)):maste
 
 At launch in 2021, Databricks described Databricks on Google Cloud as built on **Google Kubernetes Engine (GKE)**, with each Databricks cluster running as containers (see [[Kubernetes]] and [[Container]]). Workspaces then included a GKE cluster in the customer project, and customer-managed VPCs needed secondary IP ranges for GKE pods and services.
 
-Current Databricks documentation describes classic compute as **Compute Engine (GCE) VMs** created in each workspace's VPC in your project. The Terraform provider marks the GKE secondary range arguments of `gcp_managed_network_config` as deprecated and safe to remove. Databricks' knowledge base also documents operational differences after "migrating to GCE compute". The exact official cutover date was not found in the documentation; treat any date you hear as unconfirmed until you see it in Databricks release notes.
+Current Databricks documentation describes classic compute as **Compute Engine (GCE) VMs** created in each workspace's VPC in your project. The Terraform provider marks the GKE secondary range arguments of `gcp_managed_network_config` as deprecated and safe to remove. Databricks' knowledge base also documents operational differences after "migrating to GCE compute".
 
 ## Overview
 

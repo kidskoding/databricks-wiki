@@ -60,13 +60,13 @@ Mastery: `INPUT[inlineSelect(option(new), option(learning), option(solid)):maste
 > [[Retrieval-Augmented Generation]] answers questions from documents. An [[AI Agent|agent]] goes further: it decides which steps to take, calls tools such as SQL queries or APIs, and completes a task. Agent Bricks is the Databricks platform for building, deploying, and running agents.
 
 > [!eli5] Summary
-> Agent Bricks is the part of Databricks for making AI helpers that do jobs, such as looking up an order and drafting a reply. Developers write the helper's logic, and Databricks gives it a safe place to run, a login of its own, memory, and a record of everything it did. People who do not code build similar helpers in Genie Agents instead.
+> Agent Bricks is the part of Databricks for building AI helpers, called agents, that carry out tasks instead of only answering questions. For example, an agent can look up a customer's order, check the returns policy, and draft a reply. A developer writes the agent's instructions in code. Databricks runs it, gives it its own login so it sees only approved data, remembers earlier conversations, and records every step so you can check its work. If nobody on your team writes code, use Genie Agents instead.
 
 > [!renamed] What changed in 2026
 > - **June 2025:** Databricks introduced Agent Bricks as a way to describe a task in plain language, connect data, and have Databricks build the agent, generate evaluations and [[LLM]] judges (models that score another model's answers), and optimize for quality and cost. Task types included **Knowledge Assistant**, **Information Extraction**, **Custom LLM**, and **Multi-Agent Supervisor** (later **Supervisor Agent**).
-> - **July 8, 2026:** Genie Spaces were renamed **Genie Agents**, the recommended no-code option.
+> - **July 2026:** Genie Spaces were renamed **Genie Agents**, the recommended no-code option.
 > - **October 12, 2026:** Knowledge Assistant and Supervisor Agent became **legacy** offerings. The Agent Bricks docs now focus on **code-first** development with the **Agent Bricks CLI** (Beta) and **Agent Runtime**. Custom LLM is legacy and in Beta; for custom text tasks Databricks recommends AI Functions such as `ai_query`. The Supervisor API reached end of life on September 30, 2026.
-> - **Information Extraction:** status differs across pages; `ai_extract` is generally available. Check the docs before planning on the Information Extraction brick.
+> - **Information Extraction:** the original Information Extraction agent is legacy (Beta). A new Information Extraction UI entered Public Preview on March 27, 2026, and the `ai_extract` SQL function it runs on became generally available on June 11, 2026.
 
 > [!analogy]- Analogy: hiring and equipping a new staff member
 > | Workplace | Agent Bricks |
@@ -81,13 +81,25 @@ Mastery: `INPUT[inlineSelect(option(new), option(learning), option(solid)):maste
 
 ## Background
 
-Early agent projects stitched together a framework, a hosting service, a vector database (see [[AI Search]]), secrets, and logging, each with its own setup. Databricks first offered the [[Mosaic AI Agent Framework]] for code-based agents deployed on [[Model Serving]], then Agent Bricks for task-based agents built from a description. In October 2026 Databricks consolidated: no-code agents moved to [[Genie Agents]], and Agent Bricks became the code-first developer platform, with older servers and deployment targets moved to a Legacy section that maps each one to its replacement.
+A chatbot answers a question and stops. An [[AI Agent|agent]] works toward a goal: it reads a request, decides which steps to take, uses tools (for example, a SQL query against an orders table or a search over help articles), checks the results, and repeats until the task is done. A support agent for an online shop might look up an order, read its shipping status, and draft an answer for a staff member to approve.
+
+Getting an agent to work on a laptop is quick. Running it for real users takes more: a place to host it, control over which data it can read, memory of earlier conversations, and a record of every step so you can find mistakes. Early agent projects assembled these parts separately (a framework, a hosting service, a vector database such as [[AI Search]], secrets, and logging), each with its own setup.
+
+Databricks first offered the [[Mosaic AI Agent Framework]] for agents written in code and deployed on [[Model Serving]]. In June 2025 it added Agent Bricks, which built agents from a plain-language task description. In October 2026 Databricks reorganized: no-code agents moved to [[Genie Agents]], and Agent Bricks became the platform for developers who write agent code. Older servers and deployment targets moved to a Legacy section that maps each one to its replacement.
 
 ## Overview
 
-Databricks describes Agent Bricks as the platform for developers who write their own agent code, bringing any framework or harness and any model.
+Agent Bricks is the Databricks agent developer platform. You write the agent's logic, called the agent loop, with a framework or harness of your choice (such as LangGraph or the OpenAI Agents SDK) and pick any model. Databricks supplies the services around it:
 
-A deployed agent has three layers:
+| Service | What it does for your agent |
+|---|---|
+| **Agent Runtime** | Hosts the agent at a stable, authenticated endpoint and gives it its own identity |
+| **Memory and sessions** | Keeps the current conversation and recalls what the agent learned in earlier ones |
+| **Tools** | Connects the agent to governed data and actions, such as SQL, [[AI Search]], and MCP servers |
+| **Tracing and evaluation** | Records each step in [[MLflow]] so you can debug the agent and measure its quality |
+| **Agent Bricks CLI** | Creates, runs, and deploys an agent project from the terminal |
+
+Under the hood, a deployed agent has three layers:
 
 | Layer | What it is | Example |
 |---|---|---|
@@ -130,7 +142,7 @@ flowchart LR
 
 Set up an order-status agent for a small online shop:
 
-1. Install the [[Databricks CLI]] and authenticate to the workspace. Install Python 3.10 or later and `uv` (a Python package manager).
+1. Install the [[Databricks CLI]] and authenticate to the workspace. Install Python 3.10 or later, with `pip`.
 2. Install the Agent Bricks CLI:
    ```bash
    pip install databricks-agentbricks
@@ -219,6 +231,11 @@ What were the original Agent Bricks task types in 2025?::Knowledge Assistant, In
 > - [Agent Bricks CLI (AWS)](https://docs.databricks.com/aws/en/agents/custom-agents/agent-bricks-cli)
 > - [Agent Bricks quickstart (AWS)](https://docs.databricks.com/aws/en/agents/quickstart)
 > - [Agent Bricks FAQ (AWS)](https://docs.databricks.com/aws/en/agents/concepts/faq)
+> - [Legacy agent offerings (AWS)](https://docs.databricks.com/aws/en/agents/legacy)
+> - [Information Extraction (AWS)](https://docs.databricks.com/aws/en/agents/agent-bricks/info-extraction)
+> - [Use Information Extraction (legacy) (AWS)](https://docs.databricks.com/aws/en/agents/agent-bricks/key-info-extraction)
+> - [June 2026 release notes: ai_extract GA (AWS)](https://docs.databricks.com/aws/en/release-notes/product/2026/june)
+> - [July 2026 release notes: Genie Spaces renamed Genie Agents (AWS)](https://docs.databricks.com/aws/en/release-notes/product/2026/july)
 > - [Agent Runtime (Azure Databricks)](https://learn.microsoft.com/en-us/azure/databricks/agents/deploy/agent-runtime)
 > - [Deploy agents on Databricks (GCP)](https://docs.databricks.com/gcp/en/agents/deploy/)
 > - [Supervisor API (deprecated) (AWS)](https://docs.databricks.com/aws/en/agents/agent-bricks/supervisor-api)

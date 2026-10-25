@@ -147,11 +147,11 @@ For cloud warehouses, use the query history views: `SNOWFLAKE.ACCOUNT_USAGE.QUER
    databricks labs install lakebridge
    ```
 
-2. Configure and run the Profiler against a source database:
+2. Configure and run the Profiler against a source database. The command prompts for the source technology if you omit `--source-tech`:
 
    ```bash
    databricks labs lakebridge configure-database-profiler
-   databricks labs lakebridge execute-database-profiler --source-tech mssql
+   databricks labs lakebridge execute-database-profiler
    ```
 
 3. Split monolithic SQL exports into one object per file with the SQL Splitter, so the Analyzer scores each object separately:
@@ -169,7 +169,7 @@ For cloud warehouses, use the query history views: `SNOWFLAKE.ACCOUNT_USAGE.QUER
      --source-tech "MS SQL Server"
    ```
 
-   Settings you omit are prompted for interactively.
+   `MS SQL Server` is the platform name in the Analyzer's supported-dialects list. Settings you omit are prompted for interactively.
 
 The Analyzer's scoring guide says LOW and MEDIUM objects typically transpile cleanly, HIGH objects need review after transpiling, and if more than half of the objects score HIGH or VERY HIGH you should plan at least two manual review passes. The Analyzer also maps dependencies between jobs and objects, which helps decide what must move together.
 
@@ -249,4 +249,8 @@ What should you do with tables nobody has read in a year?::Archive them instead 
 > - [Lakebridge SQL Splitter (Databricks Labs, GitHub)](https://github.com/databrickslabs/lakebridge/blob/main/docs/lakebridge/docs/sql_splitter.mdx)
 > - [Lakebridge installation (Databricks Labs, GitHub)](https://github.com/databrickslabs/lakebridge/blob/main/docs/lakebridge/docs/installation.mdx)
 > - [Migrate data applications to Databricks (AWS)](https://docs.databricks.com/aws/en/migration/)
-> - **Unconfirmed:** the source-system catalog queries (SQL Server `sys.*` views, PostgreSQL `pg_stat_user_tables`, Snowflake `ACCOUNT_USAGE.QUERY_HISTORY`, BigQuery `INFORMATION_SCHEMA.JOBS`) are standard vendor views but were not re-checked against each vendor's docs in this pass. The exact `--source-tech` value strings may differ by Lakebridge version; omit the flag to choose from a prompt.
+> - [sys.partitions (Microsoft Learn)](https://learn.microsoft.com/en-us/sql/relational-databases/system-catalog-views/sys-partitions-transact-sql)
+> - [sys.objects (Microsoft Learn)](https://learn.microsoft.com/en-us/sql/relational-databases/system-catalog-views/sys-objects-transact-sql)
+> - [The cumulative statistics system: pg_stat_all_tables (PostgreSQL)](https://www.postgresql.org/docs/current/monitoring-stats.html)
+> - [QUERY_HISTORY view (Snowflake)](https://docs.snowflake.com/en/sql-reference/account-usage/query_history)
+> - [INFORMATION_SCHEMA.JOBS view (Google Cloud)](https://cloud.google.com/bigquery/docs/information-schema-jobs)

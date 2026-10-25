@@ -145,7 +145,7 @@ On AWS, the account console does not support adding *workspace storage* keys to 
 
 > [!gcp]- Databricks on Google Cloud
 > - CMK covers managed services and the two GCS buckets in the Google Cloud project that Databricks creates with the workspace. Keys come from Google Cloud KMS. See [[Customer-Managed Keys on Google Cloud]].
-> - Keys can be added only during workspace creation. The GCP CMK configuration page was marked Public Preview in the docs.
+> - In classic workspaces, keys can be added only during workspace creation; serverless workspaces can add a managed services key afterward. The feature is in Public Preview on Google Cloud (as of October 2026).
 
 ## Advanced topics
 
@@ -193,6 +193,7 @@ Which three CMK features does Azure Databricks list?::Managed services, managed 
 > - [Customer-managed keys for encryption (GCP)](https://docs.databricks.com/gcp/en/security/keys/customer-managed-keys)
 > - [Configure customer-managed keys for encryption (AWS)](https://docs.databricks.com/aws/en/security/keys/configure-customer-managed-keys)
 > - [Configure customer-managed keys for encryption (GCP)](https://docs.databricks.com/gcp/en/security/keys/configure-customer-managed-keys)
+> - [Best practices for serverless workspaces (GCP)](https://docs.databricks.com/gcp/en/admin/workspace/serverless-workspaces-best-practices)
 > - [Customer-managed keys for managed services (Azure)](https://learn.microsoft.com/en-us/azure/databricks/security/keys/cmk-managed-services-azure/)
 > - [Configure customer-managed keys for Azure managed disks (Azure)](https://learn.microsoft.com/en-us/azure/databricks/security/keys/cmk-managed-disks-azure/cmk-managed-disks-azure)
 > - [Encrypt queries, query history, and query results (GCP)](https://docs.databricks.com/gcp/en/security/keys/sql-encryption)

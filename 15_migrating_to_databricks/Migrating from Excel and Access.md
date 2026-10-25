@@ -93,7 +93,7 @@ Four concepts cover most of the move:
 | An Excel sheet or an Access table | A **table** in [[Unity Catalog]], such as `finance.sales.orders` | One copy, [[Data Type\|typed]] columns, history ([[Time Travel]]), permissions |
 | A folder of files on a shared drive | A **[[Volumes\|Volume]]**, such as `/Volumes/finance/sales/raw_files/` | Governed files that SQL can load |
 | A pivot table or chart | An **[[AI-BI Dashboards\|AI/BI dashboard]]** | Refreshes from the table; shared with users and groups |
-| Asking the one person who knows the spreadsheet | A **[[Genie Agents\|Genie Agent]]** (formerly Genie space) | Plain-English questions answered with generated SQL |
+| Asking the one person who knows the spreadsheet | A **[[Genie Agents\|Genie Agent]]** (formerly Genie space; renamed July 2026) | Plain-English questions answered with generated SQL |
 
 Access is both a database and an application. Its **tables** become Databricks tables, its **saved queries** become SQL views, and its **forms and reports** are rebuilt, usually as dashboards, or as a small [[Databricks Apps|Databricks App]] if people enter data through forms.
 
@@ -132,8 +132,8 @@ Tables are stricter than spreadsheets:
 
 The **Create or modify table** page accepts CSV and Excel (`.xls`, `.xlsx`) files, either uploaded from your computer or already stored in a Volume.
 
-1. Open the add-data page in the workspace and choose **Create or modify table**.
-2. Upload the file.
+1. Click **New > Add or upload data**.
+2. Click **Create or modify a table**, then browse for the file or drag it onto the drop zone.
 3. For Excel files, select the sheet, set the number of header rows, and optionally limit the cell range.
 4. Choose the catalog `finance`, the schema `sales`, and the table name `orders`.
 5. Check each column type (dates as `DATE`, money as `DECIMAL`) and create the table.
@@ -181,7 +181,7 @@ Upload files into the Volume from Catalog Explorer. For files that keep arriving
 | Access `Nz(x, 0)` | `coalesce(x, 0)` |
 | Access `"A" & "B"` | `concat('A', 'B')` or `'A' \|\| 'B'` |
 | Access `LIKE "Smi*"` | `LIKE 'Smi%'` |
-| Access date literal `#2026-03-01#` | `DATE'2026-03-01'` |
+| Access date literal `#2026-03-01#` | `DATE '2026-03-01'` |
 
 A saved Access query becomes a view:
 
@@ -195,7 +195,7 @@ JOIN finance.sales.customers c ON o.customer_id = c.customer_id
 GROUP BY ALL;
 ```
 
-To get data out of Access, export each table to a text (CSV) file with field names in the first row, then load it as in Step 3. Copy each saved query's SQL text so it can be rewritten as a view.
+To get data out of Access, export each table as a delimited text file: right-click the table in the Navigation Pane, point to **Export**, click **Text File**, choose **Delimited** with a comma delimiter, and select **Include Field Names on First Row**. Then load the file as in Step 3. Copy each saved query's SQL text so it can be rewritten as a view.
 
 ### Step 5: build a first dashboard
 
@@ -292,4 +292,8 @@ What were Genie spaces renamed to in 2026?::Genie Agents.
 > - [Curate an effective Genie space (GCP)](https://docs.databricks.com/gcp/en/genie/best-practices)
 > - [AI/BI and Genie One release notes 2026 (AWS)](https://docs.databricks.com/aws/en/ai-bi/release-notes/2026)
 > - [Access specifications (Microsoft Support)](https://support.microsoft.com/en-us/access/access-specifications)
-> - **Unconfirmed:** the exact menu labels for reaching the upload page, the Access export menu path, and the `GROUP BY ALL` and `DATE'...'` literal syntax were not re-checked in this pass. The release notes give conflicting dates for the Genie Agents rename (entries use the new name from January 2026, and a July 9, 2026 entry announces it).
+> - [Create or modify a table using file upload (AWS)](https://docs.databricks.com/aws/en/ingestion/create-or-modify-table)
+> - [Export data to a text file (Microsoft Support)](https://support.microsoft.com/en-us/office/export-data-to-a-text-file-f72dfc38-a8a0-4c5b-8c2c-bf2950814140)
+> - [GROUP BY clause (AWS)](https://docs.databricks.com/aws/en/sql/language-manual/sql-ref-syntax-qry-select-groupby)
+> - [DATE type (AWS)](https://docs.databricks.com/aws/en/sql/language-manual/data-types/date-type)
+> - The Genie Agents rename is dated July 8, 2026 in the [July 2026 platform release notes](https://docs.databricks.com/aws/en/release-notes/product/2026/july) and July 9, 2026 in the [AI/BI release notes](https://docs.databricks.com/aws/en/ai-bi/release-notes/2026). Earlier 2026 entries on the AI/BI page were relabeled with the new name afterward.

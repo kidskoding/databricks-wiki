@@ -297,4 +297,9 @@ What does a Snowflake database map to in Unity Catalog?::A catalog.
 > - [Morpheus transpiler (Databricks Labs, GitHub)](https://github.com/databrickslabs/lakebridge/blob/main/docs/lakebridge/docs/transpile/pluggable_transpilers/morpheus/index.mdx)
 > - [Lakebridge Reconcile guide (Databricks Labs, GitHub)](https://github.com/databrickslabs/lakebridge/blob/main/docs/lakebridge/docs/reconcile/index.mdx)
 > - [Lakebridge FAQ (Databricks Labs, GitHub)](https://github.com/databrickslabs/lakebridge/blob/main/docs/lakebridge/docs/faq.mdx)
-> - **Unconfirmed:** the exact `CREATE CONNECTION ... TYPE snowflake` option names (`sfWarehouse` and others; check the federation page for your authentication method), the `HEADER = TRUE` unload option, the identifier case-folding row, and the streams-and-tasks mapping were not re-checked in this pass.
+> - [Run federated queries on Snowflake (basic authentication) (AWS)](https://docs.databricks.com/aws/en/query-federation/snowflake-basic-auth)
+> - [Identifiers (AWS)](https://docs.databricks.com/aws/en/sql/language-manual/sql-ref-identifiers)
+> - [Use Delta Lake change data feed (AWS)](https://docs.databricks.com/aws/en/delta/delta-change-data-feed)
+> - [Identifier requirements (Snowflake docs)](https://docs.snowflake.com/en/sql-reference/identifiers-syntax)
+> - [Introduction to streams (Snowflake docs)](https://docs.snowflake.com/en/user-guide/streams-intro)
+> - [Introduction to tasks (Snowflake docs)](https://docs.snowflake.com/en/user-guide/tasks-intro)

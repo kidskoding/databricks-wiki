@@ -77,7 +77,7 @@ Databricks on AWS GovCloud is a separate Databricks environment with its own acc
 Known differences from commercial AWS, as documented:
 
 - **Fleet instance types** are not available.
-- **Graviton:** June 2026 release notes say Graviton is supported with the compliance security profile in GovCloud, while the compute reference still lists GovCloud as a Graviton limitation. Check current docs.
+- **Graviton:** Supported with the compliance security profile since June 5, 2026 (GovCloud release notes), and listed for GovCloud Regions in the supported instance types (for example `M7g` and `C7gd`). The Graviton limitations list in the compute configuration reference still names GovCloud; the docs conflict on this point.
 - **Private connectivity to AWS resources** is listed as not yet available in GovCloud.
 - **Cross-Geo processing** settings do not apply.
 - **Key policies** use different Databricks AWS account IDs for [[Customer-Managed Keys on AWS]].

@@ -89,7 +89,7 @@ A Databricks blog post on Hadoop migration lists five areas to plan: **administr
 > | [[Hive Metastore]] | [[Unity Catalog]]; external metastores can be federated during the move |
 > | Oozie | [[Lakeflow Jobs]] |
 > | Sqoop | [[Lakeflow Connect]] or [[Lakehouse Federation]] |
-> | [[Apache HBase]] | No direct equivalent; consider [[Lakebase]] or Delta tables, depending on access pattern |
+> | [[Apache HBase]] | No direct equivalent. Use [[Lakebase]] or a cloud NoSQL service (Azure Cosmos DB, Amazon DynamoDB or Keyspaces) for low-latency serving |
 > | Ranger or Sentry policies | [[Privileges and Grants\|Unity Catalog grants]], [[Row Filters and Column Masks]] |
 > | ORC and Parquet files on HDFS | [[Delta Lake]] tables |
 
@@ -159,6 +159,8 @@ This works once data sits in object storage that Databricks can reach. Data stil
    PARTITIONED BY (order_date DATE);
    ```
 
+   For a path, `PARTITIONED BY` is required when the data is partitioned. For a metastore table name, the partition specification is read from the metastore.
+
    ORC and text-format tables need a rewrite, for example `CREATE TABLE ... AS SELECT` from the old table.
 
 ### Phase 4: move the processing
@@ -200,13 +202,13 @@ Lakebridge's Switch transpiler (experimental) has built-in prompts for Python, S
 ## Cloud differences
 
 > [!azure]- Azure Databricks
-> Target ADLS Gen2 (`abfss://`), governed through an [[ADLS and Access Connectors|Access Connector]]. Microsoft documents Azure Data Box for offline transfer of large HDFS estates, and Azure Data Factory has an HDFS connector for copy activities. Teams leaving HDInsight follow the same steps.
+> Target ADLS Gen2 (`abfss://`), governed through an [[ADLS and Access Connectors|Access Connector]]. Microsoft documents Azure Data Box for offline transfer of large HDFS estates, and Azure Data Factory has an HDFS connector for copy activities.
 
 > [!aws]- Databricks on AWS
 > Target S3 through a Unity Catalog storage credential ([[S3 Access via Unity Catalog]]). AWS Prescriptive Guidance documents DistCp from on-premises HDFS to S3 over [[AWS PrivateLink]]. Amazon EMR's S3DistCp is an AWS-optimized variant for teams leaving EMR. Existing Glue catalogs can be federated ([[Hive Metastore Federation for AWS Glue]]).
 
 > [!gcp]- Databricks on Google Cloud
-> Target Cloud Storage (`gs://`) through [[GCS Access via Unity Catalog]]. DistCp works with the Cloud Storage connector for Hadoop. Teams leaving Dataproc follow the same steps.
+> Target Cloud Storage (`gs://`) through [[GCS Access via Unity Catalog]]. Install the open-source Cloud Storage connector on the on-premises Hadoop cluster so that DistCp can write to `gs://` paths; Google documents this setup for moving on-premises HDFS data to Cloud Storage.
 
 ## Advanced topics
 
@@ -216,7 +218,7 @@ Lakebridge's Switch transpiler (experimental) has built-in prompts for Python, S
 > - **Small files.** HDFS directories often hold many small files. After conversion, run `OPTIMIZE` (see [[OPTIMIZE and VACUUM]]) to compact them.
 > - **Partitioning.** Hive-style partitioning on high-cardinality columns hurts Delta performance. Replace it with [[Liquid Clustering]] where possible.
 > - **YARN chargeback.** YARN queues often doubled as cost allocation. Rebuild it explicitly with [[Tagging for Chargeback|tags]] and [[Compute Policies|compute policies]].
-> - **HBase.** HBase serves low-latency key lookups. Delta tables are not a key-value store. Evaluate [[Lakebase]] for online serving.
+> - **HBase.** HBase serves low-latency key lookups. Delta tables are not a key-value store, and Databricks does not provide an HBase-like storage service. Databricks' Hadoop migration guidance maps HBase to a cloud NoSQL service such as Azure Cosmos DB or Amazon DynamoDB or Keyspaces. [[Lakebase]], a managed Postgres database, can serve Unity Catalog tables to applications at low latency.
 
 ## Common misconceptions
 
@@ -263,4 +265,7 @@ Which Hadoop sources can the Lakebridge Analyzer score?::Hive, Cloudera Impala, 
 > - [Copy data from HDFS (Azure Data Factory)](https://learn.microsoft.com/en-us/azure/data-factory/connector-hdfs)
 > - [Lakebridge Analyzer guide (Databricks Labs, GitHub)](https://github.com/databrickslabs/lakebridge/blob/main/docs/lakebridge/docs/assessment/analyzer/index.mdx)
 > - [Lakebridge Switch transpiler (Databricks Labs, GitHub)](https://github.com/databrickslabs/lakebridge/blob/main/docs/lakebridge/docs/transpile/pluggable_transpilers/switch/index.mdx)
-> - **Unconfirmed:** the HBase, Impala, and Ranger/Sentry mappings, the `PARTITIONED BY` clause syntax for `CONVERT TO DELTA`, the Cloud Storage connector note, and the HDInsight and Dataproc remarks were not re-checked against official docs in this pass.
+> - [Cloud Storage connector (Google Cloud)](https://cloud.google.com/dataproc/docs/concepts/connectors/cloud-storage)
+> - [Lakebase Postgres (AWS)](https://docs.databricks.com/aws/en/oltp/)
+> - [Unity Catalog privileges reference (AWS)](https://docs.databricks.com/aws/en/data-governance/unity-catalog/manage-privileges/privileges)
+> - [Row filters and column masks (AWS)](https://docs.databricks.com/aws/en/tables/row-and-column-filters)

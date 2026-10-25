@@ -88,7 +88,7 @@ The serverless DBU rate is higher than the classic rate for the same product, be
 4. **Model serving and AI features**, which have their own SKUs (billing product codes).
 5. **Storage and [[Egress|egress]]** on the cloud bill: [[Object Storage|object storage]], and data transferred across regions or to the internet.
 
-**Plan tier.** Databricks has announced that Standard tier workspaces are being upgraded to the Premium tier, with dates given as 1 October 2025 for AWS and GCP and 1 October 2026 for Azure. Confirm the status for your account on the pricing page or with your account team.
+**Plan tier.** The Standard tier has reached end of life. On AWS and Google Cloud, remaining Standard tier workspaces were upgraded automatically to Premium on October 1, 2025. On Azure, new workspaces must use Premium from April 1, 2026, and remaining Standard tier workspaces are upgraded automatically to Premium in a phased rollout that starts October 1, 2026.
 
 ## How it works
 
@@ -189,6 +189,9 @@ Do system-table cost figures include negotiated discounts?::No. They use list pr
 
 > [!sources]- Sources (last verified: 2026-10-25)
 > - [Databricks pricing](https://www.databricks.com/product/pricing)
+> - [Manage your subscription: Standard tier end of life (AWS)](https://docs.databricks.com/aws/en/admin/account-settings/account)
+> - [Manage your subscription: Standard tier end of life (GCP)](https://docs.databricks.com/gcp/en/admin/account-settings/account)
+> - [End of life for Standard tier workspaces (Azure)](https://learn.microsoft.com/en-us/azure/databricks/admin/account-settings/standard-tier)
 > - [Cost management tools on Databricks (AWS)](https://docs.databricks.com/aws/en/admin/usage/)
 > - [Cost management tools on Databricks (Azure)](https://learn.microsoft.com/en-us/azure/databricks/admin/usage/)
 > - [Monitor costs using system tables (AWS)](https://docs.databricks.com/aws/en/admin/usage/system-tables)

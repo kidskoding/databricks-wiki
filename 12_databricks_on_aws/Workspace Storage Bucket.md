@@ -132,7 +132,7 @@ databricks account storage create --json '{
 > - This note. You create the bucket (or Quickstart does), attach a bucket policy, and register it as a storage configuration.
 
 > [!gcp]- Databricks on Google Cloud
-> - Databricks creates **two GCS buckets** in your project when it creates a classic workspace: one for system data and one for the DBFS root. One older docs page says three, so check the current architecture page. See [[Databricks on Google Cloud Overview]] and [[Customer-Managed Keys on Google Cloud]].
+> - Databricks creates **two GCS buckets** in your project when it creates a classic workspace: one for system data and one for the DBFS root. If the workspace was enabled for Unity Catalog automatically, a **third bucket** holds the default workspace catalog. See [[Databricks on Google Cloud Overview]] and [[Customer-Managed Keys on Google Cloud]].
 
 ## Advanced topics
 
@@ -171,6 +171,8 @@ How many workspace buckets does Databricks create on Google Cloud?::Two (system 
 > [[Customer-Managed VPC on AWS]] covers the third building block of a classic workspace: running compute in a network you design.
 
 > [!sources]- Sources (last verified: 2026-10-25)
+> - [Create a classic workspace: secure the workspace's GCS buckets (GCP)](https://docs.databricks.com/gcp/en/admin/workspace/create-workspace)
+> - [Databricks architecture overview: workspace storage (GCP)](https://docs.databricks.com/gcp/en/getting-started/overview)
 > - [Create a workspace with manual AWS configurations (AWS)](https://docs.databricks.com/aws/en/admin/workspace/create-uc-workspace)
 > - [Phase 5: Design storage architecture (AWS)](https://docs.databricks.com/aws/en/lakehouse-architecture/deployment-guide/storage)
 > - [account storage command group (CLI)](https://docs.databricks.com/aws/en/dev-tools/cli/reference/account-storage-commands)

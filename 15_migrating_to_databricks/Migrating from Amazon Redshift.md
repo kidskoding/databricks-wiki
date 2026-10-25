@@ -223,11 +223,11 @@ For Redshift, BladeBridge targets Databricks SQL and is marked experimental; Swi
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Spectrum tables.** Spectrum external tables already have data in S3, often as Parquet. Register those paths as external tables or convert them to Delta instead of unloading through Redshift.
-> - **Late-binding views.** Views created `WITH NO SCHEMA BINDING` may reference Spectrum tables. Resolve their dependencies during assessment.
-> - **Case-sensitive identifiers.** Redshift databases with `enable_case_sensitive_identifier` set produce identifiers that federation cannot read. Unload those tables instead.
+> - **Spectrum tables.** Spectrum external tables already have data in S3, often as Parquet. Lakehouse Federation cannot query Redshift external data, so register those paths as external tables or convert them to Delta instead.
+> - **Late-binding views.** Views created `WITH NO SCHEMA BINDING` do not check their underlying objects until query time, and a view over an external (Spectrum) table must be created this way. Resolve their dependencies during assessment.
+> - **Case-sensitive identifiers.** With `enable_case_sensitive_identifier` set to `true`, Redshift preserves the case of double-quoted names. Lakehouse Federation cannot federate Redshift tables with case-sensitive identifiers, so unload those tables instead. Databricks identifiers are case-insensitive, so rename objects whose names differ only by case before you migrate.
 > - **Stored procedures.** Redshift procedures use PL/pgSQL syntax. BladeBridge converts them to Databricks SQL scripting; complex ones are candidates for Switch.
-> - **Concurrency.** Redshift workload management queues map to separate [[SQL Warehouses|SQL warehouses]] per workload, each with its own scaling limits.
+> - **Concurrency.** Redshift workload management (WLM) separates workloads into queues. Serverless [[SQL Warehouses|SQL warehouses]] manage queueing with Intelligent Workload Management. Where workloads need different limits, give each its own warehouse with its own maximum cluster count and statement timeout.
 
 ## Common misconceptions
 
@@ -272,4 +272,9 @@ What replaced the old Spark Redshift connector?::Lakehouse Federation.
 > - [Lakebridge Profiler guide (Databricks Labs, GitHub)](https://github.com/databrickslabs/lakebridge/blob/main/docs/lakebridge/docs/assessment/profiler/index.mdx)
 > - [Lakebridge Reconcile guide (Databricks Labs, GitHub)](https://github.com/databrickslabs/lakebridge/blob/main/docs/lakebridge/docs/reconcile/index.mdx)
 > - [Convert SQL with the agentic code converter (AWS)](https://docs.databricks.com/aws/en/migration/agentic-code-converter)
-> - **Unconfirmed:** the late-binding view, `enable_case_sensitive_identifier`, and workload-management notes in Advanced topics, and the Redshift port and host format in the example, were not re-checked against the Redshift docs in this pass.
+> - [SQL warehouse sizing, scaling, and queuing behavior (AWS)](https://docs.databricks.com/aws/en/compute/sql-warehouse/warehouse-behavior)
+> - [Identifiers (AWS)](https://docs.databricks.com/aws/en/sql/language-manual/sql-ref-identifiers)
+> - [What is query federation? Limitations (AWS)](https://docs.databricks.com/aws/en/query-federation/database-federation)
+> - [CREATE VIEW (Amazon Redshift docs)](https://docs.aws.amazon.com/redshift/latest/dg/r_CREATE_VIEW.html)
+> - [enable_case_sensitive_identifier (Amazon Redshift docs)](https://docs.aws.amazon.com/redshift/latest/dg/r_enable_case_sensitive_identifier.html)
+> - [Workload management (Amazon Redshift docs)](https://docs.aws.amazon.com/redshift/latest/dg/cm-c-implementing-workload-management.html)

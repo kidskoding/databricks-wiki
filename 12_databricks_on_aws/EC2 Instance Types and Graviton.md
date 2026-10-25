@@ -164,7 +164,7 @@ databricks clusters list-node-types --output json | jq -r '.node_types[].node_ty
 
 > [!deepdive]- Advanced topics (301–401)
 > - **Compliance security profile.** In June 2026, Databricks announced Graviton support with the compliance security profile for all compliance standards, in commercial regions and in GovCloud. Choose specific Graviton types that support encryption in transit, such as `m7gd` or `c7gd`, because `mgd-fleet` and `cgd-fleet` are not available with the profile.
-> - **GovCloud conflict.** The compute reference still lists GovCloud among Graviton limitations, while the June 2026 GovCloud release notes say Graviton is supported. Fleet instances are not available in GovCloud. Check the current pages.
+> - **GovCloud.** Since June 5, 2026, Graviton instance types are supported with the compliance security profile in Databricks on AWS GovCloud, and the GovCloud supported-instance list includes Graviton families such as `M7g`, `C7gd`, and `R8gd`. The Graviton limitations list in the compute configuration reference still names GovCloud; the docs conflict on this point. Fleet instances are not available in GovCloud.
 > - **Pools.** Instance pools keep idle instances warm to cut start time. Changing a pool's `spot_bid_price_percent` affects new clusters only.
 > - **Zone capacity.** With `zone_id: auto`, Databricks retries in another zone on insufficient-capacity errors. A cluster's nodes all run in one zone.
 > - **DBU rate varies by type.** Larger instances consume more DBUs per hour. Compare DBU and EC2 cost together, not separately.
@@ -205,6 +205,7 @@ Which ML runtime first supports Graviton?::Databricks Runtime 15.4 LTS ML.
 > - [September 2022 release notes (AWS)](https://docs.databricks.com/aws/en/release-notes/product/2022/september)
 > - [June 2026 release notes (AWS)](https://docs.databricks.com/aws/en/release-notes/product/2026/june)
 > - [Databricks on AWS GovCloud release notes 2026](https://docs.databricks.com/aws/en/release-notes/gov-cloud/2026)
+> - [Configure enhanced security and compliance settings: supported instance types (AWS)](https://docs.databricks.com/aws/en/security/privacy/enhanced-security-compliance#supported-instance-types)
 > - [Compute policy reference (AWS)](https://docs.databricks.com/aws/en/admin/clusters/policy-definition)
 > - [Instance Pool API](https://docs.databricks.com/api/instance-pools/v2/instance-pool)
 > - [GPU-enabled compute (AWS)](https://docs.databricks.com/aws/en/compute/gpu)

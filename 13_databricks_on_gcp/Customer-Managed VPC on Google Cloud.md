@@ -70,7 +70,7 @@ A Databricks-managed VPC is quick to start with, but you cannot pick its ranges,
 |---|---|
 | **Subnet** | One subnet for the workspace, in the **same region** as the workspace |
 | **IP capacity** | Two IP addresses per node. The Account API does not size the range for you |
-| **Subnet size** | Docs differ: the configuration page lists a valid range of `/29` to `/9`, the sizing page's table runs from `/25` to `/19`, and the deployment guide says at least `/26`. Check the current pages |
+| **Subnet size** | The valid range is `/29` to `/9`. Size for peak concurrent nodes: the sizing guide maps `/25` to 60 nodes, `/23` to 250, and `/19` to 4,000. The deployment guide recommends at least `/26`, and `/23` or larger for most use cases |
 | **Firewall** | An ingress rule that allows traffic within the workspace subnet, with the subnet's primary CIDR as the source |
 | **Egress** | Without PSC, the subnet needs outbound internet access, typically through Cloud NAT |
 | **Shared VPC** | Supported. The host project holds the VPC and subnet; the service project holds workspace compute and storage |

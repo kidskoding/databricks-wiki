@@ -140,7 +140,8 @@ WHERE o.n IS DISTINCT FROM n.n OR o.total IS DISTINCT FROM n.total;
 ```
 
 ```sql
--- Rows present in one system but not the other
+-- Rows in the legacy table that are missing from the new one.
+-- Swap the two queries to find rows that exist only in the new table.
 SELECT * FROM legacy_sales.dbo.customers
 EXCEPT
 SELECT * FROM analytics.crm.customers;
@@ -243,4 +244,5 @@ Why compare closed periods instead of current data?::Both systems are live, so c
 > - [Query external databases using the remote_query function (GCP)](https://docs.databricks.com/gcp/en/query-federation/remote-queries)
 > - [Migrate your data warehouse to the Databricks lakehouse (Azure Databricks)](https://learn.microsoft.com/en-us/azure/databricks/migration/warehouse-to-lakehouse)
 > - [Collation (AWS)](https://docs.databricks.com/aws/en/sql/language-manual/sql-ref-collation)
-> - **Unconfirmed:** `IS DISTINCT FROM` and `EXCEPT` across a foreign table and a Delta table were written from general Databricks SQL knowledge and not re-checked in this pass.
+> - [is distinct operator (AWS)](https://docs.databricks.com/aws/en/sql/language-manual/functions/isdistinct)
+> - [Set operators: UNION, INTERSECT, EXCEPT (AWS)](https://docs.databricks.com/aws/en/sql/language-manual/sql-ref-syntax-qry-select-setops)

@@ -143,7 +143,7 @@ results = index.similarity_search(
 )
 ```
 
-Method names follow the AI Search Python SDK example page; check it for your SDK version. From SQL, the same index is queried with the `vector_search()` table function:
+The client and method names match the AI Search Python SDK example. Install the client with `%pip install databricks-ai-search`. From SQL (Databricks Runtime 15.3 and above), query the same index with the `vector_search()` table function, passing every argument by name:
 
 ```sql
 SELECT title, content
@@ -218,6 +218,7 @@ Which Python class is used in the current AI Search SDK?::`AISearchClient` from 
 > - [Databricks AI Search (Azure Databricks)](https://learn.microsoft.com/en-us/azure/databricks/ai-search/ai-search)
 > - [Create AI Search endpoints and indexes (AWS)](https://docs.databricks.com/aws/en/vector-search/create-vector-search)
 > - [Query an AI Search index (AWS)](https://docs.databricks.com/aws/en/vector-search/query-vector-search)
+> - [vector_search function (AWS)](https://docs.databricks.com/aws/en/sql/language-manual/functions/vector_search)
 > - [AI Search Python SDK example usage (AWS)](https://docs.databricks.com/aws/en/ai-search/vector-search-python-sdk-example)
 > - [AI Search performance guide (Azure Databricks)](https://learn.microsoft.com/en-us/azure/databricks/generative-ai/vector-search-best-practices)
 > - [AI Search cost management guide (AWS)](https://docs.databricks.com/aws/en/vector-search/vector-search-cost-management)

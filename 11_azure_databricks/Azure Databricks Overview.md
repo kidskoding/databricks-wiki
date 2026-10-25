@@ -91,7 +91,7 @@ The platform is the same [[The Data Intelligence Platform|Data Intelligence Plat
 
 Two 2026 changes apply to all new deployments:
 
-- **Premium is the only tier.** New workspaces must be created on the Premium tier starting April 1, 2026. Remaining Standard tier workspaces were scheduled for automatic upgrade to Premium on October 1, 2026. Databricks' pricing page states that the Azure Premium tier corresponds to the Enterprise tier on AWS and Google Cloud.
+- **Premium is the only tier.** New workspaces must be created on the Premium tier starting April 1, 2026. Remaining Standard tier workspaces are upgraded automatically to Premium in a phased rollout that starts October 1, 2026. Databricks' pricing page states that the Azure Premium tier corresponds to the Enterprise tier on AWS and Google Cloud.
 - **Serverless workspaces.** A serverless workspace is preconfigured with [[Serverless Compute|serverless compute]] and Databricks-managed default storage. It has no classic compute in your subscription. Microsoft's portal guide recommends it for the simplest setup.
 
 ## How it works
