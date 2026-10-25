@@ -33,9 +33,23 @@ The graph view is a core feature, so links live in frontmatter properties as wel
 
 ## Writing rules
 
-- **Research every note, from official Databricks sources only.** Check facts against `docs.databricks.com/{aws,gcp}/en/...`, `learn.microsoft.com/en-us/azure/databricks/...`, and `databricks.com` (staff blog posts, `databricks.com/glossary`, product and company pages). Use the Databricks glossary and blog for pre-Databricks history too. Do not use or cite third-party blogs, Wikipedia, Medium, forums, or other vendors' sites. If an allowed source cannot confirm a fact, leave the fact out. Databricks renames products often (Delta Live Tables → Lakeflow Declarative Pipelines, Workflows → Lakeflow Jobs, Delta Sharing → OpenSharing in June 2026). Never write product names from memory without checking.
+- **Research every note against trusted primary sources.** In order of preference:
+  1. Official Databricks documentation: `docs.databricks.com/{aws,gcp}/en/...` and `learn.microsoft.com/en-us/azure/databricks/...`, including release notes.
+  2. Other Databricks-published material: `databricks.com` (engineering and product blog posts by Databricks staff, `databricks.com/glossary`, research papers, product and pricing pages).
+  3. Other trusted primary sources: official open-source project docs (`spark.apache.org`, `delta.io`, `iceberg.apache.org`, `mlflow.org`, `kafka.apache.org`, `airflow.apache.org`, `unitycatalog.io`), official cloud provider docs (`learn.microsoft.com`, `docs.aws.amazon.com`, `cloud.google.com`), other vendors' own docs when describing their product, and peer-reviewed papers (CIDR, VLDB, OSDI, NSDI, SIGMOD).
+
+  Do not use or cite content farms, SEO blogs, Medium posts, Wikipedia, forums, or AI-generated summaries. If a trusted source cannot confirm a fact, leave it out or mark it unconfirmed. Databricks renames products often (Delta Live Tables → Lakeflow Spark Declarative Pipelines, Workflows → Lakeflow Jobs, Databricks Asset Bundles → Declarative Automation Bundles, Delta Sharing → OpenSharing). Never write product names from memory without checking.
 - List sources in the collapsed `[!sources]` callout and set `last_verified` in frontmatter to the date you checked.
-- **Plain English first.** The `[!eli5]` block uses no jargon. Every jargon word elsewhere links to its note or glossary entry.
+- **Write like developer documentation.** The notes read like professional reference docs (the style of the Databricks, Stripe, or MDN docs), not like a blog or a chat:
+  - Neutral, precise, declarative. Present tense, active voice, second person for instructions ("Run `OPTIMIZE`...").
+  - Short paragraphs, one idea each. Lead with the definition, then the details.
+  - No hype, rhetorical questions, jokes, exclamation marks, filler ("simply", "just", "magic", "game-changer"), or narrative scene-setting.
+  - Use the exact product names, UI labels, SQL keywords, and API names. Put code identifiers in backticks.
+  - Prefer tables for reference data (options, limits, comparisons) and numbered lists for procedures.
+  - Code samples are minimal, runnable, labeled with a language, and commented only where needed.
+  - State status explicitly: Public Preview, GA, deprecated, with the date checked.
+- **Plain language first.** The `[!eli5]` Summary block states what the thing is and why it matters in two or three sentences without jargon. It is still written professionally. Every jargon word elsewhere links to its note or glossary entry.
+- Analogies are optional. Use one only when it genuinely clarifies the idea, and keep it brief and factual.
 - Give per-cloud differences in the `[!azure]`, `[!aws]`, `[!gcp]` callouts. Skip a cloud only if nothing differs, and say so.
 - Keep flashcards (`Question::Answer`) in the `## Recall` section, outside callouts, so the Spaced Repetition plugin parses them.
 - Escape pipes in wiki links inside tables: `[[Note\|alias]]`.
@@ -46,6 +60,7 @@ The graph view is a core feature, so links live in frontmatter properties as wel
 - Never state prices. Explain the meter and link to the official pricing page.
 - Frontmatter `level` is the folder number, `section` is the human-readable section name (for example `Unity Catalog & Governance`). The dashboard groups by these.
 - `Unity Catalog.md` in `07_unity_catalog_and_governance/` is the reference example for tone, depth, and format.
+- Standard concept-note headings, in order: `Background`, `Overview`, `How it works`, `Small-business considerations` (the `[!smallbiz]` callout), `Cloud differences`, `Advanced topics`, `Common misconceptions`, `Recall`, `Next steps`.
 
 ## Styling
 

@@ -50,34 +50,37 @@ tags:
 
 Mastery: `INPUT[inlineSelect(option(new), option(learning), option(solid)):mastery]`
 
-> [!story] Previously
-> By the end of [[Chapter 06 - The Databricks Platform|chapter 06]] we had a platform with plenty of power: workspaces, compute, and notebooks on top of [[Delta Lake]] tables. But power is not order. Each workspace kept its own list of tables in an old [[Hive Metastore]], permissions were set workspace by workspace, and nobody could answer "who can see the customer table, and where did this revenue number come from?" Without rules, a lake turns back into a [[Data Swamps|data swamp]].
+> [!story] Context
+> [[Chapter 06 - The Databricks Platform|Chapter 06]] introduced workspaces, compute, and [[Delta Lake]] tables. Before Unity Catalog, each workspace kept its own table list in a legacy [[Hive Metastore]] and managed permissions separately, so there was no single answer to who can access a table or where a value came from. Without central governance, a data lake tends toward a [[Data Swamps|data swamp]].
 
-> [!eli5] In one breath
-> Unity Catalog is the front desk and the security guard for all of a company's data. It keeps one list of everything that exists, decides who is allowed to open what, and writes down every visit. It works the same way in every corner of the company.
+> [!eli5] Summary
+> Unity Catalog keeps one list of all of a company's data and AI assets, controls who can use each one, and records how they are used. The same rules apply in every workspace and every tool.
 
-> [!analogy] Analogy: a public library system
-> - **The library card catalog** is the list of every table, file, and model, so people can find things.
-> - **The branch libraries** are your workspaces. Each one is a different building, but they share one catalog.
-> - **Your library card** is your identity. The type of card decides which rooms you may enter (the [[Privileges and Grants|grants]]).
-> - **The restricted archive** is a table protected with [[Row Filters and Column Masks|row filters and column masks]]. You get in, but you only see the pages you are cleared for.
-> - **The checkout log** is the [[Audit Logs|audit log]], and the note inside each book saying which older books it was copied from is [[Data Lineage|lineage]].
+> [!analogy]- Analogy: a library system
+> | Library | Unity Catalog |
+> |---|---|
+> | Shared card catalog | One inventory of tables, files, and models |
+> | Branch libraries | Workspaces attached to the same [[Metastore]] |
+> | Library card and its access level | Identity plus [[Privileges and Grants\|grants]] |
+> | Restricted archive with redacted pages | [[Row Filters and Column Masks]] |
+> | Checkout log | [[Audit Logs]] |
+> | Citation trail inside each book | [[Data Lineage]] |
 
-## Why it exists
+## Background
 
-Before Unity Catalog, governance on Databricks lived **inside each workspace**:
+Before Unity Catalog, governance on Databricks was scoped to each workspace:
 
 - Each workspace had its own [[Hive Metastore]]. Two workspaces meant two lists of tables, two sets of permissions, and lots of copying back and forth.
 - Access to the actual files in cloud storage was granted to **clusters**, through credentials attached to the compute. Anyone on a cluster that could reach a bucket could read everything in it.
 - There was no built-in answer to "where did this column come from?" or "who queried the salary table last week?" Teams bolted on separate catalog, lineage, and audit tools.
 
-For a regulated business (healthcare, finance, anything with [[PII]]) this was a real risk. For a small business it was mostly confusion: three copies of "customers", and no one sure which one is right.
+For regulated organizations handling [[PII]], this created compliance risk. For smaller teams it produced duplicate, inconsistent copies of the same tables.
 
-Unity Catalog moved governance **up to the account level**. You define it once and it applies in every workspace, to every kind of asset, through every tool.
+Unity Catalog moves governance to the account level. Policies are defined once and apply across workspaces, asset types, and tools.
 
-## What it actually is
+## Overview
 
-Databricks describes Unity Catalog as a unified and open governance solution for data and AI assets in the lakehouse. In practice it is four jobs in one:
+Databricks describes Unity Catalog as a unified and open governance solution for data and AI assets. It provides four capabilities:
 
 | Job | What it means | Where to go deeper |
 |---|---|---|
@@ -86,10 +89,10 @@ Databricks describes Unity Catalog as a unified and open governance solution for
 | **Observability** | Automatic lineage, audit logs, and operational data as tables | [[Data Lineage]], [[Audit Logs]], [[System Tables]] |
 | **Sharing and reach** | Sharing data outward, and governing data that lives in other systems | [[OpenSharing]], [[Clean Rooms]], [[Lakehouse Federation]] |
 
-Two more facts matter:
+Additional facts:
 
-- **It is the default.** Databricks began automatically enabling new workspaces for Unity Catalog in November 2023. Those workspaces come with a pre-provisioned *workspace catalog* that is set as the default catalog. If you sign up today, you are already using it.
-- **It is also open source.** Databricks open-sourced Unity Catalog in June 2024 (Apache 2.0), and the project is hosted by the [[Linux Foundation]]'s LF AI & Data foundation. The open-source server speaks the Apache Iceberg REST catalog API, so other engines can read through it.
+- **Enabled by default.** Databricks began automatically enabling new workspaces for Unity Catalog in November 2023 (rolled out gradually). These workspaces include a pre-provisioned *workspace catalog* set as the default catalog.
+- **Open source.** Databricks open-sourced Unity Catalog in June 2024 (Apache 2.0), and the project is hosted by the [[Linux Foundation]]'s LF AI & Data foundation. The open-source server speaks the Apache Iceberg REST catalog API, so other engines can read through it.
 
 ## How it works
 
@@ -112,7 +115,7 @@ flowchart TD
   SCH --> M[Models]
 ```
 
-Three ideas carry most of the weight:
+Three rules define the model:
 
 1. **Identities live at the account.** Users, groups, and service principals are defined once in the account (usually synced from your identity provider) and reused in every workspace. See [[Users Groups and Service Principals]].
 2. **Privileges flow downward.** A grant on a catalog applies to every current and future schema and table inside it. To touch anything, you also need `USE CATALOG` and `USE SCHEMA` on the containers above it.
@@ -134,17 +137,19 @@ GRANT SELECT      ON SCHEMA  sales.orders TO `analysts`;  -- every table, now an
 SHOW GRANTS ON SCHEMA sales.orders;
 ```
 
-> [!smallbiz] For a small business
-> You get Unity Catalog without asking, and you should lean into it from day one. Even a three-person company benefits from three habits:
+## Small-business considerations
+
+> [!smallbiz] Small-business considerations
+> Unity Catalog is enabled by default on new workspaces. Adopt three practices from the start, regardless of team size:
 > 1. **A few catalogs, named by purpose**, such as `raw`, `analytics`, and `sandbox`, or `dev` and `prod`.
 > 2. **Grants to groups only** (`analysts`, `engineers`), so a new hire is one group membership away from the right access.
-> 3. **Lineage as documentation.** When the accountant asks where a number came from, open the table's lineage tab instead of digging through notebooks.
+> 3. **Use lineage as documentation.** To trace where a reported value came from, open the table's **Lineage** tab in Catalog Explorer.
 >
-> You can skip ABAC, clean rooms, and multi-region metastores until you have a reason to need them. Unity Catalog itself has no separate price. You pay for the compute that queries the data, not for the governance.
+> Defer ABAC, clean rooms, and multi-region metastores until a requirement calls for them. Unity Catalog has no separate charge; costs come from the compute that queries the data.
 
-## On each cloud
+## Cloud differences
 
-The model (metastore → catalog → schema → object) and the SQL are identical everywhere. What differs is **how Unity Catalog gets permission to reach your cloud storage**:
+The object model and SQL are identical on all clouds. The difference is how Unity Catalog authenticates to cloud storage:
 
 > [!azure]- Azure Databricks
 > - Storage access uses an **Access Connector for Azure Databricks**, an Azure resource with a [[Managed Identity|managed identity]]. You give that identity the *Storage Blob Data Contributor* role on your ADLS Gen2 account, then create a storage credential from the connector's resource ID. See [[ADLS and Access Connectors]].
@@ -161,9 +166,9 @@ The model (metastore → catalog → schema → object) and the SQL are identica
 > - When you create a storage credential, **Databricks generates a Google service account** for it. You then grant that account roles on the bucket (the docs list *Storage Legacy Bucket Reader* and *Storage Object Admin*). See [[GCS Access via Unity Catalog]].
 > - Paths look like `gs://bucket/path`.
 
-## Going deeper
+## Advanced topics
 
-> [!deepdive]- Expert notes (301–401)
+> [!deepdive]- Advanced topics (301–401)
 > - **One metastore per region.** An account has one metastore for each cloud region it operates in. Workspaces in that region attach to it, and metastores can auto-assign new workspaces in their region. Cross-region access to data happens through sharing (see [[OpenSharing]]), not by attaching a workspace to a far-away metastore.
 > - **Workspace-catalog binding.** By default a catalog is visible from every workspace on its metastore. Binding restricts a catalog to named workspaces (for example, `prod` data only from the prod workspace). Auto-provisioned workspace catalogs start out bound to their own workspace.
 > - **Managed storage hierarchy.** Managed tables and volumes can store their files at the metastore, catalog, or schema level. Setting managed storage per catalog is a common way to keep business units' data in separate buckets or accounts. See [[Managed vs External Tables]].
@@ -172,16 +177,16 @@ The model (metastore → catalog → schema → object) and the SQL are identica
 > - **Business semantics.** [[Metric Views]] define KPIs once in the catalog. The 2026 additions (glossary terms, domains) push Unity Catalog toward a semantic layer that BI tools and AI agents can read.
 > - **Migration.** Old workspaces may still have tables in the legacy `hive_metastore` catalog. Upgrading them is its own project; see [[Hive Metastore Migration to Unity Catalog]].
 
-## Common confusions
+## Common misconceptions
 
 > [!confusion] "Unity Catalog" is not "a catalog"
-> **Unity Catalog** is the whole governance system. **A catalog** (lowercase) is one top-level container inside it, like `sales` or `prod`. You can have many catalogs, but there is only one Unity Catalog.
+> **Unity Catalog** is the governance system. **A catalog** is one top-level container within it, such as `sales` or `prod`. A metastore can contain many catalogs.
 
 > [!confusion] A Unity Catalog "schema" is not a table's schema
-> In `catalog.schema.table`, a *schema* is a folder-like container (also called a database). A table's *schema* is its list of columns and types. Same word, two meanings. See [[Schema]].
+> In `catalog.schema.table`, a *schema* is a container (also called a database). A table's *schema* is its set of columns and data types. See [[Schema]].
 
 > [!confusion] The metastore is not where your data lives
-> The [[Metastore]] stores **metadata**: names, permissions, lineage. Your actual rows sit as files in your own cloud storage (or in Databricks-managed default storage for serverless-first setups).
+> The [[Metastore]] stores [[Metadata|metadata]]: names, permissions, and lineage. Table data is stored as files in cloud object storage, either your own or Databricks-managed default storage.
 
 ## Recall
 
@@ -196,14 +201,14 @@ On AWS, what does a Unity Catalog storage credential hold?::An IAM role that Uni
 Who hosts open-source Unity Catalog?::LF AI & Data, a foundation of the Linux Foundation.
 What did Unity Catalog replace?::Per-workspace Hive metastores, plus cluster-level storage credentials such as instance profiles.
 
-## Where next
+## Next steps
 
 > [!path] Learning path
 > **Needs first:** [[Accounts and Workspaces]], [[Delta Lake]]
 > **Unlocks next:** [[Metastore]], [[Privileges and Grants]], [[Data Lineage]]
 
-> [!nextup] Up next in the story
-> Unity Catalog's whole hierarchy hangs off one object we have only named so far. What exactly is a [[Metastore]], and why is there one per region?
+> [!nextup] Next
+> [[Metastore]] covers the top-level container of the hierarchy and the one-per-region rule.
 
 > [!sources]- Sources (last verified: 2026-10-25)
 > - [What is Unity Catalog? (Azure Databricks)](https://learn.microsoft.com/en-us/azure/databricks/data-governance/unity-catalog/)

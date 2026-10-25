@@ -26,22 +26,22 @@ tags: [concept, flashcards]
 
 Mastery: `INPUT[inlineSelect(option(new), option(learning), option(solid)):mastery]`
 
-> [!story] Previously
-> 1–3 sentences linking back to the `prev` note. What problem are we carrying forward?
+> [!story] Context
+> One or two sentences connecting this note to the `prev` note: the limitation or requirement that this concept addresses.
 
-> [!eli5] In one breath
-> 2–3 sentences. No jargon at all.
+> [!eli5] Summary
+> Two or three sentences, without jargon: what this is and why it matters.
 
-> [!analogy] Analogy: <everyday thing>
-> Map the everyday thing to the real concept, piece by piece.
+> [!analogy]- Analogy (optional)
+> Include only when it clarifies. Map each part of the analogy to the real component.
 
-## Why it exists
+## Background
 
-What was painful before this existed? What problem does it solve?
+The problem this addresses and what existed before it.
 
-## What it actually is
+## Overview
 
-The real definition, still in plain words. Quote official docs where exact wording matters.
+The definition and its key capabilities. Quote official docs where exact wording matters. Use a table for capabilities or options.
 
 ## How it works
 
@@ -50,15 +50,17 @@ flowchart LR
   A[Input] --> B[This concept] --> C[Result]
 ```
 
-Explain the moving parts. Show real code or SQL where it helps (short, runnable, commented).
+Describe the components and the flow between them. Include minimal, runnable code or SQL.
 
-> [!smallbiz] For a small business
-> What this means for a 5–50 person company with one data person. When to care, when to skip, what it costs.
+## Small-business considerations
+
+> [!smallbiz] Small-business considerations
+> Guidance for a 5–50 person company with one data person: when to adopt, when to defer, and the cost drivers.
 
 > [!bridge]- In Databricks today
 > Only for pre-Databricks tools (Hadoop, Kafka, Airflow, dbt...). Where does this job live in Databricks now, and does the old tool still plug in?
 
-## On each cloud
+## Cloud differences
 
 > [!azure]- Azure Databricks
 > Azure-specific names, services, and setup.
@@ -69,15 +71,15 @@ Explain the moving parts. Show real code or SQL where it helps (short, runnable,
 > [!gcp]- Databricks on Google Cloud
 > GCP-specific names, services, and setup.
 
-## Going deeper
+## Advanced topics
 
-> [!deepdive]- Expert notes (301–401)
-> Internals, limits, edge cases, performance and design trade-offs. The things an expert knows that a beginner does not need yet.
+> [!deepdive]- Advanced topics (301–401)
+> Internals, limits, edge cases, performance tuning, and design trade-offs.
 
-## Common confusions
+## Common misconceptions
 
 > [!confusion] "X" is not "Y"
-> The mix-up, and the one sentence that clears it up.
+> The misconception, followed by the correct statement.
 
 ## Recall
 
@@ -85,14 +87,14 @@ Flashcards for the Spaced Repetition plugin. Keep them outside callouts so the p
 
 Question::Answer
 
-## Where next
+## Next steps
 
 > [!path] Learning path
 > **Needs first:** [[ ]]
 > **Unlocks next:** [[ ]]
 
-> [!nextup] Up next in the story
-> One sentence that hands off to the `next` note: what new problem or question does this leave us with?
+> [!nextup] Next
+> One sentence introducing the `next` note and how it builds on this one.
 
 > [!sources]- Sources (last verified: YYYY-MM-DD)
 > - Official doc link
