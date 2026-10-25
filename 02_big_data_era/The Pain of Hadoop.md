@@ -78,16 +78,18 @@ By the mid-2010s, many large organizations operated Hadoop clusters. The limitat
 
 ## Overview
 
+The pain of Hadoop refers to the performance, programming, operational, and cost limitations that organizations hit when running Hadoop clusters in production.
+
 | Problem | Cause | Effect | What replaced it |
 |---|---|---|---|
 | **Slow multi-step jobs** | MapReduce writes intermediate results to disk and HDFS between every job | Pipelines and iterative algorithms take hours | [[Apache Spark]] in-memory execution ([[Chapter 03 - Apache Spark\|chapter 03]]) |
-| **Slow interactive SQL** | Hive queries compile to batch jobs with startup overhead | Minutes per query; poor fit for BI tools | [[Spark SQL]], [[Databricks SQL]], [[Photon]] |
+| **Slow interactive SQL** | Hive queries compile to batch jobs with startup overhead | Minutes per query; poor fit for [[BI Tools\|BI tools]] | [[Spark SQL]], [[Databricks SQL]], [[Photon]] |
 | **Verbose programming model** | Java classes for map, reduce, and driver | Small changes require engineering work | SQL, Python, and DataFrames |
 | **Coupled storage and compute** | Each node holds both disks and CPUs | Adding storage means adding servers; stopping compute makes data unavailable | Cloud [[Object Storage]] plus elastic compute ([[Storage vs Compute]]) |
 | **Peak-sized fixed capacity** | Owned hardware sized for the busiest workload | Idle capacity most of the time | Pay-per-use cloud compute, [[Autoscaling]], [[Serverless Compute]] |
 | **Operational complexity** | Many ecosystem projects with separate versions, configuration, and security | Specialist teams; difficult upgrades | Managed platforms |
-| **Small files and NameNode limits** | NameNode holds all metadata in memory | File-count ceilings; compaction work | Object storage and table formats such as [[Delta Lake]] |
-| **Weak governance** | Permissions split across HDFS, Hive, and vendor tools; no built-in lineage | Inconsistent access control; [[Data Swamps]] | [[Unity Catalog]] |
+| **Small files and NameNode limits** | The NameNode (the HDFS server that tracks every file) holds all [[Metadata\|metadata]] in memory | File-count ceilings; compaction work | Object storage and table formats such as [[Delta Lake]] |
+| **Weak governance** | Permissions split across HDFS, Hive, and vendor tools; no built-in [[Data Lineage\|lineage]] | Inconsistent access control; [[Data Swamps]] | [[Unity Catalog]] |
 | **No reliable table updates** | Files are write-once; Hive transactions arrived late and were Hive-specific | Rewrite-whole-partition patterns; inconsistent reads during writes | [[ACID Transactions]] in Delta Lake |
 
 ## How it works
@@ -109,7 +111,7 @@ flowchart TD
   K --> L["Apache Spark (chapter 03)<br/>Cloud object storage (chapter 04)<br/>Lakehouse (chapter 05)"]
 ```
 
-A representative multi-step pipeline shows the performance problem. A daily job that cleans logs, joins them to customers, aggregates by region, and ranks results runs as four chained MapReduce jobs. Each job reads its input from HDFS, writes intermediate data to local disk during the shuffle, and writes its output back to HDFS with replication. The same pipeline in Spark is one application whose intermediate data stays in memory where possible:
+A representative multi-step pipeline shows the performance problem. A daily job that cleans logs, joins them to customers, aggregates by region, and ranks results runs as four chained MapReduce jobs. Each job reads its input from HDFS, writes intermediate data to local disk during the [[Shuffles|shuffle]] (the step that moves data between machines), and writes its output back to HDFS with replication. The same pipeline in Spark is one application whose intermediate data stays in memory where possible:
 
 ```python
 from pyspark.sql import functions as F
@@ -127,7 +129,7 @@ customers = spark.read.table("main.crm.customers")
 ## Small-business considerations
 
 > [!smallbiz] Small-business considerations
-> These problems explain why a small company should not adopt an on-premises big data stack. The current alternative removes the main cost drivers:
+> These problems explain why a small company should not adopt an on-premises (company-owned hardware) [[The Three Vs of Big Data|big data]] stack. The current alternative removes the main cost drivers:
 > - **No idle hardware.** Compute starts for a job and stops afterward.
 > - **No component integration.** The platform provider maintains compatible runtime versions.
 > - **No separate SQL, storage, and governance products.** One platform covers them.

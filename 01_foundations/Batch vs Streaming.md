@@ -73,7 +73,7 @@ Mastery: `INPUT[inlineSelect(option(new), option(learning), option(solid)):maste
 
 ## Background
 
-Early data processing was batch by necessity: jobs ran overnight on mainframes, and reports were ready the next morning. Nightly batch loads into a [[Data Warehouses|data warehouse]] remain the most common pattern in analytics.
+Early data processing was batch by necessity: jobs ran overnight on mainframes (large central computers), and reports were ready the next morning. Nightly batch loads into a [[Data Warehouses|data warehouse]] remain the most common pattern in analytics.
 
 Some decisions cannot wait for the next morning:
 
@@ -86,13 +86,15 @@ These needs led to streaming systems that process [[Event|events]] continuously,
 
 ## Overview
 
+Batch processing handles a bounded set of data in one run on a schedule, while streaming processes an unbounded flow of records continuously as they arrive.
+
 | | Batch | Streaming |
 |---|---|---|
 | **Processes** | A bounded set of data: yesterday's files, last hour's rows | An unbounded flow of records |
 | **Runs** | On a schedule or on demand, then stops | Continuously, or in frequent small increments |
 | **[[Latency]]** | Minutes to hours | Seconds to sub-second |
 | **Cost profile** | Compute runs only during the job | Compute runs as long as the stream runs, unless triggered incrementally |
-| **Complexity** | Lower: rerun the job to fix an error | Higher: late and out-of-order data, state, checkpoints |
+| **Complexity** | Lower: rerun the job to fix an error | Higher: late and out-of-order data, state (running results kept between records), [[Checkpoint\|checkpoints]] |
 | **Typical use** | Daily sales reports, monthly finance, model training | Fraud checks, live dashboards, alerts, operational sync |
 | **Typical sources** | Files, database extracts, API pulls | Message queues, event logs, [[Change Data Capture\|CDC]] feeds |
 

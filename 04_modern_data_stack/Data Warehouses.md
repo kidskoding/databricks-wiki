@@ -71,11 +71,11 @@ The data warehouse addresses both problems. It is a **separate database, built f
 
 ## Overview
 
-A data warehouse is a database with four defining habits:
+A data warehouse is a separate database that collects data from a company's operational systems and organizes it for reporting and analysis. It has four defining habits:
 
 | Habit | What it means in practice |
 |---|---|
-| **Schema-on-write** | Data must fit the table's columns and types *before* it is loaded. Bad rows are rejected at the door. |
+| **[[Schema\|Schema]]-on-write** | Data must fit the table's columns and types *before* it is loaded. Bad rows are rejected at the door. |
 | **Built for reads** | Storage, indexes, and query engine are tuned for scanning and [[Aggregation\|aggregating]] many rows, not updating one. Modern warehouses use [[Columnar Storage\|columnar storage]]. |
 | **Integrated history** | Data from many source systems is merged into one model and kept for years, so you can compare this quarter with three years ago. |
 | **SQL for everyone** | Analysts and [[BI Tools]] talk to it in standard [[SQL]] over [[JDBC and ODBC]]. |
@@ -153,7 +153,7 @@ The warehouse runs this efficiently because it reads only the four columns the q
 > - **MPP.** Warehouses from Teradata to Redshift are *massively parallel processing* systems: shared-nothing nodes, each owning a slice of every table, joined by a fast network. Choosing how rows are distributed across nodes (distribution keys) was the central tuning skill, because a bad choice forces a [[Shuffles|shuffle]] on every join.
 > - **Coupled storage and compute.** In classic MPP, data lives on the compute nodes' disks. Adding storage means adding compute, and idle nodes still cost money. Snowflake, BigQuery, and later Redshift RA3 broke this coupling by keeping data in object storage or a managed storage layer. See [[Storage vs Compute]].
 > - **Closed formats.** A warehouse stores data in its own internal format. Only its engine can read it at full speed, which is why machine learning teams had to export data to files. The [[The Lakehouse Paper|lakehouse paper]] calls this out as lock-in and a source of staleness.
-> - **Denormalize for reads.** Warehouses happily repeat data ([[Denormalization]]) to avoid [[Join|joins]] at query time, the opposite of an OLTP design.
+> - **Denormalize for reads.** Warehouses deliberately repeat data ([[Denormalization]]) to avoid [[Join|joins]] at query time, the opposite of an OLTP design.
 
 ## Common misconceptions
 

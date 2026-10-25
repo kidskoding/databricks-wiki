@@ -69,7 +69,7 @@ Mastery: `INPUT[inlineSelect(option(new), option(learning), option(solid)):maste
 
 ## Background
 
-Before spreadsheets, a business "model" (a budget, a price list, a forecast) lived on paper ledgers, and changing one assumption meant recalculating everything by hand. **VisiCalc**[^unverified], released for the Apple II in 1979 by Dan Bricklin and Bob Frankston, made the grid recalculate automatically and drove early adoption of personal computers in small businesses. **Lotus 1-2-3** (January 1983) took over on the IBM PC, adding charts, named ranges, and macros. **Microsoft Excel** arrived in 1985[^unverified], first on the Mac, and eventually became the default. Google Sheets later added real-time collaboration in the browser.
+Before spreadsheets, a business "model" (a budget, a price list, a forecast) lived on paper ledgers, and changing one assumption meant recalculating everything by hand. **VisiCalc**[^unverified], released for the Apple II in 1979 by Dan Bricklin and Bob Frankston, made the grid recalculate automatically and drove early adoption of personal computers in small businesses. **Lotus 1-2-3** (January 1983) took over on the IBM PC, adding charts, named ranges, and macros (recorded or scripted sequences of actions). **Microsoft Excel** arrived in 1985[^unverified], first on the Mac, and eventually became the default. Google Sheets later added real-time collaboration in the browser.
 
 Spreadsheets won because they give one person **instant, visual control** of data with no programmer, no database, and no IT ticket.
 
@@ -88,7 +88,7 @@ Where they break:
 
 | Limit | What happens | Bakery or clinic example |
 |---|---|---|
-| **Size** | Excel caps a sheet at about a million rows[^unverified], and slows well before that | Two years of item-level POS lines no longer fit |
+| **Size** | Excel caps a sheet at about a million rows[^unverified], and slows well before that | Two years of item-level point-of-sale (POS) lines no longer fit |
 | **No enforced types** | A column can mix numbers, text, and blanks | "3", "three", and "3 boxes" in the quantity column |
 | **Copies everywhere** | Files get emailed and edited in parallel | `Sales_FINAL_v3_Sam_edits.xlsx` |
 | **Fragile formulas** | One wrong range or hard-coded number silently breaks totals | A `SUM` that stops at row 500 after rows were added |
@@ -96,7 +96,7 @@ Where they break:
 | **Manual refresh** | Someone has to paste in this week's export | The report is only as fresh as the last person who updated it |
 | **One person's head** | Logic lives in hidden columns and macros | The owner's nephew built it and has moved away |
 
-Spreadsheet errors are a familiar story in finance and research. The problem is not the tool; it is using a personal tool as a shared system.
+Spreadsheet errors are common in finance and research. The cause is usually not the tool itself but its use as a shared system.
 
 ## How it works
 
@@ -128,7 +128,7 @@ The formula and the query express the same idea. The difference is in the surrou
 ## Small-business considerations
 
 > [!smallbiz] Small-business considerations
-> Keep using spreadsheets for what they are good at: quick analysis, models, and small lists. Move the **source data** out of them when you see the signs in [[Signs You Have Outgrown Spreadsheets]]: more than one "master" copy, files too slow to open, numbers that differ between people, or a weekly hour spent pasting exports. Then let the spreadsheet *read* from a governed table instead of *being* the table. See [[Migrating from Excel and Access]].
+> Keep using spreadsheets for what they are good at: quick analysis, models, and small lists. Move the **source data** out of them when you see the signs in [[Signs You Have Outgrown Spreadsheets]]: more than one "master" copy, files too slow to open, numbers that differ between people, or a weekly hour spent pasting exports. Then let the spreadsheet *read* from a governed table ([[Data Governance]]) instead of *being* the table. See [[Migrating from Excel and Access]].
 
 > [!bridge]- In Databricks today
 > - **Reading Excel files:** Databricks has a built-in Excel reader (`read_files` with `format => 'excel'`, or `spark.read.excel`) on Databricks Runtime 17.1 and above. It reads one sheet at a time, returns formulas as their computed values, keeps only the top-left value of merged cells, and can target a sheet or range with `dataAddress`. Excel files can also be ingested from SharePoint. Check the docs for current release status.

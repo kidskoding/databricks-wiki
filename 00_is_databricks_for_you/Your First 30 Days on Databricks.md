@@ -60,16 +60,18 @@ Mastery: `INPUT[inlineSelect(option(new), option(learning), option(solid)):maste
 
 ## Background
 
-Data platform projects in small companies often stall because they attempt to migrate everything at once. A narrow first project, one report and three or fewer sources, delivers a measurable result within a month and establishes the conventions (catalogs, groups, schedules, budgets) that later projects reuse. See [[Proof of Concept]] and [[Migration Strategy Overview]].
+Data platform projects in small companies often stall because they attempt to migrate everything at once. A narrow first project (one report and three or fewer sources) delivers a measurable result within a month and establishes the conventions (catalogs, groups, schedules, budgets) that later projects reuse. See [[Proof of Concept]] and [[Migration Strategy Overview]].
 
 ## Overview
+
+The first 30 days on Databricks are a five-stage plan (a preparation week plus four working weeks) that rebuilds one manual report on the platform and ends with a recorded adoption decision.
 
 | Week | Goal | Exit criteria |
 |---|---|---|
 | 0 (preparation) | Select the target report and cloud | A named report, its sources, its owner, and the hours it currently costs per week |
 | 1 | Workspace, access, and cost controls | Groups, catalogs, and a budget alert exist; the first file is queryable |
-| 2 | Data ingestion | All sources for the report land in bronze and silver tables on a schedule |
-| 3 | Gold tables and dashboard | A dashboard and a Genie Agent answer the report's questions |
+| 2 | Data ingestion | All sources for the report land in [[Medallion Architecture\|bronze and silver tables]] on a schedule |
+| 3 | Gold tables and dashboard | A dashboard and a [[Genie Agents\|Genie Agent]] answer the report's questions |
 | 4 | Quality, cost, and decision | Quality checks pass, the new report matches the old one, measured cost is known, and a go or no-go decision is recorded |
 
 ## How it works
@@ -130,20 +132,20 @@ flowchart LR
    ```
 
 3. Build silver tables that clean types, remove duplicates, and standardize keys, following the [[Medallion Architecture]]. For declarative pipelines, see [[Lakeflow Spark Declarative Pipelines]].
-4. Schedule the steps as one [[Lakeflow Jobs|job]] on serverless compute. Use standard mode if a start-up delay of a few minutes is acceptable.
+4. Schedule the steps as one [[Lakeflow Jobs|job]] on [[Serverless Compute|serverless compute]]. Use standard mode if a start-up delay of a few minutes is acceptable.
 5. Keep code in a [[Git Folders and Workspace Files|Git folder]].
 
 ### Week 3: Gold tables and dashboard
 
-1. Build gold tables at the grain the report needs, for example one row per location per day (see [[Data Modeling Basics]] and [[Star Schema]]).
+1. Build gold tables at the grain (level of detail) the report needs, for example one row per location per day (see [[Data Modeling Basics]] and [[Star Schema]]).
 2. Define key measures once as [[Metric Views|metric views]] so every consumer uses the same definitions.
 3. Build an [[AI-BI Dashboards|AI/BI dashboard]] that reproduces the report.
-4. Create a [[Genie Agents]] Agent on the gold tables, with sample questions and business rules.
+4. Create a [[Genie Agents|Genie Agent]] on the gold tables, with sample questions and business rules.
 5. Share the dashboard with the `viewers` group, who open it in [[Genie One|Genie One]]. If the business uses Power BI, connect it instead (see [[Connecting Power BI]]).
 
 ### Week 4: Quality, cost, and decision
 
-1. Add data-quality checks ([[Expectations and Data Quality]]) for row counts, nulls in keys, and value ranges.
+1. Add data-quality checks ([[Expectations and Data Quality]]) for row counts, [[Null|nulls]] in keys, and value ranges.
 2. Compare the new report with the old one for the same periods (see [[Running Old and New in Parallel]]). Resolve every difference.
 3. Add a [[SQL Alerts|SQL alert]] for the most important threshold, such as daily revenue below target.
 4. Read measured usage from `system.billing.usage` and update [[Estimating Costs for a Small Business|the cost estimate]].

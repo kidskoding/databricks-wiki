@@ -55,7 +55,7 @@ tags:
 Mastery: `INPUT[inlineSelect(option(new), option(learning), option(solid)):mastery]`
 
 > [!story] Context
-> The previous notes in this chapter describe two kinds of systems: [[Data Lakes|data lakes]] for raw files, data science, and machine learning, and [[Data Warehouses|data warehouses]] for SQL and [[BI Tools|BI]]. Most organizations ran both, connected by ETL pipelines. This note describes the costs of that arrangement.
+> The previous notes in this chapter describe two kinds of systems: [[Data Lakes|data lakes]] for raw files, data science, and machine learning, and [[Data Warehouses|data warehouses]] for SQL and [[BI Tools|BI]]. Most organizations ran both, connected by [[ETL vs ELT|ETL]] pipelines. This note describes the costs of that arrangement.
 
 > [!eli5] Summary
 > Many companies kept two separate copies of their data: a cheap, messy store for raw files and a tidy, expensive one for reports. Keeping them in sync costs money and effort, the reports often lag behind, and the two copies can disagree.
@@ -77,6 +77,8 @@ Because neither covered every need, the common design was a **two-tier architect
 
 ## Overview
 
+The two-tier architecture problem is the cost, delay, and inconsistency that come from keeping data in both a data lake and a separate data warehouse and copying it between them.
+
 The lakehouse paper groups the problems of the two-tier design into five areas. In plain terms:
 
 | Problem | What happens in practice |
@@ -87,7 +89,7 @@ The lakehouse paper groups the problems of the two-tier design into five areas. 
 | **Total cost of ownership** | Data is stored twice, ETL compute runs continuously, and two platforms need licenses, operations, and staff. See [[Total Cost of Ownership]]. |
 | **Lock-in** | Curated data lives in a vendor's format, which makes changing engines costly. See [[Vendor Lock-In]]. |
 
-There is also a governance cost. Permissions, lineage, and audit are configured separately in each system, so the same data can carry different access rules depending on where it is read.
+There is also a [[Data Governance|governance]] cost. Permissions, [[Data Lineage|lineage]], and audit are configured separately in each system, so the same data can carry different access rules depending on where it is read.
 
 ## How it works
 

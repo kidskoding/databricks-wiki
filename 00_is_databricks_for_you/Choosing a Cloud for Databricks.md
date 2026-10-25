@@ -61,11 +61,13 @@ Mastery: `INPUT[inlineSelect(option(new), option(learning), option(solid)):maste
 
 ## Background
 
-Databricks does not operate its own data centers for customer workloads; it runs on a cloud provider. The provider determines where storage lives, how users sign in, how the bill arrives, and which surrounding services integrate most directly. Changing clouds later requires moving data and reconfiguring access, so the initial choice has lasting effects.
+Databricks does not operate its own data centers for customer workloads. It runs on a cloud provider. The provider determines where storage lives, how users sign in, how the bill arrives, and which surrounding services integrate most directly. Changing clouds later requires moving data and reconfiguring access, so the initial choice has lasting effects.
 
 ## Overview
 
-The platform features covered in this vault (Unity Catalog, Lakeflow, Databricks SQL, AI/BI, Mosaic AI) are available on all three clouds, though regional availability and release timing can differ. The differences are in the surrounding infrastructure:
+Choosing a cloud for Databricks means picking the provider (Microsoft Azure, Amazon Web Services, or Google Cloud) that hosts the workspaces, storage, sign-in, and billing.
+
+The platform features covered in this vault ([[Unity Catalog]], [[Lakeflow]], [[Databricks SQL]], [[AI-BI Dashboards|AI/BI]], Mosaic AI) are available on all three clouds, though regional availability and release timing can differ. The differences are in the surrounding infrastructure:
 
 | Area | Azure Databricks | Databricks on AWS | Databricks on Google Cloud |
 |---|---|---|---|
@@ -109,7 +111,7 @@ flowchart TD
 ## Small-business considerations
 
 > [!smallbiz] Small-business considerations
-> Most small businesses should choose the cloud they already use. A Microsoft 365 and Power BI organization should start with Azure Databricks; an organization with applications on AWS should use Databricks on AWS; an organization using Google Workspace, BigQuery, or GA4 exports should consider Databricks on Google Cloud. With no existing cloud, the fastest start is a serverless workspace through Databricks' express sign-up (on AWS), which requires only an email address. Select a [[Region|region]] close to the business and its data, and keep storage and workspaces in the same region.
+> Most small businesses should choose the cloud they already use. A Microsoft 365 and Power BI organization should start with Azure Databricks; an organization with applications on AWS should use Databricks on AWS; an organization using Google Workspace, BigQuery, or GA4 exports should consider Databricks on Google Cloud. With no existing cloud, the fastest start is a [[Serverless Compute|serverless]] workspace (Databricks runs the computers for you) through Databricks' express sign-up (on AWS), which requires only an email address. Select a [[Region|region]] close to the business and its data, and keep storage and workspaces in the same region.
 
 ## Cloud differences
 

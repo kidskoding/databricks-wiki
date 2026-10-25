@@ -56,11 +56,11 @@ Mastery: `INPUT[inlineSelect(option(new), option(learning), option(solid)):maste
 
 ## Background
 
-Earlier data stacks gave each role a separate tool: analysts used a warehouse, engineers used a [[Apache Hadoop|Hadoop]] cluster, data scientists used local machines, and administrators used separate access tools. Every hand-off required exporting and copying data, and the copies drifted apart. Databricks places all roles on one copy of the data under one permission model ([[Unity Catalog]]), so a dashboard and a forecast read the same table.
+Earlier data stacks gave each role a separate tool: analysts used a [[Data Warehouses|warehouse]], engineers used a [[Apache Hadoop|Hadoop]] [[Cluster|cluster]], data scientists used local machines, and administrators used separate access tools. Every hand-off required exporting and copying data, and the copies drifted apart. Databricks places all roles on one copy of the data under one permission model ([[Unity Catalog]]), so a dashboard and a forecast read the same table.
 
 ## Overview
 
-A role in this note is a job function, not a permission level. Databricks grants permissions to [[Users Groups and Service Principals|users, groups, and service principals]]. The recommended practice is one group per role (for example `analysts`, `engineers`, `admins`), so that onboarding a new person requires only a group membership.
+A role in this note is a job function, such as analyst or data engineer, that determines which Databricks tools a person uses; it is not a permission level. Databricks grants permissions to [[Users Groups and Service Principals|users, groups, and service principals]]. The recommended practice is one group per role (for example `analysts`, `engineers`, `admins`), so that onboarding a new person requires only a group membership.
 
 ### Roles and tools
 
@@ -73,7 +73,7 @@ A role in this note is a job function, not a permission level. Databricks grants
 | AI or application developer | `ai-dev` | [[Agent Bricks]], [[Mosaic AI Agent Framework]], [[AI Search]], [[Databricks Apps]], [[Lakebase]] | Can staff query the policy manual and receive cited answers? | [[Path - AI App Developer]] |
 | Platform or cloud admin | `admin` | [[Account Console]], [[Compute Policies]], [[SCIM Provisioning]], [[Declarative Automation Bundles]] | Who has access to production? Does all compute shut down when idle? | [[Path - Platform Admin]] |
 | Security, privacy, or compliance lead | `security` | [[Unity Catalog]], [[Row Filters and Column Masks]], [[Audit Logs]], [[Data Classification]] | Who accessed patient records last week? | [[Path - Platform Admin]] |
-| Finance or FinOps | `finance` | [[Budgets and Usage Dashboards]], [[System Tables]], [[Tagging for Chargeback]] | What did data workloads cost last month, and which team incurred the cost? | [[Cost Management Basics]] |
+| Finance or FinOps (cloud cost management) | `finance` | [[Budgets and Usage Dashboards]], [[System Tables]], [[Tagging for Chargeback]] | What did data workloads cost last month, and which team incurred the cost? | [[Cost Management Basics]] |
 
 This vault defines a ninth persona, `solo`: the one-person data team at a 10–50 person company who acts as analyst, engineer, admin, and cost owner. See [[Path - One-Person Data Team]].
 
@@ -99,7 +99,7 @@ flowchart LR
 | Role | Recurring task | Project task | Outcome |
 |---|---|---|---|
 | Owner | Reviews the daily sales dashboard in Genie One | Asks Genie to compare this week with the same week last year by store | A staffing or purchasing decision based on current data |
-| Analyst | Maintains the weekly KPI dashboard | Defines "active customer" once in a metric view so all reports agree | Reports that use one consistent definition |
+| Analyst | Maintains the weekly [[KPI]] dashboard | Defines "active customer" once in a metric view so all reports agree | Reports that use one consistent definition |
 | Data engineer | Checks overnight [[Lakeflow Jobs\|job]] runs and data-quality [[Expectations and Data Quality\|expectations]] | Adds a new source, such as a CRM, through Lakeflow Connect | New data lands on schedule in tested [[Medallion Architecture\|silver and gold]] tables |
 | Data scientist | Explores order history in a notebook | Trains a demand forecast, tracks runs in MLflow, and registers the selected model | A forecast table refreshed weekly |
 | AI developer | Indexes internal documents for [[Retrieval-Augmented Generation\|RAG]] | Deploys an internal assistant with Databricks Apps | Grounded answers with source citations |

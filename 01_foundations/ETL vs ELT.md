@@ -80,7 +80,7 @@ Both patterns have the same three steps:
 2. **Transform:** clean, standardize, join, deduplicate, and reshape it, for example into a [[Star Schema|star schema]].
 3. **Load:** write it into the analytical store.
 
-**ETL** performs the transformation before loading. It was the standard for on-premises [[Data Warehouses|data warehouses]], where storage and compute were expensive and fixed in size. A separate ETL server transformed data so that only clean, conformed rows reached the warehouse.
+**ETL** performs the transformation before loading. It was the standard for on-premises [[Data Warehouses|data warehouses]], where storage and compute were expensive and fixed in size. A separate ETL server transformed data so that only clean, consistently formatted rows reached the warehouse.
 
 **ELT** loads raw data first and transforms it inside the analytical platform. It became the common default with cloud platforms because:
 
@@ -91,11 +91,13 @@ Both patterns have the same three steps:
 
 ## Overview
 
+ETL (extract, transform, load) and ELT (extract, load, transform) are the two standard patterns for moving data from source systems into an analytical store; they differ in whether the data is cleaned before or after it is loaded.
+
 | | ETL | ELT |
 |---|---|---|
 | **Order** | Extract → Transform → Load | Extract → Load → Transform |
-| **Where transformation runs** | A separate ETL server or tool | Inside the warehouse or lakehouse |
-| **Raw data kept** | Often not | Yes, in a raw or bronze layer |
+| **Where transformation runs** | A separate ETL server or tool | Inside the warehouse or [[The Lakehouse Idea\|lakehouse]] |
+| **Raw data kept** | Often not | Yes, in a raw or bronze layer ([[Medallion Architecture]]) |
 | **Change a business rule** | Re-extract and re-run | Re-run the transformation on stored raw data |
 | **Typical tools** | Informatica, SSIS, Talend, Azure Data Factory data flows[^unverified] | [[Fivetran and ELT Tools\|Fivetran]] or [[Lakeflow Connect]] for EL, [[dbt]] or [[Lakeflow Spark Declarative Pipelines]] for T |
 | **Main risk** | Rigid; lost raw data | Raw data accumulates without governance ([[Data Swamps\|data swamp]]) |
@@ -149,7 +151,7 @@ In production, the same steps are usually declared in a pipeline that loads only
 
 > [!smallbiz] Small-business considerations
 > - **Use ELT.** Land raw exports and API responses first, then transform with SQL. You can fix a mistake by re-running the transformation instead of asking the vendor for old data.
-> - **Use managed extraction where possible.** A managed connector for your SaaS applications removes most custom extraction code.
+> - **Use managed extraction where possible.** A managed connector for your [[SaaS PaaS and IaaS|SaaS]] applications removes most custom extraction code.
 > - **Start with three layers:** raw (bronze), cleaned (silver), and reporting (gold). Add more only when needed.
 > - **Mask sensitive data early.** A clinic should restrict or mask patient identifiers as soon as data lands, not only in the reporting layer.
 

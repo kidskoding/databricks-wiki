@@ -72,7 +72,7 @@ Mastery: `INPUT[inlineSelect(option(new), option(learning), option(solid)):maste
 
 Codd's 1970 relational model described *what* a query language should do, in mathematical notation that few business users could read. At IBM's San Jose lab[^unverified], **Donald Chamberlin and Raymond Boyce** first designed a language called SQUARE, whose subscript-heavy notation proved hard to use, and then a successor, **SEQUEL** (Structured English Query Language), around 1974, for IBM's System R prototype. A trademark conflict led to the shorter name **SQL**. Many people still pronounce it "sequel".
 
-The design goal was to let people who are not programmers query a database. **ANSI published the first SQL standard in 1986 and ISO followed in 1987**[^unverified] (today ISO/IEC 9075), with major revisions such as SQL-92 and many since. Every major relational database adopted it, and later so did big data engines, cloud warehouses, and Databricks.
+The design goal was to let people who are not programmers query a database. **ANSI published the first SQL standard in 1986 and ISO followed in 1987**[^unverified] (today ISO/IEC 9075), with major revisions such as SQL-92 and many since. Every major relational database adopted it, and later so did [[The Three Vs of Big Data|big data]] engines, cloud [[Data Warehouses|warehouses]], and Databricks.
 
 No product follows the standard exactly, so SQL varies a little between systems ("dialects"). The core is the same everywhere, which makes SQL knowledge portable across systems.
 
@@ -90,7 +90,7 @@ No product follows the standard exactly, so SQL varies a little between systems 
 
 Why it is still the most important data skill:
 
-- **It is everywhere.** Databases, warehouses, Spark, Databricks, BI tools, and even spreadsheet add-ons speak it.
+- **It is everywhere.** Databases, warehouses, [[Apache Spark|Spark]], Databricks, [[BI Tools|BI tools]], and even spreadsheet add-ons speak it.
 - **It describes intent, so engines can improve under you.** The same `SELECT` from 1995 runs on a distributed engine today, and runs faster.
 - **It is readable by the business.** An accountant can check a SQL query's logic in a way they cannot check a 300-line script.
 - **AI tools generate it.** Plain-English assistants like [[Genie Agents]] and [[Genie Code]] write SQL for you, so being able to read and verify SQL matters more, not less.
@@ -139,14 +139,14 @@ FROM bakery.sales.daily_revenue;
 ## Small-business considerations
 
 > [!smallbiz] Small-business considerations
-> If one person on the team learns one technical skill, make it SQL. A week of practice covers `SELECT`, `WHERE`, `GROUP BY`, and `JOIN`, which answer most business questions. It pays off in every tool: your POS's reporting, Power BI, and Databricks all use it. Even if you use plain-English tools like [[Genie Agents]], knowing SQL lets you check that the answer is right.
+> If one person on the team learns one technical skill, make it SQL. A week of practice covers `SELECT`, `WHERE`, `GROUP BY`, and `JOIN`, which answer most business questions. It pays off in every tool: your point-of-sale (POS) system's reporting, Power BI, and Databricks all use it. Even if you use plain-English tools like [[Genie Agents]], knowing SQL lets you check that the answer is right.
 
 > [!bridge]- In Databricks today
 > - **[[Databricks SQL]]** is the SQL experience for analysts: the [[SQL Editor]], [[SQL Warehouses]] as compute, dashboards, and alerts.
 > - **[[Spark SQL]]** is the engine underneath, which runs SQL across many machines. The [[Catalyst Optimizer]] and [[Photon]] make it fast.
 > - **Governance is SQL too:** `GRANT SELECT ON TABLE ... TO analysts` in [[Unity Catalog]]. See [[Privileges and Grants]].
 > - **AI is callable from SQL:** [[AI Functions in SQL]] such as `ai_parse_document` run inside a `SELECT`.
-> - **Business definitions live in SQL:** [[Metric Views]] define KPIs once; [[dbt]] and [[Lakeflow Spark Declarative Pipelines]] build tables from SQL.
+> - **Business definitions live in SQL:** [[Metric Views]] define [[KPI|KPIs]] once; [[dbt]] and [[Lakeflow Spark Declarative Pipelines]] build tables from SQL.
 
 ## Cloud differences
 

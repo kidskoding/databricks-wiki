@@ -83,14 +83,14 @@ A **file format** is a specification for how data is encoded as bytes. Two choic
 - **Text vs. binary.** Text formats (CSV, JSON, XML) store characters you can open in a text editor. Binary formats (Parquet, ORC, Avro) store compact encoded values that need a library to read.
 - **Row vs. column layout.** Row formats keep each record together. Column formats keep each field together. See [[Columnar Storage]].
 
-| Format | Text or binary | Layout | Has types and schema | Typical use |
+| Format | Text or binary | Layout | Has types and [[Schema\|schema]] | Typical use |
 |---|---|---|---|---|
 | CSV | Text | Row | No | Exports, spreadsheets, quick sharing |
 | JSON | Text | Row (nested) | Self-describing labels, weak types | [[APIs]], app logs |
 | XML | Text | Row (nested) | Optional schema | Older enterprise systems, invoices |
 | Avro | Binary | Row | Yes, embedded | Streaming messages, record-by-record writes |
-| [[Apache Parquet\|Parquet]] | Binary | Column | Yes, embedded | Analytics, data lakes |
-| [[Apache ORC\|ORC]] | Binary | Column | Yes, embedded | Analytics in the Hadoop/Hive world |
+| [[Apache Parquet\|Parquet]] | Binary | Column | Yes, embedded | Analytics, [[Data Lakes\|data lakes]] |
+| [[Apache ORC\|ORC]] | Binary | Column | Yes, embedded | Analytics in the [[Apache Hadoop\|Hadoop]]/[[Apache Hive\|Hive]] world |
 | [[Delta Lake]] | Parquet files plus a transaction log | Column | Yes, enforced | Tables in Databricks |
 
 Unstructured files have their own formats too (PDF, JPEG, PNG, MP3, DOCX), and they matter for AI work, but this note focuses on formats for tabular data.
@@ -106,7 +106,7 @@ flowchart LR
 
 Turning in-memory data into bytes is called [[Serialization|serialization]]; reading it back is deserialization. The format decides how much work each step takes.
 
-A small experiment shows the difference. Here a bakery saves the same 1 million order lines two ways using Python and pandas:
+A small experiment shows the difference. Here a bakery saves the same 1 million order lines two ways using Python and [[Pandas|pandas]]:
 
 ```python
 import pandas as pd
@@ -127,7 +127,7 @@ On typical data[^unverified] the Parquet file is several times smaller than the 
 ## Small-business considerations
 
 > [!smallbiz] Small-business considerations
-> - **CSV is fine for getting data in and out.** Your POS and accounting tools export CSV, and that is a perfectly good starting point.
+> - **CSV is fine for getting data in and out.** Your point-of-sale (POS) and accounting tools export CSV, and that is a perfectly good starting point.
 > - **Do not use CSV as your long-term store.** Once data lands in a platform like Databricks, keep it as tables, not as a folder of CSVs. You get types, speed, and history for free.
 > - **Keep the original files anyway.** Saving the raw export before you clean it means you can always redo the cleaning. This is the "bronze" idea in the [[Medallion Architecture]].
 

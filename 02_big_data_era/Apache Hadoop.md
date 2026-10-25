@@ -70,7 +70,7 @@ Mastery: `INPUT[inlineSelect(option(new), option(learning), option(solid)):maste
 
 ## Background
 
-Hadoop originated in Apache Nutch, an open-source web crawler, whose developers implemented a distributed file system and MapReduce based on Google's papers. The storage and processing code was later split out into a separate project named Hadoop, with Yahoo as an early, large-scale investor and user. The specific people, months, and Yahoo milestones of this origin are unconfirmed against the sources used for this vault.
+Hadoop originated in Apache Nutch, an [[Open Source|open-source]] web crawler (a program that downloads web pages), whose developers implemented a distributed file system and MapReduce based on Google's papers. The storage and processing code was later split out into a separate project named Hadoop, with Yahoo as an early, large-scale investor and user. The specific people, months, and Yahoo milestones of this origin are unconfirmed against the sources used for this vault.
 
 Confirmed milestones:
 
@@ -82,9 +82,11 @@ Confirmed milestones:
 | October 15, 2013 | Hadoop 2.2.0, the first generally available 2.x release, ships [[YARN]], HDFS high availability, HDFS federation, and HDFS snapshots | Apache Hadoop release announcement |
 | January 3, 2019 | Cloudera completes its merger with Hortonworks, the two largest Hadoop vendors | Cloudera SEC filing; see [[Cloudera and Hortonworks]] |
 
-For roughly a decade, "Hadoop" and "big data" were used almost interchangeably. Web companies, banks, retailers, and telecommunications providers operated large on-premises Hadoop clusters.
+For roughly a decade, "Hadoop" and "[[The Three Vs of Big Data|big data]]" were used almost interchangeably. Web companies, banks, retailers, and telecommunications providers operated large on-premises (company-owned) Hadoop [[Cluster|clusters]].
 
 ## Overview
+
+Apache Hadoop is an open-source framework that stores and processes very large datasets across a cluster of ordinary computers.
 
 "Hadoop" refers to both the core project and the surrounding ecosystem.
 
@@ -102,7 +104,7 @@ For roughly a decade, "Hadoop" and "big data" were used almost interchangeably. 
 | Project | Function | Databricks equivalent |
 |---|---|---|
 | [[Apache Hive]] | SQL on Hadoop; the [[Hive Metastore]] table catalog | [[Spark SQL]], [[Databricks SQL]]; [[Unity Catalog]] |
-| [[Apache HBase]] | Low-latency key-value storage on HDFS | No direct equivalent; see the HBase note |
+| [[Apache HBase]] | [[Latency\|Low-latency]] key-value storage on HDFS | No direct equivalent; see the HBase note |
 | Apache Pig | Scripting language compiled to MapReduce | [[PySpark]], Spark SQL |
 | Apache Sqoop | Bulk transfer between relational databases and HDFS | [[Lakeflow Connect]], [[Lakehouse Federation]] |
 | Apache Oozie | Workflow scheduling for Hadoop jobs | [[Lakeflow Jobs]] |
@@ -163,7 +165,7 @@ hdfs dfs -cat /output/wordcount/part-r-00000 | head
 > | Oozie | [[Lakeflow Jobs]] |
 > | Sqoop, Flume | [[Lakeflow Connect]], [[Auto Loader]] |
 >
-> The Databricks migration documentation states that most Hive workloads run on Databricks with minimal refactoring, and that ETL written in languages other than SQL, Spark, or Hive may require substantial refactoring. See [[Open Source vs Databricks - Who Replaced What]].
+> The Databricks migration documentation states that most Hive workloads run on Databricks with minimal refactoring, and that [[ETL vs ELT|ETL]] written in languages other than SQL, Spark, or Hive may require substantial refactoring. See [[Open Source vs Databricks - Who Replaced What]].
 
 ## Cloud differences
 

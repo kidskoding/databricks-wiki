@@ -78,7 +78,7 @@ Early business databases in the 1960s[^unverified] stored records in fixed hiera
 
 In June 1970, **E. F. Codd**, a researcher at IBM's San Jose lab, published "A Relational Model of Data for Large Shared Data Banks" in *Communications of the ACM*. His core idea was **data independence**: users should describe *what* data they want, and the system should work out *how* to get it, regardless of how data is physically stored. Data would be organized as **relations** (tables) linked by shared values rather than hidden pointers.
 
-IBM's System R project and the University of California's Ingres project[^unverified] built working prototypes in the 1970s, and [[SQL]] came out of System R. Oracle shipped one of the first commercial relational databases in the late 1970s[^unverified], followed by IBM DB2, Microsoft SQL Server, and the open-source MySQL and PostgreSQL. Most operational business systems, from bank ledgers to clinic booking apps, still run on relational databases.
+IBM's System R project and the University of California's Ingres project[^unverified] built working prototypes in the 1970s, and [[SQL]] came out of System R. Oracle shipped one of the first commercial relational databases in the late 1970s[^unverified], followed by IBM DB2, Microsoft SQL Server, and the [[Open Source|open-source]] MySQL and PostgreSQL. Most operational business systems, from bank ledgers to clinic booking apps, still run on relational databases.
 
 ## Overview
 
@@ -88,7 +88,7 @@ What it adds over a spreadsheet:
 
 | Capability | What it means | Clinic example |
 |---|---|---|
-| **Schema with types** | Every column has a declared type | `start_time` must be a timestamp |
+| **[[Schema\|Schema]] with types** | Every column has a declared type | `start_time` must be a timestamp |
 | **Constraints** | Rules checked on every write: `NOT NULL`, `UNIQUE`, `CHECK`, keys | No appointment without a patient |
 | **Relationships** | Tables link through [[Primary and Foreign Keys\|keys]] | Appointment points to patient P-311 |
 | **Transactions** | Groups of changes succeed or fail together | Booking and deposit saved as one unit |
@@ -100,10 +100,10 @@ The common products today:
 
 | Product | Type | Typical home |
 |---|---|---|
-| **PostgreSQL** | Open source | Startups, SaaS apps, cloud-managed services |
+| **PostgreSQL** | Open source | Startups, [[SaaS PaaS and IaaS\|SaaS]] apps, cloud-managed services |
 | **MySQL / MariaDB** | Open source | Web apps, e-commerce |
 | **Microsoft SQL Server** | Commercial | Windows-centric businesses, line-of-business apps |
-| **Oracle Database** | Commercial | Large enterprises, ERP systems |
+| **Oracle Database** | Commercial | Large enterprises, ERP (enterprise resource planning) systems |
 | **SQLite** | Open source, embedded in a file | Phone apps, small tools |
 
 Each cloud also sells these as managed services, so nobody has to patch the server.
@@ -167,7 +167,7 @@ If the second insert fails, the first is rolled back, so there is never a bookin
 ## Small-business considerations
 
 > [!smallbiz] Small-business considerations
-> POS, booking, and accounting software typically run on a relational database, so you rarely need to operate one yourself. Key points:
+> Point-of-sale (POS), booking, and accounting software typically run on a relational database, so you rarely need to operate one yourself. Key points:
 > - **Your vendor's database is the source of truth** for daily operations. Do not run heavy reports against it during opening hours.
 > - **For analysis, copy the data out** into an analytics platform. That split is explained in [[OLTP vs OLAP]].
 > - **If you build your own app**, use a managed Postgres service rather than a spreadsheet as its back end.

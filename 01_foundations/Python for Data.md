@@ -80,20 +80,22 @@ SQL describes questions about tables. Many data tasks are not questions about ta
 - Training a model to forecast next week's demand.
 - Producing charts and automating a weekly report.
 
-Python, first released in 1991[^unverified], became the most common language for these tasks. Its syntax is readable for non-specialists[^unverified], it runs on every operating system, and it has a large ecosystem of open-source libraries for numerical computing, statistics, machine learning, and data access. The pandas library, started by Wes McKinney in 2008[^unverified], added a table-like data structure, the DataFrame, that made Python practical for analysts used to spreadsheets and SQL.
+Python, first released in 1991[^unverified], became the most common language for these tasks. Its syntax is readable for non-specialists[^unverified], it runs on every operating system, and it has a large ecosystem of [[Open Source|open-source]] libraries for numerical computing, statistics, [[Machine Learning Basics|machine learning]], and data access. The pandas library, started by Wes McKinney in 2008[^unverified], added a table-like data structure, the DataFrame, that made Python practical for analysts used to spreadsheets and SQL.
 
 ## Overview
+
+Python for data is the use of the Python programming language, plus a set of add-on libraries, to load, clean, analyze, and model data.
 
 The core Python data stack:
 
 | Library | Purpose | Example use |
 |---|---|---|
-| **[[Pandas\|pandas]]** | DataFrames: load, clean, join, group, reshape tables in memory | Clean a POS export |
+| **[[Pandas\|pandas]]** | DataFrames: load, clean, join, group, reshape tables in memory | Clean a point-of-sale (POS) export |
 | **NumPy** | Fast numeric arrays, the foundation for most other libraries | Vector math on prices |
 | **matplotlib / plotly** | Charts | Weekly sales chart |
 | **scikit-learn** | Classic machine learning | Predict no-shows |
-| **requests** | HTTP calls to web [[APIs]] | Pull bookings from a SaaS app |
-| **PyArrow** | Apache Arrow columnar memory format, Parquet reading and writing | Fast exchange between pandas and Spark |
+| **requests** | HTTP calls to web [[APIs]] | Pull bookings from a [[SaaS PaaS and IaaS\|SaaS]] app |
+| **PyArrow** | Apache Arrow columnar memory format, [[Apache Parquet\|Parquet]] reading and writing | Fast exchange between pandas and Spark |
 | **[[PySpark]]** | Python API for Apache Spark, for data larger than one machine | Process years of order lines |
 
 Python and SQL are complementary. SQL is usually clearer for filtering, joining, and aggregating tables. Python is better for procedural logic, calling external services, and machine learning. Platforms such as Databricks let you mix both in one [[Notebooks|notebook]].
@@ -156,10 +158,10 @@ daily.write.mode("overwrite").saveAsTable("bakery.gold.daily_sales")
 
 > [!bridge]- In Databricks today
 > - **Notebooks:** Databricks [[Notebooks|notebooks]] run Python, SQL, Scala, and R[^unverified], and cells in different languages can share tables.
-> - **pandas on Databricks:** you can use plain pandas on the driver node. The **pandas API on Spark** (`import pyspark.pandas as ps`, Databricks Runtime 10.0 and above) provides pandas-equivalent APIs that run on Apache Spark.
+> - **pandas on Databricks:** you can use plain pandas on the [[Driver and Executors|driver]] node (the machine that coordinates a cluster). The **pandas API on Spark** (`import pyspark.pandas as ps`, Databricks Runtime 10.0 and above) provides pandas-equivalent APIs that run on Apache Spark.
 > - **Moving between pandas and Spark:** `toPandas()` and `spark.createDataFrame(pandas_df)` use Apache Arrow when `spark.sql.execution.arrow.pyspark.enabled` is `true`. The docs note this is on by default except on High Concurrency clusters and user isolation clusters in Unity Catalog-enabled workspaces. Even with Arrow, `toPandas()` collects every row to the driver, so use it only on small results.
 > - **Custom Python logic at scale:** pandas [[UDF|user-defined functions]] process Spark data in Arrow batches.
-> - **Local development:** [[Databricks Connect]] runs PySpark code from a local IDE against Databricks compute[^unverified].
+> - **Local development:** [[Databricks Connect]] runs PySpark code from a local IDE (code editor) against Databricks compute[^unverified].
 > - **Libraries:** see [[Libraries and Environments]].
 
 ## Cloud differences

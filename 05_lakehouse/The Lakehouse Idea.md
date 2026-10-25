@@ -67,14 +67,14 @@ Mastery: `INPUT[inlineSelect(option(new), option(learning), option(solid)):maste
 
 ## Background
 
-By the late 2010s most companies with real data had both a lake and a warehouse:
+By the late 2010s most companies with significant data had both a lake and a warehouse:
 
 | | Data lake | Data warehouse |
 |---|---|---|
 | Storage | Cheap object storage | Proprietary storage inside the warehouse |
 | Data types | Anything: logs, images, JSON, CSV | Mostly tables with fixed columns |
-| Reliability | No transactions, half-written files, no rules on columns | Strong [[ACID Transactions\|transactions]] and schemas |
-| Good for | Data science, machine learning, raw history | BI dashboards and SQL reporting |
+| Reliability | No transactions, half-written files, no rules on columns | Strong [[ACID Transactions\|transactions]] and [[Schema\|schemas]] |
+| Good for | Data science, machine learning, raw history | [[BI Tools\|BI]] dashboards and SQL reporting |
 | Weak at | Fast SQL, trust, updates and deletes | Machine learning, open access, cost at scale |
 
 Running both meant [[ETL vs ELT|ETL]] jobs copying data from the lake into the warehouse. The warehouse copy was always a few hours stale, and the lake copy was never quite trustworthy. A lake left without rules turned into a [[Data Swamps|data swamp]].
@@ -83,10 +83,10 @@ The lakehouse approach makes the lake itself reliable and fast enough that the s
 
 ## Overview
 
-Databricks' docs describe a data lakehouse as a data management system that combines the benefits of data lakes and data warehouses. In practice it is a recipe with four ingredients:
+Databricks' docs describe a data lakehouse as a data management system that combines the benefits of data lakes and data warehouses. In practice it has four components:
 
-1. **Open files on cheap storage.** Data stays as [[Apache Parquet|Parquet]] files in your own cloud bucket. No proprietary format holds it hostage.
-2. **A transactional metadata layer.** A table format such as [[Delta Lake]], [[Apache Iceberg]], or [[Apache Hudi]] keeps a log of which files make up the table right now. That log gives you ACID transactions, [[Time Travel|time travel]], and [[Schema Enforcement and Evolution|schema enforcement]].
+1. **Open files on cheap storage.** Data stays as [[Apache Parquet|Parquet]] files in your own cloud bucket. No proprietary format restricts access to it.
+2. **A transactional [[Metadata|metadata]] layer.** A table format such as [[Delta Lake]], [[Apache Iceberg]], or [[Apache Hudi]] keeps a log of which files make up the table right now. That log gives you ACID transactions, [[Time Travel|time travel]], and [[Schema Enforcement and Evolution|schema enforcement]].
 3. **Fast engines.** Query engines like [[Apache Spark]] and [[Photon]] use the metadata (file statistics, [[Data Skipping|data skipping]], [[Liquid Clustering|clustering]]) to read only what they need. The aim is warehouse speed on lake files.
 4. **One governance layer.** A catalog such as [[Unity Catalog]] controls who can see what, across SQL, Python, and AI tools alike.
 
@@ -112,9 +112,9 @@ flowchart TB
   end
 ```
 
-The key move is that the "table" is no longer a thing locked inside a database server. It is a folder of Parquet files plus a log that says which files count. Any engine that understands the log can read the table, and any engine that follows the log's rules can write to it safely.
+The central change is that the "table" is no longer a thing locked inside a database server. It is a folder of Parquet files plus a log that says which files count. Any engine that understands the log can read the table, and any engine that follows the log's rules can write to it safely.
 
-Here is the smallest possible lakehouse table in Databricks SQL:
+A minimal lakehouse table in Databricks SQL:
 
 ```sql
 -- Creates a Delta table: Parquet files plus a _delta_log folder
@@ -131,7 +131,7 @@ UPDATE shop.sales.orders SET total = 54.90 WHERE order_id = 1001;
 SELECT * FROM shop.sales.orders VERSION AS OF 1;   -- the table before the UPDATE
 ```
 
-On a plain data lake, that `UPDATE` would mean rewriting files by hand and hoping no one read them halfway through. On a lakehouse it is one atomic commit.
+On a plain data lake, that `UPDATE` would mean rewriting files by hand, with nothing to stop a reader from seeing a half-written result. On a lakehouse it is one atomic commit.
 
 ## Small-business considerations
 
@@ -158,7 +158,7 @@ On a plain data lake, that `UPDATE` would mean rewriting files by hand and hopin
 > [!deepdive]- Advanced topics (301–401)
 > - **The hard part is performance, not storage.** Warehouses were fast because they controlled their own storage layout, indexes, and caches. A lakehouse has to get similar speed from open files. It does this with file-level statistics in the log, clustering ([[Liquid Clustering]]), caching ([[Query Performance and Caching]]), and vectorized engines like [[Photon]]. [[The Lakehouse Paper]] argues these are enough, and shows TPC-DS results to back it.
 > - **"Open" has layers.** Open file format (Parquet), open table format (Delta, Iceberg), open catalog API (Unity Catalog's Iceberg REST endpoint), and open engine (Spark). A lakehouse can be open at some layers and closed at others. Ask which layers a vendor means.
-> - **Format wars cooled into interoperability.** For a few years Delta, Iceberg, and Hudi competed. By 2024–2026 the industry moved to reading each other's metadata ([[Delta UniForm]]) and to catalogs that serve both formats. Unity Catalog now has managed Delta and managed Iceberg tables side by side.
+> - **From competing formats to interoperability.** For a few years Delta, Iceberg, and Hudi competed. By 2024–2026 the industry moved to reading each other's metadata ([[Delta UniForm]]) and to catalogs that serve both formats. Unity Catalog now has managed Delta and managed Iceberg tables side by side.
 > - **The next layer.** Databricks later framed its platform as [[The Data Intelligence Platform]]: the lakehouse plus AI that understands your data's meaning.
 
 ## Common misconceptions

@@ -80,8 +80,8 @@ Databricks describes the medallion architecture as a design pattern for logicall
 | Layer | Contains | Typical operations | Recommended processing |
 |---|---|---|---|
 | **Bronze** | Source data as ingested; append-only; minimal validation | Ingest, add load metadata | Streaming or incremental ingestion ([[Auto Loader]], [[Streaming Tables]]) |
-| **Silver** | Validated, cleaned, deduplicated, conformed records; joins across sources | Type casting, deduplication, null handling, [[Schema Enforcement and Evolution\|schema enforcement]] | Incremental batch, often [[Materialized Views]] |
-| **Gold** | Aggregated, business-modeled tables for BI, ML, and data products | Aggregation, [[Star Schema\|dimensional modeling]], KPIs | Batch with incremental refresh |
+| **Silver** | Validated, cleaned, deduplicated, standardized records; [[Join\|joins]] across sources | Type casting, deduplication, [[Null\|null]] handling, [[Schema Enforcement and Evolution\|schema enforcement]] | Incremental batch, often [[Materialized Views]] |
+| **Gold** | Aggregated, business-modeled tables for [[BI Tools\|BI]], [[Machine Learning Basics\|machine learning (ML)]], and data products | Aggregation, [[Star Schema\|dimensional modeling]], [[KPI\|KPIs]] | Batch with incremental refresh |
 
 Databricks recommendations include:
 
@@ -171,13 +171,13 @@ In [[Lakeflow Spark Declarative Pipelines]], the same three steps become a strea
 > - **Three schemas** (`bronze`, `silver`, `gold`) in one catalog are enough for most teams.
 > - **Grant analysts and BI tools access to gold only.** This keeps reports on agreed definitions.
 > - **Do not over-build.** A shop with one data source may need one silver and two gold tables. Add tables when a report requires them.
-> - **Keep bronze.** Raw history allows you to fix a cleaning mistake months later without asking the source system for old data, which many SaaS APIs do not keep.
+> - **Keep bronze.** Raw history allows you to fix a cleaning mistake months later without asking the source system for old data, which many [[SaaS PaaS and IaaS|SaaS]] [[APIs]] do not keep.
 >
 > Each layer is storage plus the compute that refreshes it. Incremental processing (only new records) keeps that compute small. See [[How Databricks Pricing Works]] for the meters.
 
 ## Cloud differences
 
-> [!aws]- All clouds
+> [!note] Nothing differs by cloud
 > No differences. The pattern, SQL, and Unity Catalog layout are the same on Azure, AWS, and Google Cloud.
 
 ## Advanced topics

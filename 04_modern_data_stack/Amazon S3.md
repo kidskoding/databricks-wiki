@@ -53,10 +53,10 @@ tags:
 Mastery: `INPUT[inlineSelect(option(new), option(learning), option(solid)):mastery]`
 
 > [!story] Context
-> [[Object Storage]] describes the storage model: buckets of immutable objects addressed by key over HTTP. Amazon S3 is AWS's implementation, launched in 2006, and the service whose API other object stores follow.
+> [[Object Storage]] describes the storage model: buckets of immutable objects addressed by key over HTTP. Amazon S3 is the implementation from Amazon Web Services (AWS), launched in 2006, and the service whose [[APIs|API]] other object stores follow.
 
 > [!eli5] Summary
-> Amazon S3 is AWS's file storage service for any amount of data. You create a named bucket, upload files to it, and AWS stores multiple copies to protect them. It is the storage layer for Databricks on AWS.
+> Amazon S3 is Amazon's online storage service for files of any size and number. You create a named storage container, called a bucket, upload files to it, and Amazon keeps several copies to protect them. When Databricks runs on Amazon's cloud, this is where it keeps the data.
 
 ## Background
 
@@ -66,12 +66,12 @@ S3 requires no capacity provisioning: you pay for what you store and the request
 
 ## Overview
 
-S3 is a regional object store. You create **buckets** in an AWS [[Region|region]] and store **objects** under **keys**.
+Amazon S3 is the regional [[Object Storage|object storage]] service of Amazon Web Services. You create **buckets** in an AWS [[Region|region]] and store **objects** under **keys**.
 
 The facts that matter for data work:
 
 - **Durability:** designed for 99.999999999% (eleven nines) for every storage class except the legacy Reduced Redundancy class.
-- **Consistency:** since **December 2020**, S3 delivers strong read-after-write consistency for all `PUT`s, overwrites, and `LIST`s, in all regions, at no extra cost. Replicated copies in other regions are still eventually consistent.
+- **Consistency:** since **December 2020**, S3 delivers strong read-after-write consistency for all `PUT`s, overwrites, and `LIST`s, in all regions, at no extra cost. Replicated copies in other regions are still eventually consistent (they catch up after a delay).
 - **Storage classes:**
 
 | Class | Use it for | Notes |
@@ -79,10 +79,10 @@ The facts that matter for data work:
 | S3 Standard | Live tables and anything queried often | Designed for 99.99% availability |
 | S3 Intelligent-Tiering | Data with unknown or changing access | Moves objects between tiers automatically |
 | S3 Standard-IA / One Zone-IA | Infrequent access | Retrieval fees; One Zone lives in a single [[Availability Zone]] |
-| S3 Express One Zone | Very low-latency access in one zone | Single-AZ, not resilient to losing that zone |
+| S3 Express One Zone | Very [[Latency\|low-latency]] access in one zone | Single-AZ, not resilient to losing that zone |
 | S3 Glacier (Instant, Flexible, Deep Archive) | Backups and archives | Some classes need a restore before reading |
 
-- **Security:** private by default. Access is granted by IAM policies, bucket policies, and (for Databricks) a role that Unity Catalog assumes. Encryption at rest is on by default (SSE-S3), with optional KMS keys.
+- **Security:** private by default. Access is granted by [[IAM]] policies, bucket policies, and (for Databricks) a role that [[Unity Catalog]] assumes. [[Encryption at Rest|Encryption at rest]] is on by default (SSE-S3), with optional KMS keys (keys held in AWS Key Management Service).
 - **Pricing:** per GB-month stored, per request, and per GB transferred out. See the official Amazon S3 pricing page (linked from the [S3 FAQs](https://aws.amazon.com/s3/faqs/)).
 
 ## How it works

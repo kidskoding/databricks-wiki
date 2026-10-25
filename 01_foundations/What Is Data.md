@@ -94,8 +94,8 @@ Where data comes from in a small business:
 
 | Source | Example facts | Usual home |
 |---|---|---|
-| Point of sale | Orders, items, payments | The POS vendor's cloud, exportable as files |
-| Booking system | Clinic appointments, no-shows | A SaaS app with an export or an [[APIs\|API]] |
+| Point of sale (POS) | Orders, items, payments | The POS vendor's cloud, exportable as files |
+| Booking system | Clinic appointments, no-shows | A [[SaaS PaaS and IaaS\|SaaS]] app with an export or an [[APIs\|API]] |
 | Accounting | Invoices, expenses | QuickBooks, Xero, or similar |
 | Website and ads | Visits, clicks, campaigns | Analytics tools |
 | People | Notes, emails, photos of receipts | Inboxes and shared drives |

@@ -52,7 +52,7 @@ tags:
 Mastery: `INPUT[inlineSelect(option(new), option(learning), option(solid)):mastery]`
 
 > [!story] Context
-> [[Google Cloud Storage]], [[Amazon S3]], and [[Azure Data Lake Storage]] make storing files inexpensive and effectively unlimited. The [[Data Lakes|data lake]] pattern encourages keeping all data and organizing it later. Without governance, many lakes became difficult to use.
+> [[Google Cloud Storage]], [[Amazon S3]], and [[Azure Data Lake Storage]] make storing files inexpensive and effectively unlimited. The [[Data Lakes|data lake]] pattern encourages keeping all data and organizing it later. Without [[Data Governance|governance]], many lakes became difficult to use.
 
 > [!eli5] Summary
 > A data swamp is a company's data storage after years of files being added with no labels, owners, or checks. The data exists, but people cannot find the right files or trust the numbers in them.
@@ -71,7 +71,7 @@ As a result, analysts stop relying on the lake and request that data be copied i
 
 ## Overview
 
-A data swamp is not a technology; it is a **failure state** of a data lake. A lake is in this state when most of the following symptoms apply:
+A data swamp is a **failure state** of a data lake, not a technology: the files exist, but they cannot be found, trusted, or safely changed. A lake is in this state when most of the following symptoms apply:
 
 | Symptom | What is missing |
 |---|---|

@@ -77,9 +77,11 @@ For decades the default was **scaling up**: replacing a database server with one
 2. **Non-linear cost.** High-end servers cost substantially more per unit of capacity than mass-produced ones.
 3. **A single point of failure.** One machine failing stops the workload.
 
-The [[Google File System and MapReduce Papers]] described the alternative: **scale out** on large numbers of inexpensive commodity machines, with software that treats machine failure as routine. [[Apache Hadoop]] made this approach available outside Google.
+The [[Google File System and MapReduce Papers]] described the alternative: **scale out** on large numbers of inexpensive commodity (standard, mass-produced) machines, with software that treats machine failure as routine. [[Apache Hadoop]] made this approach available outside Google.
 
 ## Overview
+
+Scaling up adds capacity by moving a workload to a larger machine, and scaling out adds capacity by spreading the workload across more machines.
 
 | | Scaling up (vertical) | Scaling out (horizontal) |
 |---|---|---|

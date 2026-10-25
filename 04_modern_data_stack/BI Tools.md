@@ -77,6 +77,8 @@ The main products in this category:
 
 ## Overview
 
+A business intelligence (BI) tool is software that queries stored data and presents the results as charts, dashboards, and reports for people who do not write code.
+
 A BI tool has four parts:
 
 | Part | What it does |
@@ -122,8 +124,8 @@ Databricks documents three methods: Partner Connect, a manual connection, and th
 1. In Power BI Desktop, select **Get data**, then search for and select the Databricks connector (**Azure Databricks** on Azure).
 2. Enter the **Server Hostname** and **HTTP Path** of the SQL warehouse.
 3. Choose **Import** or **DirectQuery**.
-4. Sign in with OAuth (Microsoft Entra ID on Azure) or a personal access token.
-5. Select tables from the Unity Catalog navigator.
+4. Sign in with [[OAuth]] (Microsoft Entra ID on Azure) or a personal access token (see [[Authentication - Tokens and OAuth]]).
+5. Select tables from the [[Unity Catalog]] navigator.
 
 ### Connect Tableau
 

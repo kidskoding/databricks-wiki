@@ -73,26 +73,28 @@ Mastery: `INPUT[inlineSelect(option(new), option(learning), option(solid)):maste
 Without keys, tables can only be matched by names and descriptions, and those are unreliable:
 
 - Two customers are both called "Sam Lee".
-- One customer is "Sam Lee" in the POS and "Samuel Lee" in the loyalty app.
+- One customer is "Sam Lee" in the point-of-sale (POS) system and "Samuel Lee" in the loyalty app.
 - A product is renamed from "Croissant" to "Butter Croissant", and last year's orders no longer match it.
 
-Keys address this. Each row gets an identifier that is **unique** and **does not change**, and other tables store that identifier instead of copying descriptive details. Codd's 1970 paper built the relational model on exactly this idea: tables relate through shared values, not hidden pointers.
+Keys address this. Each row gets an identifier that is **unique** and **does not change**, and other tables store that identifier instead of copying descriptive details. Codd's 1970 paper built the [[Relational Databases|relational model]] on exactly this idea: tables relate through shared values, not hidden pointers.
 
 ## Overview
 
+A primary key is a column whose value uniquely identifies each row of a table, and a foreign key is a column that stores another table's primary key to link the two.
+
 | Term | Definition | Clinic example |
 |---|---|---|
-| **Primary key (PK)** | A column (or set of columns) whose value uniquely identifies each row. Cannot be null | `patients.patient_id = 'P-311'` |
+| **Primary key (PK)** | A column (or set of columns) whose value uniquely identifies each row. Cannot be [[Null\|null]] | `patients.patient_id = 'P-311'` |
 | **Foreign key (FK)** | A column in one table that refers to the primary key of another | `appointments.patient_id` points at `patients.patient_id` |
 | **Composite key** | A key made of several columns together | `(doctor_id, start_time)` in a schedule |
 | **Natural key** | A key that already exists in the real world or source system | A product barcode, a tax ID, the POS's order number |
-| **Surrogate key** | A meaningless ID the system generates | An auto-incrementing number or a UUID |
+| **Surrogate key** | A meaningless ID the system generates | An auto-incrementing number or a UUID (a long, randomly generated ID) |
 | **Unique constraint** | A rule that values must not repeat, without being the main key | Each patient's email is unique |
 
 Rules a traditional database enforces:
 
 - **Entity integrity:** a primary key is never null and never duplicated.
-- **Referential integrity:** a foreign key value must exist in the referenced table (or be null if allowed). Deleting a patient who still has appointments is blocked or cascades, depending on the rule.
+- **Referential integrity:** a foreign key value must exist in the referenced table (or be null if allowed). Deleting a patient who still has appointments is blocked or cascades (the appointments are deleted too), depending on the rule.
 
 ## How it works
 

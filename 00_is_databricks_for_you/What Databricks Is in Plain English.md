@@ -67,9 +67,9 @@ Mastery: `INPUT[inlineSelect(option(new), option(learning), option(solid)):maste
 
 ## Background
 
-Business data is usually spread across several systems: a point-of-sale system or online store, an accounting package, a CRM, and spreadsheets. For years the standard architecture paired a [[Data Lakes|data lake]] for low-cost raw storage with a [[Data Warehouses|data warehouse]] for curated reporting. Keeping the two in sync was slow and costly; this vault calls it [[The Two-Tier Architecture Problem]].
+Business data is usually spread across several systems: a point-of-sale system or online store, an accounting package, a CRM (customer relationship management system), and spreadsheets. For years the standard architecture paired a [[Data Lakes|data lake]] for low-cost raw storage with a [[Data Warehouses|data warehouse]] for curated reporting. Keeping the two in sync was slow and costly. This vault calls it [[The Two-Tier Architecture Problem]].
 
-Databricks is built on [[The Lakehouse Idea|the lakehouse]] architecture: one copy of the data, stored in open file formats, serving reporting, data engineering, and machine learning. The company's origin and its relationship to the open-source [[Apache Spark]] engine are covered in [[The Founding of Databricks]].
+Databricks is built on [[The Lakehouse Idea|the lakehouse]] architecture: one copy of the data, stored in open file formats, serving reporting, data engineering, and machine learning. The company's origin and its relationship to the [[Open Source|open-source]] [[Apache Spark]] engine are covered in [[The Founding of Databricks]].
 
 ## Overview
 
@@ -86,7 +86,7 @@ Databricks is a cloud data platform delivered as a managed service on Microsoft 
 
 Two properties matter most to a business reader:
 
-- **Data stays in open formats in storage you control.** Tables are files in cloud object storage, either your own or Databricks-managed default storage. Other engines can read open formats, which reduces [[Vendor Lock-In]].
+- **Data stays in open formats in storage you control.** Tables are files in cloud [[Object Storage|object storage]], either your own or Databricks-managed default storage. Other engines can read open formats, which reduces [[Vendor Lock-In]].
 - **Pricing is usage-based.** Pay-as-you-go usage is measured in [[DBUs]], a normalized unit of processing, and billed per second. Cloud provider charges may apply separately. See [[How Databricks Pricing Works]].
 
 ## How it works

@@ -73,8 +73,8 @@ Object storage keeps **objects** (any bytes, plus [[Metadata|metadata]]) in a fl
 |---|---|
 | **Flat namespace** | `raw/2026/10/file.json` is one key. The slashes resemble folders, but "folders" are shared key prefixes. Listing and renaming "folders" can be slow. (Azure's hierarchical namespace is the exception; see [[Azure Data Lake Storage]].) |
 | **Immutable objects** | You write or replace a whole object. No editing byte 500 of a file. This is why table formats write new files rather than updating old ones. |
-| **Massive durability** | Data is replicated across devices and often across [[Availability Zone\|availability zones]]. AWS designs S3 for 99.999999999% (eleven nines) durability. |
-| **HTTP API** | Everything is a `PUT`, `GET`, `LIST`, or `DELETE` over HTTPS ([[REST]]). |
+| **High durability** | Data is [[Replication\|replicated]] across devices and often across [[Availability Zone\|availability zones]]. AWS designs S3 for 99.999999999% (eleven nines) durability. |
+| **HTTP [[APIs\|API]]** | Everything is a `PUT`, `GET`, `LIST`, or `DELETE` over HTTPS ([[REST]]). |
 | **Pay as you go** | Billed per GB-month stored, per request, and for data leaving the cloud ([[Egress\|egress]]). See each provider's pricing page. |
 | **Storage classes** | Hot, cool, cold, and archive tiers trade lower storage price for higher access cost. |
 

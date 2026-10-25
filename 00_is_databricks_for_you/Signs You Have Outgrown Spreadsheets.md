@@ -61,6 +61,8 @@ Mastery: `INPUT[inlineSelect(option(new), option(learning), option(solid)):maste
 
 ## Overview
 
+Outgrowing spreadsheets means that the effort and risk of keeping data in spreadsheet files exceed the value the files provide.
+
 The checklist groups ten indicators. Count one point for each indicator that applies today.
 
 | # | Indicator | Example | What a platform provides |
@@ -81,12 +83,12 @@ The checklist groups ten indicators. Count one point for each indicator that app
 | Score | Interpretation | Recommended action |
 |---|---|---|
 | 0–2 | Spreadsheets remain adequate | Consolidate to one master file with protected ranges on a shared drive |
-| 3–5 | The setup is under strain | Evaluate a small database or BI tool, or [[Databricks Free Edition and Trials\|try Databricks]] on one costly report |
+| 3–5 | The setup is under strain | Evaluate a small database or [[BI Tools\|BI tool]], or [[Databricks Free Edition and Trials\|try Databricks]] on one costly report |
 | 6–10 | The setup has been outgrown | Plan a move to a data platform; see [[Your First 30 Days on Databricks]] and [[Migrating from Excel and Access]] |
 
 ## How it works
 
-After the move, the spreadsheet is no longer the data store. It becomes, at most, a read-only view of governed tables.
+After the move, the spreadsheet is no longer the data store. It becomes, at most, a read-only view of governed tables (tables with central permissions and auditing; see [[Data Governance]]).
 
 ```mermaid
 flowchart LR

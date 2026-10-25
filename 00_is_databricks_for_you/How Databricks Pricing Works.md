@@ -73,6 +73,8 @@ Traditional software was licensed per server or per user regardless of use. Clou
 
 ## Overview
 
+Databricks pricing is usage-based: you pay for the DBUs your workloads consume, at a price per DBU set by the type of work, and the cloud provider may bill separately for infrastructure.
+
 Five concepts determine a Databricks bill.
 
 ### 1. DBU
@@ -105,12 +107,12 @@ New customers should assume the Premium tier.
 
 ### 4. Serverless and classic compute
 
-| | Classic compute | Serverless compute |
+| | Classic compute | [[Serverless Compute\|Serverless compute]] |
 |---|---|---|
 | Where machines run | In your cloud account | Managed by Databricks |
 | Databricks bills | DBUs | DBUs |
-| Cloud provider bills | Virtual machines, disks, network, storage | Mainly storage and network |
-| Idle cost | Accrues until the cluster terminates ([[Auto Termination]]) | No cluster for you to leave running |
+| Cloud provider bills | [[Virtual Machine\|Virtual machines]], disks, network, storage | Mainly storage and network |
+| Idle cost | Accrues until the [[Cluster\|cluster]] terminates ([[Auto Termination]]) | No cluster for you to leave running |
 | Configuration | You choose machine types, sizes, and [[Spot Instances\|spot]] usage | Databricks manages it |
 
 This table summarizes the general model; check your cloud's pricing page for the charges each mode places on each bill. The Google Cloud trial documentation states the split explicitly: trial credits cover Databricks usage, and Google Cloud bills separately for the resources a classic workspace deploys. Pay-as-you-go usage is billed per second.

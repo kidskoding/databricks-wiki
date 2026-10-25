@@ -56,7 +56,7 @@ tags:
 Mastery: `INPUT[inlineSelect(option(new), option(learning), option(solid)):mastery]`
 
 > [!story] Context
-> [[Python for Data]] showed how to process data once it is available. Much of a small business's data sits inside SaaS applications (POS, booking, accounting, CRM), and the standard way for a program to retrieve it is the application's API.
+> [[Python for Data]] showed how to process data once it is available. Much of a small business's data sits inside [[SaaS PaaS and IaaS|SaaS]] applications (point-of-sale, booking, accounting, customer relationship management), and the standard way for a program to retrieve it is the application's API.
 
 > [!eli5] Summary
 > An API is a defined way for one program to ask another program for information or to tell it to do something. A booking app's API lets another program request "all appointments from yesterday" and receive them in a structured format, without anyone clicking an export button.
@@ -75,7 +75,7 @@ Mastery: `INPUT[inlineSelect(option(new), option(learning), option(solid)):maste
 
 Before web APIs, getting data out of business software meant direct database access (rarely allowed for hosted software), scheduled file exports, or manual downloads. Each of these is fragile: file layouts change, someone forgets to click export, and the data is only as fresh as the last download.
 
-As software moved to the web and to SaaS, vendors began publishing APIs: documented, versioned interfaces that other programs can call over HTTP. Roy Fielding's 2000 doctoral dissertation at the University of California, Irvine described the **REST** architectural style that most web APIs follow today. See [[REST]].
+As software moved to the web and to SaaS, vendors began publishing APIs: documented, versioned interfaces that other programs can call over HTTP (the protocol web browsers use). Roy Fielding's 2000 doctoral dissertation at the University of California, Irvine described the **REST** architectural style that most web APIs follow today. See [[REST]].
 
 For a small business, APIs are now the main route to its own data, because the systems of record are SaaS applications it does not host.
 
@@ -90,7 +90,7 @@ An **API (application programming interface)** is a contract that defines which 
 | **Method** | The action | `GET` read, `POST` create, `PUT`/`PATCH` update, `DELETE` remove |
 | **Parameters** | Filters and options | `?updated_since=2026-03-03&page=2` |
 | **Authentication** | Proof of who is calling | An API key, or an [[OAuth]] access token |
-| **Response** | The returned data and a status code | JSON body, `200 OK` or `429 Too Many Requests` |
+| **Response** | The returned data and a status code | [[CSV and JSON\|JSON]] body, `200 OK` or `429 Too Many Requests` |
 | **Pagination** | Results split across pages | `next_page` cursor in the response |
 | **Rate limit** | Maximum requests per period | 100 requests per minute |
 
@@ -99,9 +99,9 @@ Other interface types appear in data work:
 | Interface | Used for | Note |
 |---|---|---|
 | **REST / JSON over HTTPS** | Most SaaS data | The default for web services |
-| **[[Webhook\|Webhooks]]** | The application pushes an event to your URL when something changes | Avoids polling |
-| **[[JDBC and ODBC]]** | SQL connections to databases and warehouses | How BI tools connect to Databricks SQL |
-| **SDKs** | Language libraries that wrap an API | For example the Databricks SDK for Python |
+| **[[Webhook\|Webhooks]]** | The application pushes an event to your URL when something changes | Avoids polling (repeatedly asking whether anything changed) |
+| **[[JDBC and ODBC]]** | SQL connections to databases and warehouses | How [[BI Tools\|BI tools]] connect to [[Databricks SQL]] |
+| **SDKs** (software development kits) | Language libraries that wrap an API | For example the Databricks SDK for Python |
 
 ## How it works
 
@@ -170,7 +170,7 @@ curl -s -H "Authorization: Bearer $DATABRICKS_TOKEN" \
 > Azure Databricks also accepts Microsoft Entra ID tokens for its REST API[^unverified]. Workspace URLs and OAuth endpoints differ from AWS and Google Cloud, so check the Azure Databricks authentication docs before copying examples.
 
 > [!aws]- Databricks on AWS
-> OAuth and PAT authentication work as described below. Endpoint paths are documented on the AWS docs pages.
+> OAuth and PAT authentication work as described in Advanced topics. Endpoint paths are documented on the AWS docs pages.
 
 > [!gcp]- Databricks on Google Cloud
 > OAuth user-to-machine authentication is documented for Google Cloud. Check the GCP docs for endpoint paths, which can differ by cloud.
@@ -225,3 +225,5 @@ After how many days of non-use does Databricks revoke a personal access token?::
 > - [Authorize user access with OAuth (Azure Databricks)](https://learn.microsoft.com/en-us/azure/databricks/dev-tools/auth/oauth-u2m)
 > - [Authorize user access with OAuth (GCP)](https://docs.databricks.com/gcp/en/dev-tools/auth/oauth-u2m)
 > - [Roy T. Fielding, Architectural Styles and the Design of Network-based Software Architectures (dissertation, UC Irvine, 2000)](https://ics.uci.edu/~fielding/pubs/dissertation/top.htm)
+
+[^unverified]: Unconfirmed: not yet checked against an official or primary source.

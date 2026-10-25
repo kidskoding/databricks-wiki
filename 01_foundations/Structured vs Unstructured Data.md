@@ -70,11 +70,13 @@ The split matters because computers handle the three kinds very differently:
 
 - **Structured data is easy to query.** A question such as the number of 10:30 no-shows returns an exact answer in milliseconds. This is what [[Relational Databases|relational databases]] and [[SQL]] were built for.
 - **Unstructured data was, for decades, nearly impossible to query.** A computer could store a scanned referral letter, but not tell you what it said. It sat in shared drives and was searched by hand.
-- **Semi-structured data appeared with the web.** Web apps and [[APIs]] exchange JSON, where each record carries its own labels. It is flexible, but two records can disagree about which fields exist.
+- **Semi-structured data appeared with the web.** Web apps and [[APIs]] exchange [[CSV and JSON|JSON]], where each record carries its own labels. It is flexible, but two records can disagree about which fields exist.
 
-In most businesses, unstructured files outnumber structured records, although the proportion is hard to measure. Much of the tooling in later chapters ([[Data Lakes|data lakes]], the lakehouse, and AI functions) exists to make unstructured and semi-structured data usable alongside tables.
+In most businesses, unstructured files outnumber structured records, although the proportion is hard to measure. Much of the tooling in later chapters ([[Data Lakes|data lakes]], the [[The Lakehouse Idea|lakehouse]], and AI functions) exists to make unstructured and semi-structured data usable alongside tables.
 
 ## Overview
+
+Structured, semi-structured, and unstructured data are three categories that describe how much fixed shape (named fields and types) a piece of data has.
 
 | Kind | Shape | Examples in a small business | Classic home |
 |---|---|---|---|
@@ -135,7 +137,7 @@ FROM read_files('/Volumes/clinic/raw/referrals/', format => 'binaryFile', fileNa
 > Structure data in this order:
 > 1. **Get the structured data right first.** Orders, appointments, and invoices answer most business questions.
 > 2. **Keep semi-structured data raw, then pull out what you need.** Store the API's JSON as-is, then extract the five fields you actually report on.
-> 3. **Treat unstructured data as a later project** unless it is your core business. Customer reviews, referral letters, and support emails become valuable once AI can read them, but they need governance first because they often contain [[PII|personal data]].
+> 3. **Treat unstructured data as a later project** unless it is your core business. Customer reviews, referral letters, and support emails become valuable once AI can read them, but they need [[Data Governance|governance]] (access rules and ownership) first because they often contain [[PII|personal data]].
 
 > [!bridge]- In Databricks today
 > - **Structured** data becomes [[Delta Lake]] tables in [[Unity Catalog]].

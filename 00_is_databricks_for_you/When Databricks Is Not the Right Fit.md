@@ -56,9 +56,11 @@ Mastery: `INPUT[inlineSelect(option(new), option(learning), option(solid)):maste
 
 ## Background
 
-Selecting a platform that is larger than necessary costs a small business twice: in the bill and in the staff time needed to learn and operate it. Databricks is pay-as-you-go, so the main risk is not licence cost but setup effort, required skills, and unused complexity. See [[Total Cost of Ownership]].
+Selecting a platform that is larger than necessary costs a small business twice: in the bill and in the staff time needed to learn and operate it. Databricks is pay-as-you-go, so the main risk is not license cost but setup effort, required skills, and unused complexity. See [[Total Cost of Ownership]].
 
 ## Overview
+
+Databricks is not the right fit when a smaller tool meets the business's current needs at lower cost and with less effort to operate.
 
 The table lists ten situations, the better fit for each, and the condition under which Databricks becomes the stronger option.
 
@@ -68,14 +70,14 @@ The table lists ten situations, the better fit for each, and the condition under
 | # | Situation | Better fit | Databricks becomes the stronger option when |
 |---|---|---|---|
 | 1 | **All data is in one application** with adequate built-in reports (for example an online store, accounting package, or practice-management system) | The application's own reports or analytics add-on | A second or third system must be combined with it |
-| 2 | **Dashboards on a few clean sources** in a Microsoft environment | **Power BI** on its own | Refreshes become slow, logic is duplicated across reports, or Python and ML are needed |
+| 2 | **Dashboards on a few clean sources** in a Microsoft environment | **Power BI** on its own | Refreshes become slow, logic is duplicated across reports, or Python and [[Machine Learning Basics\|machine learning (ML)]] are needed |
 | 3 | **Simple charts on Google data** (Sheets, GA4, Google Ads) | **Looker Studio** | Governed history, joins across many non-Google sources, or scheduled transformations are needed |
-| 4 | **A database for an application** (orders, bookings, user accounts) | An operational database such as **Postgres** or MySQL | Heavy analytics on that data is also needed; replicate it to a lakehouse with [[Change Data Capture\|CDC]] (see [[OLTP vs OLAP]]). Databricks also offers [[Lakebase]] for operational data |
-| 5 | **A few gigabytes of analytics data** and one SQL user | **Postgres** as a small warehouse, or **DuckDB** locally (**MotherDuck** is a hosted service built on DuckDB) | Several people need shared, governed access, or data volume and schedules grow |
+| 4 | **A database for an application** (orders, bookings, user accounts) | An operational database such as **Postgres** or MySQL | Heavy analytics on that data is also needed; replicate it to a [[The Lakehouse Idea\|lakehouse]] with [[Change Data Capture\|CDC]] (see [[OLTP vs OLAP]]). Databricks also offers [[Lakebase]] for operational data |
+| 5 | **A few gigabytes of analytics data** and one SQL user | **Postgres** as a small [[Data Warehouses\|warehouse]], or **DuckDB** locally (**MotherDuck** is a hosted service built on DuckDB) | Several people need shared, governed access, or data volume and schedules grow |
 | 6 | **A SQL-only team that needs only a warehouse** | **Snowflake** or **BigQuery** are established options | Python data engineering, ML, streaming, or AI agents are needed on the same data |
 | 7 | **An organization standardized on Microsoft Fabric** with Power BI at the center | **Microsoft Fabric** | Multiple clouds, deeper engineering and ML tooling, or direct control over open-format storage is needed (see [[Microsoft Fabric and OneLake vs Databricks]]) |
 | 8 | **No one can own the platform**: no staff member or contractor can spend a few hours a week on data | A managed reporting tool or an agency service | A data person is hired or contracted |
-| 9 | **Fixed monthly costs are required** and no one can configure budgets or alerts | A per-seat SaaS tool with a flat fee | The organization accepts usage billing with [[Budgets and Usage Dashboards\|budgets]] and auto-termination |
+| 9 | **Fixed monthly costs are required** and no one can configure budgets or alerts | A per-seat [[SaaS PaaS and IaaS\|SaaS]] tool with a flat fee | The organization accepts usage billing with [[Budgets and Usage Dashboards\|budgets]] and auto-termination |
 | 10 | **A one-time analysis** | Excel, or Databricks [[Databricks Free Edition and Trials\|Free Edition]] for learning (non-commercial use only) | The analysis becomes a recurring job |
 
 ## How it works

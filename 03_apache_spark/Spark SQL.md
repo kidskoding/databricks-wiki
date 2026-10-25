@@ -69,12 +69,12 @@ Spark SQL is **the module that runs all structured work in Spark**, whether you 
 
 | Part | Job |
 |---|---|
-| **SQL parser** | Turns SQL text into a logical plan |
+| **SQL parser** | Turns SQL text into a logical plan (a description of the steps needed, not yet how to run them) |
 | **DataFrame API** | Builds the same kind of logical plan from code |
 | **[[Catalyst Optimizer]]** | Rewrites the plan into a faster one |
 | **Execution engine** | Runs the plan as tasks across the cluster ([[Tungsten]] code generation, or [[Photon]] on Databricks) |
 
-It also includes a **catalog** that remembers table names, columns, and file locations. In open-source Spark that is often the [[Hive Metastore]]. On Databricks it is [[Unity Catalog]].
+It also includes a **catalog** that remembers table names, columns, and file locations. In [[Open Source|open-source]] Spark that is often the [[Hive Metastore]]. On Databricks it is [[Unity Catalog]].
 
 Since Spark 4.0, Spark SQL follows the **ANSI SQL standard by default** (`spark.sql.ansi.enabled = true`), so errors such as dividing by zero or casting `'abc'` to a number raise an error instead of quietly returning `NULL`. Spark 4.1 made **SQL scripting** (variables, `IF`, loops inside SQL) generally available, and Spark 4.2 added clauses such as `QUALIFY` and a `CHANGES` clause for reading row-level changes.
 
@@ -131,7 +131,7 @@ top.filter("revenue > 50").show()     # continue in DataFrame code
 > Spark SQL is a direct entry point to Databricks for anyone who knows SQL from Excel Power Query, Access, or a reporting tool. You do not need Python. Your analyst can write SQL in the [[SQL Editor]] on a [[SQL Warehouses|SQL warehouse]] and connect Power BI or Tableau to the same tables. When a query is slow, run `EXPLAIN` or open the query profile before increasing the warehouse size.
 
 > [!bridge]- In Databricks today
-> Spark SQL is the engine under [[Databricks SQL]]. [[SQL Warehouses]] run Spark SQL with [[Photon]] on by default, tuned for many short BI queries, and BI tools connect over [[JDBC and ODBC]]. The catalog is [[Unity Catalog]] instead of a Hive metastore, so table names use the [[Three-Level Namespace]] `catalog.schema.table`. Databricks SQL adds its own functions and features on top, such as [[AI Functions in SQL]] and [[Metric Views]]. Old Hive SQL mostly runs unchanged; see [[Hive Metastore Migration to Unity Catalog]] for moving the tables.
+> Spark SQL is the engine under [[Databricks SQL]]. [[SQL Warehouses]] run Spark SQL with [[Photon]] on by default, tuned for many short [[BI Tools|BI]] queries, and BI tools connect over [[JDBC and ODBC]]. The catalog is [[Unity Catalog]] instead of a Hive metastore, so table names use the [[Three-Level Namespace]] `catalog.schema.table`. Databricks SQL adds its own functions and features on top, such as [[AI Functions in SQL]] and [[Metric Views]]. Old Hive SQL mostly runs unchanged; see [[Hive Metastore Migration to Unity Catalog]] for moving the tables.
 
 ## Cloud differences
 

@@ -69,13 +69,13 @@ Mastery: `INPUT[inlineSelect(option(new), option(learning), option(solid)):maste
 
 ## Background
 
-Databricks customers in the late 2010s were running [[Apache Spark]] on data lakes and encountering the same problems: failed jobs left partial data, listing millions of files was slow, rows could not be updated or deleted, and schemas drifted. Lakes degraded into [[Data Swamps|data swamps]], and the usual remedy was to copy data into a warehouse.
+Databricks customers in the late 2010s were running [[Apache Spark]] on data lakes and encountering the same problems: failed jobs left partial data, listing millions of files was slow, rows could not be updated or deleted, and [[Schema|schemas]] drifted (changed without notice). Lakes degraded into [[Data Swamps|data swamps]], and the usual remedy was to copy data into a [[Data Warehouses|warehouse]].
 
-Databricks built Delta Lake inside its platform to fix this without leaving the lake. In 2019 it open-sourced the format under the Apache 2.0 license, and in October 2019 the [[Linux Foundation]] began hosting the project under open governance. With Delta Lake 2.0 in 2022, Databricks committed to open-sourcing all Delta Lake APIs and features, including ones that had been Databricks-only.
+Databricks built Delta Lake inside its platform to fix this without leaving the lake. In 2019 it [[Open Source|open-sourced]] the format under the Apache 2.0 license, and in October 2019 the [[Linux Foundation]] began hosting the project under open governance. With Delta Lake 2.0 in 2022, Databricks committed to open-sourcing all Delta Lake APIs and features, including ones that had been Databricks-only.
 
 ## Overview
 
-Delta Lake is an open table format plus a set of libraries that read and write it. A **Delta table** is:
+Delta Lake is an [[Open Table Formats|open table format]] plus a set of libraries that read and write it. A **Delta table** is:
 
 - a set of **Parquet data files**, and
 - a **`_delta_log/` folder** of ordered JSON commit files and periodic Parquet checkpoints that record exactly which data files make up each version.
@@ -93,7 +93,7 @@ What the log gives you:
 | Data skipping | Per-file min/max stats let queries skip files | [[Data Skipping]] |
 | Layout optimization | Compaction and clustering | [[OPTIMIZE and VACUUM]], [[Liquid Clustering]] |
 | Change tracking | Row-level change feed | [[Change Data Feed]] |
-| Streaming | A Delta table can be a streaming source and sink | [[Structured Streaming on Databricks]] |
+| Streaming | A Delta table can be a streaming source and sink (destination) | [[Structured Streaming on Databricks]] |
 
 **Versions.** The open-source project is on the Delta Lake 4.x line, built for Apache Spark 4:
 
@@ -155,8 +155,8 @@ df.filter("total > 20").write.mode("append").saveAsTable("shop.sales.big_orders"
 > Every table created on Databricks is a Delta table unless you specify Iceberg. For a small team, this provides:
 > - **Recovery.** After an incorrect `DELETE` or `UPDATE`, [[Time Travel|restore]] the previous version with one command.
 > - **Safe reruns.** A failed nightly load leaves nothing half-done.
-> - **Privacy requests are easy.** Deleting one customer's rows is a `DELETE`, not a rewrite of a month of files.
-> - **No lock-in.** The files are Parquet in your cloud account in an open format, readable by open-source Delta clients if you ever leave.
+> - **Privacy requests are simple.** Deleting one customer's rows is a `DELETE`, not a rewrite of a month of files.
+> - **No [[Vendor Lock-In|lock-in]].** The files are Parquet in your cloud account in an open format, readable by open-source Delta clients if you ever leave.
 >
 > There is no separate charge for Delta. You pay for storage and for the compute that reads and writes it.
 

@@ -63,7 +63,7 @@ Many data scientists and analysts work in Python with [[Pandas]], NumPy, and sci
 
 ## Overview
 
-PySpark is the Python API for Apache Spark, installed with `pip install pyspark`. Its main pieces:
+PySpark is the Python [[APIs|API]] for Apache Spark, installed with `pip install pyspark`. Its main pieces:
 
 | Module | What it is for |
 |---|---|
@@ -74,7 +74,7 @@ PySpark is the Python API for Apache Spark, installed with `pip install pyspark`
 | `pyspark.pipelines` | Spark Declarative Pipelines (new in Spark 4.1) |
 | `pyspark.sql.connect` | The [[Spark Connect]] client used by thin Python clients |
 
-The key thing to understand: **most PySpark code does not run in Python.** When you call `df.filter(...)`, Python only builds a plan. The plan runs in the JVM on the executors (or in [[Photon]] on Databricks). Python code only runs on the cluster when you write a Python [[UDF]].
+The key thing to understand: **most PySpark code does not run in Python.** When you call `df.filter(...)`, Python only builds a plan. The plan runs in the JVM on the [[Driver and Executors|executors]] (the worker processes) (or in [[Photon]] on Databricks). Python code only runs on the cluster when you write a Python [[UDF]].
 
 ## How it works
 
@@ -140,12 +140,12 @@ sales.select("item", with_tax("price").alias("price_with_tax")).show()
 
 > [!smallbiz] Small-business considerations
 > PySpark is a suitable choice when the team's data practitioner works in Python. Three practices keep it efficient:
-> 1. **Use `pyspark.sql.functions` first.** Most operations (dates, strings, JSON, windows) is built in and runs at engine speed.
+> 1. **Use `pyspark.sql.functions` first.** Most operations (dates, strings, JSON, windows) are built in and runs at engine speed.
 > 2. **Do heavy work in Spark, then `toPandas()` the small result** for charts or Excel export.
 > 3. **Write code that works on serverless**: DataFrames and SQL, no `sparkContext` or RDDs. Such code runs on serverless compute without cluster management.
 
 > [!bridge]- In Databricks today
-> PySpark is the main Python interface on Databricks. In notebooks, `spark` is created for you and `display(df)` renders tables and charts. On [[Serverless Compute]] and standard access mode, PySpark runs through [[Spark Connect]], so only Spark Connect APIs work: no RDDs or `SparkContext`. From your laptop or IDE, [[Databricks Connect]] gives you the same PySpark API against Databricks compute. The same code runs in [[Lakeflow Jobs]] and [[Lakeflow Spark Declarative Pipelines]]. [[Photon]] speeds up DataFrame operations but does not accelerate Python UDFs.
+> PySpark is the main Python interface on Databricks. In notebooks, `spark` is created for you and `display(df)` renders tables and charts. On [[Serverless Compute]] and standard access mode, PySpark runs through [[Spark Connect]], so only Spark Connect APIs work: no RDDs or `SparkContext`. From your laptop or IDE (code editor), [[Databricks Connect]] gives you the same PySpark API against Databricks compute. The same code runs in [[Lakeflow Jobs]] and [[Lakeflow Spark Declarative Pipelines]]. [[Photon]] speeds up DataFrame operations but does not accelerate Python UDFs.
 
 ## Cloud differences
 

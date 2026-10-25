@@ -74,6 +74,8 @@ Both formats are widely used because **people can read them and nearly every too
 
 ## Overview
 
+CSV and JSON are plain-text file formats: CSV holds one flat table of comma-separated values, and JSON holds labeled, optionally nested values.
+
 The same two bakery orders in each format:
 
 ```text
@@ -98,13 +100,13 @@ Notice what each one can and cannot do:
 |---|---|---|
 | **Shape** | Flat table only | Nested objects and lists |
 | **Field names** | Once, in an optional header row | Repeated in every record |
-| **Types** | None. Everything is text | String, number, true/false, null, object, array. No date type |
+| **Types** | None. Everything is text | String, number, true/false, [[Null\|null]], object, array. No date type |
 | **Escaping** | Quotes around values with commas or line breaks | Quotes around all strings, backslash escapes |
 | **Size** | Compact | Larger, because labels repeat |
 | **Best for** | Exports, spreadsheets, bulk loads | [[APIs]], app logs, config, events |
 | **Spec** | RFC 4180 (informational, 2005) | RFC 8259 and ECMA-404 |
 
-A common variant, **JSON Lines** (also called newline-delimited JSON), puts one JSON object per line with no surrounding `[ ]`. Big data tools prefer it because each line can be read on its own.
+A common variant, **JSON Lines** (also called newline-delimited JSON), puts one JSON object per line with no surrounding `[ ]`. [[The Three Vs of Big Data|Big data]] tools prefer it because each line can be read on its own.
 
 ## How it works
 
@@ -126,7 +128,7 @@ Where CSV and JSON break at scale:
 4. **No safe updates.** You cannot change one row in place, and there is no record of who changed what.
 5. **Messy escaping.** A customer note containing a comma and a line break breaks naive parsers.
 
-In Databricks you read both with `read_files`, and you can state the schema to stop the guessing:
+In Databricks you read both with `read_files`, and you can state the [[Schema|schema]] (the column names and types) to stop the guessing:
 
 ```sql
 -- CSV: header row, explicit schema, stop on bad rows

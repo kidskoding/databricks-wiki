@@ -67,6 +67,8 @@ Organizations need to use a platform before committing to it. Students and caree
 
 ## Overview
 
+Databricks offers two no-cost ways to use the platform: Free Edition, a permanent, quota-limited environment for non-commercial learning, and the free trial, 14 days of usage credits on the full product.
+
 ### Comparison
 
 | | Free Edition | Free trial |
@@ -74,10 +76,10 @@ Organizations need to use a platform before committing to it. Students and caree
 | Intended users | Students, educators, hobbyists, and anyone learning | Businesses evaluating Databricks |
 | Cost | Free, with daily usage quotas | Free usage credits valid for **14 days** |
 | Commercial use | **Not permitted** | Permitted |
-| Compute | Serverless only, quota-limited | Serverless workspace by default; classic compute in your own cloud account is optional |
+| Compute | [[Serverless Compute\|Serverless]] only, quota-limited | Serverless workspace by default; classic compute in your own cloud account is optional |
 | After the period | No expiry; quotas reset; inactive accounts may be deleted | Add a payment method to continue; workspace assets are deleted 60 days after the trial ends if you do not upgrade |
-| Support and SLA | Not covered by the support policy or SLA | Paid support after upgrade |
-| Sign-in | Email one-time passcode, Google, or Microsoft; no SSO or SCIM | Standard identity options |
+| Support and [[SLA]] | Not covered by the support policy or SLA | Paid support after upgrade |
+| Sign-in | Email one-time passcode, Google, or Microsoft; no [[Single Sign-On\|SSO]] or [[SCIM Provisioning\|SCIM]] | Standard identity options |
 | Recommended use | Learning, certification practice, personal projects | A [[Proof of Concept\|proof of concept]] on real data and cost measurement |
 
 ### Free Edition limits
@@ -93,7 +95,7 @@ Quotas can change; check the official limitations page before relying on a speci
 | Databases | One [[Lakebase]] project with scale-to-zero compute |
 | AI | One AI Search endpoint with one search unit; GPU serving endpoints and provisioned throughput unavailable |
 | Not supported | R and Scala, custom workspace storage locations, online tables, [[Clean Rooms]], Knowledge Assistant |
-| Administration | One workspace and one metastore per account; no account console; no SSO or SCIM |
+| Administration | One workspace and one [[Metastore\|metastore]] per account; no account console; no SSO or SCIM |
 | Quota behavior | When a quota is exceeded, compute shuts down until the quota resets; data and settings are retained |
 | Terms | Non-commercial use only |
 
@@ -105,7 +107,7 @@ Verifying a LinkedIn profile raises some limits but does not remove them. Free E
 |---|---|
 | Duration | Credits valid for 14 days from the start of the trial |
 | Credits | A fixed amount of free usage credit, stated on the sign-up page |
-| Serverless | Limited to 50 DBUs per hour for notebooks, jobs, and pipelines |
+| Serverless | Limited to 50 [[DBUs]] per hour for notebooks, jobs, and pipelines |
 | SQL | One SQL warehouse per workspace |
 | GPUs | Not available |
 | Cloud charges | With classic compute, the cloud provider can bill its resources separately (see Cloud differences) |

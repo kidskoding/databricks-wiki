@@ -74,12 +74,12 @@ DataFrames were introduced with the [[Spark SQL]] engine. The SIGMOD 2015 paper 
 
 A Spark DataFrame is a distributed collection of rows organized into **named, typed columns**. It is:
 
-- **Distributed:** split into [[Partitions|partitions]] across executors.
+- **Distributed:** split into [[Partitions|partitions]] across [[Driver and Executors|executors]] (the worker processes).
 - **Immutable:** every operation returns a new DataFrame.
 - **Lazy:** it is a plan, not data, until an action runs ([[Lazy Evaluation]]).
 - **Schema-aware:** Spark knows each column's [[Data Type|data type]].
 
-In Scala and Java there is also a typed cousin, the **Dataset** (`Dataset[Order]`), which checks types at compile time. A DataFrame is a `Dataset[Row]`. Python and R have only DataFrames.
+In Scala and Java there is also a typed cousin, the **Dataset** (`Dataset[Order]`), which checks types at compile time (before the program runs). A DataFrame is a `Dataset[Row]`. Python and R have only DataFrames.
 
 | | RDD | DataFrame | pandas DataFrame |
 |---|---|---|---|
@@ -151,7 +151,7 @@ spark.sql("SELECT * FROM revenue_by_city_v WHERE revenue > 50").show()
 > - If the final result is small and you prefer pandas, call `df.toPandas()` at the end. Do the filtering and aggregation in Spark first.
 
 > [!bridge]- In Databricks today
-> DataFrames are the main API across Databricks: in notebooks, [[Lakeflow Jobs]], [[Lakeflow Spark Declarative Pipelines]], and [[Databricks Connect]] from your IDE. Tables you save land as [[Delta Lake]] tables governed by [[Unity Catalog]]. DataFrame operations run on [[Photon]] when it is enabled, and they are fully supported on [[Serverless Compute]] (unlike RDDs). Spark 4.x additions such as the `VARIANT` type for semi-structured JSON (GA in 4.1) are available in recent [[Databricks Runtime]] versions.
+> DataFrames are the main API across Databricks: in notebooks, [[Lakeflow Jobs]], [[Lakeflow Spark Declarative Pipelines]], and [[Databricks Connect]] from your IDE (code editor). Tables you save land as [[Delta Lake]] tables governed by [[Unity Catalog]]. DataFrame operations run on [[Photon]] when it is enabled, and they are fully supported on [[Serverless Compute]] (unlike RDDs). Spark 4.x additions such as the `VARIANT` type for [[Structured vs Unstructured Data|semi-structured]] JSON (generally available in 4.1) are available in recent [[Databricks Runtime]] versions.
 
 ## Cloud differences
 

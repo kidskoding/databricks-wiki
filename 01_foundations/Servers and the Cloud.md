@@ -90,7 +90,7 @@ The U.S. National Institute of Standards and Technology (NIST) defines cloud com
 
 | Property | What it means | Bakery example |
 |---|---|---|
-| **On-demand self-service** | Start a server from a web page or API in minutes | Spin up a machine to process a year of orders |
+| **On-demand self-service** | Start a server from a web page or [[APIs\|API]] in minutes | Spin up a machine to process a year of orders |
 | **Elasticity** | Scale up and down, sometimes automatically | Ten machines for the year-end report, zero overnight |
 | **Pay per use** | Billed by the second, minute, or hour, or per gigabyte | No bill on days nothing runs |
 | **Managed services** | The provider runs the database, storage, or platform for you | No one patches the database server |
@@ -102,7 +102,7 @@ Clouds sell at different levels of "how much they manage for you". See [[SaaS Pa
 |---|---|---|---|
 | **IaaS** (infrastructure) | Operating system, software, data | Hardware, network, data center | A rented [[Virtual Machine\|virtual machine]] |
 | **PaaS** (platform) | Your code and data | Everything underneath | Managed Postgres, Databricks |
-| **SaaS** (software) | Your data and settings | The whole application | Your POS or booking app |
+| **SaaS** (software) | Your data and settings | The whole application | Your point-of-sale (POS) or booking app |
 
 The three big providers and their basic building blocks:
 
@@ -111,7 +111,7 @@ The three big providers and their basic building blocks:
 | Rented server | Azure Virtual Machines | Amazon EC2 | Compute Engine |
 | [[Object Storage\|Object storage]] | [[Azure Data Lake Storage]] (on Blob Storage) | [[Amazon S3]] | [[Google Cloud Storage]] |
 | Private network | [[VPC and VNet\|VNet]] | [[VPC and VNet\|VPC]] | [[VPC and VNet\|VPC]] |
-| Identity | Microsoft Entra ID | [[IAM]] | [[IAM]] and service accounts |
+| Identity | [[Microsoft Entra ID Integration\|Microsoft Entra ID]] | [[IAM]] | [[IAM]] and service accounts |
 
 ## How it works
 

@@ -65,15 +65,17 @@ Mastery: `INPUT[inlineSelect(option(new), option(learning), option(solid)):maste
 
 ## Background
 
-Microsoft previously offered two separate products: **Azure Blob Storage** (general object storage, comparable to S3) and **Azure Data Lake Storage Gen1** (a store for analytics workloads).
+Microsoft previously offered two separate products: **Azure Blob Storage** (general [[Object Storage|object storage]], comparable to S3) and **Azure Data Lake Storage Gen1** (a store for analytics workloads).
 
-**ADLS Gen2** combines their capabilities. It is not a separate service. In Microsoft's words, it is "a set of capabilities that you use with the Blob Storage service of your Azure Storage account", unlocked by turning on the **hierarchical namespace** setting. You get Blob prices, tiers, and lifecycle rules, plus real directories, atomic directory operations, and file-level access control. Microsoft's current documentation simply calls it **Azure Data Lake Storage**; "Gen2" appears in older pages and in most people's vocabulary.
+**ADLS Gen2** combines their capabilities. It is not a separate service. In Microsoft's words, it is "a set of capabilities that you use with the Blob Storage service of your Azure Storage account", unlocked by turning on the **hierarchical namespace** setting. You get Blob prices, tiers, and lifecycle rules, plus real directories, atomic directory operations (a folder rename or delete completes fully or not at all), and file-level access control. Microsoft's current documentation simply calls it **Azure Data Lake Storage**; "Gen2" appears in older pages and in most people's vocabulary.
 
 Gen1 is retired, so current ADLS accounts use the Gen2 design.
 
 ## Overview
 
-ADLS is an **Azure Storage account** (StorageV2, general purpose v2) with **hierarchical namespace (HNS) enabled**. Inside it:
+Azure Data Lake Storage (ADLS) is Azure's storage for analytics data: Azure Blob Storage with a hierarchical namespace (real folders) turned on.
+
+Technically, ADLS is an **Azure Storage account** (StorageV2, general purpose v2) with **hierarchical namespace (HNS) enabled**. Inside it:
 
 | Concept | What it is | S3 / GCS equivalent |
 |---|---|---|
@@ -81,7 +83,7 @@ ADLS is an **Azure Storage account** (StorageV2, general purpose v2) with **hier
 | Container (or *file system*) | A top-level folder that holds data | Bucket |
 | Directory | A real directory (requires HNS) | Key prefix |
 | File / blob | The object itself | Object |
-| ACLs | POSIX-style access control lists on directories and files, assigned to Entra ID identities | IAM/bucket policies (no per-file ACL model) |
+| ACLs | POSIX-style (Unix-style) access control lists on directories and files, assigned to [[Microsoft Entra ID Integration\|Entra ID]] identities | IAM/bucket policies (no per-file ACL model) |
 
 Because it is still Blob Storage underneath, Blob features carry over: access tiers (hot, cool, cold, archive), lifecycle management, soft delete, and diagnostic logging. Blob APIs and Data Lake APIs work on the same data. Pricing is at Blob Storage levels; see Azure's official storage pricing page.
 
@@ -97,7 +99,7 @@ flowchart LR
   C1 --> D2["curated/"]
 ```
 
-**The URI scheme.** Databricks addresses ADLS with `abfss://` (the Azure Blob File System driver over TLS; plain `abfs://` is the non-TLS variant):
+**The URI scheme.** Databricks addresses ADLS with `abfss://` (the Azure Blob File System driver over TLS, an encrypted connection; plain `abfs://` is the non-TLS variant):
 
 ```text
 abfss://lake@acmestorage.dfs.core.windows.net/curated/orders/part-0000.parquet
@@ -143,7 +145,7 @@ SELECT * FROM read_files('abfss://lake@acmestorage.dfs.core.windows.net/raw/orde
 > The home cloud for ADLS. Hierarchical namespace is a prerequisite for both mounts and Unity Catalog external locations. Pair with [[ADLS and Access Connectors]], [[Azure Private Link]] for private access, and [[Customer-Managed Keys on Azure]]. Microsoft Fabric's OneLake is also built on ADLS; see [[Microsoft Fabric and OneLake vs Databricks]].
 
 > [!aws]- Databricks on AWS
-> The equivalent is [[Amazon S3]] (`s3://`). Reading ADLS from AWS is possible with credentials but incurs Azure egress; use [[OpenSharing]] for cross-cloud sharing.
+> The equivalent is [[Amazon S3]] (`s3://`). Reading ADLS from AWS is possible with credentials but incurs Azure [[Egress|egress]] charges; use [[OpenSharing]] for cross-cloud sharing.
 
 > [!gcp]- Databricks on Google Cloud
 > The equivalent is [[Google Cloud Storage]] (`gs://`).

@@ -80,11 +80,13 @@ In a traditional database server, the disks that hold the data and the processor
 - **They must stay on.** Switching off the server makes the data unavailable.
 - **They compete.** A heavy report and a nightly load share the same CPU, memory, and disks.
 
-Early big data systems such as [[HDFS]] also stored data on the same machines that processed it[^unverified], to move computation to the data. That design reduced network traffic but kept the coupling. See [[Apache Hadoop]].
+Early [[The Three Vs of Big Data|big data]] systems such as [[HDFS]] also stored data on the same machines that processed it[^unverified], to move computation to the data. That design reduced network traffic but kept the coupling. See [[Apache Hadoop]].
 
 Cloud [[Object Storage|object storage]] changed the economics. Storage became a separate, durable, pay-per-gigabyte service, reachable over the network from any number of machines. Compute became something that can start for a job and stop afterward.
 
 ## Overview
+
+Storage is the service that keeps data durably, and compute is the processing power that reads and changes it; a platform that separates them can scale, start, and stop each one independently.
 
 | | Storage | Compute |
 |---|---|---|
@@ -99,7 +101,7 @@ When the two are separated:
 
 1. **Each scales independently.** Ten years of orders can sit in storage while compute is sized for today's queries.
 2. **Compute can stop.** With nothing running, the remaining cost is storage, which is usually small compared with compute.
-3. **Many engines can share one copy of data.** A SQL engine, a Python notebook, and an ML training job can read the same files without copying them.
+3. **Many engines can share one copy of data.** A SQL engine, a Python notebook, and a [[Machine Learning Basics|machine learning (ML)]] training job can read the same files without copying them.
 4. **Workloads stop competing.** The nightly load and the morning dashboards can run on different compute against the same data.
 
 ## How it works
@@ -123,7 +125,7 @@ A bakery's typical day with separated storage and compute:
 
 | Time | Compute running | Storage |
 |---|---|---|
-| 02:00–02:15 | A job cluster loads yesterday's POS export and stops | New files are added |
+| 02:00–02:15 | A job cluster loads yesterday's point-of-sale (POS) export and stops | New files are added |
 | 08:00–09:00 | A SQL warehouse serves the morning dashboard, then stops when idle | Read only |
 | 14:00–14:30 | A notebook trains a demand forecast | Read only |
 | All other hours | Nothing | Data stays in place |

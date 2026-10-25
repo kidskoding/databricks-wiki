@@ -56,13 +56,15 @@ Mastery: `INPUT[inlineSelect(option(new), option(learning), option(solid)):maste
 > [[Azure Data Lake Storage]] and [[Amazon S3]] are the object stores of Azure and AWS. Google Cloud Storage is Google Cloud's equivalent, using the same bucket-and-object model as S3. It holds lake files on Google Cloud, including the open tables that [[Google BigQuery]] can read.
 
 > [!eli5] Summary
-> Google Cloud Storage is Google Cloud's service for storing files of any size and number. You create a named bucket, upload files, and Google keeps them durable. Databricks on Google Cloud stores its data there.
+> Google Cloud Storage is Google's online storage service for files of any size and number. You create a named storage container, called a bucket, upload files to it, and Google keeps them safe from loss. When Databricks runs on Google Cloud, this is where it keeps the data.
 
 ## Background
 
-Google's internal distributed storage, described in the [[Google File System and MapReduce Papers|Google File System paper]], predates its public cloud. Cloud Storage offers object storage as a public service using the model [[Amazon S3]] established: buckets, objects, and an HTTP API. On Google Cloud it fills the role S3 fills on AWS: durable, low-cost storage for raw files, exports, and [[Delta Lake]] or [[Apache Iceberg]] tables.
+Google's internal distributed storage, described in the [[Google File System and MapReduce Papers|Google File System paper]], predates its public cloud. Cloud Storage offers object storage as a public service using the model [[Amazon S3]] established: buckets, objects, and an HTTP [[APIs|API]]. On Google Cloud it fills the role S3 fills on AWS: durable, low-cost storage for raw files, exports, and [[Delta Lake]] or [[Apache Iceberg]] tables.
 
 ## Overview
+
+Google Cloud Storage (GCS) is Google Cloud's [[Object Storage|object storage]] service.
 
 Cloud Storage keeps **objects** in **buckets**. A bucket has a globally unique name, a **location**, and a **default storage class**. Objects inherit the bucket's class unless set otherwise.
 
@@ -72,7 +74,7 @@ Cloud Storage keeps **objects** in **buckets**. A bucket has a globally unique n
 |---|---|---|
 | Region | `us-central1` | Default for analytics. Put it in the same region as your Databricks workspace. |
 | Dual-region | a pair of regions | Higher availability with predictable placement |
-| Multi-region | `US`, `EU`, `ASIA` | Content served widely; usually not needed for a lakehouse |
+| Multi-region | `US`, `EU`, `ASIA` | Content served widely; usually not needed for a [[The Lakehouse Idea\|lakehouse]] |
 
 **Storage classes** (all four are available in every location type):
 
@@ -140,7 +142,7 @@ SELECT * FROM read_files('gs://acme-lake/raw/orders/', format => 'csv', header =
 > The home cloud for GCS. See [[GCS Access via Unity Catalog]], [[Google Service Accounts]], [[Private Service Connect]] for private connectivity, and [[Customer-Managed Keys on Google Cloud]] for Cloud KMS keys.
 
 > [!aws]- Databricks on AWS
-> The equivalent is [[Amazon S3]] (`s3://`). Cross-cloud reads from GCS incur Google network egress; prefer [[OpenSharing]] for sharing across clouds.
+> The equivalent is [[Amazon S3]] (`s3://`). Cross-cloud reads from GCS incur Google network [[Egress|egress]] charges; prefer [[OpenSharing]] for sharing across clouds.
 
 > [!azure]- Azure Databricks
 > The equivalent is [[Azure Data Lake Storage]] (`abfss://`).

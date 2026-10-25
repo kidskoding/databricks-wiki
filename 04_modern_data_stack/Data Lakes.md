@@ -78,7 +78,7 @@ A data lake is **a storage pattern, not a product**: a central repository of raw
 | **When structure is applied** | On write ([[Schema\|schema]]-on-write) | On read (schema-on-read) |
 | **Formats** | Vendor's internal format | Open files: CSV, JSON, [[Apache Parquet\|Parquet]], [[Apache ORC\|ORC]], Avro, images, logs |
 | **Storage cost** | High | Low (object storage) |
-| **Who reads it** | Analysts and BI | Engineers and data scientists, with [[Apache Spark\|Spark]], [[Apache Hive\|Hive]], Presto/Trino |
+| **Who reads it** | Analysts and [[BI Tools\|BI]] | Engineers and data scientists, with [[Apache Spark\|Spark]], [[Apache Hive\|Hive]], Presto/Trino (SQL query engines) |
 | **Reliability** | Transactions, constraints | None built in: files can be half-written or contradictory |
 | **Governance** | Built in | Bolted on, if at all |
 
@@ -131,7 +131,7 @@ This code has no transactional guarantees. If the `overwrite` fails partway, rea
 > A dedicated data lake project is rarely necessary for a small company. The useful part of the pattern still applies: keep raw exports, CSVs, and PDFs in one central, inexpensive location before cleaning them, so the originals are always available. On Databricks that place is a [[Volumes|volume]] or the bronze layer of the [[Medallion Architecture]], and unlike a plain lake it comes with permissions and transactions.
 
 > [!bridge]- In Databricks today
-> Databricks keeps the data lake and adds a reliability and governance layer. On Databricks, your data still lives as open Parquet files in your own object storage, but wrapped in [[Delta Lake]] (or [[Apache Iceberg]]) tables that add [[ACID Transactions|ACID transactions]], updates and deletes, [[Schema Enforcement and Evolution|schema enforcement]], and [[Time Travel|time travel]]. [[Unity Catalog]] adds the catalog, permissions, and lineage that lakes lacked, and [[Volumes]] govern non-tabular files such as images and PDFs. That combination is the [[The Lakehouse Idea|lakehouse]] of chapter 05.
+> Databricks keeps the data lake and adds a reliability and governance layer. On Databricks, your data still lives as open Parquet files in your own object storage, but wrapped in [[Delta Lake]] (or [[Apache Iceberg]]) tables that add [[ACID Transactions|ACID transactions]], updates and deletes, [[Schema Enforcement and Evolution|schema enforcement]], and [[Time Travel|time travel]]. [[Unity Catalog]] adds the catalog, permissions, and [[Data Lineage|lineage]] that lakes lacked, and [[Volumes]] govern non-tabular files such as images and PDFs. That combination is the [[The Lakehouse Idea|lakehouse]] of chapter 05.
 >
 > Existing lakes connect directly: point a Unity Catalog [[Storage Credentials and External Locations|external location]] at the bucket, then read the files, register them as external tables, or ingest them with [[Auto Loader]].
 
@@ -150,7 +150,7 @@ This code has no transactional guarantees. If the `overwrite` fails partway, rea
 
 > [!deepdive]- Advanced topics (301–401)
 > - **Directory-as-table.** Hive established the convention that a folder of files is a table and subfolders like `order_date=2026-10-24` are partitions, with the [[Hive Metastore]] recording the mapping. Every lake engine inherited it, including its weaknesses: listing millions of files is slow, and the metastore and the files can disagree.
-> - **Small files.** Streaming and frequent appends create thousands of tiny files, which kills read performance. Lakes needed periodic compaction jobs; Delta automates this with [[OPTIMIZE and VACUUM]] and auto-compaction.
+> - **Small files.** Streaming and frequent appends create thousands of tiny files, which severely slows reads. Lakes needed periodic compaction jobs; Delta automates this with [[OPTIMIZE and VACUUM]] and auto-compaction.
 > - **No isolation.** Without a transaction log, readers can observe partial writes, and concurrent writers can corrupt a table. This is the core technical gap the [[Delta Transaction Log]] closes.
 > - **Zones.** Lakes were often organized as landing/raw, cleansed, and curated zones. The [[Medallion Architecture]] (bronze, silver, gold) is the same idea on reliable tables.
 > - **Lake plus warehouse.** Because lakes were unreliable for BI, companies copied a curated subset into a warehouse, creating [[The Two-Tier Architecture Problem]].

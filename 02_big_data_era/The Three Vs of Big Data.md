@@ -78,11 +78,13 @@ The volume, velocity, and variety framing is generally attributed to analyst Dou
 
 ## Overview
 
+The three Vs (volume, velocity, and variety) are the three properties that make data "big": too much of it, arriving too fast, or in too many forms for one machine and its usual tools.
+
 | V | Definition | What it breaks | Tools built in response |
 |---|---|---|---|
 | **Volume** | Total amount of data stored and scanned | Single-disk capacity and single-machine read speed | [[HDFS]], later cloud [[Object Storage]] |
 | **Velocity** | Rate at which data arrives, and how quickly results are needed | Nightly batch windows | [[Apache Kafka]], [[Structured Streaming]] |
-| **Variety** | Number of distinct formats and structures | Fixed table [[Schema\|schemas]] enforced at load time | [[Data Lakes]], schema-on-read in [[Apache Hive]] |
+| **Variety** | Number of distinct formats and structures | Fixed table [[Schema\|schemas]] enforced at load time | [[Data Lakes]], schema-on-read (structure applied at query time) in [[Apache Hive]] |
 
 Key points:
 
@@ -118,7 +120,7 @@ At the large stage, a faster single machine does not resolve the bottleneck. [[S
 ## Small-business considerations
 
 > [!smallbiz] Small-business considerations
-> Most companies with 5–50 employees do not have big data by this definition. A few years of orders, CRM records, and analytics exports typically total gigabytes.
+> Most companies with 5–50 employees do not have big data by this definition. A few years of orders, CRM (customer relationship management) records, and analytics exports typically total gigabytes.
 >
 > Use the three Vs to decide when to move beyond [[Spreadsheets|spreadsheets]] and a single database:
 > - **Volume:** files that will not open, or reports that take minutes to refresh.

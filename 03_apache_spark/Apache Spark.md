@@ -66,12 +66,12 @@ Mastery: `INPUT[inlineSelect(option(new), option(learning), option(solid)):maste
 [[MapReduce]] made large-scale processing possible, but every step wrote to disk, programs were long Java classes, and SQL, machine learning, and streaming each required a separate system. Spark addressed these issues with three goals:
 
 - **Speed.** Keep working data in memory between steps instead of writing to disk each time.
-- **Ease.** Offer short, readable APIs in Python, SQL, [[Scala]], Java, and R.
+- **Ease.** Offer short, readable [[APIs]] in Python, SQL, [[Scala]], Java, and R.
 - **One engine for everything.** Batch, SQL, streaming, and machine learning all run on the same engine and can be mixed in one program.
 
 ## Overview
 
-Apache Spark is an open-source, multi-language engine for data engineering, data science, and machine learning on a single machine or a [[Cluster|cluster]]. It converts your code into many small tasks and runs them in parallel across the cluster's machines.
+Apache Spark is an [[Open Source|open-source]], multi-language engine for data engineering, data science, and machine learning on a single machine or a [[Cluster|cluster]]. It converts your code into many small tasks and runs them in parallel across the cluster's machines.
 
 Spark is a set of layers:
 
@@ -92,8 +92,8 @@ Spark is a set of layers:
 | 3.0 | [[Adaptive Query Execution]] introduced |
 | 3.4 | [[Spark Connect]] introduced |
 | 4.0 | ANSI SQL mode on by default, `VARIANT` type, full Spark Connect clients, Scala 2.13 only |
-| 4.1 | Spark Declarative Pipelines, Structured Streaming real-time mode, SQL scripting GA, `VARIANT` GA |
-| 4.2 | Native `GEOMETRY`/`GEOGRAPHY` types, a `CHANGES` clause for change data capture, Arrow-optimized Python UDFs on by default, a modernized Spark UI with dark mode |
+| 4.1 | Spark Declarative Pipelines, Structured Streaming real-time mode, SQL scripting generally available (GA), `VARIANT` GA |
+| 4.2 | Native `GEOMETRY`/`GEOGRAPHY` types, a `CHANGES` clause for [[Change Data Capture\|change data capture]], Arrow-optimized Python [[UDF\|UDFs]] on by default, a modernized Spark UI with dark mode |
 
 ## How it works
 
@@ -108,9 +108,9 @@ flowchart LR
 ```
 
 1. You describe what you want with [[DataFrames]] or SQL. Spark does not run anything yet ([[Lazy Evaluation]]).
-2. When you ask for a result (an action, see [[Transformations and Actions]]), the driver turns your request into an optimized plan with the [[Catalyst Optimizer]].
+2. When you ask for a result (an action, see [[Transformations and Actions]]), the [[Driver and Executors|driver]] (the coordinating process) turns your request into an optimized plan with the [[Catalyst Optimizer]].
 3. The plan is split into [[Jobs Stages and Tasks|stages and tasks]], one task per [[Partitions|partition]] of data.
-4. Executors run the tasks in parallel, reading straight from storage such as [[Apache Parquet|Parquet]] or [[Delta Lake]] files.
+4. Executors (the worker processes) run the tasks in parallel, reading straight from storage such as [[Apache Parquet|Parquet]] or [[Delta Lake]] files.
 5. If a machine fails, Spark reruns only the lost tasks from the plan. This is the [[Fault Tolerance|fault tolerance]] model from the original [[RDDs|RDD]] paper.
 
 The same question in Python and in SQL:
@@ -150,7 +150,7 @@ Both versions compile to the same physical plan, which you can see with `EXPLAIN
 > - **Cost follows compute time.** Spark itself is free. On Databricks you pay for the compute that runs it, metered in [[DBUs]]. See [[How Databricks Pricing Works]].
 
 > [!bridge]- In Databricks today
-> Every Databricks cluster, job, notebook, and SQL warehouse runs Apache Spark inside the [[Databricks Runtime]]. Databricks Runtime 17.3 LTS is built on Spark 4.0, Databricks Runtime 18 LTS on Spark 4.1, and Databricks Runtime 19 (GA July 2026) on Spark 4.2. On top of open-source Spark, Databricks adds [[Photon]] (a C++ execution engine that runs the same APIs faster), [[Delta Lake]] integration, [[Unity Catalog]] security, and [[Serverless Compute]], which runs your code through [[Spark Connect]]. The code you write is standard Spark, so it runs on other Spark services too.
+> Every Databricks cluster, job, notebook, and SQL warehouse runs Apache Spark inside the [[Databricks Runtime]]. Databricks Runtime 17.3 LTS (long-term support) is built on Spark 4.0, Databricks Runtime 18 LTS on Spark 4.1, and Databricks Runtime 19 (GA July 2026) on Spark 4.2. On top of open-source Spark, Databricks adds [[Photon]] (a C++ execution engine that runs the same APIs faster), [[Delta Lake]] integration, [[Unity Catalog]] security, and [[Serverless Compute]], which runs your code through [[Spark Connect]]. The code you write is standard Spark, so it runs on other Spark services too.
 
 ## Cloud differences
 
@@ -183,7 +183,7 @@ Spark behaves the same on all three clouds. What changes is the hardware it runs
 > Spark can run on Hadoop clusters and read from [[HDFS]], but it does not need Hadoop. Most Spark today runs on cloud object storage with no Hadoop cluster at all.
 
 > [!confusion] "Spark is fast because it is in memory" is only half true
-> Spark spills to disk when data does not fit, and it reads from disk at the start of every job. Its speed comes from planning the whole job, avoiding unnecessary disk writes between steps, and generating efficient code.
+> Spark [[Spill|spills]] to disk when data does not fit, and it reads from disk at the start of every job. Its speed comes from planning the whole job, avoiding unnecessary disk writes between steps, and generating efficient code.
 
 ## Recall
 
