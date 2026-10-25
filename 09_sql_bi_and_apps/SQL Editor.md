@@ -21,6 +21,8 @@ related:
   - "[[AI-BI Dashboards]]"
   - "[[Unity Catalog]]"
   - "[[Query Performance and Caching]]"
+  - "[[SQL Alerts]]"
+  - "[[Data Quality]]"
 aliases:
   - New SQL editor
   - Databricks SQL editor
@@ -46,26 +48,28 @@ tags:
 
 Mastery: `INPUT[inlineSelect(option(new), option(learning), option(solid)):mastery]`
 
-> [!story] Previously
-> In [[Databricks SQL]] we met the SQL warehouse, the compute that answers SQL on lakehouse tables. A warehouse with no front door is not much use to an analyst, though. They need somewhere to type, run, save, and share their questions.
+> [!story] Context
+> [[Databricks SQL]] introduced the SQL warehouse, the compute that runs SQL on lakehouse tables. Analysts also need an interface to write, run, save, and share queries against that compute.
 
-> [!eli5] In one breath
-> The SQL editor is a page in your web browser where you type a question to your data and press run. The answer shows up underneath as a table you can sort, chart, download, or send to a colleague. Several people can work on the same question at once, like a shared document.
+> [!eli5] Summary
+> The SQL editor is a page in the web browser where you type a question to your data and run it. The answer appears below as a table that you can sort, chart, download, or share. Several people can work on the same query at once, as in a shared document.
 
-> [!analogy] Analogy: a shared document for questions
-> - **The editor page** is like a shared online document, except each paragraph is a question to the data.
-> - **The run button** sends the question to the [[SQL Warehouses|warehouse]], the staff who go and find the answer.
-> - **The results pane** is the answer sheet that comes back.
-> - **Comments and live co-editing** are the margin notes and the cursor of a colleague typing beside you.
-> - **Execution history** is the "version history" menu: every earlier answer, kept so you need not ask again.
+> [!analogy]- Analogy: a shared document for questions
+> | Shared document | SQL editor |
+> |---|---|
+> | A paragraph | One SQL statement |
+> | Sending the document to a reviewer | Running the query on a [[SQL Warehouses\|SQL warehouse]] |
+> | The reply | The results pane |
+> | Margin comments and live cursors | Line comments and real-time co-editing |
+> | Version history | Execution history |
 
-## Why it exists
+## Background
 
 Before a browser-based editor, analysts on a data platform usually installed a desktop SQL client, configured a driver and credentials, and saved queries as `.sql` files on their own laptop. Sharing meant emailing files. Nobody could see which query produced the number in last week's slide.
 
 The SQL editor puts all of this inside the workspace. Queries are saved in the workspace, they run on governed compute, permissions come from [[Unity Catalog]], and sharing is a link.
 
-## What it actually is
+## Overview
 
 The **new SQL editor** is the default editor in [[Databricks SQL]]. Databricks announced it as generally available on **August 14, 2025**, with multiple statement results, inline execution history, real-time collaboration, and deeper [[Databricks Assistant]] integration. Its main parts:
 
@@ -90,7 +94,7 @@ flowchart LR
   C --> G["Execution history<br/>and query profile"]
 ```
 
-**Writing.** Autocomplete fills in table and column names from Unity Catalog. **Query snippets** (added May 2025) let you save reusable fragments such as a `JOIN` or `CASE` pattern and insert them through autocomplete. You create them from the View menu. The [[Databricks Assistant]] can write, explain, or fix a query from a plain-English request.
+**Writing.** Autocomplete suggests table and column names from Unity Catalog. **Query snippets** (added May 2025) let you save reusable fragments such as a `JOIN` or `CASE` pattern and insert them through autocomplete. You create them from the View menu. The [[Databricks Assistant]] (renamed Genie Code in March 2026) writes, explains, or fixes a query from a plain-English request.
 
 **Running.** You can run a whole script or a selection. If the script holds several statements, the results pane lets you step through each statement's output.
 
@@ -118,36 +122,39 @@ FROM shop.sales.orders
 WHERE store_id IS NULL;
 ```
 
-Run both at once and you get two result tabs: a trend you can turn into a line chart, and a [[Data Quality|data quality]] check.
+Running both statements produces two result tabs: a daily trend that you can turn into a line chart, and a [[Data Quality|data quality]] check.
 
-> [!smallbiz] For a small business
-> The SQL editor replaces "the spreadsheet everyone emails around" for most reporting questions.
+## Small-business considerations
+
+> [!smallbiz] Small-business considerations
+> The SQL editor can replace emailed spreadsheets for most recurring reporting questions.
 > - Save each recurring question as a named query in a shared folder, so the next person finds it.
-> - Use line comments for "why is this number different from last month?" conversations, instead of a chat thread nobody can find later.
-> - Turn on the column profile before you send a number to the owner. A quick look at nulls and minimum/maximum values catches most embarrassing mistakes.
+> - Use line comments to record questions about a number (for example, why it differs from last month) next to the SQL that produced it.
+> - Check the column profile before you share a number. Null counts and minimum and maximum values reveal most data errors.
 >
 > The editor itself has no separate charge. Running a query uses the SQL warehouse, which bills while it is on. See [[How Databricks Pricing Works]].
 
-## On each cloud
+## Cloud differences
 
 > [!azure]- All clouds
-> Nothing differs. The editor is the same web page on Azure Databricks, Databricks on AWS, and Databricks on Google Cloud. Some features roll out on different dates per cloud, so check your cloud's [[Databricks SQL]] release notes if a menu item is missing.
+> Nothing differs between clouds. The editor is the same web page on Azure Databricks, Databricks on AWS, and Databricks on Google Cloud. Some features roll out on different dates per cloud, so check your cloud's [[Databricks SQL]] release notes if a menu item is missing.
 
-## Going deeper
+## Advanced topics
 
-> [!deepdive]- Expert notes (301–401)
+> [!deepdive]- Advanced topics (301–401)
 > - **Profiles and the cache.** A query answered from the result cache has no query profile. To profile it, make a trivial change (for example, change or remove the `LIMIT`). See [[Query Performance and Caching]].
 > - **Who can see a profile.** You must own the query or hold at least `CAN MONITOR` on the warehouse.
 > - **Editor vs notebook.** A [[Notebooks|notebook]] attached to a SQL warehouse can also run SQL. Use the editor for analyst work and saved queries, and notebooks when SQL is mixed with Python or markdown explanation.
-> - **Default warehouse.** A preselected default warehouse helps cost control: new users land on the small shared warehouse instead of starting a large one.
+> - **Default warehouse.** A preselected default warehouse helps cost control: new users run on the small shared warehouse instead of starting a large one.
+> - **Genie Code.** The [[Databricks Assistant]] was renamed Genie Code on March 11, 2026. Older screenshots show the Assistant name.
 
-## Common confusions
+## Common misconceptions
 
 > [!confusion] The editor is not the compute
 > Closing the editor tab does not stop the warehouse, and stopping the warehouse does not lose your saved queries. The editor is the front end. The [[SQL Warehouses|SQL warehouse]] is the engine, and it stops on its own auto-stop timer.
 
 > [!confusion] "New SQL editor" vs the legacy editor
-> Older docs and screenshots show a legacy editor. The "new SQL editor" is now the GA default. If a tutorial's buttons do not match your screen, it was probably written for the legacy one.
+> Older docs and screenshots show a legacy editor. The "new SQL editor" is now the GA default. If a tutorial's buttons do not match the current UI, the tutorial was likely written for the legacy editor.
 
 ## Recall
 
@@ -159,14 +166,14 @@ What happens in the results pane when a script contains several statements?::Eac
 What file formats can you export results to, and up to what size?::CSV, TSV, and Excel, up to 5 GB.
 What permission do you need to view another user's query profile?::At least CAN MONITOR on the SQL warehouse.
 
-## Where next
+## Next steps
 
 > [!path] Learning path
 > **Needs first:** [[SQL]], [[Databricks SQL]]
 > **Unlocks next:** [[Query Performance and Caching]], [[AI-BI Dashboards]], [[SQL Alerts]]
 
-> [!nextup] Up next in the story
-> The analyst's query works, but it takes forty seconds and the owner wants it on a dashboard that loads instantly. Why is a query slow, and what do caches do about it? That is [[Query Performance and Caching]].
+> [!nextup] Next
+> [[Query Performance and Caching]] explains how to read a query profile and how result and disk caches speed up repeated queries.
 
 > [!sources]- Sources (last verified: 2026-10-25)
 > - [Run and share queries in the new SQL editor (AWS)](https://docs.databricks.com/aws/en/sql/user/sql-editor/run-queries)
@@ -178,3 +185,5 @@ What permission do you need to view another user's query profile?::At least CAN 
 > - [Databricks SQL release notes 2026 (Azure Databricks)](https://learn.microsoft.com/en-us/azure/databricks/sql/release-notes/2026)
 > - [Databricks SQL release notes 2026 (GCP)](https://docs.databricks.com/gcp/en/sql/release-notes/2026)
 > - [Query profile (AWS)](https://docs.databricks.com/aws/en/sql/user/queries/query-profile)
+> - [March 2026 release notes (Azure Databricks)](https://learn.microsoft.com/en-us/azure/databricks/release-notes/product/2026/march)
+> - [Genie Code (AWS)](https://docs.databricks.com/aws/en/genie-code/)

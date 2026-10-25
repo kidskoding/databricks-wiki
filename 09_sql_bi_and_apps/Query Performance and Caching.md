@@ -24,6 +24,8 @@ related:
   - "[[Shuffles]]"
   - "[[AI-BI Dashboards]]"
   - "[[Databricks SQL]]"
+  - "[[Data Skipping]]"
+  - "[[Caching]]"
 aliases:
   - Query profile
   - Result cache
@@ -52,29 +54,31 @@ tags:
 
 Mastery: `INPUT[inlineSelect(option(new), option(learning), option(solid)):mastery]`
 
-> [!story] Previously
-> In the [[SQL Editor]] our analyst wrote a working query. Now it has to be fast: it will sit behind a dashboard that twenty people open every morning. Two questions follow. When a query is slow, how do you find out why? And when twenty people ask the same thing, does the warehouse really have to compute it twenty times?
+> [!story] Context
+> The [[SQL Editor]] runs a query once. Queries behind dashboards run many times a day for many viewers. This note covers how to find out why a query is slow, and how Databricks SQL avoids recomputing answers that have not changed.
 
-> [!eli5] In one breath
-> When a question to the data is slow, Databricks can show you a step-by-step report of where the time went, like a receipt for each stage. And when someone asks a question that was already answered and nothing has changed, Databricks hands back the saved answer instead of working it out again.
+> [!eli5] Summary
+> When a question to the data is slow, Databricks shows a step-by-step report of where the time went. When someone asks a question that was already answered and the data has not changed, Databricks returns the saved answer instead of computing it again.
 
-> [!analogy] Analogy: a busy kitchen
-> - **The query** is a customer's order.
-> - **The query profile** is the kitchen's timing sheet: how long the prep, the grill, and the plating took for that order. It shows which station was the bottleneck.
-> - **The disk cache** is the ingredients already chopped and sitting on the counter, so the cook does not walk to the walk-in fridge (cloud storage) every time.
-> - **The result cache** is a finished dish kept warm under the lamp. If the next customer orders exactly the same thing and the recipe has not changed, they get it at once.
-> - **Changing the underlying table** is a new delivery of ingredients. Anything kept warm from the old batch gets thrown out.
+> [!analogy]- Analogy: a restaurant kitchen
+> | Kitchen | Databricks SQL |
+> |---|---|
+> | A customer's order | The query |
+> | The timing sheet for each station | The query profile |
+> | Ingredients already prepared on the counter | The disk cache (files on local SSD) |
+> | A finished dish kept warm | The result cache |
+> | A new delivery that replaces old ingredients | A table change that invalidates cached results |
 
-## Why it exists
+## Background
 
-A lakehouse query reads files from [[Object Storage|object storage]], which is cheap and huge but much slower to reach than a local disk. On top of that, a BI workload is repetitive: the same dashboard, the same filters, many people, every morning. Without help you pay twice: once in waiting time ([[Latency|latency]]) and once in compute ([[DBUs]]).
+A lakehouse query reads files from [[Object Storage|object storage]], which is cheap and huge but much slower to reach than a local disk. On top of that, a BI workload is repetitive: the same dashboard, the same filters, many people, every morning. Without optimization, each repeated query costs both waiting time ([[Latency|latency]]) and compute ([[DBUs]]).
 
-Databricks SQL attacks both:
+Databricks SQL addresses both:
 
 - **Caches** avoid repeated work. Repeated questions are answered from memory, and repeated reads come from local SSD.
-- **The query profile** explains the work that cannot be avoided, so you can fix the table layout or the SQL instead of just buying a bigger warehouse.
+- **The query profile** explains the work that cannot be avoided, so you can fix the table layout or the SQL before increasing the warehouse size.
 
-## What it actually is
+## Overview
 
 ### The caches
 
@@ -88,7 +92,7 @@ Databricks documents several cache layers for SQL warehouses:
 | **Databricks SQL UI cache** | Results shown in the UI, per user | The UI | At most 7 days | Does not apply to AI/BI dashboards |
 | **Dashboard cache** | Dashboard dataset results | AI/BI dashboards | Up to 24 hours | Can show results up to 24 hours old even if data changed |
 
-The lookup order is simple. The warehouse checks its local result cache, then the remote result cache (on serverless), and only runs the query if neither has the answer. Both result caches expire after 24 hours and are **invalidated when the underlying tables change**, so the generic query result cache never returns stale data. The dashboard cache is the exception worth remembering: see [[AI-BI Dashboards]].
+Lookup order: the warehouse checks its local result cache, then the remote result cache (on serverless), and only runs the query if neither has the answer. Both result caches expire after 24 hours and are **invalidated when the underlying tables change**, so the generic query result cache never returns stale data. The dashboard cache is the exception. See [[AI-BI Dashboards]].
 
 ### The query profile
 
@@ -153,39 +157,41 @@ For honest benchmarks, turn the result cache off in your session so you measure 
 SET use_cached_result = false;  -- testing and benchmarking only
 ```
 
-Databricks recommends this only for testing or benchmarking. In normal use the cache is free speed.
+Databricks recommends this setting only for testing or benchmarking. Leave the cache on in normal use.
 
-> [!smallbiz] For a small business
-> You rarely need to tune anything. A few habits get most of the benefit:
-> - **Use serverless.** Its remote result cache survives restarts, so the first person to open the morning report "warms" it for everyone after them.
-> - **Do not disable caching** to "be safe". The result cache is invalidated whenever the table changes, so it never shows stale numbers.
-> - **Before buying a bigger warehouse, open the profile.** One `SELECT *` on a wide table or one missing filter often explains a slow report.
-> - **Remember the dashboard exception.** A dashboard can show numbers up to 24 hours old. If the owner needs today's sales at 10 a.m., schedule a refresh.
+## Small-business considerations
 
-## On each cloud
+> [!smallbiz] Small-business considerations
+> Most small workloads need no tuning. These practices cover most cases:
+> - **Use serverless.** Its remote result cache survives restarts, so the first person to open the morning report fills the cache for later viewers.
+> - **Leave caching on.** The result cache is invalidated whenever the table changes, so it does not show stale numbers.
+> - **Open the profile before increasing warehouse size.** A `SELECT *` on a wide table or a missing filter often explains a slow report.
+> - **Remember the dashboard exception.** A dashboard can show numbers up to 24 hours old. If current figures are needed at a set time, schedule a dashboard refresh. See [[AI-BI Dashboards]].
+
+## Cloud differences
 
 > [!azure]- All clouds
-> Nothing differs. The caches, the profile, and `use_cached_result` work the same on Azure Databricks, AWS, and Google Cloud. The only cloud-dependent detail is that the remote result cache needs serverless warehouses, and serverless availability varies by region.
+> Nothing differs between clouds. The caches, the profile, and `use_cached_result` work the same on Azure Databricks, AWS, and Google Cloud. The only cloud-dependent detail is that the remote result cache needs serverless warehouses, and serverless availability varies by region.
 
-## Going deeper
+## Advanced topics
 
-> [!deepdive]- Expert notes (301–401)
+> [!deepdive]- Advanced topics (301–401)
 > - **Two result caches, one rule.** Both expire after 24 hours and both are invalidated by changes to the underlying tables. The remote one persists as workspace system data, which is why it outlives a stopped serverless warehouse.
 > - **Disk cache vs `CACHE TABLE`.** The disk cache is automatic: you do nothing to turn it on. `CACHE TABLE` is a separate, explicit SQL statement documented in the SQL language reference. On SQL warehouses you normally rely on the automatic caches and check the reference before reaching for it.
 > - **Disk cache correctness.** The disk cache detects changes to the underlying data files and invalidates itself, so it never serves stale file data.
 > - **Profile vs Spark UI.** The query profile is the SQL-warehouse counterpart of the [[Spark UI]]. It hides the job, stage, and task plumbing and shows operators, which is what an analyst can act on.
 > - **Dashboards have their own optimization.** AI/BI dashboards cache dataset results separately, and the docs describe how datasets are optimized and refreshed. Plan dashboard freshness with that page, not with the generic cache rules.
 
-## Common confusions
+## Common misconceptions
 
 > [!confusion] The result cache is not the disk cache
-> The **result cache** stores *answers* (the final rows). The **disk cache** stores *ingredients* (data files copied to local SSD). A new query that has never been asked can still benefit from the disk cache, but not from the result cache.
+> The **result cache** stores *answers* (the final rows). The **disk cache** stores *inputs* (data files copied to local SSD). A new query that has never been asked can still benefit from the disk cache, but not from the result cache.
 
 > [!confusion] "Cached" does not mean "stale"
 > The generic query result cache is invalidated when the underlying tables change. Only the AI/BI dashboard cache can show results up to 24 hours old.
 
 > [!confusion] No profile is not an error
-> If the profile button is missing, the query was probably served from the cache. Change the query slightly and run it again.
+> If the profile is unavailable, the query was likely served from the cache. Change the query slightly and run it again.
 
 ## Recall
 
@@ -199,14 +205,14 @@ Which cache can show results up to 24 hours old even after data changed?::The AI
 What permission is needed to view a query profile you do not own?::At least CAN MONITOR on the SQL warehouse.
 A profile shows spill to disk on a serverless warehouse. What is the documented fix?::Increase the warehouse size.
 
-## Where next
+## Next steps
 
 > [!path] Learning path
 > **Needs first:** [[SQL Editor]], [[SQL Warehouses]], [[Shuffles]]
 > **Unlocks next:** [[AI-BI Dashboards]], [[Liquid Clustering]], [[Cost Optimization Checklist]]
 
-> [!nextup] Up next in the story
-> Our query is fast and cached. But the owner does not read SQL results. They want a page of charts they can open on their phone. That is [[AI-BI Dashboards]].
+> [!nextup] Next
+> [[AI-BI Dashboards]] turns saved queries into shareable pages of charts, with their own cache and refresh schedule.
 
 > [!sources]- Sources (last verified: 2026-10-25)
 > - [Query caching (AWS)](https://docs.databricks.com/aws/en/sql/user/queries/query-caching)
