@@ -1,6 +1,6 @@
 ---
 type: chapter
-status: stub
+status: written
 part: 1
 level: 7
 section: Unity Catalog & Governance
@@ -27,21 +27,41 @@ notes:
   - "[[Databricks Marketplace]]"
   - "[[Data Classification]]"
   - "[[Hive Metastore Migration to Unity Catalog]]"
-last_verified:
+last_verified: 2026-10-25
 tags:
   - chapter
 ---
 
 # Chapter 07 - Unity Catalog and Governance
 
-> [!story] Previously
-> (to write)
+> [!story] Context
+> [[Chapter 06 - The Databricks Platform|Chapter 06]] introduced accounts, workspaces, compute, and notebooks. That platform can process data at scale, but it does not by itself answer who may access which data, where a value came from, or who changed what. This chapter covers the governance layer that answers those questions: [[Unity Catalog]].
 
 **One place to find, secure, track, and share every data and AI asset.**
 
 ## The story of this chapter
 
-(to write)
+Before Unity Catalog, governance on Databricks was scoped to the workspace. Each workspace had its own [[Hive Metastore]], its own table access control, and its own cluster-level credentials for cloud storage, such as [[Instance Profiles|instance profiles]]. A company with several workspaces had several inconsistent inventories, permissions that differed by workspace, and no built-in lineage or account-wide audit trail. This is the condition the lakehouse was meant to avoid: a [[Data Swamps|data swamp]] with better compute.
+
+[[Unity Catalog]] moves governance to the account. One [[Metastore]] per cloud region holds the metadata and permissions for every attached workspace. Every object has a three-part address, `catalog.schema.object`, described in [[Three-Level Namespace]]. [[Catalogs Schemas and Tables]] covers the object types and common layouts, and [[Managed vs External Tables]] explains who manages the files behind a table. [[Volumes]] extend the same governance to non-tabular files, and [[Storage Credentials and External Locations]] move cloud storage credentials from clusters into the catalog, so compute receives short-lived, scoped access only for authorized requests.
+
+Access control is layered:
+
+| Layer | Question it answers | Note |
+|---|---|---|
+| Grants | May this principal use this object? | [[Privileges and Grants]] |
+| Row filters and column masks | Which rows and values may this principal see in this table? | [[Row Filters and Column Masks]] |
+| Tag-based policies | Which rules apply to every object with this tag? | [[Attribute-Based Access Control]] |
+
+ABAC row filter and column mask policies, governed tags, and [[Data Classification]] became generally available in 2026. DENY policies and metastore-level policies are in Beta as of October 2026.
+
+Observability is built in. [[Data Lineage]] records column-level lineage as queries run. [[Audit Logs]] record who did what and when. [[System Tables]] expose audit, lineage, billing, compute, job, and query data as read-only tables in the `system` catalog, so governance and cost reporting use ordinary SQL.
+
+Governance also extends beyond Databricks-stored data. [[Lakehouse Federation]] registers external databases and catalogs, such as PostgreSQL, SQL Server, Snowflake, or a legacy Hive metastore, as foreign catalogs that are queried and governed in place. [[OpenSharing]], named Delta Sharing until June 2026 and now hosted by the [[Linux Foundation]], shares live data and AI assets with other organizations, on Databricks or not. [[Clean Rooms]] let up to ten organizations run approved analysis on combined data without exposing raw records. [[Databricks Marketplace]] uses the same sharing protocol to distribute datasets and models.
+
+The chapter ends with two operational topics. [[Data Classification]] scans catalogs for sensitive data and tags it, so tag-based policies cover new columns. [[Hive Metastore Migration to Unity Catalog]] describes how older workspaces move from `hive_metastore` to Unity Catalog with federation, `SYNC`, `CLONE`, and the UCX utilities.
+
+At the end of this chapter, data is cataloged, secured, traced, and shareable. Governance does not load data or keep it current. Data must still be ingested from source systems, transformed through layers such as the [[Medallion Architecture]], and refreshed on a schedule or as a stream. [[Chapter 08 - Data Engineering]] covers ingestion, pipelines, and orchestration on Databricks.
 
 ## Notes in reading order
 
@@ -71,5 +91,5 @@ tags:
 
 <!-- GENERATED:reading-order END -->
 
-> [!nextup] Up next
+> [!nextup] Next
 > [[Unity Catalog]]
