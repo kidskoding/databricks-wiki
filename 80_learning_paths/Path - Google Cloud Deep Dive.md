@@ -46,19 +46,19 @@ tags:
 # Path - Google Cloud Deep Dive
 
 > [!persona] Who this is for
-> **Who:** a Google Cloud admin, architect, or security lead running Databricks on GCP, and engineers who live next to BigQuery.
-> **Goal:** understand everything GCP-specific: subscribing through Google Cloud Marketplace, Compute Engine-based clusters, Google service accounts, GCS access, customer-managed VPCs, Private Service Connect, Cloud KMS keys, and BigQuery.
+> **Who:** a Google Cloud admin, architect, or security lead running Databricks on GCP, and engineers who work alongside BigQuery.
+> **Goal:** understand the GCP-specific parts of the platform: subscribing through Google Cloud Marketplace, Compute Engine-based clusters, Google service accounts, GCS access, customer-managed VPCs, Private Service Connect, Cloud KMS keys, and BigQuery.
 > **Outcome:** you can deploy a production workspace in your own VPC with Private Service Connect, governed GCS access through service accounts, customer-managed keys, and a clear plan for working alongside BigQuery.
 
 ## Before you start
 
-Read [[Path - Platform Admin]] first, or at least its Stages 1 to 3. You need a Google Cloud project with billing, rights to create VPCs, service accounts, GCS buckets, and Cloud KMS keys, and the ability to subscribe to Databricks in Google Cloud Marketplace. Free Edition does not help here.
+Read [[Path - Platform Admin]] first, or at least its Stages 1 to 3. You need a Google Cloud project with billing, rights to create VPCs, service accounts, GCS buckets, and Cloud KMS keys, and the ability to subscribe to Databricks in Google Cloud Marketplace. Free Edition does not support this path.
 
 ## The route
 
 ### Stage 1: How Databricks runs on Google Cloud (101 to 201)
 
-**Goal:** know how you subscribe, pay, and where compute runs.
+**Goal:** learn how subscription and billing work, and where compute runs.
 
 1. [[Databricks on Google Cloud Overview]]: what is different on GCP.
 2. [[Account Setup on Google Cloud]]: subscribing through Marketplace and creating the first workspace.
@@ -92,15 +92,15 @@ Read [[Path - Platform Admin]] first, or at least its Stages 1 to 3. You need a 
 2. [[Customer-Managed VPC on Google Cloud]] (301): your own VPC and subnets for Databricks compute.
 3. [[Private Service Connect]] (401): private front-end and back-end connectivity.
 4. [[Serverless Network Security]] (401): connectivity and egress controls for serverless.
-5. [[IP Access Lists]] (301): restricting the front door.
-6. [[VPC and VNet]] and [[Subnet]]: the glossary entries behind it.
+5. [[IP Access Lists]] (301): restricting front-end access.
+6. [[VPC and VNet]] and [[Subnet]]: the related glossary entries.
 
 > [!check] Checkpoint
 > Create a VPC with a subnet sized for your cluster count, register it as a network configuration in the account console, and deploy a workspace into it. Start a cluster and confirm its VMs have only private IPs. Sketch where the Private Service Connect endpoints for the workspace front end and the back-end relay would go.
 
 ### Stage 4: Keys, BigQuery, and operations (201 to 401)
 
-**Goal:** own your keys, work with BigQuery, and run it all safely.
+**Goal:** manage your own keys, work with BigQuery, and operate the platform securely.
 
 1. [[Encryption]] (301): defaults, and where your keys fit.
 2. [[Customer-Managed Keys on Google Cloud]] (401): Cloud KMS keys you control.
@@ -132,8 +132,8 @@ Read [[Path - Platform Admin]] first, or at least its Stages 1 to 3. You need a 
 - You can query BigQuery from Databricks and decide between federation and migration.
 - You know which Cloud KMS keys protect what.
 
-> [!nextup] Up next
-> Want a credential to show for all this? See [[Path - Certification Prep]].
+> [!nextup] Next
+> [[Path - Certification Prep]] maps Databricks certifications to the notes in this vault.
 
 > [!sources]- Sources (last verified: 2026-10-25)
 > - Route assembled on 2026-10-25 from chapter 13 (Databricks on Google Cloud), chapter 14, and chapter 07 of the vault index (`llms.txt`). Product facts and official documentation links live in each linked note's `[!sources]` callout; [[Unity Catalog]] cites the GCS external location documentation.

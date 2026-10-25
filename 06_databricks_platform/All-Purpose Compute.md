@@ -55,25 +55,27 @@ tags:
 
 Mastery: `INPUT[inlineSelect(option(new), option(learning), option(solid)):mastery]`
 
-> [!story] Previously
-> [[Compute Types]] laid out the map. The oldest region on it is all-purpose compute: the interactive cluster that the first Databricks notebooks attached to back in 2014. It is still the most flexible kind of compute, and the easiest one to leave running by accident.
+> [!story] Context
+> [[Compute Types]] lists the compute options. All-purpose compute is the oldest: the interactive cluster that the first Databricks notebooks attached to in 2014. It is the most flexible kind of compute, and the one most often left running by accident.
 
-> [!eli5] In one breath
-> An all-purpose cluster is a group of rented computers that you switch on, use while you work, and share with teammates. It stays on until you or a timer turns it off. It can do almost anything, but you pay for every minute it is on, even while you are at lunch.
+> [!eli5] Summary
+> An all-purpose cluster is a group of rented computers that you switch on, use while you work, and share with teammates. It stays on until you or a timer turns it off. It supports almost any workload, and you pay for every minute it is on, including idle time.
 
-> [!analogy] Analogy: a shared workshop
-> - **The workshop** is the cluster. You unlock it in the morning and the tools are ready.
-> - **The workbenches** are the worker machines, and **the foreman** is the driver ([[Driver and Executors]]).
-> - **The tool cabinet** is the set of [[Libraries and Environments|libraries]] installed on it. Everyone in the workshop uses the same cabinet.
-> - **The timer on the lights** is [[Auto Termination]]. Without it, the lights (and the bill) stay on all night.
+> [!analogy]- Analogy: a shared workshop
+> | Workshop | All-purpose cluster |
+> |---|---|
+> | Workshop, unlocked in the morning with tools ready | The running cluster |
+> | Workbenches and foreman | Workers and driver ([[Driver and Executors]]) |
+> | Shared tool cabinet | Installed [[Libraries and Environments\|libraries]], shared by every user |
+> | Timer on the lights | [[Auto Termination]]. Without it, the cluster bills all night |
 
-## Why it exists
+## Background
 
-Interactive work needs a machine that is **already running**. When you run a notebook cell, you want an answer in seconds, not a five-minute wait for VMs to boot. You also want to install a library once and have it there for the rest of the day, and let a teammate attach to the same cluster to debug with you.
+Interactive work needs a machine that is **already running**. A notebook cell should return in seconds, without a five-minute wait for VMs to boot. Interactive users also need libraries that stay installed for the session, and a cluster that teammates can attach to for joint debugging.
 
-All-purpose compute provides that. It is the classic answer to "I need a Spark environment right now" and it supports everything classic compute can do: any [[Databricks Runtime|runtime]], R, GPUs, init scripts, custom networking, and cluster-scoped libraries.
+All-purpose compute provides a running Spark environment on demand. It supports everything classic compute can do: any [[Databricks Runtime|runtime]], R, GPUs, init scripts, custom networking, and cluster-scoped libraries.
 
-## What it actually is
+## Overview
 
 An all-purpose cluster is classic compute that:
 
@@ -124,20 +126,22 @@ databricks clusters start  <cluster-id>
 databricks clusters delete <cluster-id>   # "delete" terminates; permanent-delete removes it
 ```
 
-A few behaviors to know:
+Key behaviors:
 
 - **Termination is not deletion.** A terminated cluster keeps its config and can be restarted. Databricks keeps terminated all-purpose clusters for a limited time unless an admin pins them.
 - **Libraries reinstall on start.** Cluster libraries install every time the cluster starts. Notebook-scoped installs (`%pip install`) vanish when the Python process restarts.
 - **Restarts pick up runtime maintenance updates.** Long-running clusters miss security patches until restarted.
 - **Debugging tools.** Every classic cluster has the [[Spark UI]], driver logs, and metrics pages.
 
-> [!smallbiz] For a small business
-> All-purpose clusters are the most common source of surprise bills: someone creates a big cluster, works for an hour, and leaves it on for the weekend. Three habits prevent this:
+## Small-business considerations
+
+> [!smallbiz] Small-business considerations
+> All-purpose clusters are the most common source of unexpected bills, for example a large cluster left running over a weekend. Three practices prevent this:
 > 1. **Prefer [[Serverless Compute|serverless notebooks]]** for everyday work, so there is no cluster to forget.
 > 2. **If you need a cluster, set auto-termination to 30 minutes or less** and use a [[Compute Policies|compute policy]] that caps size and enforces the timer.
 > 3. **Never schedule production jobs on an all-purpose cluster.** Use [[Jobs Compute]] or serverless jobs, which cost less and shut down by themselves.
 
-## On each cloud
+## Cloud differences
 
 > [!azure]- Azure Databricks
 > Node types are Azure VM sizes (for example `Standard_D4ds_v5`). VMs appear in the workspace's [[Managed Resource Group|managed resource group]] while the cluster runs, and you need enough regional vCPU quota in your subscription. Spot capacity is called **Azure Spot VMs**.
@@ -148,17 +152,17 @@ A few behaviors to know:
 > [!gcp]- Databricks on Google Cloud
 > Node types are Compute Engine machine types (for example `n2-standard-4`). Preemptible capacity is set with `gcp_attributes`. Clusters run as a [[Google Service Accounts|Google service account]]. See [[Compute on Google Cloud]].
 
-## Going deeper
+## Advanced topics
 
-> [!deepdive]- Expert notes (301–401)
+> [!deepdive]- Advanced topics (301–401)
 > - **Cluster pinning and retention.** Terminated all-purpose clusters are removed after a retention window unless pinned by an admin. Pin long-lived team clusters so their IDs (used in Databricks Connect profiles and scripts) stay stable.
 > - **Instance pools.** Pools keep idle VMs warm so clusters start faster. You pay the cloud provider for idle pool VMs, but no DBUs while idle.
 > - **Init scripts.** Cluster-scoped init scripts run on every node at start. Store them in Unity Catalog [[Volumes]] or workspace files; DBFS-stored init scripts are legacy. On standard access mode they must be on the metastore allowlist.
-> - **Single-node clusters.** A driver-only cluster is ideal for pandas, scikit-learn, or small Spark jobs. It is not suitable for standard access mode sharing at scale.
+> - **Single-node clusters.** A driver-only cluster suits pandas, scikit-learn, or small Spark jobs. It is not suitable for standard access mode sharing at scale.
 > - **Policies as guardrails.** [[Compute Policies]] can fix the runtime, cap workers, force tags, hide fields, and set `autotermination_minutes`. The "Personal Compute" policy lets users create single-node dedicated clusters for themselves.
 > - **Event log.** The cluster event log (UI or `databricks clusters events <id>`) shows why a cluster resized, restarted, or failed to start (for example, cloud quota or spot capacity errors).
 
-## Common confusions
+## Common misconceptions
 
 > [!confusion] All-purpose is not the same as interactive-only
 > You *can* run a job on an all-purpose cluster, but you pay the higher all-purpose rate and share it with interactive users. Production jobs belong on [[Jobs Compute]] or serverless.
@@ -176,14 +180,14 @@ Why should production jobs not run on all-purpose clusters?::They cost more per 
 What CLI command permanently removes a cluster?::`databricks clusters permanent-delete <cluster-id>`.
 What is a single-node cluster good for?::Small data, pandas, and single-machine ML, with no worker nodes to pay for.
 
-## Where next
+## Next steps
 
 > [!path] Learning path
 > **Needs first:** [[Compute Types]], [[Databricks Runtime]], [[Driver and Executors]]
 > **Unlocks next:** [[Notebooks]], [[Jobs Compute]], [[Compute Policies]]
 
-> [!nextup] Up next in the story
-> Interactive clusters are great for exploring but wasteful for scheduled work. What if a cluster existed only for the length of one run? That is [[Jobs Compute]].
+> [!nextup] Next
+> [[Jobs Compute]] covers clusters that exist only for the length of one scheduled run.
 
 > [!sources]- Sources (last verified: 2026-10-25)
 > - [Classic compute overview (AWS)](https://docs.databricks.com/aws/en/compute/use-compute)

@@ -34,8 +34,8 @@ tags:
 
 # Chapter 10 - AI and ML
 
-> [!story] Previously
-> [[Chapter 09 - SQL BI and Apps|Chapter 09]] put governed tables in front of business users through Databricks SQL, dashboards, Genie, apps, and [[Genie One]]. Those tools describe what already happened. This chapter covers the tools that predict, generate, and act on the same data.
+> [!story] Context
+> [[Chapter 09 - SQL BI and Apps|Chapter 09]] put governed tables in front of business users through Databricks SQL, dashboards, [[Genie Agents]], apps, and [[Genie One]]. Those tools describe what already happened. This chapter covers the tools that predict, generate, and act on the same data.
 
 **From classic machine learning to agents, covering MLflow, Model Serving, Unity Gateway, AI Search, and Agent Bricks.**
 
@@ -89,5 +89,5 @@ This chapter ends Part 1, the story of the platform. Part 2 covers the clouds, s
 
 <!-- GENERATED:reading-order END -->
 
-> [!nextup] Up next
+> [!nextup] Next
 > Start with [[Machine Learning Basics]]. After the last note, the story continues in [[Chapter 11 - Azure Databricks]].

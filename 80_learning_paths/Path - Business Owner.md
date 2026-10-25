@@ -50,30 +50,30 @@ tags:
 # Path - Business Owner
 
 > [!persona] Who this is for
-> **Who:** the owner, manager, or executive of a small or mid-sized business who signs the checks. You do not write code, and you do not want to.
+> **Who:** the owner, manager, or executive of a small or mid-sized business who approves spending. No coding is involved.
 > **Goal:** decide whether Databricks fits your business, what it will cost, what can go wrong, and what the first month looks like.
-> **Outcome:** a clear yes, no, or "not yet", backed by a cost estimate, a list of risks, and a 30-day plan you can hand to your team or a consultant.
+> **Outcome:** a clear decision (yes, no, or not yet), backed by a cost estimate, a list of risks, and a 30-day plan you can hand to your team or a consultant.
 
 ## Before you start
 
-Nothing technical. Have two things nearby: a rough list of the systems your business runs on (accounting, point of sale, CRM, spreadsheets), and the reports you wish you had. If you have never heard of Databricks, skim Stage 1 of [[Path - Absolute Beginner]] first.
+No technical preparation is required. Prepare two things: a rough list of the systems your business runs on (accounting, point of sale, CRM, spreadsheets), and the reports you want but do not have. If Databricks is new to you, skim Stage 1 of [[Path - Absolute Beginner]] first.
 
 ## The route
 
-### Stage 1: Is this for us? (101)
+### Stage 1: Fit assessment (101)
 
 **Goal:** understand what Databricks does and whether a business like yours needs it.
 
 1. [[What Databricks Is in Plain English]]: the one-page, no-jargon answer.
 2. [[Who Uses Databricks - Business Types]]: real examples from shops, clinics, factories, and online stores.
-3. [[Signs You Have Outgrown Spreadsheets]]: the symptoms that mean it is time for a real platform.
-4. [[When Databricks Is Not the Right Fit]]: the honest list of when something simpler is better.
+3. [[Signs You Have Outgrown Spreadsheets]]: the signs that a business needs a data platform.
+4. [[When Databricks Is Not the Right Fit]]: cases where a simpler tool is a better choice.
 5. [[The Two-Tier Architecture Problem]]: why the old way meant two systems and two bills.
 6. [[The Lakehouse Idea]]: the single-copy design that Databricks sells.
 7. [[The Data Intelligence Platform]]: what Databricks means when it adds AI to that design.
 
 > [!check] Checkpoint
-> Sign up for Databricks Free Edition (see [[Databricks Free Edition and Trials]]). Export a sales or inventory sheet as CSV, then use **New > Add or upload data** to turn it into a table. Open **Genie**, point it at that table, and ask one real business question, such as "Which product sold most last month?". You have now done, in ten minutes, the core of what your team would do.
+> Sign up for Databricks Free Edition (see [[Databricks Free Edition and Trials]]). Export a sales or inventory sheet as CSV, then use **New > Add or upload data** to turn it into a table. Open **Genie**, point it at that table, and ask one real business question, such as "Which product sold most last month?". This ten-minute exercise covers the core of what your team would do.
 
 ### Stage 2: What it costs, and which cloud (101 to 201)
 
@@ -81,24 +81,24 @@ Nothing technical. Have two things nearby: a rough list of the systems your busi
 
 1. [[How Databricks Pricing Works]]: DBUs, serverless versus classic, and why there can be two invoices.
 2. [[DBUs]]: the unit every Databricks bill counts in.
-3. [[Serverless Compute]]: the pay-for-what-runs option most small businesses should start with.
-4. [[Estimating Costs for a Small Business]] (201): a worked, back-of-the-envelope monthly estimate.
-5. [[Cost Management Basics]]: the first five things to watch once you are running.
+3. [[Serverless Compute]]: the usage-billed option recommended as the starting point for most small businesses.
+4. [[Estimating Costs for a Small Business]] (201): a worked example of a rough monthly estimate.
+5. [[Cost Management Basics]]: the first five items to monitor after launch.
 6. [[Choosing a Cloud for Databricks]]: Azure, AWS, or Google Cloud, decided mostly by what you already use.
 7. [[Databricks vs Alternatives for Small Teams]] (201): Snowflake, BigQuery, Microsoft Fabric, Power BI alone, and plain Postgres.
 
 > [!check] Checkpoint
 > Using the method in [[Estimating Costs for a Small Business]] and the official pricing page linked from [[How Databricks Pricing Works]], fill in a one-page estimate: how many hours a day a SQL warehouse runs, how many pipelines run nightly, how many people use dashboards. If you have a trial workspace on your cloud, ask an admin to open the account console's usage page and compare its numbers with your guess.
 
-### Stage 3: What your people will actually use (101 to 201)
+### Stage 3: Tools your staff use (101 to 201)
 
-**Goal:** see the tools your staff will open every day.
+**Goal:** learn the tools your staff use every day.
 
 1. [[Genie One]]: the simple home page for business users.
 2. [[Databricks SQL]]: the analyst's workbench inside Databricks.
 3. [[AI-BI Dashboards]]: native dashboards that can be shared with people outside the workspace.
-4. [[Genie Agents]]: plain-English questions for the people who will never write SQL.
-5. [[SQL Alerts]] (201): an email or Slack message when a number crosses a line.
+4. [[Genie Agents]]: plain-English questions for people who do not write SQL.
+5. [[SQL Alerts]] (201): an email or Slack message when a value crosses a threshold.
 6. [[Generative AI and LLMs]]: what the AI features are, and what they are not.
 7. [[Agent Bricks]]: building an AI helper by describing its job.
 
@@ -107,7 +107,7 @@ Nothing technical. Have two things nearby: a rough list of the systems your busi
 
 ### Stage 4: Risk, trust, and the move (201 to 301)
 
-**Goal:** know what keeps data safe and how a migration really goes.
+**Goal:** learn the controls that protect data and the phases of a migration.
 
 1. [[Unity Catalog]]: who can see what, recorded in one place.
 2. [[Data Lineage]] (201): an automatic map from raw data to every report.
@@ -115,7 +115,7 @@ Nothing technical. Have two things nearby: a rough list of the systems your busi
 4. [[Clean Rooms]] (301): analyzing data jointly with a partner without either side seeing raw records.
 5. [[Migration Strategy Overview]]: the phases every migration goes through.
 6. [[Assessing Your Current Data Estate]] (201): the inventory to take before you move anything.
-7. [[Running Old and New in Parallel]] (201): how to switch over without a scary weekend.
+7. [[Running Old and New in Parallel]] (201): how to switch systems gradually with low risk.
 8. [[Building a Business Case]] (201): turning all of the above into a proposal your board or partner will accept.
 9. [[Your First 30 Days on Databricks]]: a week-by-week plan from sign-up to the first trusted dashboard.
 
@@ -128,7 +128,7 @@ Nothing technical. Have two things nearby: a rough list of the systems your busi
 - **Microsoft shops:** [[First-Party Microsoft Service]] and [[Microsoft Fabric and OneLake vs Databricks]]. The full route is [[Path - Azure Deep Dive]]; AWS and Google Cloud shops have [[Path - AWS Deep Dive]] and [[Path - Google Cloud Deep Dive]].
 - **Coming from a warehouse:** [[Snowflake]] and [[Migrating from Snowflake]].
 - **Buying data:** [[Databricks Marketplace]].
-- **Why Hadoop failed so many companies:** [[The Pain of Hadoop]] and [[Cloudera and Hortonworks]].
+- **Why Hadoop projects often failed:** [[The Pain of Hadoop]] and [[Cloudera and Hortonworks]].
 - **AI on your documents:** [[Retrieval-Augmented Generation]] and [[MosaicML and Open Models]].
 - **The full checklist:** [[Migration Checklist]] and [[Migrating from Excel and Access]].
 
@@ -137,12 +137,12 @@ Nothing technical. Have two things nearby: a rough list of the systems your busi
 - You can say in two sentences whether Databricks fits your business, and why.
 - You have a written monthly cost estimate and know which meters drive it.
 - You know which cloud you would run on, and why.
-- You have seen a dashboard and a Genie answer built on your own data.
+- You have seen a dashboard and a Genie agent answer built on your own data.
 - You can name the controls that keep data safe (catalog permissions, lineage, sharing).
 - You have a 30-day plan and a one-page business case, or a clear reason to wait.
 
-> [!nextup] Up next
-> The people who will turn your data into reports start with [[Path - Analyst]].
+> [!nextup] Next
+> [[Path - Analyst]] is for the people who turn your data into reports.
 
 > [!sources]- Sources (last verified: 2026-10-25)
 > - Route assembled on 2026-10-25 from the vault index (`llms.txt`) and the `owner` persona tags in `_meta/manifest.yaml`. Product facts, prices, and official documentation links live in each linked note's `[!sources]` callout. This path states no prices on purpose.

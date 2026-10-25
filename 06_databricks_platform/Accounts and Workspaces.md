@@ -54,25 +54,27 @@ tags:
 
 Mastery: `INPUT[inlineSelect(option(new), option(learning), option(solid)):mastery]`
 
-> [!story] Previously
-> [[The Data Intelligence Platform]] described Databricks from far away: open storage, one catalog, many workloads. Now we sign up. The first thing you meet is not a table or a cluster but two containers, the **account** and the **workspace**, and nearly every admin question later ("who can see this?", "who pays for that?") depends on which of the two it belongs to.
+> [!story] Context
+> [[The Data Intelligence Platform]] describes Databricks at a high level: open storage, one catalog, many workloads. When a company signs up, it receives two containers, the **account** and the **workspace**. Most admin questions, such as access and billing, depend on which of the two owns the object in question.
 
-> [!eli5] In one breath
-> The account is your whole company's membership with Databricks. A workspace is one room inside that membership where a team does its work: writing code, running reports, and scheduling jobs. A company has one account and can have one room or many rooms.
+> [!eli5] Summary
+> The account is a company's overall membership with Databricks. A workspace is one area inside that membership where a team does its work: writing code, running reports, and scheduling jobs. A company has one account and one or more workspaces.
 
-> [!analogy] Analogy: a company and its offices
-> - **The account** is the company headquarters. It holds the staff list, the billing, and the master rules.
-> - **Each workspace** is a branch office. It has its own desks (notebooks), machines (compute), and schedules (jobs).
-> - **The staff directory** lives at headquarters ([[Users Groups and Service Principals|users and groups]]). A person can be given a badge for one office or several.
-> - **The shared filing room** across all offices is [[Unity Catalog]]. Every office opens the same filing cabinets, under the same rules.
+> [!analogy]- Analogy: a company and its offices
+> | Company | Databricks |
+> |---|---|
+> | Headquarters: staff list, billing, master rules | The account |
+> | Branch office with its own desks, machines, and schedules | A workspace (notebooks, compute, jobs) |
+> | Staff directory kept at headquarters, badges per office | [[Users Groups and Service Principals\|Users and groups]], assigned to workspaces |
+> | Shared filing room used by every office | [[Unity Catalog]] |
 
-## Why it exists
+## Background
 
-In the early days, each Databricks workspace was an island. Users, permissions, and the list of tables ([[Hive Metastore]]) were all set inside it. Companies that needed separate development and production environments, or one environment per department, ended up copying users and data between islands.
+Originally, each Databricks workspace was self-contained. Users, permissions, and the list of tables ([[Hive Metastore]]) were all set inside it. Companies that needed separate development and production environments, or one environment per department, copied users and data between workspaces.
 
-Databricks fixed this by adding a level above the workspace. The **account** now owns the things that should be the same everywhere: identity, governance, billing, and network settings. Workspaces keep the things that belong to one team: notebooks, compute, jobs, and dashboards.
+Databricks added a level above the workspace. The **account** now owns the things that should be the same everywhere: identity, governance, billing, and network settings. Workspaces keep the things that belong to one team: notebooks, compute, jobs, and dashboards.
 
-## What it actually is
+## Overview
 
 | | **Account** | **Workspace** |
 |---|---|---|
@@ -104,7 +106,7 @@ flowchart TD
   WS2 --> R2["Notebooks, compute,<br/>jobs, dashboards"]
 ```
 
-Inside a workspace, the left sidebar is the map of what you can do: **Workspace** (files and notebooks), **Catalog** (Unity Catalog browser), **Jobs & Pipelines**, **Compute**, **SQL Editor**, **Dashboards**, **Genie**, and more. Admin settings sit under your user menu.
+Inside a workspace, the left sidebar lists the main areas: **Workspace** (files and notebooks), **Catalog** (Unity Catalog browser), **Jobs & Pipelines**, **Compute**, **SQL Editor**, **Dashboards**, **Genie**, and more. Admin settings sit under your user menu.
 
 You can see the account-to-workspace relationship from the [[Databricks CLI]]:
 
@@ -126,12 +128,14 @@ A common layout for a growing company:
 | **Dev + prod workspaces** | When you want production jobs isolated from experiments, or different network rules. |
 | **One workspace per business unit** | Large companies with separate budgets and admins. Unity Catalog still gives one shared view of data. |
 
-> [!smallbiz] For a small business
-> Start with **one account and one workspace**. Use catalogs to separate `dev` and `prod` data, and groups to control who sees what. Add a second workspace only when you have a concrete reason, such as a production [[Lakeflow Jobs|job]] that must never be touched by experiments, or a regulator that wants separation. Every extra workspace is something else to secure and pay attention to. If you only want to try things out, [[Databricks Free Edition and Trials|Free Edition or a trial]] gives you a workspace without any cloud setup.
+## Small-business considerations
 
-## On each cloud
+> [!smallbiz] Small-business considerations
+> Start with **one account and one workspace**. Use catalogs to separate `dev` and `prod` data, and groups to control who sees what. Add a second workspace only when you have a concrete reason, such as a production [[Lakeflow Jobs|job]] that must never be touched by experiments, or a regulator that wants separation. Each additional workspace adds security and administration work. To evaluate the platform, [[Databricks Free Edition and Trials|Free Edition or a trial]] gives you a workspace without any cloud setup.
 
-What a workspace *creates in your cloud* and what its URL looks like differs by cloud. This is one of the most important per-cloud differences.
+## Cloud differences
+
+The resources a workspace *creates in your cloud* and the format of its URL differ by cloud.
 
 > [!azure]- Azure Databricks
 > - **Creating it:** an Azure Databricks workspace is an Azure resource. You create it in the Azure portal (or with ARM, Bicep, or Terraform) inside a resource group and subscription. The account is tied to your **Microsoft Entra ID tenant**, and the first person with the right role becomes an account admin. Account console: `https://accounts.azuredatabricks.net`. See [[Creating an Azure Databricks Workspace]].
@@ -150,16 +154,16 @@ What a workspace *creates in your cloud* and what its URL looks like differs by 
 > - **URL:** `https://<workspace-id>.<n>.gcp.databricks.com`.
 > - **What it creates:** Cloud Storage buckets for workspace storage, [[Google Service Accounts|service accounts]] that compute runs as, and a VPC (Databricks-managed, or your own via [[Customer-Managed VPC on Google Cloud]]). Classic compute runs on Compute Engine VMs. See [[Compute on Google Cloud]].
 
-## Going deeper
+## Advanced topics
 
-> [!deepdive]- Expert notes (301–401)
-> - **Workspace ID and `?o=`.** Every workspace has a numeric ID. On older URLs you will see it as `?o=<workspace-id>`. APIs, system tables (`workspace_id` column), and audit logs all key on it.
+> [!deepdive]- Advanced topics (301–401)
+> - **Workspace ID and `?o=`.** Every workspace has a numeric ID. Older URLs show it as `?o=<workspace-id>`. APIs, system tables (`workspace_id` column), and audit logs all key on it.
 > - **Workspace-catalog binding.** By default every catalog on a metastore is visible to every attached workspace. Bind a catalog to specific workspaces to make, for example, `prod` readable only from the prod workspace.
 > - **Identity federation.** Workspaces created after Unity Catalog became the default use account-level identities. Older workspaces may still have workspace-local users and groups, which should be migrated to account groups.
 > - **Limits.** There are per-account limits on workspaces and per-workspace limits on objects (jobs, notebooks, concurrent runs). Check the resource limits page for your cloud before designing a hundred-workspace layout.
 > - **Workspace as code.** Workspaces, network configs, and metastore assignments are commonly managed with the [[Terraform Provider]], while the contents of a workspace (jobs, pipelines) are managed with [[Declarative Automation Bundles]].
 
-## Common confusions
+## Common misconceptions
 
 > [!confusion] The account is not your cloud account
 > Your **Databricks account** is separate from your **AWS account**, **Azure subscription**, or **Google Cloud project**. The Databricks account *uses* resources in your cloud account (for classic compute and storage), but the two have different admins and different consoles.
@@ -179,14 +183,14 @@ What locked Azure resource holds a workspace's storage account and network?::The
 On AWS, what lets the Databricks control plane launch EC2 instances in your account?::A cross-account IAM role.
 What is the simplest workspace layout for a small business?::One workspace, with dev and prod separated by catalogs and groups.
 
-## Where next
+## Next steps
 
 > [!path] Learning path
 > **Needs first:** [[The Data Intelligence Platform]], [[Servers and the Cloud]]
 > **Unlocks next:** [[Control Plane and Compute Plane]], [[Unity Catalog]], [[Users Groups and Service Principals]]
 
-> [!nextup] Up next in the story
-> A workspace uses resources in both Databricks' cloud and yours. Which parts run where, and why does that matter for security? See [[Control Plane and Compute Plane]].
+> [!nextup] Next
+> [[Control Plane and Compute Plane]] explains which parts of a workspace run in the Databricks cloud account, which run in yours, and what that means for security.
 
 > [!sources]- Sources (last verified: 2026-10-25)
 > - [High-level architecture (AWS)](https://docs.databricks.com/aws/en/getting-started/high-level-architecture)

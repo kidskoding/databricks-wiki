@@ -54,7 +54,7 @@ tags:
 
 > [!persona] Who this is for
 > **Who:** an engineer, analyst, data scientist, or AI developer preparing for a Databricks certification exam, often a student or someone changing jobs.
-> **Goal:** know which exam fits you, which notes in this vault cover each topic area, and how to practice the hands-on skills the exams test.
+> **Goal:** identify which exam fits you, which notes in this vault cover each topic area, and how to practice the hands-on skills the exams test.
 > **Outcome:** a study plan for one exam, mapped to notes you can read in order, with a workspace checkpoint for each stage.
 
 > [!warning] Check the exam list before you study
@@ -68,7 +68,7 @@ Finish the role path that matches your exam first: [[Path - Data Engineer]], [[P
 
 These are the certifications Databricks has offered in recent years, listed from the author's knowledge and **not confirmed** against the official pages for this edition. Exam names, levels, and recommended experience may have changed.
 
-| Exam | Level | Best preparing path | Core notes |
+| Exam | Level | Recommended path | Core notes |
 |---|---|---|---|
 | Data Engineer Associate | Associate | [[Path - Data Engineer]] Stages 1 to 3 | [[Delta Lake]], [[Auto Loader]], [[Lakeflow Spark Declarative Pipelines]], [[Lakeflow Jobs]], [[Unity Catalog]] |
 | Data Engineer Professional | Professional | [[Path - Data Engineer]] Stages 4 and 5 | [[Change Data Capture]], [[Structured Streaming on Databricks]], [[Declarative Automation Bundles]], [[Liquid Clustering]] |
@@ -78,19 +78,19 @@ These are the certifications Databricks has offered in recent years, listed from
 | Generative AI Engineer Associate | Associate | [[Path - AI App Developer]] | [[Retrieval-Augmented Generation]], [[AI Search]], [[Mosaic AI Agent Framework]], [[Agent Evaluation and Tracing]] |
 | Associate Developer for Apache Spark | Associate | [[Path - Data Engineer]] Stage 1 plus Spark rabbit holes | [[DataFrames]], [[Spark SQL]], [[Partitions]], [[Shuffles]] |
 
-Databricks has also offered shorter **accreditations** (unconfirmed for this edition: earlier examples included fundamentals and platform-architect badges). They are a good first step and map well to [[Path - Absolute Beginner]] and [[Path - Platform Admin]]. Check the official page for which badges are current.
+Databricks has also offered shorter **accreditations** (unconfirmed for this edition: earlier examples included fundamentals and platform-architect badges). They are a suitable first step and map to [[Path - Absolute Beginner]] and [[Path - Platform Admin]]. Check the official page for which badges are current.
 
 ## The route
 
-### Stage 1: The shared core every exam assumes (101 to 201)
+### Stage 1: Shared core for every exam (101 to 201)
 
-**Goal:** be fluent in the platform basics that appear on every exam.
+**Goal:** learn the platform basics that appear on every exam.
 
-1. [[The Data Intelligence Platform]]: how Databricks describes its own platform, which exam questions echo.
-2. [[Accounts and Workspaces]]: account versus workspace, a classic question.
+1. [[The Data Intelligence Platform]]: how Databricks describes its own platform, which exam questions reflect.
+2. [[Accounts and Workspaces]]: account versus workspace, a common question.
 3. [[Control Plane and Compute Plane]] (201): what runs where.
 4. [[Compute Types]]: all-purpose, jobs, serverless, and SQL warehouses, and when to pick each.
-5. [[Delta Lake]]: the table format under every question.
+5. [[Delta Lake]]: the table format that most questions assume.
 6. [[Time Travel]] (201): `VERSION AS OF`, `RESTORE`, and `DESCRIBE HISTORY`.
 7. [[Unity Catalog]]: governance appears on every exam.
 8. [[Three-Level Namespace]]: `catalog.schema.table`.
@@ -102,12 +102,12 @@ Databricks has also offered shorter **accreditations** (unconfirmed for this edi
 
 ### Stage 2: Your associate exam (201)
 
-**Goal:** cover the topic areas of one associate exam. Pick your list.
+**Goal:** cover the topic areas of one associate exam. Choose the list for your exam.
 
 **Data Engineer Associate.** *Unconfirmed:* earlier exam guides grouped topics roughly as the platform, development and ingestion, data processing and transformation, productionizing pipelines, and governance.
 
 1. [[Auto Loader]]: incremental file ingestion, a frequent topic.
-2. [[COPY INTO]]: the simpler loader, and when it is enough.
+2. [[COPY INTO]]: the simpler loader, and when it is sufficient.
 3. [[Lakeflow Connect]]: managed connectors.
 4. [[Lakeflow Spark Declarative Pipelines]]: declarative pipelines (formerly Delta Live Tables, and older exam material may still use that name).
 5. [[Streaming Tables]] and [[Materialized Views]]: the two pipeline dataset types.
@@ -163,9 +163,9 @@ Databricks has also offered shorter **accreditations** (unconfirmed for this edi
 > [!check] Checkpoint
 > Do the hands-on task for your exam in a workspace, without looking anything up:
 > - **Data Engineer:** a pipeline that ingests files from a Volume with Auto Loader into bronze, applies one expectation in silver, builds a gold materialized view, and runs as a scheduled job.
-> - **Data Analyst:** a dashboard with a filter and three visuals on a gold table, a Genie space on it, and an alert.
+> - **Data Analyst:** a dashboard with a filter and three visuals on a gold table, a Genie agent (formerly Genie space) on it, and an alert.
 > - **ML:** three tracked runs in MLflow, the best one registered in Unity Catalog with an alias and loaded by alias.
-> - **Generative AI:** a Vector Search index on a chunk table, queried by a simple RAG chain, with one evaluation run logged to MLflow.
+> - **Generative AI:** an AI Search index on a chunk table, queried by a simple RAG chain, with one evaluation run logged to MLflow.
 > - **Spark Developer:** a notebook that reads a sample table, does a join and a window function, writes the result partitioned or clustered, and shows `.explain()` before and after a `repartition`.
 
 ### Stage 3: Your professional exam (301 to 401)
@@ -201,9 +201,9 @@ Databricks has also offered shorter **accreditations** (unconfirmed for this edi
 
 ### Stage 4: Exam week (201 to 301)
 
-**Goal:** close gaps and get used to the question style.
+**Goal:** close knowledge gaps and become familiar with the question style.
 
-1. [[Databricks Product Names and Renames]]: old exam prep material uses old names; know both.
+1. [[Databricks Product Names and Renames]]: older exam prep material uses old product names, so learn both.
 2. [[Open Source vs Databricks - Who Replaced What]]: "which feature replaced X" questions.
 3. [[Compute Types]] and [[Serverless Compute]]: compute-choice scenario questions.
 4. [[Cost Optimization Checklist]]: "most cost-effective option" questions.
@@ -226,10 +226,10 @@ Databricks has also offered shorter **accreditations** (unconfirmed for this edi
 - You can do the Stage 2 (or Stage 3) checkpoint for your exam from memory.
 - You know the current and old names of every product on your exam.
 - You have reviewed the Recall flashcards for every note on your list.
-- You score comfortably on the official practice questions.
+- You consistently pass the official practice questions.
 
-> [!nextup] Up next
-> That is the end of the paths. Return to [[start_here]] to pick another door, or read the whole story from the beginning.
+> [!nextup] Next
+> This is the last path. Return to [[start_here]] to choose another path, or read the story from the beginning.
 
 > [!sources]- Sources (not verified for this edition)
 > - The exam list and topic areas above come from the author's knowledge as of mid-2026. They could not be checked against the official Databricks certification pages when this note was written (October 2026), so `last_verified` is left blank on purpose. Verify them on the official Databricks certification page and in each exam's current exam guide before studying.

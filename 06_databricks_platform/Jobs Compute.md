@@ -53,18 +53,21 @@ tags:
 
 Mastery: `INPUT[inlineSelect(option(new), option(learning), option(solid)):mastery]`
 
-> [!story] Previously
-> [[All-Purpose Compute]] gave us an always-ready cluster for exploring, at the price of paying for idle time and a higher rate. Scheduled work does not need any of that. A nightly pipeline needs a machine for exactly as long as it runs, with nobody else on it. That is jobs compute.
+> [!story] Context
+> [[All-Purpose Compute]] provides an always-on cluster for interactive work, at a higher rate and with idle time billed. Scheduled work needs neither. A nightly pipeline needs machines only for the length of its run, with no other users on them. Jobs compute provides that.
 
-> [!eli5] In one breath
+> [!eli5] Summary
 > Jobs compute is a set of computers that turns on only to run one scheduled task, then turns itself off. Nobody works on it by hand, so it costs less per hour than the computers people use interactively.
 
-> [!analogy] Analogy: a catering crew
-> - **An all-purpose cluster** is a restaurant kitchen that stays open all day in case someone orders.
-> - **Jobs compute** is a catering crew hired for one event. They arrive with their own equipment, cook the banquet, pack up, and leave. You pay for the event, not the whole day.
-> - **The event plan** is the [[Lakeflow Jobs|job]] definition: what to cook, in what order, and with how many cooks.
+> [!analogy]- Analogy: a catering crew
+> | Catering | Databricks |
+> |---|---|
+> | Restaurant kitchen open all day in case someone orders | All-purpose cluster |
+> | Crew hired for one event, then gone | Jobs compute |
+> | You pay for the event, not the whole day | Billing covers one run |
+> | Event plan: what to cook, in what order, with how many cooks | The [[Lakeflow Jobs\|job]] definition |
 
-## Why it exists
+## Background
 
 Running scheduled pipelines on interactive clusters causes three problems:
 
@@ -74,7 +77,7 @@ Running scheduled pipelines on interactive clusters causes three problems:
 
 Jobs compute solves all three. Each run gets **fresh, isolated machines with a fixed configuration**, defined in code, at a lower rate.
 
-## What it actually is
+## Overview
 
 Jobs compute is classic compute that a [[Lakeflow Jobs|Lakeflow Job]] (the job scheduler, formerly called Databricks Workflows) creates when a run starts and terminates when the run ends.
 
@@ -143,14 +146,16 @@ databricks bundle run nightly_sales -t prod
 
 If you remove the `job_clusters` block and the `job_cluster_key` lines, the same tasks run on [[Serverless Compute|serverless jobs compute]] instead, where the workspace has serverless enabled.
 
-> [!smallbiz] For a small business
-> Your rule: **anything on a schedule runs on jobs compute or serverless jobs, never on an all-purpose cluster.**
-> - **Serverless jobs** are the simplest choice: no cluster settings at all and fast start-up.
+## Small-business considerations
+
+> [!smallbiz] Small-business considerations
+> Run every scheduled workload on jobs compute or serverless jobs, not on an all-purpose cluster.
+> - **Serverless jobs** require no cluster settings and start quickly.
 > - **Jobs compute** is worth it when a job needs something serverless does not support (custom init scripts, a specific VM type, GPUs, or access to a private network), or when a long, steady job is cheaper on [[Spot Instances|spot]] workers.
 >
-> Either way, the job's run history shows exactly how long it ran, so you can estimate cost per run. See [[Estimating Costs for a Small Business]].
+> In both cases, the job's run history shows the duration of each run, which you can use to estimate cost per run. See [[Estimating Costs for a Small Business]].
 
-## On each cloud
+## Cloud differences
 
 > [!azure]- Azure Databricks
 > Same behavior. Node types are Azure VM sizes, and `azure_attributes` sets spot vs on-demand (`SPOT_WITH_FALLBACK_AZURE`). Jobs compute VMs appear in the [[Managed Resource Group|managed resource group]] only for the length of the run.
@@ -161,9 +166,9 @@ If you remove the `job_clusters` block and the `job_cluster_key` lines, the same
 > [!gcp]- Databricks on Google Cloud
 > Same behavior. `gcp_attributes` sets preemptible capacity and the service account. See [[Compute on Google Cloud]].
 
-## Going deeper
+## Advanced topics
 
-> [!deepdive]- Expert notes (301–401)
+> [!deepdive]- Advanced topics (301–401)
 > - **Start-up time.** Each new jobs cluster pays a VM boot cost of a few minutes. Share one `job_cluster_key` across tasks, use instance pools, or switch to serverless when start-up time matters.
 > - **Access mode default.** If a jobs cluster spec omits `data_security_mode`, the workspace's *default access mode for jobs compute* setting applies. Set it explicitly in code.
 > - **Run as.** Production jobs should run as a [[Users Groups and Service Principals|service principal]] (`run_as`) so they do not break when the author leaves.
@@ -171,13 +176,13 @@ If you remove the `job_clusters` block and the `job_cluster_key` lines, the same
 > - **Existing cluster option.** A task can point at an `existing_cluster_id` (an all-purpose cluster). It works, but you lose isolation and pay the all-purpose rate. Use it for development only.
 > - **Pipelines have their own compute.** [[Lakeflow Spark Declarative Pipelines]] create their own clusters (or run serverless), configured in the pipeline settings rather than in `job_clusters`.
 
-## Common confusions
+## Common misconceptions
 
 > [!confusion] "Jobs compute" vs "a job"
 > A **job** is the definition (tasks, schedule, retries) in [[Lakeflow Jobs]]. **Jobs compute** is one possible kind of machine the job runs on. The same job could instead use serverless compute or an existing cluster.
 
 > [!confusion] Jobs compute is not serverless
-> Jobs compute still runs VMs in *your* cloud account with settings you choose. It just creates and deletes them automatically.
+> Jobs compute still runs VMs in *your* cloud account with settings you choose. The job creates and deletes them automatically.
 
 ## Recall
 
@@ -189,14 +194,14 @@ What happens if you omit cluster settings from a job task in a serverless-enable
 Who should production jobs run as?::A service principal, set with `run_as`.
 What was Lakeflow Jobs called before?::Databricks Workflows (Jobs).
 
-## Where next
+## Next steps
 
 > [!path] Learning path
 > **Needs first:** [[Compute Types]], [[All-Purpose Compute]]
 > **Unlocks next:** [[Lakeflow Jobs]], [[Serverless Compute]], [[Cost Optimization Checklist]]
 
-> [!nextup] Up next in the story
-> Jobs compute still makes you choose VM types, worker counts, and runtimes, and still waits minutes for machines to boot. What if Databricks handled all of that and started in seconds? That is [[Serverless Compute]].
+> [!nextup] Next
+> [[Serverless Compute]] removes the remaining configuration: Databricks chooses the machines and starts them in seconds.
 
 > [!sources]- Sources (last verified: 2026-10-25)
 > - [Compute configuration reference (AWS)](https://docs.databricks.com/aws/en/compute/configure)

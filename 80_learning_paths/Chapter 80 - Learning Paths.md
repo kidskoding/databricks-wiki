@@ -27,28 +27,28 @@ tags:
 
 # Chapter 80 - Learning Paths
 
-> [!story] Previously
-> The [[Migration Checklist]] closed the story: a business has moved its data, its pipelines, and its reports onto Databricks. That story runs to more than 300 notes. Nobody has to read all of them, and almost nobody should read them in order. This chapter gives each kind of reader a shorter road.
+> [!story] Context
+> The [[Migration Checklist]] is the last note in the story, which covers more than 300 notes in total. Most readers do not need every note or the full story order. This chapter defines a shorter route for each kind of reader.
 
 **Curated routes through the graph for each kind of reader, from total beginner to expert.**
 
 ## The story of this chapter
 
-The vault is organized two ways, and the paths sit on top of both.
+The vault has two organizing schemes. Learning paths build on both.
 
-1. **Story order.** Chapters 00 to 15 are one chronological story: data basics, the Hadoop era, Spark, the modern data stack, the lakehouse, then Databricks itself, the three clouds, administration, and migration. Each note's `prev` and `next` walk you through it. Story order is the best way to understand *why* things exist, because every tool is the answer to the pain in the chapter before it.
-2. **Depth tiers.** Every note carries a `depth`: **101** (beginner, no background needed), **201** (practitioner, you use it at work), **301** (advanced, you design or tune it), and **401** (expert, the rare and sharp edges). Depth tells you how hard a note is, not how important it is.
+1. **Story order.** Chapters 00 to 15 are one chronological story: data basics, the Hadoop era, Spark, the modern data stack, the lakehouse, then Databricks itself, the three clouds, administration, and migration. Each note's `prev` and `next` links follow this order. Story order explains *why* each tool exists, because each tool addresses a problem from the previous chapter.
+2. **Depth tiers.** Every note carries a `depth`: **101** (beginner, no background needed), **201** (practitioner, you use it at work), **301** (advanced, you design or tune it), and **401** (expert, uncommon edge cases). Depth indicates difficulty, not importance.
 
-A **learning path** cuts across both. It picks the notes one persona needs, puts them in an order that builds skill, and groups them into 3 to 5 **stages** that climb from 101 toward 301 and 401. Each stage ends with a `[!check]` checkpoint: a small, real task in a Databricks workspace (most work in [[Databricks Free Edition and Trials|Free Edition]]; the admin and cloud ones need a trial or paid workspace on your cloud). If you can do the checkpoint, move on. If not, re-read the stage.
+A **learning path** selects the notes one persona needs, orders them to build skill, and groups them into 3 to 5 **stages** that progress from 101 toward 301 and 401. Each stage ends with a `[!check]` checkpoint: a small, real task in a Databricks workspace. Most checkpoints work in [[Databricks Free Edition and Trials|Free Edition]]; the admin and cloud checkpoints need a trial or paid workspace on your cloud. If you complete the checkpoint, continue to the next stage. If not, review the stage again.
 
-How to use them:
+To use a path:
 
-- **Pick one path by role.** If you are unsure, start with [[Path - Absolute Beginner]]. Small-business readers should look at [[Path - Business Owner]] or [[Path - One-Person Data Team]].
-- **Follow the links, not the folders.** A path jumps between chapters. When a note mentions an earlier idea you have not met, its `[!story]` callout and `prev` link take you back.
-- **Take the rabbit holes later.** Each path lists optional side trips, including the cloud deep dives ([[Path - Azure Deep Dive]], [[Path - AWS Deep Dive]], [[Path - Google Cloud Deep Dive]]).
-- **Use the Recall sections.** Every concept note ends with flashcards. Reviewing them with the Spaced Repetition plugin is the fastest way to make a path stick.
+1. **Choose one path by role.** If you are unsure, start with [[Path - Absolute Beginner]]. Small-business readers can use [[Path - Business Owner]] or [[Path - One-Person Data Team]].
+2. **Follow the links, not the folders.** A path moves between chapters. When a note refers to an earlier concept, its `[!story]` callout and `prev` link point to it.
+3. **Leave the rabbit holes for later.** Each path lists optional side topics, including the cloud deep dives ([[Path - Azure Deep Dive]], [[Path - AWS Deep Dive]], [[Path - Google Cloud Deep Dive]]).
+4. **Review the Recall sections.** Every concept note ends with flashcards. Review them with the Spaced Repetition plugin to retain what you read.
 
-Paths only link to notes that exist. Some linked notes may still be stubs while the vault is being written; a stub's `status: stub` tells you so.
+Paths link only to existing notes. Some linked notes may still be stubs; those have `status: stub` in their frontmatter.
 
 ## Notes in reading order
 
@@ -71,5 +71,5 @@ Paths only link to notes that exist. Some linked notes may still be stubs while 
 
 <!-- GENERATED:reading-order END -->
 
-> [!nextup] Up next
+> [!nextup] Next
 > [[Path - Absolute Beginner]]

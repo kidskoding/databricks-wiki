@@ -49,18 +49,18 @@ tags:
 
 > [!persona] Who this is for
 > **Who:** an AWS admin, cloud architect, or security lead running Databricks on Amazon Web Services, plus engineers who need to know how clusters reach S3.
-> **Goal:** understand everything AWS-specific: how you buy it, the cross-account role, the workspace bucket, customer-managed VPCs, PrivateLink, S3 access through Unity Catalog, instance choices, and KMS keys.
-> **Outcome:** you can deploy a production workspace in your own VPC with PrivateLink, governed S3 access through IAM roles, customer-managed keys, and sensible instance and cost choices.
+> **Goal:** understand the AWS-specific parts of the platform: purchasing options, the cross-account role, the workspace bucket, customer-managed VPCs, PrivateLink, S3 access through Unity Catalog, instance choices, and KMS keys.
+> **Outcome:** you can deploy a production workspace in your own VPC with PrivateLink, governed S3 access through IAM roles, customer-managed keys, and well-chosen instance and cost settings.
 
 ## Before you start
 
-Read [[Path - Platform Admin]] first, or at least its Stages 1 to 3. You need an AWS account where you can create IAM roles and policies, S3 buckets, VPCs, and KMS keys, and a Databricks account where you are an account admin. Free Edition does not help here.
+Read [[Path - Platform Admin]] first, or at least its Stages 1 to 3. You need an AWS account where you can create IAM roles and policies, S3 buckets, VPCs, and KMS keys, and a Databricks account where you are an account admin. Free Edition does not support this path.
 
 ## The route
 
 ### Stage 1: How Databricks runs on AWS (101 to 201)
 
-**Goal:** know what lives in Databricks' account, what lives in yours, and how you pay.
+**Goal:** learn what lives in the Databricks account, what lives in yours, and how billing works.
 
 1. [[Databricks on AWS Overview]]: the model, bought from Databricks or through AWS Marketplace.
 2. [[Account Setup on AWS]]: sign-up, the first workspace, quick setup versus manual.
@@ -78,7 +78,7 @@ Read [[Path - Platform Admin]] first, or at least its Stages 1 to 3. You need an
 
 1. [[Cross-Account IAM Role]] (301): the role that lets Databricks launch EC2 in your account.
 2. [[IAM]]: the glossary entry for AWS identity and access.
-3. [[Instance Profiles]] (301): the legacy way clusters reached S3, and why to move off it.
+3. [[Instance Profiles]] (301): the legacy method for cluster access to S3, and why to migrate from it.
 4. [[S3 Access via Unity Catalog]] (301): storage credentials backed by IAM roles.
 5. [[Storage Credentials and External Locations]] (301): the Unity Catalog objects on top.
 6. [[Metastore]] (201): one per region.
@@ -96,25 +96,25 @@ Read [[Path - Platform Admin]] first, or at least its Stages 1 to 3. You need an
 2. [[Customer-Managed VPC on AWS]] (301): your VPC, subnets, and security groups.
 3. [[AWS PrivateLink]] (401): private front-end and back-end connections.
 4. [[Serverless Network Security]] (401): network connectivity configurations and egress control for serverless.
-5. [[IP Access Lists]] (301): restricting the front door.
-6. [[VPC and VNet]], [[Subnet]], and [[Public vs Private IP]]: the glossary entries behind it.
+5. [[IP Access Lists]] (301): restricting front-end access.
+6. [[VPC and VNet]], [[Subnet]], and [[Public vs Private IP]]: the related glossary entries.
 
 > [!check] Checkpoint
 > Create a VPC with two private subnets in different availability zones and a security group that meets the Databricks requirements, register it as a network configuration in the account console, and deploy a workspace with it. Start a cluster and confirm its EC2 instances have no public IPs. Sketch where the PrivateLink VPC endpoints for the workspace and the secure cluster connectivity relay would go.
 
 ### Stage 4: Compute, keys, and integrations (301 to 401)
 
-**Goal:** choose instances wisely, own your keys, and connect to the AWS data estate.
+**Goal:** choose instance types, manage your own keys, and connect to other AWS data services.
 
 1. [[EC2 Instance Types and Graviton]] (301): node types, spot, and Graviton.
-2. [[Spot Instances]]: the glossary entry for cheap, interruptible capacity.
+2. [[Spot Instances]]: the glossary entry for discounted, interruptible capacity.
 3. [[Encryption]] (301): defaults, and where your keys fit.
 4. [[Customer-Managed Keys on AWS]] (401): KMS keys for managed services and workspace storage.
 5. [[Compliance Security Profile]] (401): hardened settings for HIPAA, PCI-DSS, and more.
 6. [[Databricks on AWS GovCloud]] (401): US public-sector and regulated workloads.
 7. [[Hive Metastore Federation for AWS Glue]] (401): reading Glue-registered tables from Unity Catalog.
 8. [[Audit Logs]] (301): log delivery and system tables.
-9. [[Terraform Provider]] (301): the usual way to automate all of the above.
+9. [[Terraform Provider]] (301): the common way to automate this setup.
 10. [[Disaster Recovery]] (401): multi-region plans on AWS.
 
 > [!check] Checkpoint
@@ -136,8 +136,8 @@ Read [[Path - Platform Admin]] first, or at least its Stages 1 to 3. You need an
 - You can choose instance types, spot, and Graviton for a workload and justify the cost.
 - You know which KMS keys protect what, and when GovCloud or the compliance profile is needed.
 
-> [!nextup] Up next
-> The same journey on Google: [[Path - Google Cloud Deep Dive]].
+> [!nextup] Next
+> [[Path - Google Cloud Deep Dive]] covers the same topics for Databricks on Google Cloud.
 
 > [!sources]- Sources (last verified: 2026-10-25)
 > - Route assembled on 2026-10-25 from chapter 12 (Databricks on AWS), chapter 14, and chapter 07 of the vault index (`llms.txt`). Product facts and official documentation links live in each linked note's `[!sources]` callout; [[Unity Catalog]] cites the AWS Unity Catalog documentation.

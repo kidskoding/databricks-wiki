@@ -50,22 +50,22 @@ tags:
 # Path - Analyst
 
 > [!persona] Who this is for
-> **Who:** an analyst, BI developer, or "the Excel person" who builds the reports. You know spreadsheets well and some SQL.
-> **Goal:** do your job in Databricks: find trusted tables, query them, build dashboards, give business users Genie, and keep Power BI or Tableau working.
-> **Outcome:** you can model a small star schema, publish dashboards and Genie spaces, connect a BI tool, define a governed metric, and tell why a query is slow.
+> **Who:** an analyst, BI developer, or spreadsheet specialist who builds reports. You know spreadsheets well and some SQL.
+> **Goal:** do your job in Databricks: find trusted tables, query them, build dashboards, give business users [[Genie Agents]], and keep Power BI or Tableau working.
+> **Outcome:** you can model a small star schema, publish dashboards and Genie agents, connect a BI tool, define a governed metric, and diagnose a slow query.
 
 ## Before you start
 
-You should be comfortable with a spreadsheet and know `SELECT`, `WHERE`, and `GROUP BY`. If not, read [[SQL]] slowly and do its examples. A [[Databricks Free Edition and Trials|Free Edition]] workspace is enough for Stages 1 to 3. For Power BI, have Power BI Desktop installed.
+You should be comfortable with a spreadsheet and know `SELECT`, `WHERE`, and `GROUP BY`. If not, read [[SQL]] and work through its examples. A [[Databricks Free Edition and Trials|Free Edition]] workspace is enough for Stages 1 to 3. For Power BI, have Power BI Desktop installed.
 
 ## The route
 
 ### Stage 1: Modeling and SQL refresher (101 to 201)
 
-**Goal:** think in tables, keys, and grain before you touch Databricks.
+**Goal:** review tables, keys, and grain before using Databricks.
 
-1. [[Spreadsheets]]: what you already know, and where it breaks.
-2. [[SQL]]: the core of this whole path.
+1. [[Spreadsheets]]: what you already know, and where spreadsheets reach their limits.
+2. [[SQL]]: the core skill for this path.
 3. [[Primary and Foreign Keys]]: how tables point at each other, so joins make sense.
 4. [[OLTP vs OLAP]] (201): why reporting tables look different from app tables.
 5. [[Data Modeling Basics]] (201): entities, grain, and which tables to build.
@@ -84,9 +84,9 @@ You should be comfortable with a spreadsheet and know `SELECT`, `WHERE`, and `GR
 > ```
 > Name the fact table, the dimension table, and the grain of the result.
 
-### Stage 2: Your way around Databricks (101)
+### Stage 2: Databricks basics (101)
 
-**Goal:** know where tables live, what runs your SQL, and how layers are organized.
+**Goal:** learn where tables live, what runs your SQL, and how layers are organized.
 
 1. [[Databricks SQL]]: the warehouse experience inside Databricks.
 2. [[SQL Warehouses]]: the compute behind every query and dashboard.
@@ -94,35 +94,35 @@ You should be comfortable with a spreadsheet and know `SELECT`, `WHERE`, and `GR
 4. [[Three-Level Namespace]]: `catalog.schema.table`.
 5. [[Catalogs Schemas and Tables]]: how those objects are organized and secured.
 6. [[Delta Lake]]: the format under every table, and why updates are safe.
-7. [[Medallion Architecture]]: bronze, silver, gold, and why you should mostly read gold.
+7. [[Medallion Architecture]]: bronze, silver, and gold, and why analysts mostly read gold.
 8. [[Genie Code]]: the AI helper that writes and explains SQL.
 
 > [!check] Checkpoint
-> Upload a CSV with **New > Add or upload data**. Then build a gold table from it with `CREATE OR REPLACE TABLE ... AS SELECT`, add a description with `COMMENT ON TABLE`, and ask the Assistant to explain one of your queries. Find the table in **Catalog** by its three-part name.
+> Upload a CSV with **New > Add or upload data**. Then build a gold table from it with `CREATE OR REPLACE TABLE ... AS SELECT`, add a description with `COMMENT ON TABLE`, and ask [[Genie Code]] to explain one of your queries. Find the table in **Catalog** by its three-part name.
 
-### Stage 3: Dashboards, Genie, and BI tools (101 to 201)
+### Stage 3: Dashboards, Genie Agents, and BI tools (101 to 201)
 
-**Goal:** ship answers people can use.
+**Goal:** publish answers that people can use.
 
 1. [[AI-BI Dashboards]]: native dashboards, built with AI help.
 2. [[Genie Agents]]: plain-English questions for business users.
-3. [[SQL Alerts]] (201): notify someone when a number crosses a line.
+3. [[SQL Alerts]] (201): notify someone when a value crosses a threshold.
 4. [[Genie One]]: the simple home where business users find your work.
 5. [[Connecting Power BI]] (201): import, DirectQuery, and publishing from Unity Catalog.
 6. [[Connecting Tableau and Other BI Tools]] (201): Tableau, Looker, Excel, and anything with JDBC or ODBC.
-7. [[Time Travel]] (201): answer "what did this table say last Tuesday?".
+7. [[Time Travel]] (201): query a table as it was at an earlier point in time.
 8. [[AI Functions in SQL]] (201): classify, summarize, and extract text from plain SQL.
 
 > [!check] Checkpoint
-> Build a dashboard on your gold table with a filter, a line chart, and a counter, and publish it. Create a Genie space on the same tables, add two example questions and one instruction ("revenue means `SUM(o_totalprice)`"), and test it. If you have Power BI Desktop and a workspace that allows it, connect to your SQL warehouse and build one visual.
+> Build a dashboard on your gold table with a filter, a line chart, and a counter, and publish it. Create a Genie agent on the same tables, add two example questions and one instruction ("revenue means `SUM(o_totalprice)`"), and test it. If you have Power BI Desktop and a workspace that allows it, connect to your SQL warehouse and build one visual.
 
 ### Stage 4: Governed metrics and speed (201 to 301)
 
-**Goal:** make numbers consistent everywhere and make slow things fast.
+**Goal:** make metrics consistent across tools and speed up slow queries.
 
 1. [[Materialized Views]] (201): precomputed results that refresh incrementally.
 2. [[dbt on Databricks]] (201): SQL models with tests and version control.
-3. [[Lakehouse Federation]] (201): query the old SQL Server or Postgres in place while you migrate.
+3. [[Lakehouse Federation]] (201): query an existing SQL Server or Postgres database in place during migration.
 4. [[Data Lineage]] (201): see what feeds your dashboard before someone changes it.
 5. [[Metric Views]] (301): define "revenue" once so every tool agrees.
 6. [[Query Performance and Caching]] (301): read a query profile and fix the slow part.
@@ -146,13 +146,13 @@ You should be comfortable with a spreadsheet and know `SELECT`, `WHERE`, and `GR
 
 - You can design a small star schema and say its grain.
 - You can find any table by its three-part name and read its lineage.
-- You have published a dashboard, a Genie space, and an alert.
+- You have published a dashboard, a Genie agent, and an alert.
 - You can connect Power BI or another BI tool to a SQL warehouse.
 - You can explain when to use a materialized view or a metric view.
 - You can open a query profile and point to the slow step.
 
-> [!nextup] Up next
-> The tables you query have to be built by someone. That is [[Path - Data Engineer]].
+> [!nextup] Next
+> [[Path - Data Engineer]] covers building the tables that analysts query.
 
 > [!sources]- Sources (last verified: 2026-10-25)
 > - Route assembled on 2026-10-25 from the vault index (`llms.txt`) and the `analyst` persona tags in `_meta/manifest.yaml`. Product facts and official documentation links live in each linked note's `[!sources]` callout.

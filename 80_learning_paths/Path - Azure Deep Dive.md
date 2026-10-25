@@ -49,19 +49,19 @@ tags:
 # Path - Azure Deep Dive
 
 > [!persona] Who this is for
-> **Who:** an Azure admin, cloud architect, or security lead who runs, or is about to run, Azure Databricks. Also the analyst or engineer in a Microsoft shop who wants to know what is different on Azure.
-> **Goal:** understand everything that is Azure-specific: the first-party service model, the managed resource group, Entra ID, ADLS access, VNet injection, Private Link, Key Vault, Azure Monitor, and Power BI.
+> **Who:** an Azure admin, cloud architect, or security lead who runs, or is about to run, Azure Databricks. Also the analyst or engineer in a Microsoft environment who needs to know what differs on Azure.
+> **Goal:** understand the Azure-specific parts of the platform: the first-party service model, the managed resource group, Entra ID, ADLS access, VNet injection, Private Link, Key Vault, Azure Monitor, and Power BI.
 > **Outcome:** you can deploy a production-ready Azure Databricks workspace with private networking, Entra-based identity, governed ADLS access, customer-managed keys, and logs flowing into Azure Monitor.
 
 ## Before you start
 
-Read [[Path - Platform Admin]] first, or at least its Stages 1 to 3; this path assumes you know the cloud-neutral ideas. You need an Azure subscription where you can create resource groups, virtual networks, storage accounts, and Key Vaults, and Entra ID rights to create groups and app registrations. Free Edition does not help here.
+Read [[Path - Platform Admin]] first, or at least its Stages 1 to 3; this path assumes you know the cloud-neutral ideas. You need an Azure subscription where you can create resource groups, virtual networks, storage accounts, and Key Vaults, and Entra ID rights to create groups and app registrations. Free Edition does not support this path.
 
 ## The route
 
-### Stage 1: How Azure Databricks is different (101 to 201)
+### Stage 1: Azure Databricks differences (101 to 201)
 
-**Goal:** know what Microsoft runs, what you own, and how you pay.
+**Goal:** learn what Microsoft runs, what you own, and how billing works.
 
 1. [[Azure Databricks Overview]]: what changes when Microsoft sells and runs Databricks.
 2. [[First-Party Microsoft Service]] (201): Microsoft support, the Azure portal, and Azure billing.
@@ -72,11 +72,11 @@ Read [[Path - Platform Admin]] first, or at least its Stages 1 to 3; this path a
 7. [[Control Plane and Compute Plane]] (201): the split, seen through Azure resources.
 
 > [!check] Checkpoint
-> In the Azure portal, create a Premium-tier Azure Databricks workspace in a test resource group. Open its managed resource group and list what is inside (storage account, network, and later VMs). Try to delete one resource and note the deny assignment that stops you. In Azure Cost Management, filter by the workspace's resources.
+> In the Azure portal, create a Premium-tier Azure Databricks workspace in a test resource group. Open its managed resource group and list what is inside (storage account, network, and later VMs). Try to delete one resource and note the deny assignment that blocks the deletion. In Azure Cost Management, filter by the workspace's resources.
 
 ### Stage 2: Identity and data access (201 to 301)
 
-**Goal:** get Entra ID identities in and give Unity Catalog governed access to ADLS.
+**Goal:** bring in Entra ID identities and give Unity Catalog governed access to ADLS.
 
 1. [[Microsoft Entra ID Integration]] (201): sign-in, automatic identity management, and service principals.
 2. [[Users Groups and Service Principals]] (201): the Databricks side of those identities.
@@ -93,7 +93,7 @@ Read [[Path - Platform Admin]] first, or at least its Stages 1 to 3; this path a
 
 ### Stage 3: Private networking (301 to 401)
 
-**Goal:** keep cluster traffic off the public internet and lock down the front door.
+**Goal:** keep cluster traffic off the public internet and restrict front-end access.
 
 1. [[Network Security Overview]] (301): the map of front-end, back-end, and serverless controls.
 2. [[VNet Injection]] (301): Databricks compute in your own virtual network.
@@ -135,14 +135,14 @@ Read [[Path - Platform Admin]] first, or at least its Stages 1 to 3; this path a
 ## You are done when
 
 - You can explain what the first-party model means for support, billing, and the portal.
-- You know what is in the managed resource group and why you cannot change it.
+- You can list what is in the managed resource group and explain why you cannot change it.
 - Identities come from Entra ID, and automation uses Entra service principals.
 - Unity Catalog reaches ADLS through an Access Connector, not keys.
 - Your production workspace uses VNet injection, secure cluster connectivity, and a Private Link design.
 - Logs reach Azure Monitor, keys can be customer-managed, and Power BI works with single sign-on.
 
-> [!nextup] Up next
-> The same journey on Amazon: [[Path - AWS Deep Dive]].
+> [!nextup] Next
+> [[Path - AWS Deep Dive]] covers the same topics for Databricks on AWS.
 
 > [!sources]- Sources (last verified: 2026-10-25)
 > - Route assembled on 2026-10-25 from chapter 11 (Azure Databricks), chapter 14, and chapter 07 of the vault index (`llms.txt`). Product facts and official Microsoft Learn links live in each linked note's `[!sources]` callout; [[Unity Catalog]] cites the Access Connector documentation.

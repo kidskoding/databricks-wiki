@@ -55,30 +55,32 @@ tags:
 
 Mastery: `INPUT[inlineSelect(option(new), option(learning), option(solid)):mastery]`
 
-> [!story] Previously
-> In [[Accounts and Workspaces]] we saw that a workspace creates things in your own cloud account: a bucket, a network, a role. But the web page you log into clearly is not running in your account. So Databricks must be split in two. This note draws the line between the half Databricks runs and the half that touches your data.
+> [!story] Context
+> [[Accounts and Workspaces]] shows that a workspace creates resources in your own cloud account: a bucket, a network, a role. The web application you log into does not run in your account. Databricks is split into two parts: the part Databricks runs, and the part that processes your data.
 
-> [!eli5] In one breath
-> Databricks has a "brain" and "muscles". The brain is the website, the scheduler, and the list of who can do what, and Databricks keeps it in its own cloud. The muscles are the computers that actually read and crunch your data. They either run inside your own cloud account, or Databricks runs them for you in a fenced-off area of its own.
+> [!eli5] Summary
+> Databricks has a management side and a processing side. The management side is the website, the scheduler, and the list of who can do what, and Databricks runs it in its own cloud. The processing side is the computers that read and process your data. They run either inside your own cloud account or in a separate, isolated area that Databricks runs for you.
 
-> [!analogy] Analogy: a staffing agency and your kitchen
-> - **The control plane** is the agency's head office. It takes your orders, keeps the schedule, and remembers your preferences. It never cooks.
-> - **The classic compute plane** is your own kitchen. The agency sends cooks to it, but the stoves, pantry, and doors are yours. You decide the locks.
-> - **The serverless compute plane** is the agency's own catering kitchen. You send the order, the food comes back fast, and you never maintain a stove. The agency keeps each client's food separate.
-> - **The pantry** is your cloud storage. In both cases the ingredients (your data) stay in your pantry unless you choose otherwise.
+> [!analogy]- Analogy: a staffing agency and your kitchen
+> | Staffing agency | Databricks |
+> |---|---|
+> | Head office: takes orders, keeps the schedule, never cooks | Control plane |
+> | Your own kitchen, staffed by the agency, with your locks | Classic compute plane |
+> | The agency's catering kitchen, separated per client | Serverless compute plane |
+> | Your pantry, where the ingredients stay | Your cloud storage |
 
-## Why it exists
+## Background
 
-Before managed platforms, you ran everything yourself on [[Apache Hadoop|Hadoop]]: the scheduler, the web UI, the metadata database, and the worker machines, all on your servers. That gave full control but endless maintenance (see [[The Pain of Hadoop]]).
+Before managed platforms, you ran everything yourself on [[Apache Hadoop|Hadoop]]: the scheduler, the web UI, the metadata database, and the worker machines, all on your servers. That gave full control but required constant maintenance (see [[The Pain of Hadoop]]).
 
-A pure software-as-a-service model ([[SaaS PaaS and IaaS]]) would move everything into the vendor's cloud, data included. Many companies, especially regulated ones, would not accept that.
+A pure software-as-a-service model ([[SaaS PaaS and IaaS]]) would move everything into the vendor's cloud, data included. Many companies, especially regulated ones, do not accept that.
 
-Databricks split the difference, building on the cloud idea of [[Storage vs Compute|separating storage from compute]]:
+Databricks uses a split model, based on the cloud practice of [[Storage vs Compute|separating storage from compute]]:
 
 - **Databricks runs the management software** (the control plane), so you never patch a scheduler.
 - **Your data stays in your cloud storage**, and the machines that process it can run in your own network (classic) or in an isolated Databricks-run network (serverless).
 
-## What it actually is
+## Overview
 
 The official architecture docs describe two planes, and the compute plane comes in two forms.
 
@@ -87,7 +89,7 @@ The official architecture docs describe two planes, and the compute plane comes 
 | Who runs it | Databricks | You (in your cloud account), launched by Databricks | Databricks, in its own cloud account |
 | What lives there | Web app, notebooks' source, job scheduler, cluster manager, REST APIs, Unity Catalog service, query history | VMs for all-purpose and jobs clusters, classic and pro SQL warehouses | Serverless notebooks, jobs, pipelines, serverless SQL warehouses, model serving |
 | Network | Databricks-managed | Your VPC or VNet | A network boundary per workspace, managed by Databricks |
-| Isolation | Multi-tenant service | Naturally isolated: it is in your account | Several layers of isolation between customers' workspaces, plus controls between clusters of the same customer |
+| Isolation | Multi-tenant service | Isolated by being in your account | Several layers of isolation between customers' workspaces, plus controls between clusters of the same customer |
 | You pay | Included in DBUs | DBUs to Databricks plus VM bills to your cloud | DBUs only (infrastructure included) |
 
 Your **storage** sits outside both compute planes: the workspace storage bucket or account, and the cloud storage that holds your Unity Catalog tables. On newer serverless-first setups, Databricks can also provide default storage it manages for you.
@@ -103,13 +105,13 @@ flowchart LR
   SC -->|"read/write via<br/>short-lived credentials"| ST
 ```
 
-Three paths of network traffic matter, and the docs name them:
+The docs define three network traffic paths:
 
 1. **Inbound (front-end):** users, BI tools, and scripts reaching the control plane. You can restrict it with [[IP Access Lists]] and private connectivity ([[AWS PrivateLink]], [[Azure Private Link]], [[Private Service Connect]]).
 2. **Classic (control plane ↔ classic compute):** with [[Secure Cluster Connectivity]], cluster VMs have no public IP addresses. They open an outbound connection to the control plane rather than the control plane reaching in.
 3. **Outbound from serverless:** serverless compute reaching your storage and other resources. You control it with network connectivity configurations (NCCs), private endpoints, and serverless egress controls. See [[Serverless Network Security]].
 
-A walk-through of one query on classic compute:
+A query on classic compute follows these steps:
 
 1. You run a cell in a notebook. The browser sends the command to the **control plane**.
 2. The control plane forwards it to the cluster's driver VM in the **classic compute plane** (in your VPC).
@@ -118,16 +120,18 @@ A walk-through of one query on classic compute:
 
 On serverless, steps 2–4 happen the same way, except the VMs belong to Databricks' serverless fleet instead of your account.
 
-> [!smallbiz] For a small business
-> The practical question is "do I want to manage a network?"
-> - **Serverless** means no VPC, no subnets, and no VM quotas to think about. Databricks recommends it for most new work, and it is the easiest way to start.
-> - **Classic** matters when you need compute inside your own network: for example, reaching an on-premises database over a VPN, or a security rule that says "all processing in our account".
+## Small-business considerations
+
+> [!smallbiz] Small-business considerations
+> The main decision is whether you want to manage a network.
+> - **Serverless** means no VPC, no subnets, and no VM quotas to think about. Databricks recommends it for most new work.
+> - **Classic** is needed when compute must run inside your own network, for example reaching an on-premises database over a VPN, or a security rule that says "all processing in our account".
 >
-> Either way, your tables stay in your own cloud storage. You can mix both: serverless SQL for dashboards and a classic cluster for one special job.
+> In both cases, your tables stay in your own cloud storage. You can combine the two, for example serverless SQL for dashboards and a classic cluster for one specialized job.
 
-## On each cloud
+## Cloud differences
 
-The model is identical on all three clouds. What changes is the name of "your cloud account" and the network building blocks.
+The model is identical on all three clouds. The differences are the type of customer cloud account and the network components.
 
 > [!azure]- Azure Databricks
 > - The classic compute plane runs in your **Azure subscription**, inside the workspace's [[Managed Resource Group|managed resource group]] or your own VNet with [[VNet Injection]].
@@ -144,20 +148,20 @@ The model is identical on all three clouds. What changes is the name of "your cl
 > - The docs note that traffic between the control plane and the serverless compute plane always uses the cloud provider's network backbone, not the public internet.
 > - Private connectivity uses [[Private Service Connect]].
 
-## Going deeper
+## Advanced topics
 
-> [!deepdive]- Expert notes (301–401)
-> - **"Data plane" is the old name.** Older docs and diagrams call the compute plane the *data plane*. Same thing.
+> [!deepdive]- Advanced topics (301–401)
+> - **"Data plane" is the old name.** Older docs and diagrams call the compute plane the *data plane*. The terms are equivalent.
 > - **What the control plane stores.** Notebook source, job definitions, query text and results caches, and workspace configuration live in the control plane, encrypted. Customer-managed keys can cover managed services data (control plane) and workspace storage separately. See [[Customer-Managed Keys on AWS]], [[Customer-Managed Keys on Azure]], and [[Customer-Managed Keys on Google Cloud]].
 > - **Serverless isolation.** Serverless compute runs in the same region as the workspace, inside a per-workspace network boundary. User code on serverless and on standard access mode clusters is isolated by Lakeguard (see [[Compute Types]]).
-> - **Egress control.** On classic, outbound traffic follows your VPC's routes and firewalls. On serverless, you restrict outbound internet with serverless network policies and reach private resources through NCC private endpoints. Plan this before a security review, not after.
+> - **Egress control.** On classic, outbound traffic follows your VPC's routes and firewalls. On serverless, you restrict outbound internet with serverless network policies and reach private resources through NCC private endpoints. Plan this before a security review.
 > - **Regional control planes.** Each cloud region has its own control plane deployment. Control plane IPs and endpoints differ per region, which matters for firewall allowlists.
 > - **Compliance.** Hardened setups combine private connectivity, customer-managed keys, and the [[Compliance Security Profile]].
 
-## Common confusions
+## Common misconceptions
 
 > [!confusion] "Serverless means my data leaves my account"
-> Not by default. Serverless compute runs in Databricks' account, but it reads and writes your tables in *your* storage through short-lived, scoped credentials. What moves is the processing, not where the data lives.
+> Not by default. Serverless compute runs in Databricks' account, but it reads and writes your tables in *your* storage through short-lived, scoped credentials. The processing location changes, not the data location.
 
 > [!confusion] The control plane does not process your data
 > It schedules and manages. The heavy work (reading files, joining tables) happens in a compute plane. Results shown in the UI do pass back through the control plane.
@@ -172,14 +176,14 @@ What does secure cluster connectivity do?::Classic cluster VMs get no public IPs
 How do you control outbound traffic from serverless compute to your resources?::With network connectivity configurations (NCCs), private endpoints, and serverless network policies.
 With classic compute, who sends you a VM bill?::Your cloud provider, in addition to the Databricks DBU charges.
 
-## Where next
+## Next steps
 
 > [!path] Learning path
 > **Needs first:** [[Accounts and Workspaces]], [[Storage vs Compute]], [[VPC and VNet]]
 > **Unlocks next:** [[Network Security Overview]], [[Serverless Compute]], [[Secure Cluster Connectivity]]
 
-> [!nextup] Up next in the story
-> Every classic cluster that the control plane launches boots the same software image. What is in it, and how do you pick a version? See [[Databricks Runtime]].
+> [!nextup] Next
+> [[Databricks Runtime]] covers the software image that every classic cluster boots, and how to choose a version.
 
 > [!sources]- Sources (last verified: 2026-10-25)
 > - [High-level architecture (AWS)](https://docs.databricks.com/aws/en/getting-started/high-level-architecture)

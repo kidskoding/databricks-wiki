@@ -59,19 +59,21 @@ tags:
 
 Mastery: `INPUT[inlineSelect(option(new), option(learning), option(solid)):mastery]`
 
-> [!story] Previously
-> We now have an engine: the [[Databricks Runtime]] with [[Photon]] inside. Next question: what machines run it? On Hadoop there was one big shared [[Cluster|cluster]] managed by [[YARN]], and everyone queued for it. Databricks gives you several kinds of compute, each shaped for a different job, and picking the right one is the biggest lever on both speed and cost.
+> [!story] Context
+> The [[Databricks Runtime]], with [[Photon]], is the engine. On Hadoop, one large shared [[Cluster|cluster]] managed by [[YARN]] ran all work, and users queued for it. Databricks offers several kinds of compute, each designed for a different workload. The choice of compute type has the largest effect on both speed and cost.
 
-> [!eli5] In one breath
-> "Compute" means the computers that do the work. Databricks lets you rent them in a few different ways: a set you keep on while you experiment, a set that turns on just for one scheduled task, computers Databricks manages completely so they start in seconds, and computers tuned only for answering database questions.
+> [!eli5] Summary
+> "Compute" means the computers that do the work. Databricks offers them in four ways: a set you keep on while you experiment, a set that turns on only for one scheduled task, computers that Databricks manages completely so they start in seconds, and computers tuned for SQL queries.
 
-> [!analogy] Analogy: ways to get around a city
-> - **[[All-Purpose Compute]]** is a rental car. You pick it up, drive around exploring, and pay while you have it, even when it sits parked.
-> - **[[Jobs Compute]]** is a delivery van booked for one route. It shows up, does the run, and goes back. Cheaper per hour than the rental car.
-> - **[[Serverless Compute]]** is a ride-hail app. A car arrives in moments, and you never see a garage or a mechanic.
-> - **[[SQL Warehouses]]** are a shuttle bus line built for one purpose (SQL), running many passengers' trips together.
+> [!analogy]- Analogy: ways to get around a city
+> | Transport | Compute type |
+> |---|---|
+> | Rental car, billed even while parked | [[All-Purpose Compute]] |
+> | Delivery van booked for one route, cheaper per hour | [[Jobs Compute]] |
+> | Ride-hail car that arrives in moments, no garage to maintain | [[Serverless Compute]] |
+> | Shuttle bus line for one route, many passengers at once | [[SQL Warehouses]] |
 
-## Why it exists
+## Background
 
 Different work has different shapes:
 
@@ -79,9 +81,9 @@ Different work has different shapes:
 - A nightly pipeline wants a machine **for 20 minutes**, then nothing.
 - A dashboard wants **many small queries at once** from many people, fast.
 
-One kind of cluster cannot do all of these well and cheaply. So Databricks offers several compute types, priced differently (see [[DBUs]]), and lets admins steer users toward the right one with [[Compute Policies]].
+No single kind of cluster serves all of these well and at low cost. Databricks offers several compute types, priced differently (see [[DBUs]]), and lets admins steer users toward the right one with [[Compute Policies]].
 
-## What it actually is
+## Overview
 
 | Type | What it is for | Where it runs | Starts in | Who manages it |
 |---|---|---|---|---|
@@ -90,7 +92,7 @@ One kind of cluster cannot do all of these well and cheaply. So Databricks offer
 | **[[Serverless Compute]]** | Notebooks, jobs, and [[Lakeflow Spark Declarative Pipelines\|pipelines]] with no cluster settings | Serverless (Databricks) | Seconds | Databricks |
 | **[[SQL Warehouses]]** | SQL queries, dashboards, BI tools | Serverless, or classic/pro in your cloud | Seconds (serverless) to minutes | Databricks tunes it; you pick size and scaling |
 
-Other compute you will meet later: **instance pools** (pre-warmed idle VMs that make classic clusters start faster), [[AI Runtime]] for deep learning, compute for [[Model Serving]], and compute for [[Databricks Apps]] and [[Lakebase]].
+Other compute covered in later notes: **instance pools** (pre-warmed idle VMs that make classic clusters start faster), [[AI Runtime]] for deep learning, compute for [[Model Serving]], and compute for [[Databricks Apps]] and [[Lakebase]].
 
 ### Access modes: who can share a cluster
 
@@ -109,7 +111,7 @@ Standard mode isolates each user's code with a technology Databricks calls **Lak
 
 ```mermaid
 flowchart TD
-  Q{"What are you doing?"} -->|"Exploring in a notebook"| N{"Need custom libraries,<br/>R, GPUs, or your network?"}
+  Q{"Workload"} -->|"Exploring in a notebook"| N{"Need custom libraries,<br/>R, GPUs, or your network?"}
   N -->|no| SL["Serverless compute<br/>for notebooks"]
   N -->|yes| AP["All-purpose compute"]
   Q -->|"Scheduled job or pipeline"| J{"Special needs?<br/>(init scripts, GPUs, private network)"}
@@ -118,9 +120,9 @@ flowchart TD
   Q -->|"SQL, dashboards, BI"| SW["SQL warehouse<br/>(serverless if available)"]
 ```
 
-Databricks' own compute selection guidance points the same way: start with serverless wherever it is available, and use classic compute when you need something serverless does not support.
+Databricks' compute selection guidance recommends the same approach: use serverless wherever it is available, and use classic compute when you need something serverless does not support.
 
-You can list what exists in a workspace with the [[Databricks CLI]]:
+To list the compute in a workspace, use the [[Databricks CLI]]:
 
 ```bash
 databricks clusters list          # all-purpose and recent jobs clusters
@@ -128,7 +130,7 @@ databricks warehouses list        # SQL warehouses
 databricks cluster-policies list  # policies admins have defined
 ```
 
-Settings that matter on every classic cluster:
+Key settings on every classic cluster:
 
 - **[[Auto Termination]]**: shut down after N idle minutes. Always set it on all-purpose compute.
 - **[[Autoscaling]]**: a minimum and maximum number of workers.
@@ -136,16 +138,18 @@ Settings that matter on every classic cluster:
 - **Photon**: on or off ([[Photon]]).
 - **[[Spot Instances|Spot instances]]**: cheaper, interruptible VMs for workers.
 
-> [!smallbiz] For a small business
-> A simple, cost-safe setup for a small team:
+## Small-business considerations
+
+> [!smallbiz] Small-business considerations
+> A low-cost setup for a small team:
 > 1. **One serverless SQL warehouse** (smallest size, auto-stop on) for dashboards and SQL.
 > 2. **Serverless notebooks** for day-to-day exploration.
 > 3. **Serverless jobs** for scheduled pipelines.
-> 4. **No always-on clusters.** If you must create an all-purpose cluster, give it a 30-minute auto-termination and a [[Compute Policies|policy]] limiting its size.
+> 4. **No always-on clusters.** If you create an all-purpose cluster, give it a 30-minute auto-termination and a [[Compute Policies|policy]] limiting its size.
 >
-> Then watch usage in [[Budgets and Usage Dashboards]] for the first month. See [[Cost Management Basics]].
+> Monitor usage in [[Budgets and Usage Dashboards]] for the first month. See [[Cost Management Basics]].
 
-## On each cloud
+## Cloud differences
 
 > [!azure]- Azure Databricks
 > Classic compute runs as Azure VMs in your subscription; you need enough vCPU quota for the VM family in your region. Serverless compute and serverless SQL warehouses are available in most, but not all, Azure regions. Check the region availability page before choosing a region.
@@ -156,9 +160,9 @@ Settings that matter on every classic cluster:
 > [!gcp]- Databricks on Google Cloud
 > Classic compute runs as Compute Engine VMs in your project (see [[Compute on Google Cloud]]). Serverless compute is available on Google Cloud, but some serverless features and regions arrive later; check availability.
 
-## Going deeper
+## Advanced topics
 
-> [!deepdive]- Expert notes (301–401)
+> [!deepdive]- Advanced topics (301–401)
 > - **Dedicated mode and fine-grained access.** On dedicated compute, Unity Catalog row filters, column masks, and views the user cannot fully read are enforced by sending that part of the query to serverless compute. This requires serverless to be enabled.
 > - **Dedicated to a group.** Dedicated compute can be assigned to a group, so a small team can share a cluster that still runs as "dedicated" for R or GPU workloads.
 > - **Default access mode for jobs.** Admins can set the default access mode for jobs compute in workspace settings, which matters when job definitions omit it.
@@ -166,7 +170,7 @@ Settings that matter on every classic cluster:
 > - **Simple form.** The compute UI has a simple form that hides most options and picks sensible defaults; admins can enforce it with policies.
 > - **Cost attribution.** Every compute resource can carry custom tags that flow into billing system tables. See [[Tagging for Chargeback]].
 
-## Common confusions
+## Common misconceptions
 
 > [!confusion] "Cluster" vs "compute"
 > Databricks now says *compute* for anything that runs your code. A *cluster* is classic compute: a driver plus workers you configure. Serverless compute and SQL warehouses are also compute, but you do not manage their clusters.
@@ -185,14 +189,14 @@ What isolation technology protects users from each other on standard compute and
 Which compute should a small team start with for dashboards?::A small serverless SQL warehouse with auto-stop on.
 Which access modes are legacy and not compatible with Unity Catalog?::No isolation shared and credential passthrough.
 
-## Where next
+## Next steps
 
 > [!path] Learning path
 > **Needs first:** [[Cluster]], [[Control Plane and Compute Plane]], [[Databricks Runtime]]
 > **Unlocks next:** [[All-Purpose Compute]], [[Jobs Compute]], [[Serverless Compute]], [[SQL Warehouses]]
 
-> [!nextup] Up next in the story
-> Let's look at each type in turn, starting with the original: the interactive cluster you keep running while you explore, [[All-Purpose Compute]].
+> [!nextup] Next
+> [[All-Purpose Compute]] covers the original compute type: the interactive cluster that stays running while you work.
 
 > [!sources]- Sources (last verified: 2026-10-25)
 > - [Compute (AWS)](https://docs.databricks.com/aws/en/compute/)

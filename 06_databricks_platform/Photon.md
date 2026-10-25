@@ -54,31 +54,33 @@ tags:
 
 Mastery: `INPUT[inlineSelect(option(new), option(learning), option(solid)):mastery]`
 
-> [!story] Previously
-> The [[Databricks Runtime]] gave every cluster a tested Spark stack. But Spark's engine runs on the [[JVM]], and over time the JVM became the bottleneck: storage and networks had become fast enough that CPU time spent interpreting rows dominated. To make the lakehouse fast enough to replace a warehouse, Databricks rewrote the execution engine.
+> [!story] Context
+> The [[Databricks Runtime]] gives every cluster a tested Spark stack. Spark's engine runs on the [[JVM]], which became the bottleneck once storage and networks were fast enough that CPU time spent processing rows dominated. To make the lakehouse fast enough to replace a warehouse, Databricks rewrote the execution engine.
 
-> [!eli5] In one breath
-> Photon is a faster engine that Databricks put under the hood. You write the same queries as before, but instead of handling one row at a time, Photon handles big batches of values at once, using modern processors efficiently. Most queries just finish sooner.
+> [!eli5] Summary
+> Photon is a faster engine that Databricks runs underneath your queries. You write the same queries as before. Instead of handling one row at a time, Photon handles large batches of values at once, which uses modern processors efficiently. Most queries finish sooner.
 
-> [!analogy] Analogy: a cashier vs a conveyor scanner
-> - **Row-at-a-time Spark** is a cashier who picks up each item, looks at it, and types its price.
-> - **Photon** is a conveyor scanner that reads a whole tray of items in one sweep. Same groceries, same receipt, much less time per item.
-> - **The store's manager** ([[Catalyst Optimizer|Catalyst]]) still decides what goes on the belt and in what order. Photon only replaces the scanning.
-> - **Odd items** (a hand-written [[UDF]]) still go to the human cashier. Photon hands them back to regular Spark.
+> [!analogy]- Analogy: a cashier vs a conveyor scanner
+> | Checkout | Query engine |
+> |---|---|
+> | Cashier who handles one item at a time | Row-at-a-time Spark |
+> | Scanner that reads a whole tray in one sweep | Photon, processing columnar batches |
+> | Store manager who decides the order on the belt | [[Catalyst Optimizer\|Catalyst]], which still builds the plan |
+> | Unusual items sent back to the cashier | [[UDF\|UDFs]], which fall back to regular Spark |
 
-## Why it exists
+## Background
 
-The lakehouse promise was "warehouse performance on open files". Spark already had a strong optimizer ([[Catalyst Optimizer]]) and code generation ([[Tungsten]]), but it still ran on the JVM:
+The lakehouse aims for warehouse performance on open files. Spark already had a strong optimizer ([[Catalyst Optimizer]]) and code generation ([[Tungsten]]), but it still ran on the JVM:
 
 - Generated Java code is hard to tune for modern CPU features such as SIMD (one instruction on many values).
 - Garbage collection pauses hurt large memory-heavy queries.
 - Real-world lake data is messy (many small files, strings, nulls, nested types). Code generation for every query shape is complex.
 
-Cloud data warehouses with native C++ engines were faster on SQL. Databricks needed an engine that matched them while reading [[Delta Lake]] and [[Apache Parquet]] files directly. Photon was announced as generally available in 2022 (see the July 2022 release notes).
+Cloud data warehouses with native C++ engines were faster on SQL. Databricks built an engine to match them while reading [[Delta Lake]] and [[Apache Parquet]] files directly. Photon was announced as generally available in 2022 (see the July 2022 release notes).
 
-## What it actually is
+## Overview
 
-The docs define Photon as Databricks' **native vectorized query engine**, written entirely in **C++**, and compatible with Apache Spark APIs. The key points:
+The docs define Photon as Databricks' **native vectorized query engine**, written entirely in **C++**, and compatible with Apache Spark APIs.
 
 | Property | What it means |
 |---|---|
@@ -87,7 +89,7 @@ The docs define Photon as Databricks' **native vectorized query engine**, writte
 | **Spark-compatible** | Runs your existing SQL and DataFrame code with no changes. The Spark optimizer still builds the plan. |
 | **Partial by design** | Supported operators run in Photon; anything unsupported falls back to regular Spark in the same query. |
 
-Where you get it:
+Availability:
 
 - **On by default:** [[SQL Warehouses]] (all types) and [[Serverless Compute]].
 - **Opt in:** classic clusters, from Databricks Runtime 9.1 LTS and later, using the **Photon acceleration** checkbox (or `runtime_engine: PHOTON` in the API).
@@ -121,7 +123,7 @@ flowchart LR
 3. Photon operators pass **columnar batches** between each other. Tight C++ loops over a batch of one column let the CPU use SIMD instructions and caches well.
 4. If an operator is unsupported, Photon converts batches back to rows and hands them to Spark. Each conversion costs time, so a plan that switches back and forth often gains less.
 
-Turning it on for a classic cluster, with the CLI and a JSON spec:
+To enable Photon on a classic cluster, set `runtime_engine` in the cluster spec:
 
 ```bash
 databricks clusters create --json '{
@@ -134,7 +136,7 @@ databricks clusters create --json '{
 }'
 ```
 
-Checking whether a query used Photon:
+To check whether a query used Photon:
 
 - In a SQL warehouse or serverless notebook, open the **query profile**. Photon operators are labeled as Photon, and the summary shows the share of task time spent in Photon.
 - On classic compute, the [[Spark UI]] SQL tab shows Photon node names in the plan. `EXPLAIN` output also marks Photon operators:
@@ -144,14 +146,16 @@ EXPLAIN SELECT store_id, SUM(amount) FROM sales.orders.daily GROUP BY store_id;
 -- Look for operators such as PhotonGroupingAgg and PhotonScan in the plan
 ```
 
-> [!smallbiz] For a small business
-> You will likely use Photon without thinking about it: it is already on in SQL warehouses and serverless compute. The only decision is on **classic clusters**, where Photon uses a higher [[DBUs|DBU]] rate. A rule of thumb:
+## Small-business considerations
+
+> [!smallbiz] Small-business considerations
+> Photon is already on in SQL warehouses and serverless compute. The only decision is on **classic clusters**, where Photon uses a higher [[DBUs|DBU]] rate:
 > - **Turn it on** for SQL-heavy ETL and large joins and aggregations. Faster runs often cost less overall, because you pay for fewer minutes.
 > - **Leave it off** for clusters that mostly run Python UDFs, pandas code, or ML training, where Photon cannot help.
 >
-> Test one real job both ways and compare total cost, not just speed. See [[How Databricks Pricing Works]].
+> Test one real job both ways and compare total cost, not only speed. See [[How Databricks Pricing Works]].
 
-## On each cloud
+## Cloud differences
 
 > [!azure]- Azure Databricks
 > Photon behaves the same on all three clouds. On classic compute, use Photon-capable VM families recommended in the docs. The Azure docs cite vendor TPC-DS benchmark results for price-performance; treat those as Databricks' own claims.
@@ -162,17 +166,17 @@ EXPLAIN SELECT store_id, SUM(amount) FROM sales.orders.daily GROUP BY store_id;
 > [!gcp]- Databricks on Google Cloud
 > Same engine and the same on/off controls. See [[Compute on Google Cloud]] for machine types.
 
-## Going deeper
+## Advanced topics
 
-> [!deepdive]- Expert notes (301–401)
+> [!deepdive]- Advanced topics (301–401)
 > - **Interpreted vectorization, not code generation.** Spark's [[Tungsten]] generates Java code per query (whole-stage codegen). Photon instead uses pre-compiled, specialized C++ kernels that run over column batches. (Unconfirmed against official sources: the design rationale published in Databricks' Photon research paper.)
 > - **Adaptivity at run time.** Photon specializes kernels by batch properties, for example taking a fast path when a batch has no nulls or when strings are all ASCII. This complements Spark's [[Adaptive Query Execution]], which re-plans between stages.
 > - **Memory management.** Photon manages its own memory outside the JVM heap and cooperates with Spark's memory manager. Very large hash joins and aggregations can still [[Spill|spill]] to disk.
-> - **Transitions are the tax.** A plan that alternates Photon and non-Photon operators pays for column-to-row conversions. Replacing a Python UDF with a built-in SQL function often lets the whole stage stay in Photon.
+> - **Transitions add cost.** A plan that alternates Photon and non-Photon operators pays for column-to-row conversions. Replacing a Python UDF with a built-in SQL function often lets the whole stage stay in Photon.
 > - **Photon plus Delta features.** Photon pairs with Delta [[Deletion Vectors]], [[Liquid Clustering]], and [[Data Skipping]]; much of the speed in practice comes from reading less data, then processing what remains quickly.
-> - **Not in open source.** Photon exists only in Databricks. The same code runs on open-source Spark, just without Photon's speed-ups. That matters when you compare Databricks performance with self-managed Spark.
+> - **Not in open source.** Photon exists only in Databricks. The same code runs on open-source Spark without Photon's speed-ups. Account for this when you compare Databricks performance with self-managed Spark.
 
-## Common confusions
+## Common misconceptions
 
 > [!confusion] Photon is not a separate product you program
 > There is no Photon API. You write normal SQL or DataFrame code. Photon is an execution engine that Databricks swaps in under Spark.
@@ -192,14 +196,14 @@ Name two kinds of code Photon does not speed up.::Python or Scala UDFs, and RDD-
 What does "vectorized" mean in Photon?::It processes columnar batches of values at a time instead of one row at a time.
 Which Spark component does Photon complement rather than replace?::The Catalyst optimizer, which still builds the query plan.
 
-## Where next
+## Next steps
 
 > [!path] Learning path
 > **Needs first:** [[Databricks Runtime]], [[Catalyst Optimizer]], [[Columnar Storage]]
 > **Unlocks next:** [[SQL Warehouses]], [[Query Performance and Caching]], [[Compute Types]]
 
-> [!nextup] Up next in the story
-> Photon and the runtime are the engine. But Databricks offers several very different kinds of machines to run that engine on. Here is the map: [[Compute Types]].
+> [!nextup] Next
+> [[Compute Types]] lists the kinds of compute that run the runtime and Photon.
 
 > [!sources]- Sources (last verified: 2026-10-25)
 > - [What is Photon? (Azure Databricks)](https://learn.microsoft.com/en-us/azure/databricks/compute/photon)

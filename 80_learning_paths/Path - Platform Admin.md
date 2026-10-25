@@ -54,9 +54,9 @@ tags:
 # Path - Platform Admin
 
 > [!persona] Who this is for
-> **Who:** the platform or cloud admin who sets Databricks up, and the security or compliance lead who has to sign off on it.
-> **Goal:** run a Databricks account that is organized, secure, governed, and not wasting money, on whichever cloud you use.
-> **Outcome:** you can design the account and workspace layout, wire up identity, set up Unity Catalog and grants, choose network controls, enforce cost guardrails, and manage it all as code.
+> **Who:** the platform or cloud admin who sets Databricks up, and the security or compliance lead who approves it.
+> **Goal:** run a Databricks account that is organized, secure, governed, and cost-controlled, on any cloud.
+> **Outcome:** you can design the account and workspace layout, configure identity, set up Unity Catalog and grants, choose network controls, enforce cost guardrails, and manage it all as code.
 
 ## Before you start
 
@@ -66,14 +66,14 @@ You should know your cloud's basics: IAM or Entra ID, virtual networks, and obje
 
 ### Stage 1: The shape of an account (101 to 201)
 
-**Goal:** know what you are administering and who can do what.
+**Goal:** learn what you administer and which roles can do what.
 
 1. [[Accounts and Workspaces]]: one account, many workspaces.
 2. [[Control Plane and Compute Plane]] (201): what Databricks runs versus what runs in your cloud or in serverless.
 3. [[Account Console]] (201): the account-level admin site.
 4. [[Admin Roles]] (201): account, workspace, and metastore admins.
 5. [[Compute Types]]: the compute your users will ask for.
-6. [[Serverless Compute]]: the compute you do not have to network or patch.
+6. [[Serverless Compute]]: compute that you do not network or patch.
 7. [[Choosing a Cloud for Databricks]]: why the cloud choice shapes every later stage.
 
 > [!check] Checkpoint
@@ -81,13 +81,13 @@ You should know your cloud's basics: IAM or Entra ID, virtual networks, and obje
 
 ### Stage 2: Identity (201 to 301)
 
-**Goal:** get the right people and machines in, with groups owning everything.
+**Goal:** give the right people and machines access, with groups owning objects.
 
 1. [[Users Groups and Service Principals]] (201): the three identity types, and why groups own objects.
-2. [[Single Sign-On]] (201): log in with your company identity provider.
+2. [[Single Sign-On]] (201): sign in with your company identity provider.
 3. [[SCIM Provisioning]] (301): sync users and groups automatically.
 4. [[Authentication - Tokens and OAuth]] (301): personal access tokens versus OAuth, and machine-to-machine auth.
-5. [[Microsoft Entra ID Integration]] (201): the Azure flavor, read even if you are on another cloud and use Entra ID as your IdP.
+5. [[Microsoft Entra ID Integration]] (201): the Azure integration. Read it on any cloud if you use Entra ID as your IdP.
 6. [[Identity Provider]]: the glossary entry for the system your users come from.
 
 > [!check] Checkpoint
@@ -95,7 +95,7 @@ You should know your cloud's basics: IAM or Entra ID, virtual networks, and obje
 
 ### Stage 3: Governance with Unity Catalog (201 to 301)
 
-**Goal:** organize data by environment and team, and prove who touched what.
+**Goal:** organize data by environment and team, and record who accessed what.
 
 1. [[Unity Catalog]]: the governance layer for every workspace.
 2. [[Metastore]] (201): one per region, and how workspaces attach.
@@ -106,7 +106,7 @@ You should know your cloud's basics: IAM or Entra ID, virtual networks, and obje
 7. [[Row Filters and Column Masks]] (301): per-user rows and values.
 8. [[Attribute-Based Access Control]] (301): tag-driven policies at scale.
 9. [[Data Classification]] (301): finding PII automatically.
-10. [[Audit Logs]] (301): who did what, when.
+10. [[Audit Logs]] (301): a record of who did what, and when.
 11. [[System Tables]] (201): audit, billing, and lineage as SQL tables.
 12. [[Hive Metastore Migration to Unity Catalog]] (301): upgrading older workspaces.
 
@@ -130,22 +130,22 @@ You should know your cloud's basics: IAM or Entra ID, virtual networks, and obje
 
 ### Stage 5: Cost guardrails and automation (201 to 401)
 
-**Goal:** stop waste before it happens, and make the setup reproducible.
+**Goal:** prevent unnecessary spend and make the setup reproducible.
 
 1. [[Compute Policies]] (201): limits on what clusters people can create (formerly cluster policies).
 2. [[Cost Management Basics]]: where the money goes.
 3. [[Budgets and Usage Dashboards]] (201): budget alerts and built-in cost dashboards.
 4. [[Tagging for Chargeback]] (201): map every DBU to a team.
-5. [[Cost Optimization Checklist]] (201): the practical list.
+5. [[Cost Optimization Checklist]] (201): a checklist of cost controls.
 6. [[Terraform Provider]] (301): accounts, workspaces, and grants as code.
 7. [[Disaster Recovery]] (401): what Databricks covers and what you must plan.
 
 > [!check] Checkpoint
-> Create a compute policy that fixes auto-termination, caps worker count, and requires a `team` tag, and assign it to `data-engineers`. Create a budget with an alert email. Query `system.billing.usage` grouped by `sku_name` and the `team` tag for the last 30 days. Finally, describe one of your Stage 2 or 3 objects in Terraform and run `terraform plan` against the account.
+> Create a compute policy that fixes auto-termination, caps worker count, and requires a `team` tag, and assign it to `data-engineers`. Create a budget with an alert email. Query `system.billing.usage` grouped by `sku_name` and the `team` tag for the last 30 days. Describe one of your Stage 2 or 3 objects in Terraform and run `terraform plan` against the account.
 
 ## Rabbit holes
 
-- **Your cloud, all the way down:** [[Path - Azure Deep Dive]], [[Path - AWS Deep Dive]], [[Path - Google Cloud Deep Dive]], and the side-by-side hub [[Cloud Comparison - Azure vs AWS vs GCP]].
+- **Your cloud in depth:** [[Path - Azure Deep Dive]], [[Path - AWS Deep Dive]], [[Path - Google Cloud Deep Dive]], and the side-by-side hub [[Cloud Comparison - Azure vs AWS vs GCP]].
 - **Private connectivity:** [[Azure Private Link]], [[AWS PrivateLink]], [[Private Service Connect]].
 - **Keys you own:** [[Customer-Managed Keys on Azure]], [[Customer-Managed Keys on AWS]], [[Customer-Managed Keys on Google Cloud]].
 - **Sharing and partners:** [[OpenSharing]] and [[Clean Rooms]].
@@ -158,12 +158,12 @@ You should know your cloud's basics: IAM or Entra ID, virtual networks, and obje
 - You can draw your account, workspaces, metastores, and regions from memory.
 - Users and groups arrive from your IdP, and service principals run all automation.
 - Every catalog has an owner group and a documented grant model.
-- You can answer "who read this table last week?" from system tables.
-- You have picked network and key controls for production and can defend the choice.
+- You can identify who read a table last week by querying system tables.
+- You have chosen network and key controls for production and can justify the choice.
 - Compute policies, tags, and budgets are in place, and the setup lives in Terraform.
 
-> [!nextup] Up next
-> Small businesses rarely have a separate admin. When one person does every job, use [[Path - One-Person Data Team]].
+> [!nextup] Next
+> [[Path - One-Person Data Team]] is for small businesses where one person handles administration and every other data role.
 
 > [!sources]- Sources (last verified: 2026-10-25)
 > - Route assembled on 2026-10-25 from the vault index (`llms.txt`) and the `admin` and `security` persona tags in `_meta/manifest.yaml`. Product facts and official documentation links live in each linked note's `[!sources]` callout; [[Unity Catalog]] is fully sourced.
