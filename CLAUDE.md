@@ -33,7 +33,7 @@ The graph view is a core feature, so links live in frontmatter properties as wel
 
 ## Writing rules
 
-- **Research every note.** Check facts against official docs before writing: `docs.databricks.com/{aws,gcp}/en/...` and `learn.microsoft.com/en-us/azure/databricks/...`. Databricks renames products often (Delta Live Tables → Lakeflow Declarative Pipelines, Workflows → Lakeflow Jobs, Delta Sharing → OpenSharing in June 2026). Never write product names from memory without checking.
+- **Research every note, from official Databricks sources only.** Check facts against `docs.databricks.com/{aws,gcp}/en/...`, `learn.microsoft.com/en-us/azure/databricks/...`, and `databricks.com` (staff blog posts, `databricks.com/glossary`, product and company pages). Use the Databricks glossary and blog for pre-Databricks history too. Do not use or cite third-party blogs, Wikipedia, Medium, forums, or other vendors' sites. If an allowed source cannot confirm a fact, leave the fact out. Databricks renames products often (Delta Live Tables → Lakeflow Declarative Pipelines, Workflows → Lakeflow Jobs, Delta Sharing → OpenSharing in June 2026). Never write product names from memory without checking.
 - List sources in the collapsed `[!sources]` callout and set `last_verified` in frontmatter to the date you checked.
 - **Plain English first.** The `[!eli5]` block uses no jargon. Every jargon word elsewhere links to its note or glossary entry.
 - Give per-cloud differences in the `[!azure]`, `[!aws]`, `[!gcp]` callouts. Skip a cloud only if nothing differs, and say so.
