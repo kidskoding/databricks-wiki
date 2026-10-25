@@ -1,6 +1,6 @@
 ---
 type: chapter
-status: stub
+status: written
 part: 1
 level: 6
 section: Databricks Platform
@@ -28,21 +28,49 @@ notes:
   - "[[Databricks Connect]]"
   - "[[DBUs]]"
   - "[[Libraries and Environments]]"
-last_verified:
+last_verified: 2026-10-25
 tags:
   - chapter
 ---
 
 # Chapter 06 - The Databricks Platform
 
-> [!story] Previously
-> (to write)
+> [!story] Context
+> [[Chapter 05 - The Lakehouse|Chapter 05]] ended with the lakehouse design: open table formats such as [[Delta Lake]] on cheap object storage, maintained with commands like [[OPTIMIZE and VACUUM]]. A design is not a product. This chapter covers the managed platform that Databricks built to run it: accounts, workspaces, compute, and the tools for writing and deploying code.
 
 **Databricks arrives. Accounts, workspaces, compute, notebooks, and the tools for building on it.**
 
 ## The story of this chapter
 
-(to write)
+[[The Founding of Databricks|Databricks was founded in 2013]] by the creators of [[Apache Spark]] to run Spark as a managed cloud service, so that teams no longer had to build and operate their own clusters. Over time the company extended that service into what it now calls [[The Data Intelligence Platform]]: the lakehouse plus AI features that use the context of your data.
+
+The platform has a fixed structure. An [[Accounts and Workspaces|account]] represents the company and holds identities, billing, and governance. A workspace is the environment where teams work. Databricks splits each deployment into a [[Control Plane and Compute Plane|control plane]], which Databricks operates, and a compute plane, which runs either in your own cloud account (classic) or in Databricks' serverless environment.
+
+Compute is the largest topic in the chapter, because it drives both performance and cost:
+
+| Compute | Purpose | Note |
+|---|---|---|
+| Engine | Spark plus Databricks optimizations, versioned with LTS releases | [[Databricks Runtime]], [[Photon]] |
+| Interactive clusters | Exploration in notebooks, configured by you | [[All-Purpose Compute]] |
+| Job clusters | One cluster per scheduled run, then terminated | [[Jobs Compute]] |
+| Serverless | Starts in seconds, managed by Databricks, no cluster settings | [[Serverless Compute]] |
+| SQL warehouses | SQL and BI concurrency, in serverless, pro, and classic types | [[SQL Warehouses]] |
+
+[[Compute Types]] gives the decision map. Databricks recommends serverless wherever it is available and classic compute when a workload needs something serverless does not support, such as R, RDD APIs, or init scripts.
+
+The next group of notes covers how code is written. [[Notebooks]] mix Python, SQL, Scala, and R cells with results and Markdown, and are stored as `.ipynb` files by default. [[Databricks Assistant]], renamed Genie Code in March 2026, is the AI agent inside notebooks and editors that writes, runs, and fixes code using Unity Catalog metadata.
+
+The chapter then moves from interactive work to software engineering practice:
+
+1. [[Git Folders and Workspace Files]] (formerly Repos) connect the workspace to GitHub, GitLab, Bitbucket, Azure DevOps, or AWS CodeCommit, and store Python modules beside notebooks.
+2. [[Declarative Automation Bundles]] (formerly Databricks Asset Bundles, renamed March 2026) define jobs, pipelines, and apps as YAML in Git and deploy them to each environment with `databricks bundle deploy`.
+3. The [[Databricks CLI]] scripts the whole platform from a terminal and authenticates with `databricks auth login`.
+4. The [[Databricks SDKs and REST API]] expose the same operations to Python, Java, Go, and JavaScript programs.
+5. [[Databricks Connect]], built on [[Spark Connect]], runs DataFrame code from a local IDE on Databricks compute.
+
+Two practical topics close the chapter. [[DBUs]] explain the meter that every compute choice is billed in and how to read it from `system.billing.usage`. [[Libraries and Environments]] explain how to install and pin packages on classic clusters and on serverless environment versions.
+
+At the end of this chapter, you can create compute, write and version code, deploy it, and predict its cost. The platform does not yet answer who may read which table, where a value came from, or how data is shared. [[Chapter 07 - Unity Catalog and Governance]] covers the governance layer that answers those questions.
 
 ## Notes in reading order
 
@@ -73,5 +101,5 @@ tags:
 
 <!-- GENERATED:reading-order END -->
 
-> [!nextup] Up next
-> [[The Founding of Databricks]]
+> [!nextup] Next
+> [[The Founding of Databricks]] covers how the creators of Spark started the company. After the last note in this chapter, continue to [[Chapter 07 - Unity Catalog and Governance]].
