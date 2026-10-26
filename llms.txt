@@ -97,7 +97,7 @@ Depth: 101 beginner, 201 practitioner, 301 advanced, 401 expert.
 - [Adaptive Query Execution](03_apache_spark/Adaptive%20Query%20Execution.md) [301]: Spark re-planning a query during execution based on runtime statistics.
 - [Spark Connect](03_apache_spark/Spark%20Connect.md) [301]: The client-server protocol that lets thin clients run Spark DataFrame code on a remote Spark server.
 - [Spark UI](03_apache_spark/Spark%20UI.md) [201]: The built-in web interface for seeing what a Spark application did and why it was slow.
-- [Pandas API on Spark](03_apache_spark/Pandas%20API%20on%20Spark.md) [201]: Running pandas-style code on Spark for data too large for one machine.
+- [Pandas API on Spark](03_apache_spark/Pandas%20API%20on%20Spark.md) [201]: The pandas API on Spark (pyspark.pandas, formerly Koalas) runs pandas-style code on Spark so it scales past one machine's memory.
 
 ## The Modern Data Stack
 
@@ -164,11 +164,11 @@ Depth: 101 beginner, 201 practitioner, 301 advanced, 401 expert.
 - [Databricks Connect](06_databricks_platform/Databricks%20Connect.md) [301]: A client library, built on Spark Connect, that runs Spark code from your local IDE on Databricks clusters or serverless compute.
 - [DBUs](06_databricks_platform/DBUs.md) [101]: The Databricks Unit (DBU), a normalized unit of processing power per hour that Databricks usage is measured and priced in.
 - [Libraries and Environments](06_databricks_platform/Libraries%20and%20Environments.md) [201]: How to install Python, JAR, and R packages and pin dependencies with notebook-scoped libraries, compute-scoped libraries, and serverless environments.
-- [Serverless Workspaces and Default Storage](06_databricks_platform/Serverless%20Workspaces%20and%20Default%20Storage.md) [201]: Workspaces that run only on serverless compute and store data in Databricks-managed storage, with no cloud setup.
-- [dbutils and Widgets](06_databricks_platform/dbutils%20and%20Widgets.md) [201]: The notebook utility library for files, secrets, and job values, and widgets for notebook parameters.
-- [Instance Pools](06_databricks_platform/Instance%20Pools.md) [301]: Pre-warmed idle VMs that cut classic cluster start time.
-- [Init Scripts](06_databricks_platform/Init%20Scripts.md) [301]: Shell scripts that run on each classic cluster node at startup, and where to store them safely.
-- [DBFS](06_databricks_platform/DBFS.md) [201]: The legacy Databricks File System and mounts, and why Unity Catalog volumes replace them.
+- [Serverless Workspaces and Default Storage](06_databricks_platform/Serverless%20Workspaces%20and%20Default%20Storage.md) [201]: Workspaces that run only on serverless compute and store data in Databricks-managed default storage, so you supply no cloud storage, credentials, or network.
+- [dbutils and Widgets](06_databricks_platform/dbutils%20and%20Widgets.md) [201]: The Databricks Utilities (dbutils) library for files, secrets, notebook chaining, and job task values, and widgets for notebook parameters.
+- [Instance Pools](06_databricks_platform/Instance%20Pools.md) [301]: Sets of idle, ready-to-use cloud VMs that classic clusters draw from to cut start and autoscaling time.
+- [Init Scripts](06_databricks_platform/Init%20Scripts.md) [301]: Shell scripts that run on each classic cluster node at startup, the cluster-scoped and global types, and where to store them safely.
+- [DBFS](06_databricks_platform/DBFS.md) [201]: The legacy Databricks File System (DBFS root and mounts), why it is deprecated, and how Unity Catalog volumes, external locations, and workspace files replace it.
 
 ## Unity Catalog & Governance
 
@@ -193,9 +193,9 @@ Depth: 101 beginner, 201 practitioner, 301 advanced, 401 expert.
 - [Data Classification](07_unity_catalog_and_governance/Data%20Classification.md) [301]: A Unity Catalog feature that scans catalogs for sensitive data such as PII and can tag matching columns automatically.
 - [Hive Metastore Migration to Unity Catalog](07_unity_catalog_and_governance/Hive%20Metastore%20Migration%20to%20Unity%20Catalog.md) [301]: Upgrading older workspaces from the legacy Hive metastore to Unity Catalog with federation, SYNC, CLONE, and the UCX utilities.
 - [Catalog Explorer](07_unity_catalog_and_governance/Catalog%20Explorer.md) [101]: The Unity Catalog UI for browsing, searching, and managing data and AI assets and their permissions.
-- [Governed Tags](07_unity_catalog_and_governance/Governed%20Tags.md) [201]: Account-level tag definitions with controlled values, used for discovery, classification, and ABAC policies.
-- [Service Credentials](07_unity_catalog_and_governance/Service%20Credentials.md) [301]: Unity Catalog objects that let code reach cloud services other than storage, such as queues or secret stores.
-- [Unity Catalog Functions](07_unity_catalog_and_governance/Unity%20Catalog%20Functions.md) [201]: SQL and Python functions registered in Unity Catalog, governed and reusable across queries, agents, and tools.
+- [Governed Tags](07_unity_catalog_and_governance/Governed%20Tags.md) [201]: Account-level tag definitions with controlled values and assignment permissions, used for discovery, classification, and ABAC policies.
+- [Service Credentials](07_unity_catalog_and_governance/Service%20Credentials.md) [301]: Unity Catalog objects that let code reach cloud services other than storage, such as queues or secret stores, without handling keys.
+- [Unity Catalog Functions](07_unity_catalog_and_governance/Unity%20Catalog%20Functions.md) [201]: SQL and Python functions registered in Unity Catalog, governed and reusable across queries, policies, agents, and tools.
 - [Lakeguard](07_unity_catalog_and_governance/Lakeguard.md) [301]: The isolation technology that lets many users share standard and serverless compute while Unity Catalog enforces fine-grained access.
 
 ## Data Engineering
@@ -236,8 +236,8 @@ Depth: 101 beginner, 201 practitioner, 301 advanced, 401 expert.
 - [Databricks Apps](09_sql_bi_and_apps/Databricks%20Apps.md) [201]: Hosting internal web apps in Streamlit, Dash, React, and others right next to your data.
 - [Lakebase](09_sql_bi_and_apps/Lakebase.md) [301]: A managed Postgres database (OLTP) inside the lakehouse, for apps and agents, generally available since January 22, 2026.
 - [Genie One](09_sql_bi_and_apps/Genie%20One.md) [101]: Genie One (formerly Databricks One), the simplified business-user home for dashboards, Genie Agents, and apps.
-- [VARIANT Data Type](09_sql_bi_and_apps/VARIANT%20Data%20Type.md) [201]: Storing and querying semi-structured JSON-like data efficiently with the VARIANT type.
-- [SQL Scripting and Stored Procedures](09_sql_bi_and_apps/SQL%20Scripting%20and%20Stored%20Procedures.md) [301]: Variables, control flow, and reusable procedures in Databricks SQL, for porting warehouse logic.
+- [VARIANT Data Type](09_sql_bi_and_apps/VARIANT%20Data%20Type.md) [201]: The VARIANT data type stores JSON-like semi-structured data in an efficient binary form that you query with path expressions.
+- [SQL Scripting and Stored Procedures](09_sql_bi_and_apps/SQL%20Scripting%20and%20Stored%20Procedures.md) [301]: Variables, control flow, error handling, and reusable stored procedures in Databricks SQL, for porting procedural warehouse logic.
 
 ## AI & ML
 
@@ -261,8 +261,8 @@ Depth: 101 beginner, 201 practitioner, 301 advanced, 401 expert.
 - [Data Quality Monitoring](10_ai_and_ml/Data%20Quality%20Monitoring.md) [301]: Watching tables and model inputs for freshness, completeness, and drift with anomaly detection and data profiling (formerly Lakehouse Monitoring).
 - [AI Runtime](10_ai_and_ml/AI%20Runtime.md) [301]: GPU clusters on Databricks Runtime ML and AI Runtime serverless GPUs (A10 and H100) for deep learning, fine-tuning, and LLM work.
 - [MosaicML and Open Models](10_ai_and_ml/MosaicML%20and%20Open%20Models.md) [201]: Databricks' 2023 MosaicML acquisition, the MPT and DBRX open models, and how that technology lives on in hosted models, serving, and AI Runtime.
-- [Managed MCP Servers](10_ai_and_ml/Managed%20MCP%20Servers.md) [301]: Databricks-hosted Model Context Protocol servers that give AI agents governed access to data, functions, and search.
-- [AI Playground](10_ai_and_ml/AI%20Playground.md) [101]: A no-code UI for trying, comparing, and prototyping LLMs and agents in the workspace.
+- [Managed MCP Servers](10_ai_and_ml/Managed%20MCP%20Servers.md) [301]: Databricks-hosted Model Context Protocol servers that give AI agents governed access to Genie, SQL, AI Search indexes, and Unity Catalog functions.
+- [AI Playground](10_ai_and_ml/AI%20Playground.md) [101]: A no-code chat UI in the workspace for trying, comparing, and prototyping LLMs and simple tool-calling agents.
 
 ## Azure Databricks
 

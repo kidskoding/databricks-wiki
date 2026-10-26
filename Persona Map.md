@@ -100,7 +100,7 @@ Studying for an exam? [[Path - Certification Prep]] maps the notes to each Datab
 | 101 | [[Catalog Explorer]] | The Unity Catalog UI for browsing, searching, and managing data and AI assets and their permissions. |
 | 101 | [[Machine Learning Basics]] | Teaching software from examples, covering training, models, features, labels, and predictions, and where each step lives in Databricks. |
 | 101 | [[Generative AI and LLMs]] | What large language models are, why they need your business data to be useful, and the Databricks tools for each way of using them. |
-| 101 | [[AI Playground]] | A no-code UI for trying, comparing, and prototyping LLMs and agents in the workspace. |
+| 101 | [[AI Playground]] | A no-code chat UI in the workspace for trying, comparing, and prototyping LLMs and simple tool-calling agents. |
 | 101 | [[Azure Databricks Overview]] | What is different when Databricks is sold, billed, and run as a Microsoft Azure service. |
 | 101 | [[Databricks on AWS Overview]] | How Databricks runs on AWS, sold by Databricks directly or through AWS Marketplace. |
 | 101 | [[Databricks on Google Cloud Overview]] | How Databricks runs on Google Cloud, sold through Google Cloud Marketplace, and what is different there. |
@@ -145,7 +145,7 @@ Studying for an exam? [[Path - Certification Prep]] maps the notes to each Datab
 | 201 | [[Building a Business Case]] | How to justify Databricks to a boss or a board, covering costs, savings, risks, and a proof of concept. |
 | 201 | [[Cloudera and Hortonworks]] | The companies that sold supported Hadoop, and why they merged in 2019. |
 | 201 | [[Snowflake]] | The cloud warehouse that separated storage and compute, and Databricks' best-known rival. |
-| 201 | [[Serverless Workspaces and Default Storage]] | Workspaces that run only on serverless compute and store data in Databricks-managed storage, with no cloud setup. |
+| 201 | [[Serverless Workspaces and Default Storage]] | Workspaces that run only on serverless compute and store data in Databricks-managed default storage, so you supply no cloud storage, credentials, or network. |
 | 201 | [[OpenSharing]] | The open protocol, formerly Delta Sharing, for sharing live data and AI assets with anyone, on Databricks or not, without copying. |
 | 201 | [[Databricks Marketplace]] | An open marketplace for finding and getting datasets, ML models, and other data products from providers, delivered through OpenSharing. |
 | 201 | [[SQL Alerts]] | Databricks SQL alerts run a query on a schedule and send an email, Slack, or Teams message when a value crosses a threshold. |
@@ -188,7 +188,7 @@ Studying for an exam? [[Path - Certification Prep]] maps the notes to each Datab
 | 101 | [[Genie Agents]] | Genie Agents (formerly Genie spaces) answer plain-English questions about governed data with SQL, tables, and charts. |
 | 101 | [[Genie One]] | Genie One (formerly Databricks One), the simplified business-user home for dashboards, Genie Agents, and apps. |
 | 101 | [[AutoML]] | Letting Databricks train and compare models for you and hand back notebooks, now removed from Databricks Runtime 18.0 ML onward. |
-| 101 | [[AI Playground]] | A no-code UI for trying, comparing, and prototyping LLMs and agents in the workspace. |
+| 101 | [[AI Playground]] | A no-code chat UI in the workspace for trying, comparing, and prototyping LLMs and simple tool-calling agents. |
 | 101 | [[Migrating from Excel and Access]] | Moving a spreadsheet-run business into governed tables, with file uploads, Volumes, a first dashboard, and Genie Agents. |
 | 101 | [[Path - Analyst]] | From Excel and SQL to Databricks SQL, dashboards, Genie Agents, and Power BI. |
 | 201 | [[Databricks vs Alternatives for Small Teams]] | How Databricks compares with Snowflake, BigQuery, Microsoft Fabric, Power BI alone, and plain Postgres for a small team. |
@@ -205,7 +205,7 @@ Studying for an exam? [[Path - Certification Prep]] maps the notes to each Datab
 | 201 | [[Data Lineage]] | An automatic, column-level map of where every table and column came from and where it goes, captured by Unity Catalog at runtime. |
 | 201 | [[Lakehouse Federation]] | Querying Postgres, SQL Server, Snowflake, BigQuery, and other databases and catalogs in place through Unity Catalog, without copying. |
 | 201 | [[Databricks Marketplace]] | An open marketplace for finding and getting datasets, ML models, and other data products from providers, delivered through OpenSharing. |
-| 201 | [[Unity Catalog Functions]] | SQL and Python functions registered in Unity Catalog, governed and reusable across queries, agents, and tools. |
+| 201 | [[Unity Catalog Functions]] | SQL and Python functions registered in Unity Catalog, governed and reusable across queries, policies, agents, and tools. |
 | 201 | [[COPY INTO]] | The simple SQL command for loading files into a table once. |
 | 201 | [[Materialized Views]] | Precomputed query results that refresh incrementally. |
 | 201 | [[dbt on Databricks]] | Running dbt projects against Databricks SQL, and as job tasks. |
@@ -213,7 +213,7 @@ Studying for an exam? [[Path - Certification Prep]] maps the notes to each Datab
 | 201 | [[Connecting Power BI]] | Live and import connections from Power BI to Databricks, and publishing from Unity Catalog. |
 | 201 | [[Connecting Tableau and Other BI Tools]] | Tableau, Looker, Sigma, Excel, and anything with JDBC or ODBC. |
 | 201 | [[AI Functions in SQL]] | Calling LLMs from plain SQL to classify, summarize, extract, and translate. |
-| 201 | [[VARIANT Data Type]] | Storing and querying semi-structured JSON-like data efficiently with the VARIANT type. |
+| 201 | [[VARIANT Data Type]] | The VARIANT data type stores JSON-like semi-structured data in an efficient binary form that you query with path expressions. |
 | 201 | [[Microsoft Fabric and OneLake vs Databricks]] | How Microsoft Fabric and Azure Databricks overlap, how to choose between them, and how mirroring and OneLake federation connect them. |
 | 201 | [[Power BI on Azure Databricks]] | Entra single sign-on from Power BI, the ADBC driver, publishing semantic models from Unity Catalog, and DirectQuery guidance. |
 | 201 | [[BigQuery Integration]] | Reading and writing BigQuery with the Spark connector, and querying it in place through Lakehouse Federation. |
@@ -221,7 +221,7 @@ Studying for an exam? [[Path - Certification Prep]] maps the notes to each Datab
 | 301 | [[Slowly Changing Dimensions]] | SCD type 1 and type 2, which decide whether to keep history when a customer moves. |
 | 301 | [[Query Performance and Caching]] | Query profiles, result and disk caches, and why a query is slow. |
 | 301 | [[Metric Views]] | Defining a business metric once in Unity Catalog so every tool computes it the same way. |
-| 301 | [[SQL Scripting and Stored Procedures]] | Variables, control flow, and reusable procedures in Databricks SQL, for porting warehouse logic. |
+| 301 | [[SQL Scripting and Stored Procedures]] | Variables, control flow, error handling, and reusable stored procedures in Databricks SQL, for porting procedural warehouse logic. |
 | 301 | [[Path - Certification Prep]] | Which Databricks certifications exist and which notes map to each exam. |
 
 ### Data engineer
@@ -273,7 +273,7 @@ Studying for an exam? [[Path - Certification Prep]] maps the notes to each Datab
 | 201 | [[Partitions]] | How Spark slices data so many machines can work on it at once. |
 | 201 | [[Structured Streaming]] | Spark's engine for treating a live stream like a table that keeps growing. |
 | 201 | [[Spark UI]] | The built-in web interface for seeing what a Spark application did and why it was slow. |
-| 201 | [[Pandas API on Spark]] | Running pandas-style code on Spark for data too large for one machine. |
+| 201 | [[Pandas API on Spark]] | The pandas API on Spark (pyspark.pandas, formerly Koalas) runs pandas-style code on Spark so it scales past one machine's memory. |
 | 201 | [[Amazon Redshift]] | AWS's cloud data warehouse, previewed in 2012 and generally available in 2013. |
 | 201 | [[Snowflake]] | The cloud warehouse that separated storage and compute, and Databricks' best-known rival. |
 | 201 | [[Google BigQuery]] | Google's serverless warehouse, where you run SQL without sizing or managing any servers. |
@@ -294,14 +294,14 @@ Studying for an exam? [[Path - Certification Prep]] maps the notes to each Datab
 | 201 | [[Git Folders and Workspace Files]] | Git folders sync workspace code with GitHub, GitLab, Bitbucket, Azure DevOps, or CodeCommit; workspace files store code beside notebooks. |
 | 201 | [[Databricks CLI]] | The `databricks` command-line tool for scripting workspaces and accounts, authenticating, and deploying bundles. |
 | 201 | [[Libraries and Environments]] | How to install Python, JAR, and R packages and pin dependencies with notebook-scoped libraries, compute-scoped libraries, and serverless environments. |
-| 201 | [[dbutils and Widgets]] | The notebook utility library for files, secrets, and job values, and widgets for notebook parameters. |
-| 201 | [[DBFS]] | The legacy Databricks File System and mounts, and why Unity Catalog volumes replace them. |
+| 201 | [[dbutils and Widgets]] | The Databricks Utilities (dbutils) library for files, secrets, notebook chaining, and job task values, and widgets for notebook parameters. |
+| 201 | [[DBFS]] | The legacy Databricks File System (DBFS root and mounts), why it is deprecated, and how Unity Catalog volumes, external locations, and workspace files replace it. |
 | 201 | [[Managed vs External Tables]] | Who owns the files, and what happens when you drop a table. Managed is the default and recommended choice. |
 | 201 | [[Volumes]] | Governed folders for non-table files like CSVs, images, PDFs, and model artifacts, addressed as /Volumes/catalog/schema/volume. |
 | 201 | [[Data Lineage]] | An automatic, column-level map of where every table and column came from and where it goes, captured by Unity Catalog at runtime. |
 | 201 | [[Lakehouse Federation]] | Querying Postgres, SQL Server, Snowflake, BigQuery, and other databases and catalogs in place through Unity Catalog, without copying. |
 | 201 | [[OpenSharing]] | The open protocol, formerly Delta Sharing, for sharing live data and AI assets with anyone, on Databricks or not, without copying. |
-| 201 | [[Unity Catalog Functions]] | SQL and Python functions registered in Unity Catalog, governed and reusable across queries, agents, and tools. |
+| 201 | [[Unity Catalog Functions]] | SQL and Python functions registered in Unity Catalog, governed and reusable across queries, policies, agents, and tools. |
 | 201 | [[Auto Loader]] | Incrementally ingesting new files as they land in cloud storage. |
 | 201 | [[COPY INTO]] | The simple SQL command for loading files into a table once. |
 | 201 | [[Lakeflow Spark Declarative Pipelines]] | Declaring the tables you want and letting Databricks run, retry, and track the pipeline (formerly Delta Live Tables). |
@@ -311,7 +311,7 @@ Studying for an exam? [[Path - Certification Prep]] maps the notes to each Datab
 | 201 | [[Tasks Triggers and Schedules]] | Task types, dependencies, file-arrival and table-update triggers, and retries. |
 | 201 | [[dbt on Databricks]] | Running dbt projects against Databricks SQL, and as job tasks. |
 | 201 | [[Partner Connect]] | Guided connections to Fivetran, dbt, Power BI, Tableau, Sigma, and other partners that provision the warehouse, service principal, and token for you. |
-| 201 | [[VARIANT Data Type]] | Storing and querying semi-structured JSON-like data efficiently with the VARIANT type. |
+| 201 | [[VARIANT Data Type]] | The VARIANT data type stores JSON-like semi-structured data in an efficient binary form that you query with path expressions. |
 | 201 | [[Azure Data Factory with Databricks]] | Calling Azure Databricks from Azure Data Factory pipelines with the Job and Notebook activities, and when to use Lakeflow Jobs instead. |
 | 201 | [[BigQuery Integration]] | Reading and writing BigQuery with the Spark connector, and querying it in place through Lakehouse Federation. |
 | 201 | [[Secrets Management]] | Keeping passwords and keys out of notebooks with secret scopes, and the newer secrets in Unity Catalog. |
@@ -340,10 +340,10 @@ Studying for an exam? [[Path - Certification Prep]] maps the notes to each Datab
 | 301 | [[Declarative Automation Bundles]] | Infrastructure as code for jobs, pipelines, and apps, defined as YAML in Git and deployed with `databricks bundle` (formerly Databricks Asset Bundles). |
 | 301 | [[Databricks SDKs and REST API]] | Programmatic control of Databricks through the REST API and the official SDKs for Python, Java, Go, and JavaScript (plus an R SDK from Databricks Labs). |
 | 301 | [[Databricks Connect]] | A client library, built on Spark Connect, that runs Spark code from your local IDE on Databricks clusters or serverless compute. |
-| 301 | [[Instance Pools]] | Pre-warmed idle VMs that cut classic cluster start time. |
-| 301 | [[Init Scripts]] | Shell scripts that run on each classic cluster node at startup, and where to store them safely. |
+| 301 | [[Instance Pools]] | Sets of idle, ready-to-use cloud VMs that classic clusters draw from to cut start and autoscaling time. |
+| 301 | [[Init Scripts]] | Shell scripts that run on each classic cluster node at startup, the cluster-scoped and global types, and where to store them safely. |
 | 301 | [[Hive Metastore Migration to Unity Catalog]] | Upgrading older workspaces from the legacy Hive metastore to Unity Catalog with federation, SYNC, CLONE, and the UCX utilities. |
-| 301 | [[Service Credentials]] | Unity Catalog objects that let code reach cloud services other than storage, such as queues or secret stores. |
+| 301 | [[Service Credentials]] | Unity Catalog objects that let code reach cloud services other than storage, such as queues or secret stores, without handling keys. |
 | 301 | [[Change Data Capture]] | Copying only what changed in a source database, with AUTO CDC. |
 | 301 | [[Slowly Changing Dimensions]] | SCD type 1 and type 2, which decide whether to keep history when a customer moves. |
 | 301 | [[Structured Streaming on Databricks]] | Running Spark streams on Databricks, covering Kafka sources, checkpoints, and real-time mode. |
@@ -352,7 +352,7 @@ Studying for an exam? [[Path - Certification Prep]] maps the notes to each Datab
 | 301 | [[Query Performance and Caching]] | Query profiles, result and disk caches, and why a query is slow. |
 | 301 | [[Metric Views]] | Defining a business metric once in Unity Catalog so every tool computes it the same way. |
 | 301 | [[Lakebase]] | A managed Postgres database (OLTP) inside the lakehouse, for apps and agents, generally available since January 22, 2026. |
-| 301 | [[SQL Scripting and Stored Procedures]] | Variables, control flow, and reusable procedures in Databricks SQL, for porting warehouse logic. |
+| 301 | [[SQL Scripting and Stored Procedures]] | Variables, control flow, error handling, and reusable stored procedures in Databricks SQL, for porting procedural warehouse logic. |
 | 301 | [[Data Quality Monitoring]] | Watching tables and model inputs for freshness, completeness, and drift with anomaly detection and data profiling (formerly Lakehouse Monitoring). |
 | 301 | [[ADLS and Access Connectors]] | How Unity Catalog reaches ADLS Gen2 through an Access Connector's managed identity, including storage behind firewalls. |
 | 301 | [[Azure Key Vault Secret Scopes]] | Using Azure Key Vault as the read-only backing store for a Databricks secret scope, with its permission model and limits. |
@@ -385,11 +385,11 @@ Studying for an exam? [[Path - Certification Prep]] maps the notes to each Datab
 | 201 | [[Lazy Evaluation]] | Why Spark plans the whole job before running any of it. |
 | 201 | [[Transformations and Actions]] | The two kinds of Spark operations, ones that describe work and ones that trigger it. |
 | 201 | [[MLlib]] | Spark's built-in library for distributed machine learning on DataFrames. |
-| 201 | [[Pandas API on Spark]] | Running pandas-style code on Spark for data too large for one machine. |
+| 201 | [[Pandas API on Spark]] | The pandas API on Spark (pyspark.pandas, formerly Koalas) runs pandas-style code on Spark so it scales past one machine's memory. |
 | 201 | [[Databricks Runtime]] | The tuned Spark plus libraries image every classic cluster boots, and its LTS versions. |
 | 201 | [[All-Purpose Compute]] | Interactive clusters for notebooks and exploration, which you create, share, and must remember to stop. |
 | 201 | [[Libraries and Environments]] | How to install Python, JAR, and R packages and pin dependencies with notebook-scoped libraries, compute-scoped libraries, and serverless environments. |
-| 201 | [[dbutils and Widgets]] | The notebook utility library for files, secrets, and job values, and widgets for notebook parameters. |
+| 201 | [[dbutils and Widgets]] | The Databricks Utilities (dbutils) library for files, secrets, notebook chaining, and job task values, and widgets for notebook parameters. |
 | 201 | [[Volumes]] | Governed folders for non-table files like CSVs, images, PDFs, and model artifacts, addressed as /Volumes/catalog/schema/volume. |
 | 201 | [[Experiment Tracking]] | Logging every training run's parameters, metrics, and artifacts in MLflow experiments, so results can be compared and reproduced. |
 | 201 | [[Models in Unity Catalog]] | Versioning, aliasing, and governing ML models as Unity Catalog objects, the default MLflow registry since MLflow 3. |
@@ -408,8 +408,8 @@ Studying for an exam? [[Path - Certification Prep]] maps the notes to each Datab
 | 101 | [[Generative AI and LLMs]] | What large language models are, why they need your business data to be useful, and the Databricks tools for each way of using them. |
 | 101 | [[MLflow]] | The open-source platform for tracking, packaging, evaluating, tracing, and deploying ML models and GenAI agents, managed on Databricks. |
 | 101 | [[Agent Bricks]] | Databricks' agent platform, launched in 2025 for building agents from a task description and refocused in 2026 on code-first agents with the Agent Bricks CLI and Agent Runtime. |
-| 101 | [[AI Playground]] | A no-code UI for trying, comparing, and prototyping LLMs and agents in the workspace. |
-| 201 | [[Unity Catalog Functions]] | SQL and Python functions registered in Unity Catalog, governed and reusable across queries, agents, and tools. |
+| 101 | [[AI Playground]] | A no-code chat UI in the workspace for trying, comparing, and prototyping LLMs and simple tool-calling agents. |
+| 201 | [[Unity Catalog Functions]] | SQL and Python functions registered in Unity Catalog, governed and reusable across queries, policies, agents, and tools. |
 | 201 | [[AI Functions in SQL]] | Calling LLMs from plain SQL to classify, summarize, extract, and translate. |
 | 201 | [[Databricks Apps]] | Hosting internal web apps in Streamlit, Dash, React, and others right next to your data. |
 | 201 | [[Model Serving]] | Turning a registered model into a live, autoscaling REST endpoint on serverless CPU or GPU compute. |
@@ -425,7 +425,7 @@ Studying for an exam? [[Path - Certification Prep]] maps the notes to each Datab
 | 301 | [[Unity Gateway]] | Unity Gateway (formerly AI Gateway) governs, rate-limits, logs, and guards every model and MCP call, including calls to external providers. |
 | 301 | [[Mosaic AI Agent Framework]] | The earlier code-first agent tooling (ResponsesAgent, MLflow AgentServer on Databricks Apps, Model Serving deployment), now legacy and mapped to Agent Bricks. |
 | 301 | [[Agent Evaluation and Tracing]] | Measuring agent and RAG quality in MLflow 3 with traces, LLM judges, custom scorers, human feedback, and production monitoring. |
-| 301 | [[Managed MCP Servers]] | Databricks-hosted Model Context Protocol servers that give AI agents governed access to data, functions, and search. |
+| 301 | [[Managed MCP Servers]] | Databricks-hosted Model Context Protocol servers that give AI agents governed access to Genie, SQL, AI Search indexes, and Unity Catalog functions. |
 | 401 | [[Fine-Tuning]] | Further training a foundation model on your own examples, when not to bother, and how to do it on AI Runtime now that Foundation Model Fine-tuning is end of life. |
 
 ### Platform or cloud admin
@@ -456,13 +456,13 @@ Studying for an exam? [[Path - Certification Prep]] maps the notes to each Datab
 | 201 | [[Predictive Optimization]] | Databricks automatically running OPTIMIZE, VACUUM, and statistics collection on Unity Catalog managed tables. |
 | 201 | [[Control Plane and Compute Plane]] | What Databricks runs for you, versus what runs in your cloud account or in serverless. |
 | 201 | [[Databricks CLI]] | The `databricks` command-line tool for scripting workspaces and accounts, authenticating, and deploying bundles. |
-| 201 | [[Serverless Workspaces and Default Storage]] | Workspaces that run only on serverless compute and store data in Databricks-managed storage, with no cloud setup. |
-| 201 | [[DBFS]] | The legacy Databricks File System and mounts, and why Unity Catalog volumes replace them. |
+| 201 | [[Serverless Workspaces and Default Storage]] | Workspaces that run only on serverless compute and store data in Databricks-managed default storage, so you supply no cloud storage, credentials, or network. |
+| 201 | [[DBFS]] | The legacy Databricks File System (DBFS root and mounts), why it is deprecated, and how Unity Catalog volumes, external locations, and workspace files replace it. |
 | 201 | [[Metastore]] | The top-level Unity Catalog container, one per region, that holds every catalog, credential, share, and connection. |
 | 201 | [[Managed vs External Tables]] | Who owns the files, and what happens when you drop a table. Managed is the default and recommended choice. |
 | 201 | [[Privileges and Grants]] | GRANT and REVOKE on securable objects, how privileges inherit down the tree, and how ownership and MANAGE work. |
 | 201 | [[System Tables]] | Databricks' own operational data (billing, audit, lineage, compute, jobs, queries) as queryable tables in the system catalog. |
-| 201 | [[Governed Tags]] | Account-level tag definitions with controlled values, used for discovery, classification, and ABAC policies. |
+| 201 | [[Governed Tags]] | Account-level tag definitions with controlled values and assignment permissions, used for discovery, classification, and ABAC policies. |
 | 201 | [[Models in Unity Catalog]] | Versioning, aliasing, and governing ML models as Unity Catalog objects, the default MLflow registry since MLflow 3. |
 | 201 | [[First-Party Microsoft Service]] | Microsoft provisioning, billing, and support, and why Azure Databricks is unusual among Databricks clouds. |
 | 201 | [[Managed Resource Group]] | The locked resource group Azure creates to hold a classic workspace's VMs, disks, network resources, and workspace storage account. |
@@ -483,14 +483,14 @@ Studying for an exam? [[Path - Certification Prep]] maps the notes to each Datab
 | 301 | [[Photon]] | Databricks' C++ query engine that speeds up SQL and DataFrame work. |
 | 301 | [[Declarative Automation Bundles]] | Infrastructure as code for jobs, pipelines, and apps, defined as YAML in Git and deployed with `databricks bundle` (formerly Databricks Asset Bundles). |
 | 301 | [[Databricks SDKs and REST API]] | Programmatic control of Databricks through the REST API and the official SDKs for Python, Java, Go, and JavaScript (plus an R SDK from Databricks Labs). |
-| 301 | [[Instance Pools]] | Pre-warmed idle VMs that cut classic cluster start time. |
-| 301 | [[Init Scripts]] | Shell scripts that run on each classic cluster node at startup, and where to store them safely. |
+| 301 | [[Instance Pools]] | Sets of idle, ready-to-use cloud VMs that classic clusters draw from to cut start and autoscaling time. |
+| 301 | [[Init Scripts]] | Shell scripts that run on each classic cluster node at startup, the cluster-scoped and global types, and where to store them safely. |
 | 301 | [[Storage Credentials and External Locations]] | How Unity Catalog is allowed to reach your cloud storage, with credentials held by the catalog instead of by clusters. |
 | 301 | [[Row Filters and Column Masks]] | SQL functions attached to a table that show each person only the rows and column values they are allowed to see. |
 | 301 | [[Attribute-Based Access Control]] | Policies driven by governed tags, set once on a catalog or schema, that filter rows and mask columns on every matching table. |
 | 301 | [[Audit Logs]] | A record of who did what and when across the account, queryable as system.access.audit or delivered to your own storage. |
 | 301 | [[Hive Metastore Migration to Unity Catalog]] | Upgrading older workspaces from the legacy Hive metastore to Unity Catalog with federation, SYNC, CLONE, and the UCX utilities. |
-| 301 | [[Service Credentials]] | Unity Catalog objects that let code reach cloud services other than storage, such as queues or secret stores. |
+| 301 | [[Service Credentials]] | Unity Catalog objects that let code reach cloud services other than storage, such as queues or secret stores, without handling keys. |
 | 301 | [[Lakeguard]] | The isolation technology that lets many users share standard and serverless compute while Unity Catalog enforces fine-grained access. |
 | 301 | [[CI-CD for Data Pipelines]] | Dev, staging, and prod, with tests and automated deployment for data code. |
 | 301 | [[Unity Gateway]] | Unity Gateway (formerly AI Gateway) governs, rate-limits, logs, and guards every model and MCP call, including calls to external providers. |
@@ -536,7 +536,7 @@ Studying for an exam? [[Path - Certification Prep]] maps the notes to each Datab
 | 201 | [[Privileges and Grants]] | GRANT and REVOKE on securable objects, how privileges inherit down the tree, and how ownership and MANAGE work. |
 | 201 | [[Data Lineage]] | An automatic, column-level map of where every table and column came from and where it goes, captured by Unity Catalog at runtime. |
 | 201 | [[System Tables]] | Databricks' own operational data (billing, audit, lineage, compute, jobs, queries) as queryable tables in the system catalog. |
-| 201 | [[Governed Tags]] | Account-level tag definitions with controlled values, used for discovery, classification, and ABAC policies. |
+| 201 | [[Governed Tags]] | Account-level tag definitions with controlled values and assignment permissions, used for discovery, classification, and ABAC policies. |
 | 201 | [[Microsoft Entra ID Integration]] | Sign-in, automatic identity management, SCIM, conditional access, tokens, and service principals with Microsoft Entra ID. |
 | 201 | [[Users Groups and Service Principals]] | The three kinds of identity, and why groups should own everything. |
 | 201 | [[Single Sign-On]] | Logging in with your company identity provider, configured once for the account and every workspace. |
@@ -594,7 +594,7 @@ Studying for an exam? [[Path - Certification Prep]] maps the notes to each Datab
 | 201 | [[Budgets and Usage Dashboards]] | Budget alerts in the account console and the built-in usage dashboards built on system.billing tables. |
 | 201 | [[Tagging for Chargeback]] | Tagging compute, warehouses, pools, and serverless usage so every DBU maps to a team or project. |
 | 201 | [[Cost Optimization Checklist]] | A practical checklist covering auto-termination, serverless, spot instances, sizing, Photon, pools, and data layout. |
-| 301 | [[Instance Pools]] | Pre-warmed idle VMs that cut classic cluster start time. |
+| 301 | [[Instance Pools]] | Sets of idle, ready-to-use cloud VMs that classic clusters draw from to cut start and autoscaling time. |
 | 301 | [[EC2 Instance Types and Graviton]] | Picking EC2 node types, fleet types, spot instances, and Arm-based Graviton for classic compute price and performance. |
 
 ### One-person data team at a small business
@@ -629,7 +629,7 @@ Studying for an exam? [[Path - Certification Prep]] maps the notes to each Datab
 | 201 | [[Estimating Costs for a Small Business]] | A worked, back-of-the-envelope monthly cost estimate for a small company's first workloads. |
 | 201 | [[Fivetran and ELT Tools]] | Managed connectors that copy SaaS and database data into a warehouse or lakehouse. |
 | 201 | [[Predictive Optimization]] | Databricks automatically running OPTIMIZE, VACUUM, and statistics collection on Unity Catalog managed tables. |
-| 201 | [[Serverless Workspaces and Default Storage]] | Workspaces that run only on serverless compute and store data in Databricks-managed storage, with no cloud setup. |
+| 201 | [[Serverless Workspaces and Default Storage]] | Workspaces that run only on serverless compute and store data in Databricks-managed default storage, so you supply no cloud storage, credentials, or network. |
 | 201 | [[Lakehouse Federation]] | Querying Postgres, SQL Server, Snowflake, BigQuery, and other databases and catalogs in place through Unity Catalog, without copying. |
 | 201 | [[Partner Connect]] | Guided connections to Fivetran, dbt, Power BI, Tableau, Sigma, and other partners that provision the warehouse, service principal, and token for you. |
 | 201 | [[Databricks Apps]] | Hosting internal web apps in Streamlit, Dash, React, and others right next to your data. |

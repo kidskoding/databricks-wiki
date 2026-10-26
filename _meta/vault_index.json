@@ -303,6 +303,7 @@
     "ACID Transactions",
     "ADLS and Access Connectors",
     "AI Functions in SQL",
+    "AI Playground",
     "AI Runtime",
     "AI Search",
     "AI-BI Dashboards",
@@ -352,6 +353,7 @@
     "CI-CD for Data Pipelines",
     "COPY INTO",
     "CSV and JSON",
+    "Catalog Explorer",
     "Catalogs Schemas and Tables",
     "Catalyst Optimizer",
     "Change Data Capture",
@@ -376,6 +378,7 @@
     "Customer-Managed Keys on Google Cloud",
     "Customer-Managed VPC on AWS",
     "Customer-Managed VPC on Google Cloud",
+    "DBFS",
     "DBUs",
     "Data Classification",
     "Data Lakes",
@@ -428,12 +431,15 @@
     "Google Cloud Storage",
     "Google File System and MapReduce Papers",
     "Google Service Accounts",
+    "Governed Tags",
     "HDFS",
     "Hive Metastore",
     "Hive Metastore Federation for AWS Glue",
     "Hive Metastore Migration to Unity Catalog",
     "How Databricks Pricing Works",
     "IP Access Lists",
+    "Init Scripts",
+    "Instance Pools",
     "Instance Profiles",
     "Jobs Compute",
     "Jobs Stages and Tasks",
@@ -444,6 +450,7 @@
     "Lakeflow Designer",
     "Lakeflow Jobs",
     "Lakeflow Spark Declarative Pipelines",
+    "Lakeguard",
     "Lakehouse Federation",
     "Lazy Evaluation",
     "Libraries and Environments",
@@ -452,6 +459,7 @@
     "MLflow",
     "MLlib",
     "Machine Learning Basics",
+    "Managed MCP Servers",
     "Managed Resource Group",
     "Managed vs External Tables",
     "MapReduce",
@@ -483,6 +491,7 @@
     "Object Storage",
     "Open Table Formats",
     "OpenSharing",
+    "Pandas API on Spark",
     "Partitions",
     "Partner Connect",
     "Path - AI App Developer",
@@ -499,6 +508,7 @@
     "Path - Platform Admin",
     "Photon",
     "Power BI on Azure Databricks",
+    "Predictive Optimization",
     "Primary and Foreign Keys",
     "Private Service Connect",
     "Privileges and Grants",
@@ -515,6 +525,7 @@
     "SQL",
     "SQL Alerts",
     "SQL Editor",
+    "SQL Scripting and Stored Procedures",
     "SQL Warehouses",
     "Scaling Up vs Scaling Out",
     "Schema Enforcement and Evolution",
@@ -522,7 +533,9 @@
     "Secure Cluster Connectivity",
     "Serverless Compute",
     "Serverless Network Security",
+    "Serverless Workspaces and Default Storage",
     "Servers and the Cloud",
+    "Service Credentials",
     "Shuffles",
     "Signs You Have Outgrown Spreadsheets",
     "Single Sign-On",
@@ -557,8 +570,10 @@
     "Transformations and Actions",
     "Tungsten",
     "Unity Catalog",
+    "Unity Catalog Functions",
     "Unity Gateway",
     "Users Groups and Service Principals",
+    "VARIANT Data Type",
     "VNet Injection",
     "Volumes",
     "What Databricks Is in Plain English",
@@ -570,7 +585,8 @@
     "YARN",
     "Your First 30 Days on Databricks",
     "dbt",
-    "dbt on Databricks"
+    "dbt on Databricks",
+    "dbutils and Widgets"
    ]
   },
   {
@@ -650,6 +666,7 @@
     "MapReduce",
     "Metastore",
     "Microsoft Entra ID Integration",
+    "Mixture of Experts",
     "Mosaic AI Agent Framework",
     "MosaicML and Open Models",
     "Notebooks",
@@ -751,6 +768,8 @@
     "How Databricks Pricing Works",
     "Path - Business Owner",
     "Path - One-Person Data Team",
+    "Pay-As-You-Go",
+    "SKU",
     "Signs You Have Outgrown Spreadsheets",
     "What Databricks Is in Plain English",
     "When Databricks Is Not the Right Fit",
@@ -1157,6 +1176,7 @@
     "Migration Strategy Overview",
     "Notebooks",
     "Open Table Formats",
+    "SKU",
     "Snowflake",
     "Unity Catalog",
     "When Databricks Is Not the Right Fit"
@@ -1302,6 +1322,7 @@
     "Lakeflow",
     "Metastore",
     "Proof of Concept",
+    "SCIM",
     "SCIM Provisioning",
     "SLA",
     "SQL Warehouses",
@@ -1498,6 +1519,7 @@
     "Open Table Formats",
     "Path - Certification Prep",
     "Path - One-Person Data Team",
+    "Pay-As-You-Go",
     "Row Filters and Column Masks",
     "Running Old and New in Parallel",
     "Tagging for Chargeback",
@@ -1539,6 +1561,7 @@
     "Python for Data",
     "Relational Databases",
     "SQL",
+    "Semi-Structured Data",
     "Servers and the Cloud",
     "Spreadsheets",
     "Star Schema",
@@ -1643,6 +1666,8 @@
     "SQL",
     "Schema",
     "Schema Enforcement and Evolution",
+    "Schema-on-Read",
+    "Semi-Structured Data",
     "Storage vs Compute",
     "The Lakehouse Idea",
     "Unity Catalog",
@@ -1815,6 +1840,7 @@
     "Index",
     "Lakebase",
     "Lakehouse Federation",
+    "MVCC",
     "Migrating from Postgres and MySQL",
     "Migrating from SQL Server",
     "Normalization",
@@ -1875,6 +1901,7 @@
     "SQL Warehouses",
     "Spark SQL",
     "The Three Vs of Big Data",
+    "Transpiler",
     "Unity Catalog",
     "dbt"
    ]
@@ -1920,7 +1947,8 @@
     "Relational Databases",
     "SQL",
     "Slowly Changing Dimensions",
-    "Star Schema"
+    "Star Schema",
+    "Surrogate Key"
    ]
   },
   {
@@ -1962,8 +1990,11 @@
     "Lakebase",
     "Lakeflow Connect",
     "Latency",
+    "MVCC",
     "Metric Views",
+    "Optimistic Concurrency",
     "Photon",
+    "Point-in-Time Recovery",
     "Primary and Foreign Keys",
     "Relational Databases",
     "Reverse ETL",
@@ -2062,7 +2093,8 @@
     "Schema",
     "Servers and the Cloud",
     "Slowly Changing Dimensions",
-    "Streaming Tables"
+    "Streaming Tables",
+    "Surrogate Key"
    ]
   },
   {
@@ -2179,6 +2211,7 @@
     "Machine Learning Basics",
     "Managed vs External Tables",
     "Object Storage",
+    "Point-in-Time Recovery",
     "Python for Data",
     "Region",
     "S3 Access via Unity Catalog",
@@ -2278,8 +2311,11 @@
     "Lakeflow Jobs",
     "MERGE and Upserts",
     "OAuth",
+    "Pagination",
+    "Personal Access Token",
     "Python for Data",
     "REST",
+    "Rate Limit",
     "SaaS PaaS and IaaS",
     "Schema Enforcement and Evolution",
     "Secrets Management",
@@ -2385,6 +2421,7 @@
     "Data Warehouses",
     "ETL vs ELT",
     "Event",
+    "Event Time",
     "Exactly-Once Processing",
     "IoT",
     "Lakeflow Connect",
@@ -2529,6 +2566,7 @@
     "Auto Termination",
     "Autoscaling",
     "Cluster",
+    "Commodity Hardware",
     "Compute on Google Cloud",
     "Data Skew",
     "Distributed Systems",
@@ -2596,6 +2634,8 @@
     "Serverless Compute",
     "Servers and the Cloud",
     "Shuffles",
+    "Speculative Execution",
+    "Straggler Task",
     "Time Travel",
     "YARN"
    ]
@@ -2641,6 +2681,7 @@
     "Object Storage",
     "Photon",
     "Scaling Up vs Scaling Out",
+    "Small Files Problem",
     "The Pain of Hadoop"
    ]
   },
@@ -2733,6 +2774,7 @@
     "Apache Hadoop",
     "Apache Iceberg",
     "Azure Data Lake Storage",
+    "Commodity Hardware",
     "Delta Lake",
     "Distributed Systems",
     "GCS Access via Unity Catalog",
@@ -2743,6 +2785,7 @@
     "OPTIMIZE and VACUUM",
     "Object Storage",
     "S3 Access via Unity Catalog",
+    "Small Files Problem",
     "Storage Credentials and External Locations",
     "Storage vs Compute",
     "The Pain of Hadoop",
@@ -2879,6 +2922,8 @@
     "SQL",
     "SQL Editor",
     "SQL Warehouses",
+    "Schema-on-Read",
+    "SerDe",
     "Spark SQL",
     "The Three Vs of Big Data",
     "Unity Catalog",
@@ -2922,6 +2967,7 @@
     "Managed vs External Tables",
     "Metadata",
     "Metastore",
+    "SerDe",
     "Spark SQL",
     "Three-Level Namespace",
     "Unity Catalog"
@@ -2961,8 +3007,10 @@
     "Liquid Clustering",
     "MERGE and Upserts",
     "Model Serving",
+    "NoSQL",
     "OLTP vs OLAP",
-    "Relational Databases"
+    "Relational Databases",
+    "Write-Ahead Log"
    ]
   },
   {
@@ -3001,6 +3049,7 @@
     "Columnar Storage",
     "Databricks Runtime",
     "HDFS",
+    "Kerberos",
     "Lakebridge",
     "Migrating from Hadoop",
     "Object Storage",
@@ -3607,6 +3656,7 @@
     "Liquid Clustering",
     "Partition Pruning",
     "Photon",
+    "Predicate Pushdown",
     "RDDs",
     "SQL Warehouses",
     "Scala",
@@ -3644,6 +3694,7 @@
     "Columnar Storage",
     "Databricks Runtime",
     "Driver and Executors",
+    "Garbage Collection",
     "JVM",
     "Photon",
     "Spark UI",
@@ -3742,7 +3793,8 @@
     "RDDs",
     "Serverless Compute",
     "Shuffles",
-    "Spill"
+    "Spill",
+    "Straggler Task"
    ]
   },
   {
@@ -3941,6 +3993,7 @@
     "Databricks Runtime",
     "Experiment Tracking",
     "Feature Engineering and Feature Store",
+    "Hyperparameter",
     "MLflow",
     "Machine Learning Basics",
     "MapReduce",
@@ -4022,10 +4075,13 @@
     "Databricks Connect",
     "Driver and Executors",
     "Lazy Evaluation",
+    "Logical and Physical Plans",
     "OAuth",
+    "Personal Access Token",
     "Serverless Compute",
     "Spark UI",
-    "Unity Catalog"
+    "Unity Catalog",
+    "gRPC"
    ]
   },
   {
@@ -4053,11 +4109,11 @@
    "links_out": [
     "Adaptive Query Execution",
     "Azure Monitor and Diagnostic Logs",
-    "Chapter 04 - The Modern Data Stack",
     "Cost Optimization Checklist",
     "Data Skew",
     "Driver and Executors",
     "Jobs Stages and Tasks",
+    "Pandas API on Spark",
     "Query Performance and Caching",
     "SQL Warehouses",
     "Serverless Compute",
@@ -4071,23 +4127,50 @@
    "title": "Pandas API on Spark",
    "path": "03_apache_spark/Pandas API on Spark.md",
    "type": "concept",
-   "status": "stub",
+   "status": "written",
    "level": 3,
    "section": "Apache Spark",
    "depth": 201,
-   "summary": "Running pandas-style code on Spark for data too large for one machine.",
+   "summary": "The pandas API on Spark (pyspark.pandas, formerly Koalas) runs pandas-style code on Spark so it scales past one machine's memory.",
    "personas": [
     "scientist",
     "engineer"
    ],
-   "aliases": [],
+   "aliases": [
+    "Koalas",
+    "pyspark.pandas",
+    "pandas-on-Spark",
+    "Pandas on Spark"
+   ],
    "clouds": [
     "aws",
     "azure",
     "gcp"
    ],
-   "last_verified": "",
-   "links_out": []
+   "last_verified": "2026-10-25",
+   "links_out": [
+    "Amazon S3",
+    "Azure Data Lake Storage",
+    "Catalyst Optimizer",
+    "Chapter 04 - The Modern Data Stack",
+    "DataFrames",
+    "Databricks Runtime",
+    "Feature Engineering and Feature Store",
+    "Google Cloud Storage",
+    "How Databricks Pricing Works",
+    "Lazy Evaluation",
+    "Notebooks",
+    "Pandas",
+    "Partitions",
+    "PySpark",
+    "SQL Warehouses",
+    "Serverless Compute",
+    "Shuffles",
+    "Spark Connect",
+    "Spark UI",
+    "UDF",
+    "Unity Catalog"
+   ]
   },
   {
    "title": "Chapter 04 - The Modern Data Stack",
@@ -4120,6 +4203,7 @@
     "Google Cloud Storage",
     "HDFS",
     "Object Storage",
+    "Pandas API on Spark",
     "Snowflake",
     "Spark UI",
     "The Two-Tier Architecture Problem",
@@ -4171,6 +4255,7 @@
     "JDBC and ODBC",
     "Join",
     "Lakehouse Federation",
+    "MPP",
     "Medallion Architecture",
     "Microsoft Fabric and OneLake vs Databricks",
     "Migrating from Amazon Redshift",
@@ -4237,6 +4322,7 @@
     "Lakebridge",
     "Lakehouse Federation",
     "Liquid Clustering",
+    "MPP",
     "Migrating from Amazon Redshift",
     "OPTIMIZE and VACUUM",
     "S3 Access via Unity Catalog",
@@ -4712,6 +4798,7 @@
     "Lakeflow Connect",
     "Lakeflow Spark Declarative Pipelines",
     "Message Queue",
+    "Private Endpoint",
     "Streaming Tables",
     "Structured Streaming",
     "Structured Streaming on Databricks",
@@ -4848,7 +4935,9 @@
     "Lakeflow Spark Declarative Pipelines",
     "Medallion Architecture",
     "Migrating ETL Tools",
+    "Pagination",
     "Partner Connect",
+    "Rate Limit",
     "Reverse ETL",
     "SQL Warehouses",
     "Unity Catalog",
@@ -5133,6 +5222,7 @@
     "OPTIMIZE and VACUUM",
     "Object Storage",
     "Open Table Formats",
+    "Optimistic Concurrency",
     "Relational Databases",
     "Schema Enforcement and Evolution",
     "The Lakehouse Paper"
@@ -5207,6 +5297,7 @@
     "Apache Spark",
     "BigQuery Integration",
     "Change Data Feed",
+    "Column Mapping",
     "Data Skipping",
     "Data Swamps",
     "Data Warehouses",
@@ -5331,6 +5422,7 @@
    "last_verified": "2026-10-25",
    "links_out": [
     "Auto Loader",
+    "Column Mapping",
     "Data Swamps",
     "Data Type",
     "Delta Lake",
@@ -5451,6 +5543,7 @@
     "Apache Hive",
     "Apache Iceberg",
     "Change Data Feed",
+    "Copy-on-Write and Merge-on-Read",
     "Deletion Vectors",
     "Delta Lake",
     "Delta Transaction Log",
@@ -5459,7 +5552,8 @@
     "Materialized Views",
     "Migrating from Hadoop",
     "OPTIMIZE and VACUUM",
-    "Open Table Formats"
+    "Open Table Formats",
+    "Row Tracking"
    ]
   },
   {
@@ -5614,6 +5708,7 @@
     "Apache Hudi",
     "Apache Parquet",
     "Change Data Feed",
+    "Copy-on-Write and Merge-on-Read",
     "Delta Transaction Log",
     "Delta UniForm",
     "GDPR",
@@ -5657,6 +5752,7 @@
     "OPTIMIZE and VACUUM",
     "OpenSharing",
     "Row Filters and Column Masks",
+    "Row Tracking",
     "Slowly Changing Dimensions",
     "Time Travel"
    ]
@@ -5675,7 +5771,6 @@
     "admin"
    ],
    "aliases": [
-    "Predictive Optimization",
     "OPTIMIZE",
     "VACUUM",
     "ANALYZE"
@@ -5688,7 +5783,6 @@
    "last_verified": "2026-10-25",
    "links_out": [
     "Change Data Feed",
-    "Chapter 06 - The Databricks Platform",
     "Cost Management Basics",
     "Cost Optimization Checklist",
     "Deletion Vectors",
@@ -5696,6 +5790,7 @@
     "How Databricks Pricing Works",
     "Liquid Clustering",
     "Managed vs External Tables",
+    "Predictive Optimization",
     "Query Performance and Caching",
     "Time Travel",
     "Unity Catalog"
@@ -5705,7 +5800,7 @@
    "title": "Predictive Optimization",
    "path": "05_lakehouse/Predictive Optimization.md",
    "type": "concept",
-   "status": "stub",
+   "status": "written",
    "level": 5,
    "section": "The Lakehouse",
    "depth": 201,
@@ -5715,14 +5810,35 @@
     "engineer",
     "solo"
    ],
-   "aliases": [],
+   "aliases": [
+    "Automatic table maintenance"
+   ],
    "clouds": [
     "aws",
     "azure",
     "gcp"
    ],
-   "last_verified": "",
-   "links_out": []
+   "last_verified": "2026-10-25",
+   "links_out": [
+    "Apache Iceberg",
+    "Budgets and Usage Dashboards",
+    "Chapter 06 - The Databricks Platform",
+    "Cost Optimization Checklist",
+    "DBUs",
+    "Data Skipping",
+    "Delta Lake",
+    "How Databricks Pricing Works",
+    "Liquid Clustering",
+    "Managed vs External Tables",
+    "OPTIMIZE and VACUUM",
+    "Photon",
+    "Serverless Compute",
+    "Small Files Problem",
+    "System Tables",
+    "Time Travel",
+    "Unity Catalog",
+    "VARIANT Data Type"
+   ]
   },
   {
    "title": "Chapter 06 - The Databricks Platform",
@@ -5762,6 +5878,7 @@
     "Notebooks",
     "OPTIMIZE and VACUUM",
     "Photon",
+    "Predictive Optimization",
     "SQL Warehouses",
     "Serverless Compute",
     "Serverless Workspaces and Default Storage",
@@ -5943,8 +6060,10 @@
     "Managed Resource Group",
     "Metastore",
     "Region",
+    "Resource Group",
     "SCIM Provisioning",
     "Servers and the Cloud",
+    "Tenant",
     "Terraform Provider",
     "The Data Intelligence Platform",
     "Unity Catalog",
@@ -5997,6 +6116,7 @@
     "IP Access Lists",
     "Managed Resource Group",
     "Network Security Overview",
+    "Private Endpoint",
     "Private Service Connect",
     "SaaS PaaS and IaaS",
     "Secure Cluster Connectivity",
@@ -6118,8 +6238,7 @@
     "Databricks compute",
     "Access modes",
     "Standard access mode",
-    "Dedicated access mode",
-    "Lakeguard"
+    "Dedicated access mode"
    ],
    "clouds": [
     "aws",
@@ -6472,6 +6591,7 @@
     "Libraries and Environments",
     "Microsoft Entra ID Integration",
     "Notebooks",
+    "Tenant",
     "Testing Data Pipelines",
     "Users Groups and Service Principals",
     "Volumes"
@@ -6622,6 +6742,7 @@
    ],
    "last_verified": "2026-10-25",
    "links_out": [
+    "Apache Arrow",
     "CI-CD for Data Pipelines",
     "DBUs",
     "Databricks Apps",
@@ -6631,7 +6752,8 @@
     "PySpark",
     "Serverless Compute",
     "Spark Connect",
-    "Testing Data Pipelines"
+    "Testing Data Pipelines",
+    "gRPC"
    ]
   },
   {
@@ -6708,7 +6830,6 @@
    ],
    "last_verified": "2026-10-25",
    "links_out": [
-    "Chapter 07 - Unity Catalog and Governance",
     "Cluster",
     "DBUs",
     "Databricks Connect",
@@ -6718,6 +6839,7 @@
     "Lakeflow Jobs",
     "Notebooks",
     "Serverless Compute",
+    "Serverless Workspaces and Default Storage",
     "Testing Data Pipelines",
     "Unity Catalog",
     "Volumes"
@@ -6727,113 +6849,236 @@
    "title": "Serverless Workspaces and Default Storage",
    "path": "06_databricks_platform/Serverless Workspaces and Default Storage.md",
    "type": "concept",
-   "status": "stub",
+   "status": "written",
    "level": 6,
    "section": "Databricks Platform",
    "depth": 201,
-   "summary": "Workspaces that run only on serverless compute and store data in Databricks-managed storage, with no cloud setup.",
+   "summary": "Workspaces that run only on serverless compute and store data in Databricks-managed default storage, so you supply no cloud storage, credentials, or network.",
    "personas": [
     "solo",
     "admin",
     "owner"
    ],
-   "aliases": [],
+   "aliases": [
+    "Serverless workspace",
+    "Serverless workspaces",
+    "Default storage"
+   ],
    "clouds": [
     "aws",
     "azure",
     "gcp"
    ],
-   "last_verified": "",
-   "links_out": []
+   "last_verified": "2026-10-25",
+   "links_out": [
+    "Account Console",
+    "Account Setup on AWS",
+    "Account Setup on Google Cloud",
+    "Accounts and Workspaces",
+    "Creating an Azure Databricks Workspace",
+    "Customer-Managed VPC on AWS",
+    "DBFS",
+    "Databricks Free Edition and Trials",
+    "How Databricks Pricing Works",
+    "Libraries and Environments",
+    "Managed Resource Group",
+    "Managed vs External Tables",
+    "OpenSharing",
+    "Region",
+    "Resource Group",
+    "S3 Access via Unity Catalog",
+    "Serverless Compute",
+    "Serverless Network Security",
+    "Storage Credentials and External Locations",
+    "Terraform Provider",
+    "Unity Catalog",
+    "VNet Injection",
+    "Virtual Machine",
+    "Workspace Storage Bucket",
+    "Your First 30 Days on Databricks",
+    "dbutils and Widgets"
+   ]
   },
   {
    "title": "dbutils and Widgets",
    "path": "06_databricks_platform/dbutils and Widgets.md",
    "type": "concept",
-   "status": "stub",
+   "status": "written",
    "level": 6,
    "section": "Databricks Platform",
    "depth": 201,
-   "summary": "The notebook utility library for files, secrets, and job values, and widgets for notebook parameters.",
+   "summary": "The Databricks Utilities (dbutils) library for files, secrets, notebook chaining, and job task values, and widgets for notebook parameters.",
    "personas": [
     "engineer",
     "scientist"
    ],
-   "aliases": [],
+   "aliases": [
+    "dbutils",
+    "Databricks Utilities",
+    "Widgets",
+    "Notebook widgets",
+    "Task values"
+   ],
    "clouds": [
     "aws",
     "azure",
     "gcp"
    ],
-   "last_verified": "",
-   "links_out": []
+   "last_verified": "2026-10-25",
+   "links_out": [
+    "Apache Spark",
+    "Azure Key Vault Secret Scopes",
+    "Backfill",
+    "DBFS",
+    "Databricks CLI",
+    "Databricks Connect",
+    "Databricks SDKs and REST API",
+    "Instance Pools",
+    "Lakeflow Jobs",
+    "Notebooks",
+    "SQL Editor",
+    "Secrets Management",
+    "Serverless Workspaces and Default Storage",
+    "Storage Credentials and External Locations",
+    "Tasks Triggers and Schedules",
+    "Volumes"
+   ]
   },
   {
    "title": "Instance Pools",
    "path": "06_databricks_platform/Instance Pools.md",
    "type": "concept",
-   "status": "stub",
+   "status": "written",
    "level": 6,
    "section": "Databricks Platform",
    "depth": 301,
-   "summary": "Pre-warmed idle VMs that cut classic cluster start time.",
+   "summary": "Sets of idle, ready-to-use cloud VMs that classic clusters draw from to cut start and autoscaling time.",
    "personas": [
     "admin",
     "engineer",
     "finance"
    ],
-   "aliases": [],
+   "aliases": [
+    "Pools",
+    "Instance pool",
+    "Compute pools"
+   ],
    "clouds": [
     "aws",
     "azure",
     "gcp"
    ],
-   "last_verified": "",
-   "links_out": []
+   "last_verified": "2026-10-25",
+   "links_out": [
+    "All-Purpose Compute",
+    "Autoscaling",
+    "Availability Zone",
+    "Compute Policies",
+    "Compute Types",
+    "Compute on Google Cloud",
+    "Cost Optimization Checklist",
+    "DBUs",
+    "Databricks Runtime",
+    "Declarative Automation Bundles",
+    "EC2 Instance Types and Graviton",
+    "Init Scripts",
+    "Jobs Compute",
+    "Serverless Compute",
+    "Spot Instances",
+    "Tagging for Chargeback",
+    "Virtual Machine",
+    "dbutils and Widgets"
+   ]
   },
   {
    "title": "Init Scripts",
    "path": "06_databricks_platform/Init Scripts.md",
    "type": "concept",
-   "status": "stub",
+   "status": "written",
    "level": 6,
    "section": "Databricks Platform",
    "depth": 301,
-   "summary": "Shell scripts that run on each classic cluster node at startup, and where to store them safely.",
+   "summary": "Shell scripts that run on each classic cluster node at startup, the cluster-scoped and global types, and where to store them safely.",
    "personas": [
     "admin",
     "engineer"
    ],
-   "aliases": [],
+   "aliases": [
+    "Init script",
+    "Cluster-scoped init scripts",
+    "Global init scripts"
+   ],
    "clouds": [
     "aws",
     "azure",
     "gcp"
    ],
-   "last_verified": "",
-   "links_out": []
+   "last_verified": "2026-10-25",
+   "links_out": [
+    "All-Purpose Compute",
+    "Autoscaling",
+    "Compute Policies",
+    "DBFS",
+    "Databricks Runtime",
+    "Git Folders and Workspace Files",
+    "Hive Metastore Migration to Unity Catalog",
+    "Instance Pools",
+    "Instance Profiles",
+    "JVM",
+    "Libraries and Environments",
+    "Volumes"
+   ]
   },
   {
    "title": "DBFS",
    "path": "06_databricks_platform/DBFS.md",
    "type": "concept",
-   "status": "stub",
+   "status": "written",
    "level": 6,
    "section": "Databricks Platform",
    "depth": 201,
-   "summary": "The legacy Databricks File System and mounts, and why Unity Catalog volumes replace them.",
+   "summary": "The legacy Databricks File System (DBFS root and mounts), why it is deprecated, and how Unity Catalog volumes, external locations, and workspace files replace it.",
    "personas": [
     "engineer",
     "admin"
    ],
-   "aliases": [],
+   "aliases": [
+    "Databricks File System",
+    "DBFS root",
+    "DBFS mounts",
+    "Mounts",
+    "dbfs:/"
+   ],
    "clouds": [
     "aws",
     "azure",
     "gcp"
    ],
-   "last_verified": "",
-   "links_out": []
+   "last_verified": "2026-10-25",
+   "links_out": [
+    "Accounts and Workspaces",
+    "Amazon S3",
+    "Azure Data Lake Storage",
+    "Chapter 07 - Unity Catalog and Governance",
+    "Customer-Managed Keys on Azure",
+    "GCS Access via Unity Catalog",
+    "Git Folders and Workspace Files",
+    "Google Cloud Storage",
+    "HDFS",
+    "Hive Metastore",
+    "Hive Metastore Migration to Unity Catalog",
+    "Init Scripts",
+    "Managed Resource Group",
+    "Managed vs External Tables",
+    "Object Storage",
+    "S3 Access via Unity Catalog",
+    "Serverless Compute",
+    "Serverless Workspaces and Default Storage",
+    "Storage Credentials and External Locations",
+    "Unity Catalog",
+    "Volumes",
+    "Workspace Storage Bucket"
+   ]
   },
   {
    "title": "Chapter 07 - Unity Catalog and Governance",
@@ -6873,6 +7118,7 @@
     "OpenSharing",
     "Privileges and Grants",
     "Row Filters and Column Masks",
+    "Securable Object",
     "Service Credentials",
     "Storage Credentials and External Locations",
     "System Tables",
@@ -7072,6 +7318,7 @@
     "Privileges and Grants",
     "Relational Databases",
     "Row Filters and Column Masks",
+    "Securable Object",
     "Single Source of Truth",
     "Storage Credentials and External Locations",
     "Streaming Tables",
@@ -7158,6 +7405,7 @@
     "Lakeflow Jobs",
     "Libraries and Environments",
     "Managed vs External Tables",
+    "Python Wheel",
     "Retrieval-Augmented Generation",
     "Storage Credentials and External Locations",
     "Structured vs Unstructured Data",
@@ -7244,6 +7492,8 @@
     "Microsoft Entra ID Integration",
     "Notebooks",
     "Row Filters and Column Masks",
+    "SAML",
+    "SCIM",
     "SCIM Provisioning",
     "SQL Warehouses",
     "Storage Credentials and External Locations",
@@ -7300,7 +7550,6 @@
    "aliases": [
     "ABAC",
     "Tag-based policies",
-    "Governed tags",
     "ABAC policies"
    ],
    "clouds": [
@@ -7393,7 +7642,9 @@
     "Compliance Security Profile",
     "Data Lineage",
     "HIPAA",
+    "PCI DSS",
     "Privileges and Grants",
+    "SIEM",
     "SOC 2",
     "SQL Alerts",
     "System Tables"
@@ -7477,6 +7728,7 @@
     "Microsoft Fabric and OneLake vs Databricks",
     "Migration Strategy Overview",
     "OpenSharing",
+    "Read Replica",
     "Relational Databases",
     "Serverless Network Security",
     "Unity Catalog"
@@ -7655,6 +7907,7 @@
     "ADLS and Access Connectors",
     "Apache Hive",
     "Attribute-Based Access Control",
+    "Catalog Explorer",
     "Chapter 08 - Data Engineering",
     "Cutover",
     "Data Classification",
@@ -7681,7 +7934,7 @@
    "title": "Catalog Explorer",
    "path": "07_unity_catalog_and_governance/Catalog Explorer.md",
    "type": "concept",
-   "status": "stub",
+   "status": "written",
    "level": 7,
    "section": "Unity Catalog & Governance",
    "depth": 101,
@@ -7691,87 +7944,165 @@
     "analyst",
     "admin"
    ],
-   "aliases": [],
+   "aliases": [
+    "Data Explorer",
+    "Catalog page"
+   ],
    "clouds": [
     "aws",
     "azure",
     "gcp"
    ],
-   "last_verified": "",
-   "links_out": []
+   "last_verified": "2026-10-25",
+   "links_out": [
+    "Audit Logs",
+    "Data Lineage",
+    "Data Quality Monitoring",
+    "Databricks CLI",
+    "Databricks SDKs and REST API",
+    "Governed Tags",
+    "Hive Metastore Migration to Unity Catalog",
+    "Metadata",
+    "Metastore",
+    "OpenSharing",
+    "Privileges and Grants",
+    "SQL Editor",
+    "Service Credentials",
+    "Storage Credentials and External Locations",
+    "System Tables",
+    "Terraform Provider",
+    "Three-Level Namespace",
+    "Unity Catalog"
+   ]
   },
   {
    "title": "Governed Tags",
    "path": "07_unity_catalog_and_governance/Governed Tags.md",
    "type": "concept",
-   "status": "stub",
+   "status": "written",
    "level": 7,
    "section": "Unity Catalog & Governance",
    "depth": 201,
-   "summary": "Account-level tag definitions with controlled values, used for discovery, classification, and ABAC policies.",
+   "summary": "Account-level tag definitions with controlled values and assignment permissions, used for discovery, classification, and ABAC policies.",
    "personas": [
     "admin",
     "security"
    ],
-   "aliases": [],
+   "aliases": [
+    "Tag policies",
+    "Governed tag",
+    "System governed tags"
+   ],
    "clouds": [
     "aws",
     "azure",
     "gcp"
    ],
-   "last_verified": "",
-   "links_out": []
+   "last_verified": "2026-10-25",
+   "links_out": [
+    "Attribute-Based Access Control",
+    "Audit Logs",
+    "Catalog Explorer",
+    "Data Classification",
+    "Databricks CLI",
+    "Privileges and Grants",
+    "Securable Object",
+    "Service Credentials",
+    "Tagging for Chargeback"
+   ]
   },
   {
    "title": "Service Credentials",
    "path": "07_unity_catalog_and_governance/Service Credentials.md",
    "type": "concept",
-   "status": "stub",
+   "status": "written",
    "level": 7,
    "section": "Unity Catalog & Governance",
    "depth": 301,
-   "summary": "Unity Catalog objects that let code reach cloud services other than storage, such as queues or secret stores.",
+   "summary": "Unity Catalog objects that let code reach cloud services other than storage, such as queues or secret stores, without handling keys.",
    "personas": [
     "admin",
     "engineer"
    ],
-   "aliases": [],
+   "aliases": [
+    "Service credential",
+    "Unity Catalog service credentials"
+   ],
    "clouds": [
     "aws",
     "azure",
     "gcp"
    ],
-   "last_verified": "",
-   "links_out": []
+   "last_verified": "2026-10-25",
+   "links_out": [
+    "ADLS and Access Connectors",
+    "Audit Logs",
+    "Google Service Accounts",
+    "Governed Tags",
+    "Instance Profiles",
+    "Lakehouse Federation",
+    "Least Privilege",
+    "Managed Identity",
+    "Privileges and Grants",
+    "Secrets Management",
+    "Storage Credentials and External Locations",
+    "Structured Streaming on Databricks",
+    "Unity Catalog Functions",
+    "Users Groups and Service Principals"
+   ]
   },
   {
    "title": "Unity Catalog Functions",
    "path": "07_unity_catalog_and_governance/Unity Catalog Functions.md",
    "type": "concept",
-   "status": "stub",
+   "status": "written",
    "level": 7,
    "section": "Unity Catalog & Governance",
    "depth": 201,
-   "summary": "SQL and Python functions registered in Unity Catalog, governed and reusable across queries, agents, and tools.",
+   "summary": "SQL and Python functions registered in Unity Catalog, governed and reusable across queries, policies, agents, and tools.",
    "personas": [
     "engineer",
     "analyst",
     "ai-dev"
    ],
-   "aliases": [],
+   "aliases": [
+    "UC functions",
+    "Unity Catalog UDFs",
+    "UC Python UDFs"
+   ],
    "clouds": [
     "aws",
     "azure",
     "gcp"
    ],
-   "last_verified": "",
-   "links_out": []
+   "last_verified": "2026-10-25",
+   "links_out": [
+    "AI Functions in SQL",
+    "Agent Bricks",
+    "Apache Spark",
+    "Attribute-Based Access Control",
+    "Catalog Explorer",
+    "Catalogs Schemas and Tables",
+    "Hive Metastore",
+    "Lakeguard",
+    "Managed MCP Servers",
+    "Model Context Protocol",
+    "Privileges and Grants",
+    "Row Filters and Column Masks",
+    "SQL",
+    "Securable Object",
+    "Serverless Compute",
+    "Service Credentials",
+    "Three-Level Namespace",
+    "UDF",
+    "Volumes"
+   ]
   },
   {
    "title": "Lakeguard",
    "path": "07_unity_catalog_and_governance/Lakeguard.md",
    "type": "concept",
-   "status": "stub",
+   "status": "written",
    "level": 7,
    "section": "Unity Catalog & Governance",
    "depth": 301,
@@ -7780,14 +8111,34 @@
     "admin",
     "security"
    ],
-   "aliases": [],
+   "aliases": [
+    "Unity Catalog Lakeguard",
+    "User isolation"
+   ],
    "clouds": [
     "aws",
     "azure",
     "gcp"
    ],
-   "last_verified": "",
-   "links_out": []
+   "last_verified": "2026-10-25",
+   "links_out": [
+    "Apache Spark",
+    "Chapter 08 - Data Engineering",
+    "Compute Policies",
+    "Compute Types",
+    "Container",
+    "Customer-Managed VPC on AWS",
+    "Databricks Connect",
+    "Driver and Executors",
+    "JVM",
+    "Row Filters and Column Masks",
+    "SQL Warehouses",
+    "Serverless Compute",
+    "Spark Connect",
+    "Unity Catalog",
+    "Unity Catalog Functions",
+    "VNet Injection"
+   ]
   },
   {
    "title": "Chapter 08 - Data Engineering",
@@ -7820,6 +8171,7 @@
     "Lakeflow Designer",
     "Lakeflow Jobs",
     "Lakeflow Spark Declarative Pipelines",
+    "Lakeguard",
     "Materialized Views",
     "Medallion Architecture",
     "Slowly Changing Dimensions",
@@ -8336,6 +8688,7 @@
     "Lakeflow Connect",
     "Lakeflow Designer",
     "Lakeflow Jobs",
+    "Python Wheel",
     "dbt on Databricks"
    ]
   },
@@ -8912,6 +9265,7 @@
     "Declarative Automation Bundles",
     "Lakeflow Jobs",
     "Metric Views",
+    "Quartz Cron",
     "SQL",
     "SQL Editor",
     "SQL Warehouses",
@@ -9179,9 +9533,11 @@
     "Migrating from Postgres and MySQL",
     "Mosaic AI Agent Framework",
     "OLTP vs OLAP",
+    "PCI DSS",
     "Path - AI App Developer",
     "Relational Databases",
     "Reverse ETL",
+    "Scale to Zero",
     "Storage vs Compute",
     "System Tables",
     "Unity Catalog"
@@ -9223,53 +9579,105 @@
     "Lakebase",
     "Least Privilege",
     "Microsoft Entra ID Integration",
+    "Multi-Factor Authentication",
     "Path - Business Owner",
-    "Users Groups and Service Principals"
+    "Users Groups and Service Principals",
+    "VARIANT Data Type"
    ]
   },
   {
    "title": "VARIANT Data Type",
    "path": "09_sql_bi_and_apps/VARIANT Data Type.md",
    "type": "concept",
-   "status": "stub",
+   "status": "written",
    "level": 9,
    "section": "SQL, BI & Apps",
    "depth": 201,
-   "summary": "Storing and querying semi-structured JSON-like data efficiently with the VARIANT type.",
+   "summary": "The VARIANT data type stores JSON-like semi-structured data in an efficient binary form that you query with path expressions.",
    "personas": [
     "engineer",
     "analyst"
    ],
-   "aliases": [],
+   "aliases": [
+    "VARIANT",
+    "Variant type",
+    "Variant shredding"
+   ],
    "clouds": [
     "aws",
     "azure",
     "gcp"
    ],
-   "last_verified": "",
-   "links_out": []
+   "last_verified": "2026-10-25",
+   "links_out": [
+    "Amazon S3",
+    "Apache Iceberg",
+    "Apache Kafka",
+    "Apache Parquet",
+    "Auto Loader",
+    "Azure Data Lake Storage",
+    "CSV and JSON",
+    "Data Skipping",
+    "Data Type",
+    "Databricks SQL",
+    "Genie One",
+    "Google Cloud Storage",
+    "How Databricks Pricing Works",
+    "Medallion Architecture",
+    "Predictive Optimization",
+    "SQL Scripting and Stored Procedures",
+    "Schema Enforcement and Evolution",
+    "Semi-Structured Data"
+   ]
   },
   {
    "title": "SQL Scripting and Stored Procedures",
    "path": "09_sql_bi_and_apps/SQL Scripting and Stored Procedures.md",
    "type": "concept",
-   "status": "stub",
+   "status": "written",
    "level": 9,
    "section": "SQL, BI & Apps",
    "depth": 301,
-   "summary": "Variables, control flow, and reusable procedures in Databricks SQL, for porting warehouse logic.",
+   "summary": "Variables, control flow, error handling, and reusable stored procedures in Databricks SQL, for porting procedural warehouse logic.",
    "personas": [
     "analyst",
     "engineer"
    ],
-   "aliases": [],
+   "aliases": [
+    "SQL scripting",
+    "Stored procedures",
+    "CREATE PROCEDURE",
+    "SQL/PSM",
+    "Compound statements"
+   ],
    "clouds": [
     "aws",
     "azure",
     "gcp"
    ],
-   "last_verified": "",
-   "links_out": []
+   "last_verified": "2026-10-25",
+   "links_out": [
+    "ACID Transactions",
+    "Azure Data Factory with Databricks",
+    "Chapter 10 - AI and ML",
+    "Databricks SQL",
+    "How Databricks Pricing Works",
+    "Idempotency",
+    "Lakebridge",
+    "Lakeflow Jobs",
+    "Lakeflow Spark Declarative Pipelines",
+    "Materialized Views",
+    "Microsoft Entra ID Integration",
+    "Migrating from SQL Server",
+    "Privileges and Grants",
+    "SQL",
+    "SQL Editor",
+    "SQL Warehouses",
+    "UDF",
+    "Unity Catalog",
+    "Unity Catalog Functions",
+    "VARIANT Data Type"
+   ]
   },
   {
    "title": "Chapter 10 - AI and ML",
@@ -9306,13 +9714,16 @@
     "MLflow",
     "Machine Learning Basics",
     "Managed MCP Servers",
+    "Model Context Protocol",
     "Model Serving",
     "Models in Unity Catalog",
     "Mosaic AI Agent Framework",
     "MosaicML and Open Models",
     "Retrieval-Augmented Generation",
+    "SQL Scripting and Stored Procedures",
     "Unity Catalog",
-    "Unity Gateway"
+    "Unity Gateway",
+    "VARIANT Data Type"
    ]
   },
   {
@@ -9402,6 +9813,7 @@
     "APIs",
     "Agent Bricks",
     "Agent Evaluation and Tracing",
+    "Context Window",
     "Feature Engineering and Feature Store",
     "Fine-Tuning",
     "Foundation Model APIs",
@@ -9457,6 +9869,7 @@
     "Machine Learning Basics",
     "Model Serving",
     "OpenSharing",
+    "Read Replica",
     "Unity Catalog"
    ]
   },
@@ -9525,6 +9938,7 @@
     "AI Runtime",
     "Agent Evaluation and Tracing",
     "AutoML",
+    "Hyperparameter",
     "MLflow",
     "Machine Learning Basics",
     "Models in Unity Catalog",
@@ -9756,6 +10170,7 @@
     "Delta Lake",
     "Embedding",
     "Foundation Model APIs",
+    "Hybrid Search",
     "Retrieval-Augmented Generation",
     "Unity Catalog",
     "Unity Gateway"
@@ -9787,10 +10202,12 @@
     "AI Search",
     "Agent Bricks",
     "Agent Evaluation and Tracing",
+    "Chunking",
     "Fine-Tuning",
     "Foundation Model APIs",
     "Generative AI and LLMs",
     "Hallucination",
+    "Hybrid Search",
     "Lakeflow Connect",
     "MLflow",
     "Mosaic AI Agent Framework",
@@ -9837,6 +10254,7 @@
     "How Databricks Pricing Works",
     "LLM",
     "MLflow",
+    "Model Context Protocol",
     "Model Serving",
     "Mosaic AI Agent Framework",
     "Retrieval-Augmented Generation",
@@ -9942,6 +10360,7 @@
     "Agent Evaluation and Tracing",
     "Data Quality Monitoring",
     "Generative AI and LLMs",
+    "LoRA",
     "MLflow",
     "Model Serving",
     "Models in Unity Catalog",
@@ -10027,7 +10446,8 @@
     "Machine Learning Basics",
     "Model Serving",
     "MosaicML and Open Models",
-    "Photon"
+    "Photon",
+    "Scale to Zero"
    ]
   },
   {
@@ -10062,6 +10482,8 @@
     "Foundation Model APIs",
     "Generative AI and LLMs",
     "MLflow",
+    "Managed MCP Servers",
+    "Mixture of Experts",
     "Model Serving",
     "The Founding of Databricks",
     "Unity Gateway",
@@ -10072,45 +10494,95 @@
    "title": "Managed MCP Servers",
    "path": "10_ai_and_ml/Managed MCP Servers.md",
    "type": "concept",
-   "status": "stub",
+   "status": "written",
    "level": 10,
    "section": "AI & ML",
    "depth": 301,
-   "summary": "Databricks-hosted Model Context Protocol servers that give AI agents governed access to data, functions, and search.",
+   "summary": "Databricks-hosted Model Context Protocol servers that give AI agents governed access to Genie, SQL, AI Search indexes, and Unity Catalog functions.",
    "personas": [
     "ai-dev"
    ],
-   "aliases": [],
+   "aliases": [
+    "Databricks managed MCP servers",
+    "Databricks-provided MCPs",
+    "MCP Services",
+    "Databricks SQL MCP server",
+    "Genie MCP server"
+   ],
    "clouds": [
     "aws",
     "azure",
     "gcp"
    ],
-   "last_verified": "",
-   "links_out": []
+   "last_verified": "2026-10-25",
+   "links_out": [
+    "AI Agent",
+    "AI Playground",
+    "AI Search",
+    "Agent Bricks",
+    "Databricks Apps",
+    "Genie Agents",
+    "Genie One",
+    "How Databricks Pricing Works",
+    "Least Privilege",
+    "Microsoft Entra ID Integration",
+    "Model Context Protocol",
+    "Mosaic AI Agent Framework",
+    "MosaicML and Open Models",
+    "SQL Warehouses",
+    "Unity Catalog",
+    "Unity Catalog Functions",
+    "Unity Gateway",
+    "Users Groups and Service Principals"
+   ]
   },
   {
    "title": "AI Playground",
    "path": "10_ai_and_ml/AI Playground.md",
    "type": "concept",
-   "status": "stub",
+   "status": "written",
    "level": 10,
    "section": "AI & ML",
    "depth": 101,
-   "summary": "A no-code UI for trying, comparing, and prototyping LLMs and agents in the workspace.",
+   "summary": "A no-code chat UI in the workspace for trying, comparing, and prototyping LLMs and simple tool-calling agents.",
    "personas": [
     "everyone",
     "ai-dev",
     "analyst"
    ],
-   "aliases": [],
+   "aliases": [
+    "Playground",
+    "Databricks AI Playground"
+   ],
    "clouds": [
     "aws",
     "azure",
     "gcp"
    ],
-   "last_verified": "",
-   "links_out": []
+   "last_verified": "2026-10-25",
+   "links_out": [
+    "AI Search",
+    "Agent Bricks",
+    "Agent Evaluation and Tracing",
+    "Chapter 11 - Azure Databricks",
+    "Context Window",
+    "Databricks Apps",
+    "Databricks on AWS GovCloud",
+    "Foundation Model APIs",
+    "Generative AI and LLMs",
+    "Genie One",
+    "Hallucination",
+    "How Databricks Pricing Works",
+    "LLM",
+    "Managed MCP Servers",
+    "Model Serving",
+    "PII",
+    "Prompt",
+    "Retrieval-Augmented Generation",
+    "Token",
+    "Unity Catalog Functions",
+    "Unity Gateway"
+   ]
   },
   {
    "title": "Chapter 11 - Azure Databricks",
@@ -10127,6 +10599,7 @@
    "last_verified": "2026-10-25",
    "links_out": [
     "ADLS and Access Connectors",
+    "AI Playground",
     "Azure Billing and Commit Units",
     "Azure Data Factory with Databricks",
     "Azure Databricks Overview",
@@ -10139,10 +10612,10 @@
     "Creating an Azure Databricks Workspace",
     "Customer-Managed Keys on Azure",
     "First-Party Microsoft Service",
+    "Managed MCP Servers",
     "Managed Resource Group",
     "Microsoft Entra ID Integration",
     "Microsoft Fabric and OneLake vs Databricks",
-    "MosaicML and Open Models",
     "Power BI on Azure Databricks",
     "Secure Cluster Connectivity",
     "Unity Catalog",
@@ -10201,6 +10674,7 @@
     "Managed Resource Group",
     "Microsoft Entra ID Integration",
     "Microsoft Fabric and OneLake vs Databricks",
+    "NAT Gateway",
     "Notebooks",
     "Power BI on Azure Databricks",
     "Secure Cluster Connectivity",
@@ -10377,7 +10851,9 @@
     "Google Service Accounts",
     "Identity Provider",
     "Managed Resource Group",
+    "Multi-Factor Authentication",
     "Power BI on Azure Databricks",
+    "SAML",
     "SCIM Provisioning",
     "Single Sign-On",
     "Unity Catalog",
@@ -10724,6 +11200,7 @@
     "Google Cloud Marketplace and Billing",
     "How Databricks Pricing Works",
     "Managed Resource Group",
+    "NAT Gateway",
     "Power BI on Azure Databricks",
     "Tagging for Chargeback"
    ]
@@ -10758,6 +11235,7 @@
     "Azure Billing and Commit Units",
     "Compliance Security Profile",
     "Customer-Managed Keys on Azure",
+    "SIEM",
     "System Tables"
    ]
   },
@@ -11348,7 +11826,8 @@
     "Compliance Security Profile",
     "Customer-Managed Keys on AWS",
     "Databricks on AWS Overview",
-    "Databricks on Google Cloud Overview"
+    "Databricks on Google Cloud Overview",
+    "FedRAMP"
    ]
   },
   {
@@ -11679,6 +12158,7 @@
    ],
    "last_verified": "2026-10-25",
    "links_out": [
+    "Foreign Catalog",
     "GCS Access via Unity Catalog",
     "Google BigQuery",
     "Google Cloud Marketplace and Billing",
@@ -11789,6 +12269,7 @@
     "Encryption",
     "IP Access Lists",
     "Network Security Overview",
+    "RPO and RTO",
     "SCIM Provisioning",
     "Secrets Management",
     "Serverless Network Security",
@@ -11956,6 +12437,7 @@
     "Identity Provider",
     "Microsoft Entra ID Integration",
     "OAuth",
+    "OpenID Connect",
     "SCIM Provisioning"
    ]
   },
@@ -12183,6 +12665,7 @@
    "links_out": [
     "AWS PrivateLink",
     "Azure Private Link",
+    "CIDR",
     "Compliance Security Profile",
     "Databricks CLI",
     "Network Security Overview",
@@ -12291,6 +12774,7 @@
     "Cost Management Basics",
     "Databricks on AWS GovCloud",
     "Encryption",
+    "FedRAMP",
     "Foundation Model APIs",
     "GDPR",
     "HIPAA",
@@ -12517,6 +13001,7 @@
     "Control Plane and Compute Plane",
     "Declarative Automation Bundles",
     "OpenSharing",
+    "RPO and RTO",
     "Region",
     "Running Old and New in Parallel",
     "Terraform Provider",
@@ -12557,7 +13042,8 @@
     "Migrating from Snowflake",
     "Migration Checklist",
     "Migration Strategy Overview",
-    "Running Old and New in Parallel"
+    "Running Old and New in Parallel",
+    "Transpiler"
    ]
   },
   {
@@ -12758,6 +13244,7 @@
     "AWS PrivateLink",
     "Azure Data Factory with Databricks",
     "Azure Private Link",
+    "Collation",
     "Customer-Managed VPC on AWS",
     "Customer-Managed VPC on Google Cloud",
     "Declarative Automation Bundles",
@@ -12816,6 +13303,7 @@
    "links_out": [
     "Apache Kafka",
     "Azure Private Link",
+    "B-Tree",
     "Change Data Capture",
     "Declarative Automation Bundles",
     "Delta Lake",
@@ -12835,7 +13323,8 @@
     "Relational Databases",
     "Running Old and New in Parallel",
     "Streaming Tables",
-    "Structured Streaming"
+    "Structured Streaming",
+    "Write-Ahead Log"
    ]
   },
   {
@@ -13021,6 +13510,7 @@
     "Hive Metastore Migration to Unity Catalog",
     "Identity Provider",
     "Jobs Compute",
+    "Kerberos",
     "Lakebase",
     "Lakeflow Connect",
     "Lakeflow Jobs",
@@ -13030,6 +13520,7 @@
     "Migrating ETL Tools",
     "Migrating from Google BigQuery",
     "Migration Strategy Overview",
+    "NoSQL",
     "OPTIMIZE and VACUUM",
     "Object Storage",
     "Photon",
@@ -14382,16 +14873,27 @@
    "title": "Apache Arrow",
    "path": "90_glossary/Apache Arrow.md",
    "type": "glossary",
-   "status": "stub",
+   "status": "written",
    "level": 90,
    "section": "Glossary",
    "depth": 101,
-   "summary": "",
+   "summary": "An open, columnar in-memory data format that lets tools such as Spark and pandas exchange data without slow row-by-row conversion.",
    "personas": [],
-   "aliases": [],
+   "aliases": [
+    "Arrow",
+    "PyArrow"
+   ],
    "clouds": [],
-   "last_verified": "",
-   "links_out": []
+   "last_verified": "2026-10-26",
+   "links_out": [
+    "Apache Parquet",
+    "Columnar Storage",
+    "Pandas API on Spark",
+    "PySpark",
+    "Serialization",
+    "Spark Connect",
+    "UDF"
+   ]
   },
   {
    "title": "Apache Software Foundation",
@@ -14511,16 +15013,29 @@
    "title": "B-Tree",
    "path": "90_glossary/B-Tree.md",
    "type": "glossary",
-   "status": "stub",
+   "status": "written",
    "level": 90,
    "section": "Glossary",
    "depth": 101,
-   "summary": "",
+   "summary": "A balanced tree data structure that keeps sorted keys so a database can find, insert, and range-scan rows quickly; it is the default index in most relational databases.",
    "personas": [],
-   "aliases": [],
+   "aliases": [
+    "B-tree index",
+    "B+ tree",
+    "Btree"
+   ],
    "clouds": [],
-   "last_verified": "",
-   "links_out": []
+   "last_verified": "2026-10-26",
+   "links_out": [
+    "Data Skipping",
+    "Index",
+    "Lakebase",
+    "Liquid Clustering",
+    "Migrating from Postgres and MySQL",
+    "OLTP vs OLAP",
+    "Partition Pruning",
+    "Relational Databases"
+   ]
   },
   {
    "title": "Backfill",
@@ -14616,16 +15131,29 @@
    "title": "CAP Theorem",
    "path": "90_glossary/CAP Theorem.md",
    "type": "glossary",
-   "status": "stub",
+   "status": "written",
    "level": 90,
    "section": "Glossary",
    "depth": 101,
-   "summary": "",
+   "summary": "The result that a distributed data store cannot guarantee consistency, availability, and partition tolerance all at once, so it must trade consistency against availability when the network splits.",
    "personas": [],
-   "aliases": [],
+   "aliases": [
+    "CAP",
+    "Brewer's theorem",
+    "Brewer's conjecture"
+   ],
    "clouds": [],
-   "last_verified": "",
-   "links_out": []
+   "last_verified": "2026-10-26",
+   "links_out": [
+    "ACID Transactions",
+    "Apache HBase",
+    "Chapter 02 - The Big Data Era",
+    "Delta Lake",
+    "Delta Transaction Log",
+    "Distributed Systems",
+    "NoSQL",
+    "Object Storage"
+   ]
   },
   {
    "title": "CI-CD",
@@ -14662,16 +15190,26 @@
    "title": "CIDR",
    "path": "90_glossary/CIDR.md",
    "type": "glossary",
-   "status": "stub",
+   "status": "written",
    "level": 90,
    "section": "Glossary",
    "depth": 101,
-   "summary": "",
+   "summary": "A notation such as 10.0.0.0/24 that describes a block of IP addresses; you use it to size the virtual networks and subnets that Databricks compute runs in.",
    "personas": [],
-   "aliases": [],
+   "aliases": [
+    "CIDR block",
+    "CIDR range",
+    "Classless Inter-Domain Routing"
+   ],
    "clouds": [],
-   "last_verified": "",
-   "links_out": []
+   "last_verified": "2026-10-26",
+   "links_out": [
+    "Customer-Managed VPC on AWS",
+    "Customer-Managed VPC on Google Cloud",
+    "IP Access Lists",
+    "Subnet",
+    "VNet Injection"
+   ]
   },
   {
    "title": "Caching",
@@ -14704,16 +15242,26 @@
    "title": "Chargeback",
    "path": "90_glossary/Chargeback.md",
    "type": "glossary",
-   "status": "stub",
+   "status": "written",
    "level": 90,
    "section": "Glossary",
    "depth": 101,
-   "summary": "",
+   "summary": "The practice of billing each team or department for the cloud and Databricks usage it consumed, based on tags and usage records.",
    "personas": [],
-   "aliases": [],
+   "aliases": [
+    "Showback",
+    "Cost allocation",
+    "Cost attribution"
+   ],
    "clouds": [],
-   "last_verified": "",
-   "links_out": []
+   "last_verified": "2026-10-26",
+   "links_out": [
+    "Budgets and Usage Dashboards",
+    "DBUs",
+    "FinOps",
+    "System Tables",
+    "Tagging for Chargeback"
+   ]
   },
   {
    "title": "Checkpoint",
@@ -14745,16 +15293,28 @@
    "title": "Chunking",
    "path": "90_glossary/Chunking.md",
    "type": "glossary",
-   "status": "stub",
+   "status": "written",
    "level": 90,
    "section": "Glossary",
    "depth": 101,
-   "summary": "",
+   "summary": "Splitting long documents into smaller passages before embedding them, so a retrieval system can find and return only the relevant parts.",
    "personas": [],
-   "aliases": [],
+   "aliases": [
+    "Text chunking",
+    "Document chunking",
+    "Chunk",
+    "Chunk size"
+   ],
    "clouds": [],
-   "last_verified": "",
-   "links_out": []
+   "last_verified": "2026-10-26",
+   "links_out": [
+    "AI Search",
+    "Agent Evaluation and Tracing",
+    "Delta Lake",
+    "Embedding",
+    "Retrieval-Augmented Generation",
+    "Token"
+   ]
   },
   {
    "title": "Cluster",
@@ -14793,46 +15353,77 @@
    "title": "Collation",
    "path": "90_glossary/Collation.md",
    "type": "glossary",
-   "status": "stub",
+   "status": "written",
    "level": 90,
    "section": "Glossary",
    "depth": 101,
-   "summary": "",
+   "summary": "The rules a database uses to compare and sort text, such as whether uppercase and lowercase letters, or accented and plain letters, count as equal.",
    "personas": [],
-   "aliases": [],
+   "aliases": [
+    "Collations",
+    "UTF8_BINARY",
+    "UTF8_LCASE",
+    "UNICODE_CI"
+   ],
    "clouds": [],
-   "last_verified": "",
-   "links_out": []
+   "last_verified": "2026-10-26",
+   "links_out": [
+    "Databricks SQL",
+    "Delta Lake",
+    "Migrating from SQL Server"
+   ]
   },
   {
    "title": "Column Mapping",
    "path": "90_glossary/Column Mapping.md",
    "type": "glossary",
-   "status": "stub",
+   "status": "written",
    "level": 90,
    "section": "Glossary",
    "depth": 101,
-   "summary": "",
+   "summary": "A Delta Lake table feature that tracks columns by internal IDs or physical names, so you can rename or drop columns without rewriting data files.",
    "personas": [],
-   "aliases": [],
+   "aliases": [
+    "delta.columnMapping.mode",
+    "Delta column mapping"
+   ],
    "clouds": [],
-   "last_verified": "",
-   "links_out": []
+   "last_verified": "2026-10-26",
+   "links_out": [
+    "Delta Lake",
+    "Delta UniForm",
+    "OPTIMIZE and VACUUM",
+    "Schema Enforcement and Evolution"
+   ]
   },
   {
    "title": "Commodity Hardware",
    "path": "90_glossary/Commodity Hardware.md",
    "type": "glossary",
-   "status": "stub",
+   "status": "written",
    "level": 90,
    "section": "Glossary",
    "depth": 101,
-   "summary": "",
+   "summary": "Ordinary, inexpensive, mass-produced servers, as opposed to specialized high-end machines; big data systems were designed to run on many of them and tolerate their failures.",
    "personas": [],
-   "aliases": [],
+   "aliases": [
+    "Commodity servers",
+    "Off-the-shelf hardware"
+   ],
    "clouds": [],
-   "last_verified": "",
-   "links_out": []
+   "last_verified": "2026-10-26",
+   "links_out": [
+    "Apache Hadoop",
+    "Apache Spark",
+    "Fault Tolerance",
+    "Google File System and MapReduce Papers",
+    "HDFS",
+    "Node",
+    "Replication",
+    "Scaling Up vs Scaling Out",
+    "Spot Instances",
+    "Virtual Machine"
+   ]
   },
   {
    "title": "Compression",
@@ -14896,31 +15487,55 @@
    "title": "Context Window",
    "path": "90_glossary/Context Window.md",
    "type": "glossary",
-   "status": "stub",
+   "status": "written",
    "level": 90,
    "section": "Glossary",
    "depth": 101,
-   "summary": "",
+   "summary": "The maximum amount of text, measured in tokens, that a large language model can read and write in a single request.",
    "personas": [],
-   "aliases": [],
+   "aliases": [
+    "Context length",
+    "Context size",
+    "Token limit"
+   ],
    "clouds": [],
-   "last_verified": "",
-   "links_out": []
+   "last_verified": "2026-10-26",
+   "links_out": [
+    "Chunking",
+    "Foundation Model APIs",
+    "Generative AI and LLMs",
+    "LLM",
+    "Latency",
+    "Retrieval-Augmented Generation",
+    "Token"
+   ]
   },
   {
    "title": "Copy-on-Write and Merge-on-Read",
    "path": "90_glossary/Copy-on-Write and Merge-on-Read.md",
    "type": "glossary",
-   "status": "stub",
+   "status": "written",
    "level": 90,
    "section": "Glossary",
    "depth": 101,
-   "summary": "",
+   "summary": "Two strategies for updating rows in immutable data files: copy-on-write rewrites affected files at write time, while merge-on-read records changes separately and applies them when the table is read.",
    "personas": [],
-   "aliases": [],
+   "aliases": [
+    "Copy-on-write",
+    "Merge-on-read",
+    "COW",
+    "MOR"
+   ],
    "clouds": [],
-   "last_verified": "",
-   "links_out": []
+   "last_verified": "2026-10-26",
+   "links_out": [
+    "Apache Hudi",
+    "Apache Iceberg",
+    "Deletion Vectors",
+    "Delta Lake",
+    "Delta UniForm",
+    "Open Table Formats"
+   ]
   },
   {
    "title": "Cutover",
@@ -15491,16 +16106,30 @@
    "title": "Endpoint",
    "path": "90_glossary/Endpoint.md",
    "type": "glossary",
-   "status": "stub",
+   "status": "written",
    "level": 90,
    "section": "Glossary",
    "depth": 101,
-   "summary": "",
+   "summary": "A network address, usually a URL, where a service accepts requests; on Databricks the word names model serving endpoints, AI Search endpoints, and the connection details of SQL warehouses.",
    "personas": [],
-   "aliases": [],
+   "aliases": [
+    "Serving endpoint",
+    "API endpoint",
+    "Endpoints"
+   ],
    "clouds": [],
-   "last_verified": "",
-   "links_out": []
+   "last_verified": "2026-10-26",
+   "links_out": [
+    "AI Search",
+    "Azure Private Link",
+    "Foundation Model APIs",
+    "JDBC and ODBC",
+    "Model Serving",
+    "Personal Access Token",
+    "Private Endpoint",
+    "SQL Warehouses",
+    "Token"
+   ]
   },
   {
    "title": "Event",
@@ -15536,16 +16165,25 @@
    "title": "Event Time",
    "path": "90_glossary/Event Time.md",
    "type": "glossary",
-   "status": "stub",
+   "status": "written",
    "level": 90,
    "section": "Glossary",
    "depth": 101,
-   "summary": "",
+   "summary": "The time at which an event actually happened, as recorded in the data, as opposed to the time the system received or processed it.",
    "personas": [],
-   "aliases": [],
+   "aliases": [
+    "Event-time",
+    "Processing time",
+    "Ingestion time"
+   ],
    "clouds": [],
-   "last_verified": "",
-   "links_out": []
+   "last_verified": "2026-10-26",
+   "links_out": [
+    "Lakeflow Spark Declarative Pipelines",
+    "Structured Streaming",
+    "Structured Streaming on Databricks",
+    "Watermark"
+   ]
   },
   {
    "title": "Exactly-Once Processing",
@@ -15665,31 +16303,51 @@
    "title": "FedRAMP",
    "path": "90_glossary/FedRAMP.md",
    "type": "glossary",
-   "status": "stub",
+   "status": "written",
    "level": 90,
    "section": "Glossary",
    "depth": 101,
-   "summary": "",
+   "summary": "The US government program that standardizes security assessment and authorization of cloud services for federal agencies; Databricks on AWS GovCloud holds a FedRAMP High authorization.",
    "personas": [],
-   "aliases": [],
+   "aliases": [
+    "Federal Risk and Authorization Management Program",
+    "FedRAMP High",
+    "FedRAMP Moderate"
+   ],
    "clouds": [],
-   "last_verified": "",
-   "links_out": []
+   "last_verified": "2026-10-26",
+   "links_out": [
+    "AWS PrivateLink",
+    "Compliance Security Profile",
+    "Databricks on AWS GovCloud"
+   ]
   },
   {
    "title": "FinOps",
    "path": "90_glossary/FinOps.md",
    "type": "glossary",
-   "status": "stub",
+   "status": "written",
    "level": 90,
    "section": "Glossary",
    "depth": 101,
-   "summary": "",
+   "summary": "The practice of managing cloud and data platform spending through shared accountability between engineering, finance, and business teams.",
    "personas": [],
-   "aliases": [],
+   "aliases": [
+    "Cloud financial management",
+    "Cloud FinOps"
+   ],
    "clouds": [],
-   "last_verified": "",
-   "links_out": []
+   "last_verified": "2026-10-26",
+   "links_out": [
+    "Auto Termination",
+    "Budgets and Usage Dashboards",
+    "Chargeback",
+    "Compute Policies",
+    "Cost Management Basics",
+    "Cost Optimization Checklist",
+    "DBUs",
+    "System Tables"
+   ]
   },
   {
    "title": "Firewall",
@@ -15724,16 +16382,25 @@
    "title": "Foreign Catalog",
    "path": "90_glossary/Foreign Catalog.md",
    "type": "glossary",
-   "status": "stub",
+   "status": "written",
    "level": 90,
    "section": "Glossary",
    "depth": 101,
-   "summary": "",
+   "summary": "A Unity Catalog catalog that mirrors a database in an external system, such as PostgreSQL or SQL Server, so you can query it from Databricks without copying the data.",
    "personas": [],
-   "aliases": [],
+   "aliases": [
+    "CREATE FOREIGN CATALOG",
+    "Federated catalog"
+   ],
    "clouds": [],
-   "last_verified": "",
-   "links_out": []
+   "last_verified": "2026-10-26",
+   "links_out": [
+    "Catalogs Schemas and Tables",
+    "Lakehouse Federation",
+    "Migrating from Postgres and MySQL",
+    "Secrets Management",
+    "Securable Object"
+   ]
   },
   {
    "title": "GDPR",
@@ -15795,16 +16462,30 @@
    "title": "Garbage Collection",
    "path": "90_glossary/Garbage Collection.md",
    "type": "glossary",
-   "status": "stub",
+   "status": "written",
    "level": 90,
    "section": "Glossary",
    "depth": 101,
-   "summary": "",
+   "summary": "The automatic process that frees memory a program no longer uses; in Spark it runs in each JVM, and long garbage collection pauses slow tasks down.",
    "personas": [],
-   "aliases": [],
+   "aliases": [
+    "GC",
+    "JVM garbage collection",
+    "GC pause",
+    "G1GC"
+   ],
    "clouds": [],
-   "last_verified": "",
-   "links_out": []
+   "last_verified": "2026-10-26",
+   "links_out": [
+    "Apache Spark",
+    "Caching",
+    "Delta Lake",
+    "Driver and Executors",
+    "JVM",
+    "OPTIMIZE and VACUUM",
+    "Serverless Compute",
+    "Spark UI"
+   ]
   },
   {
    "title": "Git",
@@ -15895,31 +16576,50 @@
    "title": "Hybrid Search",
    "path": "90_glossary/Hybrid Search.md",
    "type": "glossary",
-   "status": "stub",
+   "status": "written",
    "level": 90,
    "section": "Glossary",
    "depth": 101,
-   "summary": "",
+   "summary": "A retrieval method that combines vector similarity search with keyword search and merges the two ranked result lists.",
    "personas": [],
-   "aliases": [],
+   "aliases": [
+    "Hybrid retrieval",
+    "query_type HYBRID",
+    "Keyword plus vector search"
+   ],
    "clouds": [],
-   "last_verified": "",
-   "links_out": []
+   "last_verified": "2026-10-26",
+   "links_out": [
+    "AI Search",
+    "Embedding",
+    "Retrieval-Augmented Generation"
+   ]
   },
   {
    "title": "Hyperparameter",
    "path": "90_glossary/Hyperparameter.md",
    "type": "glossary",
-   "status": "stub",
+   "status": "written",
    "level": 90,
    "section": "Glossary",
    "depth": 101,
-   "summary": "",
+   "summary": "A setting chosen before training a machine learning model, such as tree depth or learning rate, as opposed to the parameters the model learns from data.",
    "personas": [],
-   "aliases": [],
+   "aliases": [
+    "Hyperparameters",
+    "Hyperparameter tuning",
+    "HPO"
+   ],
    "clouds": [],
-   "last_verified": "",
-   "links_out": []
+   "last_verified": "2026-10-26",
+   "links_out": [
+    "AutoML",
+    "Experiment Tracking",
+    "MLflow",
+    "Machine Learning Basics",
+    "Overfitting",
+    "Training"
+   ]
   },
   {
    "title": "IAM",
@@ -15997,6 +16697,7 @@
    "links_out": [
     "Microsoft Entra ID Integration",
     "OAuth",
+    "OpenID Connect",
     "SCIM Provisioning",
     "Single Sign-On",
     "Users Groups and Service Principals"
@@ -16155,16 +16856,27 @@
    "title": "Isolation Level",
    "path": "90_glossary/Isolation Level.md",
    "type": "glossary",
-   "status": "stub",
+   "status": "written",
    "level": 90,
    "section": "Glossary",
    "depth": 101,
-   "summary": "",
+   "summary": "The rule that defines how much concurrent transactions can see of each other's changes; Delta tables on Databricks offer WriteSerializable (default) and Serializable.",
    "personas": [],
-   "aliases": [],
+   "aliases": [
+    "Isolation levels",
+    "WriteSerializable",
+    "Serializable",
+    "delta.isolationLevel"
+   ],
    "clouds": [],
-   "last_verified": "",
-   "links_out": []
+   "last_verified": "2026-10-26",
+   "links_out": [
+    "ACID Transactions",
+    "Delta Lake",
+    "Delta Transaction Log",
+    "MERGE and Upserts",
+    "Optimistic Concurrency"
+   ]
   },
   {
    "title": "JDBC and ODBC",
@@ -16291,16 +17003,30 @@
    "title": "Kerberos",
    "path": "90_glossary/Kerberos.md",
    "type": "glossary",
-   "status": "stub",
+   "status": "written",
    "level": 90,
    "section": "Glossary",
    "depth": 101,
-   "summary": "",
+   "summary": "A network authentication protocol that uses tickets from a trusted key distribution center; it secured Hadoop clusters, while Databricks uses OAuth and single sign-on instead.",
    "personas": [],
-   "aliases": [],
+   "aliases": [
+    "Kerberos authentication",
+    "KDC",
+    "keytab",
+    "SPNEGO"
+   ],
    "clouds": [],
-   "last_verified": "",
-   "links_out": []
+   "last_verified": "2026-10-26",
+   "links_out": [
+    "Apache Hadoop",
+    "Authentication - Tokens and OAuth",
+    "Identity Provider",
+    "Lakehouse Federation",
+    "Migrating from Hadoop",
+    "OAuth",
+    "Personal Access Token",
+    "Single Sign-On"
+   ]
   },
   {
    "title": "Kubernetes",
@@ -16364,16 +17090,25 @@
    "title": "LTS",
    "path": "90_glossary/LTS.md",
    "type": "glossary",
-   "status": "stub",
+   "status": "written",
    "level": 90,
    "section": "Glossary",
    "depth": 101,
-   "summary": "",
+   "summary": "Long-term support: a Databricks Runtime version that receives stability and security fixes for three years from its release, recommended for production jobs.",
    "personas": [],
-   "aliases": [],
+   "aliases": [
+    "Long-term support",
+    "LTS release",
+    "Databricks Runtime LTS"
+   ],
    "clouds": [],
-   "last_verified": "",
-   "links_out": []
+   "last_verified": "2026-10-26",
+   "links_out": [
+    "Compute Policies",
+    "Databricks Runtime",
+    "Jobs Compute",
+    "Serverless Compute"
+   ]
   },
   {
    "title": "Label",
@@ -16517,61 +17252,113 @@
    "title": "LoRA",
    "path": "90_glossary/LoRA.md",
    "type": "glossary",
-   "status": "stub",
+   "status": "written",
    "level": 90,
    "section": "Glossary",
    "depth": 101,
-   "summary": "",
+   "summary": "Low-Rank Adaptation: a fine-tuning method that freezes a model's original weights and trains small added matrices, which cuts the memory and storage needed to customize a large language model.",
    "personas": [],
-   "aliases": [],
+   "aliases": [
+    "Low-Rank Adaptation",
+    "LoRA adapter",
+    "PEFT",
+    "Parameter-efficient fine-tuning"
+   ],
    "clouds": [],
-   "last_verified": "",
-   "links_out": []
+   "last_verified": "2026-10-26",
+   "links_out": [
+    "AI Runtime",
+    "Fine-Tuning",
+    "GPU",
+    "Model Serving",
+    "Models in Unity Catalog",
+    "Retrieval-Augmented Generation"
+   ]
   },
   {
    "title": "Logical and Physical Plans",
    "path": "90_glossary/Logical and Physical Plans.md",
    "type": "glossary",
-   "status": "stub",
+   "status": "written",
    "level": 90,
    "section": "Glossary",
    "depth": 101,
-   "summary": "",
+   "summary": "The two stages of a Spark query plan: the logical plan describes what result to compute, and the physical plan describes exactly how the cluster will compute it.",
    "personas": [],
-   "aliases": [],
+   "aliases": [
+    "Logical plan",
+    "Physical plan",
+    "Query plan",
+    "Execution plan",
+    "EXPLAIN"
+   ],
    "clouds": [],
-   "last_verified": "",
-   "links_out": []
+   "last_verified": "2026-10-26",
+   "links_out": [
+    "Adaptive Query Execution",
+    "Broadcast Join",
+    "Catalyst Optimizer",
+    "DataFrames",
+    "Shuffles",
+    "Spark SQL",
+    "Spark UI"
+   ]
   },
   {
    "title": "MPP",
    "path": "90_glossary/MPP.md",
    "type": "glossary",
-   "status": "stub",
+   "status": "written",
    "level": 90,
    "section": "Glossary",
    "depth": 101,
-   "summary": "",
+   "summary": "Massively parallel processing: a query engine design that splits one query across many machines, each working on its own slice of the data.",
    "personas": [],
-   "aliases": [],
+   "aliases": [
+    "massively parallel processing",
+    "MPP database",
+    "MPP engine"
+   ],
    "clouds": [],
-   "last_verified": "",
-   "links_out": []
+   "last_verified": "2026-10-26",
+   "links_out": [
+    "Amazon Redshift",
+    "Apache Spark",
+    "Cluster",
+    "Data Warehouses",
+    "Node",
+    "Object Storage",
+    "Photon",
+    "SQL Warehouses",
+    "Scaling Up vs Scaling Out",
+    "Storage vs Compute"
+   ]
   },
   {
    "title": "MVCC",
    "path": "90_glossary/MVCC.md",
    "type": "glossary",
-   "status": "stub",
+   "status": "written",
    "level": 90,
    "section": "Glossary",
    "depth": 101,
-   "summary": "",
+   "summary": "Multi-version concurrency control: keeping several versions of data so readers see a consistent snapshot while writers make changes.",
    "personas": [],
-   "aliases": [],
+   "aliases": [
+    "multi-version concurrency control",
+    "multiversion concurrency control"
+   ],
    "clouds": [],
-   "last_verified": "",
-   "links_out": []
+   "last_verified": "2026-10-26",
+   "links_out": [
+    "ACID Transactions",
+    "Delta Lake",
+    "Delta Transaction Log",
+    "Isolation Level",
+    "OPTIMIZE and VACUUM",
+    "Optimistic Concurrency",
+    "Time Travel"
+   ]
   },
   {
    "title": "Managed Identity",
@@ -16663,16 +17450,27 @@
    "title": "Mixture of Experts",
    "path": "90_glossary/Mixture of Experts.md",
    "type": "glossary",
-   "status": "stub",
+   "status": "written",
    "level": 90,
    "section": "Glossary",
    "depth": 101,
-   "summary": "",
+   "summary": "A neural network design in which a router sends each token to a few specialist sub-networks, so a large model uses only part of its weights per token.",
    "personas": [],
-   "aliases": [],
+   "aliases": [
+    "MoE",
+    "mixture-of-experts",
+    "sparse model"
+   ],
    "clouds": [],
-   "last_verified": "",
-   "links_out": []
+   "last_verified": "2026-10-26",
+   "links_out": [
+    "Foundation Model APIs",
+    "Generative AI and LLMs",
+    "Inference",
+    "LLM",
+    "MosaicML and Open Models",
+    "Token"
+   ]
   },
   {
    "title": "Model",
@@ -16709,61 +17507,118 @@
    "title": "Model Context Protocol",
    "path": "90_glossary/Model Context Protocol.md",
    "type": "glossary",
-   "status": "stub",
+   "status": "written",
    "level": 90,
    "section": "Glossary",
    "depth": 101,
-   "summary": "",
+   "summary": "An open protocol that lets AI applications connect to external tools and data through a standard client-server interface.",
    "personas": [],
-   "aliases": [],
+   "aliases": [
+    "MCP",
+    "MCP server",
+    "MCP client"
+   ],
    "clouds": [],
-   "last_verified": "",
-   "links_out": []
+   "last_verified": "2026-10-26",
+   "links_out": [
+    "AI Agent",
+    "AI Search",
+    "Genie Agents",
+    "Genie Code",
+    "Genie One",
+    "Managed MCP Servers",
+    "Unity Catalog",
+    "Unity Catalog Functions",
+    "Unity Gateway",
+    "Users Groups and Service Principals"
+   ]
   },
   {
    "title": "Multi-Factor Authentication",
    "path": "90_glossary/Multi-Factor Authentication.md",
    "type": "glossary",
-   "status": "stub",
+   "status": "written",
    "level": 90,
    "section": "Glossary",
    "depth": 101,
-   "summary": "",
+   "summary": "Sign-in that requires a second proof of identity, such as a code from an authenticator app, in addition to a password.",
    "personas": [],
-   "aliases": [],
+   "aliases": [
+    "MFA",
+    "two-factor authentication",
+    "2FA"
+   ],
    "clouds": [],
-   "last_verified": "",
-   "links_out": []
+   "last_verified": "2026-10-26",
+   "links_out": [
+    "Account Console",
+    "Authentication - Tokens and OAuth",
+    "Identity Provider",
+    "Microsoft Entra ID Integration",
+    "OAuth",
+    "Single Sign-On",
+    "Users Groups and Service Principals"
+   ]
   },
   {
    "title": "NAT Gateway",
    "path": "90_glossary/NAT Gateway.md",
    "type": "glossary",
-   "status": "stub",
+   "status": "written",
    "level": 90,
    "section": "Glossary",
    "depth": 101,
-   "summary": "",
+   "summary": "A cloud network service that lets machines without public IP addresses make outbound internet connections through a fixed public IP.",
    "personas": [],
-   "aliases": [],
+   "aliases": [
+    "NAT",
+    "network address translation gateway",
+    "Azure NAT Gateway",
+    "Cloud NAT"
+   ],
    "clouds": [],
-   "last_verified": "",
-   "links_out": []
+   "last_verified": "2026-10-26",
+   "links_out": [
+    "Customer-Managed VPC on AWS",
+    "Customer-Managed VPC on Google Cloud",
+    "Egress",
+    "Managed Resource Group",
+    "Network Security Overview",
+    "Public vs Private IP",
+    "Secure Cluster Connectivity",
+    "Subnet",
+    "VNet Injection"
+   ]
   },
   {
    "title": "NoSQL",
    "path": "90_glossary/NoSQL.md",
    "type": "glossary",
-   "status": "stub",
+   "status": "written",
    "level": 90,
    "section": "Glossary",
    "depth": 101,
-   "summary": "",
+   "summary": "A family of non-relational databases (key-value, document, wide-column, and graph) built for flexible schemas and horizontal scale.",
    "personas": [],
-   "aliases": [],
+   "aliases": [
+    "non-relational database",
+    "NoSQL database",
+    "document database",
+    "key-value store"
+   ],
    "clouds": [],
-   "last_verified": "",
-   "links_out": []
+   "last_verified": "2026-10-26",
+   "links_out": [
+    "Apache HBase",
+    "CAP Theorem",
+    "Delta Lake",
+    "Lakebase",
+    "OLTP vs OLAP",
+    "Relational Databases",
+    "Semi-Structured Data",
+    "Sharding",
+    "VARIANT Data Type"
+   ]
   },
   {
    "title": "Node",
@@ -16914,31 +17769,56 @@
    "title": "OpenID Connect",
    "path": "90_glossary/OpenID Connect.md",
    "type": "glossary",
-   "status": "stub",
+   "status": "written",
    "level": 90,
    "section": "Glossary",
    "depth": 101,
-   "summary": "",
+   "summary": "An identity layer on top of OAuth 2.0 that lets an application confirm who a user or workload is through a signed ID token.",
    "personas": [],
-   "aliases": [],
+   "aliases": [
+    "OIDC",
+    "OpenID Connect (OIDC)",
+    "workload identity federation"
+   ],
    "clouds": [],
-   "last_verified": "",
-   "links_out": []
+   "last_verified": "2026-10-26",
+   "links_out": [
+    "Authentication - Tokens and OAuth",
+    "CI-CD for Data Pipelines",
+    "Identity Provider",
+    "OAuth",
+    "Personal Access Token",
+    "SAML",
+    "Single Sign-On",
+    "Users Groups and Service Principals"
+   ]
   },
   {
    "title": "Optimistic Concurrency",
    "path": "90_glossary/Optimistic Concurrency.md",
    "type": "glossary",
-   "status": "stub",
+   "status": "written",
    "level": 90,
    "section": "Glossary",
    "depth": 101,
-   "summary": "",
+   "summary": "A concurrency strategy where writers work without locks and check for conflicts only at commit time, retrying if another write committed first.",
    "personas": [],
-   "aliases": [],
+   "aliases": [
+    "optimistic concurrency control",
+    "OCC",
+    "ConcurrentModificationException"
+   ],
    "clouds": [],
-   "last_verified": "",
-   "links_out": []
+   "last_verified": "2026-10-26",
+   "links_out": [
+    "ACID Transactions",
+    "Deletion Vectors",
+    "Delta Lake",
+    "Delta Transaction Log",
+    "Isolation Level",
+    "MERGE and Upserts",
+    "MVCC"
+   ]
   },
   {
    "title": "Orchestration",
@@ -16995,16 +17875,28 @@
    "title": "PCI DSS",
    "path": "90_glossary/PCI DSS.md",
    "type": "glossary",
-   "status": "stub",
+   "status": "written",
    "level": 90,
    "section": "Glossary",
    "depth": 101,
-   "summary": "",
+   "summary": "The Payment Card Industry Data Security Standard: security requirements for any business that stores, processes, or transmits payment card data.",
    "personas": [],
-   "aliases": [],
+   "aliases": [
+    "PCI",
+    "PCI-DSS",
+    "Payment Card Industry Data Security Standard",
+    "PCI DSS v4.0"
+   ],
    "clouds": [],
-   "last_verified": "",
-   "links_out": []
+   "last_verified": "2026-10-26",
+   "links_out": [
+    "Compliance Security Profile",
+    "Encryption",
+    "Foundation Model APIs",
+    "HIPAA",
+    "SOC 2",
+    "Single Sign-On"
+   ]
   },
   {
    "title": "PII",
@@ -17038,16 +17930,26 @@
    "title": "Pagination",
    "path": "90_glossary/Pagination.md",
    "type": "glossary",
-   "status": "stub",
+   "status": "written",
    "level": 90,
    "section": "Glossary",
    "depth": 101,
-   "summary": "",
+   "summary": "Returning a large result in pages, with a token or offset the client sends back to fetch the next page.",
    "personas": [],
-   "aliases": [],
+   "aliases": [
+    "paging",
+    "page token",
+    "next_page_token"
+   ],
    "clouds": [],
-   "last_verified": "",
-   "links_out": []
+   "last_verified": "2026-10-26",
+   "links_out": [
+    "APIs",
+    "Databricks SDKs and REST API",
+    "Lakeflow Jobs",
+    "REST",
+    "Rate Limit"
+   ]
   },
   {
    "title": "Pandas",
@@ -17107,76 +18009,140 @@
    "title": "Pay-As-You-Go",
    "path": "90_glossary/Pay-As-You-Go.md",
    "type": "glossary",
-   "status": "stub",
+   "status": "written",
    "level": 90,
    "section": "Glossary",
    "depth": 101,
-   "summary": "",
+   "summary": "A billing model where you pay only for what you use, metered per unit, with no upfront commitment.",
    "personas": [],
-   "aliases": [],
+   "aliases": [
+    "PAYG",
+    "pay as you go",
+    "on-demand pricing",
+    "usage-based pricing"
+   ],
    "clouds": [],
-   "last_verified": "",
-   "links_out": []
+   "last_verified": "2026-10-26",
+   "links_out": [
+    "AWS Marketplace and Billing",
+    "Auto Termination",
+    "Azure Billing and Commit Units",
+    "DBUs",
+    "Estimating Costs for a Small Business",
+    "Google Cloud Marketplace and Billing",
+    "How Databricks Pricing Works",
+    "SKU",
+    "SQL Warehouses",
+    "System Tables"
+   ]
   },
   {
    "title": "Personal Access Token",
    "path": "90_glossary/Personal Access Token.md",
    "type": "glossary",
-   "status": "stub",
+   "status": "written",
    "level": 90,
    "section": "Glossary",
    "depth": 101,
-   "summary": "",
+   "summary": "A long-lived secret tied to one user that authenticates scripts and tools to Databricks APIs; Databricks treats it as legacy and recommends OAuth.",
    "personas": [],
-   "aliases": [],
+   "aliases": [
+    "PAT",
+    "PATs",
+    "personal access tokens",
+    "Databricks token"
+   ],
    "clouds": [],
-   "last_verified": "",
-   "links_out": []
+   "last_verified": "2026-10-26",
+   "links_out": [
+    "Authentication - Tokens and OAuth",
+    "Connecting Power BI",
+    "Databricks CLI",
+    "OAuth",
+    "OpenID Connect",
+    "Secrets Management",
+    "Users Groups and Service Principals"
+   ]
   },
   {
    "title": "Point-in-Time Recovery",
    "path": "90_glossary/Point-in-Time Recovery.md",
    "type": "glossary",
-   "status": "stub",
+   "status": "written",
    "level": 90,
    "section": "Glossary",
    "depth": 101,
-   "summary": "",
+   "summary": "Restoring data to its exact state at a chosen moment in the past, usually to undo an accidental change or corruption.",
    "personas": [],
-   "aliases": [],
+   "aliases": [
+    "PITR",
+    "point-in-time restore",
+    "RESTORE TABLE"
+   ],
    "clouds": [],
-   "last_verified": "",
-   "links_out": []
+   "last_verified": "2026-10-26",
+   "links_out": [
+    "Disaster Recovery",
+    "Lakebase",
+    "OPTIMIZE and VACUUM",
+    "RPO and RTO",
+    "Time Travel"
+   ]
   },
   {
    "title": "Predicate Pushdown",
    "path": "90_glossary/Predicate Pushdown.md",
    "type": "glossary",
-   "status": "stub",
+   "status": "written",
    "level": 90,
    "section": "Glossary",
    "depth": 101,
-   "summary": "",
+   "summary": "Moving a query's filter conditions down to the storage or source system so that less data is read.",
    "personas": [],
-   "aliases": [],
+   "aliases": [
+    "filter pushdown",
+    "pushdown",
+    "projection pushdown"
+   ],
    "clouds": [],
-   "last_verified": "",
-   "links_out": []
+   "last_verified": "2026-10-26",
+   "links_out": [
+    "Apache Parquet",
+    "Catalyst Optimizer",
+    "Data Skipping",
+    "Lakehouse Federation",
+    "Liquid Clustering",
+    "Partition Pruning",
+    "Row Filters and Column Masks"
+   ]
   },
   {
    "title": "Private Endpoint",
    "path": "90_glossary/Private Endpoint.md",
    "type": "glossary",
-   "status": "stub",
+   "status": "written",
    "level": 90,
    "section": "Glossary",
    "depth": 101,
-   "summary": "",
+   "summary": "A network interface with a private IP address in your own virtual network that connects to a cloud service without using the public internet.",
    "personas": [],
-   "aliases": [],
+   "aliases": [
+    "Azure private endpoint",
+    "VPC endpoint",
+    "interface endpoint",
+    "PSC endpoint"
+   ],
    "clouds": [],
-   "last_verified": "",
-   "links_out": []
+   "last_verified": "2026-10-26",
+   "links_out": [
+    "AWS PrivateLink",
+    "Azure Private Link",
+    "IP Access Lists",
+    "Network Security Overview",
+    "Private Service Connect",
+    "Secure Cluster Connectivity",
+    "Subnet"
+   ]
   },
   {
    "title": "Prompt",
@@ -17267,31 +18233,51 @@
    "title": "Python Wheel",
    "path": "90_glossary/Python Wheel.md",
    "type": "glossary",
-   "status": "stub",
+   "status": "written",
    "level": 90,
    "section": "Glossary",
    "depth": 101,
-   "summary": "",
+   "summary": "The standard packaged format (a .whl file) for distributing Python code so it installs with pip without a build step.",
    "personas": [],
-   "aliases": [],
+   "aliases": [
+    "wheel",
+    ".whl",
+    "wheel file",
+    "python_wheel_task"
+   ],
    "clouds": [],
-   "last_verified": "",
-   "links_out": []
+   "last_verified": "2026-10-26",
+   "links_out": [
+    "CI-CD for Data Pipelines",
+    "Declarative Automation Bundles",
+    "Lakeflow Jobs",
+    "Libraries and Environments",
+    "Volumes"
+   ]
   },
   {
    "title": "Quartz Cron",
    "path": "90_glossary/Quartz Cron.md",
    "type": "glossary",
-   "status": "stub",
+   "status": "written",
    "level": 90,
    "section": "Glossary",
    "depth": 101,
-   "summary": "",
+   "summary": "The cron expression format from the Quartz scheduler, with seconds as the first field, that Databricks uses for job schedules.",
    "personas": [],
-   "aliases": [],
+   "aliases": [
+    "Quartz cron expression",
+    "quartz_cron_expression",
+    "cron expression",
+    "cron"
+   ],
    "clouds": [],
-   "last_verified": "",
-   "links_out": []
+   "last_verified": "2026-10-26",
+   "links_out": [
+    "Apache Airflow",
+    "Lakeflow Jobs",
+    "Tasks Triggers and Schedules"
+   ]
   },
   {
    "title": "Query",
@@ -17357,46 +18343,81 @@
    "title": "RPO and RTO",
    "path": "90_glossary/RPO and RTO.md",
    "type": "glossary",
-   "status": "stub",
+   "status": "written",
    "level": 90,
    "section": "Glossary",
    "depth": 101,
-   "summary": "",
+   "summary": "Recovery point objective is how much data loss you can tolerate; recovery time objective is how long you can be down. Both drive disaster recovery design.",
    "personas": [],
-   "aliases": [],
+   "aliases": [
+    "RPO",
+    "RTO",
+    "recovery point objective",
+    "recovery time objective"
+   ],
    "clouds": [],
-   "last_verified": "",
-   "links_out": []
+   "last_verified": "2026-10-26",
+   "links_out": [
+    "Declarative Automation Bundles",
+    "Disaster Recovery",
+    "Git",
+    "Point-in-Time Recovery",
+    "Region",
+    "Replication",
+    "SLA",
+    "Terraform Provider",
+    "Time Travel"
+   ]
   },
   {
    "title": "Rate Limit",
    "path": "90_glossary/Rate Limit.md",
    "type": "glossary",
-   "status": "stub",
+   "status": "written",
    "level": 90,
    "section": "Glossary",
    "depth": 101,
-   "summary": "",
+   "summary": "A cap on how many requests or tokens a client can send to a service in a time window; requests over the cap receive HTTP 429.",
    "personas": [],
-   "aliases": [],
+   "aliases": [
+    "throttling",
+    "HTTP 429",
+    "rate limiting",
+    "quota"
+   ],
    "clouds": [],
-   "last_verified": "",
-   "links_out": []
+   "last_verified": "2026-10-26",
+   "links_out": [
+    "Databricks SDKs and REST API",
+    "Foundation Model APIs",
+    "Unity Gateway"
+   ]
   },
   {
    "title": "Read Replica",
    "path": "90_glossary/Read Replica.md",
    "type": "glossary",
-   "status": "stub",
+   "status": "written",
    "level": 90,
    "section": "Glossary",
    "depth": 101,
-   "summary": "",
+   "summary": "A read-only copy of a database that serves queries so the primary can focus on writes.",
    "personas": [],
-   "aliases": [],
+   "aliases": [
+    "read-only replica",
+    "replica",
+    "read replicas"
+   ],
    "clouds": [],
-   "last_verified": "",
-   "links_out": []
+   "last_verified": "2026-10-26",
+   "links_out": [
+    "Lakebase",
+    "Migrating from Postgres and MySQL",
+    "Object Storage",
+    "Point-in-Time Recovery",
+    "Replication",
+    "SQL Warehouses"
+   ]
   },
   {
    "title": "Region",
@@ -17459,16 +18480,24 @@
    "title": "Resource Group",
    "path": "90_glossary/Resource Group.md",
    "type": "glossary",
-   "status": "stub",
+   "status": "written",
    "level": 90,
    "section": "Glossary",
    "depth": 101,
-   "summary": "",
+   "summary": "An Azure container that holds related resources, such as a Databricks workspace, so you can manage, secure, and bill them together.",
    "personas": [],
-   "aliases": [],
+   "aliases": [
+    "Azure resource group",
+    "resource groups"
+   ],
    "clouds": [],
-   "last_verified": "",
-   "links_out": []
+   "last_verified": "2026-10-26",
+   "links_out": [
+    "Azure Databricks Overview",
+    "Creating an Azure Databricks Workspace",
+    "Managed Resource Group",
+    "Tagging for Chargeback"
+   ]
   },
   {
    "title": "Reverse ETL",
@@ -17526,76 +18555,127 @@
    "title": "Row Tracking",
    "path": "90_glossary/Row Tracking.md",
    "type": "glossary",
-   "status": "stub",
+   "status": "written",
    "level": 90,
    "section": "Glossary",
    "depth": 101,
-   "summary": "",
+   "summary": "A Delta Lake table feature that gives every row a stable ID and the version in which it last changed, so changes can be tracked row by row.",
    "personas": [],
-   "aliases": [],
+   "aliases": [
+    "row IDs",
+    "delta.enableRowTracking",
+    "row commit version"
+   ],
    "clouds": [],
-   "last_verified": "",
-   "links_out": []
+   "last_verified": "2026-10-26",
+   "links_out": [
+    "Change Data Feed",
+    "Deletion Vectors",
+    "Delta Lake",
+    "Materialized Views"
+   ]
   },
   {
    "title": "SAML",
    "path": "90_glossary/SAML.md",
    "type": "glossary",
-   "status": "stub",
+   "status": "written",
    "level": 90,
    "section": "Glossary",
    "depth": 101,
-   "summary": "",
+   "summary": "Security Assertion Markup Language: an XML-based standard an identity provider uses to tell an application that a user has signed in.",
    "personas": [],
-   "aliases": [],
+   "aliases": [
+    "SAML 2.0",
+    "Security Assertion Markup Language",
+    "SAML assertion"
+   ],
    "clouds": [],
-   "last_verified": "",
-   "links_out": []
+   "last_verified": "2026-10-26",
+   "links_out": [
+    "Account Console",
+    "Identity Provider",
+    "Microsoft Entra ID Integration",
+    "Multi-Factor Authentication",
+    "OpenID Connect",
+    "SCIM",
+    "SCIM Provisioning",
+    "Single Sign-On"
+   ]
   },
   {
    "title": "SCIM",
    "path": "90_glossary/SCIM.md",
    "type": "glossary",
-   "status": "stub",
+   "status": "written",
    "level": 90,
    "section": "Glossary",
    "depth": 101,
-   "summary": "",
+   "summary": "System for Cross-domain Identity Management: a standard API identity providers use to create, update, and remove users and groups in other applications automatically.",
    "personas": [],
-   "aliases": [],
+   "aliases": [
+    "System for Cross-domain Identity Management",
+    "SCIM 2.0",
+    "SCIM API"
+   ],
    "clouds": [],
-   "last_verified": "",
-   "links_out": []
+   "last_verified": "2026-10-26",
+   "links_out": [
+    "Account Console",
+    "Identity Provider",
+    "Microsoft Entra ID Integration",
+    "SCIM Provisioning",
+    "Single Sign-On",
+    "Users Groups and Service Principals"
+   ]
   },
   {
    "title": "SIEM",
    "path": "90_glossary/SIEM.md",
    "type": "glossary",
-   "status": "stub",
+   "status": "written",
    "level": 90,
    "section": "Glossary",
    "depth": 101,
-   "summary": "",
+   "summary": "Security information and event management: a system that collects logs from many sources, correlates them, and alerts on suspicious activity.",
    "personas": [],
-   "aliases": [],
+   "aliases": [
+    "security information and event management",
+    "SIEM tool"
+   ],
    "clouds": [],
-   "last_verified": "",
-   "links_out": []
+   "last_verified": "2026-10-26",
+   "links_out": [
+    "Audit Logs",
+    "Azure Monitor and Diagnostic Logs",
+    "Compliance Security Profile",
+    "SQL Alerts",
+    "System Tables"
+   ]
   },
   {
    "title": "SKU",
    "path": "90_glossary/SKU.md",
    "type": "glossary",
-   "status": "stub",
+   "status": "written",
    "level": 90,
    "section": "Glossary",
    "depth": 101,
-   "summary": "",
+   "summary": "Stock keeping unit: a specific billable product line, such as one Databricks compute type with its own DBU rate.",
    "personas": [],
-   "aliases": [],
+   "aliases": [
+    "stock keeping unit",
+    "sku_name",
+    "SKUs"
+   ],
    "clouds": [],
-   "last_verified": "",
-   "links_out": []
+   "last_verified": "2026-10-26",
+   "links_out": [
+    "Budgets and Usage Dashboards",
+    "DBUs",
+    "How Databricks Pricing Works",
+    "System Tables"
+   ]
   },
   {
    "title": "SLA",
@@ -17732,16 +18812,26 @@
    "title": "Scale to Zero",
    "path": "90_glossary/Scale to Zero.md",
    "type": "glossary",
-   "status": "stub",
+   "status": "written",
    "level": 90,
    "section": "Glossary",
    "depth": 101,
-   "summary": "",
+   "summary": "The ability of a service to release all compute when idle, so no compute is billed until the next request arrives.",
    "personas": [],
-   "aliases": [],
+   "aliases": [
+    "scale-to-zero",
+    "scale_to_zero_enabled",
+    "cold start"
+   ],
    "clouds": [],
-   "last_verified": "",
-   "links_out": []
+   "last_verified": "2026-10-26",
+   "links_out": [
+    "Auto Termination",
+    "Autoscaling",
+    "Model Serving",
+    "SQL Warehouses",
+    "Serverless Compute"
+   ]
   },
   {
    "title": "Schema",
@@ -17773,31 +18863,54 @@
    "title": "Schema-on-Read",
    "path": "90_glossary/Schema-on-Read.md",
    "type": "glossary",
-   "status": "stub",
+   "status": "written",
    "level": 90,
    "section": "Glossary",
    "depth": 101,
-   "summary": "",
+   "summary": "Applying a schema when data is read rather than when it is written, so raw files can land first and be interpreted later.",
    "personas": [],
-   "aliases": [],
+   "aliases": [
+    "schema on read",
+    "schema-on-write",
+    "schema on write"
+   ],
    "clouds": [],
-   "last_verified": "",
-   "links_out": []
+   "last_verified": "2026-10-26",
+   "links_out": [
+    "Apache Hive",
+    "Auto Loader",
+    "Data Lakes",
+    "Data Swamps",
+    "Data Warehouses",
+    "Medallion Architecture",
+    "Schema Enforcement and Evolution",
+    "VARIANT Data Type"
+   ]
   },
   {
    "title": "Securable Object",
    "path": "90_glossary/Securable Object.md",
    "type": "glossary",
-   "status": "stub",
+   "status": "written",
    "level": 90,
    "section": "Glossary",
    "depth": 101,
-   "summary": "",
+   "summary": "Any object in Unity Catalog that privileges can be granted on, such as a catalog, schema, table, volume, or external location.",
    "personas": [],
-   "aliases": [],
+   "aliases": [
+    "securable",
+    "securables",
+    "securable objects"
+   ],
    "clouds": [],
-   "last_verified": "",
-   "links_out": []
+   "last_verified": "2026-10-26",
+   "links_out": [
+    "Metastore",
+    "Privileges and Grants",
+    "Storage Credentials and External Locations",
+    "Three-Level Namespace",
+    "Unity Catalog"
+   ]
   },
   {
    "title": "Semantic Layer",
@@ -17830,31 +18943,51 @@
    "title": "Semi-Structured Data",
    "path": "90_glossary/Semi-Structured Data.md",
    "type": "glossary",
-   "status": "stub",
+   "status": "written",
    "level": 90,
    "section": "Glossary",
    "depth": 101,
-   "summary": "",
+   "summary": "Data with some structure, such as JSON or XML, where fields have names but records can vary in shape and nest.",
    "personas": [],
-   "aliases": [],
+   "aliases": [
+    "semistructured data",
+    "nested data",
+    "JSON data"
+   ],
    "clouds": [],
-   "last_verified": "",
-   "links_out": []
+   "last_verified": "2026-10-26",
+   "links_out": [
+    "Auto Loader",
+    "CSV and JSON",
+    "NoSQL",
+    "Structured vs Unstructured Data",
+    "VARIANT Data Type"
+   ]
   },
   {
    "title": "SerDe",
    "path": "90_glossary/SerDe.md",
    "type": "glossary",
-   "status": "stub",
+   "status": "written",
    "level": 90,
    "section": "Glossary",
    "depth": 101,
-   "summary": "",
+   "summary": "Serializer/deserializer: the Hive component that tells an engine how to turn file bytes into table rows and back.",
    "personas": [],
-   "aliases": [],
+   "aliases": [
+    "Hive SerDe",
+    "serializer/deserializer",
+    "ROW FORMAT SERDE"
+   ],
    "clouds": [],
-   "last_verified": "",
-   "links_out": []
+   "last_verified": "2026-10-26",
+   "links_out": [
+    "Apache Hive",
+    "Hive Metastore",
+    "Hive Metastore Migration to Unity Catalog",
+    "Migrating from Hadoop",
+    "Schema-on-Read"
+   ]
   },
   {
    "title": "Serialization",
@@ -17889,16 +19022,28 @@
    "title": "Sharding",
    "path": "90_glossary/Sharding.md",
    "type": "glossary",
-   "status": "stub",
+   "status": "written",
    "level": 90,
    "section": "Glossary",
    "depth": 101,
-   "summary": "",
+   "summary": "Splitting one database's rows across several independent database servers, each holding a subset called a shard.",
    "personas": [],
-   "aliases": [],
+   "aliases": [
+    "shard",
+    "shards",
+    "horizontal partitioning",
+    "shard key"
+   ],
    "clouds": [],
-   "last_verified": "",
-   "links_out": []
+   "last_verified": "2026-10-26",
+   "links_out": [
+    "Data Skew",
+    "Distributed Systems",
+    "NoSQL",
+    "Object Storage",
+    "Partitions",
+    "Scaling Up vs Scaling Out"
+   ]
   },
   {
    "title": "Single Source of Truth",
@@ -17929,31 +19074,54 @@
    "title": "Small Files Problem",
    "path": "90_glossary/Small Files Problem.md",
    "type": "glossary",
-   "status": "stub",
+   "status": "written",
    "level": 90,
    "section": "Glossary",
    "depth": 101,
-   "summary": "",
+   "summary": "The slowdown caused when a table consists of many tiny files, because opening and tracking each file costs more than reading its data.",
    "personas": [],
-   "aliases": [],
+   "aliases": [
+    "small file problem",
+    "too many small files",
+    "auto compaction",
+    "optimized writes"
+   ],
    "clouds": [],
-   "last_verified": "",
-   "links_out": []
+   "last_verified": "2026-10-26",
+   "links_out": [
+    "HDFS",
+    "Liquid Clustering",
+    "OPTIMIZE and VACUUM",
+    "Predictive Optimization",
+    "Query Performance and Caching"
+   ]
   },
   {
    "title": "Speculative Execution",
    "path": "90_glossary/Speculative Execution.md",
    "type": "glossary",
-   "status": "stub",
+   "status": "written",
    "level": 90,
    "section": "Glossary",
    "depth": 101,
-   "summary": "",
+   "summary": "Launching a backup copy of a slow-running task on another machine and using whichever copy finishes first.",
    "personas": [],
-   "aliases": [],
+   "aliases": [
+    "speculation",
+    "spark.speculation",
+    "backup tasks"
+   ],
    "clouds": [],
-   "last_verified": "",
-   "links_out": []
+   "last_verified": "2026-10-26",
+   "links_out": [
+    "Adaptive Query Execution",
+    "Data Skew",
+    "Distributed Systems",
+    "Google File System and MapReduce Papers",
+    "Idempotency",
+    "Jobs Stages and Tasks",
+    "Spark UI"
+   ]
   },
   {
    "title": "Spill",
@@ -18013,16 +19181,29 @@
    "title": "Straggler Task",
    "path": "90_glossary/Straggler Task.md",
    "type": "glossary",
-   "status": "stub",
+   "status": "written",
    "level": 90,
    "section": "Glossary",
    "depth": 101,
-   "summary": "",
+   "summary": "A task that runs much longer than the other tasks in the same stage, holding up the whole stage.",
    "personas": [],
-   "aliases": [],
+   "aliases": [
+    "straggler",
+    "stragglers",
+    "slow task",
+    "long-tail task"
+   ],
    "clouds": [],
-   "last_verified": "",
-   "links_out": []
+   "last_verified": "2026-10-26",
+   "links_out": [
+    "Adaptive Query Execution",
+    "Data Skew",
+    "Distributed Systems",
+    "Partitions",
+    "Spark UI",
+    "Speculative Execution",
+    "Spill"
+   ]
   },
   {
    "title": "Subnet",
@@ -18055,31 +19236,55 @@
    "title": "Surrogate Key",
    "path": "90_glossary/Surrogate Key.md",
    "type": "glossary",
-   "status": "stub",
+   "status": "written",
    "level": 90,
    "section": "Glossary",
    "depth": 101,
-   "summary": "",
+   "summary": "A system-generated identifier, usually an integer, used as a table's key instead of a value from the business data.",
    "personas": [],
-   "aliases": [],
+   "aliases": [
+    "synthetic key",
+    "identity column",
+    "artificial key"
+   ],
    "clouds": [],
-   "last_verified": "",
-   "links_out": []
+   "last_verified": "2026-10-26",
+   "links_out": [
+    "Dimension Table",
+    "Fact Table",
+    "Primary and Foreign Keys",
+    "Slowly Changing Dimensions",
+    "Star Schema"
+   ]
   },
   {
    "title": "Tenant",
    "path": "90_glossary/Tenant.md",
    "type": "glossary",
-   "status": "stub",
+   "status": "written",
    "level": 90,
    "section": "Glossary",
    "depth": 101,
-   "summary": "",
+   "summary": "One customer's isolated instance of a shared cloud service; in Azure, a Microsoft Entra ID tenant is an organization's directory of users, groups, and apps.",
    "personas": [],
-   "aliases": [],
+   "aliases": [
+    "Entra tenant",
+    "Azure AD tenant",
+    "directory",
+    "multi-tenant",
+    "tenant ID"
+   ],
    "clouds": [],
-   "last_verified": "",
-   "links_out": []
+   "last_verified": "2026-10-26",
+   "links_out": [
+    "Accounts and Workspaces",
+    "Azure Databricks Overview",
+    "Identity Provider",
+    "Microsoft Entra ID Integration",
+    "SCIM",
+    "SaaS PaaS and IaaS",
+    "Single Sign-On"
+   ]
   },
   {
    "title": "Throughput",
@@ -18202,16 +19407,27 @@
    "title": "Transpiler",
    "path": "90_glossary/Transpiler.md",
    "type": "glossary",
-   "status": "stub",
+   "status": "written",
    "level": 90,
    "section": "Glossary",
    "depth": 101,
-   "summary": "",
+   "summary": "A tool that translates source code from one language or dialect into another at the same level, such as T-SQL into Databricks SQL.",
    "personas": [],
-   "aliases": [],
+   "aliases": [
+    "source-to-source compiler",
+    "SQL transpiler",
+    "code converter",
+    "transpile"
+   ],
    "clouds": [],
-   "last_verified": "",
-   "links_out": []
+   "last_verified": "2026-10-26",
+   "links_out": [
+    "Lakebridge",
+    "Migrating ETL Tools",
+    "Migrating from SQL Server",
+    "Migration Strategy Overview",
+    "SQL"
+   ]
   },
   {
    "title": "UDF",
@@ -18388,16 +19604,26 @@
    "title": "Write-Ahead Log",
    "path": "90_glossary/Write-Ahead Log.md",
    "type": "glossary",
-   "status": "stub",
+   "status": "written",
    "level": 90,
    "section": "Glossary",
    "depth": 101,
-   "summary": "",
+   "summary": "A log in which a system records each change before applying it, so it can recover to a consistent state after a crash.",
    "personas": [],
-   "aliases": [],
+   "aliases": [
+    "WAL",
+    "redo log",
+    "write-ahead logging"
+   ],
    "clouds": [],
-   "last_verified": "",
-   "links_out": []
+   "last_verified": "2026-10-26",
+   "links_out": [
+    "Checkpoint",
+    "Delta Transaction Log",
+    "Exactly-Once Processing",
+    "Lakebase",
+    "Structured Streaming"
+   ]
   },
   {
    "title": "YAML",
@@ -18482,16 +19708,26 @@
    "title": "gRPC",
    "path": "90_glossary/gRPC.md",
    "type": "glossary",
-   "status": "stub",
+   "status": "written",
    "level": 90,
    "section": "Glossary",
    "depth": 101,
-   "summary": "",
+   "summary": "An open-source remote procedure call framework that sends compact Protocol Buffers messages over HTTP/2; Spark Connect and Databricks Connect use it between client and cluster.",
    "personas": [],
-   "aliases": [],
+   "aliases": [
+    "Protocol Buffers",
+    "protobuf",
+    "Remote procedure call"
+   ],
    "clouds": [],
-   "last_verified": "",
-   "links_out": []
+   "last_verified": "2026-10-26",
+   "links_out": [
+    "Apache Arrow",
+    "Databricks Connect",
+    "Databricks SDKs and REST API",
+    "REST",
+    "Spark Connect"
+   ]
   }
  ],
  "edges": [
@@ -19923,6 +21159,11 @@
   {
    "source": "CSV and JSON",
    "target": "Apache Parquet",
+   "type": "related"
+  },
+  {
+   "source": "CSV and JSON",
+   "target": "VARIANT Data Type",
    "type": "related"
   },
   {
@@ -23752,6 +24993,11 @@
   },
   {
    "source": "DataFrames",
+   "target": "Pandas API on Spark",
+   "type": "related"
+  },
+  {
+   "source": "DataFrames",
    "target": "Transformations and Actions",
    "type": "prereqs"
   },
@@ -24167,6 +25413,16 @@
   },
   {
    "source": "Pandas API on Spark",
+   "target": "Pandas",
+   "type": "evolved_from"
+  },
+  {
+   "source": "Pandas API on Spark",
+   "target": "Python for Data",
+   "type": "evolved_from"
+  },
+  {
+   "source": "Pandas API on Spark",
    "target": "PySpark",
    "type": "related"
   },
@@ -24179,6 +25435,76 @@
    "source": "Pandas API on Spark",
    "target": "Python for Data",
    "type": "related"
+  },
+  {
+   "source": "Pandas API on Spark",
+   "target": "Pandas",
+   "type": "related"
+  },
+  {
+   "source": "Pandas API on Spark",
+   "target": "Lazy Evaluation",
+   "type": "related"
+  },
+  {
+   "source": "Pandas API on Spark",
+   "target": "Partitions",
+   "type": "related"
+  },
+  {
+   "source": "Pandas API on Spark",
+   "target": "Shuffles",
+   "type": "related"
+  },
+  {
+   "source": "Pandas API on Spark",
+   "target": "Spark Connect",
+   "type": "related"
+  },
+  {
+   "source": "Pandas API on Spark",
+   "target": "Databricks Runtime",
+   "type": "related"
+  },
+  {
+   "source": "Pandas API on Spark",
+   "target": "Notebooks",
+   "type": "related"
+  },
+  {
+   "source": "Pandas API on Spark",
+   "target": "Serverless Compute",
+   "type": "related"
+  },
+  {
+   "source": "Pandas API on Spark",
+   "target": "Python for Data",
+   "type": "prereqs"
+  },
+  {
+   "source": "Pandas API on Spark",
+   "target": "Pandas",
+   "type": "prereqs"
+  },
+  {
+   "source": "Pandas API on Spark",
+   "target": "PySpark",
+   "type": "prereqs"
+  },
+  {
+   "source": "Pandas API on Spark",
+   "target": "DataFrames",
+   "type": "prereqs"
+  },
+  {
+   "source": "Pandas API on Spark",
+   "target": "Notebooks",
+   "type": "unlocks"
+  },
+  {
+   "source": "Pandas API on Spark",
+   "target": "Feature Engineering and Feature Store",
+   "type": "unlocks"
   },
   {
    "source": "Partitions",
@@ -24333,6 +25659,11 @@
   {
    "source": "PySpark",
    "target": "MLlib",
+   "type": "related"
+  },
+  {
+   "source": "PySpark",
+   "target": "Pandas API on Spark",
    "type": "related"
   },
   {
@@ -27697,6 +29028,11 @@
   },
   {
    "source": "Liquid Clustering",
+   "target": "Predictive Optimization",
+   "type": "related"
+  },
+  {
+   "source": "Liquid Clustering",
    "target": "Delta Lake",
    "type": "prereqs"
   },
@@ -27947,6 +29283,11 @@
   },
   {
    "source": "OPTIMIZE and VACUUM",
+   "target": "Predictive Optimization",
+   "type": "related"
+  },
+  {
+   "source": "OPTIMIZE and VACUUM",
    "target": "Liquid Clustering",
    "type": "related"
   },
@@ -28128,6 +29469,11 @@
   {
    "source": "Predictive Optimization",
    "target": "OPTIMIZE and VACUUM",
+   "type": "evolved_from"
+  },
+  {
+   "source": "Predictive Optimization",
+   "target": "OPTIMIZE and VACUUM",
    "type": "related"
   },
   {
@@ -28139,6 +29485,76 @@
    "source": "Predictive Optimization",
    "target": "Managed vs External Tables",
    "type": "related"
+  },
+  {
+   "source": "Predictive Optimization",
+   "target": "Unity Catalog",
+   "type": "related"
+  },
+  {
+   "source": "Predictive Optimization",
+   "target": "System Tables",
+   "type": "related"
+  },
+  {
+   "source": "Predictive Optimization",
+   "target": "Serverless Compute",
+   "type": "related"
+  },
+  {
+   "source": "Predictive Optimization",
+   "target": "Small Files Problem",
+   "type": "related"
+  },
+  {
+   "source": "Predictive Optimization",
+   "target": "Data Skipping",
+   "type": "related"
+  },
+  {
+   "source": "Predictive Optimization",
+   "target": "VARIANT Data Type",
+   "type": "related"
+  },
+  {
+   "source": "Predictive Optimization",
+   "target": "Cost Management Basics",
+   "type": "related"
+  },
+  {
+   "source": "Predictive Optimization",
+   "target": "Apache Iceberg",
+   "type": "related"
+  },
+  {
+   "source": "Predictive Optimization",
+   "target": "OPTIMIZE and VACUUM",
+   "type": "prereqs"
+  },
+  {
+   "source": "Predictive Optimization",
+   "target": "Managed vs External Tables",
+   "type": "prereqs"
+  },
+  {
+   "source": "Predictive Optimization",
+   "target": "Unity Catalog",
+   "type": "prereqs"
+  },
+  {
+   "source": "Predictive Optimization",
+   "target": "System Tables",
+   "type": "unlocks"
+  },
+  {
+   "source": "Predictive Optimization",
+   "target": "Cost Optimization Checklist",
+   "type": "unlocks"
+  },
+  {
+   "source": "Predictive Optimization",
+   "target": "Serverless Compute",
+   "type": "unlocks"
   },
   {
    "source": "Schema Enforcement and Evolution",
@@ -28912,6 +30328,11 @@
   },
   {
    "source": "Compute Types",
+   "target": "Lakeguard",
+   "type": "related"
+  },
+  {
+   "source": "Compute Types",
    "target": "Cluster",
    "type": "prereqs"
   },
@@ -29062,6 +30483,31 @@
   },
   {
    "source": "DBFS",
+   "target": "HDFS",
+   "type": "evolved_from"
+  },
+  {
+   "source": "DBFS",
+   "target": "Volumes",
+   "type": "evolved_into"
+  },
+  {
+   "source": "DBFS",
+   "target": "Storage Credentials and External Locations",
+   "type": "evolved_into"
+  },
+  {
+   "source": "DBFS",
+   "target": "Workspace Storage Bucket",
+   "type": "cloud_equivalent"
+  },
+  {
+   "source": "DBFS",
+   "target": "Managed Resource Group",
+   "type": "cloud_equivalent"
+  },
+  {
+   "source": "DBFS",
    "target": "Volumes",
    "type": "related"
   },
@@ -29074,6 +30520,76 @@
    "source": "DBFS",
    "target": "Object Storage",
    "type": "related"
+  },
+  {
+   "source": "DBFS",
+   "target": "Git Folders and Workspace Files",
+   "type": "related"
+  },
+  {
+   "source": "DBFS",
+   "target": "Unity Catalog",
+   "type": "related"
+  },
+  {
+   "source": "DBFS",
+   "target": "dbutils and Widgets",
+   "type": "related"
+  },
+  {
+   "source": "DBFS",
+   "target": "Init Scripts",
+   "type": "related"
+  },
+  {
+   "source": "DBFS",
+   "target": "Hive Metastore",
+   "type": "related"
+  },
+  {
+   "source": "DBFS",
+   "target": "Serverless Workspaces and Default Storage",
+   "type": "related"
+  },
+  {
+   "source": "DBFS",
+   "target": "Azure Data Lake Storage",
+   "type": "related"
+  },
+  {
+   "source": "DBFS",
+   "target": "Amazon S3",
+   "type": "related"
+  },
+  {
+   "source": "DBFS",
+   "target": "Google Cloud Storage",
+   "type": "related"
+  },
+  {
+   "source": "DBFS",
+   "target": "Object Storage",
+   "type": "prereqs"
+  },
+  {
+   "source": "DBFS",
+   "target": "Accounts and Workspaces",
+   "type": "prereqs"
+  },
+  {
+   "source": "DBFS",
+   "target": "Volumes",
+   "type": "unlocks"
+  },
+  {
+   "source": "DBFS",
+   "target": "Storage Credentials and External Locations",
+   "type": "unlocks"
+  },
+  {
+   "source": "DBFS",
+   "target": "Hive Metastore Migration to Unity Catalog",
+   "type": "unlocks"
   },
   {
    "source": "DBUs",
@@ -29892,8 +31408,83 @@
   },
   {
    "source": "Init Scripts",
+   "target": "Jobs Compute",
+   "type": "related"
+  },
+  {
+   "source": "Init Scripts",
    "target": "Volumes",
    "type": "related"
+  },
+  {
+   "source": "Init Scripts",
+   "target": "Git Folders and Workspace Files",
+   "type": "related"
+  },
+  {
+   "source": "Init Scripts",
+   "target": "DBFS",
+   "type": "related"
+  },
+  {
+   "source": "Init Scripts",
+   "target": "Compute Policies",
+   "type": "related"
+  },
+  {
+   "source": "Init Scripts",
+   "target": "Databricks Runtime",
+   "type": "related"
+  },
+  {
+   "source": "Init Scripts",
+   "target": "Serverless Compute",
+   "type": "related"
+  },
+  {
+   "source": "Init Scripts",
+   "target": "Instance Pools",
+   "type": "related"
+  },
+  {
+   "source": "Init Scripts",
+   "target": "Lakeguard",
+   "type": "related"
+  },
+  {
+   "source": "Init Scripts",
+   "target": "Privileges and Grants",
+   "type": "related"
+  },
+  {
+   "source": "Init Scripts",
+   "target": "All-Purpose Compute",
+   "type": "prereqs"
+  },
+  {
+   "source": "Init Scripts",
+   "target": "Libraries and Environments",
+   "type": "prereqs"
+  },
+  {
+   "source": "Init Scripts",
+   "target": "Volumes",
+   "type": "prereqs"
+  },
+  {
+   "source": "Init Scripts",
+   "target": "Compute Policies",
+   "type": "unlocks"
+  },
+  {
+   "source": "Init Scripts",
+   "target": "DBFS",
+   "type": "unlocks"
+  },
+  {
+   "source": "Init Scripts",
+   "target": "Hive Metastore Migration to Unity Catalog",
+   "type": "unlocks"
   },
   {
    "source": "Instance Pools",
@@ -29912,6 +31503,21 @@
   },
   {
    "source": "Instance Pools",
+   "target": "Serverless Compute",
+   "type": "evolved_into"
+  },
+  {
+   "source": "Instance Pools",
+   "target": "EC2 Instance Types and Graviton",
+   "type": "cloud_equivalent"
+  },
+  {
+   "source": "Instance Pools",
+   "target": "Compute on Google Cloud",
+   "type": "cloud_equivalent"
+  },
+  {
+   "source": "Instance Pools",
    "target": "All-Purpose Compute",
    "type": "related"
   },
@@ -29924,6 +31530,76 @@
    "source": "Instance Pools",
    "target": "Compute Policies",
    "type": "related"
+  },
+  {
+   "source": "Instance Pools",
+   "target": "Compute Types",
+   "type": "related"
+  },
+  {
+   "source": "Instance Pools",
+   "target": "Tagging for Chargeback",
+   "type": "related"
+  },
+  {
+   "source": "Instance Pools",
+   "target": "Cost Optimization Checklist",
+   "type": "related"
+  },
+  {
+   "source": "Instance Pools",
+   "target": "DBUs",
+   "type": "related"
+  },
+  {
+   "source": "Instance Pools",
+   "target": "Databricks Runtime",
+   "type": "related"
+  },
+  {
+   "source": "Instance Pools",
+   "target": "Spot Instances",
+   "type": "related"
+  },
+  {
+   "source": "Instance Pools",
+   "target": "Autoscaling",
+   "type": "related"
+  },
+  {
+   "source": "Instance Pools",
+   "target": "Init Scripts",
+   "type": "related"
+  },
+  {
+   "source": "Instance Pools",
+   "target": "Compute Types",
+   "type": "prereqs"
+  },
+  {
+   "source": "Instance Pools",
+   "target": "All-Purpose Compute",
+   "type": "prereqs"
+  },
+  {
+   "source": "Instance Pools",
+   "target": "Jobs Compute",
+   "type": "prereqs"
+  },
+  {
+   "source": "Instance Pools",
+   "target": "Compute Policies",
+   "type": "unlocks"
+  },
+  {
+   "source": "Instance Pools",
+   "target": "Cost Optimization Checklist",
+   "type": "unlocks"
+  },
+  {
+   "source": "Instance Pools",
+   "target": "Tagging for Chargeback",
+   "type": "unlocks"
   },
   {
    "source": "Jobs Compute",
@@ -30532,6 +32208,16 @@
   },
   {
    "source": "Serverless Compute",
+   "target": "Serverless Workspaces and Default Storage",
+   "type": "related"
+  },
+  {
+   "source": "Serverless Compute",
+   "target": "Instance Pools",
+   "type": "related"
+  },
+  {
+   "source": "Serverless Compute",
    "target": "Compute Types",
    "type": "prereqs"
   },
@@ -30577,6 +32263,16 @@
   },
   {
    "source": "Serverless Workspaces and Default Storage",
+   "target": "Workspace Storage Bucket",
+   "type": "evolved_from"
+  },
+  {
+   "source": "Serverless Workspaces and Default Storage",
+   "target": "Managed Resource Group",
+   "type": "evolved_from"
+  },
+  {
+   "source": "Serverless Workspaces and Default Storage",
    "target": "Serverless Compute",
    "type": "related"
   },
@@ -30589,6 +32285,76 @@
    "source": "Serverless Workspaces and Default Storage",
    "target": "Managed vs External Tables",
    "type": "related"
+  },
+  {
+   "source": "Serverless Workspaces and Default Storage",
+   "target": "Storage Credentials and External Locations",
+   "type": "related"
+  },
+  {
+   "source": "Serverless Workspaces and Default Storage",
+   "target": "Unity Catalog",
+   "type": "related"
+  },
+  {
+   "source": "Serverless Workspaces and Default Storage",
+   "target": "Control Plane and Compute Plane",
+   "type": "related"
+  },
+  {
+   "source": "Serverless Workspaces and Default Storage",
+   "target": "Account Console",
+   "type": "related"
+  },
+  {
+   "source": "Serverless Workspaces and Default Storage",
+   "target": "Creating an Azure Databricks Workspace",
+   "type": "related"
+  },
+  {
+   "source": "Serverless Workspaces and Default Storage",
+   "target": "Serverless Network Security",
+   "type": "related"
+  },
+  {
+   "source": "Serverless Workspaces and Default Storage",
+   "target": "OpenSharing",
+   "type": "related"
+  },
+  {
+   "source": "Serverless Workspaces and Default Storage",
+   "target": "DBFS",
+   "type": "related"
+  },
+  {
+   "source": "Serverless Workspaces and Default Storage",
+   "target": "Databricks Free Edition and Trials",
+   "type": "related"
+  },
+  {
+   "source": "Serverless Workspaces and Default Storage",
+   "target": "Accounts and Workspaces",
+   "type": "prereqs"
+  },
+  {
+   "source": "Serverless Workspaces and Default Storage",
+   "target": "Serverless Compute",
+   "type": "prereqs"
+  },
+  {
+   "source": "Serverless Workspaces and Default Storage",
+   "target": "Unity Catalog",
+   "type": "unlocks"
+  },
+  {
+   "source": "Serverless Workspaces and Default Storage",
+   "target": "Managed vs External Tables",
+   "type": "unlocks"
+  },
+  {
+   "source": "Serverless Workspaces and Default Storage",
+   "target": "Your First 30 Days on Databricks",
+   "type": "unlocks"
   },
   {
    "source": "The Data Intelligence Platform",
@@ -30826,6 +32592,66 @@
    "type": "related"
   },
   {
+   "source": "dbutils and Widgets",
+   "target": "Lakeflow Jobs",
+   "type": "related"
+  },
+  {
+   "source": "dbutils and Widgets",
+   "target": "Tasks Triggers and Schedules",
+   "type": "related"
+  },
+  {
+   "source": "dbutils and Widgets",
+   "target": "Databricks Connect",
+   "type": "related"
+  },
+  {
+   "source": "dbutils and Widgets",
+   "target": "Databricks SDKs and REST API",
+   "type": "related"
+  },
+  {
+   "source": "dbutils and Widgets",
+   "target": "DBFS",
+   "type": "related"
+  },
+  {
+   "source": "dbutils and Widgets",
+   "target": "Azure Key Vault Secret Scopes",
+   "type": "related"
+  },
+  {
+   "source": "dbutils and Widgets",
+   "target": "Serverless Compute",
+   "type": "related"
+  },
+  {
+   "source": "dbutils and Widgets",
+   "target": "Notebooks",
+   "type": "prereqs"
+  },
+  {
+   "source": "dbutils and Widgets",
+   "target": "Volumes",
+   "type": "prereqs"
+  },
+  {
+   "source": "dbutils and Widgets",
+   "target": "Lakeflow Jobs",
+   "type": "unlocks"
+  },
+  {
+   "source": "dbutils and Widgets",
+   "target": "Tasks Triggers and Schedules",
+   "type": "unlocks"
+  },
+  {
+   "source": "dbutils and Widgets",
+   "target": "Secrets Management",
+   "type": "unlocks"
+  },
+  {
    "source": "Attribute-Based Access Control",
    "target": "Chapter 07 - Unity Catalog and Governance",
    "type": "chapter"
@@ -30898,6 +32724,11 @@
   {
    "source": "Attribute-Based Access Control",
    "target": "Compliance Security Profile",
+   "type": "related"
+  },
+  {
+   "source": "Attribute-Based Access Control",
+   "target": "Governed Tags",
    "type": "related"
   },
   {
@@ -31037,6 +32868,11 @@
   },
   {
    "source": "Catalog Explorer",
+   "target": "Data Catalog",
+   "type": "evolved_from"
+  },
+  {
+   "source": "Catalog Explorer",
    "target": "Unity Catalog",
    "type": "related"
   },
@@ -31049,6 +32885,66 @@
    "source": "Catalog Explorer",
    "target": "Data Lineage",
    "type": "related"
+  },
+  {
+   "source": "Catalog Explorer",
+   "target": "Catalogs Schemas and Tables",
+   "type": "related"
+  },
+  {
+   "source": "Catalog Explorer",
+   "target": "Governed Tags",
+   "type": "related"
+  },
+  {
+   "source": "Catalog Explorer",
+   "target": "Storage Credentials and External Locations",
+   "type": "related"
+  },
+  {
+   "source": "Catalog Explorer",
+   "target": "Service Credentials",
+   "type": "related"
+  },
+  {
+   "source": "Catalog Explorer",
+   "target": "OpenSharing",
+   "type": "related"
+  },
+  {
+   "source": "Catalog Explorer",
+   "target": "Data Quality Monitoring",
+   "type": "related"
+  },
+  {
+   "source": "Catalog Explorer",
+   "target": "Securable Object",
+   "type": "related"
+  },
+  {
+   "source": "Catalog Explorer",
+   "target": "Unity Catalog",
+   "type": "prereqs"
+  },
+  {
+   "source": "Catalog Explorer",
+   "target": "Three-Level Namespace",
+   "type": "prereqs"
+  },
+  {
+   "source": "Catalog Explorer",
+   "target": "Governed Tags",
+   "type": "unlocks"
+  },
+  {
+   "source": "Catalog Explorer",
+   "target": "Privileges and Grants",
+   "type": "unlocks"
+  },
+  {
+   "source": "Catalog Explorer",
+   "target": "Data Lineage",
+   "type": "unlocks"
   },
   {
    "source": "Catalogs Schemas and Tables",
@@ -31412,6 +33308,11 @@
   },
   {
    "source": "Data Classification",
+   "target": "Governed Tags",
+   "type": "related"
+  },
+  {
+   "source": "Data Classification",
    "target": "Attribute-Based Access Control",
    "type": "prereqs"
   },
@@ -31646,6 +33547,61 @@
    "type": "related"
   },
   {
+   "source": "Governed Tags",
+   "target": "Catalog Explorer",
+   "type": "related"
+  },
+  {
+   "source": "Governed Tags",
+   "target": "Row Filters and Column Masks",
+   "type": "related"
+  },
+  {
+   "source": "Governed Tags",
+   "target": "Securable Object",
+   "type": "related"
+  },
+  {
+   "source": "Governed Tags",
+   "target": "PII",
+   "type": "related"
+  },
+  {
+   "source": "Governed Tags",
+   "target": "Data Governance",
+   "type": "related"
+  },
+  {
+   "source": "Governed Tags",
+   "target": "Account Console",
+   "type": "related"
+  },
+  {
+   "source": "Governed Tags",
+   "target": "Databricks CLI",
+   "type": "related"
+  },
+  {
+   "source": "Governed Tags",
+   "target": "Catalog Explorer",
+   "type": "prereqs"
+  },
+  {
+   "source": "Governed Tags",
+   "target": "Privileges and Grants",
+   "type": "prereqs"
+  },
+  {
+   "source": "Governed Tags",
+   "target": "Attribute-Based Access Control",
+   "type": "unlocks"
+  },
+  {
+   "source": "Governed Tags",
+   "target": "Data Classification",
+   "type": "unlocks"
+  },
+  {
    "source": "Hive Metastore Migration to Unity Catalog",
    "target": "Chapter 07 - Unity Catalog and Governance",
    "type": "chapter"
@@ -31794,6 +33750,76 @@
    "source": "Lakeguard",
    "target": "Serverless Compute",
    "type": "related"
+  },
+  {
+   "source": "Lakeguard",
+   "target": "Spark Connect",
+   "type": "related"
+  },
+  {
+   "source": "Lakeguard",
+   "target": "SQL Warehouses",
+   "type": "related"
+  },
+  {
+   "source": "Lakeguard",
+   "target": "Unity Catalog Functions",
+   "type": "related"
+  },
+  {
+   "source": "Lakeguard",
+   "target": "Attribute-Based Access Control",
+   "type": "related"
+  },
+  {
+   "source": "Lakeguard",
+   "target": "Unity Catalog",
+   "type": "related"
+  },
+  {
+   "source": "Lakeguard",
+   "target": "Driver and Executors",
+   "type": "related"
+  },
+  {
+   "source": "Lakeguard",
+   "target": "JVM",
+   "type": "related"
+  },
+  {
+   "source": "Lakeguard",
+   "target": "Container",
+   "type": "related"
+  },
+  {
+   "source": "Lakeguard",
+   "target": "All-Purpose Compute",
+   "type": "related"
+  },
+  {
+   "source": "Lakeguard",
+   "target": "Compute Types",
+   "type": "prereqs"
+  },
+  {
+   "source": "Lakeguard",
+   "target": "Spark Connect",
+   "type": "prereqs"
+  },
+  {
+   "source": "Lakeguard",
+   "target": "Row Filters and Column Masks",
+   "type": "prereqs"
+  },
+  {
+   "source": "Lakeguard",
+   "target": "Serverless Compute",
+   "type": "unlocks"
+  },
+  {
+   "source": "Lakeguard",
+   "target": "Compute Policies",
+   "type": "unlocks"
   },
   {
    "source": "Lakehouse Federation",
@@ -31978,6 +34004,11 @@
   {
    "source": "Managed vs External Tables",
    "target": "Hive Metastore Migration to Unity Catalog",
+   "type": "related"
+  },
+  {
+   "source": "Managed vs External Tables",
+   "target": "Predictive Optimization",
    "type": "related"
   },
   {
@@ -32407,6 +34438,21 @@
   },
   {
    "source": "Service Credentials",
+   "target": "Instance Profiles",
+   "type": "evolved_from"
+  },
+  {
+   "source": "Service Credentials",
+   "target": "ADLS and Access Connectors",
+   "type": "related"
+  },
+  {
+   "source": "Service Credentials",
+   "target": "Google Service Accounts",
+   "type": "related"
+  },
+  {
+   "source": "Service Credentials",
    "target": "Storage Credentials and External Locations",
    "type": "related"
   },
@@ -32419,6 +34465,61 @@
    "source": "Service Credentials",
    "target": "Unity Catalog",
    "type": "related"
+  },
+  {
+   "source": "Service Credentials",
+   "target": "Unity Catalog Functions",
+   "type": "related"
+  },
+  {
+   "source": "Service Credentials",
+   "target": "Azure Key Vault Secret Scopes",
+   "type": "related"
+  },
+  {
+   "source": "Service Credentials",
+   "target": "Managed Identity",
+   "type": "related"
+  },
+  {
+   "source": "Service Credentials",
+   "target": "IAM",
+   "type": "related"
+  },
+  {
+   "source": "Service Credentials",
+   "target": "Privileges and Grants",
+   "type": "related"
+  },
+  {
+   "source": "Service Credentials",
+   "target": "Structured Streaming on Databricks",
+   "type": "related"
+  },
+  {
+   "source": "Service Credentials",
+   "target": "Lakehouse Federation",
+   "type": "related"
+  },
+  {
+   "source": "Service Credentials",
+   "target": "Least Privilege",
+   "type": "related"
+  },
+  {
+   "source": "Service Credentials",
+   "target": "Storage Credentials and External Locations",
+   "type": "prereqs"
+  },
+  {
+   "source": "Service Credentials",
+   "target": "Privileges and Grants",
+   "type": "prereqs"
+  },
+  {
+   "source": "Service Credentials",
+   "target": "Unity Catalog Functions",
+   "type": "unlocks"
   },
   {
    "source": "Storage Credentials and External Locations",
@@ -32503,6 +34604,11 @@
   {
    "source": "Storage Credentials and External Locations",
    "target": "Secrets Management",
+   "type": "related"
+  },
+  {
+   "source": "Storage Credentials and External Locations",
+   "target": "Service Credentials",
    "type": "related"
   },
   {
@@ -32752,6 +34858,11 @@
   },
   {
    "source": "Unity Catalog Functions",
+   "target": "UDF",
+   "type": "evolved_from"
+  },
+  {
+   "source": "Unity Catalog Functions",
    "target": "Row Filters and Column Masks",
    "type": "related"
   },
@@ -32764,6 +34875,86 @@
    "source": "Unity Catalog Functions",
    "target": "Mosaic AI Agent Framework",
    "type": "related"
+  },
+  {
+   "source": "Unity Catalog Functions",
+   "target": "Attribute-Based Access Control",
+   "type": "related"
+  },
+  {
+   "source": "Unity Catalog Functions",
+   "target": "Managed MCP Servers",
+   "type": "related"
+  },
+  {
+   "source": "Unity Catalog Functions",
+   "target": "Agent Bricks",
+   "type": "related"
+  },
+  {
+   "source": "Unity Catalog Functions",
+   "target": "Service Credentials",
+   "type": "related"
+  },
+  {
+   "source": "Unity Catalog Functions",
+   "target": "Lakeguard",
+   "type": "related"
+  },
+  {
+   "source": "Unity Catalog Functions",
+   "target": "Catalogs Schemas and Tables",
+   "type": "related"
+  },
+  {
+   "source": "Unity Catalog Functions",
+   "target": "SQL Scripting and Stored Procedures",
+   "type": "related"
+  },
+  {
+   "source": "Unity Catalog Functions",
+   "target": "Feature Engineering and Feature Store",
+   "type": "related"
+  },
+  {
+   "source": "Unity Catalog Functions",
+   "target": "Serverless Compute",
+   "type": "related"
+  },
+  {
+   "source": "Unity Catalog Functions",
+   "target": "AI Agent",
+   "type": "related"
+  },
+  {
+   "source": "Unity Catalog Functions",
+   "target": "Catalogs Schemas and Tables",
+   "type": "prereqs"
+  },
+  {
+   "source": "Unity Catalog Functions",
+   "target": "Privileges and Grants",
+   "type": "prereqs"
+  },
+  {
+   "source": "Unity Catalog Functions",
+   "target": "SQL",
+   "type": "prereqs"
+  },
+  {
+   "source": "Unity Catalog Functions",
+   "target": "Row Filters and Column Masks",
+   "type": "unlocks"
+  },
+  {
+   "source": "Unity Catalog Functions",
+   "target": "Managed MCP Servers",
+   "type": "unlocks"
+  },
+  {
+   "source": "Unity Catalog Functions",
+   "target": "Agent Bricks",
+   "type": "unlocks"
   },
   {
    "source": "Unity Catalog",
@@ -32923,6 +35114,21 @@
   {
    "source": "Volumes",
    "target": "Databricks CLI",
+   "type": "related"
+  },
+  {
+   "source": "Volumes",
+   "target": "DBFS",
+   "type": "related"
+  },
+  {
+   "source": "Volumes",
+   "target": "Init Scripts",
+   "type": "related"
+  },
+  {
+   "source": "Volumes",
+   "target": "dbutils and Widgets",
    "type": "related"
   },
   {
@@ -35422,6 +37628,16 @@
   },
   {
    "source": "Databricks SQL",
+   "target": "VARIANT Data Type",
+   "type": "related"
+  },
+  {
+   "source": "Databricks SQL",
+   "target": "SQL Scripting and Stored Procedures",
+   "type": "related"
+  },
+  {
+   "source": "Databricks SQL",
    "target": "SQL",
    "type": "prereqs"
   },
@@ -36332,6 +38548,16 @@
   },
   {
    "source": "SQL Scripting and Stored Procedures",
+   "target": "SQL",
+   "type": "evolved_from"
+  },
+  {
+   "source": "SQL Scripting and Stored Procedures",
+   "target": "Relational Databases",
+   "type": "evolved_from"
+  },
+  {
+   "source": "SQL Scripting and Stored Procedures",
    "target": "Databricks SQL",
    "type": "related"
   },
@@ -36344,6 +38570,71 @@
    "source": "SQL Scripting and Stored Procedures",
    "target": "Unity Catalog Functions",
    "type": "related"
+  },
+  {
+   "source": "SQL Scripting and Stored Procedures",
+   "target": "SQL Editor",
+   "type": "related"
+  },
+  {
+   "source": "SQL Scripting and Stored Procedures",
+   "target": "SQL Warehouses",
+   "type": "related"
+  },
+  {
+   "source": "SQL Scripting and Stored Procedures",
+   "target": "Lakeflow Jobs",
+   "type": "related"
+  },
+  {
+   "source": "SQL Scripting and Stored Procedures",
+   "target": "ACID Transactions",
+   "type": "related"
+  },
+  {
+   "source": "SQL Scripting and Stored Procedures",
+   "target": "Privileges and Grants",
+   "type": "related"
+  },
+  {
+   "source": "SQL Scripting and Stored Procedures",
+   "target": "Managed vs External Tables",
+   "type": "related"
+  },
+  {
+   "source": "SQL Scripting and Stored Procedures",
+   "target": "Lakebridge",
+   "type": "related"
+  },
+  {
+   "source": "SQL Scripting and Stored Procedures",
+   "target": "Idempotency",
+   "type": "related"
+  },
+  {
+   "source": "SQL Scripting and Stored Procedures",
+   "target": "SQL",
+   "type": "prereqs"
+  },
+  {
+   "source": "SQL Scripting and Stored Procedures",
+   "target": "Databricks SQL",
+   "type": "prereqs"
+  },
+  {
+   "source": "SQL Scripting and Stored Procedures",
+   "target": "Privileges and Grants",
+   "type": "prereqs"
+  },
+  {
+   "source": "SQL Scripting and Stored Procedures",
+   "target": "Migrating from SQL Server",
+   "type": "unlocks"
+  },
+  {
+   "source": "SQL Scripting and Stored Procedures",
+   "target": "Lakeflow Jobs",
+   "type": "unlocks"
   },
   {
    "source": "VARIANT Data Type",
@@ -36362,6 +38653,16 @@
   },
   {
    "source": "VARIANT Data Type",
+   "target": "CSV and JSON",
+   "type": "evolved_from"
+  },
+  {
+   "source": "VARIANT Data Type",
+   "target": "Semi-Structured Data",
+   "type": "evolved_from"
+  },
+  {
+   "source": "VARIANT Data Type",
    "target": "Structured vs Unstructured Data",
    "type": "related"
   },
@@ -36374,6 +38675,81 @@
    "source": "VARIANT Data Type",
    "target": "Databricks SQL",
    "type": "related"
+  },
+  {
+   "source": "VARIANT Data Type",
+   "target": "Semi-Structured Data",
+   "type": "related"
+  },
+  {
+   "source": "VARIANT Data Type",
+   "target": "Data Type",
+   "type": "related"
+  },
+  {
+   "source": "VARIANT Data Type",
+   "target": "Schema-on-Read",
+   "type": "related"
+  },
+  {
+   "source": "VARIANT Data Type",
+   "target": "Delta Lake",
+   "type": "related"
+  },
+  {
+   "source": "VARIANT Data Type",
+   "target": "Apache Iceberg",
+   "type": "related"
+  },
+  {
+   "source": "VARIANT Data Type",
+   "target": "Apache Parquet",
+   "type": "related"
+  },
+  {
+   "source": "VARIANT Data Type",
+   "target": "Predictive Optimization",
+   "type": "related"
+  },
+  {
+   "source": "VARIANT Data Type",
+   "target": "Data Skipping",
+   "type": "related"
+  },
+  {
+   "source": "VARIANT Data Type",
+   "target": "Schema Enforcement and Evolution",
+   "type": "related"
+  },
+  {
+   "source": "VARIANT Data Type",
+   "target": "Auto Loader",
+   "type": "related"
+  },
+  {
+   "source": "VARIANT Data Type",
+   "target": "CSV and JSON",
+   "type": "prereqs"
+  },
+  {
+   "source": "VARIANT Data Type",
+   "target": "Semi-Structured Data",
+   "type": "prereqs"
+  },
+  {
+   "source": "VARIANT Data Type",
+   "target": "Databricks SQL",
+   "type": "prereqs"
+  },
+  {
+   "source": "VARIANT Data Type",
+   "target": "Auto Loader",
+   "type": "unlocks"
+  },
+  {
+   "source": "VARIANT Data Type",
+   "target": "Medallion Architecture",
+   "type": "unlocks"
   },
   {
    "source": "AI Playground",
@@ -36392,6 +38768,11 @@
   },
   {
    "source": "AI Playground",
+   "target": "Agent Bricks",
+   "type": "evolved_into"
+  },
+  {
+   "source": "AI Playground",
    "target": "Foundation Model APIs",
    "type": "related"
   },
@@ -36404,6 +38785,86 @@
    "source": "AI Playground",
    "target": "Agent Bricks",
    "type": "related"
+  },
+  {
+   "source": "AI Playground",
+   "target": "LLM",
+   "type": "related"
+  },
+  {
+   "source": "AI Playground",
+   "target": "Prompt",
+   "type": "related"
+  },
+  {
+   "source": "AI Playground",
+   "target": "Token",
+   "type": "related"
+  },
+  {
+   "source": "AI Playground",
+   "target": "Unity Gateway",
+   "type": "related"
+  },
+  {
+   "source": "AI Playground",
+   "target": "AI Search",
+   "type": "related"
+  },
+  {
+   "source": "AI Playground",
+   "target": "Unity Catalog Functions",
+   "type": "related"
+  },
+  {
+   "source": "AI Playground",
+   "target": "Databricks Apps",
+   "type": "related"
+  },
+  {
+   "source": "AI Playground",
+   "target": "Model Serving",
+   "type": "related"
+  },
+  {
+   "source": "AI Playground",
+   "target": "Hallucination",
+   "type": "related"
+  },
+  {
+   "source": "AI Playground",
+   "target": "Databricks on AWS GovCloud",
+   "type": "related"
+  },
+  {
+   "source": "AI Playground",
+   "target": "Generative AI and LLMs",
+   "type": "prereqs"
+  },
+  {
+   "source": "AI Playground",
+   "target": "LLM",
+   "type": "prereqs"
+  },
+  {
+   "source": "AI Playground",
+   "target": "Prompt",
+   "type": "prereqs"
+  },
+  {
+   "source": "AI Playground",
+   "target": "Foundation Model APIs",
+   "type": "unlocks"
+  },
+  {
+   "source": "AI Playground",
+   "target": "Agent Bricks",
+   "type": "unlocks"
+  },
+  {
+   "source": "AI Playground",
+   "target": "Retrieval-Augmented Generation",
+   "type": "unlocks"
   },
   {
    "source": "AI Runtime",
@@ -36673,6 +39134,16 @@
   {
    "source": "Agent Bricks",
    "target": "MLflow",
+   "type": "related"
+  },
+  {
+   "source": "Agent Bricks",
+   "target": "Managed MCP Servers",
+   "type": "related"
+  },
+  {
+   "source": "Agent Bricks",
+   "target": "AI Playground",
    "type": "related"
   },
   {
@@ -37402,6 +39873,11 @@
   },
   {
    "source": "Foundation Model APIs",
+   "target": "AI Playground",
+   "type": "related"
+  },
+  {
+   "source": "Foundation Model APIs",
    "target": "Model Serving",
    "type": "prereqs"
   },
@@ -37508,6 +39984,11 @@
   {
    "source": "Generative AI and LLMs",
    "target": "MosaicML and Open Models",
+   "type": "related"
+  },
+  {
+   "source": "Generative AI and LLMs",
+   "target": "AI Playground",
    "type": "related"
   },
   {
@@ -37769,6 +40250,91 @@
    "source": "Managed MCP Servers",
    "target": "AI Search",
    "type": "related"
+  },
+  {
+   "source": "Managed MCP Servers",
+   "target": "Model Context Protocol",
+   "type": "related"
+  },
+  {
+   "source": "Managed MCP Servers",
+   "target": "Unity Gateway",
+   "type": "related"
+  },
+  {
+   "source": "Managed MCP Servers",
+   "target": "Genie One",
+   "type": "related"
+  },
+  {
+   "source": "Managed MCP Servers",
+   "target": "Genie Agents",
+   "type": "related"
+  },
+  {
+   "source": "Managed MCP Servers",
+   "target": "Databricks SQL",
+   "type": "related"
+  },
+  {
+   "source": "Managed MCP Servers",
+   "target": "SQL Warehouses",
+   "type": "related"
+  },
+  {
+   "source": "Managed MCP Servers",
+   "target": "Mosaic AI Agent Framework",
+   "type": "related"
+  },
+  {
+   "source": "Managed MCP Servers",
+   "target": "Databricks Apps",
+   "type": "related"
+  },
+  {
+   "source": "Managed MCP Servers",
+   "target": "AI Agent",
+   "type": "related"
+  },
+  {
+   "source": "Managed MCP Servers",
+   "target": "OAuth",
+   "type": "related"
+  },
+  {
+   "source": "Managed MCP Servers",
+   "target": "Privileges and Grants",
+   "type": "related"
+  },
+  {
+   "source": "Managed MCP Servers",
+   "target": "Model Context Protocol",
+   "type": "prereqs"
+  },
+  {
+   "source": "Managed MCP Servers",
+   "target": "AI Agent",
+   "type": "prereqs"
+  },
+  {
+   "source": "Managed MCP Servers",
+   "target": "Unity Catalog Functions",
+   "type": "prereqs"
+  },
+  {
+   "source": "Managed MCP Servers",
+   "target": "Unity Gateway",
+   "type": "prereqs"
+  },
+  {
+   "source": "Managed MCP Servers",
+   "target": "Agent Bricks",
+   "type": "unlocks"
+  },
+  {
+   "source": "Managed MCP Servers",
+   "target": "Mosaic AI Agent Framework",
+   "type": "unlocks"
   },
   {
    "source": "Model Serving",
@@ -38313,6 +40879,11 @@
   {
    "source": "Unity Gateway",
    "target": "Databricks on AWS GovCloud",
+   "type": "related"
+  },
+  {
+   "source": "Unity Gateway",
+   "target": "Managed MCP Servers",
    "type": "related"
   },
   {
@@ -42627,6 +45198,16 @@
   },
   {
    "source": "Compute Policies",
+   "target": "Instance Pools",
+   "type": "related"
+  },
+  {
+   "source": "Compute Policies",
+   "target": "Init Scripts",
+   "type": "related"
+  },
+  {
+   "source": "Compute Policies",
    "target": "Compute Types",
    "type": "prereqs"
   },
@@ -44867,6 +47448,11 @@
   },
   {
    "source": "Migrating from SQL Server",
+   "target": "SQL Scripting and Stored Procedures",
+   "type": "related"
+  },
+  {
+   "source": "Migrating from SQL Server",
    "target": "Migration Strategy Overview",
    "type": "prereqs"
   },
@@ -46716,6 +49302,36 @@
    "type": "related"
   },
   {
+   "source": "Apache Arrow",
+   "target": "PySpark",
+   "type": "related"
+  },
+  {
+   "source": "Apache Arrow",
+   "target": "Pandas",
+   "type": "related"
+  },
+  {
+   "source": "Apache Arrow",
+   "target": "Columnar Storage",
+   "type": "related"
+  },
+  {
+   "source": "Apache Arrow",
+   "target": "Serialization",
+   "type": "related"
+  },
+  {
+   "source": "Apache Arrow",
+   "target": "UDF",
+   "type": "related"
+  },
+  {
+   "source": "Apache Arrow",
+   "target": "Spark Connect",
+   "type": "related"
+  },
+  {
    "source": "Apache Software Foundation",
    "target": "Apache Spark",
    "type": "related"
@@ -46836,6 +49452,36 @@
    "type": "related"
   },
   {
+   "source": "B-Tree",
+   "target": "Index",
+   "type": "related"
+  },
+  {
+   "source": "B-Tree",
+   "target": "Relational Databases",
+   "type": "related"
+  },
+  {
+   "source": "B-Tree",
+   "target": "OLTP vs OLAP",
+   "type": "related"
+  },
+  {
+   "source": "B-Tree",
+   "target": "Data Skipping",
+   "type": "related"
+  },
+  {
+   "source": "B-Tree",
+   "target": "Liquid Clustering",
+   "type": "related"
+  },
+  {
+   "source": "B-Tree",
+   "target": "Migrating from Postgres and MySQL",
+   "type": "related"
+  },
+  {
    "source": "Backfill",
    "target": "Lakeflow Jobs",
    "type": "related"
@@ -46926,6 +49572,36 @@
    "type": "related"
   },
   {
+   "source": "CAP Theorem",
+   "target": "Distributed Systems",
+   "type": "related"
+  },
+  {
+   "source": "CAP Theorem",
+   "target": "Replication",
+   "type": "related"
+  },
+  {
+   "source": "CAP Theorem",
+   "target": "Fault Tolerance",
+   "type": "related"
+  },
+  {
+   "source": "CAP Theorem",
+   "target": "ACID Transactions",
+   "type": "related"
+  },
+  {
+   "source": "CAP Theorem",
+   "target": "NoSQL",
+   "type": "related"
+  },
+  {
+   "source": "CAP Theorem",
+   "target": "Apache HBase",
+   "type": "related"
+  },
+  {
    "source": "CI-CD",
    "target": "CI-CD for Data Pipelines",
    "type": "related"
@@ -46953,6 +49629,36 @@
   {
    "source": "CI-CD",
    "target": "Terraform Provider",
+   "type": "related"
+  },
+  {
+   "source": "CIDR",
+   "target": "Subnet",
+   "type": "related"
+  },
+  {
+   "source": "CIDR",
+   "target": "VPC and VNet",
+   "type": "related"
+  },
+  {
+   "source": "CIDR",
+   "target": "VNet Injection",
+   "type": "related"
+  },
+  {
+   "source": "CIDR",
+   "target": "Customer-Managed VPC on AWS",
+   "type": "related"
+  },
+  {
+   "source": "CIDR",
+   "target": "Customer-Managed VPC on Google Cloud",
+   "type": "related"
+  },
+  {
+   "source": "CIDR",
+   "target": "IP Access Lists",
    "type": "related"
   },
   {
@@ -46986,6 +49692,36 @@
    "type": "related"
   },
   {
+   "source": "Chargeback",
+   "target": "Tagging for Chargeback",
+   "type": "related"
+  },
+  {
+   "source": "Chargeback",
+   "target": "System Tables",
+   "type": "related"
+  },
+  {
+   "source": "Chargeback",
+   "target": "Budgets and Usage Dashboards",
+   "type": "related"
+  },
+  {
+   "source": "Chargeback",
+   "target": "FinOps",
+   "type": "related"
+  },
+  {
+   "source": "Chargeback",
+   "target": "DBUs",
+   "type": "related"
+  },
+  {
+   "source": "Chargeback",
+   "target": "Cost Management Basics",
+   "type": "related"
+  },
+  {
    "source": "Checkpoint",
    "target": "Structured Streaming",
    "type": "related"
@@ -47016,6 +49752,36 @@
    "type": "related"
   },
   {
+   "source": "Chunking",
+   "target": "Retrieval-Augmented Generation",
+   "type": "related"
+  },
+  {
+   "source": "Chunking",
+   "target": "Embedding",
+   "type": "related"
+  },
+  {
+   "source": "Chunking",
+   "target": "AI Search",
+   "type": "related"
+  },
+  {
+   "source": "Chunking",
+   "target": "Context Window",
+   "type": "related"
+  },
+  {
+   "source": "Chunking",
+   "target": "Token",
+   "type": "related"
+  },
+  {
+   "source": "Chunking",
+   "target": "Hybrid Search",
+   "type": "related"
+  },
+  {
    "source": "Cluster",
    "target": "Compute Types",
    "type": "related"
@@ -47043,6 +49809,86 @@
   {
    "source": "Cluster",
    "target": "Compute Policies",
+   "type": "related"
+  },
+  {
+   "source": "Collation",
+   "target": "Data Type",
+   "type": "related"
+  },
+  {
+   "source": "Collation",
+   "target": "SQL",
+   "type": "related"
+  },
+  {
+   "source": "Collation",
+   "target": "Databricks SQL",
+   "type": "related"
+  },
+  {
+   "source": "Collation",
+   "target": "Migrating from SQL Server",
+   "type": "related"
+  },
+  {
+   "source": "Collation",
+   "target": "Index",
+   "type": "related"
+  },
+  {
+   "source": "Column Mapping",
+   "target": "Delta Lake",
+   "type": "related"
+  },
+  {
+   "source": "Column Mapping",
+   "target": "Schema Enforcement and Evolution",
+   "type": "related"
+  },
+  {
+   "source": "Column Mapping",
+   "target": "Delta UniForm",
+   "type": "related"
+  },
+  {
+   "source": "Column Mapping",
+   "target": "Delta Transaction Log",
+   "type": "related"
+  },
+  {
+   "source": "Column Mapping",
+   "target": "OPTIMIZE and VACUUM",
+   "type": "related"
+  },
+  {
+   "source": "Commodity Hardware",
+   "target": "Scaling Up vs Scaling Out",
+   "type": "related"
+  },
+  {
+   "source": "Commodity Hardware",
+   "target": "Google File System and MapReduce Papers",
+   "type": "related"
+  },
+  {
+   "source": "Commodity Hardware",
+   "target": "Apache Hadoop",
+   "type": "related"
+  },
+  {
+   "source": "Commodity Hardware",
+   "target": "Fault Tolerance",
+   "type": "related"
+  },
+  {
+   "source": "Commodity Hardware",
+   "target": "Distributed Systems",
+   "type": "related"
+  },
+  {
+   "source": "Commodity Hardware",
+   "target": "Node",
    "type": "related"
   },
   {
@@ -47103,6 +49949,66 @@
   {
    "source": "Container",
    "target": "Virtual Machine",
+   "type": "related"
+  },
+  {
+   "source": "Context Window",
+   "target": "Token",
+   "type": "related"
+  },
+  {
+   "source": "Context Window",
+   "target": "LLM",
+   "type": "related"
+  },
+  {
+   "source": "Context Window",
+   "target": "Generative AI and LLMs",
+   "type": "related"
+  },
+  {
+   "source": "Context Window",
+   "target": "Retrieval-Augmented Generation",
+   "type": "related"
+  },
+  {
+   "source": "Context Window",
+   "target": "Chunking",
+   "type": "related"
+  },
+  {
+   "source": "Context Window",
+   "target": "Foundation Model APIs",
+   "type": "related"
+  },
+  {
+   "source": "Copy-on-Write and Merge-on-Read",
+   "target": "Deletion Vectors",
+   "type": "related"
+  },
+  {
+   "source": "Copy-on-Write and Merge-on-Read",
+   "target": "Open Table Formats",
+   "type": "related"
+  },
+  {
+   "source": "Copy-on-Write and Merge-on-Read",
+   "target": "Apache Iceberg",
+   "type": "related"
+  },
+  {
+   "source": "Copy-on-Write and Merge-on-Read",
+   "target": "Apache Hudi",
+   "type": "related"
+  },
+  {
+   "source": "Copy-on-Write and Merge-on-Read",
+   "target": "MERGE and Upserts",
+   "type": "related"
+  },
+  {
+   "source": "Copy-on-Write and Merge-on-Read",
+   "target": "Delta Lake",
    "type": "related"
   },
   {
@@ -47701,6 +50607,66 @@
    "type": "related"
   },
   {
+   "source": "Endpoint",
+   "target": "Model Serving",
+   "type": "related"
+  },
+  {
+   "source": "Endpoint",
+   "target": "APIs",
+   "type": "related"
+  },
+  {
+   "source": "Endpoint",
+   "target": "REST",
+   "type": "related"
+  },
+  {
+   "source": "Endpoint",
+   "target": "SQL Warehouses",
+   "type": "related"
+  },
+  {
+   "source": "Endpoint",
+   "target": "AI Search",
+   "type": "related"
+  },
+  {
+   "source": "Endpoint",
+   "target": "Private Endpoint",
+   "type": "related"
+  },
+  {
+   "source": "Event Time",
+   "target": "Watermark",
+   "type": "related"
+  },
+  {
+   "source": "Event Time",
+   "target": "Structured Streaming",
+   "type": "related"
+  },
+  {
+   "source": "Event Time",
+   "target": "Structured Streaming on Databricks",
+   "type": "related"
+  },
+  {
+   "source": "Event Time",
+   "target": "Batch vs Streaming",
+   "type": "related"
+  },
+  {
+   "source": "Event Time",
+   "target": "Event",
+   "type": "related"
+  },
+  {
+   "source": "Event Time",
+   "target": "Aggregation",
+   "type": "related"
+  },
+  {
    "source": "Event",
    "target": "Apache Kafka",
    "type": "related"
@@ -47851,6 +50817,66 @@
    "type": "related"
   },
   {
+   "source": "FedRAMP",
+   "target": "Databricks on AWS GovCloud",
+   "type": "related"
+  },
+  {
+   "source": "FedRAMP",
+   "target": "Compliance Security Profile",
+   "type": "related"
+  },
+  {
+   "source": "FedRAMP",
+   "target": "SOC 2",
+   "type": "related"
+  },
+  {
+   "source": "FedRAMP",
+   "target": "HIPAA",
+   "type": "related"
+  },
+  {
+   "source": "FedRAMP",
+   "target": "PCI DSS",
+   "type": "related"
+  },
+  {
+   "source": "FedRAMP",
+   "target": "Encryption",
+   "type": "related"
+  },
+  {
+   "source": "FinOps",
+   "target": "Cost Management Basics",
+   "type": "related"
+  },
+  {
+   "source": "FinOps",
+   "target": "Chargeback",
+   "type": "related"
+  },
+  {
+   "source": "FinOps",
+   "target": "Budgets and Usage Dashboards",
+   "type": "related"
+  },
+  {
+   "source": "FinOps",
+   "target": "Cost Optimization Checklist",
+   "type": "related"
+  },
+  {
+   "source": "FinOps",
+   "target": "Tagging for Chargeback",
+   "type": "related"
+  },
+  {
+   "source": "FinOps",
+   "target": "Total Cost of Ownership",
+   "type": "related"
+  },
+  {
    "source": "Firewall",
    "target": "Network Security Overview",
    "type": "related"
@@ -47878,6 +50904,36 @@
   {
    "source": "Firewall",
    "target": "Serverless Network Security",
+   "type": "related"
+  },
+  {
+   "source": "Foreign Catalog",
+   "target": "Lakehouse Federation",
+   "type": "related"
+  },
+  {
+   "source": "Foreign Catalog",
+   "target": "Catalogs Schemas and Tables",
+   "type": "related"
+  },
+  {
+   "source": "Foreign Catalog",
+   "target": "Unity Catalog",
+   "type": "related"
+  },
+  {
+   "source": "Foreign Catalog",
+   "target": "Securable Object",
+   "type": "related"
+  },
+  {
+   "source": "Foreign Catalog",
+   "target": "Hive Metastore Federation for AWS Glue",
+   "type": "related"
+  },
+  {
+   "source": "Foreign Catalog",
+   "target": "Migrating from Postgres and MySQL",
    "type": "related"
   },
   {
@@ -47938,6 +50994,36 @@
   {
    "source": "GPU",
    "target": "Foundation Model APIs",
+   "type": "related"
+  },
+  {
+   "source": "Garbage Collection",
+   "target": "JVM",
+   "type": "related"
+  },
+  {
+   "source": "Garbage Collection",
+   "target": "Driver and Executors",
+   "type": "related"
+  },
+  {
+   "source": "Garbage Collection",
+   "target": "Spark UI",
+   "type": "related"
+  },
+  {
+   "source": "Garbage Collection",
+   "target": "Spill",
+   "type": "related"
+  },
+  {
+   "source": "Garbage Collection",
+   "target": "Caching",
+   "type": "related"
+  },
+  {
+   "source": "Garbage Collection",
+   "target": "Serialization",
    "type": "related"
   },
   {
@@ -48028,6 +51114,61 @@
   {
    "source": "Hallucination",
    "target": "Genie Agents",
+   "type": "related"
+  },
+  {
+   "source": "Hybrid Search",
+   "target": "AI Search",
+   "type": "related"
+  },
+  {
+   "source": "Hybrid Search",
+   "target": "Embedding",
+   "type": "related"
+  },
+  {
+   "source": "Hybrid Search",
+   "target": "Retrieval-Augmented Generation",
+   "type": "related"
+  },
+  {
+   "source": "Hybrid Search",
+   "target": "Chunking",
+   "type": "related"
+  },
+  {
+   "source": "Hybrid Search",
+   "target": "Index",
+   "type": "related"
+  },
+  {
+   "source": "Hyperparameter",
+   "target": "Machine Learning Basics",
+   "type": "related"
+  },
+  {
+   "source": "Hyperparameter",
+   "target": "Training",
+   "type": "related"
+  },
+  {
+   "source": "Hyperparameter",
+   "target": "AutoML",
+   "type": "related"
+  },
+  {
+   "source": "Hyperparameter",
+   "target": "Experiment Tracking",
+   "type": "related"
+  },
+  {
+   "source": "Hyperparameter",
+   "target": "MLflow",
+   "type": "related"
+  },
+  {
+   "source": "Hyperparameter",
+   "target": "Overfitting",
    "type": "related"
   },
   {
@@ -48271,6 +51412,31 @@
    "type": "related"
   },
   {
+   "source": "Isolation Level",
+   "target": "ACID Transactions",
+   "type": "related"
+  },
+  {
+   "source": "Isolation Level",
+   "target": "Optimistic Concurrency",
+   "type": "related"
+  },
+  {
+   "source": "Isolation Level",
+   "target": "MVCC",
+   "type": "related"
+  },
+  {
+   "source": "Isolation Level",
+   "target": "Delta Transaction Log",
+   "type": "related"
+  },
+  {
+   "source": "Isolation Level",
+   "target": "MERGE and Upserts",
+   "type": "related"
+  },
+  {
    "source": "JDBC and ODBC",
    "target": "Connecting Tableau and Other BI Tools",
    "type": "related"
@@ -48386,6 +51552,36 @@
    "type": "related"
   },
   {
+   "source": "Kerberos",
+   "target": "Apache Hadoop",
+   "type": "related"
+  },
+  {
+   "source": "Kerberos",
+   "target": "Migrating from Hadoop",
+   "type": "related"
+  },
+  {
+   "source": "Kerberos",
+   "target": "Authentication - Tokens and OAuth",
+   "type": "related"
+  },
+  {
+   "source": "Kerberos",
+   "target": "Single Sign-On",
+   "type": "related"
+  },
+  {
+   "source": "Kerberos",
+   "target": "OAuth",
+   "type": "related"
+  },
+  {
+   "source": "Kerberos",
+   "target": "Identity Provider",
+   "type": "related"
+  },
+  {
    "source": "Kubernetes",
    "target": "Serverless Compute",
    "type": "related"
@@ -48438,6 +51634,31 @@
   {
    "source": "LLM",
    "target": "AI Functions in SQL",
+   "type": "related"
+  },
+  {
+   "source": "LTS",
+   "target": "Databricks Runtime",
+   "type": "related"
+  },
+  {
+   "source": "LTS",
+   "target": "Jobs Compute",
+   "type": "related"
+  },
+  {
+   "source": "LTS",
+   "target": "Compute Policies",
+   "type": "related"
+  },
+  {
+   "source": "LTS",
+   "target": "Lakeflow Jobs",
+   "type": "related"
+  },
+  {
+   "source": "LTS",
+   "target": "Serverless Compute",
    "type": "related"
   },
   {
@@ -48581,6 +51802,126 @@
    "type": "related"
   },
   {
+   "source": "LoRA",
+   "target": "Fine-Tuning",
+   "type": "related"
+  },
+  {
+   "source": "LoRA",
+   "target": "LLM",
+   "type": "related"
+  },
+  {
+   "source": "LoRA",
+   "target": "GPU",
+   "type": "related"
+  },
+  {
+   "source": "LoRA",
+   "target": "AI Runtime",
+   "type": "related"
+  },
+  {
+   "source": "LoRA",
+   "target": "Model Serving",
+   "type": "related"
+  },
+  {
+   "source": "LoRA",
+   "target": "MosaicML and Open Models",
+   "type": "related"
+  },
+  {
+   "source": "Logical and Physical Plans",
+   "target": "Catalyst Optimizer",
+   "type": "related"
+  },
+  {
+   "source": "Logical and Physical Plans",
+   "target": "Spark SQL",
+   "type": "related"
+  },
+  {
+   "source": "Logical and Physical Plans",
+   "target": "Adaptive Query Execution",
+   "type": "related"
+  },
+  {
+   "source": "Logical and Physical Plans",
+   "target": "Spark UI",
+   "type": "related"
+  },
+  {
+   "source": "Logical and Physical Plans",
+   "target": "Lazy Evaluation",
+   "type": "related"
+  },
+  {
+   "source": "Logical and Physical Plans",
+   "target": "Query Performance and Caching",
+   "type": "related"
+  },
+  {
+   "source": "MPP",
+   "target": "Data Warehouses",
+   "type": "related"
+  },
+  {
+   "source": "MPP",
+   "target": "Photon",
+   "type": "related"
+  },
+  {
+   "source": "MPP",
+   "target": "Distributed Systems",
+   "type": "related"
+  },
+  {
+   "source": "MPP",
+   "target": "Scaling Up vs Scaling Out",
+   "type": "related"
+  },
+  {
+   "source": "MPP",
+   "target": "Amazon Redshift",
+   "type": "related"
+  },
+  {
+   "source": "MPP",
+   "target": "Snowflake",
+   "type": "related"
+  },
+  {
+   "source": "MVCC",
+   "target": "ACID Transactions",
+   "type": "related"
+  },
+  {
+   "source": "MVCC",
+   "target": "Delta Transaction Log",
+   "type": "related"
+  },
+  {
+   "source": "MVCC",
+   "target": "Optimistic Concurrency",
+   "type": "related"
+  },
+  {
+   "source": "MVCC",
+   "target": "Isolation Level",
+   "type": "related"
+  },
+  {
+   "source": "MVCC",
+   "target": "Time Travel",
+   "type": "related"
+  },
+  {
+   "source": "MVCC",
+   "target": "OPTIMIZE and VACUUM",
+   "type": "related"
+  },
+  {
    "source": "Managed Identity",
    "target": "ADLS and Access Connectors",
    "type": "related"
@@ -48666,6 +52007,66 @@
    "type": "related"
   },
   {
+   "source": "Mixture of Experts",
+   "target": "LLM",
+   "type": "related"
+  },
+  {
+   "source": "Mixture of Experts",
+   "target": "Generative AI and LLMs",
+   "type": "related"
+  },
+  {
+   "source": "Mixture of Experts",
+   "target": "MosaicML and Open Models",
+   "type": "related"
+  },
+  {
+   "source": "Mixture of Experts",
+   "target": "Foundation Model APIs",
+   "type": "related"
+  },
+  {
+   "source": "Mixture of Experts",
+   "target": "Inference",
+   "type": "related"
+  },
+  {
+   "source": "Mixture of Experts",
+   "target": "Model",
+   "type": "related"
+  },
+  {
+   "source": "Model Context Protocol",
+   "target": "Managed MCP Servers",
+   "type": "related"
+  },
+  {
+   "source": "Model Context Protocol",
+   "target": "AI Agent",
+   "type": "related"
+  },
+  {
+   "source": "Model Context Protocol",
+   "target": "Mosaic AI Agent Framework",
+   "type": "related"
+  },
+  {
+   "source": "Model Context Protocol",
+   "target": "Unity Gateway",
+   "type": "related"
+  },
+  {
+   "source": "Model Context Protocol",
+   "target": "Genie Code",
+   "type": "related"
+  },
+  {
+   "source": "Model Context Protocol",
+   "target": "Unity Catalog Functions",
+   "type": "related"
+  },
+  {
    "source": "Model",
    "target": "Machine Learning Basics",
    "type": "related"
@@ -48693,6 +52094,96 @@
   {
    "source": "Model",
    "target": "Inference",
+   "type": "related"
+  },
+  {
+   "source": "Multi-Factor Authentication",
+   "target": "Single Sign-On",
+   "type": "related"
+  },
+  {
+   "source": "Multi-Factor Authentication",
+   "target": "Identity Provider",
+   "type": "related"
+  },
+  {
+   "source": "Multi-Factor Authentication",
+   "target": "Authentication - Tokens and OAuth",
+   "type": "related"
+  },
+  {
+   "source": "Multi-Factor Authentication",
+   "target": "Microsoft Entra ID Integration",
+   "type": "related"
+  },
+  {
+   "source": "Multi-Factor Authentication",
+   "target": "Account Console",
+   "type": "related"
+  },
+  {
+   "source": "Multi-Factor Authentication",
+   "target": "Compliance Security Profile",
+   "type": "related"
+  },
+  {
+   "source": "NAT Gateway",
+   "target": "Secure Cluster Connectivity",
+   "type": "related"
+  },
+  {
+   "source": "NAT Gateway",
+   "target": "VNet Injection",
+   "type": "related"
+  },
+  {
+   "source": "NAT Gateway",
+   "target": "Public vs Private IP",
+   "type": "related"
+  },
+  {
+   "source": "NAT Gateway",
+   "target": "Egress",
+   "type": "related"
+  },
+  {
+   "source": "NAT Gateway",
+   "target": "Subnet",
+   "type": "related"
+  },
+  {
+   "source": "NAT Gateway",
+   "target": "Customer-Managed VPC on AWS",
+   "type": "related"
+  },
+  {
+   "source": "NoSQL",
+   "target": "Relational Databases",
+   "type": "related"
+  },
+  {
+   "source": "NoSQL",
+   "target": "Apache HBase",
+   "type": "related"
+  },
+  {
+   "source": "NoSQL",
+   "target": "Sharding",
+   "type": "related"
+  },
+  {
+   "source": "NoSQL",
+   "target": "CAP Theorem",
+   "type": "related"
+  },
+  {
+   "source": "NoSQL",
+   "target": "Semi-Structured Data",
+   "type": "related"
+  },
+  {
+   "source": "NoSQL",
+   "target": "OLTP vs OLAP",
    "type": "related"
   },
   {
@@ -48846,6 +52337,66 @@
    "type": "related"
   },
   {
+   "source": "OpenID Connect",
+   "target": "OAuth",
+   "type": "related"
+  },
+  {
+   "source": "OpenID Connect",
+   "target": "SAML",
+   "type": "related"
+  },
+  {
+   "source": "OpenID Connect",
+   "target": "Single Sign-On",
+   "type": "related"
+  },
+  {
+   "source": "OpenID Connect",
+   "target": "Identity Provider",
+   "type": "related"
+  },
+  {
+   "source": "OpenID Connect",
+   "target": "Authentication - Tokens and OAuth",
+   "type": "related"
+  },
+  {
+   "source": "OpenID Connect",
+   "target": "Token",
+   "type": "related"
+  },
+  {
+   "source": "Optimistic Concurrency",
+   "target": "MVCC",
+   "type": "related"
+  },
+  {
+   "source": "Optimistic Concurrency",
+   "target": "Isolation Level",
+   "type": "related"
+  },
+  {
+   "source": "Optimistic Concurrency",
+   "target": "Delta Transaction Log",
+   "type": "related"
+  },
+  {
+   "source": "Optimistic Concurrency",
+   "target": "ACID Transactions",
+   "type": "related"
+  },
+  {
+   "source": "Optimistic Concurrency",
+   "target": "MERGE and Upserts",
+   "type": "related"
+  },
+  {
+   "source": "Optimistic Concurrency",
+   "target": "Deletion Vectors",
+   "type": "related"
+  },
+  {
    "source": "Orchestration",
    "target": "Lakeflow Jobs",
    "type": "related"
@@ -48901,6 +52452,36 @@
    "type": "related"
   },
   {
+   "source": "PCI DSS",
+   "target": "Compliance Security Profile",
+   "type": "related"
+  },
+  {
+   "source": "PCI DSS",
+   "target": "HIPAA",
+   "type": "related"
+  },
+  {
+   "source": "PCI DSS",
+   "target": "SOC 2",
+   "type": "related"
+  },
+  {
+   "source": "PCI DSS",
+   "target": "PII",
+   "type": "related"
+  },
+  {
+   "source": "PCI DSS",
+   "target": "Encryption",
+   "type": "related"
+  },
+  {
+   "source": "PCI DSS",
+   "target": "Audit Logs",
+   "type": "related"
+  },
+  {
    "source": "PII",
    "target": "Data Classification",
    "type": "related"
@@ -48928,6 +52509,36 @@
   {
    "source": "PII",
    "target": "Data Governance",
+   "type": "related"
+  },
+  {
+   "source": "Pagination",
+   "target": "REST",
+   "type": "related"
+  },
+  {
+   "source": "Pagination",
+   "target": "APIs",
+   "type": "related"
+  },
+  {
+   "source": "Pagination",
+   "target": "Databricks SDKs and REST API",
+   "type": "related"
+  },
+  {
+   "source": "Pagination",
+   "target": "Databricks CLI",
+   "type": "related"
+  },
+  {
+   "source": "Pagination",
+   "target": "Rate Limit",
+   "type": "related"
+  },
+  {
+   "source": "Pagination",
+   "target": "Lakeflow Jobs",
    "type": "related"
   },
   {
@@ -48961,6 +52572,11 @@
    "type": "related"
   },
   {
+   "source": "Pandas",
+   "target": "Pandas API on Spark",
+   "type": "related"
+  },
+  {
    "source": "Partition Pruning",
    "target": "Partitions",
    "type": "related"
@@ -48988,6 +52604,156 @@
   {
    "source": "Partition Pruning",
    "target": "Catalyst Optimizer",
+   "type": "related"
+  },
+  {
+   "source": "Pay-As-You-Go",
+   "target": "How Databricks Pricing Works",
+   "type": "related"
+  },
+  {
+   "source": "Pay-As-You-Go",
+   "target": "DBUs",
+   "type": "related"
+  },
+  {
+   "source": "Pay-As-You-Go",
+   "target": "AWS Marketplace and Billing",
+   "type": "related"
+  },
+  {
+   "source": "Pay-As-You-Go",
+   "target": "Azure Billing and Commit Units",
+   "type": "related"
+  },
+  {
+   "source": "Pay-As-You-Go",
+   "target": "Google Cloud Marketplace and Billing",
+   "type": "related"
+  },
+  {
+   "source": "Pay-As-You-Go",
+   "target": "SKU",
+   "type": "related"
+  },
+  {
+   "source": "Personal Access Token",
+   "target": "Token",
+   "type": "related"
+  },
+  {
+   "source": "Personal Access Token",
+   "target": "OAuth",
+   "type": "related"
+  },
+  {
+   "source": "Personal Access Token",
+   "target": "Authentication - Tokens and OAuth",
+   "type": "related"
+  },
+  {
+   "source": "Personal Access Token",
+   "target": "Secrets Management",
+   "type": "related"
+  },
+  {
+   "source": "Personal Access Token",
+   "target": "Users Groups and Service Principals",
+   "type": "related"
+  },
+  {
+   "source": "Personal Access Token",
+   "target": "Databricks CLI",
+   "type": "related"
+  },
+  {
+   "source": "Point-in-Time Recovery",
+   "target": "Time Travel",
+   "type": "related"
+  },
+  {
+   "source": "Point-in-Time Recovery",
+   "target": "Disaster Recovery",
+   "type": "related"
+  },
+  {
+   "source": "Point-in-Time Recovery",
+   "target": "RPO and RTO",
+   "type": "related"
+  },
+  {
+   "source": "Point-in-Time Recovery",
+   "target": "Lakebase",
+   "type": "related"
+  },
+  {
+   "source": "Point-in-Time Recovery",
+   "target": "Delta Transaction Log",
+   "type": "related"
+  },
+  {
+   "source": "Point-in-Time Recovery",
+   "target": "OPTIMIZE and VACUUM",
+   "type": "related"
+  },
+  {
+   "source": "Predicate Pushdown",
+   "target": "Data Skipping",
+   "type": "related"
+  },
+  {
+   "source": "Predicate Pushdown",
+   "target": "Partition Pruning",
+   "type": "related"
+  },
+  {
+   "source": "Predicate Pushdown",
+   "target": "Apache Parquet",
+   "type": "related"
+  },
+  {
+   "source": "Predicate Pushdown",
+   "target": "Catalyst Optimizer",
+   "type": "related"
+  },
+  {
+   "source": "Predicate Pushdown",
+   "target": "Lakehouse Federation",
+   "type": "related"
+  },
+  {
+   "source": "Predicate Pushdown",
+   "target": "Liquid Clustering",
+   "type": "related"
+  },
+  {
+   "source": "Private Endpoint",
+   "target": "Azure Private Link",
+   "type": "related"
+  },
+  {
+   "source": "Private Endpoint",
+   "target": "AWS PrivateLink",
+   "type": "related"
+  },
+  {
+   "source": "Private Endpoint",
+   "target": "Private Service Connect",
+   "type": "related"
+  },
+  {
+   "source": "Private Endpoint",
+   "target": "VNet Injection",
+   "type": "related"
+  },
+  {
+   "source": "Private Endpoint",
+   "target": "Network Security Overview",
+   "type": "related"
+  },
+  {
+   "source": "Private Endpoint",
+   "target": "Public vs Private IP",
    "type": "related"
   },
   {
@@ -49076,6 +52842,66 @@
    "type": "related"
   },
   {
+   "source": "Python Wheel",
+   "target": "Libraries and Environments",
+   "type": "related"
+  },
+  {
+   "source": "Python Wheel",
+   "target": "Lakeflow Jobs",
+   "type": "related"
+  },
+  {
+   "source": "Python Wheel",
+   "target": "Declarative Automation Bundles",
+   "type": "related"
+  },
+  {
+   "source": "Python Wheel",
+   "target": "Python for Data",
+   "type": "related"
+  },
+  {
+   "source": "Python Wheel",
+   "target": "CI-CD for Data Pipelines",
+   "type": "related"
+  },
+  {
+   "source": "Python Wheel",
+   "target": "Volumes",
+   "type": "related"
+  },
+  {
+   "source": "Quartz Cron",
+   "target": "Tasks Triggers and Schedules",
+   "type": "related"
+  },
+  {
+   "source": "Quartz Cron",
+   "target": "Lakeflow Jobs",
+   "type": "related"
+  },
+  {
+   "source": "Quartz Cron",
+   "target": "Orchestration",
+   "type": "related"
+  },
+  {
+   "source": "Quartz Cron",
+   "target": "SQL Alerts",
+   "type": "related"
+  },
+  {
+   "source": "Quartz Cron",
+   "target": "Declarative Automation Bundles",
+   "type": "related"
+  },
+  {
+   "source": "Quartz Cron",
+   "target": "Apache Airflow",
+   "type": "related"
+  },
+  {
    "source": "Query",
    "target": "SQL",
    "type": "related"
@@ -49133,6 +52959,96 @@
   {
    "source": "REST",
    "target": "OAuth",
+   "type": "related"
+  },
+  {
+   "source": "RPO and RTO",
+   "target": "Disaster Recovery",
+   "type": "related"
+  },
+  {
+   "source": "RPO and RTO",
+   "target": "Point-in-Time Recovery",
+   "type": "related"
+  },
+  {
+   "source": "RPO and RTO",
+   "target": "Replication",
+   "type": "related"
+  },
+  {
+   "source": "RPO and RTO",
+   "target": "SLA",
+   "type": "related"
+  },
+  {
+   "source": "RPO and RTO",
+   "target": "Region",
+   "type": "related"
+  },
+  {
+   "source": "RPO and RTO",
+   "target": "Time Travel",
+   "type": "related"
+  },
+  {
+   "source": "Rate Limit",
+   "target": "APIs",
+   "type": "related"
+  },
+  {
+   "source": "Rate Limit",
+   "target": "REST",
+   "type": "related"
+  },
+  {
+   "source": "Rate Limit",
+   "target": "Foundation Model APIs",
+   "type": "related"
+  },
+  {
+   "source": "Rate Limit",
+   "target": "Unity Gateway",
+   "type": "related"
+  },
+  {
+   "source": "Rate Limit",
+   "target": "Model Serving",
+   "type": "related"
+  },
+  {
+   "source": "Rate Limit",
+   "target": "Pagination",
+   "type": "related"
+  },
+  {
+   "source": "Read Replica",
+   "target": "Lakebase",
+   "type": "related"
+  },
+  {
+   "source": "Read Replica",
+   "target": "Replication",
+   "type": "related"
+  },
+  {
+   "source": "Read Replica",
+   "target": "Relational Databases",
+   "type": "related"
+  },
+  {
+   "source": "Read Replica",
+   "target": "OLTP vs OLAP",
+   "type": "related"
+  },
+  {
+   "source": "Read Replica",
+   "target": "Scalability",
+   "type": "related"
+  },
+  {
+   "source": "Read Replica",
+   "target": "Migrating from Postgres and MySQL",
    "type": "related"
   },
   {
@@ -49196,6 +53112,36 @@
    "type": "related"
   },
   {
+   "source": "Resource Group",
+   "target": "Managed Resource Group",
+   "type": "related"
+  },
+  {
+   "source": "Resource Group",
+   "target": "Creating an Azure Databricks Workspace",
+   "type": "related"
+  },
+  {
+   "source": "Resource Group",
+   "target": "Azure Databricks Overview",
+   "type": "related"
+  },
+  {
+   "source": "Resource Group",
+   "target": "Tenant",
+   "type": "related"
+  },
+  {
+   "source": "Resource Group",
+   "target": "Tagging for Chargeback",
+   "type": "related"
+  },
+  {
+   "source": "Resource Group",
+   "target": "Azure Billing and Commit Units",
+   "type": "related"
+  },
+  {
    "source": "Reverse ETL",
    "target": "ETL vs ELT",
    "type": "related"
@@ -49253,6 +53199,156 @@
   {
    "source": "Role-Based Access Control",
    "target": "SCIM Provisioning",
+   "type": "related"
+  },
+  {
+   "source": "Row Tracking",
+   "target": "Delta Lake",
+   "type": "related"
+  },
+  {
+   "source": "Row Tracking",
+   "target": "Change Data Feed",
+   "type": "related"
+  },
+  {
+   "source": "Row Tracking",
+   "target": "Materialized Views",
+   "type": "related"
+  },
+  {
+   "source": "Row Tracking",
+   "target": "Deletion Vectors",
+   "type": "related"
+  },
+  {
+   "source": "Row Tracking",
+   "target": "Delta Transaction Log",
+   "type": "related"
+  },
+  {
+   "source": "Row Tracking",
+   "target": "Lakeflow Spark Declarative Pipelines",
+   "type": "related"
+  },
+  {
+   "source": "SAML",
+   "target": "Single Sign-On",
+   "type": "related"
+  },
+  {
+   "source": "SAML",
+   "target": "Identity Provider",
+   "type": "related"
+  },
+  {
+   "source": "SAML",
+   "target": "OpenID Connect",
+   "type": "related"
+  },
+  {
+   "source": "SAML",
+   "target": "SCIM",
+   "type": "related"
+  },
+  {
+   "source": "SAML",
+   "target": "Microsoft Entra ID Integration",
+   "type": "related"
+  },
+  {
+   "source": "SAML",
+   "target": "Multi-Factor Authentication",
+   "type": "related"
+  },
+  {
+   "source": "SCIM",
+   "target": "SCIM Provisioning",
+   "type": "related"
+  },
+  {
+   "source": "SCIM",
+   "target": "Identity Provider",
+   "type": "related"
+  },
+  {
+   "source": "SCIM",
+   "target": "Users Groups and Service Principals",
+   "type": "related"
+  },
+  {
+   "source": "SCIM",
+   "target": "SAML",
+   "type": "related"
+  },
+  {
+   "source": "SCIM",
+   "target": "Single Sign-On",
+   "type": "related"
+  },
+  {
+   "source": "SCIM",
+   "target": "Microsoft Entra ID Integration",
+   "type": "related"
+  },
+  {
+   "source": "SIEM",
+   "target": "Audit Logs",
+   "type": "related"
+  },
+  {
+   "source": "SIEM",
+   "target": "System Tables",
+   "type": "related"
+  },
+  {
+   "source": "SIEM",
+   "target": "Azure Monitor and Diagnostic Logs",
+   "type": "related"
+  },
+  {
+   "source": "SIEM",
+   "target": "Compliance Security Profile",
+   "type": "related"
+  },
+  {
+   "source": "SIEM",
+   "target": "SQL Alerts",
+   "type": "related"
+  },
+  {
+   "source": "SIEM",
+   "target": "Data Governance",
+   "type": "related"
+  },
+  {
+   "source": "SKU",
+   "target": "DBUs",
+   "type": "related"
+  },
+  {
+   "source": "SKU",
+   "target": "How Databricks Pricing Works",
+   "type": "related"
+  },
+  {
+   "source": "SKU",
+   "target": "System Tables",
+   "type": "related"
+  },
+  {
+   "source": "SKU",
+   "target": "Budgets and Usage Dashboards",
+   "type": "related"
+  },
+  {
+   "source": "SKU",
+   "target": "Pay-As-You-Go",
+   "type": "related"
+  },
+  {
+   "source": "SKU",
+   "target": "Azure Billing and Commit Units",
    "type": "related"
   },
   {
@@ -49396,6 +53492,66 @@
    "type": "related"
   },
   {
+   "source": "Scale to Zero",
+   "target": "Serverless Compute",
+   "type": "related"
+  },
+  {
+   "source": "Scale to Zero",
+   "target": "Model Serving",
+   "type": "related"
+  },
+  {
+   "source": "Scale to Zero",
+   "target": "SQL Warehouses",
+   "type": "related"
+  },
+  {
+   "source": "Scale to Zero",
+   "target": "Auto Termination",
+   "type": "related"
+  },
+  {
+   "source": "Scale to Zero",
+   "target": "Autoscaling",
+   "type": "related"
+  },
+  {
+   "source": "Scale to Zero",
+   "target": "Latency",
+   "type": "related"
+  },
+  {
+   "source": "Schema-on-Read",
+   "target": "Schema Enforcement and Evolution",
+   "type": "related"
+  },
+  {
+   "source": "Schema-on-Read",
+   "target": "Data Lakes",
+   "type": "related"
+  },
+  {
+   "source": "Schema-on-Read",
+   "target": "Schema",
+   "type": "related"
+  },
+  {
+   "source": "Schema-on-Read",
+   "target": "Apache Hive",
+   "type": "related"
+  },
+  {
+   "source": "Schema-on-Read",
+   "target": "Auto Loader",
+   "type": "related"
+  },
+  {
+   "source": "Schema-on-Read",
+   "target": "Data Swamps",
+   "type": "related"
+  },
+  {
    "source": "Schema",
    "target": "Catalogs Schemas and Tables",
    "type": "related"
@@ -49423,6 +53579,36 @@
   {
    "source": "Schema",
    "target": "Metadata",
+   "type": "related"
+  },
+  {
+   "source": "Securable Object",
+   "target": "Unity Catalog",
+   "type": "related"
+  },
+  {
+   "source": "Securable Object",
+   "target": "Privileges and Grants",
+   "type": "related"
+  },
+  {
+   "source": "Securable Object",
+   "target": "Three-Level Namespace",
+   "type": "related"
+  },
+  {
+   "source": "Securable Object",
+   "target": "Catalogs Schemas and Tables",
+   "type": "related"
+  },
+  {
+   "source": "Securable Object",
+   "target": "Storage Credentials and External Locations",
+   "type": "related"
+  },
+  {
+   "source": "Securable Object",
+   "target": "Metastore",
    "type": "related"
   },
   {
@@ -49456,6 +53642,66 @@
    "type": "related"
   },
   {
+   "source": "Semi-Structured Data",
+   "target": "VARIANT Data Type",
+   "type": "related"
+  },
+  {
+   "source": "Semi-Structured Data",
+   "target": "CSV and JSON",
+   "type": "related"
+  },
+  {
+   "source": "Semi-Structured Data",
+   "target": "Structured vs Unstructured Data",
+   "type": "related"
+  },
+  {
+   "source": "Semi-Structured Data",
+   "target": "Schema-on-Read",
+   "type": "related"
+  },
+  {
+   "source": "Semi-Structured Data",
+   "target": "Auto Loader",
+   "type": "related"
+  },
+  {
+   "source": "Semi-Structured Data",
+   "target": "NoSQL",
+   "type": "related"
+  },
+  {
+   "source": "SerDe",
+   "target": "Apache Hive",
+   "type": "related"
+  },
+  {
+   "source": "SerDe",
+   "target": "Hive Metastore",
+   "type": "related"
+  },
+  {
+   "source": "SerDe",
+   "target": "Serialization",
+   "type": "related"
+  },
+  {
+   "source": "SerDe",
+   "target": "Files and File Formats",
+   "type": "related"
+  },
+  {
+   "source": "SerDe",
+   "target": "Hive Metastore Migration to Unity Catalog",
+   "type": "related"
+  },
+  {
+   "source": "SerDe",
+   "target": "CSV and JSON",
+   "type": "related"
+  },
+  {
    "source": "Serialization",
    "target": "Files and File Formats",
    "type": "related"
@@ -49486,6 +53732,36 @@
    "type": "related"
   },
   {
+   "source": "Sharding",
+   "target": "Partitions",
+   "type": "related"
+  },
+  {
+   "source": "Sharding",
+   "target": "NoSQL",
+   "type": "related"
+  },
+  {
+   "source": "Sharding",
+   "target": "Scaling Up vs Scaling Out",
+   "type": "related"
+  },
+  {
+   "source": "Sharding",
+   "target": "Distributed Systems",
+   "type": "related"
+  },
+  {
+   "source": "Sharding",
+   "target": "Data Skew",
+   "type": "related"
+  },
+  {
+   "source": "Sharding",
+   "target": "Replication",
+   "type": "related"
+  },
+  {
    "source": "Single Source of Truth",
    "target": "The Lakehouse Idea",
    "type": "related"
@@ -49513,6 +53789,66 @@
   {
    "source": "Single Source of Truth",
    "target": "Data Governance",
+   "type": "related"
+  },
+  {
+   "source": "Small Files Problem",
+   "target": "OPTIMIZE and VACUUM",
+   "type": "related"
+  },
+  {
+   "source": "Small Files Problem",
+   "target": "Predictive Optimization",
+   "type": "related"
+  },
+  {
+   "source": "Small Files Problem",
+   "target": "Liquid Clustering",
+   "type": "related"
+  },
+  {
+   "source": "Small Files Problem",
+   "target": "Structured Streaming",
+   "type": "related"
+  },
+  {
+   "source": "Small Files Problem",
+   "target": "HDFS",
+   "type": "related"
+  },
+  {
+   "source": "Small Files Problem",
+   "target": "Partitions",
+   "type": "related"
+  },
+  {
+   "source": "Speculative Execution",
+   "target": "Straggler Task",
+   "type": "related"
+  },
+  {
+   "source": "Speculative Execution",
+   "target": "Fault Tolerance",
+   "type": "related"
+  },
+  {
+   "source": "Speculative Execution",
+   "target": "MapReduce",
+   "type": "related"
+  },
+  {
+   "source": "Speculative Execution",
+   "target": "Jobs Stages and Tasks",
+   "type": "related"
+  },
+  {
+   "source": "Speculative Execution",
+   "target": "Data Skew",
+   "type": "related"
+  },
+  {
+   "source": "Speculative Execution",
+   "target": "Distributed Systems",
    "type": "related"
   },
   {
@@ -49576,6 +53912,36 @@
    "type": "related"
   },
   {
+   "source": "Straggler Task",
+   "target": "Speculative Execution",
+   "type": "related"
+  },
+  {
+   "source": "Straggler Task",
+   "target": "Data Skew",
+   "type": "related"
+  },
+  {
+   "source": "Straggler Task",
+   "target": "Spark UI",
+   "type": "related"
+  },
+  {
+   "source": "Straggler Task",
+   "target": "Spill",
+   "type": "related"
+  },
+  {
+   "source": "Straggler Task",
+   "target": "Jobs Stages and Tasks",
+   "type": "related"
+  },
+  {
+   "source": "Straggler Task",
+   "target": "Adaptive Query Execution",
+   "type": "related"
+  },
+  {
    "source": "Subnet",
    "target": "VPC and VNet",
    "type": "related"
@@ -49603,6 +53969,66 @@
   {
    "source": "Subnet",
    "target": "Network Security Overview",
+   "type": "related"
+  },
+  {
+   "source": "Surrogate Key",
+   "target": "Primary and Foreign Keys",
+   "type": "related"
+  },
+  {
+   "source": "Surrogate Key",
+   "target": "Dimension Table",
+   "type": "related"
+  },
+  {
+   "source": "Surrogate Key",
+   "target": "Star Schema",
+   "type": "related"
+  },
+  {
+   "source": "Surrogate Key",
+   "target": "Slowly Changing Dimensions",
+   "type": "related"
+  },
+  {
+   "source": "Surrogate Key",
+   "target": "Data Modeling Basics",
+   "type": "related"
+  },
+  {
+   "source": "Surrogate Key",
+   "target": "Fact Table",
+   "type": "related"
+  },
+  {
+   "source": "Tenant",
+   "target": "Microsoft Entra ID Integration",
+   "type": "related"
+  },
+  {
+   "source": "Tenant",
+   "target": "Accounts and Workspaces",
+   "type": "related"
+  },
+  {
+   "source": "Tenant",
+   "target": "Resource Group",
+   "type": "related"
+  },
+  {
+   "source": "Tenant",
+   "target": "Identity Provider",
+   "type": "related"
+  },
+  {
+   "source": "Tenant",
+   "target": "SaaS PaaS and IaaS",
+   "type": "related"
+  },
+  {
+   "source": "Tenant",
+   "target": "Azure Databricks Overview",
    "type": "related"
   },
   {
@@ -49723,6 +54149,36 @@
   {
    "source": "Training",
    "target": "MLflow",
+   "type": "related"
+  },
+  {
+   "source": "Transpiler",
+   "target": "Lakebridge",
+   "type": "related"
+  },
+  {
+   "source": "Transpiler",
+   "target": "Migrating from SQL Server",
+   "type": "related"
+  },
+  {
+   "source": "Transpiler",
+   "target": "Migrating ETL Tools",
+   "type": "related"
+  },
+  {
+   "source": "Transpiler",
+   "target": "Migration Strategy Overview",
+   "type": "related"
+  },
+  {
+   "source": "Transpiler",
+   "target": "SQL",
+   "type": "related"
+  },
+  {
+   "source": "Transpiler",
+   "target": "Migrating from Snowflake",
    "type": "related"
   },
   {
@@ -49906,6 +54362,36 @@
    "type": "related"
   },
   {
+   "source": "Write-Ahead Log",
+   "target": "Delta Transaction Log",
+   "type": "related"
+  },
+  {
+   "source": "Write-Ahead Log",
+   "target": "Checkpoint",
+   "type": "related"
+  },
+  {
+   "source": "Write-Ahead Log",
+   "target": "Structured Streaming",
+   "type": "related"
+  },
+  {
+   "source": "Write-Ahead Log",
+   "target": "ACID Transactions",
+   "type": "related"
+  },
+  {
+   "source": "Write-Ahead Log",
+   "target": "Fault Tolerance",
+   "type": "related"
+  },
+  {
+   "source": "Write-Ahead Log",
+   "target": "Exactly-Once Processing",
+   "type": "related"
+  },
+  {
    "source": "YAML",
    "target": "Declarative Automation Bundles",
    "type": "related"
@@ -49993,6 +54479,36 @@
   {
    "source": "Zero-Copy",
    "target": "Storage vs Compute",
+   "type": "related"
+  },
+  {
+   "source": "gRPC",
+   "target": "Spark Connect",
+   "type": "related"
+  },
+  {
+   "source": "gRPC",
+   "target": "Databricks Connect",
+   "type": "related"
+  },
+  {
+   "source": "gRPC",
+   "target": "APIs",
+   "type": "related"
+  },
+  {
+   "source": "gRPC",
+   "target": "REST",
+   "type": "related"
+  },
+  {
+   "source": "gRPC",
+   "target": "Serialization",
+   "type": "related"
+  },
+  {
+   "source": "gRPC",
+   "target": "Apache Arrow",
    "type": "related"
   },
   {
