@@ -25,6 +25,8 @@ related:
   - "[[Cost Optimization Checklist]]"
   - "[[Auto Termination]]"
   - "[[Databricks Runtime]]"
+  - "[[Instance Pools]]"
+  - "[[Init Scripts]]"
 aliases:
   - Cluster Policies
   - Policy families

@@ -63,9 +63,9 @@ Mastery: `INPUT[inlineSelect(option(new), option(learning), option(solid)):maste
 > | Factory | Databricks Connect |
 > |---|---|
 > | Control panel in your office | Local IDE running your Python or Scala |
-> | Instructions sent to the factory | Unresolved logical plans over gRPC |
+> | Instructions sent to the factory | Unresolved logical plans over [[gRPC]] |
 > | The factory floor | Databricks cluster or serverless compute |
-> | Finished goods shipped back | Results returned as Apache Arrow data on `collect()` or `show()` |
+> | Finished goods shipped back | Results returned as [[Apache Arrow]] data on `collect()` or `show()` |
 
 ## Background
 

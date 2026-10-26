@@ -224,7 +224,7 @@ Which magic installs packages with uv on serverless environment version 5 and ab
 > **Unlocks next:** [[Unity Catalog]], [[Lakeflow Jobs]], [[Testing Data Pipelines]]
 
 > [!nextup] Next
-> [[Chapter 07 - Unity Catalog and Governance]] covers how Databricks governs every table, file, and model that this compute reads and writes.
+> [[Serverless Workspaces and Default Storage]] covers workspaces that run only on serverless compute and store data in Databricks-managed storage, with no cloud setup.
 
 > [!sources]- Sources (last verified: 2026-10-25)
 > - [Install libraries (AWS)](https://docs.databricks.com/aws/en/libraries/)

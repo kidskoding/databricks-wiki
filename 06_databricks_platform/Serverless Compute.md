@@ -29,6 +29,8 @@ related:
   - "[[Lakeflow Jobs]]"
   - "[[Lakeflow Spark Declarative Pipelines]]"
   - "[[Control Plane and Compute Plane]]"
+  - "[[Serverless Workspaces and Default Storage]]"
+  - "[[Instance Pools]]"
 aliases:
   - Serverless
   - Serverless notebooks
