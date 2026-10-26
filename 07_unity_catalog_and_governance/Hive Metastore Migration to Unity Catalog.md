@@ -13,8 +13,7 @@ prev: "[[Data Classification]]"
 next: "[[Catalog Explorer]]"
 evolved_from:
   - "[[Hive Metastore]]"
-evolved_into:
-  - "[[Unity Catalog]]"
+evolved_into: []
 cloud_equivalent:
   - "[[Hive Metastore Federation for AWS Glue]]"
 related:
