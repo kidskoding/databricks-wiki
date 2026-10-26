@@ -24,6 +24,7 @@ related:
   - "[[Databricks CLI]]"
   - "[[Data Governance]]"
   - "[[Data Quality Monitoring]]"
+  - "[[Governed Tags]]"
 aliases:
   - Data Classification
   - PII detection

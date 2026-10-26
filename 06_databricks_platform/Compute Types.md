@@ -29,12 +29,12 @@ related:
   - "[[Unity Catalog]]"
   - "[[DBUs]]"
   - "[[Cost Management Basics]]"
+  - "[[Lakeguard]]"
 aliases:
   - Databricks compute
   - Access modes
   - Standard access mode
   - Dedicated access mode
-  - Lakeguard
 prereqs:
   - "[[Cluster]]"
   - "[[Control Plane and Compute Plane]]"

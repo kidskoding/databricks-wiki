@@ -218,7 +218,7 @@ What replaces DBFS mounts?::Unity Catalog volumes and external locations.
 > **Unlocks next:** [[Migration Strategy Overview]], [[Migrating from Hadoop]], [[Chapter 08 - Data Engineering]]
 
 > [!nextup] Next
-> [[Chapter 08 - Data Engineering]] covers how data is ingested into governed tables and kept up to date with pipelines and jobs.
+> [[Catalog Explorer]] covers the Unity Catalog UI for browsing migrated tables, checking their permissions, and tracing their lineage.
 
 > [!sources]- Sources (last verified: 2026-10-25)
 > - [Upgrade a Databricks workspace to Unity Catalog (AWS)](https://docs.databricks.com/aws/en/data-governance/unity-catalog/upgrade/)

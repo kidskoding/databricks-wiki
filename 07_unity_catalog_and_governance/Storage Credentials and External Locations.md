@@ -29,6 +29,7 @@ related:
   - "[[Least Privilege]]"
   - "[[Serverless Network Security]]"
   - "[[Secrets Management]]"
+  - "[[Service Credentials]]"
 aliases:
   - Storage credential
   - External location

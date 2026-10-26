@@ -27,10 +27,10 @@ related:
   - "[[Tagging for Chargeback]]"
   - "[[Data Governance]]"
   - "[[Compliance Security Profile]]"
+  - "[[Governed Tags]]"
 aliases:
   - ABAC
   - Tag-based policies
-  - Governed tags
   - ABAC policies
 prereqs:
   - "[[Row Filters and Column Masks]]"

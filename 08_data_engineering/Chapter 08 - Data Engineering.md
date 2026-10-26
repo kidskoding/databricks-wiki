@@ -33,7 +33,7 @@ tags:
 # Chapter 08 - Data Engineering
 
 > [!story] Context
-> [[Chapter 07 - Unity Catalog and Governance|Chapter 07]] established one governance layer for every table, file, and model, ending with [[Hive Metastore Migration to Unity Catalog|the migration of legacy tables]] into it. Governance defines where data lives and who can use it. It does not move data into the platform, clean it, or keep it current. This chapter covers those jobs.
+> [[Chapter 07 - Unity Catalog and Governance|Chapter 07]] established one governance layer for every table, file, and model, covered [[Hive Metastore Migration to Unity Catalog|the migration of legacy tables]] into it, and ended with [[Lakeguard]], the isolation that enforces its rules on shared compute. Governance defines where data lives and who can use it. It does not move data into the platform, clean it, or keep it current. This chapter covers those jobs.
 
 **Getting data in, cleaning it, and running it on schedule with Lakeflow.**
 

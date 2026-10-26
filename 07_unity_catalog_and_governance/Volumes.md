@@ -26,6 +26,9 @@ related:
   - "[[AI Search]]"
   - "[[Object Storage]]"
   - "[[Databricks CLI]]"
+  - "[[DBFS]]"
+  - "[[Init Scripts]]"
+  - "[[dbutils and Widgets]]"
 aliases:
   - Unity Catalog volumes
   - Managed volumes
