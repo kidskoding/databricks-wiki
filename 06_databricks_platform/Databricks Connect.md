@@ -151,12 +151,12 @@ Each serverless environment version pairs with a Databricks Connect major versio
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Spark Connect API surface only.** Like serverless notebooks, Databricks Connect supports DataFrame and SQL APIs, not RDDs or direct `SparkContext` access.
-> - **Debugging limits.** You can step through your own code locally, but you cannot debug the Spark engine on the server.
-> - **Databricks Utilities.** Databricks Connect for Python exposes a subset of `dbutils` (such as file system and secrets) through the Databricks SDK's `WorkspaceClient`.
-> - **Scala.** Databricks Connect 17 for Scala works only with Spark 4 and Scala 2.13.
-> - **Apps.** [[Databricks Apps]] can use Databricks Connect to query data from a local development server before deployment.
-> - **User-defined functions.** Python UDFs defined locally are serialized and executed on the server, so the server environment must have their dependencies.
+> - **Spark Connect API surface only:** Like serverless notebooks, Databricks Connect supports DataFrame and SQL APIs, not RDDs or direct `SparkContext` access.
+> - **Debugging limits:** You can step through your own code locally, but you cannot debug the Spark engine on the server.
+> - **Databricks Utilities:** Databricks Connect for Python exposes a subset of `dbutils` (such as file system and secrets) through the Databricks SDK's `WorkspaceClient`.
+> - **Scala:** Databricks Connect 17 for Scala works only with Spark 4 and Scala 2.13.
+> - **Apps:** [[Databricks Apps]] can use Databricks Connect to query data from a local development server before deployment.
+> - **User-defined functions:** Python UDFs defined locally are serialized and executed on the server, so the server environment must have their dependencies.
 
 ## Common misconceptions
 

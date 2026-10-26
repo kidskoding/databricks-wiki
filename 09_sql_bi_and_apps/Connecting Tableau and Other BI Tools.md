@@ -138,7 +138,7 @@ WHERE order_date >= current_date() - INTERVAL 30 DAYS;
 ## Small-business considerations
 
 > [!smallbiz] Small-business considerations
-> - **Excel is often the first connection.** The Excel Add-in replaces CSV exports: a manager refreshes a sheet instead of asking for a new file. See [[Spreadsheets]].
+> - **Excel is often the first connection:** The Excel Add-in replaces CSV exports: a manager refreshes a sheet instead of asking for a new file. See [[Spreadsheets]].
 > - **Keep existing Tableau or Looker workbooks** and repoint them at a Databricks SQL warehouse. Rebuild only the reports that need changes. See [[Migrating BI Reports]].
 > - **Use OAuth for people and a service principal for scheduled extracts**, rather than one person's token.
 > - **Pre-aggregate** in gold tables or [[Metric Views]] so BI tools send small queries.
@@ -161,11 +161,11 @@ WHERE order_date >= current_date() - INTERVAL 30 DAYS;
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Partner OAuth applications.** Account admins can enable or disable partner OAuth apps (such as Tableau Server) in the account console. Disabling an app blocks OAuth sign-in from that tool.
-> - **Live versus extract.** Tableau extracts and Looker PDTs copy data out of Databricks on a schedule. Live connections query the warehouse on each interaction. Choose per workbook based on data size and freshness needs.
-> - **Driver versions.** Unity Catalog features (three-level names, catalog browsing) require recent drivers. Pin driver versions on shared Tableau Server or gateway machines and upgrade deliberately.
-> - **Service principals.** For scheduled extracts, use a [[Users Groups and Service Principals|service principal]] with `SELECT` on only the gold schema.
-> - **Programmatic access.** For custom scripts, the Databricks SQL Connector for Python and the SQLAlchemy dialect use the same hostname and HTTP path.
+> - **Partner OAuth applications:** Account admins can enable or disable partner OAuth apps (such as Tableau Server) in the account console. Disabling an app blocks OAuth sign-in from that tool.
+> - **Live versus extract:** Tableau extracts and Looker PDTs copy data out of Databricks on a schedule. Live connections query the warehouse on each interaction. Choose per workbook based on data size and freshness needs.
+> - **Driver versions:** Unity Catalog features (three-level names, catalog browsing) require recent drivers. Pin driver versions on shared Tableau Server or gateway machines and upgrade deliberately.
+> - **Service principals:** For scheduled extracts, use a [[Users Groups and Service Principals|service principal]] with `SELECT` on only the gold schema.
+> - **Programmatic access:** For custom scripts, the Databricks SQL Connector for Python and the SQLAlchemy dialect use the same hostname and HTTP path.
 
 ## Common misconceptions
 

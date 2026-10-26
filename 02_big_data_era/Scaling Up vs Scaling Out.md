@@ -73,9 +73,9 @@ When a workload outgrows its server, capacity can be added in two directions.
 
 For decades the default was **scaling up**: replacing a database server with one that has more CPUs, memory, and faster disks. It requires no application changes. It has three structural limits:
 
-1. **A hardware ceiling.** The largest available machine sets a hard limit. By the early 2000s, web-scale indexing exceeded what any single machine could store.
-2. **Non-linear cost.** High-end servers cost substantially more per unit of capacity than mass-produced ones.
-3. **A single point of failure.** One machine failing stops the workload.
+1. **A hardware ceiling:** The largest available machine sets a hard limit. By the early 2000s, web-scale indexing exceeded what any single machine could store.
+2. **Non-linear cost:** High-end servers cost substantially more per unit of capacity than mass-produced ones.
+3. **A single point of failure:** One machine failing stops the workload.
 
 The [[Google File System and MapReduce Papers]] described the alternative: **scale out** on large numbers of inexpensive commodity (standard, mass-produced) machines, with software that treats machine failure as routine. [[Apache Hadoop]] made this approach available outside Google.
 
@@ -147,10 +147,10 @@ In the cloud, both directions are configuration settings. On Databricks classic 
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Amdahl's law.** If 10% of a job cannot be parallelized, the maximum speedup is 10x regardless of machine count. The serial portion, often a final combine step or a single [[Data Skew|skewed]] key, sets the limit.
-> - **Coordination overhead.** Each additional machine adds network and scheduling cost. Jobs dominated by data exchange between machines ([[Shuffles]]) can slow down past a certain cluster size.
-> - **Single-node engines.** Many workloads labeled "big data" fit in the memory of one large modern VM. A single-node cluster avoids distributed overhead entirely and is often the correct first choice.
-> - **Independent scaling of storage and compute.** Hadoop scaled storage and compute together because each node held both disks and CPUs. Cloud architectures separate them: [[Object Storage]] scales storage, and clusters scale compute independently. See [[Storage vs Compute]] and [[The Pain of Hadoop]].
+> - **Amdahl's law:** If 10% of a job cannot be parallelized, the maximum speedup is 10x regardless of machine count. The serial portion, often a final combine step or a single [[Data Skew|skewed]] key, sets the limit.
+> - **Coordination overhead:** Each additional machine adds network and scheduling cost. Jobs dominated by data exchange between machines ([[Shuffles]]) can slow down past a certain cluster size.
+> - **Single-node engines:** Many workloads labeled "big data" fit in the memory of one large modern VM. A single-node cluster avoids distributed overhead entirely and is often the correct first choice.
+> - **Independent scaling of storage and compute:** Hadoop scaled storage and compute together because each node held both disks and CPUs. Cloud architectures separate them: [[Object Storage]] scales storage, and clusters scale compute independently. See [[Storage vs Compute]] and [[The Pain of Hadoop]].
 
 ## Common misconceptions
 

@@ -65,7 +65,7 @@ Mastery: `INPUT[inlineSelect(option(new), option(learning), option(solid)):maste
 > [!analogy]- Analogy: a car's trip computer
 > - **Your data tables** are the passengers and cargo.
 > - **System tables** are the dashboard readouts: fuel used (billing), engine hours (compute), trip log (jobs), and the black box (audit).
-> - **The readouts are read-only.** You cannot edit the fuel gauge, only read it.
+> - **The readouts are read-only:** You cannot edit the fuel gauge, only read it.
 > - **You can build your own display** from them: a dashboard, a budget alert, a weekly email.
 
 ## Background
@@ -170,12 +170,12 @@ WHERE result_state = 'FAILED'
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Regional vs global.** `system.billing.usage` is routed to all regions, so you can see global usage from any workspace. Most other tables are regional: query them from a workspace in that region.
-> - **Configurable retention (Beta).** Account admins can set a longer retention for system tables from the Previews page. It does not apply to the `system.data_classification`, `system.data_quality_monitoring`, and `system.lakebase` schemas.
-> - **Slowly changing dimensions.** Tables like `system.compute.clusters` and `system.lakeflow.jobs` keep one row per change. Use the latest row per ID for "current state" and join on time ranges for history. The latest entry per job is kept even beyond 365 days.
-> - **Schemas evolve.** Databricks adds columns and tables over time. Avoid `SELECT *` in saved reports.
-> - **Freshness.** System tables are not real time. Expect some delay before recent activity appears.
-> - **Attribution.** Each usage record carries metadata such as job, warehouse, and notebook IDs, which lets you attribute cost to the work that caused it.
+> - **Regional vs global:** `system.billing.usage` is routed to all regions, so you can see global usage from any workspace. Most other tables are regional: query them from a workspace in that region.
+> - **Configurable retention (Beta):** Account admins can set a longer retention for system tables from the Previews page. It does not apply to the `system.data_classification`, `system.data_quality_monitoring`, and `system.lakebase` schemas.
+> - **Slowly changing dimensions:** Tables like `system.compute.clusters` and `system.lakeflow.jobs` keep one row per change. Use the latest row per ID for "current state" and join on time ranges for history. The latest entry per job is kept even beyond 365 days.
+> - **Schemas evolve:** Databricks adds columns and tables over time. Avoid `SELECT *` in saved reports.
+> - **Freshness:** System tables are not real time. Expect some delay before recent activity appears.
+> - **Attribution:** Each usage record carries metadata such as job, warehouse, and notebook IDs, which lets you attribute cost to the work that caused it.
 
 ## Common misconceptions
 

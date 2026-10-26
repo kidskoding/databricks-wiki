@@ -175,11 +175,11 @@ dbt build      # run models and tests in dependency order
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Materializations on Databricks.** Beyond `table`, `view`, and `incremental`, `dbt-databricks` can build Databricks [[Materialized Views|materialized views]] and [[Streaming Tables|streaming tables]], which are refreshed by Databricks' pipeline engine rather than by dbt rerunning SQL.
-> - **Incremental strategies.** `dbt-databricks` supports six: `merge` (the default; matches on `unique_key` using Delta's [[MERGE and Upserts|MERGE]]), `append`, `insert_overwrite` (overwrites partitions, or the whole table without `partition_by`), `replace_where` (replaces rows matching `incremental_predicates`), `delete+insert` (v1.11 and above), and `microbatch`. Pick based on whether late-arriving data can change old rows.
-> - **Unity Catalog mapping.** dbt's `database` maps to a Unity Catalog *catalog*, and `schema` to a schema. Use separate catalogs (`dev`, `prod`) per target.
+> - **Materializations on Databricks:** Beyond `table`, `view`, and `incremental`, `dbt-databricks` can build Databricks [[Materialized Views|materialized views]] and [[Streaming Tables|streaming tables]], which are refreshed by Databricks' pipeline engine rather than by dbt rerunning SQL.
+> - **Incremental strategies:** `dbt-databricks` supports six: `merge` (the default; matches on `unique_key` using Delta's [[MERGE and Upserts|MERGE]]), `append`, `insert_overwrite` (overwrites partitions, or the whole table without `partition_by`), `replace_where` (replaces rows matching `incremental_predicates`), `delete+insert` (v1.11 and above), and `microbatch`. Pick based on whether late-arriving data can change old rows.
+> - **Unity Catalog mapping:** dbt's `database` maps to a Unity Catalog *catalog*, and `schema` to a schema. Use separate catalogs (`dev`, `prod`) per target.
 > - **Python models** are supported and run as Databricks jobs; useful for one or two steps that SQL cannot express.
-> - **Lineage overlap.** dbt has its own model lineage; Unity Catalog captures column-level [[Data Lineage|lineage]] automatically from the queries dbt runs, including non-dbt consumers downstream.
+> - **Lineage overlap:** dbt has its own model lineage; Unity Catalog captures column-level [[Data Lineage|lineage]] automatically from the queries dbt runs, including non-dbt consumers downstream.
 
 ## Common misconceptions
 

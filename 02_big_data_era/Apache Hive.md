@@ -80,10 +80,10 @@ The VLDB 2009 paper *"Hive: A Warehousing Solution Over a Map-Reduce Framework"*
 
 Hive introduced four ideas that persist in current platforms:
 
-1. **SQL instead of Java.** HiveQL queries compile into jobs on the cluster.
-2. **Tables over files.** A table is a directory of files in [[HDFS]], with a name, columns, and types defined separately.
-3. **Schema-on-read.** Hive does not validate files when they are added. It applies the table schema at query time, which accommodates the *variety* described in [[The Three Vs of Big Data]].
-4. **A shared catalog.** Table definitions are stored in the [[Hive Metastore]], so multiple tools see the same tables.
+1. **SQL instead of Java:** HiveQL queries compile into jobs on the cluster.
+2. **Tables over files:** A table is a directory of files in [[HDFS]], with a name, columns, and types defined separately.
+3. **Schema-on-read:** Hive does not validate files when they are added. It applies the table schema at query time, which accommodates the *variety* described in [[The Three Vs of Big Data]].
+4. **A shared catalog:** Table definitions are stored in the [[Hive Metastore]], so multiple tools see the same tables.
 
 ## Overview
 
@@ -205,10 +205,10 @@ ORDER BY dt;
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Execution engines.** Hive originally compiled queries to MapReduce. Later versions added Apache Tez, a YARN application framework that runs a query as a directed acyclic graph (DAG) of tasks instead of a chain of separate MapReduce jobs. Hive 2.0 added LLAP (Live Long and Process), long-lived daemons with data caching for interactive, low-latency queries.
-> - **Transactions.** Hive tables were append-and-overwrite only for most of their history. Hive later added transactional tables with `UPDATE` and `DELETE`, implemented with base and delta directories and background compaction that a metastore instance coordinates. Full ACID tables use ORC; other formats support insert-only transactional tables. [[Delta Lake]] and [[Apache Iceberg]] provide [[ACID Transactions]] in an engine-neutral way.
-> - **Over-partitioning.** Partitioning by a high-cardinality column creates very large numbers of directories and metastore entries, which slows query planning. The same mistake applies to Delta tables. Databricks provides [[Liquid Clustering]] as an alternative to directory partitioning.
-> - **Managed and external tables.** Hive's `EXTERNAL` keyword (dropping the table keeps the files) versus managed tables (dropping the table deletes the files) is the origin of [[Managed vs External Tables]] in Unity Catalog.
+> - **Execution engines:** Hive originally compiled queries to MapReduce. Later versions added Apache Tez, a YARN application framework that runs a query as a directed acyclic graph (DAG) of tasks instead of a chain of separate MapReduce jobs. Hive 2.0 added LLAP (Live Long and Process), long-lived daemons with data caching for interactive, low-latency queries.
+> - **Transactions:** Hive tables were append-and-overwrite only for most of their history. Hive later added transactional tables with `UPDATE` and `DELETE`, implemented with base and delta directories and background compaction that a metastore instance coordinates. Full ACID tables use ORC; other formats support insert-only transactional tables. [[Delta Lake]] and [[Apache Iceberg]] provide [[ACID Transactions]] in an engine-neutral way.
+> - **Over-partitioning:** Partitioning by a high-cardinality column creates very large numbers of directories and metastore entries, which slows query planning. The same mistake applies to Delta tables. Databricks provides [[Liquid Clustering]] as an alternative to directory partitioning.
+> - **Managed and external tables:** Hive's `EXTERNAL` keyword (dropping the table keeps the files) versus managed tables (dropping the table deletes the files) is the origin of [[Managed vs External Tables]] in Unity Catalog.
 
 ## Common misconceptions
 

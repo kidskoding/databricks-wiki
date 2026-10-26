@@ -146,11 +146,11 @@ Migrating such an agent:
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Model Serving to Apps migration.** Moving from Model Serving means moving from a class-based `predict()` design to functions decorated with `@invoke()` and `@stream()`.
-> - **Inference tables for agents.** Agent deployments on Model Serving created inference tables for requests and responses; agent endpoints support only inference tables for their AI Gateway configuration.
-> - **Querying deployed agents.** Agents expose an OpenAI Responses-compatible API, so clients use the same OpenAI SDK patterns as for models.
+> - **Model Serving to Apps migration:** Moving from Model Serving means moving from a class-based `predict()` design to functions decorated with `@invoke()` and `@stream()`.
+> - **Inference tables for agents:** Agent deployments on Model Serving created inference tables for requests and responses; agent endpoints support only inference tables for their AI Gateway configuration.
+> - **Querying deployed agents:** Agents expose an OpenAI Responses-compatible API, so clients use the same OpenAI SDK patterns as for models.
 > - **Multi-agent systems** on Apps are documented as a pattern; for new supervisors, use code agents with Agent Bricks rather than the deprecated Supervisor API (end of life September 30, 2026).
-> - **Git folders and tracing.** For agents deployed from a notebook in a Git folder, MLflow 3 real-time tracing does not work by default; point the agent at an experiment not associated with Git.
+> - **Git folders and tracing:** For agents deployed from a notebook in a Git folder, MLflow 3 real-time tracing does not work by default; point the agent at an experiment not associated with Git.
 
 ## Common misconceptions
 

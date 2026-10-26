@@ -155,14 +155,14 @@ LEFT ANTI JOIN bakery.sales.customers c ON o.customer_id = c.customer_id;
 ## Small-business considerations
 
 > [!smallbiz] Small-business considerations
-> - **Use the IDs your systems already give you.** The POS's order number and product SKU are good natural keys, as long as the vendor never reuses them.
-> - **Customers are the hard case.** The same person appears in the POS, the booking app, and the email tool with different IDs. Pick one system as the master, and keep a mapping table from the other systems' IDs to it.
-> - **Never key on names or phone numbers.** They repeat and change.
+> - **Use the IDs your systems already give you:** The POS's order number and product SKU are good natural keys, as long as the vendor never reuses them.
+> - **Customers are the hard case:** The same person appears in the POS, the booking app, and the email tool with different IDs. Pick one system as the master, and keep a mapping table from the other systems' IDs to it.
+> - **Never key on names or phone numbers:** They repeat and change.
 > - **Run the duplicate and orphan checks above** on a schedule. They catch most data quality problems early.
 
 > [!bridge]- In Databricks today
-> - **Keys are informational.** In Databricks, primary key, foreign key, and unique constraints are not enforced. The database will let you insert duplicates. Enforced checks are `NOT NULL` and `CHECK` constraints, and pipeline [[Expectations and Data Quality|expectations]].
-> - **`RELY` makes them useful.** Declaring a constraint with `RELY` tells the optimizer it may trust it, for example to remove unnecessary joins or `DISTINCT`s. The default is `NORELY`. RELY on primary keys arrived in Databricks Runtime 14.2 and on foreign keys in 15.4, and the optimizations need Photon-enabled compute. If you claim `RELY` and the data violates it, query results can be wrong.
+> - **Keys are informational:** In Databricks, primary key, foreign key, and unique constraints are not enforced. The database will let you insert duplicates. Enforced checks are `NOT NULL` and `CHECK` constraints, and pipeline [[Expectations and Data Quality|expectations]].
+> - **`RELY` makes them useful:** Declaring a constraint with `RELY` tells the optimizer it may trust it, for example to remove unnecessary joins or `DISTINCT`s. The default is `NORELY`. RELY on primary keys arrived in Databricks Runtime 14.2 and on foreign keys in 15.4, and the optimizations need Photon-enabled compute. If you claim `RELY` and the data violates it, query results can be wrong.
 > - **Identity columns** (`GENERATED ALWAYS AS IDENTITY`) generate surrogate keys. Values are unique but not guaranteed contiguous, must be `BIGINT`, and Databricks advises using them only where concurrent writes to the table are not needed.
 > - **Upserts use keys:** [[MERGE and Upserts|MERGE]] matches incoming rows to existing ones on a key.
 > - **BI tools read them:** declared keys help tools such as Power BI and [[Metric Views]] understand how tables join.
@@ -175,11 +175,11 @@ LEFT ANTI JOIN bakery.sales.customers c ON o.customer_id = c.customer_id;
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Why Databricks does not enforce keys.** Enforcing uniqueness on a distributed table means checking every write against every existing key, across many files and concurrent writers. That costs coordination that analytic workloads rarely want to pay. The data pipeline is responsible for uniqueness, usually through `MERGE` or deduplication.
-> - **Natural vs. surrogate keys in analytics.** Databricks' dimensional modeling guidance prefers natural keys when the source's key is stable and usable, and reserves surrogate keys for sources that reuse or change IDs. Identity columns are safe when the upstream table is append-only and never fully refreshed; a full rebuild can assign different IDs and break fact-to-dimension joins.
-> - **Deterministic surrogate keys.** When a surrogate key is needed, Databricks' dimensional modeling guidance recommends deriving an order-preserving surrogate deterministically from the stable natural key, so the same entity gets the same key after a full refresh or rebuild. The same guidance advises against hash surrogates such as `sha2(natural_key)`: hash values are random, so physically adjacent rows end up scattered across files, which hurts liquid clustering and Z-order performance.
-> - **Keys and indexes.** In OLTP databases such as PostgreSQL, a primary key or unique constraint automatically creates a unique B-tree [[Index|index]]. On Databricks, primary keys are informational and not enforced; lookups by key rely on per-file statistics (minimum and maximum values) for [[Data Skipping|data skipping]] and on [[Liquid Clustering|liquid clustering]] on the key columns. The older Bloom filter indexes are deprecated.
-> - **Keys in slowly changing dimensions.** When you keep history of a customer's address, one natural key maps to several rows, so the dimension needs a surrogate or a `(natural_key, valid_from)` key. See [[Slowly Changing Dimensions]].
+> - **Why Databricks does not enforce keys:** Enforcing uniqueness on a distributed table means checking every write against every existing key, across many files and concurrent writers. That costs coordination that analytic workloads rarely want to pay. The data pipeline is responsible for uniqueness, usually through `MERGE` or deduplication.
+> - **Natural vs. surrogate keys in analytics:** Databricks' dimensional modeling guidance prefers natural keys when the source's key is stable and usable, and reserves surrogate keys for sources that reuse or change IDs. Identity columns are safe when the upstream table is append-only and never fully refreshed; a full rebuild can assign different IDs and break fact-to-dimension joins.
+> - **Deterministic surrogate keys:** When a surrogate key is needed, Databricks' dimensional modeling guidance recommends deriving an order-preserving surrogate deterministically from the stable natural key, so the same entity gets the same key after a full refresh or rebuild. The same guidance advises against hash surrogates such as `sha2(natural_key)`: hash values are random, so physically adjacent rows end up scattered across files, which hurts liquid clustering and Z-order performance.
+> - **Keys and indexes:** In OLTP databases such as PostgreSQL, a primary key or unique constraint automatically creates a unique B-tree [[Index|index]]. On Databricks, primary keys are informational and not enforced; lookups by key rely on per-file statistics (minimum and maximum values) for [[Data Skipping|data skipping]] and on [[Liquid Clustering|liquid clustering]] on the key columns. The older Bloom filter indexes are deprecated.
+> - **Keys in slowly changing dimensions:** When you keep history of a customer's address, one natural key maps to several rows, so the dimension needs a surrogate or a `(natural_key, valid_from)` key. See [[Slowly Changing Dimensions]].
 
 ## Common misconceptions
 

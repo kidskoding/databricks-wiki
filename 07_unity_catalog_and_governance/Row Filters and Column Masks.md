@@ -151,11 +151,11 @@ To assign a filter or mask you need ownership of the table (or `MANAGE` plus `SE
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Compute.** Filters and masks are enforced on SQL warehouses, serverless, and standard-access-mode clusters. On dedicated (single user) clusters, Databricks enforces them by delegating the filtering to serverless compute, which must be enabled. Older runtimes may be unable to read filtered tables.
-> - **Performance.** The function runs per row (filters) or per value (masks). Keep functions simple and deterministic, avoid lookups into large tables where you can, and prefer conditions the optimizer can push down. Databricks publishes a performance guide for row filter and column mask policies.
-> - **Mapping tables.** For many users and regions, look up entitlements in a small table (`WHERE region IN (SELECT region FROM gov.policies.user_regions WHERE user = current_user())`) instead of hard-coding groups.
-> - **Limits.** Some operations and features have restrictions on tables with filters or masks. Check the current limitations list in the docs before relying on them in a pipeline.
-> - **Raw file access bypasses them.** Anyone with `READ FILES` on the underlying external location can read the files directly. Use managed tables and grant raw path access narrowly.
+> - **Compute:** Filters and masks are enforced on SQL warehouses, serverless, and standard-access-mode clusters. On dedicated (single user) clusters, Databricks enforces them by delegating the filtering to serverless compute, which must be enabled. Older runtimes may be unable to read filtered tables.
+> - **Performance:** The function runs per row (filters) or per value (masks). Keep functions simple and deterministic, avoid lookups into large tables where you can, and prefer conditions the optimizer can push down. Databricks publishes a performance guide for row filter and column mask policies.
+> - **Mapping tables:** For many users and regions, look up entitlements in a small table (`WHERE region IN (SELECT region FROM gov.policies.user_regions WHERE user = current_user())`) instead of hard-coding groups.
+> - **Limits:** Some operations and features have restrictions on tables with filters or masks. Check the current limitations list in the docs before relying on them in a pipeline.
+> - **Raw file access bypasses them:** Anyone with `READ FILES` on the underlying external location can read the files directly. Use managed tables and grant raw path access narrowly.
 > - **Dynamic views still have a place**: when you want to publish a curated, redacted *product* without touching the base table, or to share a filtered dataset externally.
 
 ## Common misconceptions

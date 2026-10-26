@@ -215,10 +215,10 @@ A common split: pipelines for bronze and silver ingestion, dbt for gold business
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Migrating from dbt-spark.** dbt Labs publishes a guide for moving from the older `dbt-spark` adapter to `dbt-databricks`, which adds Unity Catalog and Databricks SQL features.
-> - **Databricks-specific configs.** The adapter documents Databricks configurations for models (file format, clustering, table properties, and materializations). Check the adapter reference for supported options before relying on a materialization.
-> - **Custom profiles in jobs.** To use your own `profiles.yml` in a dbt task, commit it at the project root, point it at a SQL warehouse, and read the token from an environment variable rather than storing it in the file.
-> - **Lineage.** Tables built by dbt are ordinary Unity Catalog tables, so [[Data Lineage|lineage]] is captured from the SQL that the warehouse runs.
+> - **Migrating from dbt-spark:** dbt Labs publishes a guide for moving from the older `dbt-spark` adapter to `dbt-databricks`, which adds Unity Catalog and Databricks SQL features.
+> - **Databricks-specific configs:** The adapter documents Databricks configurations for models (file format, clustering, table properties, and materializations). Check the adapter reference for supported options before relying on a materialization.
+> - **Custom profiles in jobs:** To use your own `profiles.yml` in a dbt task, commit it at the project root, point it at a SQL warehouse, and read the token from an environment variable rather than storing it in the file.
+> - **Lineage:** Tables built by dbt are ordinary Unity Catalog tables, so [[Data Lineage|lineage]] is captured from the SQL that the warehouse runs.
 
 ## Common misconceptions
 

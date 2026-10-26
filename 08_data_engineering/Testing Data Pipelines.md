@@ -218,11 +218,11 @@ If gold models are built with dbt, `dbt build` runs schema tests (`not_null`, `u
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Test data.** Build unit-test inputs in code, as above, so each test documents its own edge cases. For integration tests, use a small, de-identified sample catalog rather than production data, in line with [[Least Privilege|least privilege]].
-> - **Idempotency tests.** Run the pipeline twice on the same input in staging and assert that row counts do not change. This catches non-[[Idempotency|idempotent]] steps, such as `INSERT INTO` without deduplication.
-> - **Schema change tests.** Add a test file with an extra column to staging and confirm that [[Auto Loader]] evolves or rescues it as configured.
-> - **Rules as data.** Storing expectation rules in a table lets business owners maintain them, but rule changes then bypass code review. Version the rules table or review changes to it.
-> - **Failing vs warning.** In production, `FAIL UPDATE` stops a flow and blocks downstream tasks. Reserve it for conditions where no output is better than wrong output; use warn or drop elsewhere and alert on the metrics.
+> - **Test data:** Build unit-test inputs in code, as above, so each test documents its own edge cases. For integration tests, use a small, de-identified sample catalog rather than production data, in line with [[Least Privilege|least privilege]].
+> - **Idempotency tests:** Run the pipeline twice on the same input in staging and assert that row counts do not change. This catches non-[[Idempotency|idempotent]] steps, such as `INSERT INTO` without deduplication.
+> - **Schema change tests:** Add a test file with an extra column to staging and confirm that [[Auto Loader]] evolves or rescues it as configured.
+> - **Rules as data:** Storing expectation rules in a table lets business owners maintain them, but rule changes then bypass code review. Version the rules table or review changes to it.
+> - **Failing vs warning:** In production, `FAIL UPDATE` stops a flow and blocks downstream tasks. Reserve it for conditions where no output is better than wrong output; use warn or drop elsewhere and alert on the metrics.
 
 ## Common misconceptions
 

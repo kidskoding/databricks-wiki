@@ -146,11 +146,11 @@ gcloud compute instances list --project=acme-databricks-prod \
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Cloud NAT ports.** Databricks' knowledge base reports that secret-fetch rates can drop after moving to GCE compute because Cloud NAT allocates ports differently for GCE VMs than it did for GKE nodes. The fix is to raise the NAT gateway's minimum ports per VM.
-> - **Service account scope.** A custom service account must be registered and must be in the project required by the docs (the docs word this in two ways; check the current page). Users need **Can manage** on the cluster to attach it. See [[Google Service Accounts]].
-> - **Policies.** Restrict machine types, availability, and service accounts with [[Compute Policies]] on `node_type_id` and `gcp_attributes.*`.
-> - **Arm processors.** A 2026 Databricks blog post on the Google Cloud partnership mentions work on Google Axion (Arm) processor support. Check the compute documentation for current availability before planning around it.
-> - **Workspaces without classic compute.** Serverless workspaces have no VMs in your project at all.
+> - **Cloud NAT ports:** Databricks' knowledge base reports that secret-fetch rates can drop after moving to GCE compute because Cloud NAT allocates ports differently for GCE VMs than it did for GKE nodes. The fix is to raise the NAT gateway's minimum ports per VM.
+> - **Service account scope:** A custom service account must be registered and must be in the project required by the docs (the docs word this in two ways; check the current page). Users need **Can manage** on the cluster to attach it. See [[Google Service Accounts]].
+> - **Policies:** Restrict machine types, availability, and service accounts with [[Compute Policies]] on `node_type_id` and `gcp_attributes.*`.
+> - **Arm processors:** A 2026 Databricks blog post on the Google Cloud partnership mentions work on Google Axion (Arm) processor support. Check the compute documentation for current availability before planning around it.
+> - **Workspaces without classic compute:** Serverless workspaces have no VMs in your project at all.
 
 ## Common misconceptions
 

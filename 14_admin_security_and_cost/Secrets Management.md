@@ -65,7 +65,9 @@ Databricks secrets store each credential in one place with an access list. Code 
 
 Databricks has two generations of secret storage.
 
-**1. Secret scopes (workspace-level).** The long-standing system. A scope is a named collection of secrets inside one workspace.
+### 1. Secret scopes (workspace-level)
+
+The long-standing system. A scope is a named collection of secrets inside one workspace.
 
 | Scope type | Where values live | Who can write | Clouds |
 |---|---|---|---|
@@ -76,7 +78,9 @@ Limits from the docs: a workspace can have at most **100 secret scopes**, a scop
 
 Access lists on a scope have three levels: **READ** (read secrets), **WRITE** (read and write), and **MANAGE** (also change the ACL). Only users with MANAGE can change ACLs.
 
-**2. Secrets in Unity Catalog.** A newer system where a secret is a [[Unity Catalog]] securable that lives in a schema (`catalog.schema.secret`), governed by SQL grants: `CREATE SECRET` (on a catalog or schema), `READ SECRET`, `WRITE SECRET`, and `REFERENCE SECRET` (use it without seeing the value). Unity Catalog secrets can also be **external**, backed by AWS Secrets Manager or Azure Key Vault, in which case they are read-only. The docs describe these as distinct from workspace secret scopes. I could not confirm the release stage (preview or GA) for every cloud as of October 2026, so check your workspace.
+### 2. Secrets in Unity Catalog
+
+A newer system where a secret is a [[Unity Catalog]] securable that lives in a schema (`catalog.schema.secret`), governed by SQL grants: `CREATE SECRET` (on a catalog or schema), `READ SECRET`, `WRITE SECRET`, and `REFERENCE SECRET` (use it without seeing the value). Unity Catalog secrets can also be **external**, backed by AWS Secrets Manager or Azure Key Vault, in which case they are read-only. The docs describe these as distinct from workspace secret scopes. I could not confirm the release stage (preview or GA) for every cloud as of October 2026, so check your workspace.
 
 ## How it works
 
@@ -171,11 +175,11 @@ GRANT READ SECRET ON SCHEMA ops.credentials TO `sp-nightly-etl`;
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Redaction is not a security boundary.** Databricks redacts literal secret values in notebook output and Spark config, but not deliberate transformations (reversing the string, inserting spaces). Secrets are also not redacted from the Spark driver log's stdout and stderr. The real control is the ACL on the scope plus who can run code on the cluster.
-> - **Anyone on the cluster.** A secret placed in a cluster's Spark config or environment can be read by code from any user who can attach to that cluster, even without direct READ permission on the scope. Keep secret-bearing config on dedicated compute.
-> - **The CLI cannot show values.** `list-secrets` is metadata only. `get-secret` returns base64-encoded bytes to principals with READ, so treat CLI access as read access.
-> - **Encryption.** Secrets in Databricks-backed scopes are part of control-plane "managed services" data, which a customer-managed key can protect. See [[Encryption]].
-> - **Prefer identities to secrets.** Many secrets can be removed entirely: storage access through Unity Catalog credentials, CI through OAuth token federation, and database connections through Unity Catalog connections used by [[Lakeflow Connect]] and [[Lakehouse Federation]] (check each connector's docs for how it stores credentials).
+> - **Redaction is not a security boundary:** Databricks redacts literal secret values in notebook output and Spark config, but not deliberate transformations (reversing the string, inserting spaces). Secrets are also not redacted from the Spark driver log's stdout and stderr. The real control is the ACL on the scope plus who can run code on the cluster.
+> - **Anyone on the cluster:** A secret placed in a cluster's Spark config or environment can be read by code from any user who can attach to that cluster, even without direct READ permission on the scope. Keep secret-bearing config on dedicated compute.
+> - **The CLI cannot show values:** `list-secrets` is metadata only. `get-secret` returns base64-encoded bytes to principals with READ, so treat CLI access as read access.
+> - **Encryption:** Secrets in Databricks-backed scopes are part of control-plane "managed services" data, which a customer-managed key can protect. See [[Encryption]].
+> - **Prefer identities to secrets:** Many secrets can be removed entirely: storage access through Unity Catalog credentials, CI through OAuth token federation, and database connections through Unity Catalog connections used by [[Lakeflow Connect]] and [[Lakehouse Federation]] (check each connector's docs for how it stores credentials).
 
 ## Common misconceptions
 

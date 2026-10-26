@@ -141,11 +141,11 @@ top.filter("revenue > 50").show()     # continue in DataFrame code
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **One engine, no speed difference.** A SQL query and the equivalent DataFrame code produce the same optimized plan. Choose by readability, not performance.
-> - **ANSI migration.** When upgrading code written for Spark 3.x, ANSI mode is the most common source of new errors. You can set `spark.sql.ansi.enabled = false` for a session while you fix the code, but the long-term fix is `try_cast`, `try_divide`, and similar functions.
-> - **Hints.** `/*+ BROADCAST(t) */`, `/*+ REPARTITION(n) */`, `/*+ REBALANCE */` and others steer the planner. A `BROADCAST` hint overrides `spark.sql.autoBroadcastJoinThreshold` (10 MB by default). See [[Broadcast Join]].
-> - **Thrift server.** Open-source Spark ships a JDBC/ODBC Thrift server so BI tools can send SQL to a Spark cluster. Databricks replaces it with SQL warehouses and its own drivers.
-> - **Semi-structured data.** The `VARIANT` type (added in 4.0, GA in 4.1 with shredding) stores JSON efficiently and is queried with functions such as `variant_get` (Databricks also offers path syntax such as `payload:customer.id`).
+> - **One engine, no speed difference:** A SQL query and the equivalent DataFrame code produce the same optimized plan. Choose by readability, not performance.
+> - **ANSI migration:** When upgrading code written for Spark 3.x, ANSI mode is the most common source of new errors. You can set `spark.sql.ansi.enabled = false` for a session while you fix the code, but the long-term fix is `try_cast`, `try_divide`, and similar functions.
+> - **Hints:** `/*+ BROADCAST(t) */`, `/*+ REPARTITION(n) */`, `/*+ REBALANCE */` and others steer the planner. A `BROADCAST` hint overrides `spark.sql.autoBroadcastJoinThreshold` (10 MB by default). See [[Broadcast Join]].
+> - **Thrift server:** Open-source Spark ships a JDBC/ODBC Thrift server so BI tools can send SQL to a Spark cluster. Databricks replaces it with SQL warehouses and its own drivers.
+> - **Semi-structured data:** The `VARIANT` type (added in 4.0, GA in 4.1 with shredding) stores JSON efficiently and is queried with functions such as `variant_get` (Databricks also offers path syntax such as `payload:customer.id`).
 
 ## Common misconceptions
 

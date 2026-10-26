@@ -140,9 +140,9 @@ GROUP BY p.category, DATE_TRUNC('MONTH', o.ordered_at);
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Code underneath.** Every visual data prep is backed by generated code in a `.designer.ipynb` notebook, so engineers can review it in Git and deploy it with [[Declarative Automation Bundles]] as a `notebook_task` (see [[CI-CD for Data Pipelines]]). If the generated code is changed outside the editor, Designer locks that operator until you choose **Regenerate code**.
-> - **Migration.** The roadmap entry for [[Lakebridge]] integration targets moving workflows from legacy visual ETL tools into Designer. See [[Migrating ETL Tools]].
-> - **Review AI-generated steps.** Natural-language steps produce real transformations. Check the preview and row counts at each operator before scheduling.
+> - **Code underneath:** Every visual data prep is backed by generated code in a `.designer.ipynb` notebook, so engineers can review it in Git and deploy it with [[Declarative Automation Bundles]] as a `notebook_task` (see [[CI-CD for Data Pipelines]]). If the generated code is changed outside the editor, Designer locks that operator until you choose **Regenerate code**.
+> - **Migration:** The roadmap entry for [[Lakebridge]] integration targets moving workflows from legacy visual ETL tools into Designer. See [[Migrating ETL Tools]].
+> - **Review AI-generated steps:** Natural-language steps produce real transformations. Check the preview and row counts at each operator before scheduling.
 
 ## Common misconceptions
 

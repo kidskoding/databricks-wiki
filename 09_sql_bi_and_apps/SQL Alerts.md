@@ -147,7 +147,7 @@ Workspace admins create, update, and delete notification destinations in the wor
 
 > [!smallbiz] Small-business considerations
 > - **Start with two or three alerts** tied to decisions: a store with low sales, a pipeline that loaded zero rows, and a refund rate above normal.
-> - **Alert on a count, not a list.** A query that returns "number of problem stores" is simple to threshold and to read in a message.
+> - **Alert on a count, not a list:** A query that returns "number of problem stores" is simple to threshold and to read in a message.
 > - **Schedule alerts after the nightly pipeline** so they check fresh data. In Lakeflow Jobs, add a SQL alert task after the pipeline task.
 > - **Send to a shared channel** instead of one person's inbox, so alerts are not missed during holidays.
 >
@@ -161,12 +161,12 @@ Workspace admins create, update, and delete notification destinations in the wor
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Alerts in jobs.** The SQL alert task in [[Lakeflow Jobs]] evaluates an alert as a job step, so the check runs immediately after the data it depends on is refreshed. It supports only current (not legacy) alerts.
-> - **Alerts as code.** The Databricks CLI `alerts-v2` command group creates alerts from a display name, query text, warehouse ID, evaluation, and schedule. Alerts can also be deployed as resources in [[Declarative Automation Bundles]].
-> - **Alert history.** An alert [[System Tables|system table]] records alert definitions and settings, including whether subscribers are notified when an alert returns to OK.
-> - **Permissions.** Editing an alert schedule's notification list requires `CAN MANAGE` on the schedule. Only workspace admins manage notification destinations.
-> - **Data quality alerts.** For table-level freshness and anomaly checks, see [[Data Quality Monitoring]], which has its own alerting. SQL alerts suit business thresholds and custom checks.
-> - **Legacy behavior.** Legacy alerts notified whenever the status changed between OK and TRIGGERED. Check the current behavior and the notify-on-OK option when migrating.
+> - **Alerts in jobs:** The SQL alert task in [[Lakeflow Jobs]] evaluates an alert as a job step, so the check runs immediately after the data it depends on is refreshed. It supports only current (not legacy) alerts.
+> - **Alerts as code:** The Databricks CLI `alerts-v2` command group creates alerts from a display name, query text, warehouse ID, evaluation, and schedule. Alerts can also be deployed as resources in [[Declarative Automation Bundles]].
+> - **Alert history:** An alert [[System Tables|system table]] records alert definitions and settings, including whether subscribers are notified when an alert returns to OK.
+> - **Permissions:** Editing an alert schedule's notification list requires `CAN MANAGE` on the schedule. Only workspace admins manage notification destinations.
+> - **Data quality alerts:** For table-level freshness and anomaly checks, see [[Data Quality Monitoring]], which has its own alerting. SQL alerts suit business thresholds and custom checks.
+> - **Legacy behavior:** Legacy alerts notified whenever the status changed between OK and TRIGGERED. Check the current behavior and the notify-on-OK option when migrating.
 
 ## Common misconceptions
 

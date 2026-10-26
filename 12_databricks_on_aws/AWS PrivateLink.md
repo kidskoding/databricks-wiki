@@ -72,10 +72,10 @@ Databricks on AWS supports three private connectivity paths (see [[Network Secur
 
 Two objects control the setup in Databricks:
 
-- **VPC endpoint registrations.** Each AWS endpoint you create is registered in the account (**Security**, **Private endpoints**, or the API). The registration region must match the endpoint region.
-- **Private access settings (PAS).** An account object attached to workspaces:
-  - **Public access enabled.** `false` (default) allows only PrivateLink. `true` allows both PrivateLink and public internet access.
-  - **Private access level.** `ACCOUNT` allows any endpoint registered in the account. `ENDPOINT` allows only a listed set, which must include your front-end registration.
+- **VPC endpoint registrations:** Each AWS endpoint you create is registered in the account (**Security**, **Private endpoints**, or the API). The registration region must match the endpoint region.
+- **Private access settings (PAS):** An account object attached to workspaces:
+  - **Public access enabled:** `false` (default) allows only PrivateLink. `true` allows both PrivateLink and public internet access.
+  - **Private access level:** `ACCOUNT` allows any endpoint registered in the account. `ENDPOINT` allows only a listed set, which must include your front-end registration.
 
 A workspace with no private access settings attached denies all private access.
 
@@ -160,13 +160,13 @@ In Terraform, the resources are `databricks_mws_vpc_endpoint`, `databricks_mws_p
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Account-level resources.** A separate inbound PrivateLink configuration covers account-level resources such as the account console.
-> - **Ports.** The security group rules for PrivateLink include port 6666 for the SCC relay, in addition to 443.
-> - **Testing public access off.** Setting public access to `false` blocks every client not on a registered endpoint, including CI/CD runners on the internet. Plan connectivity for automation before you switch.
-> - **Combining controls.** Private access settings, [[IP Access Lists]], and context-based ingress policies stack. A request must pass all applicable controls.
-> - **Serverless.** Classic PrivateLink does not cover serverless compute. Serverless private endpoints to S3 and to resources in your VPC are configured through NCCs, with per-region quotas. See [[Serverless Network Security]].
-> - **GovCloud.** The GovCloud page lists private connectivity to AWS resources as not yet available. Check it before designing a GovCloud network. See [[Databricks on AWS GovCloud]].
-> - **Databricks Apps.** With front-end PrivateLink, Apps need conditional DNS forwarding for the `databricksapps.com` domain.
+> - **Account-level resources:** A separate inbound PrivateLink configuration covers account-level resources such as the account console.
+> - **Ports:** The security group rules for PrivateLink include port 6666 for the SCC relay, in addition to 443.
+> - **Testing public access off:** Setting public access to `false` blocks every client not on a registered endpoint, including CI/CD runners on the internet. Plan connectivity for automation before you switch.
+> - **Combining controls:** Private access settings, [[IP Access Lists]], and context-based ingress policies stack. A request must pass all applicable controls.
+> - **Serverless:** Classic PrivateLink does not cover serverless compute. Serverless private endpoints to S3 and to resources in your VPC are configured through NCCs, with per-region quotas. See [[Serverless Network Security]].
+> - **GovCloud:** The GovCloud page lists private connectivity to AWS resources as not yet available. Check it before designing a GovCloud network. See [[Databricks on AWS GovCloud]].
+> - **Databricks Apps:** With front-end PrivateLink, Apps need conditional DNS forwarding for the `databricksapps.com` domain.
 
 ## Common misconceptions
 

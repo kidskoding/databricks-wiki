@@ -136,8 +136,8 @@ From the outside, a client connects to the Iceberg REST endpoint with a Databric
 > Turn UniForm on only for tables someone outside Databricks needs to read: a partner on another platform, a BI tool that speaks Iceberg, or a data warehouse you are migrating away from slowly. Typically that is a handful of gold tables, not everything.
 >
 > Two cautions:
-> - **It is read-only from outside.** All writes still happen in Databricks.
-> - **There is a short delay.** Iceberg metadata is generated after each commit, so an external reader can briefly lag the latest Delta version.
+> - **It is read-only from outside:** All writes still happen in Databricks.
+> - **There is a short delay:** Iceberg metadata is generated after each commit, so an external reader can briefly lag the latest Delta version.
 
 ## Cloud differences
 
@@ -153,12 +153,12 @@ From the outside, a client connects to the Iceberg REST endpoint with a Databric
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Asynchronous by design.** Iceberg metadata generation runs after the Delta commit. External clients cannot query the new version until it completes. If many commits happen quickly, generation can batch them.
-> - **VACUUM affects Iceberg readers too.** VACUUM removes Parquet files that old Delta versions referenced, so Iceberg clients querying out-of-date versions can hit errors. Keep external readers on the latest snapshot.
-> - **Iceberg v3 changes the trade-off.** With v3, deletion vectors, row lineage, and VARIANT are available on managed Delta tables with UniForm (May 2026 release notes). Before v3, you had to choose between deletion vectors and Iceberg reads.
-> - **UniForm vs. managed Iceberg.** UniForm keeps Delta as the primary format and gives Iceberg readers read-only access. A **managed Iceberg table** is natively Iceberg and lets external engines write through the REST catalog. Choose UniForm when Databricks is the only writer; choose managed Iceberg when other engines must write.
+> - **Asynchronous by design:** Iceberg metadata generation runs after the Delta commit. External clients cannot query the new version until it completes. If many commits happen quickly, generation can batch them.
+> - **VACUUM affects Iceberg readers too:** VACUUM removes Parquet files that old Delta versions referenced, so Iceberg clients querying out-of-date versions can hit errors. Keep external readers on the latest snapshot.
+> - **Iceberg v3 changes the trade-off:** With v3, deletion vectors, row lineage, and VARIANT are available on managed Delta tables with UniForm (May 2026 release notes). Before v3, you had to choose between deletion vectors and Iceberg reads.
+> - **UniForm vs. managed Iceberg:** UniForm keeps Delta as the primary format and gives Iceberg readers read-only access. A **managed Iceberg table** is natively Iceberg and lets external engines write through the REST catalog. Choose UniForm when Databricks is the only writer; choose managed Iceberg when other engines must write.
 > - **Compatibility Mode** is a separate Databricks feature for exposing tables to external readers (see its docs page in the sources). Check which one your reader needs.
-> - **Hudi.** This vault has not confirmed current UniForm support for Hudi output from Databricks sources, so it is not covered here.
+> - **Hudi:** This vault has not confirmed current UniForm support for Hudi output from Databricks sources, so it is not covered here.
 
 ## Common misconceptions
 

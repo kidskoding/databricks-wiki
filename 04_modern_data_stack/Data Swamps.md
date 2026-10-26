@@ -61,11 +61,11 @@ Mastery: `INPUT[inlineSelect(option(new), option(learning), option(solid)):maste
 
 The data lake moves structural work from **write time** to **read time**. Warehouses reject data that does not fit; lakes accept everything. That flexibility has costs that appear as the lake grows:
 
-- **No inventory.** Folders such as `s3://lake/tmp_final_v2/` accumulate. There is no searchable [[Data Catalog|catalog]], or a [[Hive Metastore]] that disagrees with the actual files.
-- **No provenance.** Several copies of the same dataset have different row counts, and there is no record of which job produced which file from which inputs (no [[Data Lineage|lineage]]).
-- **Unreliable files.** Without transactions, a job that fails partway leaves a mix of old and new files, concurrent writers can corrupt a table, and readers can see incomplete data.
-- **No in-place changes.** Deleting one customer's data for a [[GDPR]] request requires rewriting entire folders of files.
-- **Coarse security.** Access is granted per bucket or per cluster, not per table or column, so anyone with bucket access can read every file in it.
+- **No inventory:** Folders such as `s3://lake/tmp_final_v2/` accumulate. There is no searchable [[Data Catalog|catalog]], or a [[Hive Metastore]] that disagrees with the actual files.
+- **No provenance:** Several copies of the same dataset have different row counts, and there is no record of which job produced which file from which inputs (no [[Data Lineage|lineage]]).
+- **Unreliable files:** Without transactions, a job that fails partway leaves a mix of old and new files, concurrent writers can corrupt a table, and readers can see incomplete data.
+- **No in-place changes:** Deleting one customer's data for a [[GDPR]] request requires rewriting entire folders of files.
+- **Coarse security:** Access is granted per bucket or per cluster, not per table or column, so anyone with bucket access can read every file in it.
 
 As a result, analysts stop relying on the lake and request that data be copied into a warehouse instead, which leads to [[The Two-Tier Architecture Problem]]. The term "data swamp" describes a lake in this state.
 
@@ -125,8 +125,8 @@ On Parquet files in a bucket, each of these statements requires a custom job tha
 
 > [!bridge]- In Databricks today
 > Databricks addresses each root cause with a specific feature, covered in later chapters:
-> - **Unreliable files → [[Delta Lake]].** A transaction log turns a folder of Parquet into a table with [[ACID Transactions|ACID transactions]], `UPDATE`/`DELETE`/[[MERGE and Upserts|MERGE]], [[Schema Enforcement and Evolution|schema enforcement]], and [[Time Travel|time travel]].
-> - **No governance → [[Unity Catalog]].** One account-level catalog with search, [[Privileges and Grants|grants]] down to [[Row Filters and Column Masks|rows and columns]], automatic [[Data Lineage|lineage]], [[Audit Logs|audit logs]], and [[Data Classification|data classification]] for finding sensitive columns.
+> - **Unreliable files → [[Delta Lake]]:** A transaction log turns a folder of Parquet into a table with [[ACID Transactions|ACID transactions]], `UPDATE`/`DELETE`/[[MERGE and Upserts|MERGE]], [[Schema Enforcement and Evolution|schema enforcement]], and [[Time Travel|time travel]].
+> - **No governance → [[Unity Catalog]]:** One account-level catalog with search, [[Privileges and Grants|grants]] down to [[Row Filters and Column Masks|rows and columns]], automatic [[Data Lineage|lineage]], [[Audit Logs|audit logs]], and [[Data Classification|data classification]] for finding sensitive columns.
 > - **Untrusted pipelines → [[Expectations and Data Quality|expectations]]** in [[Lakeflow Spark Declarative Pipelines]] and [[Data Quality Monitoring]], which check data as it flows.
 
 ## Cloud differences
@@ -143,10 +143,10 @@ On Parquet files in a bucket, each of these statements requires a custom job tha
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Metadata drift.** In Hive-style lakes the metastore holds partitions and schemas while files live independently. Jobs that wrote files without updating the metastore (or vice versa) were a constant source of "missing" or phantom data. Table formats fix this by making the log, stored next to the data, the only source of truth.
-> - **Governance is socio-technical.** Tools give you catalogs and grants; someone still has to own each dataset. [[Data Mesh]] is one organizational answer (domain ownership); Unity Catalog's domains and tags support either centralized or federated models.
-> - **Swamps are expensive.** Undeletable copies grow storage and request costs forever. Lineage is what gives you the confidence to delete: if nothing downstream reads a table, it can go.
-> - **Compliance risk.** Unknown copies of [[PII]] are the biggest danger for [[GDPR]] and [[HIPAA]]. Automated classification is how large estates find them.
+> - **Metadata drift:** In Hive-style lakes the metastore holds partitions and schemas while files live independently. Jobs that wrote files without updating the metastore (or vice versa) were a constant source of "missing" or phantom data. Table formats fix this by making the log, stored next to the data, the only source of truth.
+> - **Governance is socio-technical:** Tools give you catalogs and grants; someone still has to own each dataset. [[Data Mesh]] is one organizational answer (domain ownership); Unity Catalog's domains and tags support either centralized or federated models.
+> - **Swamps are expensive:** Undeletable copies grow storage and request costs forever. Lineage is what gives you the confidence to delete: if nothing downstream reads a table, it can go.
+> - **Compliance risk:** Unknown copies of [[PII]] are the biggest danger for [[GDPR]] and [[HIPAA]]. Automated classification is how large estates find them.
 
 ## Common misconceptions
 

@@ -50,10 +50,10 @@ In the [[The Two-Tier Architecture Problem|two-tier architecture]], serving busi
 
 Key points:
 
-- **One copy of the data.** Dashboards, Genie Agents, alerts, and external BI tools all query the same Unity Catalog tables on SQL warehouses, under the same permissions.
-- **One definition per metric.** [[Metric Views]] define measures such as revenue once in Unity Catalog, so dashboards, Genie, and Power BI return the same number.
-- **Analytical and transactional storage are separate.** Delta tables suit large scans. Apps that save many small records need a row store, which [[Lakebase]] provides.
-- **Product names changed in 2026.** Databricks One became Genie (April 2026) and then Genie One (June 2026). Genie spaces became Genie Agents (July 2026). Databricks Assistant became Genie Code (March 2026). See [[Databricks Product Names and Renames]].
+- **One copy of the data:** Dashboards, Genie Agents, alerts, and external BI tools all query the same Unity Catalog tables on SQL warehouses, under the same permissions.
+- **One definition per metric:** [[Metric Views]] define measures such as revenue once in Unity Catalog, so dashboards, Genie, and Power BI return the same number.
+- **Analytical and transactional storage are separate:** Delta tables suit large scans. Apps that save many small records need a row store, which [[Lakebase]] provides.
+- **Product names changed in 2026:** Databricks One became Genie (April 2026) and then Genie One (June 2026). Genie spaces became Genie Agents (July 2026). Databricks Assistant became Genie Code (March 2026). See [[Databricks Product Names and Renames]].
 
 The chapter uses one running example: a three-store bakery whose owner reviews "daily sales by store" each morning, asks follow-up questions in plain language, and receives an alert when one store's sales fall below a threshold.
 

@@ -150,7 +150,7 @@ Create a branch from `production` to test a schema change or a new app version a
 ## Small-business considerations
 
 > [!smallbiz] Small-business considerations
-> - **Use Lakebase when an app writes data.** Forms, approvals, inventory counts, and app state belong in Postgres. Reports and aggregations belong in Delta tables on a SQL warehouse.
+> - **Use Lakebase when an app writes data:** Forms, approvals, inventory counts, and app state belong in Postgres. Reports and aggregations belong in Delta tables on a SQL warehouse.
 > - **Do not move the point-of-sale or main business system** into Lakebase as a first step. Keep the system of record where it is and ingest it with [[Lakeflow Connect]]. See [[Migrating from Postgres and MySQL]].
 > - **Use scale-to-zero** for internal tools used only during business hours, so idle compute is not billed.
 > - **Serve lookups with synced tables** in snapshot mode on a daily schedule, unless the app needs data fresher than a day.
@@ -173,14 +173,14 @@ Create a branch from `production` to test a schema change or a new app version a
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Storage and compute separation.** Lakebase separates Postgres storage from compute ([[Storage vs Compute]]). This is what enables scale-to-zero, instant branches, and point-in-time recovery without full copies.
-> - **Synced table throughput.** The Autoscaling docs cite about 150 rows per second per CU for triggered and continuous syncs. The older Provisioned docs cite about 1,200 and a 2 TB logical data limit per database. Check which model a page describes.
-> - **Change data feed.** Triggered and continuous modes need a change data feed on the source. Automatic change data feed can cover sources such as Iceberg tables.
-> - **Write-back to the lakehouse.** Some direct write-back features (LTAP direct writes) are in Beta as of October 2026. Operational data can also flow back through [[Lakehouse Federation]] or ingestion pipelines.
-> - **Observability.** Lakebase telemetry is available in [[System Tables|system tables]].
-> - **Disaster recovery.** Automated backups and point-in-time recovery are included. See the Lakebase disaster recovery page and [[Disaster Recovery]].
-> - **Compatibility.** Lakebase is Postgres-compatible, but not every extension or setting is available. Check the compatibility page before migrating an existing application.
-> - **Infrastructure as code.** Projects, branches, and endpoints can be managed with the REST API, CLI, SDKs, and Declarative Automation Bundles.
+> - **Storage and compute separation:** Lakebase separates Postgres storage from compute ([[Storage vs Compute]]). This is what enables scale-to-zero, instant branches, and point-in-time recovery without full copies.
+> - **Synced table throughput:** The Autoscaling docs cite about 150 rows per second per CU for triggered and continuous syncs. The older Provisioned docs cite about 1,200 and a 2 TB logical data limit per database. Check which model a page describes.
+> - **Change data feed:** Triggered and continuous modes need a change data feed on the source. Automatic change data feed can cover sources such as Iceberg tables.
+> - **Write-back to the lakehouse:** Some direct write-back features (LTAP direct writes) are in Beta as of October 2026. Operational data can also flow back through [[Lakehouse Federation]] or ingestion pipelines.
+> - **Observability:** Lakebase telemetry is available in [[System Tables|system tables]].
+> - **Disaster recovery:** Automated backups and point-in-time recovery are included. See the Lakebase disaster recovery page and [[Disaster Recovery]].
+> - **Compatibility:** Lakebase is Postgres-compatible, but not every extension or setting is available. Check the compatibility page before migrating an existing application.
+> - **Infrastructure as code:** Projects, branches, and endpoints can be managed with the REST API, CLI, SDKs, and Declarative Automation Bundles.
 
 ## Common misconceptions
 

@@ -228,11 +228,11 @@ Each task can retry a set number of times on error (`max_retries`, with `min_ret
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **File events help triggers.** The docs recommend enabling file events on the external location: it makes table update triggers more efficient and unlocks faster Auto Loader and file arrival triggers.
-> - **Trigger type in system tables.** `system.lakeflow.job_run_timeline` records a trigger type per run: `CRON`, `FILE_ARRIVAL`, `TABLE`, `CONTINUOUS`, and `ONETIME_RETRY` (a retry of an earlier failed run). Use it to tell scheduled runs from event-driven ones.
+> - **File events help triggers:** The docs recommend enabling file events on the external location: it makes table update triggers more efficient and unlocks faster Auto Loader and file arrival triggers.
+> - **Trigger type in system tables:** `system.lakeflow.job_run_timeline` records a trigger type per run: `CRON`, `FILE_ARRIVAL`, `TABLE`, `CONTINUOUS`, and `ONETIME_RETRY` (a retry of an earlier failed run). Use it to tell scheduled runs from event-driven ones.
 > - **Dynamic value references** cover more than task values: job parameters, job and run IDs, start times, and the trigger time. Use the trigger time rather than `current_date()` for [[Backfill|backfills]] and reruns, so a rerun of Tuesday's run still processes Tuesday.
 > - **Disabled upstream tasks** break If/else tasks that read their values. Disable with care.
-> - **Fan-out limits.** The for-each `concurrency` setting accepts 1 to 100 parallel iterations, and the UI default is 1. Keep it modest when each iteration hits an external API with rate limits.
+> - **Fan-out limits:** The for-each `concurrency` setting accepts 1 to 100 parallel iterations, and the UI default is 1. Keep it modest when each iteration hits an external API with rate limits.
 
 ## Common misconceptions
 

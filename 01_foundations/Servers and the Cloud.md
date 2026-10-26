@@ -76,8 +76,8 @@ Mastery: `INPUT[inlineSelect(option(new), option(learning), option(solid)):maste
 Before the cloud, a business that needed a database server bought hardware, put it in a back room or a rented data center rack, and kept it running. That meant:
 
 - **Big up-front cost** for capacity you might need in two years.
-- **Long lead times.** Ordering, shipping, installing, and configuring took weeks.
-- **Idle waste.** The server sized for December sat mostly unused in February.
+- **Long lead times:** Ordering, shipping, installing, and configuring took weeks.
+- **Idle waste:** The server sized for December sat mostly unused in February.
 - **Staff time** spent on power, cooling, patches, backups, and disk failures.
 
 Cloud providers turned servers into a metered utility. Amazon Web Services launched its storage service, S3, in March 2006 and its rental servers, EC2, as a beta in August 2006. Microsoft Azure and Google Cloud followed. Today most new data platforms, Databricks included, run on one of these three.
@@ -133,9 +133,9 @@ When you start a cloud server, you choose a **region**, a **machine size** (CPU 
 ## Small-business considerations
 
 > [!smallbiz] Small-business considerations
-> - **You are probably already in the cloud.** Microsoft 365 or Google Workspace, your POS, and your booking app are all SaaS.
+> - **You are probably already in the cloud:** Microsoft 365 or Google Workspace, your POS, and your booking app are all SaaS.
 > - **Pick the cloud you already use** for a data platform, unless you have a strong reason not to. Identity, billing, and support are simpler. See [[Choosing a Cloud for Databricks]].
-> - **The meter is the main risk.** Cloud costs nothing when idle, but a machine left running all weekend is billed all weekend. Use auto-shutdown and budgets from day one. See [[Auto Termination]] and [[Cost Management Basics]].
+> - **The meter is the main risk:** Cloud costs nothing when idle, but a machine left running all weekend is billed all weekend. Use auto-shutdown and budgets from day one. See [[Auto Termination]] and [[Cost Management Basics]].
 > - **Region matters** for privacy laws and speed. Choose one close to you and your customers.
 
 > [!bridge]- In Databricks today
@@ -159,11 +159,11 @@ When you start a cloud server, you choose a **region**, a **machine size** (CPU 
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Virtualization and multi-tenancy.** A cloud "server" is usually a [[Virtual Machine|virtual machine]] sharing a physical host with other customers, isolated by a hypervisor. [[Container|Containers]] and [[Kubernetes]] isolate at the operating-system level instead, and start faster.
-> - **Elasticity changes architecture.** When servers are rented by the second, it becomes rational to start a big cluster, finish a job in ten minutes, and shut it down, rather than keep a medium cluster running all day. This only works if data does not live on the machines, which is the subject of [[Storage vs Compute]].
-> - **Failure is normal at scale.** In a large fleet, machines fail every day. Cloud-native systems assume any node can disappear and design for it with [[Replication|replication]] and retries. See [[Fault Tolerance]].
-> - **Egress and data gravity.** Moving data out of a cloud or across regions is charged and slow. Data tends to stay where it is first stored, and compute moves to it. See [[Egress]].
-> - **Shared responsibility.** The provider secures the hardware and data centers; you secure your accounts, networks, keys, and data. Databricks adds its own layer. See [[Network Security Overview]].
+> - **Virtualization and multi-tenancy:** A cloud "server" is usually a [[Virtual Machine|virtual machine]] sharing a physical host with other customers, isolated by a hypervisor. [[Container|Containers]] and [[Kubernetes]] isolate at the operating-system level instead, and start faster.
+> - **Elasticity changes architecture:** When servers are rented by the second, it becomes rational to start a big cluster, finish a job in ten minutes, and shut it down, rather than keep a medium cluster running all day. This only works if data does not live on the machines, which is the subject of [[Storage vs Compute]].
+> - **Failure is normal at scale:** In a large fleet, machines fail every day. Cloud-native systems assume any node can disappear and design for it with [[Replication|replication]] and retries. See [[Fault Tolerance]].
+> - **Egress and data gravity:** Moving data out of a cloud or across regions is charged and slow. Data tends to stay where it is first stored, and compute moves to it. See [[Egress]].
+> - **Shared responsibility:** The provider secures the hardware and data centers; you secure your accounts, networks, keys, and data. Databricks adds its own layer. See [[Network Security Overview]].
 
 ## Common misconceptions
 

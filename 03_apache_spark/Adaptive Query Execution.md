@@ -142,11 +142,11 @@ In the [[Spark UI]] SQL / DataFrame tab, the query's plan graph shows the final 
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **`parallelismFirst`.** In open-source Spark 3.2+, `spark.sql.adaptive.coalescePartitions.parallelismFirst` defaults to `true`, which ignores the advisory size and respects only the minimum partition size, to maximize parallelism. Set it to `false` to coalesce toward the advisory size.
-> - **Initial partition number.** `spark.sql.adaptive.coalescePartitions.initialPartitionNum` sets the shuffle partition count before coalescing; a high initial value gives AQE more room to coalesce evenly.
+> - **`parallelismFirst`:** In open-source Spark 3.2+, `spark.sql.adaptive.coalescePartitions.parallelismFirst` defaults to `true`, which ignores the advisory size and respects only the minimum partition size, to maximize parallelism. Set it to `false` to coalesce toward the advisory size.
+> - **Initial partition number:** `spark.sql.adaptive.coalescePartitions.initialPartitionNum` sets the shuffle partition count before coalescing; a high initial value gives AQE more room to coalesce evenly.
 > - **Dynamic partition pruning** (Spark 3.0) is a separate optimization often discussed with AQE. It prunes partitions of a fact table at runtime using filter results from a dimension table. See [[Partition Pruning]].
-> - **Limitations.** AQE cannot fix skew in the first stage of a query (there is no shuffle before it) and AQE's skew optimization applies to shuffle-based joins, not to aggregations.
-> - **Explain output.** Before execution, `explain()` shows `AdaptiveSparkPlan isFinalPlan=false` with the initial plan. After an action, the final plan shows `isFinalPlan=true`.
+> - **Limitations:** AQE cannot fix skew in the first stage of a query (there is no shuffle before it) and AQE's skew optimization applies to shuffle-based joins, not to aggregations.
+> - **Explain output:** Before execution, `explain()` shows `AdaptiveSparkPlan isFinalPlan=false` with the initial plan. After an action, the final plan shows `isFinalPlan=true`.
 
 ## Common misconceptions
 

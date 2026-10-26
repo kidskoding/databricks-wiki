@@ -151,12 +151,12 @@ The model is identical on all three clouds. The differences are the type of cust
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **"Data plane" is the old name.** Older docs and diagrams call the compute plane the *data plane*. The terms are equivalent.
-> - **What the control plane stores.** Notebook source, job definitions, query text and results caches, and workspace configuration live in the control plane, encrypted. Customer-managed keys can cover managed services data (control plane) and workspace storage separately. See [[Customer-Managed Keys on AWS]], [[Customer-Managed Keys on Azure]], and [[Customer-Managed Keys on Google Cloud]].
-> - **Serverless isolation.** Serverless compute runs in the same region as the workspace, inside a per-workspace network boundary. User code on serverless and on standard access mode clusters is isolated by Lakeguard (see [[Compute Types]]).
-> - **Egress control.** On classic, outbound traffic follows your VPC's routes and firewalls. On serverless, you restrict outbound internet with serverless network policies and reach private resources through NCC private endpoints. Plan this before a security review.
-> - **Regional control planes.** Each cloud region has its own control plane deployment. Control plane IPs and endpoints differ per region, which matters for firewall allowlists.
-> - **Compliance.** Hardened setups combine private connectivity, customer-managed keys, and the [[Compliance Security Profile]].
+> - **"Data plane" is the old name:** Older docs and diagrams call the compute plane the *data plane*. The terms are equivalent.
+> - **What the control plane stores:** Notebook source, job definitions, query text and results caches, and workspace configuration live in the control plane, encrypted. Customer-managed keys can cover managed services data (control plane) and workspace storage separately. See [[Customer-Managed Keys on AWS]], [[Customer-Managed Keys on Azure]], and [[Customer-Managed Keys on Google Cloud]].
+> - **Serverless isolation:** Serverless compute runs in the same region as the workspace, inside a per-workspace network boundary. User code on serverless and on standard access mode clusters is isolated by Lakeguard (see [[Compute Types]]).
+> - **Egress control:** On classic, outbound traffic follows your VPC's routes and firewalls. On serverless, you restrict outbound internet with serverless network policies and reach private resources through NCC private endpoints. Plan this before a security review.
+> - **Regional control planes:** Each cloud region has its own control plane deployment. Control plane IPs and endpoints differ per region, which matters for firewall allowlists.
+> - **Compliance:** Hardened setups combine private connectivity, customer-managed keys, and the [[Compliance Security Profile]].
 
 ## Common misconceptions
 

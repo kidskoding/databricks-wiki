@@ -70,7 +70,9 @@ Databricks' HA/DR design guide gives example targets: **critical** workloads wit
 
 ## Overview
 
-**Shared responsibility.** Databricks does not hold your primary data. Tables and files live in cloud storage that you control, so you define and implement the RPO for that data. Databricks operates the control plane, which holds workspace objects such as notebooks, job definitions, and cluster configurations.
+### Shared responsibility
+
+Databricks does not hold your primary data. Tables and files live in cloud storage that you control, so you define and implement the RPO for that data. Databricks operates the control plane, which holds workspace objects such as notebooks, job definitions, and cluster configurations.
 
 | Asset | Where it lives | Who protects it |
 |---|---|---|
@@ -89,7 +91,9 @@ The Azure docs state that workspace-level backup and restore is not directly ava
 | **Active-passive** | A secondary deployment in another region kept in sync; becomes active only when the primary fails | Lower | Medium |
 | **Active-active** | Workloads run in both regions | Lowest | Highest: jobs run twice |
 
-**Managed disaster recovery.** Databricks offers managed DR for cross-region recovery on AWS and Azure, and the docs recommend it for that purpose. It was in **Public Preview** as of October 2026.
+### Managed disaster recovery
+
+Databricks offers managed DR for cross-region recovery on AWS and Azure, and the docs recommend it for that purpose. It was in **Public Preview** as of October 2026.
 
 - Replicates Unity Catalog metadata and managed table data, workspace assets, or both, to a secondary region.
 - Failover is triggered from the account console, and planned failovers can be used to test the setup.
@@ -119,10 +123,10 @@ flowchart LR
 
 ### Do-it-yourself active-passive, outline
 
-1. **Infrastructure.** Define both workspaces, networking, metastores, external locations, and policies in Terraform. Apply to both regions.
-2. **Code and jobs.** Keep notebooks, jobs, and pipelines in Git and deploy them to both regions with [[Declarative Automation Bundles]], with schedules paused in the secondary.
-3. **Identities.** Sync users and groups from the identity provider to the account; account-level identities are shared by both workspaces.
-4. **Data.** Copy Delta tables to the secondary region on a schedule that meets the RPO, for example with `DEEP CLONE`:
+1. **Infrastructure:** Define both workspaces, networking, metastores, external locations, and policies in Terraform. Apply to both regions.
+2. **Code and jobs:** Keep notebooks, jobs, and pipelines in Git and deploy them to both regions with [[Declarative Automation Bundles]], with schedules paused in the secondary.
+3. **Identities:** Sync users and groups from the identity provider to the account; account-level identities are shared by both workspaces.
+4. **Data:** Copy Delta tables to the secondary region on a schedule that meets the RPO, for example with `DEEP CLONE`:
 
 ```sql
 -- Incremental copy of a table into the DR catalog (run on a schedule)
@@ -131,8 +135,8 @@ CREATE OR REPLACE TABLE dr_sales.orders.daily_totals
 ```
 
    Re-running a clone into an existing Delta table creates an incremental commit with only the new data and metadata since the last clone. Deep clones also copy stream metadata, so a stream writing to the source can continue on the clone target from where it stopped. You can also share tables to the secondary region with [[OpenSharing]].
-5. **Secrets.** Recreate secret scopes and secrets in the secondary workspace from your secret source of record.
-6. **Failover runbook.** Document who decides to fail over, how DNS or client connections change, how schedules are enabled, and how to fail back. Test it at least yearly.
+5. **Secrets:** Recreate secret scopes and secrets in the secondary workspace from your secret source of record.
+6. **Failover runbook:** Document who decides to fail over, how DNS or client connections change, how schedules are enabled, and how to fail back. Test it at least yearly.
 
 ### Recovery from accidental change
 
@@ -167,14 +171,14 @@ Not every incident is regional. For deleted or corrupted data within a region:
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (401)
-> - **Metastores are regional.** A workspace cannot attach to a metastore in another region. The secondary region needs its own metastore, and catalogs, grants, and external locations must be recreated or replicated there.
-> - **Corruption replicates.** DR does not protect against data corruption: corrupted data in the primary is replicated to the secondary. Use Delta time travel or backups for that case.
-> - **Managed DR secondary.** During replication, in-scope catalogs in the secondary are read-only and compute is unavailable in the secondary workspace.
-> - **Failback.** The docs suggest using audit trails of logs and Delta tables to confirm no data loss during failback.
-> - **Streaming.** Stream metadata is carried by deep clones. Beyond that, plan and test how each stream restarts in the secondary region; the docs do not give a general procedure.
-> - **Lakebase.** Lakebase DR is documented separately, was in Private Preview, and does not replicate Delta tables.
-> - **Exporter.** The Terraform provider's experimental exporter can generate code from an existing workspace, which helps capture configuration that was created by hand.
-> - **Testing.** A DR plan that has not been tested has unknown RTO. Run planned failovers (managed DR supports them) and record the actual time.
+> - **Metastores are regional:** A workspace cannot attach to a metastore in another region. The secondary region needs its own metastore, and catalogs, grants, and external locations must be recreated or replicated there.
+> - **Corruption replicates:** DR does not protect against data corruption: corrupted data in the primary is replicated to the secondary. Use Delta time travel or backups for that case.
+> - **Managed DR secondary:** During replication, in-scope catalogs in the secondary are read-only and compute is unavailable in the secondary workspace.
+> - **Failback:** The docs suggest using audit trails of logs and Delta tables to confirm no data loss during failback.
+> - **Streaming:** Stream metadata is carried by deep clones. Beyond that, plan and test how each stream restarts in the secondary region; the docs do not give a general procedure.
+> - **Lakebase:** Lakebase DR is documented separately, was in Private Preview, and does not replicate Delta tables.
+> - **Exporter:** The Terraform provider's experimental exporter can generate code from an existing workspace, which helps capture configuration that was created by hand.
+> - **Testing:** A DR plan that has not been tested has unknown RTO. Run planned failovers (managed DR supports them) and record the actual time.
 
 ## Common misconceptions
 

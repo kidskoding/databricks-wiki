@@ -91,8 +91,8 @@ Databricks describes Unity Catalog as a unified and open governance solution for
 
 Additional facts:
 
-- **Enabled by default.** Databricks began automatically enabling new workspaces for Unity Catalog in November 2023 (rolled out gradually). These workspaces include a pre-provisioned *workspace catalog* set as the default catalog.
-- **Open source.** Databricks open-sourced Unity Catalog in June 2024 (Apache 2.0), and the project is hosted by the [[Linux Foundation]]'s LF AI & Data foundation. The open-source server speaks the Apache Iceberg REST catalog API, so other engines can read through it.
+- **Enabled by default:** Databricks began automatically enabling new workspaces for Unity Catalog in November 2023 (rolled out gradually). These workspaces include a pre-provisioned *workspace catalog* set as the default catalog.
+- **Open source:** Databricks open-sourced Unity Catalog in June 2024 (Apache 2.0), and the project is hosted by the [[Linux Foundation]]'s LF AI & Data foundation. The open-source server speaks the Apache Iceberg REST catalog API, so other engines can read through it.
 
 ## How it works
 
@@ -117,9 +117,9 @@ flowchart TD
 
 Three rules define the model:
 
-1. **Identities live at the account.** Users, groups, and service principals are defined once in the account (usually synced from your identity provider) and reused in every workspace. See [[Users Groups and Service Principals]].
-2. **Privileges flow downward.** A grant on a catalog applies to every current and future schema and table inside it. To touch anything, you also need `USE CATALOG` and `USE SCHEMA` on the containers above it.
-3. **Unity Catalog, not the cluster, holds the storage keys.** Access to cloud storage goes through [[Storage Credentials and External Locations|storage credentials and external locations]]. When an authorized user reads a table, Unity Catalog hands the compute a short-lived credential for just those files.
+1. **Identities live at the account:** Users, groups, and service principals are defined once in the account (usually synced from your identity provider) and reused in every workspace. See [[Users Groups and Service Principals]].
+2. **Privileges flow downward:** A grant on a catalog applies to every current and future schema and table inside it. To touch anything, you also need `USE CATALOG` and `USE SCHEMA` on the containers above it.
+3. **Unity Catalog, not the cluster, holds the storage keys:** Access to cloud storage goes through [[Storage Credentials and External Locations|storage credentials and external locations]]. When an authorized user reads a table, Unity Catalog hands the compute a short-lived credential for just those files.
 
 A small, realistic setup in SQL:
 
@@ -143,7 +143,7 @@ SHOW GRANTS ON SCHEMA sales.orders;
 > Unity Catalog is enabled by default on new workspaces. Adopt three practices from the start, regardless of team size:
 > 1. **A few catalogs, named by purpose**, such as `raw`, `analytics`, and `sandbox`, or `dev` and `prod`.
 > 2. **Grants to groups only** (`analysts`, `engineers`), so a new hire is one group membership away from the right access.
-> 3. **Use lineage as documentation.** To trace where a reported value came from, open the table's **Lineage** tab in Catalog Explorer.
+> 3. **Use lineage as documentation:** To trace where a reported value came from, open the table's **Lineage** tab in Catalog Explorer.
 >
 > Defer ABAC, clean rooms, and multi-region metastores until a requirement calls for them. Unity Catalog has no separate charge; costs come from the compute that queries the data.
 
@@ -169,13 +169,13 @@ The object model and SQL are identical on all clouds. The difference is how Unit
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **One metastore per region.** An account has one metastore for each cloud region it operates in. Workspaces in that region attach to it, and metastores can auto-assign new workspaces in their region. Cross-region access to data happens through sharing (see [[OpenSharing]]), not by attaching a workspace to a far-away metastore.
-> - **Workspace-catalog binding.** By default a catalog is visible from every workspace on its metastore. Binding restricts a catalog to named workspaces (for example, `prod` data only from the prod workspace). Auto-provisioned workspace catalogs start out bound to their own workspace.
-> - **Managed storage hierarchy.** Managed tables and volumes can store their files at the metastore, catalog, or schema level. Setting managed storage per catalog is a common way to keep business units' data in separate buckets or accounts. See [[Managed vs External Tables]].
-> - **Compute access modes matter.** Unity Catalog is enforced only on compute that supports it. Classic clusters in *standard* access mode (formerly "shared") and *dedicated* mode (formerly "single user") qualify, as do serverless and SQL warehouses. Fine-grained controls such as row filters on dedicated clusters are enforced by delegating the filtering to serverless compute.
-> - **Beyond Delta.** Unity Catalog governs managed Apache Iceberg tables, foreign Iceberg tables, and external engines through its Iceberg REST interface. October 2026 release notes describe ABAC policies, row filters, and column masks enforced even when supported external engines read managed tables.
-> - **Business semantics.** [[Metric Views]] define KPIs once in the catalog. The 2026 additions (glossary terms, domains) push Unity Catalog toward a semantic layer that BI tools and AI agents can read.
-> - **Migration.** Old workspaces may still have tables in the legacy `hive_metastore` catalog. Upgrading them is its own project; see [[Hive Metastore Migration to Unity Catalog]].
+> - **One metastore per region:** An account has one metastore for each cloud region it operates in. Workspaces in that region attach to it, and metastores can auto-assign new workspaces in their region. Cross-region access to data happens through sharing (see [[OpenSharing]]), not by attaching a workspace to a far-away metastore.
+> - **Workspace-catalog binding:** By default a catalog is visible from every workspace on its metastore. Binding restricts a catalog to named workspaces (for example, `prod` data only from the prod workspace). Auto-provisioned workspace catalogs start out bound to their own workspace.
+> - **Managed storage hierarchy:** Managed tables and volumes can store their files at the metastore, catalog, or schema level. Setting managed storage per catalog is a common way to keep business units' data in separate buckets or accounts. See [[Managed vs External Tables]].
+> - **Compute access modes matter:** Unity Catalog is enforced only on compute that supports it. Classic clusters in *standard* access mode (formerly "shared") and *dedicated* mode (formerly "single user") qualify, as do serverless and SQL warehouses. Fine-grained controls such as row filters on dedicated clusters are enforced by delegating the filtering to serverless compute.
+> - **Beyond Delta:** Unity Catalog governs managed Apache Iceberg tables, foreign Iceberg tables, and external engines through its Iceberg REST interface. October 2026 release notes describe ABAC policies, row filters, and column masks enforced even when supported external engines read managed tables.
+> - **Business semantics:** [[Metric Views]] define KPIs once in the catalog. The 2026 additions (glossary terms, domains) push Unity Catalog toward a semantic layer that BI tools and AI agents can read.
+> - **Migration:** Old workspaces may still have tables in the legacy `hive_metastore` catalog. Upgrading them is its own project; see [[Hive Metastore Migration to Unity Catalog]].
 
 ## Common misconceptions
 

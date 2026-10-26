@@ -98,9 +98,9 @@ The privileges you will use most:
 
 ### The three rules
 
-1. **Usage on the containers.** To read `prod.sales.orders` you need `USE CATALOG` on `prod`, `USE SCHEMA` on `prod.sales`, and `SELECT` on the table or a parent. `SELECT` alone is not enough.
-2. **Inheritance flows down.** A privilege granted on a catalog or schema applies to every current and future object inside it.
-3. **Owners and `MANAGE` holders grant.** Every object has one owner, who has all privileges on it and can grant them. `MANAGE` gives the same administrative power without ownership. Users with `MANAGE` do not automatically get data privileges, but they can grant themselves any.
+1. **Usage on the containers:** To read `prod.sales.orders` you need `USE CATALOG` on `prod`, `USE SCHEMA` on `prod.sales`, and `SELECT` on the table or a parent. `SELECT` alone is not enough.
+2. **Inheritance flows down:** A privilege granted on a catalog or schema applies to every current and future object inside it.
+3. **Owners and `MANAGE` holders grant:** Every object has one owner, who has all privileges on it and can grant them. `MANAGE` gives the same administrative power without ownership. Users with `MANAGE` do not automatically get data privileges, but they can grant themselves any.
 
 ## How it works
 
@@ -164,12 +164,12 @@ SHOW GRANTS `analysts` ON CATALOG prod;
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Metastore privileges.** `CREATE CATALOG`, `CREATE EXTERNAL LOCATION`, `CREATE CONNECTION`, `CREATE SHARE`, `CREATE RECIPIENT`, and `CREATE PROVIDER` are granted `ON METASTORE` and control who can add top-level objects.
-> - **`MANAGE` has reduced usage requirements.** `MANAGE` on a catalog does not require `USE CATALOG`, and on a schema it does not require `USE SCHEMA`.
-> - **Views run as the owner.** A user with `SELECT` on a view does not need `SELECT` on its base tables; the view owner does. This is how curated views expose subsets safely.
-> - **No explicit `DENY`.** Classic grants are additive. To block access broadly, remove grants or use [[Attribute-Based Access Control|ABAC]] policies, which can exclude principals and cannot be overridden by table owners. ABAC DENY policies are in Beta as of October 2026.
-> - **Workspace binding is a second gate.** A user with `SELECT` on a catalog still cannot read it from a workspace the catalog is not bound to.
-> - **Compute matters.** Grants are enforced on Unity Catalog-capable compute (standard or dedicated access mode, serverless, SQL warehouses).
+> - **Metastore privileges:** `CREATE CATALOG`, `CREATE EXTERNAL LOCATION`, `CREATE CONNECTION`, `CREATE SHARE`, `CREATE RECIPIENT`, and `CREATE PROVIDER` are granted `ON METASTORE` and control who can add top-level objects.
+> - **`MANAGE` has reduced usage requirements:** `MANAGE` on a catalog does not require `USE CATALOG`, and on a schema it does not require `USE SCHEMA`.
+> - **Views run as the owner:** A user with `SELECT` on a view does not need `SELECT` on its base tables; the view owner does. This is how curated views expose subsets safely.
+> - **No explicit `DENY`:** Classic grants are additive. To block access broadly, remove grants or use [[Attribute-Based Access Control|ABAC]] policies, which can exclude principals and cannot be overridden by table owners. ABAC DENY policies are in Beta as of October 2026.
+> - **Workspace binding is a second gate:** A user with `SELECT` on a catalog still cannot read it from a workspace the catalog is not bound to.
+> - **Compute matters:** Grants are enforced on Unity Catalog-capable compute (standard or dedicated access mode, serverless, SQL warehouses).
 
 ## Common misconceptions
 

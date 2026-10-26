@@ -130,8 +130,8 @@ A batch job that loads `@Champion` picks up the new version on its next run afte
 ## Small-business considerations
 
 > [!smallbiz] Small-business considerations
-> - **Use two aliases.** `Champion` for production and `Challenger` for the candidate being tested. Promote by moving `Champion`.
-> - **Keep models next to their data.** For example, put `shop.ml.*` in the same catalog as the gold tables they read.
+> - **Use two aliases:** `Champion` for production and `Challenger` for the candidate being tested. Promote by moving `Champion`.
+> - **Keep models next to their data:** For example, put `shop.ml.*` in the same catalog as the gold tables they read.
 > - **Grant to a service principal** that runs jobs, not to individual people. See [[Users Groups and Service Principals]].
 > - **Cost:** the registry has no separate charge in the docs reviewed. Model files are stored in Unity Catalog managed storage.
 
@@ -149,10 +149,10 @@ A batch job that loads `@Champion` picks up the new version on its next run afte
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Environment separation.** A common pattern is one catalog per environment (`dev`, `prod`). A CI/CD pipeline copies an approved version from `dev.ml.model` to `prod.ml.model` after tests pass. See [[CI-CD]].
-> - **Loading by version.** `models:/prod.ml.demand_forecast/3` pins one version, which is useful for reproducible backtests.
-> - **Signatures required.** Models in Unity Catalog require a model signature; pass `input_example` or a signature when logging.
-> - **Migration.** Databricks documents how to migrate models and workflows from the Workspace Model Registry to Unity Catalog, mapping stages to aliases.
+> - **Environment separation:** A common pattern is one catalog per environment (`dev`, `prod`). A CI/CD pipeline copies an approved version from `dev.ml.model` to `prod.ml.model` after tests pass. See [[CI-CD]].
+> - **Loading by version:** `models:/prod.ml.demand_forecast/3` pins one version, which is useful for reproducible backtests.
+> - **Signatures required:** Models in Unity Catalog require a model signature; pass `input_example` or a signature when logging.
+> - **Migration:** Databricks documents how to migrate models and workflows from the Workspace Model Registry to Unity Catalog, mapping stages to aliases.
 > - **GenAI apps and agents** can also be registered as models, and their versions linked to traces through LoggedModel. See [[Agent Evaluation and Tracing]].
 
 ## Common misconceptions

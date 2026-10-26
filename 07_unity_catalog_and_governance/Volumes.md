@@ -159,10 +159,10 @@ The `/Volumes/...` path and SQL are identical on every cloud. The underlying sto
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Requirements.** `CREATE VOLUME` needs Databricks Runtime 13.3 LTS or above (or Databricks SQL) and Unity Catalog-enabled compute.
-> - **Volumes vs DBFS mounts.** Mounts (`/mnt/...`) and the DBFS root are legacy. They are not governed by Unity Catalog. Migrating mount-based code to `/Volumes/...` paths is a standard step in [[Hive Metastore Migration to Unity Catalog]].
-> - **APIs and CLI.** The REST API and the [[Databricks CLI]] (`databricks volumes create` and the rest of the `volumes` command group) manage volumes from scripts and CI.
-> - **Lineage.** Reads from volume paths into tables show up in lineage, but column-level lineage requires table names, not paths. See [[Data Lineage]].
+> - **Requirements:** `CREATE VOLUME` needs Databricks Runtime 13.3 LTS or above (or Databricks SQL) and Unity Catalog-enabled compute.
+> - **Volumes vs DBFS mounts:** Mounts (`/mnt/...`) and the DBFS root are legacy. They are not governed by Unity Catalog. Migrating mount-based code to `/Volumes/...` paths is a standard step in [[Hive Metastore Migration to Unity Catalog]].
+> - **APIs and CLI:** The REST API and the [[Databricks CLI]] (`databricks volumes create` and the rest of the `volumes` command group) manage volumes from scripts and CI.
+> - **Lineage:** Reads from volume paths into tables show up in lineage, but column-level lineage requires table names, not paths. See [[Data Lineage]].
 
 ## Common misconceptions
 

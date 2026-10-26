@@ -145,11 +145,11 @@ The three paths are the same idea everywhere. The products and names differ.
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Reference architectures.** The docs describe deployment patterns such as *managed security*, *hardened connectivity*, and *isolated environment*, from Databricks-managed networks to fully private, no-public-access setups. Start from one of them rather than inventing your own.
-> - **TLS inspection breaks clusters.** Do not inspect TLS on the SCC relay traffic. The docs warn it causes cluster failures.
-> - **Private link is not "no internet".** Enabling inbound private connectivity does not by itself block public access. You must disable public access (Azure), use IP lists or PSC access levels (GCP), or use ingress policies.
-> - **Databricks Apps.** Apps traffic authenticates with the control plane, then flows straight to the serverless compute plane. With front-end private connectivity, you need conditional DNS forwarding for the `databricksapps.com` domain.
-> - **Logging.** Ingress denials are logged in `system.access.inbound_network` and serverless egress denials in `system.access.outbound_network`. Both support dry-run modes, so you can test a policy before enforcing it.
+> - **Reference architectures:** The docs describe deployment patterns such as *managed security*, *hardened connectivity*, and *isolated environment*, from Databricks-managed networks to fully private, no-public-access setups. Start from one of them rather than inventing your own.
+> - **TLS inspection breaks clusters:** Do not inspect TLS on the SCC relay traffic. The docs warn it causes cluster failures.
+> - **Private link is not "no internet":** Enabling inbound private connectivity does not by itself block public access. You must disable public access (Azure), use IP lists or PSC access levels (GCP), or use ingress policies.
+> - **Databricks Apps:** Apps traffic authenticates with the control plane, then flows straight to the serverless compute plane. With front-end private connectivity, you need conditional DNS forwarding for the `databricksapps.com` domain.
+> - **Logging:** Ingress denials are logged in `system.access.inbound_network` and serverless egress denials in `system.access.outbound_network`. Both support dry-run modes, so you can test a policy before enforcing it.
 > - **IPv4 only** for IP access lists.
 
 ## Common misconceptions

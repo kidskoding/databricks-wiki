@@ -117,9 +117,9 @@ flowchart TD
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Total cost.** Compare staff time, setup, and future migration effort, not only compute rates. See [[Total Cost of Ownership]].
-> - **Open formats reduce switching cost.** Databricks stores tables in open formats ([[Delta Lake]], [[Apache Iceberg]]), which simplifies moving in either direction. See [[Open Table Formats]] and [[Vendor Lock-In]].
-> - **Mixed architectures.** Many organizations keep an operational database for the application, a BI tool for reports, and Databricks for engineering and ML. [[Lakehouse Federation]] queries some external databases in place.
+> - **Total cost:** Compare staff time, setup, and future migration effort, not only compute rates. See [[Total Cost of Ownership]].
+> - **Open formats reduce switching cost:** Databricks stores tables in open formats ([[Delta Lake]], [[Apache Iceberg]]), which simplifies moving in either direction. See [[Open Table Formats]] and [[Vendor Lock-In]].
+> - **Mixed architectures:** Many organizations keep an operational database for the application, a BI tool for reports, and Databricks for engineering and ML. [[Lakehouse Federation]] queries some external databases in place.
 
 ## Common misconceptions
 

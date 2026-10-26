@@ -82,9 +82,9 @@ Experiment tracking is the MLflow Tracking component, built into every Databrick
 
 Key behaviors on Databricks:
 
-- **Databricks Autologging.** In interactive Python notebooks on Databricks, autologging calls `mlflow.autolog()` for supported libraries, so parameters, metrics, and the model are logged without extra code.
-- **Default experiment.** If no experiment is set, runs go to the notebook experiment. `mlflow.set_experiment("/Shared/...")` sets the active experiment.
-- **Comparison UI.** The experiment page lists runs in a table and charts metrics, so runs can be filtered, sorted, and compared side by side.
+- **Databricks Autologging:** In interactive Python notebooks on Databricks, autologging calls `mlflow.autolog()` for supported libraries, so parameters, metrics, and the model are logged without extra code.
+- **Default experiment:** If no experiment is set, runs go to the notebook experiment. `mlflow.set_experiment("/Shared/...")` sets the active experiment.
+- **Comparison UI:** The experiment page lists runs in a table and charts metrics, so runs can be filtered, sorted, and compared side by side.
 
 ## How it works
 
@@ -151,12 +151,12 @@ print(best.loc[:, ["run_id", "params.max_depth", "metrics.val_mae"]])
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Autologging and fluent runs.** Behavior around `mlflow.start_run()` and autologging has changed between versions and pages. If autologged content is missing from a manually started run, call `mlflow.autolog()` explicitly before training.
-> - **Nested runs.** Use nested runs for hyperparameter sweeps (one parent, many children). On [[AI Runtime|AI Runtime]], calling a distributed function inside an active run creates a nested child run.
-> - **Notebook code on AI Runtime.** Code run directly in an attached notebook does not create a run automatically; use `mlflow.start_run()` or autologging.
-> - **Experiment permissions.** Experiments have their own access controls (for example, can read, can edit, can manage). Grant to groups.
-> - **Where data is stored.** Databricks documents options for where MLflow data is stored; review them when you need runs and artifacts in a specific location.
-> - **GenAI experiments.** The same experiment also stores traces and evaluation runs for agents. See [[Agent Evaluation and Tracing]].
+> - **Autologging and fluent runs:** Behavior around `mlflow.start_run()` and autologging has changed between versions and pages. If autologged content is missing from a manually started run, call `mlflow.autolog()` explicitly before training.
+> - **Nested runs:** Use nested runs for hyperparameter sweeps (one parent, many children). On [[AI Runtime|AI Runtime]], calling a distributed function inside an active run creates a nested child run.
+> - **Notebook code on AI Runtime:** Code run directly in an attached notebook does not create a run automatically; use `mlflow.start_run()` or autologging.
+> - **Experiment permissions:** Experiments have their own access controls (for example, can read, can edit, can manage). Grant to groups.
+> - **Where data is stored:** Databricks documents options for where MLflow data is stored; review them when you need runs and artifacts in a specific location.
+> - **GenAI experiments:** The same experiment also stores traces and evaluation runs for agents. See [[Agent Evaluation and Tracing]].
 
 ## Common misconceptions
 

@@ -155,11 +155,11 @@ databricks account networks create --json '{
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Sharing a VPC.** Several workspaces can share one VPC, each with its own or shared subnets. Size subnets for peak concurrent nodes across all of them.
-> - **Egress lockdown.** The data exfiltration protection architecture routes egress through AWS Network Firewall with an allow list of Databricks and AWS endpoints. Do not inspect TLS on the SCC relay connection.
-> - **VPC peering.** Peering lets clusters reach resources such as databases in other VPCs. It is separate from PrivateLink.
-> - **Network configuration with PrivateLink.** For back-end PrivateLink, the network configuration also references two registered VPC endpoints: the SCC relay and the REST API. See [[AWS PrivateLink]].
-> - **Serverless is separate.** A customer-managed VPC does not affect serverless compute. Use network connectivity configurations and network policies. See [[Serverless Network Security]].
+> - **Sharing a VPC:** Several workspaces can share one VPC, each with its own or shared subnets. Size subnets for peak concurrent nodes across all of them.
+> - **Egress lockdown:** The data exfiltration protection architecture routes egress through AWS Network Firewall with an allow list of Databricks and AWS endpoints. Do not inspect TLS on the SCC relay connection.
+> - **VPC peering:** Peering lets clusters reach resources such as databases in other VPCs. It is separate from PrivateLink.
+> - **Network configuration with PrivateLink:** For back-end PrivateLink, the network configuration also references two registered VPC endpoints: the SCC relay and the REST API. See [[AWS PrivateLink]].
+> - **Serverless is separate:** A customer-managed VPC does not affect serverless compute. Use network connectivity configurations and network policies. See [[Serverless Network Security]].
 
 ## Common misconceptions
 

@@ -63,9 +63,9 @@ Mastery: `INPUT[inlineSelect(option(new), option(learning), option(solid)):maste
 
 Classic compute is billed in [[DBUs]] plus the cloud provider's VM charges for as long as it runs. Without restrictions, common problems include:
 
-1. **Oversized clusters.** More workers or larger instance types than the workload needs.
-2. **Idle clusters.** [[Auto Termination|Auto-termination]] disabled, so clusters run when nobody uses them.
-3. **Unattributed spend.** Missing tags, so spend cannot be assigned to a team.
+1. **Oversized clusters:** More workers or larger instance types than the workload needs.
+2. **Idle clusters:** [[Auto Termination|Auto-termination]] disabled, so clusters run when nobody uses them.
+3. **Unattributed spend:** Missing tags, so spend cannot be assigned to a team.
 
 Policies also enforce configuration standards such as the [[Databricks Runtime]] version, access mode, and init scripts.
 
@@ -176,11 +176,11 @@ The policy language and rule types are the same everywhere. Attribute names that
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Policies cannot grant permissions.** They limit what a user may create. Who can attach to or restart a cluster is set separately with compute permissions (CAN ATTACH TO, CAN RESTART, CAN MANAGE).
-> - **Tag conflicts.** On AWS and Azure, a custom tag added through a compute policy that clashes with a default tag key makes the cluster fail with an invalid settings error, instead of being renamed with `x_` as other custom tags are.
-> - **Pipelines.** Lakeflow pipeline compute shuts down on its own. A policy that sets `autotermination_minutes` causes an error for pipelines, so keep pipeline policies separate.
-> - **Deleting a policy.** Compute governed by a deleted policy can still run, but it cannot be edited unless the user has unrestricted cluster creation permission.
-> - **Access mode.** `data_security_mode` sets the access mode. Unity Catalog needs `SINGLE_USER` (dedicated) or `USER_ISOLATION` (standard); `NONE` turns security features off, so forbid it.
+> - **Policies cannot grant permissions:** They limit what a user may create. Who can attach to or restart a cluster is set separately with compute permissions (CAN ATTACH TO, CAN RESTART, CAN MANAGE).
+> - **Tag conflicts:** On AWS and Azure, a custom tag added through a compute policy that clashes with a default tag key makes the cluster fail with an invalid settings error, instead of being renamed with `x_` as other custom tags are.
+> - **Pipelines:** Lakeflow pipeline compute shuts down on its own. A policy that sets `autotermination_minutes` causes an error for pipelines, so keep pipeline policies separate.
+> - **Deleting a policy:** Compute governed by a deleted policy can still run, but it cannot be edited unless the user has unrestricted cluster creation permission.
+> - **Access mode:** `data_security_mode` sets the access mode. Unity Catalog needs `SINGLE_USER` (dedicated) or `USER_ISOLATION` (standard); `NONE` turns security features off, so forbid it.
 > - **SQL warehouses and serverless** are not governed by compute policies. Control warehouses with permissions and sizes, and serverless with usage policies, budgets, and network policies.
 
 ## Common misconceptions

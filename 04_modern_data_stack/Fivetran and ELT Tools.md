@@ -134,10 +134,10 @@ WHERE  AnnualRevenue > 1000000;
 
 > [!smallbiz] Small-business considerations
 > Managed ingestion is usually the highest-value purchase for a team with one data person, because it removes the most fragile code. Before choosing a tool:
-> 1. **Check native coverage first.** If [[Lakeflow Connect]] supports your sources, use it; ingestion then runs and bills inside Databricks with no second vendor.
-> 2. **Use an ELT vendor for the long tail.** Fivetran and similar tools cover far more SaaS sources than any platform's native connectors.
-> 3. **Watch the meter.** ELT tools bill by data volume changed. A high-churn table (for example, an events table updated every minute) can dominate the bill. Sync only the tables you need.
-> 4. **Keep raw separate.** Land each source in its own raw schema and transform from there (the [[Medallion Architecture]]).
+> 1. **Check native coverage first:** If [[Lakeflow Connect]] supports your sources, use it; ingestion then runs and bills inside Databricks with no second vendor.
+> 2. **Use an ELT vendor for the long tail:** Fivetran and similar tools cover far more SaaS sources than any platform's native connectors.
+> 3. **Watch the meter:** ELT tools bill by data volume changed. A high-churn table (for example, an events table updated every minute) can dominate the bill. Sync only the tables you need.
+> 4. **Keep raw separate:** Land each source in its own raw schema and transform from there (the [[Medallion Architecture]]).
 
 > [!bridge]- In Databricks today
 > The ELT tool's job is split between two Databricks features:
@@ -160,11 +160,11 @@ WHERE  AnnualRevenue > 1000000;
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **CDC mechanics.** Database connectors read the source's change log (for example SQL Server change tracking or change data capture) rather than querying full tables. Enabling these features on the source is a prerequisite and requires a database administrator.
-> - **Schema-change rules differ by connector.** For example, the Lakeflow Connect Salesforce connector treats a column rename as a delete plus an add, while the SQL Server connector requires a full refresh of affected tables after certain schema changes. Read the connector's limitations page before relying on automatic handling.
-> - **Soft deletes.** ELT tools often mark deleted source rows with a flag column instead of deleting them. Fivetran, for example, adds a `_fivetran_deleted` boolean column. Downstream models must filter on that flag.
-> - **Destination writes.** Third-party tools write through a SQL warehouse, so the warehouse's size and auto-stop setting affect both sync speed and Databricks cost.
-> - **Reverse direction.** Pushing modeled data back into SaaS tools is [[Reverse ETL]], a separate product category.
+> - **CDC mechanics:** Database connectors read the source's change log (for example SQL Server change tracking or change data capture) rather than querying full tables. Enabling these features on the source is a prerequisite and requires a database administrator.
+> - **Schema-change rules differ by connector:** For example, the Lakeflow Connect Salesforce connector treats a column rename as a delete plus an add, while the SQL Server connector requires a full refresh of affected tables after certain schema changes. Read the connector's limitations page before relying on automatic handling.
+> - **Soft deletes:** ELT tools often mark deleted source rows with a flag column instead of deleting them. Fivetran, for example, adds a `_fivetran_deleted` boolean column. Downstream models must filter on that flag.
+> - **Destination writes:** Third-party tools write through a SQL warehouse, so the warehouse's size and auto-stop setting affect both sync speed and Databricks cost.
+> - **Reverse direction:** Pushing modeled data back into SaaS tools is [[Reverse ETL]], a separate product category.
 
 ## Common misconceptions
 

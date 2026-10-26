@@ -85,11 +85,11 @@ Mastery: `INPUT[inlineSelect(option(new), option(learning), option(solid)):maste
 
 Hand-written Spark ETL has the same problems every time:
 
-- **Ordering.** You must keep a [[DAG]] of dependencies in your head or in an orchestrator.
-- **Incremental processing.** You must track checkpoints and watermarks so you only process new data.
-- **Failures.** A crash halfway can leave tables inconsistent, and retries must not double-load.
-- **Quality.** Checks are bolted on after the fact, if at all.
-- **Infrastructure.** Someone has to size clusters and turn them off.
+- **Ordering:** You must keep a [[DAG]] of dependencies in your head or in an orchestrator.
+- **Incremental processing:** You must track checkpoints and watermarks so you only process new data.
+- **Failures:** A crash halfway can leave tables inconsistent, and retries must not double-load.
+- **Quality:** Checks are bolted on after the fact, if at all.
+- **Infrastructure:** Someone has to size clusters and turn them off.
 
 DLT was Databricks' answer in 2021: declare datasets, and let the engine handle the rest. In 2025 Databricks contributed the core framework to Apache Spark, and the Databricks product took its current name.
 
@@ -241,13 +241,13 @@ databricks bundle run shop_etl -t dev --full-refresh-all
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Flows.** A dataset can have more than one flow writing to it. `CREATE FLOW ... AS INSERT INTO` (SQL) or `@dp.append_flow` (Python) lets several sources append into one streaming table, such as orders from two Shopify stores. `@dp.update_flow` (GA June 2026) writes to sinks in update mode.
-> - **Incremental MVs need serverless.** Materialized views refresh incrementally only on serverless pipelines; on classic compute they always fully recompute. See [[Materialized Views]].
-> - **Product editions on classic compute.** Classic pipelines have Core, Pro, and Advanced editions. Pro is needed for CDC and Advanced for expectations. Serverless pipelines require the Advanced edition, so they include all features.
+> - **Flows:** A dataset can have more than one flow writing to it. `CREATE FLOW ... AS INSERT INTO` (SQL) or `@dp.append_flow` (Python) lets several sources append into one streaming table, such as orders from two Shopify stores. `@dp.update_flow` (GA June 2026) writes to sinks in update mode.
+> - **Incremental MVs need serverless:** Materialized views refresh incrementally only on serverless pipelines; on classic compute they always fully recompute. See [[Materialized Views]].
+> - **Product editions on classic compute:** Classic pipelines have Core, Pro, and Advanced editions. Pro is needed for CDC and Advanced for expectations. Serverless pipelines require the Advanced edition, so they include all features.
 > - **The event log** is queryable: `SELECT * FROM event_log(TABLE(shop.silver.orders_clean))`. Its `flow_progress` events hold row counts and expectation results. Use it to build quality dashboards.
-> - **2026 changes.** Release notes for 2026 add real-time mode for pipelines (Public Preview, May 2026), sinks GA, `import_checkpoint` to adopt an existing stream's checkpoint during migration, and a cap on concurrent updates.
-> - **Open source vs Databricks.** Apache Spark 4.1 ships `pyspark.pipelines`, so the same decorators run on open-source Spark. AUTO CDC, expectations UI, serverless, and the editor are Databricks additions.
-> - **Run behavior.** Triggered updates started from the pipeline editor or monitoring UI use fast-start behavior: they reuse the cluster (two hours by default) and disable retries, which speeds up iteration. Updates started from jobs or the API, and all continuous updates, retry on recoverable errors and shut the cluster down after the run.
+> - **2026 changes:** Release notes for 2026 add real-time mode for pipelines (Public Preview, May 2026), sinks GA, `import_checkpoint` to adopt an existing stream's checkpoint during migration, and a cap on concurrent updates.
+> - **Open source vs Databricks:** Apache Spark 4.1 ships `pyspark.pipelines`, so the same decorators run on open-source Spark. AUTO CDC, expectations UI, serverless, and the editor are Databricks additions.
+> - **Run behavior:** Triggered updates started from the pipeline editor or monitoring UI use fast-start behavior: they reuse the cluster (two hours by default) and disable retries, which speeds up iteration. Updates started from jobs or the API, and all continuous updates, retry on recoverable errors and shut the cluster down after the run.
 
 ## Common misconceptions
 

@@ -79,18 +79,18 @@ The Databricks Well-Architected cost optimization guidance recommends choosing t
 
 ### Notes on each check
 
-1. **Auto-termination.** Configure it for all interactive compute. The docs use one hour as an example; outside policies the allowed range is 10 to 10,000 minutes. `0` disables it, so forbid `0` in policies.
-2. **Serverless.** Databricks recommends serverless compute as the primary option. It requires no configuration, scales in seconds, and stops when idle. Serverless jobs enable Photon and autoscaling automatically, and the **standard performance mode** uses fewer DBUs than performance-optimized mode for jobs that tolerate slower start-up.
-3. **Job compute.** Job compute has a lower list DBU rate than all-purpose compute (see the [pricing page](https://www.databricks.com/product/pricing)) and terminates when the job ends. It also gives accurate per-job cost in `system.billing.usage`.
-4. **Right-sizing.** Start from a baseline, then adjust using utilization metrics. Use policies to offer fixed sizes ("small", "medium") and cap worker counts.
-5. **Autoscaling.** Lets classic compute add and remove workers with load. See [[Autoscaling]].
-6. **Spot instances.** Use [[Spot Instances|spot capacity]] only for work that tolerates eviction. The driver should always be on-demand. Reclaimed spot instances can lengthen run time.
-7. **Photon.** Photon is enabled by default on SQL warehouses. On classic compute, test whether a workload benefits: Photon has a different DBU rate, so it saves money only when the speed-up outweighs it. See [[Photon]].
-8. **Pools.** Databricks does not charge DBUs for idle instances in a pool, but the cloud provider still bills for them. Keep minimum idle instances low.
-9. **SQL warehouses.** Set a short auto-stop, start with a small size, and scale up only when queries queue. See [[SQL Warehouses]].
-10. **Data layout.** Well-clustered, compacted tables scan less data, which reduces compute time for every query.
-11. **Schedules.** A pipeline that runs hourly but is read daily costs roughly 24 times more than needed.
-12. **Review.** Use [[Budgets and Usage Dashboards]] and the untagged-spend view.
+1. **Auto-termination:** Configure it for all interactive compute. The docs use one hour as an example; outside policies the allowed range is 10 to 10,000 minutes. `0` disables it, so forbid `0` in policies.
+2. **Serverless:** Databricks recommends serverless compute as the primary option. It requires no configuration, scales in seconds, and stops when idle. Serverless jobs enable Photon and autoscaling automatically, and the **standard performance mode** uses fewer DBUs than performance-optimized mode for jobs that tolerate slower start-up.
+3. **Job compute:** Job compute has a lower list DBU rate than all-purpose compute (see the [pricing page](https://www.databricks.com/product/pricing)) and terminates when the job ends. It also gives accurate per-job cost in `system.billing.usage`.
+4. **Right-sizing:** Start from a baseline, then adjust using utilization metrics. Use policies to offer fixed sizes ("small", "medium") and cap worker counts.
+5. **Autoscaling:** Lets classic compute add and remove workers with load. See [[Autoscaling]].
+6. **Spot instances:** Use [[Spot Instances|spot capacity]] only for work that tolerates eviction. The driver should always be on-demand. Reclaimed spot instances can lengthen run time.
+7. **Photon:** Photon is enabled by default on SQL warehouses. On classic compute, test whether a workload benefits: Photon has a different DBU rate, so it saves money only when the speed-up outweighs it. See [[Photon]].
+8. **Pools:** Databricks does not charge DBUs for idle instances in a pool, but the cloud provider still bills for them. Keep minimum idle instances low.
+9. **SQL warehouses:** Set a short auto-stop, start with a small size, and scale up only when queries queue. See [[SQL Warehouses]].
+10. **Data layout:** Well-clustered, compacted tables scan less data, which reduces compute time for every query.
+11. **Schedules:** A pipeline that runs hourly but is read daily costs roughly 24 times more than needed.
+12. **Review:** Use [[Budgets and Usage Dashboards]] and the untagged-spend view.
 
 ## How it works
 
@@ -157,11 +157,11 @@ QUALIFY ROW_NUMBER() OVER (PARTITION BY workspace_id, cluster_id ORDER BY change
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Total cost, not DBU rate.** Serverless and Photon have different DBU rates. Compare total cost per workload, including cloud VM time for classic compute.
-> - **Shuffle and skew.** Data skew and large shuffles extend run time on every compute type. See [[Query Performance and Caching]].
+> - **Total cost, not DBU rate:** Serverless and Photon have different DBU rates. Compare total cost per workload, including cloud VM time for classic compute.
+> - **Shuffle and skew:** Data skew and large shuffles extend run time on every compute type. See [[Query Performance and Caching]].
 > - **Predictive optimization** runs maintenance (such as `OPTIMIZE` and `VACUUM`) on Unity Catalog managed tables automatically and is billed as a managed service.
-> - **Egress.** Cross-region reads and internet egress appear on the cloud bill. Keep compute, storage, and the metastore in the same region.
-> - **Commitments.** Committed-use contracts lower unit rates but do not reduce consumption. Optimise usage first, then size the commitment.
+> - **Egress:** Cross-region reads and internet egress appear on the cloud bill. Keep compute, storage, and the metastore in the same region.
+> - **Commitments:** Committed-use contracts lower unit rates but do not reduce consumption. Optimise usage first, then size the commitment.
 
 ## Common misconceptions
 

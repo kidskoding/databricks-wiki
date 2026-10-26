@@ -188,10 +188,10 @@ The component mapping is the same on all clouds. The differences are the target 
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Hadoop 1 and Hadoop 2.** In Hadoop 1, the JobTracker both managed cluster resources and scheduled MapReduce tasks, so the cluster could run only MapReduce. Hadoop 2.2.0 separated resource management into [[YARN]] and added HDFS high availability, federation, and snapshots.
-> - **Decline of data locality.** Hadoop assumed the network was the bottleneck. Faster data-center networks and cloud object storage made remote reads practical, so co-locating storage and compute became a cost rather than an advantage. See [[Storage vs Compute]].
-> - **Spark as a Hadoop application.** Early [[Apache Spark]] deployments ran on YARN and read from HDFS. Spark first replaced MapReduce; cloud object storage later replaced HDFS.
-> - **Distributions.** Most organizations ran a vendor distribution, a tested bundle of ecosystem projects with management tooling, rather than raw Apache releases. See [[Cloudera and Hortonworks]].
+> - **Hadoop 1 and Hadoop 2:** In Hadoop 1, the JobTracker both managed cluster resources and scheduled MapReduce tasks, so the cluster could run only MapReduce. Hadoop 2.2.0 separated resource management into [[YARN]] and added HDFS high availability, federation, and snapshots.
+> - **Decline of data locality:** Hadoop assumed the network was the bottleneck. Faster data-center networks and cloud object storage made remote reads practical, so co-locating storage and compute became a cost rather than an advantage. See [[Storage vs Compute]].
+> - **Spark as a Hadoop application:** Early [[Apache Spark]] deployments ran on YARN and read from HDFS. Spark first replaced MapReduce; cloud object storage later replaced HDFS.
+> - **Distributions:** Most organizations ran a vendor distribution, a tested bundle of ecosystem projects with management tooling, rather than raw Apache releases. See [[Cloudera and Hortonworks]].
 
 ## Common misconceptions
 

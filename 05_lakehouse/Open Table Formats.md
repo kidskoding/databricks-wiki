@@ -70,11 +70,11 @@ Mastery: `INPUT[inlineSelect(option(new), option(learning), option(solid)):maste
 
 That design had deep limits:
 
-- **The file list came from listing directories.** Listing millions of files in object storage is slow, and on older object stores the listing could even be out of date.
-- **No transactions.** Writing a partition was not atomic, so readers saw partial data ([[ACID Transactions]] explains why).
-- **Updates meant rewriting whole partitions.** Deleting one customer's rows for a privacy request ([[GDPR]]) could mean rewriting a month of data.
-- **Schema changes were fragile.** Renaming or reordering columns could silently break readers.
-- **Partitioning leaked into queries.** Users had to know the folder layout and filter on the partition column, or the query read everything.
+- **The file list came from listing directories:** Listing millions of files in object storage is slow, and on older object stores the listing could even be out of date.
+- **No transactions:** Writing a partition was not atomic, so readers saw partial data ([[ACID Transactions]] explains why).
+- **Updates meant rewriting whole partitions:** Deleting one customer's rows for a privacy request ([[GDPR]]) could mean rewriting a month of data.
+- **Schema changes were fragile:** Renaming or reordering columns could silently break readers.
+- **Partitioning leaked into queries:** Users had to know the folder layout and filter on the partition column, or the query read everything.
 
 In the second half of the 2010s, three companies hit these limits at scale and built fixes: Netflix built [[Apache Iceberg]], Databricks built [[Delta Lake]] (open-sourced in 2019), and Uber built [[Apache Hudi]].
 
@@ -130,7 +130,7 @@ Iceberg and Hudi keep their own metadata folders with different layouts. Differe
 > [!smallbiz] Small-business considerations
 > You will rarely choose a table format directly. On Databricks, `CREATE TABLE` gives you Delta by default, and that is the right choice for nearly every small team. Formats matter in two situations:
 > - **Another tool needs to read your data** (Snowflake, BigQuery, a partner's system). Then Iceberg compatibility matters, and [[Delta UniForm]] or managed Iceberg tables cover it.
-> - **You worry about lock-in.** Because the formats are open, your data stays readable by other engines even if you leave Databricks.
+> - **You worry about lock-in:** Because the formats are open, your data stays readable by other engines even if you leave Databricks.
 
 ## Cloud differences
 
@@ -140,9 +140,9 @@ Iceberg and Hudi keep their own metadata folders with different layouts. Differe
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **The catalog is becoming the commit point.** Iceberg tables always commit through a catalog, and Unity Catalog exposes an Iceberg REST catalog endpoint (`/api/2.1/unity-catalog/iceberg-rest`) so outside engines go through it. That makes the catalog, such as [[Unity Catalog]], the source of truth for both formats.
-> - **Convergence.** Iceberg v3 brings deletion vectors, row lineage, and a variant type, features Delta also has, and Databricks made v3 features GA in 2026. Delta added Iceberg-compatible metadata through UniForm. Databricks acquired Tabular (founded by Iceberg's creators) in June 2024 with the stated goal of format compatibility.
-> - **Feature flags.** Delta uses reader and writer protocol versions plus named *table features* (see the feature compatibility page). Turning on a new feature can lock out older clients that do not support it.
+> - **The catalog is becoming the commit point:** Iceberg tables always commit through a catalog, and Unity Catalog exposes an Iceberg REST catalog endpoint (`/api/2.1/unity-catalog/iceberg-rest`) so outside engines go through it. That makes the catalog, such as [[Unity Catalog]], the source of truth for both formats.
+> - **Convergence:** Iceberg v3 brings deletion vectors, row lineage, and a variant type, features Delta also has, and Databricks made v3 features GA in 2026. Delta added Iceberg-compatible metadata through UniForm. Databricks acquired Tabular (founded by Iceberg's creators) in June 2024 with the stated goal of format compatibility.
+> - **Feature flags:** Delta uses reader and writer protocol versions plus named *table features* (see the feature compatibility page). Turning on a new feature can lock out older clients that do not support it.
 
 ## Common misconceptions
 

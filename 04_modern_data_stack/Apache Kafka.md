@@ -171,12 +171,12 @@ The Databricks Kafka connector works the same on every cloud. What differs is wh
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Partitions cap parallelism.** By default Spark maps each Kafka topic partition to one Spark partition, so a stream reading a 6-partition topic gets 6 parallel reads. Setting `minPartitions` higher than the topic's partition count makes Spark split large Kafka partitions into smaller pieces (the value is a hint, not exact). Ordering is only guaranteed within a Kafka partition.
-> - **Offsets live in the checkpoint, not in Kafka.** Structured Streaming tracks its own offsets in the checkpoint rather than committing consumer-group offsets. Deleting a checkpoint means re-deciding where to start (`startingOffsets`).
-> - **Data loss on retention.** If a stream is stopped longer than the topic's retention, the oldest unread events are gone. The `failOnDataLoss` option (default `true`) controls whether the query fails when data may have been lost, for example when offsets are out of range or a topic was deleted. Set it to `false` to continue instead.
-> - **Rate limiting.** `maxOffsetsPerTrigger` caps how much each micro-batch reads, which keeps the first run after a long outage from overwhelming the cluster.
-> - **Troubleshooting connections.** The Databricks Kafka FAQ recommends first verifying that the bootstrap hostname and port are correct and resolve from the Databricks network. Connection timeouts are usually network configuration issues.
-> - **KRaft replaces ZooKeeper.** Kafka 4.0 supports only KRaft mode; ZooKeeper mode is removed, and ZooKeeper-based clusters must migrate to KRaft before upgrading. Tools use `--bootstrap-server` instead of `--zookeeper`. Client applications, including Databricks, connect through bootstrap servers as before.
+> - **Partitions cap parallelism:** By default Spark maps each Kafka topic partition to one Spark partition, so a stream reading a 6-partition topic gets 6 parallel reads. Setting `minPartitions` higher than the topic's partition count makes Spark split large Kafka partitions into smaller pieces (the value is a hint, not exact). Ordering is only guaranteed within a Kafka partition.
+> - **Offsets live in the checkpoint, not in Kafka:** Structured Streaming tracks its own offsets in the checkpoint rather than committing consumer-group offsets. Deleting a checkpoint means re-deciding where to start (`startingOffsets`).
+> - **Data loss on retention:** If a stream is stopped longer than the topic's retention, the oldest unread events are gone. The `failOnDataLoss` option (default `true`) controls whether the query fails when data may have been lost, for example when offsets are out of range or a topic was deleted. Set it to `false` to continue instead.
+> - **Rate limiting:** `maxOffsetsPerTrigger` caps how much each micro-batch reads, which keeps the first run after a long outage from overwhelming the cluster.
+> - **Troubleshooting connections:** The Databricks Kafka FAQ recommends first verifying that the bootstrap hostname and port are correct and resolve from the Databricks network. Connection timeouts are usually network configuration issues.
+> - **KRaft replaces ZooKeeper:** Kafka 4.0 supports only KRaft mode; ZooKeeper mode is removed, and ZooKeeper-based clusters must migrate to KRaft before upgrading. Tools use `--bootstrap-server` instead of `--zookeeper`. Client applications, including Databricks, connect through bootstrap servers as before.
 
 ## Common misconceptions
 

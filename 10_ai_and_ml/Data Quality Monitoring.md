@@ -138,7 +138,7 @@ Column names follow the system table reference; check it for the current schema.
 ## Small-business considerations
 
 > [!smallbiz] Small-business considerations
-> - **Turn on anomaly detection for your gold schema first.** Freshness alerts catch the most common real problem: a source stopped updating.
+> - **Turn on anomaly detection for your gold schema first:** Freshness alerts catch the most common real problem: a source stopped updating.
 > - **Add an inference profile only for models that matter**, such as a forecast that drives ordering.
 > - **Use daily granularity** for most small-business tables; finer windows cost more compute and add noise.
 > - **Cost drivers:** monitoring runs as serverless jobs that compute metrics. Larger tables and more frequent refreshes cost more. Limit access to the results system table, since it describes your data estate.
@@ -157,12 +157,12 @@ Column names follow the system table reference; check it for the current schema.
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Lookback.** A new time series or inference profile analyzes only data from the 30 days before its creation.
-> - **Slicing.** Profiles and completeness checks can slice by a column (for example, store or product line). Anomaly detection evaluates completeness for a slice column only when it has 50 or fewer distinct values, with up to three slice columns (Beta).
-> - **Custom metrics.** Data profiles accept custom aggregate, derived, and drift metrics defined in SQL.
-> - **Limits.** Anomaly detection does not support views or foreign tables. Completeness counts rows; it does not consider nulls, zeros, or NaN values.
+> - **Lookback:** A new time series or inference profile analyzes only data from the 30 days before its creation.
+> - **Slicing:** Profiles and completeness checks can slice by a column (for example, store or product line). Anomaly detection evaluates completeness for a slice column only when it has 50 or fewer distinct values, with up to three slice columns (Beta).
+> - **Custom metrics:** Data profiles accept custom aggregate, derived, and drift metrics defined in SQL.
+> - **Limits:** Anomaly detection does not support views or foreign tables. Completeness counts rows; it does not consider nulls, zeros, or NaN values.
 > - **GenAI quality** is monitored with MLflow production monitoring rather than table profiles. See [[Agent Evaluation and Tracing]].
-> - **Retraining loop.** When drift is confirmed, retrain, register a new version in [[Models in Unity Catalog]], and move the alias.
+> - **Retraining loop:** When drift is confirmed, retrain, register a new version in [[Models in Unity Catalog]], and move the alias.
 
 ## Common misconceptions
 

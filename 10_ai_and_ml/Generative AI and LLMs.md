@@ -78,8 +78,8 @@ Language models existed for years, but they were small and narrow. In the late 2
 
 Two problems appeared immediately:
 
-1. **No private knowledge.** A public model does not know a company's return policy, product catalog, or last month's orders.
-2. **No guarantees.** A model can produce fluent, wrong answers, leak sensitive data in a prompt, or cost more than expected.
+1. **No private knowledge:** A public model does not know a company's return policy, product catalog, or last month's orders.
+2. **No guarantees:** A model can produce fluent, wrong answers, leak sensitive data in a prompt, or cost more than expected.
 
 Most of the generative AI (GenAI) tooling on Databricks addresses one of these two problems: connecting models to governed data, and measuring and controlling what they do.
 
@@ -151,8 +151,8 @@ FROM shop.silver.support_emails;
 > [!smallbiz] Small-business considerations
 > - **Good first uses:** sorting incoming email, summarizing reviews, drafting replies from past answers, extracting fields from invoices, and a support assistant over help documents.
 > - **Keep a human in the loop** for anything sent to customers until evaluation shows the quality is consistent.
-> - **Use hosted models.** Pay-per-token [[Foundation Model APIs]] require no [[GPU|GPUs]] and no training.
-> - **Do not paste sensitive data into public chat tools.** Calls through Databricks stay under workspace governance, and [[Unity Gateway]] can log and filter them.
+> - **Use hosted models:** Pay-per-token [[Foundation Model APIs]] require no [[GPU|GPUs]] and no training.
+> - **Do not paste sensitive data into public chat tools:** Calls through Databricks stay under workspace governance, and [[Unity Gateway]] can log and filter them.
 > - **Cost drivers:** LLM usage is metered in input and output tokens. Long prompts and long documents cost more. See [[How Databricks Pricing Works]].
 
 ## Cloud differences
@@ -169,11 +169,11 @@ FROM shop.silver.support_emails;
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Context window.** Each model has a maximum number of tokens per request (prompt plus output). RAG must fit retrieved chunks inside it.
-> - **Temperature and determinism.** Lower temperature makes output more repeatable, which suits classification and extraction.
-> - **Structured outputs.** Databricks serving supports structured outputs, so a model can be constrained to return JSON matching a schema.
-> - **Model retirement.** Hosted models are retired on a published schedule. Pin evaluation sets so you can test a replacement model before the retirement date. See [[Foundation Model APIs]].
-> - **Compound AI systems.** Production GenAI apps combine retrieval, several model calls, tools, and guardrails. Quality is measured on the whole system with traces, not on the model alone. See [[Agent Evaluation and Tracing]].
+> - **Context window:** Each model has a maximum number of tokens per request (prompt plus output). RAG must fit retrieved chunks inside it.
+> - **Temperature and determinism:** Lower temperature makes output more repeatable, which suits classification and extraction.
+> - **Structured outputs:** Databricks serving supports structured outputs, so a model can be constrained to return JSON matching a schema.
+> - **Model retirement:** Hosted models are retired on a published schedule. Pin evaluation sets so you can test a replacement model before the retirement date. See [[Foundation Model APIs]].
+> - **Compound AI systems:** Production GenAI apps combine retrieval, several model calls, tools, and guardrails. Quality is measured on the whole system with traces, not on the model alone. See [[Agent Evaluation and Tracing]].
 
 ## Common misconceptions
 

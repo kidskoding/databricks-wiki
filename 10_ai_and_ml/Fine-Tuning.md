@@ -111,10 +111,10 @@ flowchart LR
 
 Steps on Databricks today:
 
-1. **Prove the need.** Run an evaluation set against the base model with good prompts and RAG. Record the scores ([[Agent Evaluation and Tracing]]).
-2. **Prepare data.** Store prompt and ideal-response pairs in a Delta table. Hold back a validation split.
-3. **Pick a small open model.** Databricks' AI Runtime tutorial fine-tunes Qwen3.5-0.8B on serverless GPU with an H100 accelerator and then serves it.
-4. **Train on AI Runtime.** Attach a notebook to serverless GPU compute ([[AI Runtime]]), and train with a standard library (for example Hugging Face Transformers or TRL). Log metrics and checkpoints with [[MLflow]].
+1. **Prove the need:** Run an evaluation set against the base model with good prompts and RAG. Record the scores ([[Agent Evaluation and Tracing]]).
+2. **Prepare data:** Store prompt and ideal-response pairs in a Delta table. Hold back a validation split.
+3. **Pick a small open model:** Databricks' AI Runtime tutorial fine-tunes Qwen3.5-0.8B on serverless GPU with an H100 accelerator and then serves it.
+4. **Train on AI Runtime:** Attach a notebook to serverless GPU compute ([[AI Runtime]]), and train with a standard library (for example Hugging Face Transformers or TRL). Log metrics and checkpoints with [[MLflow]].
 5. **Register** the model in [[Models in Unity Catalog]].
 6. **Serve** it on a GPU [[Model Serving]] endpoint, or use provisioned throughput where the model family is supported.
 7. **Evaluate** the fine-tuned model against the base model on the same evaluation set. Ship only if it wins.
@@ -144,10 +144,10 @@ trainer.train()
 ## Small-business considerations
 
 > [!smallbiz] Small-business considerations
-> - **Usually, do not fine-tune.** Most small-business needs (support answers, email sorting, summaries) are met with prompting, RAG, and a hosted model.
+> - **Usually, do not fine-tune:** Most small-business needs (support answers, email sorting, summaries) are met with prompting, RAG, and a hosted model.
 > - **Consider it when** you have at least a thousand good examples of a narrow, repetitive task and evaluation shows a consistent format or style gap.
-> - **Total cost includes serving.** A fine-tuned model needs its own GPU endpoint, which bills while it runs, unlike pay-per-token hosted models. Large GPU endpoints such as `GPU_XLARGE` do not scale to zero.
-> - **Re-evaluate after base model updates.** Newer hosted models often close the gap that justified fine-tuning.
+> - **Total cost includes serving:** A fine-tuned model needs its own GPU endpoint, which bills while it runs, unlike pay-per-token hosted models. Large GPU endpoints such as `GPU_XLARGE` do not scale to zero.
+> - **Re-evaluate after base model updates:** Newer hosted models often close the gap that justified fine-tuning.
 
 ## Cloud differences
 
@@ -163,12 +163,12 @@ trainer.train()
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Multi-GPU and multi-node.** Notebook multi-GPU training on AI Runtime is supported on H100 nodes (8x H100); multi-node training uses the AI Runtime CLI. See [[AI Runtime]].
-> - **Evaluation leakage.** Keep evaluation questions out of the training data, or scores will be inflated.
-> - **Catastrophic forgetting.** Heavy fine-tuning on a narrow task can degrade general ability. Include some general examples or use parameter-efficient methods.
-> - **Licenses.** Open models carry their own licenses and acceptable-use policies; check them before commercial use.
-> - **Serving custom LLMs.** Custom LLM endpoints do not autoscale dynamically; size for peak traffic. For large models Databricks recommends Foundation Model APIs over custom GPU serving.
-> - **Legacy runs.** Earlier notices said existing fine-tuning runs continued to work before removal; the current docs state the feature is no longer supported.
+> - **Multi-GPU and multi-node:** Notebook multi-GPU training on AI Runtime is supported on H100 nodes (8x H100); multi-node training uses the AI Runtime CLI. See [[AI Runtime]].
+> - **Evaluation leakage:** Keep evaluation questions out of the training data, or scores will be inflated.
+> - **Catastrophic forgetting:** Heavy fine-tuning on a narrow task can degrade general ability. Include some general examples or use parameter-efficient methods.
+> - **Licenses:** Open models carry their own licenses and acceptable-use policies; check them before commercial use.
+> - **Serving custom LLMs:** Custom LLM endpoints do not autoscale dynamically; size for peak traffic. For large models Databricks recommends Foundation Model APIs over custom GPU serving.
+> - **Legacy runs:** Earlier notices said existing fine-tuning runs continued to work before removal; the current docs state the feature is no longer supported.
 
 ## Common misconceptions
 

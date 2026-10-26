@@ -75,11 +75,11 @@ Most enterprises ran these components as a vendor distribution. [[Cloudera and H
 
 [[The Pain of Hadoop]] summarizes the problems that accumulated in production:
 
-1. **Performance.** MapReduce writes intermediate data to disk between every step, so multi-step and iterative jobs are slow, and Hive queries take minutes.
-2. **Programming effort.** Simple computations require Java classes for map, reduce, and job configuration.
-3. **Coupled storage and compute.** Each node holds disks and CPUs, so clusters are sized for peak load and run continuously.
-4. **Operations.** Many separately versioned projects require specialist teams and make upgrades risky.
-5. **Governance and updates.** Permissions are split across tools, and files cannot be updated reliably in place.
+1. **Performance:** MapReduce writes intermediate data to disk between every step, so multi-step and iterative jobs are slow, and Hive queries take minutes.
+2. **Programming effort:** Simple computations require Java classes for map, reduce, and job configuration.
+3. **Coupled storage and compute:** Each node holds disks and CPUs, so clusters are sized for peak load and run continuously.
+4. **Operations:** Many separately versioned projects require specialist teams and make upgrades risky.
+5. **Governance and updates:** Permissions are split across tools, and files cannot be updated reliably in place.
 
 ### What comes next
 

@@ -150,12 +150,12 @@ Check the deletion vectors page for the current `REORG` syntax on your runtime.
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (401)
-> - **Merge-on-read inside Delta.** Deletion vectors move Delta from pure copy-on-write toward merge-on-read for deletes: writes are cheap and reads do a small amount of extra work until files are compacted. This is the same trade-off [[Apache Hudi]] exposes as table types.
-> - **Iceberg v3 alignment.** Iceberg v3 specifies binary deletion vectors, so Delta and Iceberg v3 tables share the approach. Enabling deletion vectors on an existing Iceberg table upgrades it to format version 3. Iceberg v2 readers do not support them.
-> - **Protocol impact.** Deletion vectors are a Delta table feature. Enabling them raises the table's reader and writer protocol requirements, so clients without support cannot read the table (see the feature compatibility page).
-> - **Privacy deletion.** A `DELETE` with deletion vectors marks rows but leaves the bytes in the original file. For [[GDPR]]-style erasure, run `REORG ... APPLY (PURGE)` to rewrite files, then `VACUUM` after the retention period to remove the old files and their history.
-> - **Maintenance.** Files with many deleted rows waste read I/O. [[OPTIMIZE and VACUUM|Predictive optimization]] compacts them on Unity Catalog managed tables.
-> - **Concurrency.** Deletion vectors, together with [[Liquid Clustering]], reduce the size of each rewrite, which reduces write conflicts between concurrent `MERGE` and `UPDATE` operations.
+> - **Merge-on-read inside Delta:** Deletion vectors move Delta from pure copy-on-write toward merge-on-read for deletes: writes are cheap and reads do a small amount of extra work until files are compacted. This is the same trade-off [[Apache Hudi]] exposes as table types.
+> - **Iceberg v3 alignment:** Iceberg v3 specifies binary deletion vectors, so Delta and Iceberg v3 tables share the approach. Enabling deletion vectors on an existing Iceberg table upgrades it to format version 3. Iceberg v2 readers do not support them.
+> - **Protocol impact:** Deletion vectors are a Delta table feature. Enabling them raises the table's reader and writer protocol requirements, so clients without support cannot read the table (see the feature compatibility page).
+> - **Privacy deletion:** A `DELETE` with deletion vectors marks rows but leaves the bytes in the original file. For [[GDPR]]-style erasure, run `REORG ... APPLY (PURGE)` to rewrite files, then `VACUUM` after the retention period to remove the old files and their history.
+> - **Maintenance:** Files with many deleted rows waste read I/O. [[OPTIMIZE and VACUUM|Predictive optimization]] compacts them on Unity Catalog managed tables.
+> - **Concurrency:** Deletion vectors, together with [[Liquid Clustering]], reduce the size of each rewrite, which reduces write conflicts between concurrent `MERGE` and `UPDATE` operations.
 
 ## Common misconceptions
 

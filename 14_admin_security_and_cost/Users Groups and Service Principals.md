@@ -146,12 +146,12 @@ The three identity types and account groups work the same everywhere. Where they
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Nested groups.** Groups can contain groups. With Entra ID and automatic identity management, membership is resolved transitively, so adding `Marketing-All` to a workspace also admits members of its child groups. Child groups that are not provisioned themselves cannot be referenced by API or Terraform.
-> - **Workspace-local service principals.** In workspaces that are not identity-federated, service principals are added to the account automatically.
-> - **Owners.** Every Unity Catalog object, job, and dashboard has an owner. Make owners groups or service principals, so ownership does not leave with a person. Changing ownership of objects you do not own needs a metastore admin. See [[Admin Roles]].
-> - **Run-as.** Jobs run with the permissions of their *Run as* identity, not the job owner. Setting it to a service principal requires the *Service Principal User* role on that principal. The *Service Principal Manager* role does not include it, so even the creator must assign it to themselves.
-> - **Default entitlements.** *Workspace access* and *Databricks SQL access* come by default through the `users` group. *Allow unrestricted cluster creation* is not granted by default.
-> - **Clone group retention.** If your SCIM tool deletes workspace groups it does not recognise, configure it to keep the `users-clone-*` group, or principals that depend on it lose their entitlements.
+> - **Nested groups:** Groups can contain groups. With Entra ID and automatic identity management, membership is resolved transitively, so adding `Marketing-All` to a workspace also admits members of its child groups. Child groups that are not provisioned themselves cannot be referenced by API or Terraform.
+> - **Workspace-local service principals:** In workspaces that are not identity-federated, service principals are added to the account automatically.
+> - **Owners:** Every Unity Catalog object, job, and dashboard has an owner. Make owners groups or service principals, so ownership does not leave with a person. Changing ownership of objects you do not own needs a metastore admin. See [[Admin Roles]].
+> - **Run-as:** Jobs run with the permissions of their *Run as* identity, not the job owner. Setting it to a service principal requires the *Service Principal User* role on that principal. The *Service Principal Manager* role does not include it, so even the creator must assign it to themselves.
+> - **Default entitlements:** *Workspace access* and *Databricks SQL access* come by default through the `users` group. *Allow unrestricted cluster creation* is not granted by default.
+> - **Clone group retention:** If your SCIM tool deletes workspace groups it does not recognise, configure it to keep the `users-clone-*` group, or principals that depend on it lose their entitlements.
 
 ## Common misconceptions
 

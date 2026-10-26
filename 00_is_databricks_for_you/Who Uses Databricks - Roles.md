@@ -139,10 +139,10 @@ GRANT ALL PRIVILEGES ON SCHEMA analytics.sales TO `engineers`;
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Layered admin roles.** Administration is split between the account and each workspace. See [[Admin Roles]] and [[Account Console]].
-> - **Service principals for automation.** Run scheduled jobs as a [[Users Groups and Service Principals|service principal]] rather than a person, so they continue to run when staff change.
-> - **Least privilege.** Grant at the schema level to groups, and reserve individual grants for exceptions. See [[Least Privilege]] and [[Privileges and Grants]].
-> - **Persona mapping.** The vault's persona-to-note mapping is generated in the [[Persona Map]].
+> - **Layered admin roles:** Administration is split between the account and each workspace. See [[Admin Roles]] and [[Account Console]].
+> - **Service principals for automation:** Run scheduled jobs as a [[Users Groups and Service Principals|service principal]] rather than a person, so they continue to run when staff change.
+> - **Least privilege:** Grant at the schema level to groups, and reserve individual grants for exceptions. See [[Least Privilege]] and [[Privileges and Grants]].
+> - **Persona mapping:** The vault's persona-to-note mapping is generated in the [[Persona Map]].
 
 ## Common misconceptions
 

@@ -144,9 +144,9 @@ mlflow.genai.evaluate(data=eval_data, predict_fn=answer,
 ## Small-business considerations
 
 > [!smallbiz] Small-business considerations
-> - **It is already there.** Every Databricks workspace includes managed MLflow. There is nothing to install or host.
-> - **Turn on autologging and name experiments.** Use one shared experiment per business problem, such as `/Shared/demand-forecast`.
-> - **Register only the models you use.** Keep the registry for models that feed a job or an endpoint.
+> - **It is already there:** Every Databricks workspace includes managed MLflow. There is nothing to install or host.
+> - **Turn on autologging and name experiments:** Use one shared experiment per business problem, such as `/Shared/demand-forecast`.
+> - **Register only the models you use:** Keep the registry for models that feed a job or an endpoint.
 > - **Cost:** MLflow tracking has no separate charge in the docs reviewed; costs come from compute and from storage of artifacts and traces. Evaluations that use LLM judges consume model tokens. See [[How Databricks Pricing Works]].
 
 ## Cloud differences
@@ -163,11 +163,11 @@ mlflow.genai.evaluate(data=eval_data, predict_fn=answer,
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **LoggedModel for app versions.** `mlflow.set_active_model(name=...)` links traces to a named app version; in production, set the `MLFLOW_ACTIVE_MODEL_ID` environment variable instead.
-> - **LoggedModel for checkpoints.** Deep learning runs can log multiple checkpoints as LoggedModels and compare their metrics, rather than one model per run.
-> - **Migration from MLflow 2.** `mlflow.evaluate` is deprecated for LLMs and AI apps; use `mlflow.genai.evaluate`. Custom models may need a predict function wrapper for parameter mapping.
-> - **Registry URI.** MLflow 3 defaults to `databricks-uc`. On older clients, call `mlflow.set_registry_uri("databricks-uc")`. The Workspace Model Registry is legacy.
-> - **Trace storage.** Traces can be stored in Unity Catalog; production monitoring of those traces requires a SQL warehouse.
+> - **LoggedModel for app versions:** `mlflow.set_active_model(name=...)` links traces to a named app version; in production, set the `MLFLOW_ACTIVE_MODEL_ID` environment variable instead.
+> - **LoggedModel for checkpoints:** Deep learning runs can log multiple checkpoints as LoggedModels and compare their metrics, rather than one model per run.
+> - **Migration from MLflow 2:** `mlflow.evaluate` is deprecated for LLMs and AI apps; use `mlflow.genai.evaluate`. Custom models may need a predict function wrapper for parameter mapping.
+> - **Registry URI:** MLflow 3 defaults to `databricks-uc`. On older clients, call `mlflow.set_registry_uri("databricks-uc")`. The Workspace Model Registry is legacy.
+> - **Trace storage:** Traces can be stored in Unity Catalog; production monitoring of those traces requires a SQL warehouse.
 
 ## Common misconceptions
 

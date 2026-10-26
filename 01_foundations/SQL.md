@@ -90,10 +90,10 @@ No product follows the standard exactly, so SQL varies a little between systems 
 
 Why it is still the most important data skill:
 
-- **It is everywhere.** Databases, warehouses, [[Apache Spark|Spark]], Databricks, [[BI Tools|BI tools]], and even spreadsheet add-ons speak it.
-- **It describes intent, so engines can improve under you.** The same `SELECT` from 1995 runs on a distributed engine today, and runs faster.
-- **It is readable by the business.** An accountant can check a SQL query's logic in a way they cannot check a 300-line script.
-- **AI tools generate it.** Plain-English assistants like [[Genie Agents]] and [[Genie Code]] write SQL for you, so being able to read and verify SQL matters more, not less.
+- **It is everywhere:** Databases, warehouses, [[Apache Spark|Spark]], Databricks, [[BI Tools|BI tools]], and even spreadsheet add-ons speak it.
+- **It describes intent, so engines can improve under you:** The same `SELECT` from 1995 runs on a distributed engine today, and runs faster.
+- **It is readable by the business:** An accountant can check a SQL query's logic in a way they cannot check a 300-line script.
+- **AI tools generate it:** Plain-English assistants like [[Genie Agents]] and [[Genie Code]] write SQL for you, so being able to read and verify SQL matters more, not less.
 
 ## How it works
 
@@ -156,10 +156,10 @@ FROM bakery.sales.daily_revenue;
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Relational algebra.** Every SQL query maps to operators from Codd's algebra: selection (`WHERE`), projection (`SELECT` columns), join, union, difference, and grouping. Optimizers rewrite the operator tree (push filters down, reorder joins) without changing the result.
+> - **Relational algebra:** Every SQL query maps to operators from Codd's algebra: selection (`WHERE`), projection (`SELECT` columns), join, union, difference, and grouping. Optimizers rewrite the operator tree (push filters down, reorder joins) without changing the result.
 > - **Cost-based optimization** estimates rows at each step from table statistics and picks the cheapest plan. Bad statistics produce bad plans. In Spark, [[Adaptive Query Execution]] re-optimizes the plan while the query runs, using the actual data sizes measured at each shuffle or broadcast exchange.
-> - **Three-valued logic.** `NULL` is "unknown", so `NULL = NULL` is not true, and `WHERE col <> 'x'` silently drops rows where `col` is `NULL`. Use `IS NULL`, `IS DISTINCT FROM`, or `COALESCE`.
-> - **Dialects.** Databricks SQL follows the SQL standard by default (`ANSI_MODE` is `TRUE` for accounts created on or after October 19, 2022, and ANSI mode is on by default in Databricks Runtime 17.0 and above), with extensions such as lambda functions, `QUALIFY`, `VARIANT` path expressions, and `MERGE` with `WHEN NOT MATCHED BY SOURCE`. T-SQL (control-of-flow keywords such as `IF...ELSE` and `WHILE`), PostgreSQL's PL/pgSQL, and Oracle PL/SQL add procedural features. [[Lakebridge]] includes a transpiler for converting other dialects during migrations.
+> - **Three-valued logic:** `NULL` is "unknown", so `NULL = NULL` is not true, and `WHERE col <> 'x'` silently drops rows where `col` is `NULL`. Use `IS NULL`, `IS DISTINCT FROM`, or `COALESCE`.
+> - **Dialects:** Databricks SQL follows the SQL standard by default (`ANSI_MODE` is `TRUE` for accounts created on or after October 19, 2022, and ANSI mode is on by default in Databricks Runtime 17.0 and above), with extensions such as lambda functions, `QUALIFY`, `VARIANT` path expressions, and `MERGE` with `WHEN NOT MATCHED BY SOURCE`. T-SQL (control-of-flow keywords such as `IF...ELSE` and `WHILE`), PostgreSQL's PL/pgSQL, and Oracle PL/SQL add procedural features. [[Lakebridge]] includes a transpiler for converting other dialects during migrations.
 > - **Declarative pipelines** extend the same idea from one query to a whole pipeline: you declare tables, and the engine works out order, retries, and incremental updates. See [[Lakeflow Spark Declarative Pipelines]].
 
 ## Common misconceptions

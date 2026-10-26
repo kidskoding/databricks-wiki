@@ -79,10 +79,10 @@ A spreadsheet is a grid of **cells** addressed by column letter and row number (
 
 Spreadsheets are well suited to:
 
-- **Ad hoc analysis.** Sort, filter, pivot, and chart in minutes.
-- **What-if modeling.** Change the flour price and see next month's margin.
-- **Small shared lists.** A clinic's list of referring doctors, a staff rota.
-- **Universal literacy.** Almost everyone in a business can use one.
+- **Ad hoc analysis:** Sort, filter, pivot, and chart in minutes.
+- **What-if modeling:** Change the flour price and see next month's margin.
+- **Small shared lists:** A clinic's list of referring doctors, a staff rota.
+- **Universal literacy:** Almost everyone in a business can use one.
 
 Where they break:
 
@@ -151,8 +151,8 @@ The formula and the query express the same idea. The difference is in the surrou
 
 > [!deepdive]- Advanced topics (301–401)
 > - **Excel's grid limit** is 1,048,576 rows by 16,384 columns per worksheet. The Excel Data Model, which Power Pivot uses, has a separate limit of 1,999,999,997 rows per table, so it acts as a small embedded analytical database.
-> - **Spreadsheets are a functional programming language.** Each formula is a pure function of other cells, and the recalculation engine maintains a dependency graph (a [[DAG]]). Data pipelines, dbt models, and declarative pipelines in Databricks use the same idea at a larger scale.
-> - **Type coercion.** Excel converts values that look like dates into dates on entry, so codes such as `MAR1` or `3-4` can become dates without warning.
+> - **Spreadsheets are a functional programming language:** Each formula is a pure function of other cells, and the recalculation engine maintains a dependency graph (a [[DAG]]). Data pipelines, dbt models, and declarative pipelines in Databricks use the same idea at a larger scale.
+> - **Type coercion:** Excel converts values that look like dates into dates on entry, so codes such as `MAR1` or `3-4` can become dates without warning.
 > - **The Excel reader's limits** (single sheet per read, no schema evolution when streaming with Auto Loader, merged cells collapsed) mean spreadsheets with several tables per sheet need a `dataAddress` per table, or a one-time cleanup.
 
 ## Common misconceptions

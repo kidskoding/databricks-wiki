@@ -85,10 +85,10 @@ The lakehouse approach makes the lake itself reliable and fast enough that the s
 
 Databricks' docs describe a data lakehouse as a data management system that combines the benefits of data lakes and data warehouses. In practice it has four components:
 
-1. **Open files on cheap storage.** Data stays as [[Apache Parquet|Parquet]] files in your own cloud bucket. No proprietary format restricts access to it.
-2. **A transactional [[Metadata|metadata]] layer.** A table format such as [[Delta Lake]], [[Apache Iceberg]], or [[Apache Hudi]] keeps a log of which files make up the table right now. That log gives you ACID transactions, [[Time Travel|time travel]], and [[Schema Enforcement and Evolution|schema enforcement]].
-3. **Fast engines.** Query engines like [[Apache Spark]] and [[Photon]] use the metadata (file statistics, [[Data Skipping|data skipping]], [[Liquid Clustering|clustering]]) to read only what they need. The aim is warehouse speed on lake files.
-4. **One governance layer.** A catalog such as [[Unity Catalog]] controls who can see what, across SQL, Python, and AI tools alike.
+1. **Open files on cheap storage:** Data stays as [[Apache Parquet|Parquet]] files in your own cloud bucket. No proprietary format restricts access to it.
+2. **A transactional [[Metadata|metadata]] layer:** A table format such as [[Delta Lake]], [[Apache Iceberg]], or [[Apache Hudi]] keeps a log of which files make up the table right now. That log gives you ACID transactions, [[Time Travel|time travel]], and [[Schema Enforcement and Evolution|schema enforcement]].
+3. **Fast engines:** Query engines like [[Apache Spark]] and [[Photon]] use the metadata (file statistics, [[Data Skipping|data skipping]], [[Liquid Clustering|clustering]]) to read only what they need. The aim is warehouse speed on lake files.
+4. **One governance layer:** A catalog such as [[Unity Catalog]] controls who can see what, across SQL, Python, and AI tools alike.
 
 The outcome is a single copy of the data that BI analysts, data engineers, and data scientists all use directly.
 
@@ -156,10 +156,10 @@ On a plain data lake, that `UPDATE` would mean rewriting files by hand, with not
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **The hard part is performance, not storage.** Warehouses were fast because they controlled their own storage layout, indexes, and caches. A lakehouse has to get similar speed from open files. It does this with file-level statistics in the log, clustering ([[Liquid Clustering]]), caching ([[Query Performance and Caching]]), and vectorized engines like [[Photon]]. [[The Lakehouse Paper]] argues these are enough, and shows TPC-DS results to back it.
-> - **"Open" has layers.** Open file format (Parquet), open table format (Delta, Iceberg), open catalog API (Unity Catalog's Iceberg REST endpoint), and open engine (Spark). A lakehouse can be open at some layers and closed at others. Ask which layers a vendor means.
-> - **From competing formats to interoperability.** For a few years Delta, Iceberg, and Hudi competed. By 2024–2026 the industry moved to reading each other's metadata ([[Delta UniForm]]) and to catalogs that serve both formats. Unity Catalog now has managed Delta and managed Iceberg tables side by side.
-> - **The next layer.** Databricks later framed its platform as [[The Data Intelligence Platform]]: the lakehouse plus AI that understands your data's meaning.
+> - **The hard part is performance, not storage:** Warehouses were fast because they controlled their own storage layout, indexes, and caches. A lakehouse has to get similar speed from open files. It does this with file-level statistics in the log, clustering ([[Liquid Clustering]]), caching ([[Query Performance and Caching]]), and vectorized engines like [[Photon]]. [[The Lakehouse Paper]] argues these are enough, and shows TPC-DS results to back it.
+> - **"Open" has layers:** Open file format (Parquet), open table format (Delta, Iceberg), open catalog API (Unity Catalog's Iceberg REST endpoint), and open engine (Spark). A lakehouse can be open at some layers and closed at others. Ask which layers a vendor means.
+> - **From competing formats to interoperability:** For a few years Delta, Iceberg, and Hudi competed. By 2024–2026 the industry moved to reading each other's metadata ([[Delta UniForm]]) and to catalogs that serve both formats. Unity Catalog now has managed Delta and managed Iceberg tables side by side.
+> - **The next layer:** Databricks later framed its platform as [[The Data Intelligence Platform]]: the lakehouse plus AI that understands your data's meaning.
 
 ## Common misconceptions
 

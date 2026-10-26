@@ -73,9 +73,9 @@ Mastery: `INPUT[inlineSelect(option(new), option(learning), option(solid)):maste
 
 There are three common ways to copy a changing table, in increasing order of accuracy:
 
-1. **Full reload every night.** Simple, but slow and costly for big tables, and you can't see what changed.
-2. **"Updated since" query.** Pull rows where `updated_at > last_run`. Cheaper, but it misses hard deletes and needs a reliable timestamp.
-3. **Change data capture.** Read the database's own change log (SQL Server CDC or change tracking, MySQL binlog, Postgres logical replication). You get every insert, update, and delete, with ordering.
+1. **Full reload every night:** Simple, but slow and costly for big tables, and you can't see what changed.
+2. **"Updated since" query:** Pull rows where `updated_at > last_run`. Cheaper, but it misses hard deletes and needs a reliable timestamp.
+3. **Change data capture:** Read the database's own change log (SQL Server CDC or change tracking, MySQL binlog, Postgres logical replication). You get every insert, update, and delete, with ordering.
 
 Applying CDC by hand requires a [[MERGE and Upserts|MERGE]] that deduplicates each batch, handles deletes, and copes with events arriving out of order. Errors in that logic cause the copy to drift from the source. AUTO CDC implements this logic in the engine.
 
@@ -211,13 +211,13 @@ That works, but you must also track which batch you processed and handle deletes
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Sequencing must be total.** `SEQUENCE BY` must give a strict order per key, using sortable data types. If two changes share a timestamp, use a struct: `SEQUENCE BY STRUCT(updated_at, lsn)`. The struct orders by its first field, then by the next field on a tie.
-> - **Deletes and tombstones.** To handle out-of-order data, a deleted row is temporarily retained as a tombstone in the underlying Delta table, and a view filters the tombstones out. Retention defaults to two days and is set with the `pipelines.cdc.tombstoneGCThresholdInSeconds` table property.
+> - **Sequencing must be total:** `SEQUENCE BY` must give a strict order per key, using sortable data types. If two changes share a timestamp, use a struct: `SEQUENCE BY STRUCT(updated_at, lsn)`. The struct orders by its first field, then by the next field on a tie.
+> - **Deletes and tombstones:** To handle out-of-order data, a deleted row is temporarily retained as a tombstone in the underlying Delta table, and a view filters the tombstones out. Retention defaults to two days and is set with the `pipelines.cdc.tombstoneGCThresholdInSeconds` table property.
 > - **Truncates** (`APPLY AS TRUNCATE WHEN`) are supported only for SCD type 1.
 > - **Bitemporal** storage (`STORED AS BITEMPORAL`) is in Beta and requires `SYSTEM SEQUENCE BY`.
-> - **Writing to the target.** If the pipeline publishes to Unity Catalog, you can run `INSERT`, `UPDATE`, `DELETE`, and `MERGE` against an AUTO CDC target, but not statements that change its schema. For SCD type 2 targets, your DML must set valid `__START_AT` and `__END_AT` values. Downstream streams that read the modified table need `skipChangeCommits`.
-> - **Mixing flows.** Combining an AUTO CDC flow and a snapshot flow on the same target has restrictions. Check the advanced AUTO CDC page before designing that.
-> - **Reading changes downstream.** The target table can expose a [[Change Data Feed]] so the next layer can process only changed rows, too.
+> - **Writing to the target:** If the pipeline publishes to Unity Catalog, you can run `INSERT`, `UPDATE`, `DELETE`, and `MERGE` against an AUTO CDC target, but not statements that change its schema. For SCD type 2 targets, your DML must set valid `__START_AT` and `__END_AT` values. Downstream streams that read the modified table need `skipChangeCommits`.
+> - **Mixing flows:** Combining an AUTO CDC flow and a snapshot flow on the same target has restrictions. Check the advanced AUTO CDC page before designing that.
+> - **Reading changes downstream:** The target table can expose a [[Change Data Feed]] so the next layer can process only changed rows, too.
 
 ## Common misconceptions
 

@@ -71,8 +71,8 @@ IP access lists exist at two levels:
 
 How a request is judged:
 
-1. **Block lists first.** If the address matches a block list, it is rejected, even if it is also on an allow list.
-2. **Allow lists next.** If any allow list exists, only addresses on one are admitted.
+1. **Block lists first:** If the address matches a block list, it is rejected, even if it is also on an allow list.
+2. **Allow lists next:** If any allow list exists, only addresses on one are admitted.
 3. **No lists**, with the feature enabled, means every address is admitted.
 
 Facts from the docs:
@@ -159,12 +159,12 @@ databricks ip-access-lists list
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Order of creation matters.** Create allow lists, then enable the feature. Once enabled, adding an allow list immediately blocks everything else.
-> - **Disable vs delete.** Each list has an `enabled` flag. Disabling a list is a quick, reversible way to test.
-> - **Outbound IPs of your tools.** SaaS BI, ETL, and CI tools often publish their egress ranges. These change; keep them in code (for example with the [[Terraform Provider]]) and review them.
-> - **Lockout recovery.** If you lock out the UI, a workspace admin can still fix the lists through the API from an allowed network, or over private connectivity if it exists.
-> - **Compliance.** IP lists help but do not by themselves meet "no public access" requirements. Those need private connectivity with public access disabled.
-> - **Ingress logging.** Context-based ingress denials (including dry runs) appear in `system.access.inbound_network`, which helps you see what an allow list would block before you enforce it.
+> - **Order of creation matters:** Create allow lists, then enable the feature. Once enabled, adding an allow list immediately blocks everything else.
+> - **Disable vs delete:** Each list has an `enabled` flag. Disabling a list is a quick, reversible way to test.
+> - **Outbound IPs of your tools:** SaaS BI, ETL, and CI tools often publish their egress ranges. These change; keep them in code (for example with the [[Terraform Provider]]) and review them.
+> - **Lockout recovery:** If you lock out the UI, a workspace admin can still fix the lists through the API from an allowed network, or over private connectivity if it exists.
+> - **Compliance:** IP lists help but do not by themselves meet "no public access" requirements. Those need private connectivity with public access disabled.
+> - **Ingress logging:** Context-based ingress denials (including dry runs) appear in `system.access.inbound_network`, which helps you see what an allow list would block before you enforce it.
 
 ## Common misconceptions
 

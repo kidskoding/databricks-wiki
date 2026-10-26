@@ -225,11 +225,11 @@ Authenticate CI as a [[Users Groups and Service Principals|service principal]], 
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Bundles vs Terraform.** Use the [[Terraform Provider]] for platform infrastructure (workspaces, networking, metastores) and bundles for workloads (jobs, pipelines, dashboards). The direct deployment engine broadens the resource types bundles can manage.
-> - **Separate dev and prod.** The bundle FAQ explains why dev and prod targets should stay separate. At minimum use separate catalogs; ideally separate workspaces with workspace-catalog binding (see [[Unity Catalog]]) so production data is reachable only from the production workspace.
-> - **Templates.** `databricks bundle init` offers default templates, including `default-minimal`, `default-python`, `default-sql`, `default-scala`, `dbt-sql`, `mlops-stacks`, and `pydabs`. Teams can publish custom templates to standardize new projects.
-> - **Data in CI.** Integration tests need realistic data. Use a small, de-identified sample catalog for staging, or shallow clones of production tables where governance allows.
-> - **Rollbacks.** Redeploy an earlier Git commit to roll back code. Data changes are rolled back separately, for example with Delta [[Time Travel]] (`RESTORE TABLE`).
+> - **Bundles vs Terraform:** Use the [[Terraform Provider]] for platform infrastructure (workspaces, networking, metastores) and bundles for workloads (jobs, pipelines, dashboards). The direct deployment engine broadens the resource types bundles can manage.
+> - **Separate dev and prod:** The bundle FAQ explains why dev and prod targets should stay separate. At minimum use separate catalogs; ideally separate workspaces with workspace-catalog binding (see [[Unity Catalog]]) so production data is reachable only from the production workspace.
+> - **Templates:** `databricks bundle init` offers default templates, including `default-minimal`, `default-python`, `default-sql`, `default-scala`, `dbt-sql`, `mlops-stacks`, and `pydabs`. Teams can publish custom templates to standardize new projects.
+> - **Data in CI:** Integration tests need realistic data. Use a small, de-identified sample catalog for staging, or shallow clones of production tables where governance allows.
+> - **Rollbacks:** Redeploy an earlier Git commit to roll back code. Data changes are rolled back separately, for example with Delta [[Time Travel]] (`RESTORE TABLE`).
 
 ## Common misconceptions
 

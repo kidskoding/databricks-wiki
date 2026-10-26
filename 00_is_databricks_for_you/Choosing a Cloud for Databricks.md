@@ -131,9 +131,9 @@ flowchart TD
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Multi-cloud.** One organization can run Databricks on more than one cloud. Data moves between clouds and regions through sharing ([[OpenSharing]]) rather than through a shared metastore. Databricks states that larger commitments can include use across multiple clouds.
-> - **One metastore per region.** Unity Catalog uses one [[Metastore|metastore]] per cloud region. Plan regions before creating workspaces. See [[Unity Catalog]].
-> - **Side-by-side comparison.** Identity, networking, storage, keys, and billing are compared in [[Cloud Comparison - Azure vs AWS vs GCP]].
+> - **Multi-cloud:** One organization can run Databricks on more than one cloud. Data moves between clouds and regions through sharing ([[OpenSharing]]) rather than through a shared metastore. Databricks states that larger commitments can include use across multiple clouds.
+> - **One metastore per region:** Unity Catalog uses one [[Metastore|metastore]] per cloud region. Plan regions before creating workspaces. See [[Unity Catalog]].
+> - **Side-by-side comparison:** Identity, networking, storage, keys, and billing are compared in [[Cloud Comparison - Azure vs AWS vs GCP]].
 
 ## Common misconceptions
 

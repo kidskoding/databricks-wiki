@@ -156,10 +156,10 @@ Each workspace has a **default catalog** that sessions start in. New workspaces 
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **`hive_metastore` is a catalog too.** In a Unity Catalog workspace the legacy Hive metastore shows up as a catalog named `hive_metastore`, so old tables are `hive_metastore.default.my_table`. Migrating is about moving them to real catalogs. See [[Hive Metastore Migration to Unity Catalog]].
-> - **Foreign and shared catalogs use the same addressing.** A catalog created from a [[Lakehouse Federation]] connection (`pg_shop.public.orders`) or from an [[OpenSharing]] share is queried with the same three parts, even though the data lives elsewhere.
-> - **Fully qualified names in code.** Jobs and pipelines should either use full names or set the catalog explicitly (for example as a job parameter) so one codebase can run against `dev` and `prod`. This pattern is common in [[Declarative Automation Bundles]].
-> - **Names are part of the security model.** Privileges attach to the levels: `USE CATALOG` on the catalog, `USE SCHEMA` on the schema, and `SELECT` on the object (or a parent). See [[Privileges and Grants]].
+> - **`hive_metastore` is a catalog too:** In a Unity Catalog workspace the legacy Hive metastore shows up as a catalog named `hive_metastore`, so old tables are `hive_metastore.default.my_table`. Migrating is about moving them to real catalogs. See [[Hive Metastore Migration to Unity Catalog]].
+> - **Foreign and shared catalogs use the same addressing:** A catalog created from a [[Lakehouse Federation]] connection (`pg_shop.public.orders`) or from an [[OpenSharing]] share is queried with the same three parts, even though the data lives elsewhere.
+> - **Fully qualified names in code:** Jobs and pipelines should either use full names or set the catalog explicitly (for example as a job parameter) so one codebase can run against `dev` and `prod`. This pattern is common in [[Declarative Automation Bundles]].
+> - **Names are part of the security model:** Privileges attach to the levels: `USE CATALOG` on the catalog, `USE SCHEMA` on the schema, and `SELECT` on the object (or a parent). See [[Privileges and Grants]].
 
 ## Common misconceptions
 

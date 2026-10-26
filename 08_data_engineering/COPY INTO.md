@@ -169,11 +169,11 @@ The docs say COPY INTO is a good fit for loading thousands of files, and recomme
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Concurrency.** Concurrent COPY INTO runs into the same table succeed only if they work on distinct sets of files. Overlapping runs cause transaction conflicts.
-> - **Schemaless tables.** A table created with no columns can only be filled by COPY INTO at first. `INSERT INTO` and `MERGE INTO` are not supported on schemaless Delta tables.
-> - **Validation.** `VALIDATE 15 ROWS` (or `VALIDATE ALL`), placed after `FILEFORMAT`, checks the data without writing it to the table, which is useful before a big first load. The default is to validate all data to be loaded.
+> - **Concurrency:** Concurrent COPY INTO runs into the same table succeed only if they work on distinct sets of files. Overlapping runs cause transaction conflicts.
+> - **Schemaless tables:** A table created with no columns can only be filled by COPY INTO at first. `INSERT INTO` and `MERGE INTO` are not supported on schemaless Delta tables.
+> - **Validation:** `VALIDATE 15 ROWS` (or `VALIDATE ALL`), placed after `FILEFORMAT`, checks the data without writing it to the table, which is useful before a big first load. The default is to validate all data to be loaded.
 > - **Modified files are skipped** by design, even if their content changed. If an upstream system rewrites files in place, either name files uniquely or use `force` deliberately.
-> - **Credentials.** With Unity Catalog, the permission to read the source comes from `READ FILES` on the external location (or on a named storage credential), or from `READ VOLUME` on the volume, not from the compute.
+> - **Credentials:** With Unity Catalog, the permission to read the source comes from `READ FILES` on the external location (or on a named storage credential), or from `READ VOLUME` on the volume, not from the compute.
 
 ## Common misconceptions
 

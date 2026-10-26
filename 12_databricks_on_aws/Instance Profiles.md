@@ -136,10 +136,10 @@ A cluster spec then references it:
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Role name versus profile name.** If the role name and the instance profile name differ, enter the role ARN in the optional field when registering, or serverless SQL will not work with it.
-> - **Two systems side by side.** While an instance profile remains attached, code on that cluster has two routes to S3: Unity Catalog grants and the role's IAM permissions. Removing the profile leaves Unity Catalog as the only route.
-> - **Enforcement through policies.** Admins can force or forbid an instance profile with a compute policy on `aws_attributes.instance_profile_arn`.
-> - **Migration order.** Create storage credentials and external locations for the same paths, upgrade tables to Unity Catalog, switch jobs to Unity Catalog compute, then detach the instance profile and remove `iam:PassRole` from the cross-account role.
+> - **Role name versus profile name:** If the role name and the instance profile name differ, enter the role ARN in the optional field when registering, or serverless SQL will not work with it.
+> - **Two systems side by side:** While an instance profile remains attached, code on that cluster has two routes to S3: Unity Catalog grants and the role's IAM permissions. Removing the profile leaves Unity Catalog as the only route.
+> - **Enforcement through policies:** Admins can force or forbid an instance profile with a compute policy on `aws_attributes.instance_profile_arn`.
+> - **Migration order:** Create storage credentials and external locations for the same paths, upgrade tables to Unity Catalog, switch jobs to Unity Catalog compute, then detach the instance profile and remove `iam:PassRole` from the cross-account role.
 
 ## Common misconceptions
 

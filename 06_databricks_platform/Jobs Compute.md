@@ -71,9 +71,9 @@ Mastery: `INPUT[inlineSelect(option(new), option(learning), option(solid)):maste
 
 Running scheduled pipelines on interactive clusters causes three problems:
 
-1. **Cost.** All-purpose compute has a higher [[DBUs|DBU]] rate and often sits idle between runs.
-2. **Interference.** An analyst's heavy query can slow down the nightly job sharing the cluster, and an analyst can change a library the job depends on.
-3. **Reproducibility.** A cluster that people modify by hand is not a stable production environment.
+1. **Cost:** All-purpose compute has a higher [[DBUs|DBU]] rate and often sits idle between runs.
+2. **Interference:** An analyst's heavy query can slow down the nightly job sharing the cluster, and an analyst can change a library the job depends on.
+3. **Reproducibility:** A cluster that people modify by hand is not a stable production environment.
 
 Jobs compute solves all three. Each run gets **fresh, isolated machines with a fixed configuration**, defined in code, at a lower rate.
 
@@ -169,12 +169,12 @@ If you remove the `job_clusters` block and the `job_cluster_key` lines, the same
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Start-up time.** Each new jobs cluster pays a VM boot cost of a few minutes. Share one `job_cluster_key` across tasks, use instance pools, or switch to serverless when start-up time matters.
-> - **Access mode default.** If a jobs cluster spec omits `data_security_mode`, the workspace's *default access mode for jobs compute* setting applies. Set it explicitly in code.
-> - **Run as.** Production jobs should run as a [[Users Groups and Service Principals|service principal]] (`run_as`) so they do not break when the author leaves.
-> - **Policies.** A [[Compute Policies|compute policy]] with `cluster_type` fixed to `job` can restrict which VM types and sizes job authors may use, and can force tags for chargeback.
-> - **Existing cluster option.** A task can point at an `existing_cluster_id` (an all-purpose cluster). It works, but you lose isolation and pay the all-purpose rate. Use it for development only.
-> - **Pipelines have their own compute.** [[Lakeflow Spark Declarative Pipelines]] create their own clusters (or run serverless), configured in the pipeline settings rather than in `job_clusters`.
+> - **Start-up time:** Each new jobs cluster pays a VM boot cost of a few minutes. Share one `job_cluster_key` across tasks, use instance pools, or switch to serverless when start-up time matters.
+> - **Access mode default:** If a jobs cluster spec omits `data_security_mode`, the workspace's *default access mode for jobs compute* setting applies. Set it explicitly in code.
+> - **Run as:** Production jobs should run as a [[Users Groups and Service Principals|service principal]] (`run_as`) so they do not break when the author leaves.
+> - **Policies:** A [[Compute Policies|compute policy]] with `cluster_type` fixed to `job` can restrict which VM types and sizes job authors may use, and can force tags for chargeback.
+> - **Existing cluster option:** A task can point at an `existing_cluster_id` (an all-purpose cluster). It works, but you lose isolation and pay the all-purpose rate. Use it for development only.
+> - **Pipelines have their own compute:** [[Lakeflow Spark Declarative Pipelines]] create their own clusters (or run serverless), configured in the pipeline settings rather than in `job_clusters`.
 
 ## Common misconceptions
 

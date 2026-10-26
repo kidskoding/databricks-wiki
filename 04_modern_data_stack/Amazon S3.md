@@ -95,7 +95,9 @@ flowchart LR
   CMP -->|"GET / PUT s3://acme-lake/..."| S3[("S3 bucket<br/>acme-lake")]
 ```
 
-**The URI scheme.** On Databricks, S3 paths use `s3://`:
+### The URI scheme
+
+On Databricks, S3 paths use `s3://`:
 
 ```text
 s3://acme-lake/curated/orders/order_date=2026-10-24/part-0000.snappy.parquet
@@ -151,9 +153,9 @@ aws s3 ls s3://acme-lake/raw/orders/ --recursive    # list keys under a prefix
 
 > [!deepdive]- Advanced topics (301–401)
 > - **The 2020 consistency change** removed a class of lake errors, such as a newly written file missing from a listing. Delta Lake does not rely on listings for correctness, because the [[Delta Transaction Log]] says exactly which files make up each version.
-> - **Concurrent writes.** Delta Lake commits require that two writers cannot create the same log entry, and S3 lacks the needed mutual exclusion. Open-source Delta Lake supports multi-cluster S3 writes only with an experimental LogStore that uses DynamoDB. On Databricks, a commit service in the control plane coordinates writes to S3 from multiple clusters.
-> - **Request rate scaling.** S3 supports at least 3,500 write and 5,500 read requests per second per partitioned prefix, with no limit on the number of prefixes. Spreading data across many prefixes (as partitioned and Delta layouts naturally do) avoids hot spots.
-> - **Lifecycle and versioning.** With versioning enabled, files removed by `VACUUM` remain as noncurrent versions and continue to incur storage charges. Pair versioning with a lifecycle rule that expires noncurrent versions.
+> - **Concurrent writes:** Delta Lake commits require that two writers cannot create the same log entry, and S3 lacks the needed mutual exclusion. Open-source Delta Lake supports multi-cluster S3 writes only with an experimental LogStore that uses DynamoDB. On Databricks, a commit service in the control plane coordinates writes to S3 from multiple clusters.
+> - **Request rate scaling:** S3 supports at least 3,500 write and 5,500 read requests per second per partitioned prefix, with no limit on the number of prefixes. Spreading data across many prefixes (as partitioned and Delta layouts naturally do) avoids hot spots.
+> - **Lifecycle and versioning:** With versioning enabled, files removed by `VACUUM` remain as noncurrent versions and continue to incur storage charges. Pair versioning with a lifecycle rule that expires noncurrent versions.
 
 ## Common misconceptions
 

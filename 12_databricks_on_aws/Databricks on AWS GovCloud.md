@@ -136,10 +136,10 @@ AWS resource ARNs in GovCloud use the `aws-us-gov` partition, for example `arn:a
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Two environments, two accounts.** A GovCloud Databricks account is separate from a commercial one. Identities, metastores, and workspaces do not span them. Plan sharing between them explicitly.
-> - **Feature lag.** Check the GovCloud release notes, not only the commercial ones, before planning a feature. For example, the GovCloud 2025 release notes record the rename to Lakeflow Spark Declarative Pipelines separately.
-> - **Profile is mandatory.** Because the compliance security profile is on for every workspace, its constraints (hardened images, enhanced monitoring, automatic cluster updates, Nitro instance types) always apply. See [[Compliance Security Profile]].
-> - **Audit.** Deliver [[Audit Logs]] and use system tables to evidence controls to assessors.
+> - **Two environments, two accounts:** A GovCloud Databricks account is separate from a commercial one. Identities, metastores, and workspaces do not span them. Plan sharing between them explicitly.
+> - **Feature lag:** Check the GovCloud release notes, not only the commercial ones, before planning a feature. For example, the GovCloud 2025 release notes record the rename to Lakeflow Spark Declarative Pipelines separately.
+> - **Profile is mandatory:** Because the compliance security profile is on for every workspace, its constraints (hardened images, enhanced monitoring, automatic cluster updates, Nitro instance types) always apply. See [[Compliance Security Profile]].
+> - **Audit:** Deliver [[Audit Logs]] and use system tables to evidence controls to assessors.
 
 ## Common misconceptions
 

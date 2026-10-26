@@ -160,11 +160,11 @@ List prices exclude negotiated discounts, so this is an estimate.
 ## Small-business considerations
 
 > [!smallbiz] Small-business considerations
-> 1. **Prefer serverless and auto-stop.** Most surprise bills come from classic clusters left running. DBUs accrue while compute runs, whether or not it is busy.
+> 1. **Prefer serverless and auto-stop:** Most surprise bills come from classic clusters left running. DBUs accrue while compute runs, whether or not it is busy.
 > 2. **Use jobs compute or serverless jobs for scheduled work**, not all-purpose clusters. All-purpose DBUs are priced higher.
 > 3. **Tag everything** (`team`, `project`) so that `custom_tags` in `system.billing.usage` shows who spent what. See [[Tagging for Chargeback]].
 > 4. **Set a budget** with alerts in the account console. See [[Budgets and Usage Dashboards]].
-> 5. **Estimate before you commit.** Run a representative week, sum the DBUs, and multiply by the official prices. See [[Estimating Costs for a Small Business]].
+> 5. **Estimate before you commit:** Run a representative week, sum the DBUs, and multiply by the official prices. See [[Estimating Costs for a Small Business]].
 
 ## Cloud differences
 
@@ -182,11 +182,11 @@ List prices exclude negotiated discounts, so this is an estimate.
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Several records per workload.** Serverless workloads can produce multiple usage records in the same hour. Sum them to get a run's consumption.
-> - **Other units.** Not everything is metered in DBUs. `list_prices` also shows `DSU`, `HOUR`, and `GB`, used by some products that are not metered in DBUs.
-> - **Price history.** Joining on `price_start_time` and `price_end_time` gives the price in effect at the time of usage, not today's price.
-> - **Photon trade-off.** Photon raises the DBU rate on classic compute but can reduce total DBUs when it shortens run time enough. Measure on your own workloads.
-> - **Commit contracts.** Committed-use agreements change the effective price per DBU, not the DBU count. Usage tables still show DBUs consumed.
+> - **Several records per workload:** Serverless workloads can produce multiple usage records in the same hour. Sum them to get a run's consumption.
+> - **Other units:** Not everything is metered in DBUs. `list_prices` also shows `DSU`, `HOUR`, and `GB`, used by some products that are not metered in DBUs.
+> - **Price history:** Joining on `price_start_time` and `price_end_time` gives the price in effect at the time of usage, not today's price.
+> - **Photon trade-off:** Photon raises the DBU rate on classic compute but can reduce total DBUs when it shortens run time enough. Measure on your own workloads.
+> - **Commit contracts:** Committed-use agreements change the effective price per DBU, not the DBU count. Usage tables still show DBUs consumed.
 
 ## Common misconceptions
 

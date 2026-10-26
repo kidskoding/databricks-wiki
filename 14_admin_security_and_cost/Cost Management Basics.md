@@ -67,7 +67,9 @@ Traditional databases and warehouses were often bought as fixed licences or appl
 
 Cost management on Databricks consists of measuring usage, attributing it to owners, setting limits, and tuning workloads.
 
-**The meter.** Databricks usage is measured in [[DBUs|Databricks Units (DBUs)]], a normalized unit of processing capacity. Pay-as-you-go accounts pay per DBU at per-second granularity, with no up-front cost.
+### The meter
+
+Databricks usage is measured in [[DBUs|Databricks Units (DBUs)]], a normalized unit of processing capacity. Pay-as-you-go accounts pay per DBU at per-second granularity, with no up-front cost.
 
 The DBU rate depends on the product (for example jobs, SQL, model serving), the compute type, the plan, and the cloud and region. Current rates are on the [Databricks pricing page](https://www.databricks.com/product/pricing). This vault does not state prices.
 
@@ -80,7 +82,9 @@ The DBU rate depends on the product (for example jobs, SQL, model serving), the 
 
 The serverless DBU rate is higher than the classic rate for the same product, because it includes the infrastructure. Compare **total** cost, not DBU rate alone. See [[How Databricks Pricing Works]].
 
-**Where the money goes.** In most accounts, spend concentrates in a few categories:
+### Where the money goes
+
+In most accounts, spend concentrates in a few categories:
 
 1. **Interactive clusters** ([[All-Purpose Compute]]) left running between uses.
 2. **SQL warehouses** sized larger than needed, or with long auto-stop times.
@@ -88,7 +92,9 @@ The serverless DBU rate is higher than the classic rate for the same product, be
 4. **Model serving and AI features**, which have their own SKUs (billing product codes).
 5. **Storage and [[Egress|egress]]** on the cloud bill: [[Object Storage|object storage]], and data transferred across regions or to the internet.
 
-**Plan tier.** The Standard tier has reached end of life. On AWS and Google Cloud, remaining Standard tier workspaces were upgraded automatically to Premium on October 1, 2025. On Azure, new workspaces must use Premium from April 1, 2026, and remaining Standard tier workspaces are upgraded automatically to Premium in a phased rollout that starts October 1, 2026.
+### Plan tier
+
+The Standard tier has reached end of life. On AWS and Google Cloud, remaining Standard tier workspaces were upgraded automatically to Premium on October 1, 2025. On Azure, new workspaces must use Premium from April 1, 2026, and remaining Standard tier workspaces are upgraded automatically to Premium in a phased rollout that starts October 1, 2026.
 
 ## How it works
 
@@ -153,11 +159,11 @@ The full list is in the [[Cost Optimization Checklist]].
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **List price vs contract price.** `system.billing.list_prices` holds list prices. Committed-use or negotiated discounts are not reflected there, so system-table cost figures are list-price estimates.
-> - **Billing lag.** `system.billing.usage` updates every few hours, so very recent usage may be missing.
-> - **Serverless attribution.** Serverless usage is attributed with serverless usage policies, which add tags to usage records. See [[Tagging for Chargeback]].
-> - **Governance Hub.** The account-level Governance Hub includes a Cost page with spend by product, workspace, and tag, at list price. It was in Beta as of October 2026 and is enabled from the account console Previews page.
-> - **Total cost of ownership.** Compare Databricks spend against the cost of the systems it replaces, including staff time. See [[Total Cost of Ownership]].
+> - **List price vs contract price:** `system.billing.list_prices` holds list prices. Committed-use or negotiated discounts are not reflected there, so system-table cost figures are list-price estimates.
+> - **Billing lag:** `system.billing.usage` updates every few hours, so very recent usage may be missing.
+> - **Serverless attribution:** Serverless usage is attributed with serverless usage policies, which add tags to usage records. See [[Tagging for Chargeback]].
+> - **Governance Hub:** The account-level Governance Hub includes a Cost page with spend by product, workspace, and tag, at list price. It was in Beta as of October 2026 and is enabled from the account console Previews page.
+> - **Total cost of ownership:** Compare Databricks spend against the cost of the systems it replaces, including staff time. See [[Total Cost of Ownership]].
 
 ## Common misconceptions
 

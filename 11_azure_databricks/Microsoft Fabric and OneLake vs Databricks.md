@@ -165,11 +165,11 @@ Limits: `SELECT` only; Fabric Lakehouse and Warehouse items only; no dedicated a
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Governance does not travel.** Microsoft's mirroring security guidance states that Unity Catalog policies and permissions are not mirrored into Fabric. Re-create access in Fabric with OneLake security, and do not mirror tables protected by [[Row Filters and Column Masks|row filters or column masks]] unless Fabric-side controls are equivalent.
-> - **Read-only in Fabric.** Mirrored tables are read-only in Fabric. Writes go through Databricks, which keeps Unity Catalog lineage and audit intact.
-> - **Direct Lake guardrails.** Power BI Direct Lake models read Delta tables in OneLake, subject to capacity SKU guardrails such as a maximum number of Parquet files per table (1,000 for F2 to F32, 5,000 for F64 and above, as of October 2026). Compacting source tables with `OPTIMIZE` keeps file counts within limits.
-> - **Roadmap.** Databricks' blog on OneLake support in Unity Catalog describes reads from OneLake first and write support on the roadmap, aligned with the Unity Catalog open APIs. The OneLake external location (Beta) is the first write-capable path.
-> - **ADF migration.** Fabric Data Factory includes an Azure Databricks activity, so moving orchestration to Fabric does not require moving Databricks jobs.
+> - **Governance does not travel:** Microsoft's mirroring security guidance states that Unity Catalog policies and permissions are not mirrored into Fabric. Re-create access in Fabric with OneLake security, and do not mirror tables protected by [[Row Filters and Column Masks|row filters or column masks]] unless Fabric-side controls are equivalent.
+> - **Read-only in Fabric:** Mirrored tables are read-only in Fabric. Writes go through Databricks, which keeps Unity Catalog lineage and audit intact.
+> - **Direct Lake guardrails:** Power BI Direct Lake models read Delta tables in OneLake, subject to capacity SKU guardrails such as a maximum number of Parquet files per table (1,000 for F2 to F32, 5,000 for F64 and above, as of October 2026). Compacting source tables with `OPTIMIZE` keeps file counts within limits.
+> - **Roadmap:** Databricks' blog on OneLake support in Unity Catalog describes reads from OneLake first and write support on the roadmap, aligned with the Unity Catalog open APIs. The OneLake external location (Beta) is the first write-capable path.
+> - **ADF migration:** Fabric Data Factory includes an Azure Databricks activity, so moving orchestration to Fabric does not require moving Databricks jobs.
 
 ## Common misconceptions
 

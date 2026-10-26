@@ -145,7 +145,7 @@ Key settings on every classic cluster:
 > 1. **One serverless SQL warehouse** (smallest size, auto-stop on) for dashboards and SQL.
 > 2. **Serverless notebooks** for day-to-day exploration.
 > 3. **Serverless jobs** for scheduled pipelines.
-> 4. **No always-on clusters.** If you create an all-purpose cluster, give it a 30-minute auto-termination and a [[Compute Policies|policy]] limiting its size.
+> 4. **No always-on clusters:** If you create an all-purpose cluster, give it a 30-minute auto-termination and a [[Compute Policies|policy]] limiting its size.
 >
 > Monitor usage in [[Budgets and Usage Dashboards]] for the first month. See [[Cost Management Basics]].
 
@@ -163,12 +163,12 @@ Key settings on every classic cluster:
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Dedicated mode and fine-grained access.** On dedicated compute, Unity Catalog row filters, column masks, and views the user cannot fully read are enforced by sending that part of the query to serverless compute. This requires serverless to be enabled.
-> - **Dedicated to a group.** Dedicated compute can be assigned to a group, so a small team can share a cluster that still runs as "dedicated" for R or GPU workloads.
-> - **Default access mode for jobs.** Admins can set the default access mode for jobs compute in workspace settings, which matters when job definitions omit it.
-> - **Standard-mode limits.** Standard compute restricts some things for isolation: no RDD APIs, limited Spark configs, no direct access to the driver's local filesystem for other users, and libraries/init scripts governed by an allowlist.
-> - **Simple form.** The compute UI has a simple form that hides most options and picks sensible defaults; admins can enforce it with policies.
-> - **Cost attribution.** Every compute resource can carry custom tags that flow into billing system tables. See [[Tagging for Chargeback]].
+> - **Dedicated mode and fine-grained access:** On dedicated compute, Unity Catalog row filters, column masks, and views the user cannot fully read are enforced by sending that part of the query to serverless compute. This requires serverless to be enabled.
+> - **Dedicated to a group:** Dedicated compute can be assigned to a group, so a small team can share a cluster that still runs as "dedicated" for R or GPU workloads.
+> - **Default access mode for jobs:** Admins can set the default access mode for jobs compute in workspace settings, which matters when job definitions omit it.
+> - **Standard-mode limits:** Standard compute restricts some things for isolation: no RDD APIs, limited Spark configs, no direct access to the driver's local filesystem for other users, and libraries/init scripts governed by an allowlist.
+> - **Simple form:** The compute UI has a simple form that hides most options and picks sensible defaults; admins can enforce it with policies.
+> - **Cost attribution:** Every compute resource can carry custom tags that flow into billing system tables. See [[Tagging for Chargeback]].
 
 ## Common misconceptions
 

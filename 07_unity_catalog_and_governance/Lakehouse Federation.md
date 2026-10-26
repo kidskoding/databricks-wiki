@@ -136,8 +136,8 @@ Permissions: creating a connection needs `CREATE CONNECTION` on the metastore. C
 
 > [!smallbiz] Small-business considerations
 > Federation is often the quickest way to start. A foreign catalog over the PostgreSQL or MySQL database behind a shop or booking system makes its tables queryable without building a pipeline. Two considerations:
-> - **Every query hits the source database.** Frequently refreshed dashboards add load to the production system. Use a read replica if one is available.
-> - **Ingest tables that are queried often.** Use [[Lakeflow Connect]] or a scheduled job to land it as a managed table, which is faster and cheaper to query repeatedly.
+> - **Every query hits the source database:** Frequently refreshed dashboards add load to the production system. Use a read replica if one is available.
+> - **Ingest tables that are queried often:** Use [[Lakeflow Connect]] or a scheduled job to land it as a managed table, which is faster and cheaper to query repeatedly.
 >
 > Federation itself has no separate license; you pay for the Databricks compute that runs the query and any data transfer your cloud charges.
 
@@ -160,11 +160,11 @@ The SQL and the two federation types are the same. The **list of sources differs
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Requirements.** Query federation needs Unity Catalog and Databricks Runtime 13.3 LTS or above, or a SQL warehouse.
-> - **Pushdown.** Query federation pushes supported operations, such as filters, down to the remote database. What is pushed down varies by source; check the per-source page. Joins across sources run in Databricks, so select only the columns and rows you need.
-> - **Network reach.** The compute running the query must reach the database: public endpoint with IP allowlists, or private connectivity. For serverless, configure [[Serverless Network Security]].
-> - **Federation for migration.** Hive metastore federation mirrors a legacy Hive metastore (or AWS Glue) as a foreign catalog. Databricks' upgrade guide now recommends this as a first step, then upgrading foreign tables in place. See [[Hive Metastore Migration to Unity Catalog]].
-> - **Federation vs sharing.** If the other side is also on Databricks, [[OpenSharing]] is usually better than federating over JDBC: it shares data directly, with no database in the path.
+> - **Requirements:** Query federation needs Unity Catalog and Databricks Runtime 13.3 LTS or above, or a SQL warehouse.
+> - **Pushdown:** Query federation pushes supported operations, such as filters, down to the remote database. What is pushed down varies by source; check the per-source page. Joins across sources run in Databricks, so select only the columns and rows you need.
+> - **Network reach:** The compute running the query must reach the database: public endpoint with IP allowlists, or private connectivity. For serverless, configure [[Serverless Network Security]].
+> - **Federation for migration:** Hive metastore federation mirrors a legacy Hive metastore (or AWS Glue) as a foreign catalog. Databricks' upgrade guide now recommends this as a first step, then upgrading foreign tables in place. See [[Hive Metastore Migration to Unity Catalog]].
+> - **Federation vs sharing:** If the other side is also on Databricks, [[OpenSharing]] is usually better than federating over JDBC: it shares data directly, with no database in the path.
 > - **Lineage and audit** apply to foreign tables, so federated reads show up in [[Data Lineage]] and [[Audit Logs]].
 
 ## Common misconceptions

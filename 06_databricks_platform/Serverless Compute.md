@@ -76,9 +76,9 @@ Mastery: `INPUT[inlineSelect(option(new), option(learning), option(solid)):maste
 
 On classic compute (see [[All-Purpose Compute]] and [[Jobs Compute]]), each [[Cluster|cluster]] is a set of [[Virtual Machine|virtual machines]] that Databricks launches in your cloud account. That model has three costs for a small team:
 
-- **Start-up time.** A classic cluster takes several minutes to provision.
-- **Configuration work.** Someone has to choose instance types, [[Autoscaling|autoscaling]] limits, [[Auto Termination|auto termination]], and a [[Databricks Runtime]] version, and then keep them current.
-- **Idle spend.** A cluster that someone forgets to stop keeps billing.
+- **Start-up time:** A classic cluster takes several minutes to provision.
+- **Configuration work:** Someone has to choose instance types, [[Autoscaling|autoscaling]] limits, [[Auto Termination|auto termination]], and a [[Databricks Runtime]] version, and then keep them current.
+- **Idle spend:** A cluster that someone forgets to stop keeps billing.
 
 Serverless compute moves the machines into the serverless compute plane, which Databricks operates (see [[Control Plane and Compute Plane]]). Databricks handles provisioning, scaling, and runtime upgrades.
 
@@ -162,7 +162,7 @@ The serverless limitations page lists the main gaps. Use classic compute when yo
 
 > [!smallbiz] Small-business considerations
 > Serverless is the default choice for a team without a dedicated platform engineer.
-> 1. **Use serverless notebooks for exploration.** No cluster runs while nobody is working.
+> 1. **Use serverless notebooks for exploration:** No cluster runs while nobody is working.
 > 2. **Use serverless jobs in standard mode for nightly batch work** where a few minutes of start-up delay does not matter. It consumes fewer DBUs.
 > 3. **Create a serverless usage policy** so that each notebook and job carries a tag such as `team: finance`. The tags appear in the `custom_tags` column of `system.billing.usage`. The feature is in Public Preview as of October 2026.
 > 4. **Set a budget alert** in the account console. See [[Budgets and Usage Dashboards]].
@@ -189,11 +189,11 @@ Serverless compute works the same way on all three clouds. The differences are a
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Spark Connect client.** Serverless notebooks and jobs talk to the engine through [[Spark Connect]]. This is why RDD APIs and direct SparkContext access are unavailable, and why the same environment version pairs with a specific [[Databricks Connect]] version.
-> - **Multiple usage records.** A single serverless workload can produce several billing records in `system.billing.usage`. Sum them to get the DBU consumption of a run.
-> - **Networking cost.** Networking charges apply only to serverless, because classic compute traffic is billed by your cloud provider directly.
-> - **Migration.** Databricks recommends running a migrated workload in performance-optimized mode while validating it, then choosing the mode that fits before production. Workloads that depend on R, Scala notebooks, RDDs, or init scripts stay on classic compute.
-> - **Package pinning.** Pin Python package versions in the environment. Unpinned packages can resolve differently across environment versions and add install latency.
+> - **Spark Connect client:** Serverless notebooks and jobs talk to the engine through [[Spark Connect]]. This is why RDD APIs and direct SparkContext access are unavailable, and why the same environment version pairs with a specific [[Databricks Connect]] version.
+> - **Multiple usage records:** A single serverless workload can produce several billing records in `system.billing.usage`. Sum them to get the DBU consumption of a run.
+> - **Networking cost:** Networking charges apply only to serverless, because classic compute traffic is billed by your cloud provider directly.
+> - **Migration:** Databricks recommends running a migrated workload in performance-optimized mode while validating it, then choosing the mode that fits before production. Workloads that depend on R, Scala notebooks, RDDs, or init scripts stay on classic compute.
+> - **Package pinning:** Pin Python package versions in the environment. Unpinned packages can resolve differently across environment versions and add install latency.
 
 ## Common misconceptions
 

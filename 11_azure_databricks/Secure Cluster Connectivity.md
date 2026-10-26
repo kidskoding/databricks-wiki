@@ -145,11 +145,11 @@ The NAT gateway's public IP is the stable source address that external services 
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Fully private compute.** SCC removes public IPs from nodes. Classic compute (back-end) [[Azure Private Link]] additionally keeps SCC relay and REST API traffic on the Microsoft backbone, which together give a compute environment with no public IP addresses.
-> - **Storage firewall dependency.** Firewall support for the workspace storage account requires SCC for connections from classic compute.
-> - **Egress cost.** Microsoft notes that SCC can incur additional egress costs. The NAT gateway is billed separately by Azure.
-> - **NSG implications.** With SCC on, the inbound rules for ports 22 and 5557 are not created. Outbound rules to the `AzureDatabricks` service tag (443, 3306, 8443–8451) remain required. See [[VNet Injection]].
-> - **Deprecation of `false`.** Workspaces created with `enableNoPublicIp` set to `false` will no longer be supported once SCC becomes mandatory. Inventory older workspaces and migrate them.
+> - **Fully private compute:** SCC removes public IPs from nodes. Classic compute (back-end) [[Azure Private Link]] additionally keeps SCC relay and REST API traffic on the Microsoft backbone, which together give a compute environment with no public IP addresses.
+> - **Storage firewall dependency:** Firewall support for the workspace storage account requires SCC for connections from classic compute.
+> - **Egress cost:** Microsoft notes that SCC can incur additional egress costs. The NAT gateway is billed separately by Azure.
+> - **NSG implications:** With SCC on, the inbound rules for ports 22 and 5557 are not created. Outbound rules to the `AzureDatabricks` service tag (443, 3306, 8443–8451) remain required. See [[VNet Injection]].
+> - **Deprecation of `false`:** Workspaces created with `enableNoPublicIp` set to `false` will no longer be supported once SCC becomes mandatory. Inventory older workspaces and migrate them.
 
 ## Common misconceptions
 

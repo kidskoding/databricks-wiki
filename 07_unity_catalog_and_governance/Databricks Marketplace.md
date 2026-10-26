@@ -152,10 +152,10 @@ GRANT USE SCHEMA, SELECT ON CATALOG weather_marketplace TO `analysts`;
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Cross-cloud delivery.** Delivery uses OpenSharing, which identifies each consumer by a `cloud:region:uuid` sharing identifier, so providers and consumers can be on different clouds or regions. Cross-region reads can create egress charges for the provider.
-> - **Private exchanges for B2B distribution.** A company can use a private exchange to distribute standard data products to its own customers or subsidiaries without public listing.
-> - **Request management.** Providers review and fulfill requests for paid or customized products in the provider console.
-> - **Product types.** Listings include tabular datasets and ML models. Non-Unity Catalog and external-platform consumers receive only tabular datasets.
+> - **Cross-cloud delivery:** Delivery uses OpenSharing, which identifies each consumer by a `cloud:region:uuid` sharing identifier, so providers and consumers can be on different clouds or regions. Cross-region reads can create egress charges for the provider.
+> - **Private exchanges for B2B distribution:** A company can use a private exchange to distribute standard data products to its own customers or subsidiaries without public listing.
+> - **Request management:** Providers review and fulfill requests for paid or customized products in the provider console.
+> - **Product types:** Listings include tabular datasets and ML models. Non-Unity Catalog and external-platform consumers receive only tabular datasets.
 
 ## Common misconceptions
 

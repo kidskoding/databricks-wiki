@@ -152,10 +152,10 @@ GRANT SELECT ON VIEW shop.analytics.daily_sales TO `powerbi_readers`;
 ## Small-business considerations
 
 > [!smallbiz] Small-business considerations
-> - **Keep the reports that work.** Point existing Power BI reports at a Databricks SQL warehouse instead of rebuilding them as AI/BI dashboards on day one.
+> - **Keep the reports that work:** Point existing Power BI reports at a Databricks SQL warehouse instead of rebuilding them as AI/BI dashboards on day one.
 > - **Start with DirectQuery on a small serverless warehouse** so there is one copy of the data and Unity Catalog permissions apply. Switch large, static tables to Import if visuals are slow.
-> - **Pre-aggregate in Databricks.** A daily-sales view with one row per store per day is faster and cheaper than letting Power BI scan every order.
-> - **License check.** Publishing from Catalog Explorer requires Premium, Premium Per User, or Fabric capacity. With Power BI Pro only, connect from Power BI Desktop and publish the report as usual.
+> - **Pre-aggregate in Databricks:** A daily-sales view with one row per store per day is faster and cheaper than letting Power BI scan every order.
+> - **License check:** Publishing from Catalog Explorer requires Premium, Premium Per User, or Fabric capacity. With Power BI Pro only, connect from Power BI Desktop and publish the report as usual.
 >
 > DirectQuery reports send queries whenever visuals load, which keeps the SQL warehouse running during business hours. Import mode runs the warehouse only during refreshes. Warehouse time is billed in [[DBUs]]. See [[How Databricks Pricing Works]].
 
@@ -176,12 +176,12 @@ GRANT SELECT ON VIEW shop.analytics.daily_sales TO `powerbi_readers`;
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Query tags.** With ADBC, Power BI context is attached to queries as Databricks SQL query tags, which helps attribute warehouse load and cost to reports. ODBC connections do not support this.
-> - **Native queries.** The `Databricks.Query` data source is not supported with semantic model DirectQuery mode.
-> - **Scheduled republish.** The Power BI task in [[Lakeflow Jobs]] (Public Preview) republishes semantic models after upstream tables refresh. It requires a Unity Catalog Power BI connection and `USE CONNECTION` on it.
-> - **Metric views.** Power BI support for querying Unity Catalog [[Metric Views|metric views]] changed several times during 2026, and Microsoft removed the Metric View BI Compatibility Mode option from the connector. Check the current Databricks page before building on it.
-> - **Concurrency.** Each open DirectQuery report page sends several queries. Size the warehouse for concurrent viewers and use [[Query Performance and Caching|query profiles]] to tune slow visuals.
-> - **Service principal token lifetime.** Automation that uses an Entra ID-managed service principal fails if it runs longer than one hour, because the token expires.
+> - **Query tags:** With ADBC, Power BI context is attached to queries as Databricks SQL query tags, which helps attribute warehouse load and cost to reports. ODBC connections do not support this.
+> - **Native queries:** The `Databricks.Query` data source is not supported with semantic model DirectQuery mode.
+> - **Scheduled republish:** The Power BI task in [[Lakeflow Jobs]] (Public Preview) republishes semantic models after upstream tables refresh. It requires a Unity Catalog Power BI connection and `USE CONNECTION` on it.
+> - **Metric views:** Power BI support for querying Unity Catalog [[Metric Views|metric views]] changed several times during 2026, and Microsoft removed the Metric View BI Compatibility Mode option from the connector. Check the current Databricks page before building on it.
+> - **Concurrency:** Each open DirectQuery report page sends several queries. Size the warehouse for concurrent viewers and use [[Query Performance and Caching|query profiles]] to tune slow visuals.
+> - **Service principal token lifetime:** Automation that uses an Entra ID-managed service principal fails if it runs longer than one hour, because the token expires.
 
 ## Common misconceptions
 

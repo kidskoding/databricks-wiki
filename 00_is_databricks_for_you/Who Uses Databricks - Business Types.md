@@ -149,9 +149,9 @@ A franchise adds a [[Row Filters and Column Masks|row filter]] so each franchise
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Multi-tenant patterns.** Franchises and agencies choose between one catalog per tenant (strong isolation, more objects) and one shared catalog with row filters (simpler, requires careful policy design). [[Attribute-Based Access Control]] scales the shared pattern with tags.
-> - **Regulated data.** For health, payment, and education data, configure the [[Compliance Security Profile]], [[Encryption|customer-managed keys]], and private networking ([[Network Security Overview]]) before go-live.
-> - **Batch first.** Most small businesses need hourly or daily refresh. Use streaming only where latency has a measurable cost. See [[Batch vs Streaming]].
+> - **Multi-tenant patterns:** Franchises and agencies choose between one catalog per tenant (strong isolation, more objects) and one shared catalog with row filters (simpler, requires careful policy design). [[Attribute-Based Access Control]] scales the shared pattern with tags.
+> - **Regulated data:** For health, payment, and education data, configure the [[Compliance Security Profile]], [[Encryption|customer-managed keys]], and private networking ([[Network Security Overview]]) before go-live.
+> - **Batch first:** Most small businesses need hourly or daily refresh. Use streaming only where latency has a measurable cost. See [[Batch vs Streaming]].
 
 ## Common misconceptions
 

@@ -95,8 +95,8 @@ Databricks, Inc. was founded in **2013** by the team that started the Spark rese
 
 The company's model has two parts:
 
-1. **Keep the core open.** The same year it was founded, the team donated Spark to the [[Apache Software Foundation]]. Spark became a top-level Apache project on February 27, 2014. Later projects followed the same pattern: [[MLflow]] (2018), [[Delta Lake]] (2019), and [[Unity Catalog]] (open-sourced in 2024).
-2. **Sell the service, not the software.** Databricks does not sell a box to install. It sells a managed cloud platform that runs open engines on the customer's cloud account, plus features that exist only in the service (like [[Photon]] and serverless compute).
+1. **Keep the core open:** The same year it was founded, the team donated Spark to the [[Apache Software Foundation]]. Spark became a top-level Apache project on February 27, 2014. Later projects followed the same pattern: [[MLflow]] (2018), [[Delta Lake]] (2019), and [[Unity Catalog]] (open-sourced in 2024).
+2. **Sell the service, not the software:** Databricks does not sell a box to install. It sells a managed cloud platform that runs open engines on the customer's cloud account, plus features that exist only in the service (like [[Photon]] and serverless compute).
 
 ## How it works
 
@@ -120,18 +120,18 @@ timeline
 
 Key milestones:
 
-- **A hosted notebook on AWS (2014–2015).** The first product was "Databricks Cloud", unveiled at Spark Summit in June 2014 and generally available in June 2015: a web page with notebooks attached to Spark clusters that Databricks started and stopped for you on Amazon Web Services. This is the seed of today's [[Notebooks]] and [[All-Purpose Compute]].
-- **Azure as a first-party service (2018).** Microsoft and Databricks built **Azure Databricks** together. It became generally available on March 22, 2018. It is sold and billed by Microsoft and appears in the Azure portal like any other Azure service. See [[Azure Databricks Overview]] and [[First-Party Microsoft Service]].
-- **The lakehouse (2020).** In January 2020 Databricks published the blog post "What is a Lakehouse?". Customers had long copied data from lakes into warehouses ([[The Two-Tier Architecture Problem]]). Databricks proposed that one open table format could serve both purposes. See [[The Lakehouse Idea]] and [[The Lakehouse Paper]].
-- **Google Cloud (2021).** Databricks launched on Google Cloud in February 2021 and became generally available there in May 2021. The same platform now runs on all three major clouds. See [[Databricks on Google Cloud Overview]].
-- **The AI turn (2023 onward).** Databricks completed its acquisition of MosaicML in July 2023 to train and serve large models ([[MosaicML and Open Models]]) and, from November 2023, began calling its product the [[The Data Intelligence Platform|Data Intelligence Platform]].
+- **A hosted notebook on AWS (2014–2015):** The first product was "Databricks Cloud", unveiled at Spark Summit in June 2014 and generally available in June 2015: a web page with notebooks attached to Spark clusters that Databricks started and stopped for you on Amazon Web Services. This is the seed of today's [[Notebooks]] and [[All-Purpose Compute]].
+- **Azure as a first-party service (2018):** Microsoft and Databricks built **Azure Databricks** together. It became generally available on March 22, 2018. It is sold and billed by Microsoft and appears in the Azure portal like any other Azure service. See [[Azure Databricks Overview]] and [[First-Party Microsoft Service]].
+- **The lakehouse (2020):** In January 2020 Databricks published the blog post "What is a Lakehouse?". Customers had long copied data from lakes into warehouses ([[The Two-Tier Architecture Problem]]). Databricks proposed that one open table format could serve both purposes. See [[The Lakehouse Idea]] and [[The Lakehouse Paper]].
+- **Google Cloud (2021):** Databricks launched on Google Cloud in February 2021 and became generally available there in May 2021. The same platform now runs on all three major clouds. See [[Databricks on Google Cloud Overview]].
+- **The AI turn (2023 onward):** Databricks completed its acquisition of MosaicML in July 2023 to train and serve large models ([[MosaicML and Open Models]]) and, from November 2023, began calling its product the [[The Data Intelligence Platform|Data Intelligence Platform]].
 
 ## Small-business considerations
 
 > [!smallbiz] Small-business considerations
 > The founding model has two practical consequences for a 10-person company:
-> - **Open formats lower your risk.** Because Delta Lake, Spark, and MLflow are open source, your data sits in your own cloud storage in open files. If you leave Databricks, the files stay readable. This reduces [[Vendor Lock-In]].
-> - **You are buying operations, not software.** Databricks exists because running Spark yourself is hard. If you only have a few gigabytes in spreadsheets, you may not need it yet. See [[When Databricks Is Not the Right Fit]] and [[Databricks vs Alternatives for Small Teams]].
+> - **Open formats lower your risk:** Because Delta Lake, Spark, and MLflow are open source, your data sits in your own cloud storage in open files. If you leave Databricks, the files stay readable. This reduces [[Vendor Lock-In]].
+> - **You are buying operations, not software:** Databricks exists because running Spark yourself is hard. If you only have a few gigabytes in spreadsheets, you may not need it yet. See [[When Databricks Is Not the Right Fit]] and [[Databricks vs Alternatives for Small Teams]].
 
 ## Cloud differences
 
@@ -147,10 +147,10 @@ Key milestones:
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **The open-core pattern.** Databricks open-sources the engine or format and competes on the managed service: performance (Photon, Predictive I/O), operations (serverless), and governance (the hosted Unity Catalog). When you evaluate a feature, check whether it is in the open project or only in the service.
-> - **Research DNA.** Many core features started as papers: Spark's RDDs (NSDI 2012), Spark SQL (SIGMOD 2015), the lakehouse paper, and [[Photon]] (SIGMOD 2022). Reading them explains design choices the docs take for granted.
-> - **Acquisitions shape the product map.** The MosaicML acquisition closed in July 2023 and became much of Mosaic AI. Tabular, the company founded by the original creators of [[Apache Iceberg]], was acquired in June 2024, which is why Databricks now treats Iceberg and Delta as peers (see [[Delta UniForm]]). Databricks agreed to acquire the serverless Postgres company Neon in May 2025, and [[Lakebase]] is built on Neon technology.
-> - **Founders' roles.** On January 11, 2016, Ion Stoica moved from CEO to Executive Chairman, Ali Ghodsi (then VP of Engineering and Product) became CEO, and Patrick Wendell became VP of Engineering. Titles change over time; the founders page on databricks.com is the current reference.
+> - **The open-core pattern:** Databricks open-sources the engine or format and competes on the managed service: performance (Photon, Predictive I/O), operations (serverless), and governance (the hosted Unity Catalog). When you evaluate a feature, check whether it is in the open project or only in the service.
+> - **Research DNA:** Many core features started as papers: Spark's RDDs (NSDI 2012), Spark SQL (SIGMOD 2015), the lakehouse paper, and [[Photon]] (SIGMOD 2022). Reading them explains design choices the docs take for granted.
+> - **Acquisitions shape the product map:** The MosaicML acquisition closed in July 2023 and became much of Mosaic AI. Tabular, the company founded by the original creators of [[Apache Iceberg]], was acquired in June 2024, which is why Databricks now treats Iceberg and Delta as peers (see [[Delta UniForm]]). Databricks agreed to acquire the serverless Postgres company Neon in May 2025, and [[Lakebase]] is built on Neon technology.
+> - **Founders' roles:** On January 11, 2016, Ion Stoica moved from CEO to Executive Chairman, Ali Ghodsi (then VP of Engineering and Product) became CEO, and Patrick Wendell became VP of Engineering. Titles change over time; the founders page on databricks.com is the current reference.
 
 ## Common misconceptions
 

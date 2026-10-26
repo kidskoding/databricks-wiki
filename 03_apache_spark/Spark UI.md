@@ -102,13 +102,13 @@ flowchart TD
 
 The Databricks guide "Diagnose cost and performance issues using the Spark UI" uses this order:
 
-1. **Jobs tab.** Review the event timeline. Gaps between jobs indicate driver-side work (Python code, planning, or collecting results), not cluster work.
-2. **Longest stage.** Open the longest job, then its longest stage.
-3. **Spill.** At the top of the stage page, check **Spill (Memory)** and **Spill (Disk)**. Spill means execution memory (used for shuffles, joins, sorts, and aggregations) was exhausted.
-4. **Skew.** In **Summary Metrics**, compare **Max** task duration with the **75th percentile**. Databricks suggests that a max 50% or more above the 75th percentile may indicate skew.
-5. **Single task.** A stage with one task is a warning sign. Listed causes include a window function without `PARTITION BY`, an unsplittable gzip file, and `coalesce(1)`.
-6. **I/O.** If none of the above applies, compare input size and duration to determine whether the stage is I/O bound.
-7. **Executors.** If executors are removed and tasks retried, check for out-of-memory errors (see Databricks' "Spark memory issues" page).
+1. **Jobs tab:** Review the event timeline. Gaps between jobs indicate driver-side work (Python code, planning, or collecting results), not cluster work.
+2. **Longest stage:** Open the longest job, then its longest stage.
+3. **Spill:** At the top of the stage page, check **Spill (Memory)** and **Spill (Disk)**. Spill means execution memory (used for shuffles, joins, sorts, and aggregations) was exhausted.
+4. **Skew:** In **Summary Metrics**, compare **Max** task duration with the **75th percentile**. Databricks suggests that a max 50% or more above the 75th percentile may indicate skew.
+5. **Single task:** A stage with one task is a warning sign. Listed causes include a window function without `PARTITION BY`, an unsplittable gzip file, and `coalesce(1)`.
+6. **I/O:** If none of the above applies, compare input size and duration to determine whether the stage is I/O bound.
+7. **Executors:** If executors are removed and tasks retried, check for out-of-memory errors (see Databricks' "Spark memory issues" page).
 
 ### Example: produce and read a skewed stage
 
@@ -152,11 +152,11 @@ Each node in the plan graph corresponds to a physical operator and shows metrics
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Thread dumps.** For a hanging or slow task, find its task ID and executor ID in the stage's task table, then open that executor's thread dump from the **Executors** tab. Repeated dumps showing the same stack identify where the task is stuck.
-> - **Task metrics.** *Scheduler delay* indicates waiting for a slot or for task data to be sent. High *GC time* relative to task time indicates memory pressure. *Shuffle read blocked time* indicates waiting on remote executors or the network.
-> - **Event timeline.** Long periods with few active tasks indicate low parallelism (too few partitions) or driver-side work between jobs.
-> - **History Server.** In open-source Spark, set `spark.eventLog.enabled=true` and `spark.eventLog.dir`, then run the History Server (typically on port 18080) to view finished applications.
-> - **Skipped stages.** Stages marked "skipped" reused shuffle output from an earlier job; this is expected.
+> - **Thread dumps:** For a hanging or slow task, find its task ID and executor ID in the stage's task table, then open that executor's thread dump from the **Executors** tab. Repeated dumps showing the same stack identify where the task is stuck.
+> - **Task metrics:** *Scheduler delay* indicates waiting for a slot or for task data to be sent. High *GC time* relative to task time indicates memory pressure. *Shuffle read blocked time* indicates waiting on remote executors or the network.
+> - **Event timeline:** Long periods with few active tasks indicate low parallelism (too few partitions) or driver-side work between jobs.
+> - **History Server:** In open-source Spark, set `spark.eventLog.enabled=true` and `spark.eventLog.dir`, then run the History Server (typically on port 18080) to view finished applications.
+> - **Skipped stages:** Stages marked "skipped" reused shuffle output from an earlier job; this is expected.
 
 ## Common misconceptions
 

@@ -110,9 +110,9 @@ When someone leaves, the IdP sends a `PATCH` setting `"active": false`. Their se
 
 ### How automatic identity management differs
 
-- **Just-in-time.** Users and group memberships are fetched when someone signs in or an admin adds them. The docs give sync delays of up to about 5 minutes for browser sign-in and up to 40 minutes for jobs, CLI, and service principals.
+- **Just-in-time:** Users and group memberships are fetched when someone signs in or an admin adds them. The docs give sync delays of up to about 5 minutes for browser sign-in and up to 40 minutes for jobs, CLI, and service principals.
 - **Nested groups work** (Entra ID only). Membership is resolved transitively, so a member of a child group counts as a member of the parent. Only groups added to Databricks are looked up, and the full IdP hierarchy is not copied.
-- **Limits.** It does not support cross-tenant Entra ID directories. Nested groups that are not directly provisioned are visible in the console but not through the APIs or Terraform. For nested group structures, the migration guide suggests keeping SCIM running alongside it.
+- **Limits:** It does not support cross-tenant Entra ID directories. Nested groups that are not directly provisioned are visible in the console but not through the APIs or Terraform. For nested group structures, the migration guide suggests keeping SCIM running alongside it.
 
 ## Small-business considerations
 
@@ -141,12 +141,12 @@ When someone leaves, the IdP sends a `PATCH` setting `"active": false`. Their se
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Deletion is destructive.** Removing a user or group from the account-level IdP app deletes them from the Databricks account, not just from a workspace. Unassigning `Everyone` by mistake removes everyone. Use deactivation flows, and test changes on a small group first.
-> - **Renames.** Do not rename groups in Okta once they are pushed. Databricks does not support renaming groups through that path, and the sync breaks.
-> - **Matching.** Existing users are matched by email address (the username). Changing an email in the IdP without a matching update can create a duplicate.
-> - **Do not mix levels.** Workspace-level SCIM keeps creating workspace-local groups. Turn it off before migrating to account groups.
-> - **Terraform and SCIM together.** If SCIM owns groups, let Terraform reference them with data sources rather than create them, so the two systems do not overwrite each other. See [[Terraform Provider]].
-> - **System group migration.** If your sync deletes unknown workspace groups, exclude the `users-clone-*` group created by the 2026 entitlement migration.
+> - **Deletion is destructive:** Removing a user or group from the account-level IdP app deletes them from the Databricks account, not just from a workspace. Unassigning `Everyone` by mistake removes everyone. Use deactivation flows, and test changes on a small group first.
+> - **Renames:** Do not rename groups in Okta once they are pushed. Databricks does not support renaming groups through that path, and the sync breaks.
+> - **Matching:** Existing users are matched by email address (the username). Changing an email in the IdP without a matching update can create a duplicate.
+> - **Do not mix levels:** Workspace-level SCIM keeps creating workspace-local groups. Turn it off before migrating to account groups.
+> - **Terraform and SCIM together:** If SCIM owns groups, let Terraform reference them with data sources rather than create them, so the two systems do not overwrite each other. See [[Terraform Provider]].
+> - **System group migration:** If your sync deletes unknown workspace groups, exclude the `users-clone-*` group created by the 2026 entitlement migration.
 
 ## Common misconceptions
 

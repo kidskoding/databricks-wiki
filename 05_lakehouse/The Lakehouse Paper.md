@@ -108,9 +108,9 @@ flowchart TB
 
 Its central technical claims:
 
-1. **A metadata layer gives you management features.** A transaction log that records which files belong to a table version provides ACID transactions, versioning, and schema enforcement, without moving data out of open files. This is exactly what [[Delta Transaction Log|Delta's transaction log]] does.
-2. **Performance can come from outside the file format.** The paper names caching hot data on fast local SSDs, keeping auxiliary data (statistics, indexes) in the metadata layer, and optimizing data layout (clustering, sort orders). None of this needs a proprietary format.
-3. **Declarative DataFrame APIs let ML benefit too.** Because Spark-style DataFrame APIs build a query plan before running ([[Lazy Evaluation]]), ML code can get the same optimizations as SQL, such as reading only the needed columns.
+1. **A metadata layer gives you management features:** A transaction log that records which files belong to a table version provides ACID transactions, versioning, and schema enforcement, without moving data out of open files. This is exactly what [[Delta Transaction Log|Delta's transaction log]] does.
+2. **Performance can come from outside the file format:** The paper names caching hot data on fast local SSDs, keeping auxiliary data (statistics, indexes) in the metadata layer, and optimizing data layout (clustering, sort orders). None of this needs a proprietary format.
+3. **Declarative DataFrame APIs let ML benefit too:** Because Spark-style DataFrame APIs build a query plan before running ([[Lazy Evaluation]]), ML code can get the same optimizations as SQL, such as reading only the needed columns.
 
 ## Small-business considerations
 
@@ -125,11 +125,11 @@ Its central technical claims:
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Read it next to the Delta Lake VLDB paper.** The CIDR paper is the vision. Databricks' January 2021 blog post points readers to it alongside the earlier Delta Lake paper published at VLDB, which holds the engineering detail behind the metadata layer.
-> - **The benchmark is the authors' own system.** The TPC-DS comparison was run by Databricks on its own engine. Treat it as evidence that the design is plausible, not as an independent shoot-out.
-> - **The predictions mostly held on Databricks' side.** By 2026 Unity Catalog manages both Delta and Iceberg tables and serves them to outside engines through the Iceberg REST protocol. Whether warehouses "withered" or converged is a matter of reading; this vault does not make claims about other vendors' roadmaps.
-> - **Open questions.** The paper closes with research questions about metadata layer design, caching and layout, and ML APIs. Features like [[Liquid Clustering]], [[Deletion Vectors]], and [[OPTIMIZE and VACUUM|predictive optimization]] in later chapters are answers to those questions.
-> - **Lineage of ideas.** The approach echoes the [[Google File System and MapReduce Papers]]: put commodity storage at the center, then build smarter software on top.
+> - **Read it next to the Delta Lake VLDB paper:** The CIDR paper is the vision. Databricks' January 2021 blog post points readers to it alongside the earlier Delta Lake paper published at VLDB, which holds the engineering detail behind the metadata layer.
+> - **The benchmark is the authors' own system:** The TPC-DS comparison was run by Databricks on its own engine. Treat it as evidence that the design is plausible, not as an independent shoot-out.
+> - **The predictions mostly held on Databricks' side:** By 2026 Unity Catalog manages both Delta and Iceberg tables and serves them to outside engines through the Iceberg REST protocol. Whether warehouses "withered" or converged is a matter of reading; this vault does not make claims about other vendors' roadmaps.
+> - **Open questions:** The paper closes with research questions about metadata layer design, caching and layout, and ML APIs. Features like [[Liquid Clustering]], [[Deletion Vectors]], and [[OPTIMIZE and VACUUM|predictive optimization]] in later chapters are answers to those questions.
+> - **Lineage of ideas:** The approach echoes the [[Google File System and MapReduce Papers]]: put commodity storage at the center, then build smarter software on top.
 
 ## Common misconceptions
 

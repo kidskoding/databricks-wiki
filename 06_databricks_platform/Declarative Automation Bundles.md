@@ -190,11 +190,11 @@ Migrate each target's state before deploying. The docs warn that otherwise deplo
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Development vs production mode.** `mode: development` marks the target for iteration (for example, it prefixes deployed resource names so developers do not collide). `mode: production` applies stricter checks suited to production deployments.
-> - **Splitting configuration.** Large projects keep one YAML file per resource under `resources/`, included with a glob.
-> - **Target overrides.** A target can override any resource field, such as the cluster size or schedule, so dev runs smaller.
-> - **Terraform coexistence.** Use the [[Terraform Provider]] for platform resources (workspaces, networking, metastores) and bundles for project resources (jobs, pipelines, apps). The two serve different layers.
-> - **State.** Each target keeps deployment state that records what the bundle created. Change bundle-managed resources through the bundle, not by hand in the UI, so state and reality stay in sync.
+> - **Development vs production mode:** `mode: development` marks the target for iteration (for example, it prefixes deployed resource names so developers do not collide). `mode: production` applies stricter checks suited to production deployments.
+> - **Splitting configuration:** Large projects keep one YAML file per resource under `resources/`, included with a glob.
+> - **Target overrides:** A target can override any resource field, such as the cluster size or schedule, so dev runs smaller.
+> - **Terraform coexistence:** Use the [[Terraform Provider]] for platform resources (workspaces, networking, metastores) and bundles for project resources (jobs, pipelines, apps). The two serve different layers.
+> - **State:** Each target keeps deployment state that records what the bundle created. Change bundle-managed resources through the bundle, not by hand in the UI, so state and reality stay in sync.
 
 ## Common misconceptions
 

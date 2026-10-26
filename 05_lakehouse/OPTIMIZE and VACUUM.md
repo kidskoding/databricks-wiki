@@ -62,8 +62,8 @@ Mastery: `INPUT[inlineSelect(option(new), option(learning), option(solid)):maste
 
 Lakehouse tables accumulate two kinds of files that cost time or money:
 
-- **Small files.** Streaming and frequent incremental writes produce many small Parquet files. Each file has open and metadata overhead, so queries slow down as file counts grow.
-- **Unreferenced files.** Every `UPDATE`, `DELETE`, `MERGE`, and `OPTIMIZE` removes files from the current version but leaves them on disk for [[Time Travel|time travel]]. Storage grows until something deletes them.
+- **Small files:** Streaming and frequent incremental writes produce many small Parquet files. Each file has open and metadata overhead, so queries slow down as file counts grow.
+- **Unreferenced files:** Every `UPDATE`, `DELETE`, `MERGE`, and `OPTIMIZE` removes files from the current version but leaves them on disk for [[Time Travel|time travel]]. Storage grows until something deletes them.
 
 Before predictive optimization, teams scheduled `OPTIMIZE` and `VACUUM` jobs per table and tuned them by hand.
 
@@ -85,7 +85,9 @@ Before predictive optimization, teams scheduled `OPTIMIZE` and `VACUUM` jobs per
 
 Sources differ on `LITE` availability: one page lists Public Preview in Databricks Runtime 16.4 LTS and above, and the SQL reference lists `FULL | LITE` for Runtime 16.1 and above.
 
-**Retention.** The retention window is set by `delta.deletedFileRetentionDuration`, default 7 days. Databricks strongly recommends at least 7 days, because a shorter window can delete files that long-running jobs have not yet committed. In Runtime 18.0 and above, `VACUUM` ignores a retention duration argument unless it is 0 hours. For Iceberg tables, the retention period is fixed at 7 days.
+#### Retention
+
+The retention window is set by `delta.deletedFileRetentionDuration`, default 7 days. Databricks strongly recommends at least 7 days, because a shorter window can delete files that long-running jobs have not yet committed. In Runtime 18.0 and above, `VACUUM` ignores a retention duration argument unless it is 0 hours. For Iceberg tables, the retention period is fixed at 7 days.
 
 ### Predictive optimization
 
@@ -164,13 +166,13 @@ DESCRIBE TABLE EXTENDED shop.sales.orders;
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Idempotent OPTIMIZE.** Running `OPTIMIZE` on an already compacted table does little work. With liquid clustering it is incremental, processing only new or unclustered data.
-> - **OPTIMIZE creates work for VACUUM.** Each compaction removes the old small files from the current version. Storage drops only after `VACUUM` deletes them past retention.
-> - **Time travel boundary.** `VACUUM` defines how far back [[Time Travel]] works. In Runtime 18.0 and above, time travel beyond `deletedFileRetentionDuration` is blocked for all tables.
-> - **Change feed and UniForm readers.** `VACUUM` deletes legacy change data files, and Iceberg clients reading out-of-date UniForm snapshots can fail after `VACUUM`. Consumers must stay within retention.
-> - **LITE vs. FULL.** Use `LITE` for routine runs on very large tables and periodic `FULL` runs to remove files that the log never referenced (for example, from failed writes).
-> - **Converted tables.** External Delta tables converted to managed tables get predictive optimization enabled automatically unless it was turned off manually. Foreign table conversions get the `INHERIT` setting.
-> - **Related automation.** Automatic row deletion with auto time-to-live is a separate feature for deleting expired rows; see its docs page.
+> - **Idempotent OPTIMIZE:** Running `OPTIMIZE` on an already compacted table does little work. With liquid clustering it is incremental, processing only new or unclustered data.
+> - **OPTIMIZE creates work for VACUUM:** Each compaction removes the old small files from the current version. Storage drops only after `VACUUM` deletes them past retention.
+> - **Time travel boundary:** `VACUUM` defines how far back [[Time Travel]] works. In Runtime 18.0 and above, time travel beyond `deletedFileRetentionDuration` is blocked for all tables.
+> - **Change feed and UniForm readers:** `VACUUM` deletes legacy change data files, and Iceberg clients reading out-of-date UniForm snapshots can fail after `VACUUM`. Consumers must stay within retention.
+> - **LITE vs. FULL:** Use `LITE` for routine runs on very large tables and periodic `FULL` runs to remove files that the log never referenced (for example, from failed writes).
+> - **Converted tables:** External Delta tables converted to managed tables get predictive optimization enabled automatically unless it was turned off manually. Foreign table conversions get the `INHERIT` setting.
+> - **Related automation:** Automatic row deletion with auto time-to-live is a separate feature for deleting expired rows; see its docs page.
 
 ## Common misconceptions
 

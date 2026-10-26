@@ -76,8 +76,8 @@ Mastery: `INPUT[inlineSelect(option(new), option(learning), option(solid)):maste
 
 The lakehouse removes the need to copy data between a lake and a warehouse ([[The Two-Tier Architecture Problem]]). Two problems remain after that:
 
-1. **Data is hard to understand.** A company may have thousands of tables with unclear names, and only a few people know which one is correct.
-2. **Generative AI changed expectations.** With large language models ([[LLM]]), users expect to ask questions in plain English. A general chatbot does not know *your* tables, *your* definitions of "active customer", or *your* permissions.
+1. **Data is hard to understand:** A company may have thousands of tables with unclear names, and only a few people know which one is correct.
+2. **Generative AI changed expectations:** With large language models ([[LLM]]), users expect to ask questions in plain English. A general chatbot does not know *your* tables, *your* definitions of "active customer", or *your* permissions.
 
 Databricks places an AI layer *inside* the platform, next to the data and the catalog. The layer uses your metadata, lineage, usage history, and permissions to interpret your data. This is the "intelligence" in the name.
 
@@ -115,10 +115,10 @@ flowchart TB
 
 The platform rests on four design choices:
 
-1. **One copy of the data.** Every workload reads the same tables. An analyst's dashboard and a data scientist's model use the same `sales.orders` table, not two exports.
-2. **One governance layer.** The AI features go through Unity Catalog like any other client. Genie Agents and Genie Code see only what the requesting user is allowed to see.
-3. **Metadata as input.** Table comments, lineage, popular queries, and certified [[Metric Views]] let the AI give answers that match your business. A well-documented catalog produces better answers.
-4. **Managed compute.** You pick a compute type ([[Compute Types]]) and Databricks runs it, increasingly as [[Serverless Compute|serverless]].
+1. **One copy of the data:** Every workload reads the same tables. An analyst's dashboard and a data scientist's model use the same `sales.orders` table, not two exports.
+2. **One governance layer:** The AI features go through Unity Catalog like any other client. Genie Agents and Genie Code see only what the requesting user is allowed to see.
+3. **Metadata as input:** Table comments, lineage, popular queries, and certified [[Metric Views]] let the AI give answers that match your business. A well-documented catalog produces better answers.
+4. **Managed compute:** You pick a compute type ([[Compute Types]]) and Databricks runs it, increasingly as [[Serverless Compute|serverless]].
 
 The following example calls an [[AI Functions in SQL|AI function]] from SQL:
 
@@ -154,10 +154,10 @@ LIMIT 10;
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Marketing name, not an architecture.** "Data Intelligence Platform" and "Data + AI Platform" are product-family names. Nothing in the API or CLI is called that. When you read docs, follow the concrete product names (Unity Catalog, Lakeflow, Databricks SQL, Mosaic AI).
-> - **Where the intelligence lives.** Most AI features are served from the [[Control Plane and Compute Plane|control plane]] or serverless compute, and some use partner-hosted models. Admins can switch off partner-powered AI features at the account and workspace level, which also disables some [[Genie Code]] capabilities.
-> - **Semantics are the bottleneck.** The quality of Genie answers depends on table comments, primary and foreign keys, example queries, and [[Metric Views]]. The 2026 Unity Catalog additions (business glossary terms, domains) push in the same direction. See [[Semantic Layer]].
-> - **Scope of the platform.** The well-architected framework's "scope" page is a good map of which capabilities belong to which persona and which are optional.
+> - **Marketing name, not an architecture:** "Data Intelligence Platform" and "Data + AI Platform" are product-family names. Nothing in the API or CLI is called that. When you read docs, follow the concrete product names (Unity Catalog, Lakeflow, Databricks SQL, Mosaic AI).
+> - **Where the intelligence lives:** Most AI features are served from the [[Control Plane and Compute Plane|control plane]] or serverless compute, and some use partner-hosted models. Admins can switch off partner-powered AI features at the account and workspace level, which also disables some [[Genie Code]] capabilities.
+> - **Semantics are the bottleneck:** The quality of Genie answers depends on table comments, primary and foreign keys, example queries, and [[Metric Views]]. The 2026 Unity Catalog additions (business glossary terms, domains) push in the same direction. See [[Semantic Layer]].
+> - **Scope of the platform:** The well-architected framework's "scope" page is a good map of which capabilities belong to which persona and which are optional.
 
 ## Common misconceptions
 

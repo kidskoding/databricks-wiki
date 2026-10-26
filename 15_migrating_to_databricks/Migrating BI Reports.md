@@ -102,8 +102,8 @@ flowchart LR
 
 Two ways to connect:
 
-1. **Publish from Databricks.** From the Databricks UI, publish a table or schema to the Power BI service as a semantic model. Publishing uses a SQL warehouse and a Microsoft Entra ID sign-in.
-2. **Connect from Power BI.** In Power BI Desktop, use the Azure Databricks or Databricks connector (or [[Partner Connect]]) with the SQL warehouse's **Server hostname** and **HTTP path**. In the Power BI service, the same values configure the data source; machine-to-machine OAuth with a service principal is one authentication option.
+1. **Publish from Databricks:** From the Databricks UI, publish a table or schema to the Power BI service as a semantic model. Publishing uses a SQL warehouse and a Microsoft Entra ID sign-in.
+2. **Connect from Power BI:** In Power BI Desktop, use the Azure Databricks or Databricks connector (or [[Partner Connect]]) with the SQL warehouse's **Server hostname** and **HTTP path**. In the Power BI service, the same values configure the data source; machine-to-machine OAuth with a service principal is one authentication option.
 
 Steps for an existing report:
 
@@ -175,11 +175,11 @@ GROUP BY ALL;
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **DirectQuery and warehouse sizing.** In DirectQuery mode each visual sends one or more queries to the warehouse. Size the warehouse for report concurrency, and use [[Query Performance and Caching|result caching]] and aggregated tables.
-> - **Row-level security.** Unity Catalog [[Row Filters and Column Masks]] evaluate at query time for the identity that runs the query. Rules from Power BI roles or Tableau user filters can move into Unity Catalog when viewers query as themselves: individual data permissions on AI/BI dashboards, or single sign-on (SSO) for Power BI DirectQuery reports, which passes each user's Microsoft Entra ID credentials. With shared data permissions, the publisher's permissions apply.
-> - **Dataset caching.** AI/BI dashboard datasets under 100 MB and 100,000 rows can be cached.
-> - **Embedding and automation.** Published dashboards can be embedded with iframes, and managed through Git, [[Declarative Automation Bundles]], and REST APIs.
-> - **Naming.** The docs renamed Genie spaces to **Genie Agents** in 2026, and the business-user Genie experience to **Genie One** on June 9, 2026.
+> - **DirectQuery and warehouse sizing:** In DirectQuery mode each visual sends one or more queries to the warehouse. Size the warehouse for report concurrency, and use [[Query Performance and Caching|result caching]] and aggregated tables.
+> - **Row-level security:** Unity Catalog [[Row Filters and Column Masks]] evaluate at query time for the identity that runs the query. Rules from Power BI roles or Tableau user filters can move into Unity Catalog when viewers query as themselves: individual data permissions on AI/BI dashboards, or single sign-on (SSO) for Power BI DirectQuery reports, which passes each user's Microsoft Entra ID credentials. With shared data permissions, the publisher's permissions apply.
+> - **Dataset caching:** AI/BI dashboard datasets under 100 MB and 100,000 rows can be cached.
+> - **Embedding and automation:** Published dashboards can be embedded with iframes, and managed through Git, [[Declarative Automation Bundles]], and REST APIs.
+> - **Naming:** The docs renamed Genie spaces to **Genie Agents** in 2026, and the business-user Genie experience to **Genie One** on June 9, 2026.
 
 ## Common misconceptions
 

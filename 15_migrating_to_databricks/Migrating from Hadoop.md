@@ -138,7 +138,7 @@ This works once data sits in object storage that Databricks can reach. Data stil
 
 ### Phase 3: move the data
 
-1. **Copy HDFS to object storage with DistCp.** Apache Hadoop's DistCp runs the copy as a distributed job on the existing cluster:
+1. **Copy HDFS to object storage with DistCp:** Apache Hadoop's DistCp runs the copy as a distributed job on the existing cluster:
 
    ```bash
    # Initial copy from HDFS to S3 (S3A connector)
@@ -152,7 +152,7 @@ This works once data sits in object storage that Databricks can reach. Data stil
 
 2. **For very large estates or slow links**, use a cloud transfer service or device. Microsoft documents migrating on-premises HDFS to Azure Storage with Azure Data Box.
 
-3. **Convert Parquet directories to Delta in place.** `CONVERT TO DELTA` creates a transaction log over existing Parquet files without rewriting them:
+3. **Convert Parquet directories to Delta in place:** `CONVERT TO DELTA` creates a transaction log over existing Parquet files without rewriting them:
 
    ```sql
    CONVERT TO DELTA parquet.`s3://migration-bucket/warehouse/sales/orders`
@@ -213,12 +213,12 @@ Lakebridge's Switch transpiler (experimental) has built-in prompts for Python, S
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **DistCp tuning.** Use `-update` for incremental passes, and add `-numListstatusThreads` to speed up listing large trees. If the S3A etag-as-checksum setting is enabled, DistCp between HDFS and S3 needs `-skipcrccheck`.
-> - **Dual ingestion during transition.** Databricks' Hadoop guidance suggests feeding new data to both platforms during the parallel period, so the cloud copy stays current while history is backfilled.
-> - **Small files.** HDFS directories often hold many small files. After conversion, run `OPTIMIZE` (see [[OPTIMIZE and VACUUM]]) to compact them.
-> - **Partitioning.** Hive-style partitioning on high-cardinality columns hurts Delta performance. Replace it with [[Liquid Clustering]] where possible.
-> - **YARN chargeback.** YARN queues often doubled as cost allocation. Rebuild it explicitly with [[Tagging for Chargeback|tags]] and [[Compute Policies|compute policies]].
-> - **HBase.** HBase serves low-latency key lookups. Delta tables are not a key-value store, and Databricks does not provide an HBase-like storage service. Databricks' Hadoop migration guidance maps HBase to a cloud NoSQL service such as Azure Cosmos DB or Amazon DynamoDB or Keyspaces. [[Lakebase]], a managed Postgres database, can serve Unity Catalog tables to applications at low latency.
+> - **DistCp tuning:** Use `-update` for incremental passes, and add `-numListstatusThreads` to speed up listing large trees. If the S3A etag-as-checksum setting is enabled, DistCp between HDFS and S3 needs `-skipcrccheck`.
+> - **Dual ingestion during transition:** Databricks' Hadoop guidance suggests feeding new data to both platforms during the parallel period, so the cloud copy stays current while history is backfilled.
+> - **Small files:** HDFS directories often hold many small files. After conversion, run `OPTIMIZE` (see [[OPTIMIZE and VACUUM]]) to compact them.
+> - **Partitioning:** Hive-style partitioning on high-cardinality columns hurts Delta performance. Replace it with [[Liquid Clustering]] where possible.
+> - **YARN chargeback:** YARN queues often doubled as cost allocation. Rebuild it explicitly with [[Tagging for Chargeback|tags]] and [[Compute Policies|compute policies]].
+> - **HBase:** HBase serves low-latency key lookups. Delta tables are not a key-value store, and Databricks does not provide an HBase-like storage service. Databricks' Hadoop migration guidance maps HBase to a cloud NoSQL service such as Azure Cosmos DB or Amazon DynamoDB or Keyspaces. [[Lakebase]], a managed Postgres database, can serve Unity Catalog tables to applications at low latency.
 
 ## Common misconceptions
 

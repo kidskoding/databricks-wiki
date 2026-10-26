@@ -148,10 +148,10 @@ databricks account storage list
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Account objects for classic workspaces.** A classic workspace is assembled from account-level configuration objects: a *credential configuration* (cross-account role), a *storage configuration* (workspace bucket), an optional *network configuration* (customer-managed VPC), optional *key configurations* (KMS keys), and optional *private access settings* (PrivateLink). See [[Account Setup on AWS]].
-> - **Serverless-only workspaces need no VPC.** A customer-managed VPC is required only for classic compute and for front-end or back-end PrivateLink on workspaces with classic compute.
-> - **Default storage limits.** Classic compute cannot read data assets in default storage; only serverless compute can.
-> - **Infrastructure as code.** Databricks' deployment guide recommends AWS-native tools (such as CloudFormation) for AWS infrastructure and the [[Terraform Provider]] for Databricks resources.
+> - **Account objects for classic workspaces:** A classic workspace is assembled from account-level configuration objects: a *credential configuration* (cross-account role), a *storage configuration* (workspace bucket), an optional *network configuration* (customer-managed VPC), optional *key configurations* (KMS keys), and optional *private access settings* (PrivateLink). See [[Account Setup on AWS]].
+> - **Serverless-only workspaces need no VPC:** A customer-managed VPC is required only for classic compute and for front-end or back-end PrivateLink on workspaces with classic compute.
+> - **Default storage limits:** Classic compute cannot read data assets in default storage; only serverless compute can.
+> - **Infrastructure as code:** Databricks' deployment guide recommends AWS-native tools (such as CloudFormation) for AWS infrastructure and the [[Terraform Provider]] for Databricks resources.
 
 ## Common misconceptions
 

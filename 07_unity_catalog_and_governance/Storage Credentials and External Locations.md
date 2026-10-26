@@ -71,9 +71,9 @@ Mastery: `INPUT[inlineSelect(option(new), option(learning), option(solid)):maste
 
 Cluster-held credentials had three problems:
 
-1. **All or nothing.** If a cluster could reach a bucket, every user and every notebook on that cluster could read all of it.
-2. **Secrets everywhere.** Keys and client secrets ended up in cluster configs, notebooks, and sometimes in [[Git]].
-3. **No audit by person.** Cloud logs showed "the cluster role read this file", not which human did.
+1. **All or nothing:** If a cluster could reach a bucket, every user and every notebook on that cluster could read all of it.
+2. **Secrets everywhere:** Keys and client secrets ended up in cluster configs, notebooks, and sometimes in [[Git]].
+3. **No audit by person:** Cloud logs showed "the cluster role read this file", not which human did.
 
 With Unity Catalog, the credential lives in the [[Metastore]]. When an authorized user reads a table or volume, Unity Catalog issues the compute a **short-lived, down-scoped credential** for only the files involved, and logs the access against the user.
 
@@ -165,10 +165,10 @@ The two objects and the SQL are the same. The cloud identity inside the storage 
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Workspace binding.** Storage credentials and external locations can be bound to specific workspaces, so a `prod` bucket is reachable only from the prod workspace. An external location's binding works independently of its credential's binding.
-> - **Network rules still apply.** A credential grants identity, not network reach. If the bucket has a firewall or a private endpoint policy, serverless compute needs a network path too. See [[Serverless Network Security]].
-> - **Privileges on files vs tables.** `READ FILES` on an external location lets a user read raw files by path, bypassing table-level controls like [[Row Filters and Column Masks|row filters]]. Grant it narrowly, usually only to engineering groups and ingestion service principals.
-> - **Infrastructure as code.** In practice teams create credentials and locations with the [[Terraform Provider]] alongside the cloud role, so the two halves never drift.
+> - **Workspace binding:** Storage credentials and external locations can be bound to specific workspaces, so a `prod` bucket is reachable only from the prod workspace. An external location's binding works independently of its credential's binding.
+> - **Network rules still apply:** A credential grants identity, not network reach. If the bucket has a firewall or a private endpoint policy, serverless compute needs a network path too. See [[Serverless Network Security]].
+> - **Privileges on files vs tables:** `READ FILES` on an external location lets a user read raw files by path, bypassing table-level controls like [[Row Filters and Column Masks|row filters]]. Grant it narrowly, usually only to engineering groups and ingestion service principals.
+> - **Infrastructure as code:** In practice teams create credentials and locations with the [[Terraform Provider]] alongside the cloud role, so the two halves never drift.
 
 ## Common misconceptions
 

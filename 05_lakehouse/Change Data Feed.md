@@ -86,7 +86,9 @@ The two modes cannot be used together on one table. To migrate, unset the legacy
 ALTER TABLE shop.sales.orders UNSET TBLPROPERTIES ('delta.enableChangeDataFeed');
 ```
 
-**Output columns.** Each change row contains the table's columns plus:
+### Output columns
+
+Each change row contains the table's columns plus:
 
 | Column | Values |
 |---|---|
@@ -155,12 +157,12 @@ changes = (spark.readStream
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Only changes after enablement.** The legacy feed records changes made after the property is set. Querying a version before that raises an error.
-> - **Schema of results.** Reads use the schema of the latest table version, even for older changes.
-> - **Retention.** Change records follow table retention. `VACUUM` deletes legacy change data files along with old data files, so consumers must read changes within the retention window (see [[OPTIMIZE and VACUUM]]).
-> - **Row tracking.** Auto CDF depends on row tracking, which assigns stable row IDs and commit versions to rows. Row tracking has been GA since Databricks Runtime 14.0, and automatic upgrades began enabling it on existing tables in July 2026. All Iceberg v3 tables include row tracking.
-> - **Sharing.** Auto CDF works with batch queries, Structured Streaming, and sharing (the Auto CDF docs refer to Delta Sharing, now [[OpenSharing]]).
-> - **CDF vs. CDC.** [[Change Data Capture]] usually means capturing changes from an operational database and applying them to the lakehouse, often with `MERGE` or `AUTO CDC`. The change data feed is the lakehouse table's own change output, consumed by downstream tables.
+> - **Only changes after enablement:** The legacy feed records changes made after the property is set. Querying a version before that raises an error.
+> - **Schema of results:** Reads use the schema of the latest table version, even for older changes.
+> - **Retention:** Change records follow table retention. `VACUUM` deletes legacy change data files along with old data files, so consumers must read changes within the retention window (see [[OPTIMIZE and VACUUM]]).
+> - **Row tracking:** Auto CDF depends on row tracking, which assigns stable row IDs and commit versions to rows. Row tracking has been GA since Databricks Runtime 14.0, and automatic upgrades began enabling it on existing tables in July 2026. All Iceberg v3 tables include row tracking.
+> - **Sharing:** Auto CDF works with batch queries, Structured Streaming, and sharing (the Auto CDF docs refer to Delta Sharing, now [[OpenSharing]]).
+> - **CDF vs. CDC:** [[Change Data Capture]] usually means capturing changes from an operational database and applying them to the lakehouse, often with `MERGE` or `AUTO CDC`. The change data feed is the lakehouse table's own change output, consumed by downstream tables.
 
 ## Common misconceptions
 

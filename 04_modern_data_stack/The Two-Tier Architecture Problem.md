@@ -142,10 +142,10 @@ Each arrow in the diagram is a pipeline to build, schedule ([[Apache Airflow]]),
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **The paper's evidence.** The lakehouse paper reports that a Parquet-based lakehouse prototype achieved TPC-DS performance competitive with popular cloud data warehouses, which supports the claim that a second tier is not required for BI performance.
-> - **Warehouses moving toward lakes.** Cloud warehouses added the ability to read and write open table formats such as [[Apache Iceberg]] in customer-owned storage. This narrows the lock-in problem, but whichever catalog owns a table still determines how it is governed.
-> - **Federation is not consolidation.** [[Lakehouse Federation]] removes copies for occasional queries, but each query runs on the remote system's compute and is limited by its performance. Heavy, repeated workloads are usually migrated.
-> - **Medallion layers are not tiers.** Bronze, silver, and gold in the [[Medallion Architecture]] are stages of refinement within one platform and one format, not separate systems.
+> - **The paper's evidence:** The lakehouse paper reports that a Parquet-based lakehouse prototype achieved TPC-DS performance competitive with popular cloud data warehouses, which supports the claim that a second tier is not required for BI performance.
+> - **Warehouses moving toward lakes:** Cloud warehouses added the ability to read and write open table formats such as [[Apache Iceberg]] in customer-owned storage. This narrows the lock-in problem, but whichever catalog owns a table still determines how it is governed.
+> - **Federation is not consolidation:** [[Lakehouse Federation]] removes copies for occasional queries, but each query runs on the remote system's compute and is limited by its performance. Heavy, repeated workloads are usually migrated.
+> - **Medallion layers are not tiers:** Bronze, silver, and gold in the [[Medallion Architecture]] are stages of refinement within one platform and one format, not separate systems.
 
 ## Common misconceptions
 

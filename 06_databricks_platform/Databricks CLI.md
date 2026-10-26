@@ -147,9 +147,9 @@ databricks api get /api/2.2/jobs/list     # call any REST endpoint directly
 ## Small-business considerations
 
 > [!smallbiz] Small-business considerations
-> 1. **Install the CLI on the laptop of whoever owns the platform.** It makes bulk tasks (listing clusters, checking jobs) faster than the UI.
+> 1. **Install the CLI on the laptop of whoever owns the platform:** It makes bulk tasks (listing clusters, checking jobs) faster than the UI.
 > 2. **Create one profile per workspace,** such as `dev` and `prod`, and always pass `-p` in scripts.
-> 3. **Do not paste personal access tokens into scripts.** Use `databricks auth login` locally and a service principal with OAuth in CI.
+> 3. **Do not paste personal access tokens into scripts:** Use `databricks auth login` locally and a service principal with OAuth in CI.
 > 4. **Use the CLI to run bundle commands** once you adopt [[Declarative Automation Bundles]].
 
 ## Cloud differences
@@ -167,10 +167,10 @@ databricks api get /api/2.2/jobs/list     # call any REST endpoint directly
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Unified authentication.** The CLI, the [[Databricks SDKs and REST API|SDKs]], and the Terraform provider read the same `~/.databrickscfg` profiles and environment variables (`DATABRICKS_HOST`, `DATABRICKS_CLIENT_ID`, `DATABRICKS_CLIENT_SECRET`). Configure once, use everywhere.
-> - **Generated commands.** Most command groups map one to one onto REST API operations. Complex request bodies are passed with `--json '{...}'` or `--json @file.json`.
-> - **`databricks api`.** A raw escape hatch for any endpoint, useful for new APIs before you learn their dedicated command.
-> - **Legacy migration.** Scripts that use `databricks configure --token` or legacy command syntax need updating. The legacy CLI is archived.
+> - **Unified authentication:** The CLI, the [[Databricks SDKs and REST API|SDKs]], and the Terraform provider read the same `~/.databrickscfg` profiles and environment variables (`DATABRICKS_HOST`, `DATABRICKS_CLIENT_ID`, `DATABRICKS_CLIENT_SECRET`). Configure once, use everywhere.
+> - **Generated commands:** Most command groups map one to one onto REST API operations. Complex request bodies are passed with `--json '{...}'` or `--json @file.json`.
+> - **`databricks api`:** A raw escape hatch for any endpoint, useful for new APIs before you learn their dedicated command.
+> - **Legacy migration:** Scripts that use `databricks configure --token` or legacy command syntax need updating. The legacy CLI is archived.
 
 ## Common misconceptions
 

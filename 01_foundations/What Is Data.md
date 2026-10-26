@@ -66,16 +66,18 @@ Mastery: `INPUT[inlineSelect(option(new), option(learning), option(solid)):maste
 
 A business that serves hundreds of customers a day cannot rely on memory to track what happened. Recorded facts serve four purposes:
 
-1. **Running the business today.** The clinic needs to know who is booked at 10:30. The bakery needs to know who already paid.
-2. **Proving what happened.** Tax authorities, insurers, and customers require evidence, and a record provides it.
-3. **Learning from the past.** A pattern such as higher croissant sales on rainy Saturdays is visible only after enough Saturdays are recorded.
-4. **Planning.** Next week's flour order is an estimate based on recorded weeks.
+1. **Running the business today:** The clinic needs to know who is booked at 10:30. The bakery needs to know who already paid.
+2. **Proving what happened:** Tax authorities, insurers, and customers require evidence, and a record provides it.
+3. **Learning from the past:** A pattern such as higher croissant sales on rainy Saturdays is visible only after enough Saturdays are recorded.
+4. **Planning:** Next week's flour order is an estimate based on recorded weeks.
 
 Later chapters describe how these four jobs are done when the records grow to millions of rows spread across many systems.
 
 ## Overview
 
-**Data is recorded facts.** A single fact ("Maria bought 3 croissants") is sometimes called a datum. Three related terms are distinct:
+### Data is recorded facts
+
+A single fact ("Maria bought 3 croissants") is sometimes called a datum. Three related terms are distinct:
 
 | Word | What it is | Bakery example |
 |---|---|---|
@@ -85,10 +87,10 @@ Later chapters describe how these four jobs are done when the records grow to mi
 
 Four properties determine how useful data is:
 
-- **Granularity (grain).** The grain is what one record represents: one order, one item on an order, or one day's total. Finer grain answers more questions. Details can be summed into totals, but totals cannot be split back into details. This idea returns in [[Data Modeling Basics]].
-- **Quality.** Data must be correct, complete, and timely. A wrong price on 10% of orders distorts every report built on it. See [[Data Quality]].
-- **Ownership and sensitivity.** A clinic's appointment list includes names and health details, which are [[PII|personal data]] and often regulated. Who may see what is the job of [[Data Governance|data governance]].
-- **Size.** Computers store data as bytes. A bakery's year of orders might be a few megabytes; a website's click history can be terabytes. See [[Bytes and Data Sizes]].
+- **Granularity (grain):** The grain is what one record represents: one order, one item on an order, or one day's total. Finer grain answers more questions. Details can be summed into totals, but totals cannot be split back into details. This idea returns in [[Data Modeling Basics]].
+- **Quality:** Data must be correct, complete, and timely. A wrong price on 10% of orders distorts every report built on it. See [[Data Quality]].
+- **Ownership and sensitivity:** A clinic's appointment list includes names and health details, which are [[PII|personal data]] and often regulated. Who may see what is the job of [[Data Governance|data governance]].
+- **Size:** Computers store data as bytes. A bakery's year of orders might be a few megabytes; a website's click history can be terabytes. See [[Bytes and Data Sizes]].
 
 Where data comes from in a small business:
 
@@ -139,8 +141,8 @@ In the typed table, the database can sort, sum, and reject a `quantity` that is 
 > [!smallbiz] Small-business considerations
 > A 10-person clinic typically has several systems that each hold part of its data: bookings, billing, the phone system, and a spreadsheet of referrals.
 > - **Start by listing your sources** in a table like the one above. That list is the first step of any data project, including a move to Databricks (see [[Assessing Your Current Data Estate]]).
-> - **Decide your grain early.** Keep the most detailed records you can (each order line, each appointment) and build totals from them.
-> - **Pick one home for each fact.** Two systems that both store a customer's phone number eventually disagree. One trusted copy is a [[Single Source of Truth|single source of truth]].
+> - **Decide your grain early:** Keep the most detailed records you can (each order line, each appointment) and build totals from them.
+> - **Pick one home for each fact:** Two systems that both store a customer's phone number eventually disagree. One trusted copy is a [[Single Source of Truth|single source of truth]].
 
 > [!bridge]- In Databricks today
 > In Databricks, the order book becomes **tables** governed by [[Unity Catalog]], and loose files (photos, PDFs) live in [[Volumes]]. Every table carries its [[Metadata|metadata]] (owner, comments, tags, [[Data Lineage|lineage]]) in the catalog, so ownership and origin are recorded for every table. Records, fields, types, grain, quality, and ownership all map directly to Databricks features.
@@ -153,10 +155,10 @@ In the typed table, the database can sort, sum, and reject a `quantity` that is 
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Data vs. state vs. events.** Engineers distinguish *state* ("Maria's balance is 12") from *events* ("Maria paid 3"). Storing events lets you rebuild any past state; storing only state loses history. This choice resurfaces in [[Change Data Capture]], [[Slowly Changing Dimensions]], and Delta [[Time Travel]].
-> - **Grain is a contract.** Mixing grains in one table (some rows are orders, some are daily totals) is a common source of double counting. Dimensional modeling makes the grain of every fact table explicit; see [[Star Schema]].
-> - **Codd's data independence.** E. F. Codd's 1970 paper argued that people asking questions of data should not need to know how it is physically laid out on disk. The same separation of logical structure from physical storage underlies modern engines that store tables as files in [[Object Storage|object storage]].
-> - **Data has a cost even at rest.** Storage is cheap per gigabyte, but every copy of a dataset is another thing to secure, keep consistent, and clean up when privacy rules such as [[GDPR]] require it. Fewer, governed copies reduce that work.
+> - **Data vs. state vs. events:** Engineers distinguish *state* ("Maria's balance is 12") from *events* ("Maria paid 3"). Storing events lets you rebuild any past state; storing only state loses history. This choice resurfaces in [[Change Data Capture]], [[Slowly Changing Dimensions]], and Delta [[Time Travel]].
+> - **Grain is a contract:** Mixing grains in one table (some rows are orders, some are daily totals) is a common source of double counting. Dimensional modeling makes the grain of every fact table explicit; see [[Star Schema]].
+> - **Codd's data independence:** E. F. Codd's 1970 paper argued that people asking questions of data should not need to know how it is physically laid out on disk. The same separation of logical structure from physical storage underlies modern engines that store tables as files in [[Object Storage|object storage]].
+> - **Data has a cost even at rest:** Storage is cheap per gigabyte, but every copy of a dataset is another thing to secure, keep consistent, and clean up when privacy rules such as [[GDPR]] require it. Fewer, governed copies reduce that work.
 
 ## Common misconceptions
 

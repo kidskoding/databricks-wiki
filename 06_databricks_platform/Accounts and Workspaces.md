@@ -87,9 +87,9 @@ Databricks added a level above the workspace. The **account** now owns the thing
 
 Key rules:
 
-- **A workspace lives in exactly one region.** Its compute runs there, and it attaches to the one Unity Catalog metastore for that region.
-- **Identities are account-level.** You add people once, usually by syncing from your [[Identity Provider|identity provider]] with [[SCIM Provisioning|SCIM]], then assign them to workspaces. See [[Users Groups and Service Principals]].
-- **Data is not in the workspace.** Tables live in Unity Catalog catalogs, which many workspaces can share. Deleting a workspace does not delete your catalogs.
+- **A workspace lives in exactly one region:** Its compute runs there, and it attaches to the one Unity Catalog metastore for that region.
+- **Identities are account-level:** You add people once, usually by syncing from your [[Identity Provider|identity provider]] with [[SCIM Provisioning|SCIM]], then assign them to workspaces. See [[Users Groups and Service Principals]].
+- **Data is not in the workspace:** Tables live in Unity Catalog catalogs, which many workspaces can share. Deleting a workspace does not delete your catalogs.
 
 ## How it works
 
@@ -157,11 +157,11 @@ The resources a workspace *creates in your cloud* and the format of its URL diff
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Workspace ID and `?o=`.** Every workspace has a numeric ID. Older URLs show it as `?o=<workspace-id>`. APIs, system tables (`workspace_id` column), and audit logs all key on it.
-> - **Workspace-catalog binding.** By default every catalog on a metastore is visible to every attached workspace. Bind a catalog to specific workspaces to make, for example, `prod` readable only from the prod workspace.
-> - **Identity federation.** Workspaces created after Unity Catalog became the default use account-level identities. Older workspaces may still have workspace-local users and groups, which should be migrated to account groups.
-> - **Limits.** There are per-account limits on workspaces and per-workspace limits on objects (jobs, notebooks, concurrent runs). Check the resource limits page for your cloud before designing a hundred-workspace layout.
-> - **Workspace as code.** Workspaces, network configs, and metastore assignments are commonly managed with the [[Terraform Provider]], while the contents of a workspace (jobs, pipelines) are managed with [[Declarative Automation Bundles]].
+> - **Workspace ID and `?o=`:** Every workspace has a numeric ID. Older URLs show it as `?o=<workspace-id>`. APIs, system tables (`workspace_id` column), and audit logs all key on it.
+> - **Workspace-catalog binding:** By default every catalog on a metastore is visible to every attached workspace. Bind a catalog to specific workspaces to make, for example, `prod` readable only from the prod workspace.
+> - **Identity federation:** Workspaces created after Unity Catalog became the default use account-level identities. Older workspaces may still have workspace-local users and groups, which should be migrated to account groups.
+> - **Limits:** There are per-account limits on workspaces and per-workspace limits on objects (jobs, notebooks, concurrent runs). Check the resource limits page for your cloud before designing a hundred-workspace layout.
+> - **Workspace as code:** Workspaces, network configs, and metastore assignments are commonly managed with the [[Terraform Provider]], while the contents of a workspace (jobs, pipelines) are managed with [[Declarative Automation Bundles]].
 
 ## Common misconceptions
 

@@ -65,9 +65,9 @@ Mastery: `INPUT[inlineSelect(option(new), option(learning), option(solid)):maste
 
 [[MapReduce]] made large-scale processing possible, but every step wrote to disk, programs were long Java classes, and SQL, machine learning, and streaming each required a separate system. Spark addressed these issues with three goals:
 
-- **Speed.** Keep working data in memory between steps instead of writing to disk each time.
-- **Ease.** Offer short, readable [[APIs]] in Python, SQL, [[Scala]], Java, and R.
-- **One engine for everything.** Batch, SQL, streaming, and machine learning all run on the same engine and can be mixed in one program.
+- **Speed:** Keep working data in memory between steps instead of writing to disk each time.
+- **Ease:** Offer short, readable [[APIs]] in Python, SQL, [[Scala]], Java, and R.
+- **One engine for everything:** Batch, SQL, streaming, and machine learning all run on the same engine and can be mixed in one program.
 
 ## Overview
 
@@ -85,7 +85,9 @@ Spark is a set of layers:
 | **Spark Connect** | A thin client that talks to a remote Spark server | [[Spark Connect]] |
 | **Declarative Pipelines** (new in 4.1) | Define tables and flows; Spark works out order and retries | [[Lakeflow Spark Declarative Pipelines]] |
 
-**Versions.** As of October 2026, the newest release is **Spark 4.2.0**, released July 14, 2026. Spark 4.1.0 was released December 16, 2025.
+### Versions
+
+As of October 2026, the newest release is **Spark 4.2.0**, released July 14, 2026. Spark 4.1.0 was released December 16, 2025.
 
 | Release | Headline changes |
 |---|---|
@@ -145,9 +147,9 @@ Both versions compile to the same physical plan, which you can see with `EXPLAIN
 
 > [!smallbiz] Small-business considerations
 > On Databricks you do not install or operate Spark. Every notebook has a `spark` session, and [[Serverless Compute]] provides compute on demand. Key points for a small team:
-> - **Small data does not need Spark.** A few thousand rows fit in a spreadsheet or [[Pandas]]. Spark becomes useful when data reaches millions of rows or many files, or when processing must run reliably on a schedule.
-> - **You write SQL or Python.** The engine runs underneath and rarely needs configuration.
-> - **Cost follows compute time.** Spark itself is free. On Databricks you pay for the compute that runs it, metered in [[DBUs]]. See [[How Databricks Pricing Works]].
+> - **Small data does not need Spark:** A few thousand rows fit in a spreadsheet or [[Pandas]]. Spark becomes useful when data reaches millions of rows or many files, or when processing must run reliably on a schedule.
+> - **You write SQL or Python:** The engine runs underneath and rarely needs configuration.
+> - **Cost follows compute time:** Spark itself is free. On Databricks you pay for the compute that runs it, metered in [[DBUs]]. See [[How Databricks Pricing Works]].
 
 > [!bridge]- In Databricks today
 > Every Databricks cluster, job, notebook, and SQL warehouse runs Apache Spark inside the [[Databricks Runtime]]. Databricks Runtime 17.3 LTS (long-term support) is built on Spark 4.0, Databricks Runtime 18 LTS on Spark 4.1, and Databricks Runtime 19 (GA July 2026) on Spark 4.2. On top of open-source Spark, Databricks adds [[Photon]] (a C++ execution engine that runs the same APIs faster), [[Delta Lake]] integration, [[Unity Catalog]] security, and [[Serverless Compute]], which runs your code through [[Spark Connect]]. The code you write is standard Spark, so it runs on other Spark services too.
@@ -168,11 +170,11 @@ Spark behaves the same on all three clouds. What changes is the hardware it runs
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Two execution modes.** "Spark Classic" runs your code in the same process as the driver. "Spark Connect" sends unresolved plans from a thin client to a server over gRPC. In Spark 4.0 the `spark.api.mode` setting lets an app switch between them. Databricks serverless supports only Spark Connect APIs. See [[Spark Connect]].
-> - **ANSI mode by default (4.0).** Division by zero, invalid casts, and overflows now raise errors instead of silently returning `NULL`. Review this behavior when upgrading code from Spark 3.x.
-> - **Cluster managers.** Open-source Spark can run in standalone mode, on [[YARN]], or on [[Kubernetes]]. Databricks uses its own cluster manager, so you never choose one.
-> - **Java and Scala.** Spark 4 is built for Scala 2.13 only; Scala 2.12 support was dropped. Spark 4.2 adds support for building and running on Java 25.
-> - **Where the speed comes from.** Memory caching is only part of it. Most of the gains in modern Spark come from the [[Catalyst Optimizer]], [[Tungsten]] code generation, columnar file formats with [[Partition Pruning|pruning]], and [[Adaptive Query Execution]].
+> - **Two execution modes:** "Spark Classic" runs your code in the same process as the driver. "Spark Connect" sends unresolved plans from a thin client to a server over gRPC. In Spark 4.0 the `spark.api.mode` setting lets an app switch between them. Databricks serverless supports only Spark Connect APIs. See [[Spark Connect]].
+> - **ANSI mode by default (4.0):** Division by zero, invalid casts, and overflows now raise errors instead of silently returning `NULL`. Review this behavior when upgrading code from Spark 3.x.
+> - **Cluster managers:** Open-source Spark can run in standalone mode, on [[YARN]], or on [[Kubernetes]]. Databricks uses its own cluster manager, so you never choose one.
+> - **Java and Scala:** Spark 4 is built for Scala 2.13 only; Scala 2.12 support was dropped. Spark 4.2 adds support for building and running on Java 25.
+> - **Where the speed comes from:** Memory caching is only part of it. Most of the gains in modern Spark come from the [[Catalyst Optimizer]], [[Tungsten]] code generation, columnar file formats with [[Partition Pruning|pruning]], and [[Adaptive Query Execution]].
 
 ## Common misconceptions
 

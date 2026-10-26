@@ -134,11 +134,11 @@ The Databricks roles are identical on every cloud. What differs is how cloud-lev
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Service principals as admins.** Account-level automation (Terraform for workspaces, users, metastores) needs a service principal with the account admin role. Protect its credentials as carefully as a human admin's, and prefer token federation. See [[Authentication - Tokens and OAuth]].
-> - **Workspace admins and data.** Being a workspace admin does not give you `SELECT` on every table. Data access is still governed by [[Privileges and Grants|Unity Catalog grants]]. But workspace admins can change workspace settings that affect security (token policy, compute policies), so they are still privileged.
-> - **Metastore admin is optional.** Many teams never assign one and rely on workspace-admin defaults plus catalog owners. Assign one (a group) once you have several workspaces or need to fix ownership.
+> - **Service principals as admins:** Account-level automation (Terraform for workspaces, users, metastores) needs a service principal with the account admin role. Protect its credentials as carefully as a human admin's, and prefer token federation. See [[Authentication - Tokens and OAuth]].
+> - **Workspace admins and data:** Being a workspace admin does not give you `SELECT` on every table. Data access is still governed by [[Privileges and Grants|Unity Catalog grants]]. But workspace admins can change workspace settings that affect security (token policy, compute policies), so they are still privileged.
+> - **Metastore admin is optional:** Many teams never assign one and rely on workspace-admin defaults plus catalog owners. Assign one (a group) once you have several workspaces or need to fix ownership.
 > - **Feature-specific admin roles** appear over time (for example for Marketplace or billing). Check the Roles tab for the current list rather than relying on memory.
-> - **Audit.** Query role changes in `system.access.audit`, filtering on account-level service names and actions that change roles or group membership.
+> - **Audit:** Query role changes in `system.access.audit`, filtering on account-level service names and actions that change roles or group membership.
 
 ## Common misconceptions
 

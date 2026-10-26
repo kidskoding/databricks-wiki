@@ -211,11 +211,11 @@ Many companies use both: Airflow or Azure Data Factory (ADF) at the top for cros
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Pipeline tasks.** A pipeline task runs a pipeline update and succeeds or fails with it. Use it rather than scheduling the pipeline on its own, so ingestion, transformation, and reporting share one run history.
-> - **Disabled tasks.** You can disable a task to skip it without deleting it. The docs warn that an If/else condition task fails if the upstream task that supplies its condition value is disabled.
-> - **Concurrency.** `max_concurrent_runs` defaults to 1, which stops a slow run overlapping the next scheduled one. Without queueing, Databricks skips a run that would exceed the limit. With queueing enabled (`queue: {enabled: true}`, the default for jobs created in the UI since April 15, 2024), the run waits in a queue for up to 48 hours instead.
+> - **Pipeline tasks:** A pipeline task runs a pipeline update and succeeds or fails with it. Use it rather than scheduling the pipeline on its own, so ingestion, transformation, and reporting share one run history.
+> - **Disabled tasks:** You can disable a task to skip it without deleting it. The docs warn that an If/else condition task fails if the upstream task that supplies its condition value is disabled.
+> - **Concurrency:** `max_concurrent_runs` defaults to 1, which stops a slow run overlapping the next scheduled one. Without queueing, Databricks skips a run that would exceed the limit. With queueing enabled (`queue: {enabled: true}`, the default for jobs created in the UI since April 15, 2024), the run waits in a queue for up to 48 hours instead.
 > - **Run as a service principal** in production, and give it only the grants it needs. Jobs owned by a person who leaves the company break.
-> - **Observability.** The `system.lakeflow` tables (`jobs`, `job_tasks`, `job_run_timeline`, `job_task_run_timeline`) let you build reliability and cost dashboards across every job in the account.
+> - **Observability:** The `system.lakeflow` tables (`jobs`, `job_tasks`, `job_run_timeline`, `job_task_run_timeline`) let you build reliability and cost dashboards across every job in the account.
 
 ## Common misconceptions
 

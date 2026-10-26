@@ -71,14 +71,14 @@ Your own data buckets are encrypted with their own S3 and KMS settings, which yo
 Rules from the AWS docs:
 
 - **Symmetric KMS key in the workspace region.**
-- **Add, do not replace.** Append the Databricks statements to the key's existing key policy.
-- **Key configurations are account objects.** One key configuration can be attached to one or more workspaces.
+- **Add, do not replace:** Append the Databricks statements to the key's existing key policy.
+- **Key configurations are account objects:** One key configuration can be attached to one or more workspaces.
 - **Serverless workspaces** need only the managed services key.
-- **Cross-account keys.** If the KMS key is in a different AWS account than the [[Cross-Account IAM Role]], add a policy to that role. In the same account, skip this step.
-- **EBS.** For `STORAGE`, `reuse_key_for_cluster_volumes` (default `true`) also encrypts EBS volumes. The key policy grant for EBS is tied to the cross-account role and limited to EC2 through `kms:ViaService`.
-- **Rotation.** Keep the old key available to Databricks for 24 hours after rotating.
-- **Propagation.** Workspace storage key updates can take up to 24 hours. Terminate running compute first.
-- **GovCloud.** Databricks on AWS GovCloud uses different Databricks AWS account IDs in the key policy.
+- **Cross-account keys:** If the KMS key is in a different AWS account than the [[Cross-Account IAM Role]], add a policy to that role. In the same account, skip this step.
+- **EBS:** For `STORAGE`, `reuse_key_for_cluster_volumes` (default `true`) also encrypts EBS volumes. The key policy grant for EBS is tied to the cross-account role and limited to EC2 through `kms:ViaService`.
+- **Rotation:** Keep the old key available to Databricks for 24 hours after rotating.
+- **Propagation:** Workspace storage key updates can take up to 24 hours. Terminate running compute first.
+- **GovCloud:** Databricks on AWS GovCloud uses different Databricks AWS account IDs in the key policy.
 
 ## How it works
 
@@ -103,7 +103,7 @@ aws kms create-key --description "Databricks prod" --key-usage ENCRYPT_DECRYPT \
 aws kms create-alias --alias-name alias/databricks-prod --target-key-id <key-id>
 ```
 
-2. **Update the key policy.** Get the current policy, append the Databricks statements for each use case from the AWS CMK guide, and put it back:
+2. **Update the key policy:** Get the current policy, append the Databricks statements for each use case from the AWS CMK guide, and put it back:
 
 ```bash
 aws kms get-key-policy --key-id <key-id> --policy-name default --output text > policy.json
@@ -133,7 +133,7 @@ databricks account workspaces update <workspace-id> --json '{
 }'
 ```
 
-5. **Verify.** Restart compute after a storage key change, and confirm notebooks and jobs still run.
+5. **Verify:** Restart compute after a storage key change, and confirm notebooks and jobs still run.
 
 ## Small-business considerations
 
@@ -157,12 +157,12 @@ databricks account workspaces update <workspace-id> --json '{
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Key hierarchy.** The managed services key protects the data key used for future writes. Adding a key does not re-encrypt existing data.
-> - **Revocation.** Revoking or deleting the managed services key makes all control-plane data for the workspace inaccessible.
-> - **Scope gaps.** Workspace storage keys do not cover legacy DBFS mounts of other buckets, and serverless compute's short-lived disks are not covered by the EBS key.
-> - **Updatable fields.** On a running workspace, `storage_customer_managed_key_id` can be updated; plan a maintenance window because of propagation time.
-> - **Unity Catalog.** A separate AWS page describes customer-managed keys for Unity Catalog. Check its current status and scope before relying on it.
-> - **Compliance.** CMK is commonly paired with the [[Compliance Security Profile]] for regulated workloads.
+> - **Key hierarchy:** The managed services key protects the data key used for future writes. Adding a key does not re-encrypt existing data.
+> - **Revocation:** Revoking or deleting the managed services key makes all control-plane data for the workspace inaccessible.
+> - **Scope gaps:** Workspace storage keys do not cover legacy DBFS mounts of other buckets, and serverless compute's short-lived disks are not covered by the EBS key.
+> - **Updatable fields:** On a running workspace, `storage_customer_managed_key_id` can be updated; plan a maintenance window because of propagation time.
+> - **Unity Catalog:** A separate AWS page describes customer-managed keys for Unity Catalog. Check its current status and scope before relying on it.
+> - **Compliance:** CMK is commonly paired with the [[Compliance Security Profile]] for regulated workloads.
 
 ## Common misconceptions
 

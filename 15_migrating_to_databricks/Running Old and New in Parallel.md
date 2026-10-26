@@ -201,12 +201,12 @@ Define the exit criteria in writing before the run starts:
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Moving targets.** Both systems are often live. Compare closed periods (yesterday, last month) rather than "now", or snapshot both sides at the same cutoff.
-> - **Ordering and statistics.** Lakebridge's Morpheus notes that row order may differ without `ORDER BY`, and some statistical functions use different algorithms. Exclude ordering from comparisons and set tolerances for statistical measures.
-> - **Hash-based checks without keys.** The Reconcile `row` report hashes each row, so it works on tables without a primary key. Teradata needs a user-installed hash UDF.
-> - **Classic compute.** To run Reconcile on a classic cluster, set `job_overrides.existing_cluster_id` in `reconcile.yml`. The cluster must run Databricks Runtime 17.3 or later.
-> - **Ongoing quality.** After cutover, keep [[Expectations and Data Quality|expectations]] and [[Data Quality Monitoring]] on the migrated tables so regressions surface without a comparison system.
-> - **Federation load.** Daily comparison queries load the old system. Run them off-peak and limit them to recent partitions.
+> - **Moving targets:** Both systems are often live. Compare closed periods (yesterday, last month) rather than "now", or snapshot both sides at the same cutoff.
+> - **Ordering and statistics:** Lakebridge's Morpheus notes that row order may differ without `ORDER BY`, and some statistical functions use different algorithms. Exclude ordering from comparisons and set tolerances for statistical measures.
+> - **Hash-based checks without keys:** The Reconcile `row` report hashes each row, so it works on tables without a primary key. Teradata needs a user-installed hash UDF.
+> - **Classic compute:** To run Reconcile on a classic cluster, set `job_overrides.existing_cluster_id` in `reconcile.yml`. The cluster must run Databricks Runtime 17.3 or later.
+> - **Ongoing quality:** After cutover, keep [[Expectations and Data Quality|expectations]] and [[Data Quality Monitoring]] on the migrated tables so regressions surface without a comparison system.
+> - **Federation load:** Daily comparison queries load the old system. Run them off-peak and limit them to recent partitions.
 
 ## Common misconceptions
 

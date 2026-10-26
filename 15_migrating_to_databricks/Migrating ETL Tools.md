@@ -214,12 +214,12 @@ For Informatica, Talend, Alteryx, and other visual tools without a converter:
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Idempotency.** Old packages often assume they run once. Rewrite loads with `MERGE` or partition overwrite so reruns are safe; see [[Idempotency]] and [[MERGE and Upserts]].
-> - **Row-by-row logic.** Cursor loops and Script Components process one row at a time. Rewrite them as set-based SQL or DataFrame operations for performance.
-> - **Atomic blocks.** `BEGIN ATOMIC ... END` runs a block as one transaction (Public Preview as of October 2026). Exception handlers are not allowed inside atomic blocks.
-> - **Switch internals.** Switch runs as Databricks jobs, calls [[Model Serving]] endpoints through [[Foundation Model APIs]], stores state in Delta tables (default catalog `lakebridge`, schema `switch`), and needs a Unity Catalog volume for input files. Model token costs apply.
-> - **BladeBridge customization.** BladeBridge accepts a JSON override file (`--overrides-file`) for naming conventions and custom patterns.
-> - **Testing.** Treat converted jobs like new code: add tests ([[Testing Data Pipelines]]) and deploy with [[Declarative Automation Bundles]] and [[CI-CD for Data Pipelines|CI/CD]].
+> - **Idempotency:** Old packages often assume they run once. Rewrite loads with `MERGE` or partition overwrite so reruns are safe; see [[Idempotency]] and [[MERGE and Upserts]].
+> - **Row-by-row logic:** Cursor loops and Script Components process one row at a time. Rewrite them as set-based SQL or DataFrame operations for performance.
+> - **Atomic blocks:** `BEGIN ATOMIC ... END` runs a block as one transaction (Public Preview as of October 2026). Exception handlers are not allowed inside atomic blocks.
+> - **Switch internals:** Switch runs as Databricks jobs, calls [[Model Serving]] endpoints through [[Foundation Model APIs]], stores state in Delta tables (default catalog `lakebridge`, schema `switch`), and needs a Unity Catalog volume for input files. Model token costs apply.
+> - **BladeBridge customization:** BladeBridge accepts a JSON override file (`--overrides-file`) for naming conventions and custom patterns.
+> - **Testing:** Treat converted jobs like new code: add tests ([[Testing Data Pipelines]]) and deploy with [[Declarative Automation Bundles]] and [[CI-CD for Data Pipelines|CI/CD]].
 
 ## Common misconceptions
 

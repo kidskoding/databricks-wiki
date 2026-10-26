@@ -118,9 +118,9 @@ az databricks workspace create \
 ## Small-business considerations
 
 > [!smallbiz] Small-business considerations
-> - **No new vendor.** An existing Azure subscription is sufficient to start.
-> - **One invoice.** Databricks charges appear on the Azure bill and can be split by tag.
-> - **Familiar tooling.** Workspaces are created, tagged, and secured in the Azure portal.
+> - **No new vendor:** An existing Azure subscription is sufficient to start.
+> - **One invoice:** Databricks charges appear on the Azure bill and can be split by tag.
+> - **Familiar tooling:** Workspaces are created, tagged, and secured in the Azure portal.
 >
 > First-party status ties this workload to Azure. To keep the option of moving clouds, store data in open formats ([[Delta Lake]] or [[Apache Iceberg]]) in storage you own, which is the Databricks default.
 
@@ -138,10 +138,10 @@ az databricks workspace create \
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Two control surfaces.** The Azure resource is governed by Azure RBAC and the Azure activity log. Objects inside the workspace (clusters, jobs, Unity Catalog grants) are governed by Databricks permissions. Cluster guardrails belong in [[Compute Policies|compute policies]].
-> - **First account admin.** An Entra ID Global Administrator must establish the first Databricks account admin by signing in to the account console at `accounts.azuredatabricks.net`. That admin can then assign the role to others. See [[Admin Roles]].
-> - **Entra resource ID.** Azure Databricks has the well-known Entra resource ID `2ff814a6-3304-4ab8-85cb-cd0e6f879c1d`, the same in all Azure environments. Entra ID tokens for the Databricks REST API are requested for this resource, and conditional access policies target the AzureDatabricks application. See [[Microsoft Entra ID Integration]].
-> - **Commitments.** Databricks commit units are bought for one or three years through the Azure portal and are managed under **Reservations**. How a purchase interacts with other Microsoft spending commitments depends on your agreement; confirm with your Microsoft account team.
+> - **Two control surfaces:** The Azure resource is governed by Azure RBAC and the Azure activity log. Objects inside the workspace (clusters, jobs, Unity Catalog grants) are governed by Databricks permissions. Cluster guardrails belong in [[Compute Policies|compute policies]].
+> - **First account admin:** An Entra ID Global Administrator must establish the first Databricks account admin by signing in to the account console at `accounts.azuredatabricks.net`. That admin can then assign the role to others. See [[Admin Roles]].
+> - **Entra resource ID:** Azure Databricks has the well-known Entra resource ID `2ff814a6-3304-4ab8-85cb-cd0e6f879c1d`, the same in all Azure environments. Entra ID tokens for the Databricks REST API are requested for this resource, and conditional access policies target the AzureDatabricks application. See [[Microsoft Entra ID Integration]].
+> - **Commitments:** Databricks commit units are bought for one or three years through the Azure portal and are managed under **Reservations**. How a purchase interacts with other Microsoft spending commitments depends on your agreement; confirm with your Microsoft account team.
 
 ## Common misconceptions
 

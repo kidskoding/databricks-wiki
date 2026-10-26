@@ -58,9 +58,9 @@ Mastery: `INPUT[inlineSelect(option(new), option(learning), option(solid)):maste
 
 If Spark ran each line the moment you typed it, it would:
 
-- **Read data it does not need.** A `filter` written three lines after a `read` would come too late to skip any files.
-- **Do work twice.** Intermediate results would be computed and stored even if a later step threw most of them away.
-- **Miss better plans.** Spark could not reorder steps, combine them, or choose a smarter [[Join|join]], because it would never see the whole job.
+- **Read data it does not need:** A `filter` written three lines after a `read` would come too late to skip any files.
+- **Do work twice:** Intermediate results would be computed and stored even if a later step threw most of them away.
+- **Miss better plans:** Spark could not reorder steps, combine them, or choose a smarter [[Join|join]], because it would never see the whole job.
 
 On a cluster, wasted work means wasted machine hours. Waiting until the end lets Spark treat your code as one big plan and optimize it as a whole.
 
@@ -118,14 +118,16 @@ GROUP BY o_orderpriority;
 -- Look for "PushedFilters" (or "DataFilters"/"PartitionFilters") on the scan node.
 ```
 
-**Caching breaks the laziness on purpose.** If you will reuse a DataFrame in several actions, `df.cache()` marks it to be kept in memory the first time an action computes it. Later actions start from the cached copy instead of re-reading the source. See [[Caching]].
+### Caching breaks the laziness on purpose
+
+If you will reuse a DataFrame in several actions, `df.cache()` marks it to be kept in memory the first time an action computes it. Later actions start from the cached copy instead of re-reading the source. See [[Caching]].
 
 ## Small-business considerations
 
 > [!smallbiz] Small-business considerations
 > Lazy evaluation explains two common observations:
-> 1. **A cell that defines a DataFrame completes immediately.** It only builds a plan. The cell that calls an action does the work and takes the time.
-> 2. **Errors can appear at the action.** A misspelled column name may only raise an error when an action runs, several lines after the mistake.
+> 1. **A cell that defines a DataFrame completes immediately:** It only builds a plan. The cell that calls an action does the work and takes the time.
+> 2. **Errors can appear at the action:** A misspelled column name may only raise an error when an action runs, several lines after the mistake.
 >
 > Avoid adding `display()` or `count()` after every step while building a pipeline. Each one is an action that reruns the plan from the source and consumes compute time.
 
@@ -140,10 +142,10 @@ GROUP BY o_orderpriority;
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Plans have stages.** A DataFrame goes through a parsed (unresolved) logical plan, an analyzed plan, an optimized logical plan, and a physical plan. `df.explain(mode="extended")` prints all four. See [[Catalyst Optimizer]].
-> - **Spark Classic analyzes eagerly, Spark Connect lazily.** In Classic, each transformation is analyzed immediately, so schema errors appear early. In Connect, the client builds an unresolved plan and the server analyzes it only on execution. Calling `df.columns` or `df.schema` in a loop on Connect sends a round trip to the server each time; cache the schema in a variable instead.
-> - **Repeated actions repeat work.** Without caching, two actions on the same DataFrame run the full lineage twice. Check the [[Spark UI]]: you will see two jobs that each scan the source.
-> - **Some "transformations" are not fully lazy.** Reading a CSV with schema inference, or calling `sortBy` on an RDD, may launch a small job to sample the data.
+> - **Plans have stages:** A DataFrame goes through a parsed (unresolved) logical plan, an analyzed plan, an optimized logical plan, and a physical plan. `df.explain(mode="extended")` prints all four. See [[Catalyst Optimizer]].
+> - **Spark Classic analyzes eagerly, Spark Connect lazily:** In Classic, each transformation is analyzed immediately, so schema errors appear early. In Connect, the client builds an unresolved plan and the server analyzes it only on execution. Calling `df.columns` or `df.schema` in a loop on Connect sends a round trip to the server each time; cache the schema in a variable instead.
+> - **Repeated actions repeat work:** Without caching, two actions on the same DataFrame run the full lineage twice. Check the [[Spark UI]]: you will see two jobs that each scan the source.
+> - **Some "transformations" are not fully lazy:** Reading a CSV with schema inference, or calling `sortBy` on an RDD, may launch a small job to sample the data.
 
 ## Common misconceptions
 

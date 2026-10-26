@@ -144,11 +144,11 @@ databricks account workspaces list
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Managed VPC deprecation.** Databricks plans to deprecate classic workspace creation with a Databricks-managed VPC on Google Cloud and recommends a customer-managed VPC for new workspaces. A migration timeline will be communicated separately.
-> - **Standard tier end of life.** The legacy-features migration page lists the end of life of Standard tier workspaces on Google Cloud as a required migration.
-> - **Serverless limits.** Some workloads, such as those depending on R or Scala notebooks, still require classic compute.
-> - **Regional availability.** Serverless workspaces and default storage are not available in every region where serverless compute runs (for example, `us-west4` has serverless compute but not serverless workspaces). Check the regional table.
-> - **Cross-cloud reads.** Databricks on Google Cloud can define read-only external locations on AWS S3.
+> - **Managed VPC deprecation:** Databricks plans to deprecate classic workspace creation with a Databricks-managed VPC on Google Cloud and recommends a customer-managed VPC for new workspaces. A migration timeline will be communicated separately.
+> - **Standard tier end of life:** The legacy-features migration page lists the end of life of Standard tier workspaces on Google Cloud as a required migration.
+> - **Serverless limits:** Some workloads, such as those depending on R or Scala notebooks, still require classic compute.
+> - **Regional availability:** Serverless workspaces and default storage are not available in every region where serverless compute runs (for example, `us-west4` has serverless compute but not serverless workspaces). Check the regional table.
+> - **Cross-cloud reads:** Databricks on Google Cloud can define read-only external locations on AWS S3.
 
 ## Common misconceptions
 

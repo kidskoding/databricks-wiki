@@ -76,9 +76,9 @@ Mastery: `INPUT[inlineSelect(option(new), option(learning), option(solid)):maste
 
 In a traditional database server, the disks that hold the data and the processors that query it are in the same machine, or in machines that are always paired. This coupling has three consequences:
 
-- **They scale together.** More data means a bigger server, even if query volume is unchanged. More queries mean a bigger server, even if data volume is unchanged.
-- **They must stay on.** Switching off the server makes the data unavailable.
-- **They compete.** A heavy report and a nightly load share the same CPU, memory, and disks.
+- **They scale together:** More data means a bigger server, even if query volume is unchanged. More queries mean a bigger server, even if data volume is unchanged.
+- **They must stay on:** Switching off the server makes the data unavailable.
+- **They compete:** A heavy report and a nightly load share the same CPU, memory, and disks.
 
 Early [[The Three Vs of Big Data|big data]] systems such as [[HDFS]] also stored data on the same machines that processed it, on the principle that "moving computation is cheaper than moving data". That design reduced network traffic but kept the coupling. See [[Apache Hadoop]].
 
@@ -99,10 +99,10 @@ Storage is the service that keeps data durably, and compute is the processing po
 
 When the two are separated:
 
-1. **Each scales independently.** Ten years of orders can sit in storage while compute is sized for today's queries.
-2. **Compute can stop.** With nothing running, the remaining cost is storage, which is usually small compared with compute.
-3. **Many engines can share one copy of data.** A SQL engine, a Python notebook, and a [[Machine Learning Basics|machine learning (ML)]] training job can read the same files without copying them.
-4. **Workloads stop competing.** The nightly load and the morning dashboards can run on different compute against the same data.
+1. **Each scales independently:** Ten years of orders can sit in storage while compute is sized for today's queries.
+2. **Compute can stop:** With nothing running, the remaining cost is storage, which is usually small compared with compute.
+3. **Many engines can share one copy of data:** A SQL engine, a Python notebook, and a [[Machine Learning Basics|machine learning (ML)]] training job can read the same files without copying them.
+4. **Workloads stop competing:** The nightly load and the morning dashboards can run on different compute against the same data.
 
 ## How it works
 
@@ -148,9 +148,9 @@ files = dbutils.fs.ls("/Volumes/bakery/raw/pos_exports/")
 ## Small-business considerations
 
 > [!smallbiz] Small-business considerations
-> - **Storage is rarely the cost to worry about.** A small business's data usually amounts to gigabytes, not terabytes. Compute that runs longer than needed is the usual cause of unexpected bills.
-> - **Make compute stop when idle.** Use [[Auto Termination|auto termination]] on clusters and auto stop on [[SQL Warehouses|SQL warehouses]] (an idle warehouse keeps accruing DBU and cloud instance charges until it stops), or use [[Serverless Compute|serverless]] options that start and stop automatically.
-> - **Keep one copy of data.** Point every tool at the same tables instead of exporting copies to each tool.
+> - **Storage is rarely the cost to worry about:** A small business's data usually amounts to gigabytes, not terabytes. Compute that runs longer than needed is the usual cause of unexpected bills.
+> - **Make compute stop when idle:** Use [[Auto Termination|auto termination]] on clusters and auto stop on [[SQL Warehouses|SQL warehouses]] (an idle warehouse keeps accruing DBU and cloud instance charges until it stops), or use [[Serverless Compute|serverless]] options that start and stop automatically.
+> - **Keep one copy of data:** Point every tool at the same tables instead of exporting copies to each tool.
 >
 > The meter for each part is explained in [[How Databricks Pricing Works]]; rates are on the official pricing page.
 
@@ -174,11 +174,11 @@ files = dbutils.fs.ls("/Volumes/bakery/raw/pos_exports/")
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **The network is the new disk.** Separated compute reads data over the network, which has higher [[Latency|latency]] than local disk. Engines compensate with columnar formats that read less data, [[Data Skipping|data skipping]] from file statistics, and local [[Caching|caching]] of hot files on the compute nodes.
-> - **Object storage is not a file system.** Object stores such as Amazon S3, Azure Blob Storage, and Google Cloud Storage are key-value stores: you `PUT`, `GET`, and `LIST` whole objects, updating an object usually means rewriting it, renames of objects or "directories" are not cheap, and updates across several objects are not atomic. (ADLS Gen2 adds directories and atomic renames, but atomic updates across many files still need a table format.) Table formats such as [[Delta Lake]] add a transaction log so that a set of immutable files behaves like a table with [[ACID Transactions|ACID transactions]]. This is the core idea of chapter 05.
-> - **Elastic compute needs stateless design.** If any node can disappear, results must be written to storage, not kept on local disks. Streaming jobs persist progress in a [[Checkpoint|checkpoint]] in storage for the same reason.
-> - **Data gravity and egress.** Compute should run in the same cloud [[Region|region]] as the data. Reading across regions or clouds adds latency and [[Egress|egress]] charges.
-> - **Separation inside OLTP databases.** Some modern Postgres services separate the storage layer from the compute nodes, which enables scale-to-zero and fast branching. Lakebase's GA feature list (autoscaling, scale-to-zero, instant branching, point-in-time recovery) follows this pattern.
+> - **The network is the new disk:** Separated compute reads data over the network, which has higher [[Latency|latency]] than local disk. Engines compensate with columnar formats that read less data, [[Data Skipping|data skipping]] from file statistics, and local [[Caching|caching]] of hot files on the compute nodes.
+> - **Object storage is not a file system:** Object stores such as Amazon S3, Azure Blob Storage, and Google Cloud Storage are key-value stores: you `PUT`, `GET`, and `LIST` whole objects, updating an object usually means rewriting it, renames of objects or "directories" are not cheap, and updates across several objects are not atomic. (ADLS Gen2 adds directories and atomic renames, but atomic updates across many files still need a table format.) Table formats such as [[Delta Lake]] add a transaction log so that a set of immutable files behaves like a table with [[ACID Transactions|ACID transactions]]. This is the core idea of chapter 05.
+> - **Elastic compute needs stateless design:** If any node can disappear, results must be written to storage, not kept on local disks. Streaming jobs persist progress in a [[Checkpoint|checkpoint]] in storage for the same reason.
+> - **Data gravity and egress:** Compute should run in the same cloud [[Region|region]] as the data. Reading across regions or clouds adds latency and [[Egress|egress]] charges.
+> - **Separation inside OLTP databases:** Some modern Postgres services separate the storage layer from the compute nodes, which enables scale-to-zero and fast branching. Lakebase's GA feature list (autoscaling, scale-to-zero, instant branching, point-in-time recovery) follows this pattern.
 
 ## Common misconceptions
 

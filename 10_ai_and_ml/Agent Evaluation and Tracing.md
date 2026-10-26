@@ -190,12 +190,12 @@ Steps to add production monitoring (Beta):
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Answer-sheet evaluation.** Instead of a `predict_fn`, pass existing outputs or traces, for example to score last week's production traces.
-> - **Combining autolog and decorators.** Enable `autolog()` for each framework the agent uses; add `@mlflow.trace` to group calls under one parent span or to instrument custom logic. On serverless compute, enable autologging explicitly for each integration.
-> - **Monitoring limits.** Up to 20 scorers per experiment for continuous monitoring; only decorator-based scorers can be registered, not class-based `Scorer` subclasses. Traces stored in Unity Catalog require a SQL warehouse for monitoring.
-> - **Versions.** `mlflow.set_active_model(name=...)` links traces to an app version; in production set `MLFLOW_ACTIVE_MODEL_ID`.
-> - **Git folders.** Agents deployed from a notebook in a Git folder do not get MLflow 3 real-time tracing by default; use an experiment not associated with Git.
-> - **Judges are models.** LLM judges can be wrong. Spot-check judge verdicts against human labels before trusting them for release decisions.
+> - **Answer-sheet evaluation:** Instead of a `predict_fn`, pass existing outputs or traces, for example to score last week's production traces.
+> - **Combining autolog and decorators:** Enable `autolog()` for each framework the agent uses; add `@mlflow.trace` to group calls under one parent span or to instrument custom logic. On serverless compute, enable autologging explicitly for each integration.
+> - **Monitoring limits:** Up to 20 scorers per experiment for continuous monitoring; only decorator-based scorers can be registered, not class-based `Scorer` subclasses. Traces stored in Unity Catalog require a SQL warehouse for monitoring.
+> - **Versions:** `mlflow.set_active_model(name=...)` links traces to an app version; in production set `MLFLOW_ACTIVE_MODEL_ID`.
+> - **Git folders:** Agents deployed from a notebook in a Git folder do not get MLflow 3 real-time tracing by default; use an experiment not associated with Git.
+> - **Judges are models:** LLM judges can be wrong. Spot-check judge verdicts against human labels before trusting them for release decisions.
 
 ## Common misconceptions
 

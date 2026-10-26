@@ -72,7 +72,9 @@ Enabling the profile on a workspace applies these controls:
 | **Nitro instances (AWS)** | Enforces AWS Nitro instance types for clusters and SQL warehouses, which encrypt traffic between instances. |
 | **Restricted preview features** | Only listed preview features may process regulated data. |
 
-**Standards.** The AWS docs state that the profile is **required** to process data regulated under these standards: C5, CCCS Medium, DoD IL5, FedRAMP High and Moderate, HIPAA, HITRUST, IRAP, ISMAP, K-FSI, PCI-DSS, TISAX, and UK Cyber Essentials Plus. You can also enable it with no standard selected, for its security features alone. Support varies by cloud and region:
+### Standards
+
+The AWS docs state that the profile is **required** to process data regulated under these standards: C5, CCCS Medium, DoD IL5, FedRAMP High and Moderate, HIPAA, HITRUST, IRAP, ISMAP, K-FSI, PCI-DSS, TISAX, and UK Cyber Essentials Plus. You can also enable it with no standard selected, for its security features alone. Support varies by cloud and region:
 
 | Standard | Notes from the docs |
 |---|---|
@@ -85,7 +87,9 @@ Enabling the profile on a workspace applies these controls:
 
 The GCP compliance page lists C5, HIPAA, HITRUST, PCI-DSS, and TISAX. Check the regional support table for your cloud before choosing a region.
 
-**Responsibility.** Databricks states that customers are solely responsible for their own compliance with applicable laws and regulations. The profile provides controls; it does not make a workload compliant by itself.
+### Responsibility
+
+Databricks states that customers are solely responsible for their own compliance with applicable laws and regulations. The profile provides controls; it does not make a workload compliant by itself.
 
 ## How it works
 
@@ -137,11 +141,11 @@ Enabling the profile, or adding standards, is intended to be **permanent**. On A
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (401)
-> - **Serverless coverage.** Enhanced security monitoring applies only to classic compute; serverless resources receive no additional monitoring. Serverless support under each standard is listed per feature and region. Check the regional feature tables before relying on serverless SQL, jobs, or model serving for regulated data.
-> - **Model serving.** For [[Foundation Model APIs]], provisioned throughput workloads support HIPAA in all regions. Pay-per-token workloads are available with the profile when the HIPAA standard or no standard is selected.
-> - **Patching without the profile.** Without automatic cluster update, you must restart long-running clusters yourself to pick up patched host images.
-> - **Separate workspaces.** Because the profile is permanent and restricts features, a common design is one workspace with the profile for regulated data and another without it for general analytics, sharing governance through one Unity Catalog metastore.
-> - **Evidence for auditors.** Combine the profile with [[Audit Logs]] (`system.access.audit`), network access logs, customer-managed keys, and private connectivity. The profile alone does not cover network isolation or key control.
+> - **Serverless coverage:** Enhanced security monitoring applies only to classic compute; serverless resources receive no additional monitoring. Serverless support under each standard is listed per feature and region. Check the regional feature tables before relying on serverless SQL, jobs, or model serving for regulated data.
+> - **Model serving:** For [[Foundation Model APIs]], provisioned throughput workloads support HIPAA in all regions. Pay-per-token workloads are available with the profile when the HIPAA standard or no standard is selected.
+> - **Patching without the profile:** Without automatic cluster update, you must restart long-running clusters yourself to pick up patched host images.
+> - **Separate workspaces:** Because the profile is permanent and restricts features, a common design is one workspace with the profile for regulated data and another without it for general analytics, sharing governance through one Unity Catalog metastore.
+> - **Evidence for auditors:** Combine the profile with [[Audit Logs]] (`system.access.audit`), network access logs, customer-managed keys, and private connectivity. The profile alone does not cover network isolation or key control.
 
 ## Common misconceptions
 

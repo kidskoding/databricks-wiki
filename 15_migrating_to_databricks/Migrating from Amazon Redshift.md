@@ -71,7 +71,7 @@ Mastery: `INPUT[inlineSelect(option(new), option(learning), option(solid)):maste
 Redshift migrations usually start because the team wants one platform for warehousing, data engineering, and machine learning, or because Redshift-specific tuning (distribution styles, sort keys, `VACUUM`, workload management) consumes too much time. Redshift-specific risks:
 
 - **PostgreSQL-flavored dialect** with Redshift functions (`DATEADD`, `DATEDIFF`, `GETDATE`, `NVL2`) and types (`SUPER`, `HLLSKETCH`, `GEOMETRY`).
-- **Physical design in DDL.** `DISTKEY`, `SORTKEY`, and `ENCODE` clauses have no direct equivalent and should be removed rather than translated.
+- **Physical design in DDL:** `DISTKEY`, `SORTKEY`, and `ENCODE` clauses have no direct equivalent and should be removed rather than translated.
 - **Spectrum external tables** that already point at S3 data.
 
 ## Overview
@@ -223,11 +223,11 @@ For Redshift, BladeBridge targets Databricks SQL and is marked experimental; Swi
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Spectrum tables.** Spectrum external tables already have data in S3, often as Parquet. Lakehouse Federation cannot query Redshift external data, so register those paths as external tables or convert them to Delta instead.
-> - **Late-binding views.** Views created `WITH NO SCHEMA BINDING` do not check their underlying objects until query time, and a view over an external (Spectrum) table must be created this way. Resolve their dependencies during assessment.
-> - **Case-sensitive identifiers.** With `enable_case_sensitive_identifier` set to `true`, Redshift preserves the case of double-quoted names. Lakehouse Federation cannot federate Redshift tables with case-sensitive identifiers, so unload those tables instead. Databricks identifiers are case-insensitive, so rename objects whose names differ only by case before you migrate.
-> - **Stored procedures.** Redshift procedures use PL/pgSQL syntax. BladeBridge converts them to Databricks SQL scripting; complex ones are candidates for Switch.
-> - **Concurrency.** Redshift workload management (WLM) separates workloads into queues. Serverless [[SQL Warehouses|SQL warehouses]] manage queueing with Intelligent Workload Management. Where workloads need different limits, give each its own warehouse with its own maximum cluster count and statement timeout.
+> - **Spectrum tables:** Spectrum external tables already have data in S3, often as Parquet. Lakehouse Federation cannot query Redshift external data, so register those paths as external tables or convert them to Delta instead.
+> - **Late-binding views:** Views created `WITH NO SCHEMA BINDING` do not check their underlying objects until query time, and a view over an external (Spectrum) table must be created this way. Resolve their dependencies during assessment.
+> - **Case-sensitive identifiers:** With `enable_case_sensitive_identifier` set to `true`, Redshift preserves the case of double-quoted names. Lakehouse Federation cannot federate Redshift tables with case-sensitive identifiers, so unload those tables instead. Databricks identifiers are case-insensitive, so rename objects whose names differ only by case before you migrate.
+> - **Stored procedures:** Redshift procedures use PL/pgSQL syntax. BladeBridge converts them to Databricks SQL scripting; complex ones are candidates for Switch.
+> - **Concurrency:** Redshift workload management (WLM) separates workloads into queues. Serverless [[SQL Warehouses|SQL warehouses]] manage queueing with Intelligent Workload Management. Where workloads need different limits, give each its own warehouse with its own maximum cluster count and statement timeout.
 
 ## Common misconceptions
 

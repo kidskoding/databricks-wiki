@@ -72,9 +72,9 @@ flowchart LR
 
 Most rows differ for one of three reasons:
 
-1. **How Databricks is sold.** Azure Databricks is a first-party Microsoft service, so Microsoft handles billing and identity. On AWS and Google Cloud, Databricks runs the service and you connect it to your cloud account.
-2. **Each cloud's identity system.** Managed identities on Azure, IAM roles on AWS, and service accounts on Google Cloud are three ways of answering "who is this program?" Databricks uses whichever one the cloud provides.
-3. **Each cloud's network primitives.** VNets and Private Link, VPCs and PrivateLink, and VPCs and Private Service Connect solve the same problem with different names, limits, and plan requirements.
+1. **How Databricks is sold:** Azure Databricks is a first-party Microsoft service, so Microsoft handles billing and identity. On AWS and Google Cloud, Databricks runs the service and you connect it to your cloud account.
+2. **Each cloud's identity system:** Managed identities on Azure, IAM roles on AWS, and service accounts on Google Cloud are three ways of answering "who is this program?" Databricks uses whichever one the cloud provides.
+3. **Each cloud's network primitives:** VNets and Private Link, VPCs and PrivateLink, and VPCs and Private Service Connect solve the same problem with different names, limits, and plan requirements.
 
 ## Plan requirements for security features
 

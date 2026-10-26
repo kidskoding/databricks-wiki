@@ -187,11 +187,11 @@ Parameter shapes differ between API versions (newer preview versions add a `type
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Network design is fixed early.** For classic workspaces, subnet CIDR ranges cannot be changed after deployment without the VNet update procedure. Microsoft plans to deprecate creating classic workspaces with a Databricks-managed VNet; use [[VNet Injection]] for new classic workspaces.
-> - **`enableNoPublicIp`.** Defaults to `true` from API version 2024-05-01. Microsoft plans to require secure cluster connectivity for all classic workspaces, and workspaces created with the value `false` will no longer be supported.
-> - **Managed resource group name.** ARM and Bicep examples generate it from the workspace name and a hash of the resource group ID, with the prefix `databricks-rg-`. Serverless workspaces do not support a custom managed resource group.
-> - **Automation.** Deploy the Azure resource with Bicep or Terraform, then manage workspace contents with the Databricks [[Terraform Provider]] or [[Declarative Automation Bundles]].
-> - **Region.** Treat the region as permanent. Changing it requires a new workspace and a migration of code and data. See [[Disaster Recovery]].
+> - **Network design is fixed early:** For classic workspaces, subnet CIDR ranges cannot be changed after deployment without the VNet update procedure. Microsoft plans to deprecate creating classic workspaces with a Databricks-managed VNet; use [[VNet Injection]] for new classic workspaces.
+> - **`enableNoPublicIp`:** Defaults to `true` from API version 2024-05-01. Microsoft plans to require secure cluster connectivity for all classic workspaces, and workspaces created with the value `false` will no longer be supported.
+> - **Managed resource group name:** ARM and Bicep examples generate it from the workspace name and a hash of the resource group ID, with the prefix `databricks-rg-`. Serverless workspaces do not support a custom managed resource group.
+> - **Automation:** Deploy the Azure resource with Bicep or Terraform, then manage workspace contents with the Databricks [[Terraform Provider]] or [[Declarative Automation Bundles]].
+> - **Region:** Treat the region as permanent. Changing it requires a new workspace and a migration of code and data. See [[Disaster Recovery]].
 
 ## Common misconceptions
 

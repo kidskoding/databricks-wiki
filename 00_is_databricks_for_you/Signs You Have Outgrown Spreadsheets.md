@@ -135,9 +135,9 @@ LEFT JOIN main.sales.customers c ON c.customer_id = o.customer_id;
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Spreadsheets as a source.** Treat recurring spreadsheets as an [[Ingestion|ingestion]] source: place them in a [[Volumes|volume]], load them with [[Auto Loader]] or `COPY INTO`, and enforce a schema ([[Schema Enforcement and Evolution]]).
+> - **Spreadsheets as a source:** Treat recurring spreadsheets as an [[Ingestion|ingestion]] source: place them in a [[Volumes|volume]], load them with [[Auto Loader]] or `COPY INTO`, and enforce a schema ([[Schema Enforcement and Evolution]]).
 > - **Access databases** usually contain a relational model of tables, keys, and saved queries. Migrate the tables and rewrite saved queries as views. See [[Migrating from Excel and Access]].
-> - **Logic in formulas.** The most effort in a spreadsheet migration goes into identifying business rules embedded in cells. Document each formula as a SQL expression and compare old and new outputs.
+> - **Logic in formulas:** The most effort in a spreadsheet migration goes into identifying business rules embedded in cells. Document each formula as a SQL expression and compare old and new outputs.
 
 ## Common misconceptions
 

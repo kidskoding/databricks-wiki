@@ -215,11 +215,11 @@ Common differences:
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Storage API versus materialization.** By default, table reads stream directly through the Storage API, with only simple filters and projections pushed down. Views and external tables are always materialized. Enable materialization per catalog (`forceMaterialization`) or per query (`materializationEnabled`) for aggregate, join, and limit pushdown, small results from large tables, or cross-region data. Materialization writes results to a BigQuery dataset and incurs BigQuery compute charges.
-> - **Partitioned and clustered tables.** BigQuery partitioning and clustering do not carry over. Use [[Liquid Clustering]] on the Delta target.
-> - **Nested data.** Keep `STRUCT` and `ARRAY` columns as Databricks complex types rather than flattening them during migration. Flatten in the silver layer if needed.
-> - **Reconcile type gaps.** For BigQuery types that Reconcile cannot compare exactly, add custom transformations in the reconcile config or drop those columns from the comparison and check them separately.
-> - **Ordering.** `EXPORT DATA` guarantees row order only with `ORDER BY`. Validation should never depend on file order.
+> - **Storage API versus materialization:** By default, table reads stream directly through the Storage API, with only simple filters and projections pushed down. Views and external tables are always materialized. Enable materialization per catalog (`forceMaterialization`) or per query (`materializationEnabled`) for aggregate, join, and limit pushdown, small results from large tables, or cross-region data. Materialization writes results to a BigQuery dataset and incurs BigQuery compute charges.
+> - **Partitioned and clustered tables:** BigQuery partitioning and clustering do not carry over. Use [[Liquid Clustering]] on the Delta target.
+> - **Nested data:** Keep `STRUCT` and `ARRAY` columns as Databricks complex types rather than flattening them during migration. Flatten in the silver layer if needed.
+> - **Reconcile type gaps:** For BigQuery types that Reconcile cannot compare exactly, add custom transformations in the reconcile config or drop those columns from the comparison and check them separately.
+> - **Ordering:** `EXPORT DATA` guarantees row order only with `ORDER BY`. Validation should never depend on file order.
 
 ## Common misconceptions
 

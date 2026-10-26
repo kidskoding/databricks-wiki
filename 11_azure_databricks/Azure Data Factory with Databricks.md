@@ -159,11 +159,11 @@ Job parameters that you do not pass use the job's default values. On a self-host
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Cluster startup overhead.** The Notebook activity pattern launches a job cluster per activity, which adds startup time to every step. Moving the steps into one multi-task Lakeflow job, run by a single Job activity, shares compute across tasks and enables serverless.
-> - **Where logic lives.** Put dependencies, retries, and branching in the Lakeflow job (see [[Tasks Triggers and Schedules]]). Keep ADF responsible for cross-system sequencing and on-premises copy. This keeps run history, lineage, and costs visible in Databricks [[System Tables|system tables]].
-> - **Managed identity permissions.** For managed identity authentication from the Notebook activity, Microsoft's tutorial grants the identity the Contributor role on the Azure Databricks workspace resource. Prefer adding the identity as a workspace service principal with only the job permissions it needs.
-> - **Limits.** A workspace allows up to 2,000 concurrent task runs, and a job can contain up to 1,000 tasks.
-> - **Migration path.** Microsoft positions Data Factory in Microsoft Fabric as the successor to ADF. Its Azure Databricks activity runs the same job types. Plan new orchestration either in Lakeflow Jobs or in Fabric Data Factory, not in new ADF Notebook activities.
+> - **Cluster startup overhead:** The Notebook activity pattern launches a job cluster per activity, which adds startup time to every step. Moving the steps into one multi-task Lakeflow job, run by a single Job activity, shares compute across tasks and enables serverless.
+> - **Where logic lives:** Put dependencies, retries, and branching in the Lakeflow job (see [[Tasks Triggers and Schedules]]). Keep ADF responsible for cross-system sequencing and on-premises copy. This keeps run history, lineage, and costs visible in Databricks [[System Tables|system tables]].
+> - **Managed identity permissions:** For managed identity authentication from the Notebook activity, Microsoft's tutorial grants the identity the Contributor role on the Azure Databricks workspace resource. Prefer adding the identity as a workspace service principal with only the job permissions it needs.
+> - **Limits:** A workspace allows up to 2,000 concurrent task runs, and a job can contain up to 1,000 tasks.
+> - **Migration path:** Microsoft positions Data Factory in Microsoft Fabric as the successor to ADF. Its Azure Databricks activity runs the same job types. Plan new orchestration either in Lakeflow Jobs or in Fabric Data Factory, not in new ADF Notebook activities.
 
 ## Common misconceptions
 

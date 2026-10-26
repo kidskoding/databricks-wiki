@@ -182,10 +182,10 @@ The migration checklist is a phase-by-phase list of the tasks for moving a busin
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Track the checklist as data.** Load the inventory into a Delta table with a status column per object and phase, and chart progress on a dashboard.
-> - **Automate the gates.** Make reconciliation queries a scheduled job that writes results to a table; gate the cutover on that table, not on memory.
-> - **Waves overlap.** In larger estates, wave 2 can be in conversion while wave 1 is in validation. Keep each wave's checklist separate.
-> - **Infrastructure as code.** Define workspaces, catalogs, and grants with the [[Terraform Provider]] and pipelines with [[Declarative Automation Bundles]], so environments can be recreated.
+> - **Track the checklist as data:** Load the inventory into a Delta table with a status column per object and phase, and chart progress on a dashboard.
+> - **Automate the gates:** Make reconciliation queries a scheduled job that writes results to a table; gate the cutover on that table, not on memory.
+> - **Waves overlap:** In larger estates, wave 2 can be in conversion while wave 1 is in validation. Keep each wave's checklist separate.
+> - **Infrastructure as code:** Define workspaces, catalogs, and grants with the [[Terraform Provider]] and pipelines with [[Declarative Automation Bundles]], so environments can be recreated.
 
 ## Common misconceptions
 

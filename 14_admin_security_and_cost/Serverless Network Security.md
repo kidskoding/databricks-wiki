@@ -63,8 +63,8 @@ Mastery: `INPUT[inlineSelect(option(new), option(learning), option(solid)):maste
 
 With classic compute, clusters run in a network you own. You control egress with route tables, firewalls, and security groups. Serverless compute removes that network from your account, which simplifies operations but creates two requirements:
 
-1. **Reaching protected resources.** A storage account or database behind a firewall must admit serverless compute, either by IP address or over a private endpoint.
-2. **Preventing exfiltration.** Code running on serverless compute must not be able to send data to arbitrary internet destinations.
+1. **Reaching protected resources:** A storage account or database behind a firewall must admit serverless compute, either by IP address or over a private endpoint.
+2. **Preventing exfiltration:** Code running on serverless compute must not be able to send data to arbitrary internet destinations.
 
 Databricks addresses the first with **network connectivity configurations (NCCs)** and the second with **network policies**, also called **serverless egress control**.
 
@@ -172,12 +172,12 @@ ORDER BY event_time DESC;
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (401)
-> - **NCC and policy are independent.** An NCC defines private paths; a network policy defines which destinations are permitted. A destination reached over an NCC private endpoint must still be allowed by the policy in restricted mode.
+> - **NCC and policy are independent:** An NCC defines private paths; a network policy defines which destinations are permitted. A destination reached over an NCC private endpoint must still be allowed by the policy in restricted mode.
 > - **Cross-workspace access** is not granted by full access mode. It is controlled separately.
 > - **Databricks Apps** need build-time and runtime domains (package repositories, for example) on the allowlist. Validate with dry run.
-> - **Inbound vs outbound logs.** `system.access.inbound_network` records ingress policy denials; `system.access.outbound_network` records egress denials. Account-level ingress policy denials are not logged.
-> - **Account console and serverless.** If account-level IP access lists are enabled, requests from serverless compute to the account come from internal Databricks addresses that cannot be allowlisted.
-> - **On-premises resources.** The GCP docs describe an SSH reverse tunnel pattern for reaching on-premises systems from serverless compute.
+> - **Inbound vs outbound logs:** `system.access.inbound_network` records ingress policy denials; `system.access.outbound_network` records egress denials. Account-level ingress policy denials are not logged.
+> - **Account console and serverless:** If account-level IP access lists are enabled, requests from serverless compute to the account come from internal Databricks addresses that cannot be allowlisted.
+> - **On-premises resources:** The GCP docs describe an SSH reverse tunnel pattern for reaching on-premises systems from serverless compute.
 
 ## Common misconceptions
 

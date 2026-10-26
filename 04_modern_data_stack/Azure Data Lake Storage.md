@@ -99,7 +99,9 @@ flowchart LR
   C1 --> D2["curated/"]
 ```
 
-**The URI scheme.** Databricks addresses ADLS with `abfss://` (the Azure Blob File System driver over TLS, an encrypted connection; plain `abfs://` is the non-TLS variant):
+### The URI scheme
+
+Databricks addresses ADLS with `abfss://` (the Azure Blob File System driver over TLS, an encrypted connection; plain `abfs://` is the non-TLS variant):
 
 ```text
 abfss://lake@acmestorage.dfs.core.windows.net/curated/orders/part-0000.parquet
@@ -153,10 +155,10 @@ SELECT * FROM read_files('abfss://lake@acmestorage.dfs.core.windows.net/raw/orde
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Atomic directory operations.** With HNS, renaming or deleting a directory is a single metadata operation. Hadoop-style job commits that rename a temporary directory into place are fast and safe on ADLS, unlike flat object stores.
-> - **ACLs vs RBAC.** Azure role assignments (RBAC) grant access at account or container level; POSIX ACLs refine it per directory and file. With Unity Catalog, you normally grant the Access Connector broad RBAC on the container and do fine-grained control in Unity Catalog instead of in ACLs.
-> - **Error to recognize.** "Unsupported Azure Scheme: abfss" usually means the account lacks HNS or the endpoint is wrong.
-> - **Multi-protocol access.** Blob APIs and Data Lake APIs can address the same data in an HNS account, so non-Databricks tools can drop files where Databricks ingests them with [[Auto Loader]].
+> - **Atomic directory operations:** With HNS, renaming or deleting a directory is a single metadata operation. Hadoop-style job commits that rename a temporary directory into place are fast and safe on ADLS, unlike flat object stores.
+> - **ACLs vs RBAC:** Azure role assignments (RBAC) grant access at account or container level; POSIX ACLs refine it per directory and file. With Unity Catalog, you normally grant the Access Connector broad RBAC on the container and do fine-grained control in Unity Catalog instead of in ACLs.
+> - **Error to recognize:** "Unsupported Azure Scheme: abfss" usually means the account lacks HNS or the endpoint is wrong.
+> - **Multi-protocol access:** Blob APIs and Data Lake APIs can address the same data in an HNS account, so non-Databricks tools can drop files where Databricks ingests them with [[Auto Loader]].
 > - **Account-level limits** (maximum request rate, ingress and egress throughput, capacity) apply per storage account. You can request higher capacity and ingress limits from Azure Support. Very large platforms spread data over several accounts.
 
 ## Common misconceptions

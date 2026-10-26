@@ -71,10 +71,10 @@ Mastery: `INPUT[inlineSelect(option(new), option(learning), option(solid)):maste
 
 A single computer allows assumptions that do not hold across a network of machines:
 
-- **Partial failure.** On one machine, components work or the machine stops. Across 1,000 machines, some components are failing at any given time. The GFS and MapReduce designs treat component failure as the normal case.
-- **Unreliable network.** Messages can be delayed, dropped, or duplicated. A node that does not respond may be failed, overloaded, or slow, and these cases look the same to other nodes.
-- **No shared clock.** Each machine's clock drifts, so ordering events across machines requires explicit coordination.
-- **Stragglers.** One slow machine can delay a job that thousands of other machines have finished.
+- **Partial failure:** On one machine, components work or the machine stops. Across 1,000 machines, some components are failing at any given time. The GFS and MapReduce designs treat component failure as the normal case.
+- **Unreliable network:** Messages can be delayed, dropped, or duplicated. A node that does not respond may be failed, overloaded, or slow, and these cases look the same to other nodes.
+- **No shared clock:** Each machine's clock drifts, so ordering events across machines requires explicit coordination.
+- **Stragglers:** One slow machine can delay a job that thousands of other machines have finished.
 
 Every system in the rest of this vault, including [[HDFS]], [[Apache Spark]], and [[Delta Lake]], is a distributed system built to handle these conditions.
 
@@ -109,10 +109,10 @@ flowchart TD
 
 Four techniques account for most fault tolerance in big data systems:
 
-1. **Heartbeats.** Workers send periodic status messages. The coordinator marks a worker as failed when messages stop. In HDFS, DataNodes send heartbeats and block reports to the NameNode.
-2. **Replication.** Each piece of data is stored on more than one machine, preferably in different racks, so the loss of a machine or a rack does not lose data.
-3. **Deterministic re-execution.** Tasks produce the same output from the same input, so a failed or slow task can be rerun on another machine. The MapReduce paper calls duplicate copies of slow tasks *backup tasks*; Spark calls this *speculative execution*.
-4. **Data locality.** The scheduler runs each task on or near the machine that stores its input, because network bandwidth is the scarcer resource.
+1. **Heartbeats:** Workers send periodic status messages. The coordinator marks a worker as failed when messages stop. In HDFS, DataNodes send heartbeats and block reports to the NameNode.
+2. **Replication:** Each piece of data is stored on more than one machine, preferably in different racks, so the loss of a machine or a rack does not lose data.
+3. **Deterministic re-execution:** Tasks produce the same output from the same input, so a failed or slow task can be rerun on another machine. The MapReduce paper calls duplicate copies of slow tasks *backup tasks*; Spark calls this *speculative execution*.
+4. **Data locality:** The scheduler runs each task on or near the machine that stores its input, because network bandwidth is the scarcer resource.
 
 Because systems retry work, pipeline writes must be safe to repeat. See [[Idempotency]] and [[Exactly-Once Processing]].
 
@@ -141,11 +141,11 @@ Because systems retry work, pipeline writes must be safe to repeat. See [[Idempo
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Consistency versus availability.** During a network partition, a system must choose between remaining available and remaining consistent (the CAP trade-off). Analytics storage typically requires strong consistency for table metadata, the record of which files make up a table version, and relies on retries elsewhere.
-> - **Single points of failure.** Early Hadoop ran one NameNode and one JobTracker; failure of either stopped the cluster. Hadoop 2 added standby NameNodes, and YARN ResourceManager high availability was added in Hadoop 2.4. Databricks places equivalent coordination in its [[Control Plane and Compute Plane|control plane]].
-> - **Common false assumptions.** The network is reliable, latency is zero, bandwidth is unlimited, and topology does not change. Each assumption fails in production clusters.
-> - **Commits on object storage.** Writing a table from many machines requires an atomic step that makes the new version visible. HDFS offered atomic directory rename for this purpose. Object stores do not provide equivalent semantics, which is one reason [[Delta Lake]] records commits in a [[Delta Transaction Log|transaction log]].
-> - **Stragglers at scale.** With 10,000 tasks and a 1% chance of a slow machine, about 100 tasks run slowly. Speculative execution exchanges extra compute for lower tail latency.
+> - **Consistency versus availability:** During a network partition, a system must choose between remaining available and remaining consistent (the CAP trade-off). Analytics storage typically requires strong consistency for table metadata, the record of which files make up a table version, and relies on retries elsewhere.
+> - **Single points of failure:** Early Hadoop ran one NameNode and one JobTracker; failure of either stopped the cluster. Hadoop 2 added standby NameNodes, and YARN ResourceManager high availability was added in Hadoop 2.4. Databricks places equivalent coordination in its [[Control Plane and Compute Plane|control plane]].
+> - **Common false assumptions:** The network is reliable, latency is zero, bandwidth is unlimited, and topology does not change. Each assumption fails in production clusters.
+> - **Commits on object storage:** Writing a table from many machines requires an atomic step that makes the new version visible. HDFS offered atomic directory rename for this purpose. Object stores do not provide equivalent semantics, which is one reason [[Delta Lake]] records commits in a [[Delta Transaction Log|transaction log]].
+> - **Stragglers at scale:** With 10,000 tasks and a 1% chance of a slow machine, about 100 tasks run slowly. Speculative execution exchanges extra compute for lower tail latency.
 
 ## Common misconceptions
 

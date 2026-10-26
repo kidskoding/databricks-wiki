@@ -142,7 +142,7 @@ To give an app access, grant `EXECUTE` on the model service to the app's service
 ## Small-business considerations
 
 > [!smallbiz] Small-business considerations
-> - **Turn it on before the second AI app.** One gateway means one place for keys, limits, and logs.
+> - **Turn it on before the second AI app:** One gateway means one place for keys, limits, and logs.
 > - **Store outside provider keys once** as a model provider, instead of pasting them into apps.
 > - **Set a per-user rate limit** on any endpoint exposed to staff, so one script cannot exhaust the budget.
 > - **Enable inference tables** for customer-facing assistants, so you can review what was said.
@@ -162,12 +162,12 @@ To give an app access, grant `EXECUTE` on the model service to the app's service
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Fallbacks and traffic splits.** A model service can split traffic across models and fall back to another when one fails or is rate-limited.
+> - **Fallbacks and traffic splits:** A model service can split traffic across models and fall back to another when one fails or is rate-limited.
 > - **Smart Routing** (Beta) picks a model for coding tasks.
-> - **MCP security.** Jailbreak screening for MCP tool calls is in Beta (October 21, 2026 release notes).
-> - **Legacy endpoint-level gateway.** Older serving endpoints have AI Gateway settings (rate limits, inference tables, guardrails) configured per endpoint. New work should use Unity Gateway services.
-> - **CLI.** The `ug` command is the primary Unity Gateway CLI; the older `ucode` command still works.
-> - **ABAC.** Attribute-based grant policies on model, provider, MCP, and agent services let one tag-based rule govern many services. See [[Attribute-Based Access Control]].
+> - **MCP security:** Jailbreak screening for MCP tool calls is in Beta (October 21, 2026 release notes).
+> - **Legacy endpoint-level gateway:** Older serving endpoints have AI Gateway settings (rate limits, inference tables, guardrails) configured per endpoint. New work should use Unity Gateway services.
+> - **CLI:** The `ug` command is the primary Unity Gateway CLI; the older `ucode` command still works.
+> - **ABAC:** Attribute-based grant policies on model, provider, MCP, and agent services let one tag-based rule govern many services. See [[Attribute-Based Access Control]].
 
 ## Common misconceptions
 

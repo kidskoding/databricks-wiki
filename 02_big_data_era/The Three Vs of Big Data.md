@@ -70,9 +70,9 @@ Through the 1990s most business data was structured and modest in size. Orders, 
 
 Three changes broke that model:
 
-- **More events per business action.** Web servers logged every page view and click, not only purchases. Search engines crawled billions of pages.
-- **Continuous arrival.** Servers, ad systems, and later phones and sensors ([[IoT]]) produced data all day instead of once per night.
-- **New formats.** Much of the new data was not tabular: log lines, web pages, JSON documents, images. See [[Structured vs Unstructured Data]] and [[CSV and JSON]].
+- **More events per business action:** Web servers logged every page view and click, not only purchases. Search engines crawled billions of pages.
+- **Continuous arrival:** Servers, ad systems, and later phones and sensors ([[IoT]]) produced data all day instead of once per night.
+- **New formats:** Much of the new data was not tabular: log lines, web pages, JSON documents, images. See [[Structured vs Unstructured Data]] and [[CSV and JSON]].
 
 The NIST Big Data Interoperability Framework lists volume, velocity, variety, and variability as the characteristics "known colloquially as the Vs of Big Data."
 
@@ -88,9 +88,9 @@ The three Vs (volume, velocity, and variety) are the three properties that make 
 
 Key points:
 
-- **"Big" is relative to the tooling.** Data is "big" when existing tools cannot store, process, or interpret it within the required time. A 50 GB file is routine for a [[Cluster|cluster]] and unusable in a spreadsheet. See [[Bytes and Data Sizes]].
-- **The Vs compound.** A high-rate stream of mixed-format events combines velocity and variety and is harder than either alone.
-- **Extended lists exist.** Later frameworks add terms such as *veracity* (trustworthiness) and *value*. The original three are the ones that drove the systems in this chapter.
+- **"Big" is relative to the tooling:** Data is "big" when existing tools cannot store, process, or interpret it within the required time. A 50 GB file is routine for a [[Cluster|cluster]] and unusable in a spreadsheet. See [[Bytes and Data Sizes]].
+- **The Vs compound:** A high-rate stream of mixed-format events combines velocity and variety and is harder than either alone.
+- **Extended lists exist:** Later frameworks add terms such as *veracity* (trustworthiness) and *value*. The original three are the ones that drove the systems in this chapter.
 
 ## How it works
 
@@ -143,10 +143,10 @@ At the large stage, a faster single machine does not resolve the bottleneck. [[S
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Volume is a read-throughput problem.** Disk capacity became inexpensive before disk read speed improved. A single disk reading roughly 100–200 MB/s needs hours to scan 1 TB. Spreading data across many disks and reading them in parallel is the central technique of the [[Google File System and MapReduce Papers|GFS and MapReduce]] designs.
-> - **Velocity has two components.** Ingest rate is how fast data arrives. Decision latency is how fast results are required. A pipeline can ingest from a stream and still deliver results once per day. See [[Latency]] and [[Throughput]].
-> - **Variety and schema-on-read.** Traditional [[Data Warehouses|warehouses]] use schema-on-write: data must match the table definition at load time. Hadoop-era tools applied the schema at query time instead. This made heterogeneous data cheap to store and also made it easy for lakes to degrade into [[Data Swamps]].
-> - **Lakehouse mapping.** A lakehouse addresses all three properties in one system: [[Object Storage]] for volume, [[Structured Streaming]] and [[Auto Loader]] for velocity, and [[Schema Enforcement and Evolution]] on [[Delta Lake]] tables for variety.
+> - **Volume is a read-throughput problem:** Disk capacity became inexpensive before disk read speed improved. A single disk reading roughly 100–200 MB/s needs hours to scan 1 TB. Spreading data across many disks and reading them in parallel is the central technique of the [[Google File System and MapReduce Papers|GFS and MapReduce]] designs.
+> - **Velocity has two components:** Ingest rate is how fast data arrives. Decision latency is how fast results are required. A pipeline can ingest from a stream and still deliver results once per day. See [[Latency]] and [[Throughput]].
+> - **Variety and schema-on-read:** Traditional [[Data Warehouses|warehouses]] use schema-on-write: data must match the table definition at load time. Hadoop-era tools applied the schema at query time instead. This made heterogeneous data cheap to store and also made it easy for lakes to degrade into [[Data Swamps]].
+> - **Lakehouse mapping:** A lakehouse addresses all three properties in one system: [[Object Storage]] for volume, [[Structured Streaming]] and [[Auto Loader]] for velocity, and [[Schema Enforcement and Evolution]] on [[Delta Lake]] tables for variety.
 
 ## Common misconceptions
 

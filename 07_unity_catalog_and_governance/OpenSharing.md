@@ -161,12 +161,12 @@ Privileges: `CREATE SHARE` and `CREATE RECIPIENT` on the metastore (or metastore
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **One metastore per recipient identifier.** In D2D sharing the shared data can be accessed only on the recipient metastore named by the identifier.
-> - **No copies, live reads.** The recipient's compute reads the provider's files through short-lived credentials. Nothing is replicated unless the recipient chooses to copy.
-> - **Share views, not tables.** Shared views let you filter rows and columns per partner. Shared tables can also be limited to partitions.
-> - **Audit.** Recipient access appears in the provider's [[Audit Logs]], so you can see who read what.
-> - **Building blocks.** OpenSharing is the transport under [[Clean Rooms]] and [[Databricks Marketplace]].
-> - **Open source.** The protocol has open-source clients and a reference server, so non-Databricks platforms can act as recipients or providers. Databricks' June 2026 materials say the project is hosted by the Linux Foundation and no migration is needed for existing Delta Sharing users.
+> - **One metastore per recipient identifier:** In D2D sharing the shared data can be accessed only on the recipient metastore named by the identifier.
+> - **No copies, live reads:** The recipient's compute reads the provider's files through short-lived credentials. Nothing is replicated unless the recipient chooses to copy.
+> - **Share views, not tables:** Shared views let you filter rows and columns per partner. Shared tables can also be limited to partitions.
+> - **Audit:** Recipient access appears in the provider's [[Audit Logs]], so you can see who read what.
+> - **Building blocks:** OpenSharing is the transport under [[Clean Rooms]] and [[Databricks Marketplace]].
+> - **Open source:** The protocol has open-source clients and a reference server, so non-Databricks platforms can act as recipients or providers. Databricks' June 2026 materials say the project is hosted by the Linux Foundation and no migration is needed for existing Delta Sharing users.
 
 ## Common misconceptions
 

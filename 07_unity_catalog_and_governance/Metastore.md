@@ -66,9 +66,9 @@ Mastery: `INPUT[inlineSelect(option(new), option(learning), option(solid)):maste
 
 In the legacy model each workspace had a built-in [[Hive Metastore]]. This caused three problems:
 
-1. **Duplication.** Two workspaces meant two separate inventories. A table created in `dev` did not exist in `prod` unless someone registered it twice.
-2. **Permissions per workspace.** Table access control was set inside each workspace, so the same person could be allowed in one and blocked in the other for the same data.
-3. **No home for account-wide objects.** There was no place for objects that span workspaces: shares to partners, connections to outside databases, cloud storage credentials.
+1. **Duplication:** Two workspaces meant two separate inventories. A table created in `dev` did not exist in `prod` unless someone registered it twice.
+2. **Permissions per workspace:** Table access control was set inside each workspace, so the same person could be allowed in one and blocked in the other for the same data.
+3. **No home for account-wide objects:** There was no place for objects that span workspaces: shares to partners, connections to outside databases, cloud storage credentials.
 
 The Unity Catalog metastore is an **account-level** object, outside any single workspace. Workspaces are *attached* to it and read all governed objects from it.
 
@@ -161,11 +161,11 @@ The concept and the one-per-region rule are the same on every cloud. The differe
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Metastore-level storage is optional.** Older metastores required a root storage path. Today you can skip it and set managed storage per catalog or schema instead, which keeps business units' files in separate buckets or accounts.
-> - **Multi-region companies.** Two regions mean two metastores. Data moves between them through Databricks-to-Databricks [[OpenSharing]] or by replicating pipelines, never by attaching a workspace across regions. Plan [[Disaster Recovery]] the same way.
-> - **Metastore admin vs account admin.** Account admins create metastores and assign workspaces. Metastore admins manage the objects inside (catalogs, external locations, ownership). Many teams leave the metastore admin role empty and grant narrower privileges like `CREATE CATALOG` instead. See [[Admin Roles]].
-> - **Account-level objects travel with the metastore.** Shares, recipients, connections, and storage credentials are metastore objects, so they are visible from every attached workspace unless you restrict them with workspace bindings.
-> - **Audit and system tables are scoped by region.** Many [[System Tables]] are regional, so a two-metastore company queries each region's data from a workspace in that region.
+> - **Metastore-level storage is optional:** Older metastores required a root storage path. Today you can skip it and set managed storage per catalog or schema instead, which keeps business units' files in separate buckets or accounts.
+> - **Multi-region companies:** Two regions mean two metastores. Data moves between them through Databricks-to-Databricks [[OpenSharing]] or by replicating pipelines, never by attaching a workspace across regions. Plan [[Disaster Recovery]] the same way.
+> - **Metastore admin vs account admin:** Account admins create metastores and assign workspaces. Metastore admins manage the objects inside (catalogs, external locations, ownership). Many teams leave the metastore admin role empty and grant narrower privileges like `CREATE CATALOG` instead. See [[Admin Roles]].
+> - **Account-level objects travel with the metastore:** Shares, recipients, connections, and storage credentials are metastore objects, so they are visible from every attached workspace unless you restrict them with workspace bindings.
+> - **Audit and system tables are scoped by region:** Many [[System Tables]] are regional, so a two-metastore company queries each region's data from a workspace in that region.
 
 ## Common misconceptions
 

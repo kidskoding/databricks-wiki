@@ -173,12 +173,12 @@ az keyvault role assignment create \
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Revocation.** Disabling or deleting the key, or removing the role assignment, makes the protected data unreadable by Azure Databricks. Test revocation and restore in a non-production workspace first, and enable soft delete and purge protection on the vault.
-> - **Ordering for DBFS root.** Workspace storage CMK uses a two-step pattern: deploy or update the workspace with `prepareEncryption` to create the storage account's managed identity, grant that identity access to the key, then enable the key on the workspace.
-> - **HSM and FedRAMP.** HSM-backed keys for managed disks are not supported on workspaces with FedRAMP compliance; contact your account team.
-> - **Serverless workspaces.** Only the managed services key applies; it also protects default storage, including workspace catalogs.
-> - **Unity Catalog catalog-level keys.** On AWS and Google Cloud, Databricks also offers customer-managed keys at the Unity Catalog catalog level for catalogs on default storage (Enterprise tier). Check Azure release notes for availability on Azure.
-> - **Compliance.** Customer-managed keys are commonly paired with the [[Compliance Security Profile|compliance security profile]], [[Azure Private Link]], and diagnostic logging in regulated deployments.
+> - **Revocation:** Disabling or deleting the key, or removing the role assignment, makes the protected data unreadable by Azure Databricks. Test revocation and restore in a non-production workspace first, and enable soft delete and purge protection on the vault.
+> - **Ordering for DBFS root:** Workspace storage CMK uses a two-step pattern: deploy or update the workspace with `prepareEncryption` to create the storage account's managed identity, grant that identity access to the key, then enable the key on the workspace.
+> - **HSM and FedRAMP:** HSM-backed keys for managed disks are not supported on workspaces with FedRAMP compliance; contact your account team.
+> - **Serverless workspaces:** Only the managed services key applies; it also protects default storage, including workspace catalogs.
+> - **Unity Catalog catalog-level keys:** On AWS and Google Cloud, Databricks also offers customer-managed keys at the Unity Catalog catalog level for catalogs on default storage (Enterprise tier). Check Azure release notes for availability on Azure.
+> - **Compliance:** Customer-managed keys are commonly paired with the [[Compliance Security Profile|compliance security profile]], [[Azure Private Link]], and diagnostic logging in regulated deployments.
 
 ## Common misconceptions
 

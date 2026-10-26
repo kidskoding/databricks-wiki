@@ -96,17 +96,29 @@ flowchart LR
   C --> G["Execution history<br/>and query profile"]
 ```
 
-**Writing.** Autocomplete suggests table and column names from Unity Catalog. **Query snippets** (added May 2025) let you save reusable fragments such as a `JOIN` or `CASE` pattern and insert them through autocomplete. You create them from the View menu. [[Genie Code]] (formerly Databricks Assistant, renamed in March 2026) writes, explains, or fixes a query from a plain-English request.
+### Writing
 
-**Running.** You can run a whole script or a selection. If the script holds several statements, the results pane lets you step through each statement's output.
+Autocomplete suggests table and column names from Unity Catalog. **Query snippets** (added May 2025) let you save reusable fragments such as a `JOIN` or `CASE` pattern and insert them through autocomplete. You create them from the View menu. [[Genie Code]] (formerly Databricks Assistant, renamed in March 2026) writes, explains, or fixes a query from a plain-English request.
 
-**Parameters.** Date and timestamp parameters offer preset ranges such as *This week* and *Last 30 days* (July 2025), so one saved query can serve many date windows.
+### Running
 
-**Reading results.** Since May 1, 2026 you can select column headers in a results table and open the selection details to see **profiling statistics** for those columns. This is a fast way to spot [[Null|nulls]] or strange values before you trust a number. Results can be exported as CSV, TSV, or Excel files up to 5 GB.
+You can run a whole script or a selection. If the script holds several statements, the results pane lets you step through each statement's output.
 
-**History.** Inline execution history (July 2025) lets you open earlier results without rerunning, open past [[Query Performance and Caching|query profiles]], and compare run times and statuses.
+### Parameters
 
-**Collaboration.** Several people can edit the same query at once, and editors can comment on individual lines.
+Date and timestamp parameters offer preset ranges such as *This week* and *Last 30 days* (July 2025), so one saved query can serve many date windows.
+
+### Reading results
+
+Since May 1, 2026 you can select column headers in a results table and open the selection details to see **profiling statistics** for those columns. This is a fast way to spot [[Null|nulls]] or strange values before you trust a number. Results can be exported as CSV, TSV, or Excel files up to 5 GB.
+
+### History
+
+Inline execution history (July 2025) lets you open earlier results without rerunning, open past [[Query Performance and Caching|query profiles]], and compare run times and statuses.
+
+### Collaboration
+
+Several people can edit the same query at once, and editors can comment on individual lines.
 
 A small worked example a shop analyst might save as `Weekly sales check`:
 
@@ -144,11 +156,11 @@ Running both statements produces two result tabs: a daily trend that you can tur
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Profiles and the cache.** A query answered from the result cache has no query profile. To profile it, make a trivial change (for example, change or remove the `LIMIT`). See [[Query Performance and Caching]].
-> - **Who can see a profile.** You must own the query or hold at least `CAN MONITOR` on the warehouse.
-> - **Editor vs notebook.** A [[Notebooks|notebook]] attached to a SQL warehouse can also run SQL. Use the editor for analyst work and saved queries, and notebooks when SQL is mixed with Python or markdown explanation.
-> - **Default warehouse.** A preselected default warehouse helps cost control: new users run on the small shared warehouse instead of starting a large one.
-> - **Genie Code.** Databricks Assistant was renamed [[Genie Code]] on March 11, 2026. Older screenshots show the Assistant name.
+> - **Profiles and the cache:** A query answered from the result cache has no query profile. To profile it, make a trivial change (for example, change or remove the `LIMIT`). See [[Query Performance and Caching]].
+> - **Who can see a profile:** You must own the query or hold at least `CAN MONITOR` on the warehouse.
+> - **Editor vs notebook:** A [[Notebooks|notebook]] attached to a SQL warehouse can also run SQL. Use the editor for analyst work and saved queries, and notebooks when SQL is mixed with Python or markdown explanation.
+> - **Default warehouse:** A preselected default warehouse helps cost control: new users run on the small shared warehouse instead of starting a large one.
+> - **Genie Code:** Databricks Assistant was renamed [[Genie Code]] on March 11, 2026. Older screenshots show the Assistant name.
 
 ## Common misconceptions
 

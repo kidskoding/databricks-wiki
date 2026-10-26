@@ -79,7 +79,9 @@ Structured Streaming is a streaming engine built on the [[Spark SQL]] engine. It
 
 With replayable sources, idempotent sinks such as Delta, and a checkpoint, Structured Streaming provides [[Exactly-Once Processing|exactly-once]] results end to end.
 
-**Real-time mode.** By default the engine processes data in micro-batches, which typically gives latencies from around a second upward. Spark 4.1 added a real-time mode for sub-second, operational workloads. On Databricks, real-time mode requires Databricks Runtime 16.4 LTS or above, classic compute, and update output mode; Databricks says it can reach end-to-end latency as low as about five milliseconds. The Azure Databricks documentation labels it Public Preview; check its current status before relying on it.
+### Real-time mode
+
+By default the engine processes data in micro-batches, which typically gives latencies from around a second upward. Spark 4.1 added a real-time mode for sub-second, operational workloads. On Databricks, real-time mode requires Databricks Runtime 16.4 LTS or above, classic compute, and update output mode; Databricks says it can reach end-to-end latency as low as about five milliseconds. The Azure Databricks documentation labels it Public Preview; check its current status before relying on it.
 
 ## How it works
 
@@ -155,11 +157,11 @@ The engine is the same everywhere. The common event services differ:
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **State.** Aggregations, deduplication, and stream-stream joins keep state between batches. Without a watermark, state grows forever. On Databricks, the RocksDB state store keeps large state off the JVM heap.
-> - **Output mode rules.** Append needs results that never change (windowed aggregations with a watermark, or no aggregation). Complete keeps the entire result, so it only suits small aggregations. Update emits only changed rows and is the mode real-time mode requires.
-> - **Checkpoints are tied to the query.** Changing the query's shape (adding an aggregation, changing keys) can make an old checkpoint incompatible. Plan for a new checkpoint and a [[Backfill|backfill]] when you change logic.
-> - **`foreachBatch`.** Gives you each micro-batch as a normal DataFrame, so you can `MERGE` into a Delta table (upserts), write to several sinks, or call APIs. Make it idempotent, since a batch can be retried.
-> - **Real-time mode mechanics.** Databricks describes long-running batches (five minutes by default) with all stages scheduled at once and a streaming shuffle between them, which means you need enough task slots for every task. Photon and autoscaling must be off, and spot instances are discouraged.
+> - **State:** Aggregations, deduplication, and stream-stream joins keep state between batches. Without a watermark, state grows forever. On Databricks, the RocksDB state store keeps large state off the JVM heap.
+> - **Output mode rules:** Append needs results that never change (windowed aggregations with a watermark, or no aggregation). Complete keeps the entire result, so it only suits small aggregations. Update emits only changed rows and is the mode real-time mode requires.
+> - **Checkpoints are tied to the query:** Changing the query's shape (adding an aggregation, changing keys) can make an old checkpoint incompatible. Plan for a new checkpoint and a [[Backfill|backfill]] when you change logic.
+> - **`foreachBatch`:** Gives you each micro-batch as a normal DataFrame, so you can `MERGE` into a Delta table (upserts), write to several sinks, or call APIs. Make it idempotent, since a batch can be retried.
+> - **Real-time mode mechanics:** Databricks describes long-running batches (five minutes by default) with all stages scheduled at once and a streaming shuffle between them, which means you need enough task slots for every task. Photon and autoscaling must be off, and spot instances are discouraged.
 
 ## Common misconceptions
 

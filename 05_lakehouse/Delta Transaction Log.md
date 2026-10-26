@@ -140,8 +140,8 @@ DESCRIBE DETAIL  shop.sales.orders;          -- location, file count, size, feat
 
 > [!smallbiz] Small-business considerations
 > You do not need to read `_delta_log` directly. Two practices are useful:
-> - **Use `DESCRIBE HISTORY` as an audit trail.** When a number changes unexpectedly, the history shows which job or person wrote to the table and when.
-> - **Never delete files from the table folder by hand.** The log still points at them, and the table breaks. Use `DELETE`, `VACUUM`, or `DROP TABLE` instead. With Unity Catalog managed tables you do not touch the folder at all.
+> - **Use `DESCRIBE HISTORY` as an audit trail:** When a number changes unexpectedly, the history shows which job or person wrote to the table and when.
+> - **Never delete files from the table folder by hand:** The log still points at them, and the table breaks. Use `DELETE`, `VACUUM`, or `DROP TABLE` instead. With Unity Catalog managed tables you do not touch the folder at all.
 
 ## Cloud differences
 
@@ -151,11 +151,11 @@ DESCRIBE DETAIL  shop.sales.orders;          -- location, file count, size, feat
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Statistics drive data skipping.** Each `add` action carries per-file column statistics (min, max, null counts) that let queries skip files. Which columns get statistics is controlled by table properties listed in the table properties reference; this vault has not confirmed the default column count. See [[Data Skipping]].
-> - **Log retention is separate from data retention.** `delta.logRetentionDuration` (default 30 days) controls how long commit files are kept. `delta.deletedFileRetentionDuration` (default 7 days) controls when VACUUM may delete removed data files. Time travel needs both. See [[Time Travel]].
-> - **Tombstones.** A `remove` action is a tombstone. Checkpoints keep tombstones until they expire, so VACUUM knows which files are safe to delete.
-> - **Deletion vectors change what `add` means.** With [[Deletion Vectors]], an `add` can carry a pointer to a small bitmap of deleted rows, so a delete updates metadata instead of rewriting a file.
-> - **`txn` and idempotent streaming.** Streaming and other incremental writers record `appId` and `version` pairs (transaction identifiers) in the log atomically with their data changes, so a retried batch is not committed twice. The protocol cites the Delta sink for Spark Structured Streaming as an example, and this supports [[Exactly-Once Processing|exactly-once]] writes to Delta sinks.
+> - **Statistics drive data skipping:** Each `add` action carries per-file column statistics (min, max, null counts) that let queries skip files. Which columns get statistics is controlled by table properties listed in the table properties reference; this vault has not confirmed the default column count. See [[Data Skipping]].
+> - **Log retention is separate from data retention:** `delta.logRetentionDuration` (default 30 days) controls how long commit files are kept. `delta.deletedFileRetentionDuration` (default 7 days) controls when VACUUM may delete removed data files. Time travel needs both. See [[Time Travel]].
+> - **Tombstones:** A `remove` action is a tombstone. Checkpoints keep tombstones until they expire, so VACUUM knows which files are safe to delete.
+> - **Deletion vectors change what `add` means:** With [[Deletion Vectors]], an `add` can carry a pointer to a small bitmap of deleted rows, so a delete updates metadata instead of rewriting a file.
+> - **`txn` and idempotent streaming:** Streaming and other incremental writers record `appId` and `version` pairs (transaction identifiers) in the log atomically with their data changes, so a retried batch is not committed twice. The protocol cites the Delta sink for Spark Structured Streaming as an example, and this supports [[Exactly-Once Processing|exactly-once]] writes to Delta sinks.
 
 ## Common misconceptions
 

@@ -133,7 +133,7 @@ Distributed training needs an 8xH100 or 8xB300 accelerator. The decorator uses a
 ## Small-business considerations
 
 > [!smallbiz] Small-business considerations
-> - **Most small businesses need no GPUs.** SQL, ETL, forecasts, and tabular models run efficiently on CPUs. Hosted LLMs through [[Foundation Model APIs]] need no GPUs on your side.
+> - **Most small businesses need no GPUs:** SQL, ETL, forecasts, and tabular models run efficiently on CPUs. Hosted LLMs through [[Foundation Model APIs]] need no GPUs on your side.
 > - **Use GPUs for** image models, fine-tuning a small open LLM, or training neural networks on large text or image datasets.
 > - **Prefer AI Runtime** for occasional GPU work, so nothing stays running between experiments.
 > - **Cap GPU access** with [[Compute Policies|compute policies]] or permissions so only intended users start GPU clusters.
@@ -153,11 +153,11 @@ Distributed training needs an 8xH100 or 8xB300 accelerator. The decorator uses a
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Environment versions.** GPU environment version 6 is the last to ship `serverless_gpu`; versions 5 and below use it. Plan migration to `databricks.air` before version 7.
-> - **Maturity.** Pages disagree on whether the distributed decorator is Beta or Public Preview. Treat AI Runtime APIs as subject to change.
-> - **Scheduling.** Jobs can run AI Runtime workloads on a schedule and chain them with upstream data preparation and downstream registration tasks.
-> - **Serving on GPU.** `GPU_XLARGE` (1x H100) serving endpoints do not support scale to zero.
-> - **Library pinning.** Pin library versions in the serverless environment configuration so training runs are reproducible.
+> - **Environment versions:** GPU environment version 6 is the last to ship `serverless_gpu`; versions 5 and below use it. Plan migration to `databricks.air` before version 7.
+> - **Maturity:** Pages disagree on whether the distributed decorator is Beta or Public Preview. Treat AI Runtime APIs as subject to change.
+> - **Scheduling:** Jobs can run AI Runtime workloads on a schedule and chain them with upstream data preparation and downstream registration tasks.
+> - **Serving on GPU:** `GPU_XLARGE` (1x H100) serving endpoints do not support scale to zero.
+> - **Library pinning:** Pin library versions in the serverless environment configuration so training runs are reproducible.
 > - **Data loading** often bottlenecks GPU training. Use streaming data loaders from Delta tables or volumes and keep GPUs busy.
 
 ## Common misconceptions

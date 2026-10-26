@@ -61,8 +61,8 @@ Mastery: `INPUT[inlineSelect(option(new), option(learning), option(solid)):maste
 > For a managed table, Databricks decides where the files go, maintains them, and deletes them when the table is dropped. For an external table, you choose where the files live and you are responsible for them; Databricks only controls who can access them.
 
 > [!analogy]- Analogy: a hotel room vs your own apartment
-> - **Managed table = hotel room.** The hotel ([[Unity Catalog]]) picks the room, keeps it tidy (automatic optimization), and when you check out (`DROP TABLE`) the room is cleared after a short grace period.
-> - **External table = your apartment.** You choose the building (a path in your own [[Object Storage|object storage]]). The concierge still checks IDs at the door (Unity Catalog governs access), but when you "check out" of the register, your furniture stays exactly where it was.
+> - **Managed table = hotel room:** The hotel ([[Unity Catalog]]) picks the room, keeps it tidy (automatic optimization), and when you check out (`DROP TABLE`) the room is cleared after a short grace period.
+> - **External table = your apartment:** You choose the building (a path in your own [[Object Storage|object storage]]). The concierge still checks IDs at the door (Unity Catalog governs access), but when you "check out" of the register, your furniture stays exactly where it was.
 
 ## Background
 
@@ -162,8 +162,8 @@ The two table types and the SQL are identical. Only the paths and the storage se
 
 > [!deepdive]- Advanced topics (301–401)
 > - **Predictive optimization** runs `OPTIMIZE`, `VACUUM`, and `ANALYZE` for you. It can be set at the account, catalog, schema, or table level, and managed tables inherit the account value. It is on by default for accounts created on or after November 11, 2024, and is rolling out to older accounts.
-> - **Never write to managed table paths directly.** Managed tables are meant to be read and written through Unity Catalog. External engines should use the Unity Catalog open APIs or the Iceberg REST catalog, with the `EXTERNAL USE SCHEMA` privilege (Public Preview).
-> - **Migration.** Hive external tables usually become Unity Catalog external tables (with `SYNC`), then can be converted to managed with `SET MANAGED`. Hive managed tables in the DBFS root are copied with `DEEP CLONE`. See [[Hive Metastore Migration to Unity Catalog]].
+> - **Never write to managed table paths directly:** Managed tables are meant to be read and written through Unity Catalog. External engines should use the Unity Catalog open APIs or the Iceberg REST catalog, with the `EXTERNAL USE SCHEMA` privilege (Public Preview).
+> - **Migration:** Hive external tables usually become Unity Catalog external tables (with `SYNC`), then can be converted to managed with `SET MANAGED`. Hive managed tables in the DBFS root are copied with `DEEP CLONE`. See [[Hive Metastore Migration to Unity Catalog]].
 > - **Foreign tables** created by catalog federation are a third kind. They are read-only (except a federated Hive metastore), and conversion to managed sets predictive optimization to `INHERIT`.
 
 ## Common misconceptions

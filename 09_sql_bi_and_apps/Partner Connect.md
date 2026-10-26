@@ -121,10 +121,10 @@ SHOW GRANTS ON CATALOG raw;
 ## Small-business considerations
 
 > [!smallbiz] Small-business considerations
-> - **Use Partner Connect for trials.** It is the fastest way to test whether a partner tool fits, without a setup project.
-> - **Check native options first.** For ingestion, [[Lakeflow Connect]] has built-in connectors for many SaaS sources and databases. For dashboards, [[AI-BI Dashboards]] need no second license. Use a partner when it covers a gap.
-> - **Review the provisioned warehouse.** Set a short auto-stop and an appropriate size on `<PARTNER>_WAREHOUSE`, since partner syncs start it on their own schedule.
-> - **Restrict the catalog.** Connect ingestion partners to a `raw` catalog, not to the catalog that holds reporting tables.
+> - **Use Partner Connect for trials:** It is the fastest way to test whether a partner tool fits, without a setup project.
+> - **Check native options first:** For ingestion, [[Lakeflow Connect]] has built-in connectors for many SaaS sources and databases. For dashboards, [[AI-BI Dashboards]] need no second license. Use a partner when it covers a gap.
+> - **Review the provisioned warehouse:** Set a short auto-stop and an appropriate size on `<PARTNER>_WAREHOUSE`, since partner syncs start it on their own schedule.
+> - **Restrict the catalog:** Connect ingestion partners to a `raw` catalog, not to the catalog that holds reporting tables.
 >
 > Partner Connect has no separate charge. Partner tools have their own pricing, and the provisioned SQL warehouse is billed in [[DBUs]] while it runs.
 
@@ -143,11 +143,11 @@ SHOW GRANTS ON CATALOG raw;
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Prefer OAuth where supported.** Databricks recommends service principal tokens over user tokens for automated tools, and OAuth where the partner supports it. See [[Authentication - Tokens and OAuth]].
-> - **Token rotation.** Cloud partners hold the token. Plan rotation with the partner's credential-update screen, and regenerate the service principal's token as a workspace admin when needed.
-> - **Disconnecting.** When you stop using a partner, check which provisioned resources remain (service principal, token, warehouse, schemas the partner wrote) and remove the ones you no longer need.
-> - **Manual alternative.** Every Partner Connect integration can be configured manually with the same resources. Use the manual path to choose an existing warehouse or to apply stricter grants from the start.
-> - **Reverse direction.** Partners that push lakehouse data back into business tools perform [[Reverse ETL]]. Databricks' native option for serving data to apps is [[Lakebase]] synced tables.
+> - **Prefer OAuth where supported:** Databricks recommends service principal tokens over user tokens for automated tools, and OAuth where the partner supports it. See [[Authentication - Tokens and OAuth]].
+> - **Token rotation:** Cloud partners hold the token. Plan rotation with the partner's credential-update screen, and regenerate the service principal's token as a workspace admin when needed.
+> - **Disconnecting:** When you stop using a partner, check which provisioned resources remain (service principal, token, warehouse, schemas the partner wrote) and remove the ones you no longer need.
+> - **Manual alternative:** Every Partner Connect integration can be configured manually with the same resources. Use the manual path to choose an existing warehouse or to apply stricter grants from the start.
+> - **Reverse direction:** Partners that push lakehouse data back into business tools perform [[Reverse ETL]]. Databricks' native option for serving data to apps is [[Lakebase]] synced tables.
 
 ## Common misconceptions
 

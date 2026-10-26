@@ -152,9 +152,9 @@ daily.write.mode("overwrite").saveAsTable("bakery.gold.daily_sales")
 ## Small-business considerations
 
 > [!smallbiz] Small-business considerations
-> - **Learn SQL first, then Python.** For a one-person data team, SQL covers most reporting. Add Python when you need to call APIs, automate file cleanup, or forecast.
-> - **pandas is enough for small data.** If your data fits comfortably in a laptop's memory, pandas is simpler than a distributed engine.
-> - **Keep scripts out of personal laptops.** A script that only runs on one person's machine is the Python version of the master spreadsheet. Store code in [[Git]] and run it on shared, scheduled compute.
+> - **Learn SQL first, then Python:** For a one-person data team, SQL covers most reporting. Add Python when you need to call APIs, automate file cleanup, or forecast.
+> - **pandas is enough for small data:** If your data fits comfortably in a laptop's memory, pandas is simpler than a distributed engine.
+> - **Keep scripts out of personal laptops:** A script that only runs on one person's machine is the Python version of the master spreadsheet. Store code in [[Git]] and run it on shared, scheduled compute.
 
 > [!bridge]- In Databricks today
 > - **Notebooks:** Databricks [[Notebooks|notebooks]] run Python, SQL, Scala, and R, and cells in different languages can share tables.
@@ -172,11 +172,11 @@ daily.write.mode("overwrite").saveAsTable("bakery.gold.daily_sales")
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Why pandas is fast enough on one machine.** pandas is built on top of NumPy, so vectorized column operations avoid slow Python loops. Row-by-row `apply` with Python functions loses that advantage; the pandas performance guide recommends removing for-loops in favor of NumPy vectorization.
-> - **Apache Arrow.** Arrow (first release 0.1.0 in October 2016) is a language-independent columnar in-memory format. It lets pandas, Spark, and other tools exchange data without converting it row by row, and it is the complement to Parquet on disk. On Databricks, Arrow-based conversion supports all Spark SQL types except `ArrayType` of `TimestampType`.
-> - **Arrow fallback.** If an error occurs before computation starts in Spark, Arrow-enabled conversions can fall back to a non-Arrow path. `spark.sql.execution.arrow.pyspark.fallback.enabled` controls this.
-> - **Batch size for pandas UDFs.** Spark converts partitions to Arrow record batches, which can temporarily use a lot of JVM memory. `spark.sql.execution.arrow.maxRecordsPerBatch` defaults to 10,000 rows; lower it for very wide data.
-> - **The driver bottleneck.** In a cluster, the [[Driver and Executors|driver]] coordinates and executors do the work. Plain pandas runs only on the driver, so a pandas script on a large cluster still uses one machine.
+> - **Why pandas is fast enough on one machine:** pandas is built on top of NumPy, so vectorized column operations avoid slow Python loops. Row-by-row `apply` with Python functions loses that advantage; the pandas performance guide recommends removing for-loops in favor of NumPy vectorization.
+> - **Apache Arrow:** Arrow (first release 0.1.0 in October 2016) is a language-independent columnar in-memory format. It lets pandas, Spark, and other tools exchange data without converting it row by row, and it is the complement to Parquet on disk. On Databricks, Arrow-based conversion supports all Spark SQL types except `ArrayType` of `TimestampType`.
+> - **Arrow fallback:** If an error occurs before computation starts in Spark, Arrow-enabled conversions can fall back to a non-Arrow path. `spark.sql.execution.arrow.pyspark.fallback.enabled` controls this.
+> - **Batch size for pandas UDFs:** Spark converts partitions to Arrow record batches, which can temporarily use a lot of JVM memory. `spark.sql.execution.arrow.maxRecordsPerBatch` defaults to 10,000 rows; lower it for very wide data.
+> - **The driver bottleneck:** In a cluster, the [[Driver and Executors|driver]] coordinates and executors do the work. Plain pandas runs only on the driver, so a pandas script on a large cluster still uses one machine.
 
 ## Common misconceptions
 

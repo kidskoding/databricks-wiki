@@ -128,10 +128,10 @@ databricks clusters delete <cluster-id>   # "delete" terminates; permanent-delet
 
 Key behaviors:
 
-- **Termination is not deletion.** A terminated cluster keeps its config and can be restarted. Databricks keeps terminated all-purpose clusters for a limited time unless an admin pins them.
-- **Libraries reinstall on start.** Cluster libraries install every time the cluster starts. Notebook-scoped installs (`%pip install`) vanish when the Python process restarts.
-- **Restarts pick up runtime maintenance updates.** Long-running clusters miss security patches until restarted.
-- **Debugging tools.** Every classic cluster has the [[Spark UI]], driver logs, and metrics pages.
+- **Termination is not deletion:** A terminated cluster keeps its config and can be restarted. Databricks keeps terminated all-purpose clusters for a limited time unless an admin pins them.
+- **Libraries reinstall on start:** Cluster libraries install every time the cluster starts. Notebook-scoped installs (`%pip install`) vanish when the Python process restarts.
+- **Restarts pick up runtime maintenance updates:** Long-running clusters miss security patches until restarted.
+- **Debugging tools:** Every classic cluster has the [[Spark UI]], driver logs, and metrics pages.
 
 ## Small-business considerations
 
@@ -139,7 +139,7 @@ Key behaviors:
 > All-purpose clusters are the most common source of unexpected bills, for example a large cluster left running over a weekend. Three practices prevent this:
 > 1. **Prefer [[Serverless Compute|serverless notebooks]]** for everyday work, so there is no cluster to forget.
 > 2. **If you need a cluster, set auto-termination to 30 minutes or less** and use a [[Compute Policies|compute policy]] that caps size and enforces the timer.
-> 3. **Never schedule production jobs on an all-purpose cluster.** Use [[Jobs Compute]] or serverless jobs, which cost less and shut down by themselves.
+> 3. **Never schedule production jobs on an all-purpose cluster:** Use [[Jobs Compute]] or serverless jobs, which cost less and shut down by themselves.
 
 ## Cloud differences
 
@@ -155,12 +155,12 @@ Key behaviors:
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Cluster pinning and retention.** Terminated all-purpose clusters are removed after a retention window unless pinned by an admin. Pin long-lived team clusters so their IDs (used in Databricks Connect profiles and scripts) stay stable.
-> - **Instance pools.** Pools keep idle VMs warm so clusters start faster. You pay the cloud provider for idle pool VMs, but no DBUs while idle.
-> - **Init scripts.** Cluster-scoped init scripts run on every node at start. Store them in Unity Catalog [[Volumes]] or workspace files; DBFS-stored init scripts are legacy. On standard access mode they must be on the metastore allowlist.
-> - **Single-node clusters.** A driver-only cluster suits pandas, scikit-learn, or small Spark jobs. It is not suitable for standard access mode sharing at scale.
-> - **Policies as guardrails.** [[Compute Policies]] can fix the runtime, cap workers, force tags, hide fields, and set `autotermination_minutes`. The "Personal Compute" policy lets users create single-node dedicated clusters for themselves.
-> - **Event log.** The cluster event log (UI or `databricks clusters events <id>`) shows why a cluster resized, restarted, or failed to start (for example, cloud quota or spot capacity errors).
+> - **Cluster pinning and retention:** Terminated all-purpose clusters are removed after a retention window unless pinned by an admin. Pin long-lived team clusters so their IDs (used in Databricks Connect profiles and scripts) stay stable.
+> - **Instance pools:** Pools keep idle VMs warm so clusters start faster. You pay the cloud provider for idle pool VMs, but no DBUs while idle.
+> - **Init scripts:** Cluster-scoped init scripts run on every node at start. Store them in Unity Catalog [[Volumes]] or workspace files; DBFS-stored init scripts are legacy. On standard access mode they must be on the metastore allowlist.
+> - **Single-node clusters:** A driver-only cluster suits pandas, scikit-learn, or small Spark jobs. It is not suitable for standard access mode sharing at scale.
+> - **Policies as guardrails:** [[Compute Policies]] can fix the runtime, cap workers, force tags, hide fields, and set `autotermination_minutes`. The "Personal Compute" policy lets users create single-node dedicated clusters for themselves.
+> - **Event log:** The cluster event log (UI or `databricks clusters events <id>`) shows why a cluster resized, restarted, or failed to start (for example, cloud quota or spot capacity errors).
 
 ## Common misconceptions
 

@@ -190,11 +190,11 @@ In cluster deploy mode, the Spark driver runs inside the ApplicationMaster's con
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **ResourceManager high availability.** Before Hadoop 2.4, the ResourceManager was a single point of failure. RM high availability adds an Active/Standby ResourceManager pair.
-> - **Memory-based sizing.** Containers are sized primarily by memory. Processes that exceed their container's memory limit are terminated by the NodeManager, a common failure for Spark executors with large off-heap usage.
-> - **Preemption.** Schedulers can reclaim containers from queues using more than their share when another queue needs its guaranteed capacity. Applications must tolerate killed tasks.
-> - **Locality versus wait time.** Schedulers can delay a task briefly to obtain a container on a node holding its data. On cloud object storage, data locality has little effect, so this tuning no longer applies.
-> - **General-purpose successors.** Outside Databricks, [[Kubernetes]] is a common general-purpose scheduler for data workloads. Databricks serverless compute is a managed scheduling layer that is not exposed to users.
+> - **ResourceManager high availability:** Before Hadoop 2.4, the ResourceManager was a single point of failure. RM high availability adds an Active/Standby ResourceManager pair.
+> - **Memory-based sizing:** Containers are sized primarily by memory. Processes that exceed their container's memory limit are terminated by the NodeManager, a common failure for Spark executors with large off-heap usage.
+> - **Preemption:** Schedulers can reclaim containers from queues using more than their share when another queue needs its guaranteed capacity. Applications must tolerate killed tasks.
+> - **Locality versus wait time:** Schedulers can delay a task briefly to obtain a container on a node holding its data. On cloud object storage, data locality has little effect, so this tuning no longer applies.
+> - **General-purpose successors:** Outside Databricks, [[Kubernetes]] is a common general-purpose scheduler for data workloads. Databricks serverless compute is a managed scheduling layer that is not exposed to users.
 
 ## Common misconceptions
 

@@ -60,8 +60,8 @@ Mastery: `INPUT[inlineSelect(option(new), option(learning), option(solid)):maste
 
 Before Spark, cluster frameworks had two ways to share data between steps, and both were slow:
 
-- **Write to stable storage.** [[MapReduce]] wrote every intermediate result to [[HDFS]], which replicates each block (typically 3 times) across the network. Safe, but every step paid for disk and network.
-- **Distributed shared memory.** Some research systems let any machine update any piece of memory. Fast, but recovering from a crash meant checkpointing or logging every tiny update.
+- **Write to stable storage:** [[MapReduce]] wrote every intermediate result to [[HDFS]], which replicates each block (typically 3 times) across the network. Safe, but every step paid for disk and network.
+- **Distributed shared memory:** Some research systems let any machine update any piece of memory. Fast, but recovering from a crash meant checkpointing or logging every tiny update.
 
 The 2012 NSDI paper *Resilient Distributed Datasets: A Fault-Tolerant Abstraction for In-Memory Cluster Computing* by Matei Zaharia and colleagues proposed a middle path. Restrict the programming model to **coarse-grained transformations** (apply the same operation to every record) and you only need to log the *operation*, not the data. Recovery becomes cheap, so keeping data in memory becomes safe. The paper reported up to roughly 10x speedups for iterative and interactive jobs.
 
@@ -143,11 +143,11 @@ The DataFrame version is shorter, runs through the [[Catalyst Optimizer]], and w
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Lineage versus checkpointing.** Very long lineage chains (for example, an iterative algorithm with hundreds of steps) make recovery slow and can overflow the driver's stack. `rdd.checkpoint()` writes the RDD to reliable storage and cuts the lineage. See [[Checkpoint]].
-> - **Persistence levels.** `persist()` takes a storage level such as `MEMORY_ONLY`, `MEMORY_AND_DISK`, or serialized variants. `cache()` is shorthand for the default level. Cached partitions that are evicted are recomputed from lineage, not lost. See [[Caching]].
-> - **`groupByKey` versus `reduceByKey`.** `reduceByKey` combines values on each machine before the shuffle (a map-side combine); `groupByKey` ships every value across the network. This was the classic RDD performance trap. DataFrames make the optimizer handle it.
-> - **Why RDDs lost.** An RDD holds opaque objects and opaque functions (lambdas). Spark cannot see inside them, so it cannot reorder filters, prune columns, or pick a join strategy. Python RDDs also pay to [[Serialization|serialize]] every record between the [[JVM]] and Python. [[DataFrames]] fixed both by giving Spark a [[Schema|schema]] and a declarative plan.
-> - **Still the physical layer.** A DataFrame's physical plan ends in RDD operations. In the [[Spark UI]], DAG visualizations still show RDD names such as `MapPartitionsRDD`.
+> - **Lineage versus checkpointing:** Very long lineage chains (for example, an iterative algorithm with hundreds of steps) make recovery slow and can overflow the driver's stack. `rdd.checkpoint()` writes the RDD to reliable storage and cuts the lineage. See [[Checkpoint]].
+> - **Persistence levels:** `persist()` takes a storage level such as `MEMORY_ONLY`, `MEMORY_AND_DISK`, or serialized variants. `cache()` is shorthand for the default level. Cached partitions that are evicted are recomputed from lineage, not lost. See [[Caching]].
+> - **`groupByKey` versus `reduceByKey`:** `reduceByKey` combines values on each machine before the shuffle (a map-side combine); `groupByKey` ships every value across the network. This was the classic RDD performance trap. DataFrames make the optimizer handle it.
+> - **Why RDDs lost:** An RDD holds opaque objects and opaque functions (lambdas). Spark cannot see inside them, so it cannot reorder filters, prune columns, or pick a join strategy. Python RDDs also pay to [[Serialization|serialize]] every record between the [[JVM]] and Python. [[DataFrames]] fixed both by giving Spark a [[Schema|schema]] and a declarative plan.
+> - **Still the physical layer:** A DataFrame's physical plan ends in RDD operations. In the [[Spark UI]], DAG visualizations still show RDD names such as `MapPartitionsRDD`.
 
 ## Common misconceptions
 

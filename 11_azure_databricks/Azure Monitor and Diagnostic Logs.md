@@ -166,12 +166,12 @@ ORDER BY event_time DESC;
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Coverage gaps.** Diagnostic logs omit account-level events and several services. If an auditor needs a complete trail, use the system table, or ingest it into the SIEM from the system table.
-> - **Retention.** Azure Databricks retains a copy of audit logs for up to one year for security and fraud analysis. Your own retention is set on the Log Analytics workspace, storage account lifecycle policy, or system table access pattern.
-> - **Deprecated events.** The diagnostic log reference marks events tied to legacy MLflow Model Serving (end of life September 15, 2025) and some legacy Databricks SQL alert events as deprecated.
-> - **Enhanced security monitoring.** With the [[Compliance Security Profile|compliance security profile]], additional security monitoring events (for example, from host-based monitoring agents on compute) appear in the audit log.
-> - **Schema differences.** Column types differ between some Log Analytics tables (for example, `RequestParams` is a string in `DatabricksClusters` but dynamic in `DatabricksClusterLibraries`). Parse JSON fields explicitly in KQL.
-> - **One destination per type.** A single diagnostic setting supports one destination of each type. Create several settings to send to multiple Log Analytics workspaces.
+> - **Coverage gaps:** Diagnostic logs omit account-level events and several services. If an auditor needs a complete trail, use the system table, or ingest it into the SIEM from the system table.
+> - **Retention:** Azure Databricks retains a copy of audit logs for up to one year for security and fraud analysis. Your own retention is set on the Log Analytics workspace, storage account lifecycle policy, or system table access pattern.
+> - **Deprecated events:** The diagnostic log reference marks events tied to legacy MLflow Model Serving (end of life September 15, 2025) and some legacy Databricks SQL alert events as deprecated.
+> - **Enhanced security monitoring:** With the [[Compliance Security Profile|compliance security profile]], additional security monitoring events (for example, from host-based monitoring agents on compute) appear in the audit log.
+> - **Schema differences:** Column types differ between some Log Analytics tables (for example, `RequestParams` is a string in `DatabricksClusters` but dynamic in `DatabricksClusterLibraries`). Parse JSON fields explicitly in KQL.
+> - **One destination per type:** A single diagnostic setting supports one destination of each type. Create several settings to send to multiple Log Analytics workspaces.
 
 ## Common misconceptions
 

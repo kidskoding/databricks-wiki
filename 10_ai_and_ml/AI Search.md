@@ -155,7 +155,7 @@ FROM vector_search(index => 'shop.support.help_chunks_index',
 ## Small-business considerations
 
 > [!smallbiz] Small-business considerations
-> - **One Standard endpoint is usually enough.** A help center of a few thousand chunks fits comfortably.
+> - **One Standard endpoint is usually enough:** A help center of a few thousand chunks fits comfortably.
 > - **Use triggered sync** and run it after documents change, rather than continuous sync.
 > - **Let Databricks compute embeddings** from a text column. It removes a pipeline you would otherwise maintain.
 > - **Try hybrid search** when questions contain product codes or names; pure vector search can miss exact identifiers.
@@ -176,12 +176,12 @@ FROM vector_search(index => 'shop.support.help_chunks_index',
 
 > [!deepdive]- Advanced topics (301–401)
 > - **Full-text index** (Beta): a keyword-only index with no embeddings, available only on storage-optimized endpoints with triggered sync.
-> - **Filtering.** Combine similarity with metadata filters, such as `{"product_line": "plants"}` on Standard endpoints or `"product_line = 'plants'"` on storage-optimized endpoints.
-> - **Pagination.** Setting `num_results` above 1,000 makes the SDK fetch all pages.
-> - **Reuse index objects.** The performance guide recommends reusing the index object across queries.
-> - **OAuth.** Service principals can query indexes with OAuth tokens for production apps.
-> - **Embedding reuse.** Delta Sync reuses embeddings for unchanged rows on later syncs.
-> - **Retrieval quality.** Parsing and chunking usually matter more than the index settings. See [[Retrieval-Augmented Generation]].
+> - **Filtering:** Combine similarity with metadata filters, such as `{"product_line": "plants"}` on Standard endpoints or `"product_line = 'plants'"` on storage-optimized endpoints.
+> - **Pagination:** Setting `num_results` above 1,000 makes the SDK fetch all pages.
+> - **Reuse index objects:** The performance guide recommends reusing the index object across queries.
+> - **OAuth:** Service principals can query indexes with OAuth tokens for production apps.
+> - **Embedding reuse:** Delta Sync reuses embeddings for unchanged rows on later syncs.
+> - **Retrieval quality:** Parsing and chunking usually matter more than the index settings. See [[Retrieval-Augmented Generation]].
 
 ## Common misconceptions
 

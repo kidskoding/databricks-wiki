@@ -169,12 +169,12 @@ EXPLAIN SELECT store_id, SUM(amount) FROM sales.orders.daily GROUP BY store_id;
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Interpreted vectorization, not code generation.** Spark's [[Tungsten]] generates Java code per query (whole-stage codegen). Photon instead uses the vectorized-interpreted model: pre-compiled C++ kernels that run over column batches. The Photon paper (SIGMOD 2022) gives the reasons: vectorized execution enables run-time adaptivity, and it was easier to build, profile, debug, and operate at scale. The authors note that code generation still wins in some cases, such as complex conditional expressions.
-> - **Adaptivity at run time.** Photon specializes kernels by batch properties, for example taking a fast path when a batch has no nulls or when strings are all ASCII. This complements Spark's [[Adaptive Query Execution]], which re-plans between stages.
-> - **Memory management.** Photon manages its own memory outside the JVM heap and cooperates with Spark's memory manager. Very large hash joins and aggregations can still [[Spill|spill]] to disk.
-> - **Transitions add cost.** A plan that alternates Photon and non-Photon operators pays for column-to-row conversions. Replacing a Python UDF with a built-in SQL function often lets the whole stage stay in Photon.
-> - **Photon plus Delta features.** Photon pairs with Delta [[Deletion Vectors]], [[Liquid Clustering]], and [[Data Skipping]]; much of the speed in practice comes from reading less data, then processing what remains quickly.
-> - **Not in open source.** Photon exists only in Databricks. The same code runs on open-source Spark without Photon's speed-ups. Account for this when you compare Databricks performance with self-managed Spark.
+> - **Interpreted vectorization, not code generation:** Spark's [[Tungsten]] generates Java code per query (whole-stage codegen). Photon instead uses the vectorized-interpreted model: pre-compiled C++ kernels that run over column batches. The Photon paper (SIGMOD 2022) gives the reasons: vectorized execution enables run-time adaptivity, and it was easier to build, profile, debug, and operate at scale. The authors note that code generation still wins in some cases, such as complex conditional expressions.
+> - **Adaptivity at run time:** Photon specializes kernels by batch properties, for example taking a fast path when a batch has no nulls or when strings are all ASCII. This complements Spark's [[Adaptive Query Execution]], which re-plans between stages.
+> - **Memory management:** Photon manages its own memory outside the JVM heap and cooperates with Spark's memory manager. Very large hash joins and aggregations can still [[Spill|spill]] to disk.
+> - **Transitions add cost:** A plan that alternates Photon and non-Photon operators pays for column-to-row conversions. Replacing a Python UDF with a built-in SQL function often lets the whole stage stay in Photon.
+> - **Photon plus Delta features:** Photon pairs with Delta [[Deletion Vectors]], [[Liquid Clustering]], and [[Data Skipping]]; much of the speed in practice comes from reading less data, then processing what remains quickly.
+> - **Not in open source:** Photon exists only in Databricks. The same code runs on open-source Spark without Photon's speed-ups. Account for this when you compare Databricks performance with self-managed Spark.
 
 ## Common misconceptions
 

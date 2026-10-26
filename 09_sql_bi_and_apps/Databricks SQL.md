@@ -174,8 +174,8 @@ The SQL, the editor, and the warehouse types are the same on all three clouds. T
 > - **Intelligent Workload Management** is serverless-only. It decides how much capacity to add for the current mix of queries, instead of the fixed "one cluster per 10 concurrent queries" rule that classic and pro follow.
 > - **Predictive IO** (pro and serverless) speeds up reads on Delta tables. Classic has Photon but not Predictive IO.
 > - **Custom networking** is the main reason to keep pro. Classic and pro sit in your own network, so they can reach private sources that serverless cannot reach without extra network configuration.
-> - **Warehouse metadata as data.** A warehouses [[System Tables|system table]] records warehouse configuration over time, which helps with cost reviews.
-> - **API defaults differ from UI defaults.** [[Infrastructure as Code|Infrastructure-as-code]] that creates warehouses (see [[Terraform Provider]]) should set the type explicitly.
+> - **Warehouse metadata as data:** A warehouses [[System Tables|system table]] records warehouse configuration over time, which helps with cost reviews.
+> - **API defaults differ from UI defaults:** [[Infrastructure as Code|Infrastructure-as-code]] that creates warehouses (see [[Terraform Provider]]) should set the type explicitly.
 
 ## Common misconceptions
 

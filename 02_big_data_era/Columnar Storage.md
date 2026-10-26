@@ -102,9 +102,9 @@ flowchart LR
 
 Three mechanisms produce most of the performance benefit:
 
-1. **Column pruning.** The reader fetches only the columns referenced by the query.
-2. **Encoding and compression per column.** A `country` column with few distinct values is stored as small dictionary codes. Repeated values are stored as runs. Compression codecs then operate on homogeneous data.
-3. **Statistics-based skipping.** Files store minimum and maximum values per column for each group of rows. A filter such as `WHERE order_date >= '2025-01-01'` skips groups whose maximum date is earlier.
+1. **Column pruning:** The reader fetches only the columns referenced by the query.
+2. **Encoding and compression per column:** A `country` column with few distinct values is stored as small dictionary codes. Repeated values are stored as runs. Compression codecs then operate on homogeneous data.
+3. **Statistics-based skipping:** Files store minimum and maximum values per column for each group of rows. A filter such as `WHERE order_date >= '2025-01-01'` skips groups whose maximum date is earlier.
 
 Example: a 100-column, 1 TB table in CSV. A query using 3 columns reads 1 TB. In a columnar format, the same query reads roughly the compressed size of 3 columns, often a small fraction of the original, before any statistics-based skipping.
 
@@ -145,12 +145,12 @@ GROUP BY region;
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Hybrid layout.** Parquet and ORC are not purely columnar. They partition rows into groups (Parquet row groups, ORC stripes) and store each column contiguously within a group. This bounds memory use for writers and enables per-group statistics.
-> - **Late materialization.** Engines can evaluate filters on one column first and read other columns only for matching rows.
-> - **Vectorized execution.** Columnar data maps to CPU-efficient batch processing (SIMD). [[Photon]] and Spark's vectorized Parquet reader use this.
-> - **Sort order affects compression and skipping.** Data clustered on frequently filtered columns produces narrow min/max ranges per group, which improves skipping. See [[Z-Ordering]] and [[Liquid Clustering]].
-> - **Nested data.** Representing nested and repeated fields (structs, arrays) in a columnar layout requires additional encoding. Parquet adopted the approach described in Google's Dremel paper.
-> - **Not for point updates.** Updating a single value in an immutable columnar file requires rewriting the file. Table formats mitigate this with techniques such as [[Deletion Vectors]].
+> - **Hybrid layout:** Parquet and ORC are not purely columnar. They partition rows into groups (Parquet row groups, ORC stripes) and store each column contiguously within a group. This bounds memory use for writers and enables per-group statistics.
+> - **Late materialization:** Engines can evaluate filters on one column first and read other columns only for matching rows.
+> - **Vectorized execution:** Columnar data maps to CPU-efficient batch processing (SIMD). [[Photon]] and Spark's vectorized Parquet reader use this.
+> - **Sort order affects compression and skipping:** Data clustered on frequently filtered columns produces narrow min/max ranges per group, which improves skipping. See [[Z-Ordering]] and [[Liquid Clustering]].
+> - **Nested data:** Representing nested and repeated fields (structs, arrays) in a columnar layout requires additional encoding. Parquet adopted the approach described in Google's Dremel paper.
+> - **Not for point updates:** Updating a single value in an immutable columnar file requires rewriting the file. Table formats mitigate this with techniques such as [[Deletion Vectors]].
 
 ## Common misconceptions
 

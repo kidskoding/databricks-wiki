@@ -141,9 +141,9 @@ SELECT * FROM `myproject.staging.orders_raw`;
 
 > [!deepdive]- Advanced topics (301–401)
 > - **Dremel's design** combined nested columnar storage (encoding repeated and nested fields in columns) with a multi-level execution tree for aggregation. [[Apache Parquet]]'s encoding of nested data is based on the Dremel paper.
-> - **Slots and fairness.** Within a reservation, BigQuery's fair scheduling shares slots equally among projects with running queries, then among jobs within a project. Under capacity pricing, idle slots are shared by default: queries in any reservation can use idle slots from other reservations in the same administration project, and the owner reclaims them when needed.
-> - **Bytes scanned vs bytes billed.** Partition pruning and clustering reduce billed bytes. On non-clustered tables, a `LIMIT` clause does not reduce compute costs.
-> - **Lock-in shape.** Native BigQuery tables are only readable through BigQuery's APIs. Iceberg managed tables are the escape hatch, and the reason the open table format debate matters.
+> - **Slots and fairness:** Within a reservation, BigQuery's fair scheduling shares slots equally among projects with running queries, then among jobs within a project. Under capacity pricing, idle slots are shared by default: queries in any reservation can use idle slots from other reservations in the same administration project, and the owner reclaims them when needed.
+> - **Bytes scanned vs bytes billed:** Partition pruning and clustering reduce billed bytes. On non-clustered tables, a `LIMIT` clause does not reduce compute costs.
+> - **Lock-in shape:** Native BigQuery tables are only readable through BigQuery's APIs. Iceberg managed tables are the escape hatch, and the reason the open table format debate matters.
 
 ## Common misconceptions
 

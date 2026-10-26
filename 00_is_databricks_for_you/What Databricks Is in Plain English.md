@@ -86,8 +86,8 @@ Databricks is a cloud data platform delivered as a managed service on Microsoft 
 
 Two properties matter most to a business reader:
 
-- **Data stays in open formats in storage you control.** Tables are files in cloud [[Object Storage|object storage]], either your own or Databricks-managed default storage. Other engines can read open formats, which reduces [[Vendor Lock-In]].
-- **Pricing is usage-based.** Pay-as-you-go usage is measured in [[DBUs]], a normalized unit of processing, and billed per second. Cloud provider charges may apply separately. See [[How Databricks Pricing Works]].
+- **Data stays in open formats in storage you control:** Tables are files in cloud [[Object Storage|object storage]], either your own or Databricks-managed default storage. Other engines can read open formats, which reduces [[Vendor Lock-In]].
+- **Pricing is usage-based:** Pay-as-you-go usage is measured in [[DBUs]], a normalized unit of processing, and billed per second. Cloud provider charges may apply separately. See [[How Databricks Pricing Works]].
 
 ## How it works
 
@@ -140,9 +140,9 @@ Business users do not need to use notebooks or compute settings. **Genie One** (
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Control plane and compute plane.** The division between the services Databricks operates and the compute that processes your data is covered in [[Control Plane and Compute Plane]] and [[Serverless Compute]].
-> - **Open formats.** Unity Catalog governs [[Delta Lake]] and managed [[Apache Iceberg]] tables, and external engines can read through its Iceberg REST interface. See [[Open Table Formats]] and [[Delta UniForm]].
-> - **Accounts and workspaces.** One Databricks account contains one or more workspaces. Governance is defined at the account level. See [[Accounts and Workspaces]].
+> - **Control plane and compute plane:** The division between the services Databricks operates and the compute that processes your data is covered in [[Control Plane and Compute Plane]] and [[Serverless Compute]].
+> - **Open formats:** Unity Catalog governs [[Delta Lake]] and managed [[Apache Iceberg]] tables, and external engines can read through its Iceberg REST interface. See [[Open Table Formats]] and [[Delta UniForm]].
+> - **Accounts and workspaces:** One Databricks account contains one or more workspaces. Governance is defined at the account level. See [[Accounts and Workspaces]].
 
 ## Common misconceptions
 

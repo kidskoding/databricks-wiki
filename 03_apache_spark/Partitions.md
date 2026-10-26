@@ -136,11 +136,11 @@ SELECT /*+ REBALANCE */       * FROM main.default.demo_ids;   -- even out sizes 
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Splittable vs unsplittable files.** Parquet, ORC, and uncompressed or bzip2 text can be split across tasks. A single large `.csv.gz` cannot: it becomes one partition and one task, however big it is. Databricks' Spark UI guide lists unsplittable gzip files as a cause of "long stage with one task."
-> - **Input packing.** `spark.sql.files.openCostInBytes` (default 4 MB) is the estimated cost of opening a file, used when packing small files into one partition.
-> - **`repartition` vs `coalesce`.** `coalesce(n)` avoids a shuffle by merging neighbouring partitions, but it can also reduce the parallelism of upstream steps in the same stage. `coalesce(1)` before a heavy transformation forces all that work into one task. Use `repartition` when you need balanced output.
-> - **Partitioning by key.** `repartition(n, col)` hash-partitions so equal keys co-locate, which lets later joins or aggregations on that key avoid another shuffle. Spark tracks this as the plan's output partitioning.
-> - **Over-partitioned tables.** Hive-style partitioning on a high-cardinality column (customer ID, timestamp) creates millions of folders and tiny files. A common guideline is to partition only on low-cardinality columns with at least about 1 GB per partition, which is why Liquid Clustering is now preferred.
+> - **Splittable vs unsplittable files:** Parquet, ORC, and uncompressed or bzip2 text can be split across tasks. A single large `.csv.gz` cannot: it becomes one partition and one task, however big it is. Databricks' Spark UI guide lists unsplittable gzip files as a cause of "long stage with one task."
+> - **Input packing:** `spark.sql.files.openCostInBytes` (default 4 MB) is the estimated cost of opening a file, used when packing small files into one partition.
+> - **`repartition` vs `coalesce`:** `coalesce(n)` avoids a shuffle by merging neighbouring partitions, but it can also reduce the parallelism of upstream steps in the same stage. `coalesce(1)` before a heavy transformation forces all that work into one task. Use `repartition` when you need balanced output.
+> - **Partitioning by key:** `repartition(n, col)` hash-partitions so equal keys co-locate, which lets later joins or aggregations on that key avoid another shuffle. Spark tracks this as the plan's output partitioning.
+> - **Over-partitioned tables:** Hive-style partitioning on a high-cardinality column (customer ID, timestamp) creates millions of folders and tiny files. A common guideline is to partition only on low-cardinality columns with at least about 1 GB per partition, which is why Liquid Clustering is now preferred.
 
 ## Common misconceptions
 

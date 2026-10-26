@@ -174,12 +174,12 @@ For an existing workspace, stop all clusters and SQL warehouses before changing 
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Endpoint sharing.** One set of `databricks_ui_api` endpoints in a VNet can serve all workspaces in that VNet and region. Workspaces in other regions need their own `databricks_ui_api` and `browser_authentication` endpoints. `general_access` endpoints are the exception and can serve workspaces in any region, which also makes them useful as a failover path in a [[Disaster Recovery|disaster recovery]] design.
-> - **Subnet design.** Place private endpoints in a dedicated subnet (`/27` is the documented size for the workspace classic private endpoint subnet). If an NSG applies to private endpoints, allow port 3306 for the metastore.
-> - **Setting changes.** Some documentation states that Private Link settings must be defined at workspace creation, while the classic compute guide describes updating an existing workspace with ARM or Terraform. Check the current guide for your scenario before planning an in-place change.
-> - **Troubleshooting.** HTTP 401 errors during cluster startup usually indicate Private Link or IP access list restrictions. Check the workspace network access setting and the endpoint and DNS configuration.
-> - **Serverless.** Front-end and back-end Private Link do not cover serverless compute's connections to your resources. Configure NCC private endpoint rules for storage (`blob` and `dfs` sub-resources) and other services, and approve each pending connection on the target resource.
-> - **Performance-intensive services.** A separate Service Direct inbound endpoint type exists for performance-intensive services and serves only workspaces in its own region.
+> - **Endpoint sharing:** One set of `databricks_ui_api` endpoints in a VNet can serve all workspaces in that VNet and region. Workspaces in other regions need their own `databricks_ui_api` and `browser_authentication` endpoints. `general_access` endpoints are the exception and can serve workspaces in any region, which also makes them useful as a failover path in a [[Disaster Recovery|disaster recovery]] design.
+> - **Subnet design:** Place private endpoints in a dedicated subnet (`/27` is the documented size for the workspace classic private endpoint subnet). If an NSG applies to private endpoints, allow port 3306 for the metastore.
+> - **Setting changes:** Some documentation states that Private Link settings must be defined at workspace creation, while the classic compute guide describes updating an existing workspace with ARM or Terraform. Check the current guide for your scenario before planning an in-place change.
+> - **Troubleshooting:** HTTP 401 errors during cluster startup usually indicate Private Link or IP access list restrictions. Check the workspace network access setting and the endpoint and DNS configuration.
+> - **Serverless:** Front-end and back-end Private Link do not cover serverless compute's connections to your resources. Configure NCC private endpoint rules for storage (`blob` and `dfs` sub-resources) and other services, and approve each pending connection on the target resource.
+> - **Performance-intensive services:** A separate Service Direct inbound endpoint type exists for performance-intensive services and serves only workspaces in its own region.
 
 ## Common misconceptions
 

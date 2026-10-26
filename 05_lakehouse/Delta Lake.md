@@ -95,7 +95,9 @@ What the log gives you:
 | Change tracking | Row-level change feed | [[Change Data Feed]] |
 | Streaming | A Delta table can be a streaming source and sink (destination) | [[Structured Streaming on Databricks]] |
 
-**Versions.** The open-source project is on the Delta Lake 4.x line, built for Apache Spark 4:
+### Versions
+
+The open-source project is on the Delta Lake 4.x line, built for Apache Spark 4:
 
 | Release | Highlights |
 |---|---|
@@ -153,10 +155,10 @@ df.filter("total > 20").write.mode("append").saveAsTable("shop.sales.big_orders"
 
 > [!smallbiz] Small-business considerations
 > Every table created on Databricks is a Delta table unless you specify Iceberg. For a small team, this provides:
-> - **Recovery.** After an incorrect `DELETE` or `UPDATE`, [[Time Travel|restore]] the previous version with one command.
-> - **Safe reruns.** A failed nightly load leaves nothing half-done.
-> - **Privacy requests are simple.** Deleting one customer's rows is a `DELETE`, not a rewrite of a month of files.
-> - **No [[Vendor Lock-In|lock-in]].** The files are Parquet in your cloud account in an open format, readable by open-source Delta clients if you ever leave.
+> - **Recovery:** After an incorrect `DELETE` or `UPDATE`, [[Time Travel|restore]] the previous version with one command.
+> - **Safe reruns:** A failed nightly load leaves nothing half-done.
+> - **Privacy requests are simple:** Deleting one customer's rows is a `DELETE`, not a rewrite of a month of files.
+> - **No [[Vendor Lock-In|lock-in]]:** The files are Parquet in your cloud account in an open format, readable by open-source Delta clients if you ever leave.
 >
 > There is no separate charge for Delta. You pay for storage and for the compute that reads and writes it.
 
@@ -174,10 +176,10 @@ df.filter("total > 20").write.mode("append").saveAsTable("shop.sales.big_orders"
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Protocol and table features.** Each Delta table declares a minimum reader and writer protocol, plus named table features (deletion vectors, column mapping, row tracking, variant, and more). A client that does not support a feature cannot read or write the table. Check [[Deletion Vectors]] and [[Delta UniForm]] for features that affect external readers.
-> - **External Delta clients.** Unity Catalog can serve managed tables to outside Delta clients and vend short-lived storage credentials (see the Unity REST and credential vending pages in the sources).
-> - **Managed is the recommended default on Databricks.** Unity Catalog managed Delta tables get [[OPTIMIZE and VACUUM|predictive optimization]], automatic liquid clustering, and automatic feature upgrades. Predictive optimization does not run on external tables.
-> - **Databricks Delta vs. open-source Delta.** The format is the same. Databricks adds runtime features ([[Photon]], predictive I/O) that speed up reads without changing the format. A table written on Databricks stays readable by other Delta clients as long as they support its table features.
+> - **Protocol and table features:** Each Delta table declares a minimum reader and writer protocol, plus named table features (deletion vectors, column mapping, row tracking, variant, and more). A client that does not support a feature cannot read or write the table. Check [[Deletion Vectors]] and [[Delta UniForm]] for features that affect external readers.
+> - **External Delta clients:** Unity Catalog can serve managed tables to outside Delta clients and vend short-lived storage credentials (see the Unity REST and credential vending pages in the sources).
+> - **Managed is the recommended default on Databricks:** Unity Catalog managed Delta tables get [[OPTIMIZE and VACUUM|predictive optimization]], automatic liquid clustering, and automatic feature upgrades. Predictive optimization does not run on external tables.
+> - **Databricks Delta vs. open-source Delta:** The format is the same. Databricks adds runtime features ([[Photon]], predictive I/O) that speed up reads without changing the format. A table written on Databricks stays readable by other Delta clients as long as they support its table features.
 
 ## Common misconceptions
 

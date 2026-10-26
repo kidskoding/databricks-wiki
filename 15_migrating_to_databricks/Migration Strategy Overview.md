@@ -76,10 +76,10 @@ Mastery: `INPUT[inlineSelect(option(new), option(learning), option(solid)):maste
 
 Migrations usually fail for organizational reasons, not technical ones:
 
-- **Incomplete inventory.** A report depends on a table that nobody listed, so it was never moved.
-- **Single big-bang switch-over.** Everything moves in one weekend, and there is no way back when the numbers disagree on Monday.
-- **Copied code instead of converted code.** SQL written for one engine runs on another with different rules for dates, [[Null|nulls]], or text comparison, and totals drift.
-- **No decommission date.** The last few jobs never move, so the company pays for two platforms indefinitely.
+- **Incomplete inventory:** A report depends on a table that nobody listed, so it was never moved.
+- **Single big-bang switch-over:** Everything moves in one weekend, and there is no way back when the numbers disagree on Monday.
+- **Copied code instead of converted code:** SQL written for one engine runs on another with different rules for dates, [[Null|nulls]], or text comparison, and totals drift.
+- **No decommission date:** The last few jobs never move, so the company pays for two platforms indefinitely.
 
 A phase plan with an exit gate on each phase addresses all four. The phases are the same for a folder of spreadsheets and for a ten-year-old data warehouse. Only the tools change.
 
@@ -191,12 +191,12 @@ A converted query is not complete until it matches the old system on row counts,
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Two-speed ingestion.** Large tables usually need a one-time bulk history load (files exported to object storage) plus a continuous change feed ([[Change Data Capture]]). Define the hand-over point precisely so no rows are lost or duplicated between the two.
-> - **Federation is a bridge.** Federated queries push filters and other operations down to the source where possible, but heavy workloads still load the old system and cross the network. Use federation for exploration, validation, and low-volume reports, then ingest.
-> - **Freeze source schemas per wave.** Ask source owners not to change table definitions while a wave is in validation. Each schema change restarts reconciliation.
-> - **Dependencies decide wave order.** A small lookup table read by thirty reports belongs in wave 1. The Lakebridge Analyzer reports cross-object dependencies.
-> - **Governance first.** Map old roles to [[Users Groups and Service Principals|groups]] and [[Privileges and Grants|grants]] in phase 2. Recreating permissions after cutover is where accidental exposure happens.
-> - **Rollback is a plan.** Keep the old system runnable until sign-off, and document who repoints reports back if numbers break.
+> - **Two-speed ingestion:** Large tables usually need a one-time bulk history load (files exported to object storage) plus a continuous change feed ([[Change Data Capture]]). Define the hand-over point precisely so no rows are lost or duplicated between the two.
+> - **Federation is a bridge:** Federated queries push filters and other operations down to the source where possible, but heavy workloads still load the old system and cross the network. Use federation for exploration, validation, and low-volume reports, then ingest.
+> - **Freeze source schemas per wave:** Ask source owners not to change table definitions while a wave is in validation. Each schema change restarts reconciliation.
+> - **Dependencies decide wave order:** A small lookup table read by thirty reports belongs in wave 1. The Lakebridge Analyzer reports cross-object dependencies.
+> - **Governance first:** Map old roles to [[Users Groups and Service Principals|groups]] and [[Privileges and Grants|grants]] in phase 2. Recreating permissions after cutover is where accidental exposure happens.
+> - **Rollback is a plan:** Keep the old system runnable until sign-off, and document who repoints reports back if numbers break.
 
 ## Common misconceptions
 

@@ -131,7 +131,7 @@ GRANT SELECT      ON SCHEMA  shop.analytics  TO `viewers`;
 ## Small-business considerations
 
 > [!smallbiz] Small-business considerations
-> - **Give owners and managers Consumer access only.** They get a simple home page, and the builder keeps the full workspace. This follows [[Least Privilege|least privilege]].
+> - **Give owners and managers Consumer access only:** They get a simple home page, and the builder keeps the full workspace. This follows [[Least Privilege|least privilege]].
 > - **Share three things to start:** one daily dashboard, one Genie Agent over the same tables, and, if needed, one app.
 > - **Use the mobile app** for an owner who checks sales before the stores open.
 > - **File upload is not available** for consumer-only users or in the mobile app. Users who need to upload files need a builder role.
@@ -153,11 +153,11 @@ GRANT SELECT      ON SCHEMA  shop.analytics  TO `viewers`;
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Mobile app administration.** Enabling the Genie mobile app at the account level grants no one access. It only allows the official app to authenticate against the account. Membership and entitlements still come from your existing user management, and authentication runs through your identity provider with its MFA and conditional-access policies.
-> - **Workspace scoping.** In the mobile app, users see only workspaces where they have at least Consumer access.
-> - **Account-only users (Beta, September 2026).** Users who exist only at the account level can use account-level Genie One. Plan which workspace data they can reach, because viewing a workspace's data still requires access to that workspace's assets.
-> - **Mixed roles.** An analyst who also builds dashboards needs workspace entitlements and therefore sees the standard UI. They can switch to Genie One with the app switcher to see what consumers see.
-> - **Naming in docs.** Release notes before June 2026 use "Databricks One" or "Genie". The AI/BI release notes are now titled "AI/BI and Genie One release notes".
+> - **Mobile app administration:** Enabling the Genie mobile app at the account level grants no one access. It only allows the official app to authenticate against the account. Membership and entitlements still come from your existing user management, and authentication runs through your identity provider with its MFA and conditional-access policies.
+> - **Workspace scoping:** In the mobile app, users see only workspaces where they have at least Consumer access.
+> - **Account-only users (Beta, September 2026):** Users who exist only at the account level can use account-level Genie One. Plan which workspace data they can reach, because viewing a workspace's data still requires access to that workspace's assets.
+> - **Mixed roles:** An analyst who also builds dashboards needs workspace entitlements and therefore sees the standard UI. They can switch to Genie One with the app switcher to see what consumers see.
+> - **Naming in docs:** Release notes before June 2026 use "Databricks One" or "Genie". The AI/BI release notes are now titled "AI/BI and Genie One release notes".
 
 ## Common misconceptions
 

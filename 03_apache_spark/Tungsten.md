@@ -60,9 +60,9 @@ Mastery: `INPUT[inlineSelect(option(new), option(learning), option(solid)):maste
 
 Databricks' 2015 Tungsten announcement argued that for many Spark workloads, CPU and memory efficiency, not disk or network I/O, had become the main limit. Three sources of JVM overhead were significant:
 
-- **Object overhead.** A Java object for a short string can use several times more memory than the characters themselves, which wastes cache and memory.
-- **Garbage collection.** Millions of short-lived row objects make the JVM garbage collector pause the program.
-- **Virtual function calls.** The classic "Volcano" execution model calls `next()` on each operator for each row. Each call is cheap, but billions of unpredictable virtual calls carry a measurable cost.
+- **Object overhead:** A Java object for a short string can use several times more memory than the characters themselves, which wastes cache and memory.
+- **Garbage collection:** Millions of short-lived row objects make the JVM garbage collector pause the program.
+- **Virtual function calls:** The classic "Volcano" execution model calls `next()` on each operator for each row. Each call is cheap, but billions of unpredictable virtual calls carry a measurable cost.
 
 ## Overview
 
@@ -142,11 +142,11 @@ In SQL, `EXPLAIN CODEGEN SELECT ...` shows the same thing. In the [[Spark UI]]'s
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **UnsafeRow layout.** A null bitmap, then fixed-width 8-byte slots for each field, then a variable-length region for strings and nested data. Fixed-width slots let Spark compare and hash rows as raw bytes without deserializing.
-> - **Off-heap memory.** `spark.memory.offHeap.enabled` and `spark.memory.offHeap.size` let Tungsten allocate outside the JVM heap, reducing GC pressure. Execution and storage memory share a unified pool (`spark.memory.fraction`), and execution can evict cached storage blocks. When execution memory runs out, Spark [[Spill|spills]] sorted runs to disk.
-> - **Codegen limits.** The JVM will not JIT-compile methods over 8,000 bytes of bytecode, and very wide plans (hundreds of columns or huge `CASE` expressions) can exceed limits. Spark then falls back to non-generated execution for that subtree (`spark.sql.codegen.hugeMethodLimit`, `spark.sql.codegen.maxFields`). A warning in the driver log mentions "whole-stage codegen disabled."
-> - **Row-at-a-time vs vectorized.** Whole-stage codegen processes one row at a time inside a tight loop. Vectorized engines (Photon, Velox, DuckDB) process a column batch at a time and can use SIMD instructions. Native vectorized execution also avoids JVM codegen limits and garbage collection entirely, which is the design choice Photon made.
-> - **Where it shows.** In the Spark UI, look at "duration" per `WholeStageCodegen` node and at "peak memory" and spill metrics per stage.
+> - **UnsafeRow layout:** A null bitmap, then fixed-width 8-byte slots for each field, then a variable-length region for strings and nested data. Fixed-width slots let Spark compare and hash rows as raw bytes without deserializing.
+> - **Off-heap memory:** `spark.memory.offHeap.enabled` and `spark.memory.offHeap.size` let Tungsten allocate outside the JVM heap, reducing GC pressure. Execution and storage memory share a unified pool (`spark.memory.fraction`), and execution can evict cached storage blocks. When execution memory runs out, Spark [[Spill|spills]] sorted runs to disk.
+> - **Codegen limits:** The JVM will not JIT-compile methods over 8,000 bytes of bytecode, and very wide plans (hundreds of columns or huge `CASE` expressions) can exceed limits. Spark then falls back to non-generated execution for that subtree (`spark.sql.codegen.hugeMethodLimit`, `spark.sql.codegen.maxFields`). A warning in the driver log mentions "whole-stage codegen disabled."
+> - **Row-at-a-time vs vectorized:** Whole-stage codegen processes one row at a time inside a tight loop. Vectorized engines (Photon, Velox, DuckDB) process a column batch at a time and can use SIMD instructions. Native vectorized execution also avoids JVM codegen limits and garbage collection entirely, which is the design choice Photon made.
+> - **Where it shows:** In the Spark UI, look at "duration" per `WholeStageCodegen` node and at "peak memory" and spill metrics per stage.
 
 ## Common misconceptions
 

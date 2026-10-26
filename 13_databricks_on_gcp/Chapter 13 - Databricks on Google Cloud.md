@@ -32,19 +32,33 @@ tags:
 
 ## The story of this chapter
 
-**Era.** Databricks launched on Google Cloud in February 2021, the newest of its three clouds. It is sold through Google Cloud Marketplace: a subscription links the Databricks account to one Cloud Billing account, and workspaces are created at `accounts.gcp.databricks.com`. See [[Databricks on Google Cloud Overview]] and [[Account Setup on Google Cloud]].
+### Era
 
-**Workspaces.** Serverless workspaces use serverless compute and Databricks-managed default storage, and create no billable resources in your project. Classic workspaces run compute in a Google Cloud project you choose, with two GCS buckets for workspace system data. Workspace configuration cannot be changed after creation, so region, network, and keys are decided up front.
+Databricks launched on Google Cloud in February 2021, the newest of its three clouds. It is sold through Google Cloud Marketplace: a subscription links the Databricks account to one Cloud Billing account, and workspaces are created at `accounts.gcp.databricks.com`. See [[Databricks on Google Cloud Overview]] and [[Account Setup on Google Cloud]].
 
-**Compute.** At launch, Databricks on Google Cloud was built on Google Kubernetes Engine (GKE). Current documentation describes classic compute as Compute Engine VMs in the workspace VPC, and the GKE-specific network settings are deprecated ([[Compute on Google Cloud]]). Machine types, preemptible VMs, local SSDs, and the cluster's service account are set with `gcp_attributes`.
+### Workspaces
 
-**Network.** A [[Customer-Managed VPC on Google Cloud]] uses one subnet per workspace, supports Shared VPC host and service projects, and is the recommended choice for new classic workspaces; Databricks plans to deprecate creation with a Databricks-managed VPC. [[Private Service Connect]] adds private front-end and back-end endpoints (a workspace endpoint and an SCC relay endpoint) on the Enterprise plan. Public access stays allowed on PSC workspaces until you restrict it. Serverless compute reaches Cloud Storage and BigQuery through Private Google Access.
+Serverless workspaces use serverless compute and Databricks-managed default storage, and create no billable resources in your project. Classic workspaces run compute in a Google Cloud project you choose, with two GCS buckets for workspace system data. Workspace configuration cannot be changed after creation, so region, network, and keys are decided up front.
 
-**Identity and data access.** All Google Cloud access goes through [[Google Service Accounts]]: a workspace service account that manages Compute Engine resources, the `databricks-compute` account that cluster VMs run as by default, and optional custom accounts. For governed data, Unity Catalog storage credentials use a service account that Databricks generates, which you grant bucket roles ([[GCS Access via Unity Catalog]]). [[BigQuery Integration]] offers read-only Lakehouse Federation through the BigQuery Storage API and a Spark connector for reads and writes.
+### Compute
 
-**Cost and keys.** Databricks usage appears on the Google Cloud bill through the Marketplace subscription, next to Compute Engine, storage, and networking charges for classic compute; cloud credits do not apply to serverless usage ([[Google Cloud Marketplace and Billing]]). [[Customer-Managed Keys on Google Cloud]] encrypt managed services, the workspace buckets, and compute disks with Cloud KMS keys, attached at workspace creation on the Enterprise tier.
+At launch, Databricks on Google Cloud was built on Google Kubernetes Engine (GKE). Current documentation describes classic compute as Compute Engine VMs in the workspace VPC, and the GKE-specific network settings are deprecated ([[Compute on Google Cloud]]). Machine types, preemptible VMs, local SSDs, and the cluster's service account are set with `gcp_attributes`.
 
-**Next.** [[Chapter 14 - Admin Security and Cost]] covers the administration tasks that apply on every cloud: identity, network security, encryption, compliance, cost, and automation.
+### Network
+
+A [[Customer-Managed VPC on Google Cloud]] uses one subnet per workspace, supports Shared VPC host and service projects, and is the recommended choice for new classic workspaces; Databricks plans to deprecate creation with a Databricks-managed VPC. [[Private Service Connect]] adds private front-end and back-end endpoints (a workspace endpoint and an SCC relay endpoint) on the Enterprise plan. Public access stays allowed on PSC workspaces until you restrict it. Serverless compute reaches Cloud Storage and BigQuery through Private Google Access.
+
+### Identity and data access
+
+All Google Cloud access goes through [[Google Service Accounts]]: a workspace service account that manages Compute Engine resources, the `databricks-compute` account that cluster VMs run as by default, and optional custom accounts. For governed data, Unity Catalog storage credentials use a service account that Databricks generates, which you grant bucket roles ([[GCS Access via Unity Catalog]]). [[BigQuery Integration]] offers read-only Lakehouse Federation through the BigQuery Storage API and a Spark connector for reads and writes.
+
+### Cost and keys
+
+Databricks usage appears on the Google Cloud bill through the Marketplace subscription, next to Compute Engine, storage, and networking charges for classic compute; cloud credits do not apply to serverless usage ([[Google Cloud Marketplace and Billing]]). [[Customer-Managed Keys on Google Cloud]] encrypt managed services, the workspace buckets, and compute disks with Cloud KMS keys, attached at workspace creation on the Enterprise tier.
+
+### Next
+
+[[Chapter 14 - Admin Security and Cost]] covers the administration tasks that apply on every cloud: identity, network security, encryption, compliance, cost, and automation.
 
 ## Notes in reading order
 

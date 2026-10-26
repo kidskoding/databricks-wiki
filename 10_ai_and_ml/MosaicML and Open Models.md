@@ -115,14 +115,14 @@ flowchart LR
 The strategy shifted over three years:
 
 1. **Build open models** (MPT, DBRX) to show efficient training and to give customers models they could own.
-2. **Host many models.** As open and commercial models improved quickly, [[Foundation Model APIs]] began offering a broad catalog, including open models such as Llama, Gemma, GPT OSS, GLM, and DeepSeek, and partner models from OpenAI, Google, and Anthropic.
-3. **Govern and evaluate, whatever the model.** [[Unity Gateway|Unity Gateway]], [[MLflow]] evaluation, and [[Agent Bricks]] work across providers, so a business can switch models without rebuilding its application.
+2. **Host many models:** As open and commercial models improved quickly, [[Foundation Model APIs]] began offering a broad catalog, including open models such as Llama, Gemma, GPT OSS, GLM, and DeepSeek, and partner models from OpenAI, Google, and Anthropic.
+3. **Govern and evaluate, whatever the model:** [[Unity Gateway|Unity Gateway]], [[MLflow]] evaluation, and [[Agent Bricks]] work across providers, so a business can switch models without rebuilding its application.
 
 ## Small-business considerations
 
 > [!smallbiz] Small-business considerations
-> - **You do not need to train an LLM.** The practical outcome of this history is a menu of hosted models you can call by the token.
-> - **Model choice is reversible.** Because models are retired and replaced on a schedule, keep an evaluation set and treat the model as a setting you can change.
+> - **You do not need to train an LLM:** The practical outcome of this history is a menu of hosted models you can call by the token.
+> - **Model choice is reversible:** Because models are retired and replaced on a schedule, keep an evaluation set and treat the model as a setting you can change.
 > - **Open models reduce [[Vendor Lock-In|lock-in]]** for the model itself, but check each model's license and acceptable-use policy.
 
 > [!bridge]- In Databricks today
@@ -142,10 +142,10 @@ The strategy shifted over three years:
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Why mixture of experts.** DBRX's 16-expert, choose-4 design gives 65 times more possible expert combinations than designs with 8 experts choosing 2 (such as Mixtral), per Databricks.
-> - **MegaBlocks.** Databricks brought the MegaBlocks project, an efficient mixture-of-experts training library, into its stack.
-> - **Retirement policy.** The AI models maintenance policy lists retirement dates and replacements for each hosted model, separately for pay-per-token and provisioned throughput.
-> - **Training costs.** MosaicML published training time and cost for MPT to show efficiency; for current costs of training on Databricks, see the AI Runtime pricing meter rather than historical figures.
+> - **Why mixture of experts:** DBRX's 16-expert, choose-4 design gives 65 times more possible expert combinations than designs with 8 experts choosing 2 (such as Mixtral), per Databricks.
+> - **MegaBlocks:** Databricks brought the MegaBlocks project, an efficient mixture-of-experts training library, into its stack.
+> - **Retirement policy:** The AI models maintenance policy lists retirement dates and replacements for each hosted model, separately for pay-per-token and provisioned throughput.
+> - **Training costs:** MosaicML published training time and cost for MPT to show efficiency; for current costs of training on Databricks, see the AI Runtime pricing meter rather than historical figures.
 
 ## Common misconceptions
 

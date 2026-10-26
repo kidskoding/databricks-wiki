@@ -110,8 +110,8 @@ flowchart TD
   HM["HMaster"] -.->|"assigns regions,<br/>coordinates splits"| RSB
 ```
 
-- **Write path.** A write is sent to the RegionServer that owns the key's region. It is appended to a write-ahead log in HDFS for durability and buffered in an in-memory MemStore. Full MemStores are flushed to immutable, sorted store files in HDFS. Background compactions merge store files to keep reads efficient.
-- **Read path.** The client locates the region through the `hbase:meta` table, caches the location, and reads from the RegionServer, which merges data from the MemStore and store files.
+- **Write path:** A write is sent to the RegionServer that owns the key's region. It is appended to a write-ahead log in HDFS for durability and buffered in an in-memory MemStore. Full MemStores are flushed to immutable, sorted store files in HDFS. Background compactions merge store files to keep reads efficient.
+- **Read path:** The client locates the region through the `hbase:meta` table, caches the location, and reads from the RegionServer, which merges data from the MemStore and store files.
 
 HBase shell example:
 
@@ -158,11 +158,11 @@ scan 'users', {STARTROW => 'user#48000', STOPROW => 'user#49000', LIMIT => 10}
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Row key design.** Rows are stored in key order, so monotonically increasing keys (timestamps, sequential IDs) route all new writes to one region, creating a hotspot. Common mitigations are a hashed prefix (salting), reversed keys, and composite keys such as `deviceId#reverseTimestamp`. Similar reasoning applies when choosing keys for [[Liquid Clustering]].
-> - **Column family count.** Each family has its own MemStore and store files, and flushes occur per region. Many families, or families with very different sizes, increase flush and compaction work.
-> - **Consistency.** HBase provides strong consistency per row because each region has exactly one serving RegionServer. When that server fails, its regions are unavailable until they are reassigned and the write-ahead log is replayed.
-> - **Compactions.** Major compactions rewrite all store files in a region and consume significant disk and network capacity. Operators typically schedule them outside peak hours.
-> - **Analytical scans.** Spark and Hive can read HBase tables through connectors, but large scans are slow compared with columnar formats such as [[Apache Parquet]].
+> - **Row key design:** Rows are stored in key order, so monotonically increasing keys (timestamps, sequential IDs) route all new writes to one region, creating a hotspot. Common mitigations are a hashed prefix (salting), reversed keys, and composite keys such as `deviceId#reverseTimestamp`. Similar reasoning applies when choosing keys for [[Liquid Clustering]].
+> - **Column family count:** Each family has its own MemStore and store files, and flushes occur per region. Many families, or families with very different sizes, increase flush and compaction work.
+> - **Consistency:** HBase provides strong consistency per row because each region has exactly one serving RegionServer. When that server fails, its regions are unavailable until they are reassigned and the write-ahead log is replayed.
+> - **Compactions:** Major compactions rewrite all store files in a region and consume significant disk and network capacity. Operators typically schedule them outside peak hours.
+> - **Analytical scans:** Spark and Hive can read HBase tables through connectors, but large scans are slow compared with columnar formats such as [[Apache Parquet]].
 
 ## Common misconceptions
 

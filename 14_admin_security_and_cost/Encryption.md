@@ -64,7 +64,9 @@ Data in a Databricks deployment lives in several places: the control plane (note
 
 ## Overview
 
-**Default behavior.** Without any configuration, data at rest is encrypted by the cloud provider's storage encryption with a Databricks-managed or provider-managed key. Connections to the control plane and APIs use TLS.
+### Default behavior
+
+Without any configuration, data at rest is encrypted by the cloud provider's storage encryption with a Databricks-managed or provider-managed key. Connections to the control plane and APIs use TLS.
 
 **Customer-managed keys (CMK)** let you supply a key from your cloud key service (Azure Key Vault or Managed HSM, AWS KMS, Google Cloud KMS). Databricks groups CMK into use cases:
 
@@ -80,11 +82,13 @@ Rules that apply across clouds:
 
 - **Serverless workspaces** need only the managed services key, because their default storage is treated as a managed service.
 - **Serverless compute disks** are short-lived and are not covered by the EBS or managed-disk keys.
-- **Existing data is not re-encrypted.** After adding a managed services key, Databricks uses it to protect the key that encrypts *future* writes.
-- **Revocation is final for that workspace's data.** If the key is removed or access to it is revoked, all control-plane data for the workspace becomes inaccessible.
+- **Existing data is not re-encrypted:** After adding a managed services key, Databricks uses it to protect the key that encrypts *future* writes.
+- **Revocation is final for that workspace's data:** If the key is removed or access to it is revoked, all control-plane data for the workspace becomes inaccessible.
 - **Your own data** (tables and volumes in your storage accounts) is encrypted by the storage service's own settings. Configure CMK on those buckets or accounts in the cloud provider, not in Databricks.
 
-**In transit.** Traffic between clients and Databricks, and between classic compute and the control plane, uses TLS. By default, data exchanged **between worker nodes** of a classic cluster is not encrypted by Databricks. Options:
+### In transit
+
+Traffic between clients and Databricks, and between classic compute and the control plane, uses TLS. By default, data exchanged **between worker nodes** of a classic cluster is not encrypted by Databricks. Options:
 
 - **AWS:** use AWS Nitro instance types, which encrypt traffic between instances. The [[Compliance Security Profile]] enforces Nitro instances.
 - **All clouds:** Databricks provides an init script that configures Spark to encrypt inter-node traffic (the current AWS docs describe AES 128-bit over TLS 1.3). The script derives its secret from a keystore file in DBFS, so any user with DBFS access can retrieve it.
@@ -150,12 +154,12 @@ On AWS, the account console does not support adding *workspace storage* keys to 
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Key hierarchy.** The Azure docs describe the managed services key as controlling access to the key that encrypts future writes. That is why adding a key does not re-encrypt existing data.
-> - **Key configurations (AWS).** On AWS, a key configuration is an account-level object created with `databricks account encryption-keys create` or the Key configurations API. It is referenced from a workspace as `managed_services_customer_managed_key_id` or `storage_customer_managed_key_id`. The KMS key must be in the same region as the workspace. For the `STORAGE` use case, `reuse_key_for_cluster_volumes` controls whether the key also encrypts EBS volumes (default true).
-> - **Propagation (AWS).** Terminate running compute before changing workspace storage keys. Updates can take up to 24 hours to take effect.
-> - **Rotation (Azure).** Rotate by updating the workspace with new key parameters. Keep the old key available for 24 hours after rotation. Pin a specific key version rather than `latest`. Managed disk keys support optional auto-rotation for RSA 2048, 3072, and 4096-bit keys.
-> - **Irreversible on Azure.** Once CMK for managed services is enabled on an Azure workspace, it cannot be disabled.
-> - **SQL encryption.** Databricks SQL queries, query history, and results are managed services data and are covered by the managed services key.
+> - **Key hierarchy:** The Azure docs describe the managed services key as controlling access to the key that encrypts future writes. That is why adding a key does not re-encrypt existing data.
+> - **Key configurations (AWS):** On AWS, a key configuration is an account-level object created with `databricks account encryption-keys create` or the Key configurations API. It is referenced from a workspace as `managed_services_customer_managed_key_id` or `storage_customer_managed_key_id`. The KMS key must be in the same region as the workspace. For the `STORAGE` use case, `reuse_key_for_cluster_volumes` controls whether the key also encrypts EBS volumes (default true).
+> - **Propagation (AWS):** Terminate running compute before changing workspace storage keys. Updates can take up to 24 hours to take effect.
+> - **Rotation (Azure):** Rotate by updating the workspace with new key parameters. Keep the old key available for 24 hours after rotation. Pin a specific key version rather than `latest`. Managed disk keys support optional auto-rotation for RSA 2048, 3072, and 4096-bit keys.
+> - **Irreversible on Azure:** Once CMK for managed services is enabled on an Azure workspace, it cannot be disabled.
+> - **SQL encryption:** Databricks SQL queries, query history, and results are managed services data and are covered by the managed services key.
 
 ## Common misconceptions
 

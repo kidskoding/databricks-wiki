@@ -171,9 +171,9 @@ State the request precisely, for example:
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Total cost of ownership.** For a larger replacement, compare a full [[Total Cost of Ownership|TCO]] of the current stack (licences, servers, maintenance, staff) with the new one over three years.
-> - **Chargeback.** When several teams share the platform, tag usage by team and report from system tables so that each team's benefits and costs are visible. See [[Tagging for Chargeback]].
-> - **Migration scope.** For a migration from an existing warehouse or Hadoop, use [[Assessing Your Current Data Estate]] and [[Migration Strategy Overview]] to size the effort; tools such as [[Lakebridge]] can reduce it.
+> - **Total cost of ownership:** For a larger replacement, compare a full [[Total Cost of Ownership|TCO]] of the current stack (licences, servers, maintenance, staff) with the new one over three years.
+> - **Chargeback:** When several teams share the platform, tag usage by team and report from system tables so that each team's benefits and costs are visible. See [[Tagging for Chargeback]].
+> - **Migration scope:** For a migration from an existing warehouse or Hadoop, use [[Assessing Your Current Data Estate]] and [[Migration Strategy Overview]] to size the effort; tools such as [[Lakebridge]] can reduce it.
 
 ## Common misconceptions
 

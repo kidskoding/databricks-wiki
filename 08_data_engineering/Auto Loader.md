@@ -66,9 +66,9 @@ Mastery: `INPUT[inlineSelect(option(new), option(learning), option(solid)):maste
 
 The naive way to load files is "list the folder, compare with what I loaded last time, load the difference". That breaks down fast:
 
-- **Listing is slow and costly.** Listing millions of objects in [[Object Storage|object storage]] every run takes time and API calls.
-- **Tracking is error-prone.** Hand-written "already loaded" tables drift, and a failed run can load a file twice.
-- **Schemas drift.** A vendor adds a column, and the job either crashes or silently drops it.
+- **Listing is slow and costly:** Listing millions of objects in [[Object Storage|object storage]] every run takes time and API calls.
+- **Tracking is error-prone:** Hand-written "already loaded" tables drift, and a failed run can load a file twice.
+- **Schemas drift:** A vendor adds a column, and the job either crashes or silently drops it.
 
 Auto Loader solves all three as a [[Structured Streaming]] source called `cloudFiles`. It is the file-ingestion engine behind [[Streaming Tables|streaming tables]] and `read_files` in pipelines.
 
@@ -174,12 +174,12 @@ The code is identical. What differs is where files land and what classic notific
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **File events vs classic notifications.** With file events, run each stream at least every 7 days to avoid falling back to a full directory listing. Classic notification mode can miss events, so the docs suggest `cloudFiles.backfillInterval` when you have strict completeness or [[SLA]] needs. That setting is not supported with file events.
-> - **Partition columns.** Columns inferred from folder names (`/date=2026-10-25/`) are not part of schema evolution. Set `cloudFiles.partitionColumns` explicitly.
-> - **Rate limits.** `cloudFiles.maxFilesPerTrigger` (default 1000) and `cloudFiles.maxBytesPerTrigger` (a soft maximum) cap each micro-batch, which helps with a large first backfill. When both are set, the lower limit wins. In Databricks Runtime 18.0 and above, both are configured dynamically and do not need to be set.
-> - **File metadata.** `_metadata.file_path`, `_metadata.file_modification_time` and friends are available to every query. Keep the source file path in bronze for debugging.
+> - **File events vs classic notifications:** With file events, run each stream at least every 7 days to avoid falling back to a full directory listing. Classic notification mode can miss events, so the docs suggest `cloudFiles.backfillInterval` when you have strict completeness or [[SLA]] needs. That setting is not supported with file events.
+> - **Partition columns:** Columns inferred from folder names (`/date=2026-10-25/`) are not part of schema evolution. Set `cloudFiles.partitionColumns` explicitly.
+> - **Rate limits:** `cloudFiles.maxFilesPerTrigger` (default 1000) and `cloudFiles.maxBytesPerTrigger` (a soft maximum) cap each micro-batch, which helps with a large first backfill. When both are set, the lower limit wins. In Databricks Runtime 18.0 and above, both are configured dynamically and do not need to be set.
+> - **File metadata:** `_metadata.file_path`, `_metadata.file_modification_time` and friends are available to every query. Keep the source file path in bronze for debugging.
 > - **Do not reuse checkpoints** between different sources or targets. A checkpoint belongs to exactly one query.
-> - **Modified files.** Auto Loader by default treats a file path as processed once. If a vendor overwrites a file with the same name, it is not reloaded unless you set `cloudFiles.allowOverwrites` (default `false`), which can produce duplicates. Prefer unique file names (add a timestamp to every export).
+> - **Modified files:** Auto Loader by default treats a file path as processed once. If a vendor overwrites a file with the same name, it is not reloaded unless you set `cloudFiles.allowOverwrites` (default `false`), which can produce duplicates. Prefer unique file names (add a timestamp to every export).
 
 ## Common misconceptions
 

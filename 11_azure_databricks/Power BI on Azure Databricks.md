@@ -140,12 +140,12 @@ After publishing, open the semantic model's settings in the Power BI service. Un
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Auto query tags.** With ADBC, Power BI context is attached to queries as query tags in Databricks SQL, which helps attribute warehouse cost and load to reports. ODBC connections do not support this.
-> - **`Databricks.Query`.** The native-query data source `Databricks.Query` is not supported with semantic model DirectQuery mode.
-> - **Service principal token lifetime.** When automation uses an Entra ID-managed service principal, workflows that run longer than one hour fail because the token expires.
-> - **Scheduled republish.** The Power BI task in Lakeflow Jobs (Public Preview) republishes models after upstream tables refresh. It requires a Unity Catalog Power BI connection, consent to the Databricks Dataset Publishing Integration application, and `USE CONNECTION` on that connection.
-> - **Metric views.** Power BI support for querying Unity Catalog [[Metric Views|metric views]] has changed several times during 2026. Check the current "Query metric views in Power BI" page before building on it.
-> - **Warehouse sizing.** DirectQuery reports send queries to the warehouse whenever visuals load, so size the SQL warehouse for concurrent report users. See [[Query Performance and Caching]].
+> - **Auto query tags:** With ADBC, Power BI context is attached to queries as query tags in Databricks SQL, which helps attribute warehouse cost and load to reports. ODBC connections do not support this.
+> - **`Databricks.Query`:** The native-query data source `Databricks.Query` is not supported with semantic model DirectQuery mode.
+> - **Service principal token lifetime:** When automation uses an Entra ID-managed service principal, workflows that run longer than one hour fail because the token expires.
+> - **Scheduled republish:** The Power BI task in Lakeflow Jobs (Public Preview) republishes models after upstream tables refresh. It requires a Unity Catalog Power BI connection, consent to the Databricks Dataset Publishing Integration application, and `USE CONNECTION` on that connection.
+> - **Metric views:** Power BI support for querying Unity Catalog [[Metric Views|metric views]] has changed several times during 2026. Check the current "Query metric views in Power BI" page before building on it.
+> - **Warehouse sizing:** DirectQuery reports send queries to the warehouse whenever visuals load, so size the SQL warehouse for concurrent report users. See [[Query Performance and Caching]].
 
 ## Common misconceptions
 

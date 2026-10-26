@@ -70,9 +70,9 @@ Programs must agree on how bytes are arranged in order to read a file. Early on 
 
 As data volumes grew, three further requirements appeared:
 
-1. **Speed.** Reading a 50 GB text file to answer a question about one column wastes most of the work.
-2. **Cost.** In the cloud you pay for storage and often for the bytes a query scans. A format that is five times smaller can be five times cheaper to query.
-3. **Trust.** Plain text carries no types. `03/04/2026` can mean March 4 or April 3, and `00123` can be a number or a code. Each reader interprets them differently.
+1. **Speed:** Reading a 50 GB text file to answer a question about one column wastes most of the work.
+2. **Cost:** In the cloud you pay for storage and often for the bytes a query scans. A format that is five times smaller can be five times cheaper to query.
+3. **Trust:** Plain text carries no types. `03/04/2026` can mean March 4 or April 3, and `00123` can be a number or a code. Each reader interprets them differently.
 
 Later formats address each of these problems, from CSV to [[Apache Parquet]] to [[Delta Lake]].
 
@@ -80,8 +80,8 @@ Later formats address each of these problems, from CSV to [[Apache Parquet]] to 
 
 A **file format** is a specification for how data is encoded as bytes. Two choices define most formats:
 
-- **Text vs. binary.** Text formats (CSV, JSON, XML) store characters you can open in a text editor. Binary formats (Parquet, ORC, Avro) store compact encoded values that need a library to read.
-- **Row vs. column layout.** Row formats keep each record together. Column formats keep each field together. See [[Columnar Storage]].
+- **Text vs. binary:** Text formats (CSV, JSON, XML) store characters you can open in a text editor. Binary formats (Parquet, ORC, Avro) store compact encoded values that need a library to read.
+- **Row vs. column layout:** Row formats keep each record together. Column formats keep each field together. See [[Columnar Storage]].
 
 | Format | Text or binary | Layout | Has types and [[Schema\|schema]] | Typical use |
 |---|---|---|---|---|
@@ -127,9 +127,9 @@ On typical data the Parquet file is several times smaller than the CSV (a Databr
 ## Small-business considerations
 
 > [!smallbiz] Small-business considerations
-> - **CSV is fine for getting data in and out.** Your point-of-sale (POS) and accounting tools export CSV, and that is a perfectly good starting point.
-> - **Do not use CSV as your long-term store.** Once data lands in a platform like Databricks, keep it as tables, not as a folder of CSVs. You get types, speed, and history for free.
-> - **Keep the original files anyway.** Saving the raw export before you clean it means you can always redo the cleaning. This is the "bronze" idea in the [[Medallion Architecture]].
+> - **CSV is fine for getting data in and out:** Your point-of-sale (POS) and accounting tools export CSV, and that is a perfectly good starting point.
+> - **Do not use CSV as your long-term store:** Once data lands in a platform like Databricks, keep it as tables, not as a folder of CSVs. You get types, speed, and history for free.
+> - **Keep the original files anyway:** Saving the raw export before you clean it means you can always redo the cleaning. This is the "bronze" idea in the [[Medallion Architecture]].
 
 > [!bridge]- In Databricks today
 > Databricks reads every common format: the `read_files` function handles CSV, JSON, XML, text, binary files, Parquet, Avro, and ORC, and Excel has its own reader. Unless you specify otherwise, tables you create are [[Delta Lake]] tables: Parquet data files plus a transaction log that adds [[ACID Transactions|ACID transactions]], [[Time Travel|time travel]], and [[Schema Enforcement and Evolution|schema enforcement]]. Through [[Delta UniForm]], the same tables can also be read by [[Apache Iceberg]] clients (Databricks Runtime 14.3 LTS and above), because Databricks generates Iceberg metadata without rewriting the data files. The general idea of "a table made of open files plus metadata" is covered in [[Open Table Formats]].
@@ -142,11 +142,11 @@ On typical data the Parquet file is several times smaller than the CSV (a Databr
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Splittability.** Distributed engines want to split a big file so many machines read it in parallel. Spark cannot read unsplittable files such as gzip files in multiple parts, so one task reads each whole file. Parquet is splittable: the row group is its unit of parallelization. This is one reason a single huge `.csv.gz` loads slowly in Spark; Databricks recommends ingesting such files once into a Delta table.
-> - **Parquet's internals.** A Parquet file is divided into row groups; each row group holds exactly one column chunk per column; each chunk holds pages, the unit of encoding and compression, with encodings such as dictionary and run-length encoding. The file metadata, including the location of every column chunk, is written after the data at the end of the file, and an optional page index stores min/max statistics that let readers skip pages that cannot match a filter. Databricks also records per-file min/max statistics for Delta tables (see [[Data Skipping]]).
-> - **Files vs. tables.** A folder of Parquet files has no transactions: two writers can corrupt it, and a reader can see half-written data. Table formats ([[Delta Lake]], [[Apache Iceberg]], [[Apache Hudi]]) add a log or manifest on top so a set of files behaves like one consistent table. That leap is chapter 05's story.
-> - **The small-files problem.** Thousands of tiny files are slow to list and open, especially on object storage. Compaction (on Databricks, the `OPTIMIZE` command) rewrites them into fewer, larger files. See [[OPTIMIZE and VACUUM]].
-> - **In-memory formats are a separate layer.** Apache Arrow (first release 0.1.0, October 2016) is a columnar format for data *in memory*, designed as the complement to Parquet on disk. It lets tools like pandas and Spark exchange data without converting it row by row.
+> - **Splittability:** Distributed engines want to split a big file so many machines read it in parallel. Spark cannot read unsplittable files such as gzip files in multiple parts, so one task reads each whole file. Parquet is splittable: the row group is its unit of parallelization. This is one reason a single huge `.csv.gz` loads slowly in Spark; Databricks recommends ingesting such files once into a Delta table.
+> - **Parquet's internals:** A Parquet file is divided into row groups; each row group holds exactly one column chunk per column; each chunk holds pages, the unit of encoding and compression, with encodings such as dictionary and run-length encoding. The file metadata, including the location of every column chunk, is written after the data at the end of the file, and an optional page index stores min/max statistics that let readers skip pages that cannot match a filter. Databricks also records per-file min/max statistics for Delta tables (see [[Data Skipping]]).
+> - **Files vs. tables:** A folder of Parquet files has no transactions: two writers can corrupt it, and a reader can see half-written data. Table formats ([[Delta Lake]], [[Apache Iceberg]], [[Apache Hudi]]) add a log or manifest on top so a set of files behaves like one consistent table. That leap is chapter 05's story.
+> - **The small-files problem:** Thousands of tiny files are slow to list and open, especially on object storage. Compaction (on Databricks, the `OPTIMIZE` command) rewrites them into fewer, larger files. See [[OPTIMIZE and VACUUM]].
+> - **In-memory formats are a separate layer:** Apache Arrow (first release 0.1.0, October 2016) is a columnar format for data *in memory*, designed as the complement to Parquet on disk. It lets tools like pandas and Spark exchange data without converting it row by row.
 
 ## Common misconceptions
 

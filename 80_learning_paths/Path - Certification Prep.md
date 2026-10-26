@@ -123,7 +123,9 @@ The Databricks Certified Hadoop Migration Architect exam is no longer available 
 
 **Goal:** cover the topic areas of one associate exam. Each table lists the exam's own sections and weights, with the vault notes that cover them.
 
-**Data Engineer Associate.** Code is in SQL where possible, otherwise Python.
+#### Data Engineer Associate
+
+Code is in SQL where possible, otherwise Python.
 
 | Topic area | Weight | Vault notes |
 |---|---|---|
@@ -135,7 +137,9 @@ The Databricks Certified Hadoop Migration Architect exam is no longer available 
 | Troubleshooting, Monitoring, and Optimization | 10% | [[Spark UI]], [[Liquid Clustering]], [[Data Skew]], [[Spill]] |
 | Governance and Security | 15% | [[Managed vs External Tables]], [[Privileges and Grants]], [[Row Filters and Column Masks]], [[Attribute-Based Access Control]] |
 
-**Data Analyst Associate.** The exam uses ANSI SQL. The exam guide does not list weights; the weights below come from the exam page.
+#### Data Analyst Associate
+
+The exam uses ANSI SQL. The exam guide does not list weights; the weights below come from the exam page.
 
 | Topic area | Weight | Vault notes |
 |---|---|---|
@@ -149,7 +153,9 @@ The Databricks Certified Hadoop Migration Architect exam is no longer available 
 | Data Modeling with Databricks SQL | 5% | [[Star Schema]], [[Slowly Changing Dimensions]] |
 | Securing Data | 8% | [[Privileges and Grants]], [[Row Filters and Column Masks]] |
 
-**Machine Learning Associate.** ML code is in Python; other data code may be in SQL.
+#### Machine Learning Associate
+
+ML code is in Python; other data code may be in SQL.
 
 | Topic area | Weight | Vault notes |
 |---|---|---|
@@ -160,7 +166,9 @@ The Databricks Certified Hadoop Migration Architect exam is no longer available 
 
 The ML Associate guide predates the AutoML change: AutoML is removed from Databricks Runtime 18.0 ML. Read [[AutoML]] for both the exam view and the current state.
 
-**Generative AI Engineer Associate.** ML code is in Python.
+#### Generative AI Engineer Associate
+
+ML code is in Python.
 
 | Topic area | Weight | Vault notes |
 |---|---|---|
@@ -171,7 +179,9 @@ The ML Associate guide predates the AutoML change: AutoML is removed from Databr
 | Governance | 8% | [[Unity Catalog]], [[Unity Gateway]] |
 | Evaluation and Monitoring | 12% | [[Agent Evaluation and Tracing]], [[MLflow]] |
 
-**Context Engineer Associate.** The newest exam (published July 29, 2026). It tests what an agent receives at inference time: instructions, retrieved knowledge, memory, tools, and compacted history. Code is in Python.
+#### Context Engineer Associate
+
+The newest exam (published July 29, 2026). It tests what an agent receives at inference time: instructions, retrieved knowledge, memory, tools, and compacted history. Code is in Python.
 
 | Topic area | Weight | Vault notes |
 |---|---|---|
@@ -183,7 +193,9 @@ The ML Associate guide predates the AutoML change: AutoML is removed from Databr
 | Context Compression and Compaction | 11% | [[Agent Evaluation and Tracing]] (traces); no dedicated vault note |
 | Multi-Agent and Long-Horizon Task Design | 13% | [[Agent Bricks]], [[Mosaic AI Agent Framework]] |
 
-**Associate Developer for Apache Spark.** Code is in Python.
+#### Associate Developer for Apache Spark
+
+Code is in Python.
 
 | Topic area | Weight | Vault notes |
 |---|---|---|
@@ -208,7 +220,9 @@ The ML Associate guide predates the AutoML change: AutoML is removed from Databr
 
 **Goal:** cover the production depth that professional exams add.
 
-**Data Engineer Professional.** Code is in Python and SQL. The exam guide dated October 9, 2026 lists 60 scored questions in nine sections. The summary on the exam page still showed the previous outline (59 questions, ten sections) on 2026-10-25, so follow the guide.
+#### Data Engineer Professional
+
+Code is in Python and SQL. The exam guide dated October 9, 2026 lists 60 scored questions in nine sections. The summary on the exam page still showed the previous outline (59 questions, ten sections) on 2026-10-25, so follow the guide.
 
 | Topic area | Weight | Vault notes |
 |---|---|---|
@@ -222,7 +236,9 @@ The ML Associate guide predates the AutoML change: AutoML is removed from Databr
 | Debugging and Deploying | 10% | [[Spark UI]], [[System Tables]], [[Declarative Automation Bundles]], [[Git Folders and Workspace Files]], [[CI-CD for Data Pipelines]] |
 | Data Modeling | 5% | [[Liquid Clustering]], [[Star Schema]], [[Materialized Views]], [[Metric Views]] |
 
-**Machine Learning Professional.** The guide still uses the older names Databricks Asset Bundles and Lakehouse Monitoring.
+#### Machine Learning Professional
+
+The guide still uses the older names Databricks Asset Bundles and Lakehouse Monitoring.
 
 | Topic area | Weight | Vault notes |
 |---|---|---|

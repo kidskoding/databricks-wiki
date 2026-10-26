@@ -140,12 +140,12 @@ For governed data, prefer Unity Catalog storage credentials over cluster service
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Project constraint.** A custom cluster service account must be in the project the docs specify. One page says the workspace setup project; another says the same project as the account's service account. Check the current compute configuration page.
-> - **Scoped custom roles.** The workspace service account's resource role uses an IAM condition on the workspace ID, which limits that role to the workspace's own Compute Engine resources.
-> - **Least-privilege workspaces.** With a creator service account and custom roles, you control every grant. The creator needs only read-level permissions to validate settings.
-> - **Google ID authentication.** Google Cloud service accounts can authenticate to the Databricks REST API with Google ID tokens instead of Databricks tokens. See [[Authentication - Tokens and OAuth]].
-> - **Serverless.** Custom cluster service accounts are a classic compute setting. For serverless workloads, grant data access through Unity Catalog storage and service credentials.
-> - **Customer-managed keys.** For managed services CMK in least-privilege setups, you grant the Cloud KMS CryptoKey Encrypter/Decrypter role to the workspace service account after creation. See [[Customer-Managed Keys on Google Cloud]].
+> - **Project constraint:** A custom cluster service account must be in the project the docs specify. One page says the workspace setup project; another says the same project as the account's service account. Check the current compute configuration page.
+> - **Scoped custom roles:** The workspace service account's resource role uses an IAM condition on the workspace ID, which limits that role to the workspace's own Compute Engine resources.
+> - **Least-privilege workspaces:** With a creator service account and custom roles, you control every grant. The creator needs only read-level permissions to validate settings.
+> - **Google ID authentication:** Google Cloud service accounts can authenticate to the Databricks REST API with Google ID tokens instead of Databricks tokens. See [[Authentication - Tokens and OAuth]].
+> - **Serverless:** Custom cluster service accounts are a classic compute setting. For serverless workloads, grant data access through Unity Catalog storage and service credentials.
+> - **Customer-managed keys:** For managed services CMK in least-privilege setups, you grant the Cloud KMS CryptoKey Encrypter/Decrypter role to the workspace service account after creation. See [[Customer-Managed Keys on Google Cloud]].
 
 ## Common misconceptions
 

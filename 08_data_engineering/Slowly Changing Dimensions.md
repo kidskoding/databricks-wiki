@@ -164,13 +164,13 @@ The second query shows the purpose of type 2: each order is matched to the versi
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Schema for type 2 targets.** If you declare the target's schema yourself in `create_auto_cdc_flow()`, the docs say you must include `__START_AT` and `__END_AT` with the same data type as the `sequence_by` fields.
-> - **Deletes in type 2.** The docs describe the deleted row being kept temporarily as a tombstone in the underlying Delta table, with a view in the metastore that filters out tombstones. Query the published table, not the internal one.
+> - **Schema for type 2 targets:** If you declare the target's schema yourself in `create_auto_cdc_flow()`, the docs say you must include `__START_AT` and `__END_AT` with the same data type as the `sequence_by` fields.
+> - **Deletes in type 2:** The docs describe the deleted row being kept temporarily as a tombstone in the underlying Delta table, with a view in the metastore that filters out tombstones. Query the published table, not the internal one.
 > - **Truncate** (`APPLY AS TRUNCATE WHEN`) is supported only for type 1.
-> - **Snapshots to type 2.** `create_auto_cdc_from_snapshot_flow(..., stored_as_scd_type=2)` builds history from a series of full extracts, which suits sources with no change log.
-> - **Bitemporal.** `STORED AS BITEMPORAL` (Beta, requires `SYSTEM SEQUENCE BY`) tracks both when something was true in the business and when the system learned of it.
-> - **Other SCD patterns.** AUTO CDC implements types 1 and 2 (plus bitemporal) directly. Model any other pattern with ordinary SQL if you need it.
-> - **Surrogate keys.** In classic dimensional modeling, each type 2 version gets a surrogate key so fact tables link to the right version. Databricks' dimensional modeling blog generates it with an identity column on a hand-built dimension table. Identity columns are not supported on AUTO CDC targets, so for those, join on the natural key plus time range as shown above.
+> - **Snapshots to type 2:** `create_auto_cdc_from_snapshot_flow(..., stored_as_scd_type=2)` builds history from a series of full extracts, which suits sources with no change log.
+> - **Bitemporal:** `STORED AS BITEMPORAL` (Beta, requires `SYSTEM SEQUENCE BY`) tracks both when something was true in the business and when the system learned of it.
+> - **Other SCD patterns:** AUTO CDC implements types 1 and 2 (plus bitemporal) directly. Model any other pattern with ordinary SQL if you need it.
+> - **Surrogate keys:** In classic dimensional modeling, each type 2 version gets a surrogate key so fact tables link to the right version. Databricks' dimensional modeling blog generates it with an identity column on a hand-built dimension table. Identity columns are not supported on AUTO CDC targets, so for those, join on the natural key plus time range as shown above.
 
 ## Common misconceptions
 

@@ -163,11 +163,11 @@ The managed SQL Server connector has two parts:
 
 Prepare the source first:
 
-1. **Choose a change method per table.** Databricks recommends **change tracking** for every table with a primary key, because it puts less load on the source, and **CDC** for tables without one. If both are enabled on a table, the connector uses change tracking.
-2. **Check versions.** Change tracking needs SQL Server 2012 or later. CDC needs SQL Server 2012 SP1 CU3 or later, and Enterprise Edition for versions before SQL Server 2016.
-3. **Run the utility objects script.** Databricks provides a script that installs setup procedures such as `dbo.lakeflowSetupChangeTracking` and `dbo.lakeflowSetupChangeDataCapture`. They enable tracking, create support objects, and grant the ingestion user its permissions. The user who runs the CDC setup must be a member of `db_owner`.
-4. **Set retention.** Set the change tracking or CDC retention to the longest time the gateway might be down. After that, a full refresh is required.
-5. **Use the primary.** Change tracking and CDC are not supported on read replicas or secondary instances.
+1. **Choose a change method per table:** Databricks recommends **change tracking** for every table with a primary key, because it puts less load on the source, and **CDC** for tables without one. If both are enabled on a table, the connector uses change tracking.
+2. **Check versions:** Change tracking needs SQL Server 2012 or later. CDC needs SQL Server 2012 SP1 CU3 or later, and Enterprise Edition for versions before SQL Server 2016.
+3. **Run the utility objects script:** Databricks provides a script that installs setup procedures such as `dbo.lakeflowSetupChangeTracking` and `dbo.lakeflowSetupChangeDataCapture`. They enable tracking, create support objects, and grant the ingestion user its permissions. The user who runs the CDC setup must be a member of `db_owner`.
+4. **Set retention:** Set the change tracking or CDC retention to the longest time the gateway might be down. After that, a full refresh is required.
+5. **Use the primary:** Change tracking and CDC are not supported on read replicas or secondary instances.
 
 For reference, enabling change tracking manually uses standard T-SQL:
 
@@ -250,13 +250,13 @@ SQL Server Agent jobs become [[Lakeflow Jobs]]. SSIS packages are covered in [[M
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Change tracking vs CDC.** Change tracking records that a row changed, and the connector reads the current row. CDC records every change from the transaction log and uses more log space.
-> - **Retention and outages.** The gateway must run continuously so it reads changes before the source cleans them up. An outage longer than retention forces a full refresh.
-> - **Snapshot, then stream.** The pipeline takes an initial snapshot of each table, then switches to changes. Large tables can take hours to snapshot, so start them in a quiet window.
-> - **Upgrading the utility script.** Re-running the setup script and procedures keeps tracking enabled; pipelines resume from their last checkpoint without a full refresh.
-> - **Collation.** SQL Server's default collation is case-insensitive. Databricks defaults to `UTF8_BINARY`. `UTF8_LCASE` gives case-insensitive comparison but stays accent-sensitive. Collations can be set per expression, column, table, schema, catalog, or session (`SET COLLATION`).
-> - **Row-by-row procedures.** Cursor loops translate but run slowly. Rewrite them as set-based SQL or `MERGE` (see [[MERGE and Upserts]]). For complex procedures, the experimental Switch transpiler produces notebooks.
-> - **Synapse.** Azure Synapse dedicated SQL pools use the `synapse` dialect, which Morpheus and BladeBridge both support.
+> - **Change tracking vs CDC:** Change tracking records that a row changed, and the connector reads the current row. CDC records every change from the transaction log and uses more log space.
+> - **Retention and outages:** The gateway must run continuously so it reads changes before the source cleans them up. An outage longer than retention forces a full refresh.
+> - **Snapshot, then stream:** The pipeline takes an initial snapshot of each table, then switches to changes. Large tables can take hours to snapshot, so start them in a quiet window.
+> - **Upgrading the utility script:** Re-running the setup script and procedures keeps tracking enabled; pipelines resume from their last checkpoint without a full refresh.
+> - **Collation:** SQL Server's default collation is case-insensitive. Databricks defaults to `UTF8_BINARY`. `UTF8_LCASE` gives case-insensitive comparison but stays accent-sensitive. Collations can be set per expression, column, table, schema, catalog, or session (`SET COLLATION`).
+> - **Row-by-row procedures:** Cursor loops translate but run slowly. Rewrite them as set-based SQL or `MERGE` (see [[MERGE and Upserts]]). For complex procedures, the experimental Switch transpiler produces notebooks.
+> - **Synapse:** Azure Synapse dedicated SQL pools use the `synapse` dialect, which Morpheus and BladeBridge both support.
 
 ## Common misconceptions
 

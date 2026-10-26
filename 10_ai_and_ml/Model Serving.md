@@ -149,9 +149,9 @@ Any HTTP client works too. The endpoint URL is `https://<workspace-url>/serving-
 ## Small-business considerations
 
 > [!smallbiz] Small-business considerations
-> - **Ask whether you need real time.** If predictions are used once a day, a batch job that writes a table is simpler and cheaper. Use an endpoint when an app or website needs an answer per request.
+> - **Ask whether you need real time:** If predictions are used once a day, a batch job that writes a table is simpler and cheaper. Use an endpoint when an app or website needs an answer per request.
 > - **Use scale to zero for internal tools** with occasional traffic, and accept a cold start delay on the first request.
-> - **Start with `Small` CPU.** Most tabular models do not need GPUs.
+> - **Start with `Small` CPU:** Most tabular models do not need GPUs.
 > - **Cost drivers:** endpoints bill for provisioned concurrency over time, so an endpoint that never scales to zero bills continuously. See [[How Databricks Pricing Works]] and the official pricing page.
 
 ## Cloud differences
@@ -168,11 +168,11 @@ Any HTTP client works too. The endpoint URL is `https://<workspace-url>/serving-
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Traffic splitting.** Serve several versions on one endpoint and shift the percentage to run an A/B test or a gradual rollout.
-> - **Inference tables.** Unity Gateway-enabled inference tables log requests and responses to Delta tables and are recommended for new custom model endpoints. They feed [[Data Quality Monitoring|inference profiles]].
-> - **Custom LLMs on GPU.** Custom LLM endpoints do not autoscale dynamically, so size `workload_size` for peak traffic. `GPU_XLARGE` (1x H100) endpoints do not support scale to zero. For large LLMs, Databricks recommends [[Foundation Model APIs]] over custom GPU serving.
-> - **Secrets and resources.** Endpoints can read secrets as environment variables to call external services.
-> - **Route optimization.** Available only for custom model and Feature Serving endpoints, not Foundation Model APIs or external models. Personal access tokens are not supported on route-optimized endpoints.
+> - **Traffic splitting:** Serve several versions on one endpoint and shift the percentage to run an A/B test or a gradual rollout.
+> - **Inference tables:** Unity Gateway-enabled inference tables log requests and responses to Delta tables and are recommended for new custom model endpoints. They feed [[Data Quality Monitoring|inference profiles]].
+> - **Custom LLMs on GPU:** Custom LLM endpoints do not autoscale dynamically, so size `workload_size` for peak traffic. `GPU_XLARGE` (1x H100) endpoints do not support scale to zero. For large LLMs, Databricks recommends [[Foundation Model APIs]] over custom GPU serving.
+> - **Secrets and resources:** Endpoints can read secrets as environment variables to call external services.
+> - **Route optimization:** Available only for custom model and Feature Serving endpoints, not Foundation Model APIs or external models. Personal access tokens are not supported on route-optimized endpoints.
 
 ## Common misconceptions
 

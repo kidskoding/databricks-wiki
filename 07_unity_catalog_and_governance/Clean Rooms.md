@@ -153,11 +153,11 @@ After the run, the runner queries the output table with serverless compute like 
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Trust model.** Collaborators trust that approved code does what it says. The approval step is the main control, so review notebooks for row-level outputs, small groups, and joins that could re-identify individuals.
-> - **Output limits.** Output tables support tables only, not volumes or views. Querying them requires serverless compute, and the number of output tables per notebook is capped.
-> - **Notebook versions.** Only the latest version of a notebook can run, so a change requires re-approval.
-> - **Network.** Clean rooms run on serverless compute, so storage behind private networking needs serverless connectivity rules. See [[Serverless Network Security]].
-> - **Clean rooms are securables.** A clean room is a metastore-level object, and `BROWSE` can be granted on it directly.
+> - **Trust model:** Collaborators trust that approved code does what it says. The approval step is the main control, so review notebooks for row-level outputs, small groups, and joins that could re-identify individuals.
+> - **Output limits:** Output tables support tables only, not volumes or views. Querying them requires serverless compute, and the number of output tables per notebook is capped.
+> - **Notebook versions:** Only the latest version of a notebook can run, so a change requires re-approval.
+> - **Network:** Clean rooms run on serverless compute, so storage behind private networking needs serverless connectivity rules. See [[Serverless Network Security]].
+> - **Clean rooms are securables:** A clean room is a metastore-level object, and `BROWSE` can be granted on it directly.
 
 ## Common misconceptions
 

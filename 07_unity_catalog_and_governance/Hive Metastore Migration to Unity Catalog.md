@@ -184,12 +184,12 @@ Check the current upgrade guide for the exact federation setup steps and stateme
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **History.** `CLONE` does not carry table history. Time travel to pre-migration versions is not available on the clone; keep the source until it is no longer needed.
-> - **SYNC as a bridge.** `SYNC` can be rerun to keep Unity Catalog external tables aligned with Hive table changes while jobs are moved gradually.
-> - **Federation first.** Federating the Hive metastore gives governed access to all legacy tables immediately, then lets you upgrade table by table without a big-bang copy. `SET MANAGED MOVE` disables access to the source table in the external catalog, so update remaining readers first.
-> - **UCX scope.** Beyond table migration, UCX includes a table-mapping step, principal and storage setup, and federation commands. Review the UCX documentation for the current command list before planning around it.
-> - **Format limits.** Hive managed tables in formats other than Delta or Parquet need manual handling, typically a `CREATE TABLE AS SELECT` into a managed Delta table.
-> - **Coexistence.** Databricks documents working with the legacy Hive metastore alongside Unity Catalog, so migration can be incremental.
+> - **History:** `CLONE` does not carry table history. Time travel to pre-migration versions is not available on the clone; keep the source until it is no longer needed.
+> - **SYNC as a bridge:** `SYNC` can be rerun to keep Unity Catalog external tables aligned with Hive table changes while jobs are moved gradually.
+> - **Federation first:** Federating the Hive metastore gives governed access to all legacy tables immediately, then lets you upgrade table by table without a big-bang copy. `SET MANAGED MOVE` disables access to the source table in the external catalog, so update remaining readers first.
+> - **UCX scope:** Beyond table migration, UCX includes a table-mapping step, principal and storage setup, and federation commands. Review the UCX documentation for the current command list before planning around it.
+> - **Format limits:** Hive managed tables in formats other than Delta or Parquet need manual handling, typically a `CREATE TABLE AS SELECT` into a managed Delta table.
+> - **Coexistence:** Databricks documents working with the legacy Hive metastore alongside Unity Catalog, so migration can be incremental.
 
 ## Common misconceptions
 

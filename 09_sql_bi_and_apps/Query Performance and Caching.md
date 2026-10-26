@@ -163,10 +163,10 @@ Databricks recommends this setting only for testing or benchmarking. Leave the c
 
 > [!smallbiz] Small-business considerations
 > Most small workloads need no tuning. These practices cover most cases:
-> - **Use serverless.** Its remote result cache survives restarts, so the first person to open the morning report fills the cache for later viewers.
-> - **Leave caching on.** The result cache is invalidated whenever the table changes, so it does not show stale numbers.
-> - **Open the profile before increasing warehouse size.** A `SELECT *` on a wide table or a missing filter often explains a slow report.
-> - **Remember the dashboard exception.** A dashboard can show numbers up to 24 hours old. If current figures are needed at a set time, schedule a dashboard refresh. See [[AI-BI Dashboards]].
+> - **Use serverless:** Its remote result cache survives restarts, so the first person to open the morning report fills the cache for later viewers.
+> - **Leave caching on:** The result cache is invalidated whenever the table changes, so it does not show stale numbers.
+> - **Open the profile before increasing warehouse size:** A `SELECT *` on a wide table or a missing filter often explains a slow report.
+> - **Remember the dashboard exception:** A dashboard can show numbers up to 24 hours old. If current figures are needed at a set time, schedule a dashboard refresh. See [[AI-BI Dashboards]].
 
 ## Cloud differences
 
@@ -176,11 +176,11 @@ Databricks recommends this setting only for testing or benchmarking. Leave the c
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Two result caches, one rule.** Both expire after 24 hours and both are invalidated by changes to the underlying tables. The remote one persists as workspace system data, which is why it outlives a stopped serverless warehouse.
-> - **Disk cache vs `CACHE TABLE`.** The disk cache is automatic: you do nothing to turn it on. `CACHE TABLE` is a separate, explicit SQL statement documented in the SQL language reference. On SQL warehouses you normally rely on the automatic caches and check the reference before reaching for it.
-> - **Disk cache correctness.** The disk cache detects changes to the underlying data files and invalidates itself, so it never serves stale file data.
-> - **Profile vs Spark UI.** The query profile is the SQL-warehouse counterpart of the [[Spark UI]]. It hides the job, stage, and task plumbing and shows operators, which is what an analyst can act on.
-> - **Dashboards have their own optimization.** AI/BI dashboards cache dataset results separately, and the docs describe how datasets are optimized and refreshed. Plan dashboard freshness with that page, not with the generic cache rules.
+> - **Two result caches, one rule:** Both expire after 24 hours and both are invalidated by changes to the underlying tables. The remote one persists as workspace system data, which is why it outlives a stopped serverless warehouse.
+> - **Disk cache vs `CACHE TABLE`:** The disk cache is automatic: you do nothing to turn it on. `CACHE TABLE` is a separate, explicit SQL statement documented in the SQL language reference. On SQL warehouses you normally rely on the automatic caches and check the reference before reaching for it.
+> - **Disk cache correctness:** The disk cache detects changes to the underlying data files and invalidates itself, so it never serves stale file data.
+> - **Profile vs Spark UI:** The query profile is the SQL-warehouse counterpart of the [[Spark UI]]. It hides the job, stage, and task plumbing and shows operators, which is what an analyst can act on.
+> - **Dashboards have their own optimization:** AI/BI dashboards cache dataset results separately, and the docs describe how datasets are optimized and refreshed. Plan dashboard freshness with that page, not with the generic cache rules.
 
 ## Common misconceptions
 

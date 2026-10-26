@@ -88,7 +88,9 @@ An Iceberg table is data files plus a **tree of metadata**:
 
 A commit writes new manifests and a new metadata file, then **atomically swaps the pointer** from the old metadata file to the new one. That swap is the transaction. In practice a catalog holds the pointer and performs the swap: Hive Metastore, AWS Glue, a REST catalog, or Unity Catalog. (The spec also defines file-system tables that commit by atomic rename, but it marks that scheme deprecated and unsafe on object stores.)
 
-**Spec versions.** The Iceberg spec page says versions 1, 2, and 3 are complete and adopted, and version 4 is in development. v2 added row-level deletes. **v3** adds deletion vectors (stored in Puffin files), row lineage, the `variant` type, geometry and geography types, nanosecond timestamps, and default column values.
+### Spec versions
+
+The Iceberg spec page says versions 1, 2, and 3 are complete and adopted, and version 4 is in development. v2 added row-level deletes. **v3** adds deletion vectors (stored in Puffin files), row lineage, the `variant` type, geometry and geography types, nanosecond timestamps, and default column values.
 
 ### Iceberg on Databricks (October 2026)
 
@@ -156,7 +158,7 @@ Unity Catalog vends short-lived storage credentials to the external client, so i
 ## Small-business considerations
 
 > [!smallbiz] Small-business considerations
-> **Default to Delta, and reach for Iceberg when another platform needs your tables.** Typical cases: a partner reads your data from Snowflake, your marketing agency uses a tool that only speaks Iceberg, or you want an exit path that more vendors understand.
+> **Default to Delta, and reach for Iceberg when another platform needs your tables:** Typical cases: a partner reads your data from Snowflake, your marketing agency uses a tool that only speaks Iceberg, or you want an exit path that more vendors understand.
 >
 > You do not have to pick one forever. A Delta table with [[Delta UniForm|Iceberg reads]] enabled is readable by Iceberg clients, and Unity Catalog governs both kinds side by side. There is no extra license for Iceberg; you pay for storage and compute as usual.
 
@@ -174,12 +176,12 @@ Unity Catalog vends short-lived storage credentials to the external client, so i
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Deletion vectors.** v3 brings deletion vectors, the same idea as Delta's [[Deletion Vectors]]. Iceberg v2 readers do not support them. On Databricks, deletion vectors are enabled by default on new Iceberg v3 tables, and enabling them on an existing Iceberg table upgrades it to v3.
-> - **Row lineage.** All v3 tables track stable row IDs and the commit that last changed each row. Databricks uses this for incremental materialized view refresh and for automatic [[Change Data Feed|change data feed]].
-> - **Maintenance.** Managed Iceberg tables get [[OPTIMIZE and VACUUM|predictive optimization]] (compaction, snapshot expiry, statistics). VACUUM retention on Iceberg tables is fixed at 7 days.
-> - **Variant limits.** You cannot partition by a `VARIANT` column, or use one in `GROUP BY` or `ORDER BY`.
-> - **Foreign vs. managed.** Foreign Iceberg tables are owned by another catalog; Databricks reads them, and the other catalog handles commits and maintenance. Managed tables are owned by Unity Catalog, which handles commits and runs maintenance.
-> - **Interoperability direction.** The Databricks blog frames 2026 as "unified governance" across formats: one catalog, two formats, shared features (v3 brings Iceberg and Delta feature sets very close).
+> - **Deletion vectors:** v3 brings deletion vectors, the same idea as Delta's [[Deletion Vectors]]. Iceberg v2 readers do not support them. On Databricks, deletion vectors are enabled by default on new Iceberg v3 tables, and enabling them on an existing Iceberg table upgrades it to v3.
+> - **Row lineage:** All v3 tables track stable row IDs and the commit that last changed each row. Databricks uses this for incremental materialized view refresh and for automatic [[Change Data Feed|change data feed]].
+> - **Maintenance:** Managed Iceberg tables get [[OPTIMIZE and VACUUM|predictive optimization]] (compaction, snapshot expiry, statistics). VACUUM retention on Iceberg tables is fixed at 7 days.
+> - **Variant limits:** You cannot partition by a `VARIANT` column, or use one in `GROUP BY` or `ORDER BY`.
+> - **Foreign vs. managed:** Foreign Iceberg tables are owned by another catalog; Databricks reads them, and the other catalog handles commits and maintenance. Managed tables are owned by Unity Catalog, which handles commits and runs maintenance.
+> - **Interoperability direction:** The Databricks blog frames 2026 as "unified governance" across formats: one catalog, two formats, shared features (v3 brings Iceberg and Delta feature sets very close).
 
 ## Common misconceptions
 

@@ -151,19 +151,19 @@ When the same package exists in several places, Databricks resolves it in this o
 ## Small-business considerations
 
 > [!smallbiz] Small-business considerations
-> 1. **Use Git from the first shared notebook.** A free GitHub or GitLab repository is enough.
+> 1. **Use Git from the first shared notebook:** A free GitHub or GitLab repository is enough.
 > 2. **Each person works in their own Git folder** under `/Workspace/Users/<name>/`, on a branch. Merge through pull requests.
 > 3. **Move shared logic into `.py` files** and import it, rather than copying cells between notebooks.
-> 4. **Store small code and config files only.** Data files belong in [[Volumes]] or tables, not in workspace files (500 MB per file limit).
+> 4. **Store small code and config files only:** Data files belong in [[Volumes]] or tables, not in workspace files (500 MB per file limit).
 > 5. **For production, deploy with [[Declarative Automation Bundles]]** instead of editing a production folder by hand.
 
 ## Cloud differences
 
 > [!azure]- Azure Databricks
-> - **Azure DevOps with Microsoft Entra ID.** The Azure Databricks docs state that when you sign in with Entra ID and the Azure DevOps organization is linked to the same Entra ID tenant as the workspace, Azure DevOps authentication happens automatically. The AWS-hosted docs state that Entra ID tokens are not supported and a personal access token is required. Verify in your workspace.
-> - **Cross-tenant.** If the Azure DevOps project is in a different tenant, use an Azure DevOps personal access token.
-> - **Conditional access.** If an Entra ID conditional access policy blocks Databricks, cloning fails with an access error. Add an exclusion for Azure Databricks IP addresses or users. See [[Microsoft Entra ID Integration]].
-> - **Automation.** For Azure DevOps pipelines, the docs recommend federated credentials with an OIDC token instead of stored personal access tokens.
+> - **Azure DevOps with Microsoft Entra ID:** The Azure Databricks docs state that when you sign in with Entra ID and the Azure DevOps organization is linked to the same Entra ID tenant as the workspace, Azure DevOps authentication happens automatically. The AWS-hosted docs state that Entra ID tokens are not supported and a personal access token is required. Verify in your workspace.
+> - **Cross-tenant:** If the Azure DevOps project is in a different tenant, use an Azure DevOps personal access token.
+> - **Conditional access:** If an Entra ID conditional access policy blocks Databricks, cloning fails with an access error. Add an exclusion for Azure Databricks IP addresses or users. See [[Microsoft Entra ID Integration]].
+> - **Automation:** For Azure DevOps pipelines, the docs recommend federated credentials with an OIDC token instead of stored personal access tokens.
 
 > [!aws]- Databricks on AWS
 > - AWS CodeCommit is a supported provider. Connecting Azure DevOps from Databricks on AWS uses a personal access token.
@@ -174,10 +174,10 @@ When the same package exists in several places, Databricks resolves it in this o
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Service principals.** For CI/CD, give a [[Users Groups and Service Principals|service principal]] its own Git credential, and let it update a production Git folder or run a bundle deployment. Databricks recommends a read-only token for a group's Git credential.
-> - **Notebook state.** Git operations that change notebook source can clear outputs and revision history. Source-format notebooks also drop notebook dashboard information, so use `.ipynb` if you need it.
-> - **Self-hosted Git servers.** The AWS docs state that self-hosted servers work when they are reachable from the internet. A server on a private network needs extra network setup; plan it with your network team and check the Git folders setup docs for your cloud.
-> - **Repository size.** Current AWS and Azure docs state no hard limit on repository size, but per-branch and per-operation limits apply. Keep large binary files out of the repository.
+> - **Service principals:** For CI/CD, give a [[Users Groups and Service Principals|service principal]] its own Git credential, and let it update a production Git folder or run a bundle deployment. Databricks recommends a read-only token for a group's Git credential.
+> - **Notebook state:** Git operations that change notebook source can clear outputs and revision history. Source-format notebooks also drop notebook dashboard information, so use `.ipynb` if you need it.
+> - **Self-hosted Git servers:** The AWS docs state that self-hosted servers work when they are reachable from the internet. A server on a private network needs extra network setup; plan it with your network team and check the Git folders setup docs for your cloud.
+> - **Repository size:** Current AWS and Azure docs state no hard limit on repository size, but per-branch and per-operation limits apply. Keep large binary files out of the repository.
 
 ## Common misconceptions
 

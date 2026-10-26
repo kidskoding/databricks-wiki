@@ -157,12 +157,12 @@ CONVERT TO DELTA parquet.`/Volumes/main/raw/exports/orders_parquet/`;
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Footer dependence.** File metadata is written last, so a writer that fails before completing the footer leaves an unreadable file. The Parquet documentation states that corrupt file metadata makes the entire file unreadable, while corrupt column metadata affects only that column chunk.
-> - **Page index.** Optional `ColumnIndex` and `OffsetIndex` structures, stored near the footer, provide page-level statistics so readers can skip pages within a column chunk. Support varies by implementation.
-> - **Small files.** Many small Parquet files increase metadata and request overhead. On Delta tables, [[OPTIMIZE and VACUUM|OPTIMIZE]] compacts them.
-> - **Schema merging.** Reading a directory whose files have different schemas requires the `mergeSchema` option. Delta tables avoid this through [[Schema Enforcement and Evolution]].
-> - **Timestamp compatibility.** Databricks exposes Parquet read options such as `datetimeRebaseMode` and `int96RebaseMode` for files written by older systems with legacy date and timestamp representations.
-> - **Encryption.** The Parquet specification includes modular encryption of columns and footers. Support depends on the reading engine.
+> - **Footer dependence:** File metadata is written last, so a writer that fails before completing the footer leaves an unreadable file. The Parquet documentation states that corrupt file metadata makes the entire file unreadable, while corrupt column metadata affects only that column chunk.
+> - **Page index:** Optional `ColumnIndex` and `OffsetIndex` structures, stored near the footer, provide page-level statistics so readers can skip pages within a column chunk. Support varies by implementation.
+> - **Small files:** Many small Parquet files increase metadata and request overhead. On Delta tables, [[OPTIMIZE and VACUUM|OPTIMIZE]] compacts them.
+> - **Schema merging:** Reading a directory whose files have different schemas requires the `mergeSchema` option. Delta tables avoid this through [[Schema Enforcement and Evolution]].
+> - **Timestamp compatibility:** Databricks exposes Parquet read options such as `datetimeRebaseMode` and `int96RebaseMode` for files written by older systems with legacy date and timestamp representations.
+> - **Encryption:** The Parquet specification includes modular encryption of columns and footers. Support depends on the reading engine.
 
 ## Common misconceptions
 

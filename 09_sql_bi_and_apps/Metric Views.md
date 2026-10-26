@@ -184,7 +184,7 @@ GRANT SELECT ON VIEW shop.analytics.sales_metrics TO `analysts`;
 ## Small-business considerations
 
 > [!smallbiz] Small-business considerations
-> - **Adopt metric views when two tools or two people report the same number.** That is the point where definitions start to drift.
+> - **Adopt metric views when two tools or two people report the same number:** That is the point where definitions start to drift.
 > - **Start with three to five measures** the owner reviews daily (revenue, orders, average order value, refunds) and the dimensions they group by (store, date, product).
 > - **Point dashboards and Genie Agents at the metric view** instead of at raw tables.
 > - **Power BI users:** support for metric views in Power BI changed several times in 2026. Check the current Databricks Power BI documentation before relying on it. See [[Connecting Power BI]].
@@ -199,14 +199,14 @@ GRANT SELECT ON VIEW shop.analytics.sales_metrics TO `analysts`;
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Materialization.** Declare a schedule and one or more materialized views (aggregated or unaggregated) in the YAML. Databricks creates a managed [[Lakeflow Spark Declarative Pipelines|Lakeflow pipeline]] that builds and maintains them, and the query engine rewrites queries to use them when they match.
-> - **One-to-many joins.** A join with `cardinality: one_to_many` lets a joined table act as a fact source aggregated at its own grain. Materializations of such metric views qualify for exact-match rewrites only. Databricks Runtime 18.1 also adds the `rely.at_most_one_match` join optimization.
-> - **Composed measures.** Measures can reference earlier measures, which keeps ratios consistent with their components.
+> - **Materialization:** Declare a schedule and one or more materialized views (aggregated or unaggregated) in the YAML. Databricks creates a managed [[Lakeflow Spark Declarative Pipelines|Lakeflow pipeline]] that builds and maintains them, and the query engine rewrites queries to use them when they match.
+> - **One-to-many joins:** A join with `cardinality: one_to_many` lets a joined table act as a fact source aggregated at its own grain. Materializations of such metric views qualify for exact-match rewrites only. Databricks Runtime 18.1 also adds the `rely.at_most_one_match` join optimization.
+> - **Composed measures:** Measures can reference earlier measures, which keeps ratios consistent with their components.
 > - **Window measures** compute values such as trailing 7-day revenue over an ordered dimension.
 > - **Level-of-detail (LOD) expressions** fix a measure at a grain different from the query's grouping, for example each store's share of total revenue.
 > - **Parameterized metric views** (Databricks Runtime 18.2 and above) accept arguments at query time, for example `FROM discounted_sales_metrics(discount => 0.15)`.
-> - **Sharing.** Metric views can be added to an OpenSharing share (GA September 24, 2026) so another account queries the same definitions.
-> - **Semantic models versus metric views.** A Power BI semantic model or a LookML project defines metrics for one tool. Choose one primary location for each metric to avoid two sources of truth.
+> - **Sharing:** Metric views can be added to an OpenSharing share (GA September 24, 2026) so another account queries the same definitions.
+> - **Semantic models versus metric views:** A Power BI semantic model or a LookML project defines metrics for one tool. Choose one primary location for each metric to avoid two sources of truth.
 
 ## Common misconceptions
 

@@ -150,8 +150,8 @@ WHEN NOT MATCHED THEN INSERT *;
 
 > [!smallbiz] Small-business considerations
 > A practical rule that covers most teams:
-> - **Raw tables (bronze): be flexible.** Let new columns in (with [[Auto Loader]]'s schema evolution, or by storing whole records as `VARIANT` or `STRING`). Ingestion should not stop because a source such as Shopify adds a field.
-> - **Clean and reporting tables (silver, gold): be strict.** Keep enforcement on and change the schema with deliberate `ALTER TABLE` statements. Your dashboards depend on these columns. See [[Medallion Architecture]].
+> - **Raw tables (bronze): be flexible:** Let new columns in (with [[Auto Loader]]'s schema evolution, or by storing whole records as `VARIANT` or `STRING`). Ingestion should not stop because a source such as Shopify adds a field.
+> - **Clean and reporting tables (silver, gold): be strict:** Keep enforcement on and change the schema with deliberate `ALTER TABLE` statements. Your dashboards depend on these columns. See [[Medallion Architecture]].
 >
 > When a write fails with a schema mismatch, that is the system working. Read the error, decide whether the new column belongs, and then evolve on purpose.
 
@@ -163,11 +163,11 @@ WHEN NOT MATCHED THEN INSERT *;
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Some writes match columns by name, others by position.** `saveAsTable` and `MERGE ... UPDATE SET *` / `INSERT *` match columns by name. `INSERT INTO t SELECT ...` without a column list matches by position, in the order the table defines. List the columns or use `INSERT INTO t BY NAME` (Runtime 13.3 LTS and above) to match by name. Positional inserts are a common source of silently swapped columns. On Delta tables, nested struct fields are matched by position even with `BY NAME`.
+> - **Some writes match columns by name, others by position:** `saveAsTable` and `MERGE ... UPDATE SET *` / `INSERT *` match columns by name. `INSERT INTO t SELECT ...` without a column list matches by position, in the order the table defines. List the columns or use `INSERT INTO t BY NAME` (Runtime 13.3 LTS and above) to match by name. Positional inserts are a common source of silently swapped columns. On Delta tables, nested struct fields are matched by position even with `BY NAME`.
 > - **Column mapping** (`delta.columnMapping.mode = 'name'`) decouples logical column names from the physical Parquet names, which is what makes `RENAME COLUMN` and `DROP COLUMN` metadata-only. It is required for [[Delta UniForm|Iceberg reads]]. It needs reader protocol version 2 and writer version 5 or above, and reading the table requires Databricks Runtime 10.4 LTS or above, so older readers cannot read it.
-> - **Streaming and schema changes.** A streaming read from a Delta table fails if the table's schema changes after the stream starts. For most schema changes, restarting the stream resolves the mismatch. On Databricks Runtime 12.2 LTS and below, you cannot stream from a table with column mapping that has had non-additive changes such as renamed or dropped columns.
-> - **Recent fixes.** The June 2026 Databricks SQL release notes fix `MERGE WITH SCHEMA EVOLUTION` with `WHEN MATCHED THEN DELETE` and with nested columns referenced by alias. The May 2026 notes changed how NULL structs are handled during evolution. Pin behavior with tests if you depend on edge cases.
-> - **Constraints go further than types.** `ALTER TABLE ... ADD CONSTRAINT valid_total CHECK (total >= 0)` and `NOT NULL` make Delta reject rows that break business rules. For pipeline-level rules with metrics, see [[Expectations and Data Quality]].
+> - **Streaming and schema changes:** A streaming read from a Delta table fails if the table's schema changes after the stream starts. For most schema changes, restarting the stream resolves the mismatch. On Databricks Runtime 12.2 LTS and below, you cannot stream from a table with column mapping that has had non-additive changes such as renamed or dropped columns.
+> - **Recent fixes:** The June 2026 Databricks SQL release notes fix `MERGE WITH SCHEMA EVOLUTION` with `WHEN MATCHED THEN DELETE` and with nested columns referenced by alias. The May 2026 notes changed how NULL structs are handled during evolution. Pin behavior with tests if you depend on edge cases.
+> - **Constraints go further than types:** `ALTER TABLE ... ADD CONSTRAINT valid_total CHECK (total >= 0)` and `NOT NULL` make Delta reject rows that break business rules. For pipeline-level rules with metrics, see [[Expectations and Data Quality]].
 
 ## Common misconceptions
 

@@ -73,10 +73,10 @@ Mastery: `INPUT[inlineSelect(option(new), option(learning), option(solid)):maste
 
 Teams move from Snowflake to Databricks for consolidation (one platform for warehousing, data engineering, and AI), for open storage in formats they control, or to reduce cost. The migration risks are specific:
 
-- **Dialect.** Snowflake SQL, stored procedures (JavaScript, Snowflake Scripting), and functions such as `FLATTEN` and `IFF` need translation.
-- **Semi-structured data.** `VARIANT` columns and their path syntax must keep their meaning.
-- **Time zones.** `TIMESTAMP_TZ` and `TIMESTAMP_LTZ` behave differently from Databricks types and cannot be unloaded directly to Parquet.
-- **Many consumers.** Snowflake estates often have dbt projects, BI dashboards, and data shares pointing at them.
+- **Dialect:** Snowflake SQL, stored procedures (JavaScript, Snowflake Scripting), and functions such as `FLATTEN` and `IFF` need translation.
+- **Semi-structured data:** `VARIANT` columns and their path syntax must keep their meaning.
+- **Time zones:** `TIMESTAMP_TZ` and `TIMESTAMP_LTZ` behave differently from Databricks types and cannot be unloaded directly to Parquet.
+- **Many consumers:** Snowflake estates often have dbt projects, BI dashboards, and data shares pointing at them.
 
 ## Overview
 
@@ -242,11 +242,11 @@ Common differences:
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Iceberg-first coexistence.** Converting important Snowflake tables to Snowflake-managed Iceberg tables lets Databricks read them in place through catalog federation, with no copy. The foreign catalog's authorized paths limit what Databricks may read.
-> - **Reverse coexistence.** After a table moves, expose it to Snowflake through the Unity Catalog Iceberg REST Catalog (with credential vending) so remaining Snowflake jobs can read it. External engines cannot read Unity Catalog views, and tables with row filters or column masks need supported client versions.
-> - **Timestamp semantics.** Decide per column whether a Snowflake `TIMESTAMP_LTZ` represents an instant (`TIMESTAMP`) or a wall-clock value (`TIMESTAMP_NTZ`). This is the most common source of off-by-hours reconciliation errors.
-> - **Warehouse sizing.** Do not map Snowflake warehouse sizes to SQL warehouse sizes directly. Benchmark the top queries from the Profiler's output on serverless SQL warehouses.
-> - **Agentic code converter.** The in-workspace converter (Beta, October 2026) lists Snowflake as a source and targets Databricks SQL or, in a separate Beta, DataFrame notebooks.
+> - **Iceberg-first coexistence:** Converting important Snowflake tables to Snowflake-managed Iceberg tables lets Databricks read them in place through catalog federation, with no copy. The foreign catalog's authorized paths limit what Databricks may read.
+> - **Reverse coexistence:** After a table moves, expose it to Snowflake through the Unity Catalog Iceberg REST Catalog (with credential vending) so remaining Snowflake jobs can read it. External engines cannot read Unity Catalog views, and tables with row filters or column masks need supported client versions.
+> - **Timestamp semantics:** Decide per column whether a Snowflake `TIMESTAMP_LTZ` represents an instant (`TIMESTAMP`) or a wall-clock value (`TIMESTAMP_NTZ`). This is the most common source of off-by-hours reconciliation errors.
+> - **Warehouse sizing:** Do not map Snowflake warehouse sizes to SQL warehouse sizes directly. Benchmark the top queries from the Profiler's output on serverless SQL warehouses.
+> - **Agentic code converter:** The in-workspace converter (Beta, October 2026) lists Snowflake as a source and targets Databricks SQL or, in a separate Beta, DataFrame notebooks.
 
 ## Common misconceptions
 

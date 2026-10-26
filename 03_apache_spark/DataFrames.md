@@ -64,9 +64,9 @@ Mastery: `INPUT[inlineSelect(option(new), option(learning), option(solid)):maste
 
 RDD code worked, but it had three problems:
 
-- **It was hard to read.** `rdd.map(lambda r: (r[2], r[5])).reduceByKey(...)` hides what columns 2 and 5 are.
-- **Spark could not optimize it.** A Python lambda is a black box. Spark cannot tell that it only needs two columns or that a filter could run earlier.
-- **Python was slow.** Every Python RDD record had to be [[Serialization|serialized]] and passed between the [[JVM]] and Python processes.
+- **It was hard to read:** `rdd.map(lambda r: (r[2], r[5])).reduceByKey(...)` hides what columns 2 and 5 are.
+- **Spark could not optimize it:** A Python lambda is a black box. Spark cannot tell that it only needs two columns or that a filter could run earlier.
+- **Python was slow:** Every Python RDD record had to be [[Serialization|serialized]] and passed between the [[JVM]] and Python processes.
 
 DataFrames were introduced with the [[Spark SQL]] engine. The SIGMOD 2015 paper *Spark SQL: Relational Data Processing in Spark* describes them as a way to mix relational queries with procedural code, all optimized by the [[Catalyst Optimizer]]. The name and design follow data frames in R and [[Pandas]].
 
@@ -161,11 +161,11 @@ spark.sql("SELECT * FROM revenue_by_city_v WHERE revenue > 50").show()
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Columns are expressions.** `F.col("amount") * 1.08` builds an expression tree, not a value. That tree is what [[Catalyst Optimizer|Catalyst]] rewrites.
-> - **Avoid Python UDFs where a built-in exists.** A Python [[UDF]] sends rows to a Python worker and blocks some optimizations. Built-in functions in `pyspark.sql.functions` run in the JVM (or [[Photon]]). If you need custom Python, prefer vectorized pandas UDFs. Spark 4.2 turns on Arrow-optimized Python UDFs by default, which narrows the gap.
-> - **Schema inference costs a pass.** Reading CSV or JSON with `inferSchema` scans the data first. In production, pass an explicit schema string as shown above.
-> - **ANSI mode (Spark 4.0+).** Invalid casts and divide-by-zero raise errors by default. Use `try_cast`, `try_divide`, or `F.try_to_number` when bad input is expected.
-> - **Pandas API on Spark.** `import pyspark.pandas as ps` gives a pandas-like API that runs distributed. Spark 4.0 notes that it raises an error under ANSI mode unless you set `compute.fail_on_ansi_mode` to False or disable ANSI.
+> - **Columns are expressions:** `F.col("amount") * 1.08` builds an expression tree, not a value. That tree is what [[Catalyst Optimizer|Catalyst]] rewrites.
+> - **Avoid Python UDFs where a built-in exists:** A Python [[UDF]] sends rows to a Python worker and blocks some optimizations. Built-in functions in `pyspark.sql.functions` run in the JVM (or [[Photon]]). If you need custom Python, prefer vectorized pandas UDFs. Spark 4.2 turns on Arrow-optimized Python UDFs by default, which narrows the gap.
+> - **Schema inference costs a pass:** Reading CSV or JSON with `inferSchema` scans the data first. In production, pass an explicit schema string as shown above.
+> - **ANSI mode (Spark 4.0+):** Invalid casts and divide-by-zero raise errors by default. Use `try_cast`, `try_divide`, or `F.try_to_number` when bad input is expected.
+> - **Pandas API on Spark:** `import pyspark.pandas as ps` gives a pandas-like API that runs distributed. Spark 4.0 notes that it raises an error under ANSI mode unless you set `compute.fail_on_ansi_mode` to False or disable ANSI.
 
 ## Common misconceptions
 

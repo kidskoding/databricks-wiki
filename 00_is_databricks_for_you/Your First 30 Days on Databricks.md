@@ -170,10 +170,10 @@ flowchart LR
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Promote to production with code.** After the first month, define jobs and pipelines in [[Declarative Automation Bundles]] and deploy through [[CI-CD for Data Pipelines|CI/CD]].
-> - **Separate environments.** Create `dev` and `prod` catalogs or workspaces and use [[Users Groups and Service Principals|service principals]] for scheduled jobs.
-> - **Cost attribution.** Tag jobs and apply serverless usage policies from the start so that later chargeback is possible. See [[Tagging for Chargeback]].
-> - **Next sources.** Use the [[Migration Checklist]] and [[Assessing Your Current Data Estate]] to plan the next reports.
+> - **Promote to production with code:** After the first month, define jobs and pipelines in [[Declarative Automation Bundles]] and deploy through [[CI-CD for Data Pipelines|CI/CD]].
+> - **Separate environments:** Create `dev` and `prod` catalogs or workspaces and use [[Users Groups and Service Principals|service principals]] for scheduled jobs.
+> - **Cost attribution:** Tag jobs and apply serverless usage policies from the start so that later chargeback is possible. See [[Tagging for Chargeback]].
+> - **Next sources:** Use the [[Migration Checklist]] and [[Assessing Your Current Data Estate]] to plan the next reports.
 
 ## Common misconceptions
 

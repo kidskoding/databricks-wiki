@@ -188,11 +188,11 @@ The `event_log()` function can be called only by the owner of the streaming tabl
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Fail is scoped to one flow.** In a triggered pipeline, a failing expectation stops that flow, and the docs say it does not fail other parallel flows. In a continuous pipeline, it stops the flow and all flows that depend on it. Either way, the update does not succeed, and a person must fix the data or code before reprocessing.
-> - **Row-level only.** A constraint sees one row. For checks across rows (uniqueness, row counts, referential integrity), build a materialized view that computes the check (for example `COUNT(*) - COUNT(DISTINCT order_id) AS dupes`) and put an expectation on *that* view, such as `EXPECT (dupes = 0) ON VIOLATION FAIL UPDATE`. The docs' "advanced patterns" page shows this.
-> - **Rules as data.** Store rules in a Delta table and load them into the `expect_all_*` dictionary at pipeline start. Business users can then maintain rules without code changes.
-> - **Classic edition.** On classic compute, expectations need the Advanced product edition. Serverless pipelines require the Advanced edition, so they include them.
-> - **Beyond pipelines.** For tables built without pipelines, Delta `CHECK` constraints (`ALTER TABLE ... ADD CONSTRAINT ... CHECK (...)`) make a write fail when any row breaks the rule, and [[Data Quality Monitoring]] watches freshness, volume, and drift across the catalog.
+> - **Fail is scoped to one flow:** In a triggered pipeline, a failing expectation stops that flow, and the docs say it does not fail other parallel flows. In a continuous pipeline, it stops the flow and all flows that depend on it. Either way, the update does not succeed, and a person must fix the data or code before reprocessing.
+> - **Row-level only:** A constraint sees one row. For checks across rows (uniqueness, row counts, referential integrity), build a materialized view that computes the check (for example `COUNT(*) - COUNT(DISTINCT order_id) AS dupes`) and put an expectation on *that* view, such as `EXPECT (dupes = 0) ON VIOLATION FAIL UPDATE`. The docs' "advanced patterns" page shows this.
+> - **Rules as data:** Store rules in a Delta table and load them into the `expect_all_*` dictionary at pipeline start. Business users can then maintain rules without code changes.
+> - **Classic edition:** On classic compute, expectations need the Advanced product edition. Serverless pipelines require the Advanced edition, so they include them.
+> - **Beyond pipelines:** For tables built without pipelines, Delta `CHECK` constraints (`ALTER TABLE ... ADD CONSTRAINT ... CHECK (...)`) make a write fail when any row breaks the rule, and [[Data Quality Monitoring]] watches freshness, volume, and drift across the catalog.
 > - **dbt tests** are the dbt-world equivalent, running after a model builds. See [[dbt on Databricks]] and [[Testing Data Pipelines]].
 
 ## Common misconceptions

@@ -65,10 +65,10 @@ Mastery: `INPUT[inlineSelect(option(new), option(learning), option(solid)):maste
 
 Consider a data lake folder `sales/2026-10-24/` that a nightly job fills with 200 Parquet files. Without transactions:
 
-- **The job crashes at file 137.** The folder now holds a partial day. Dashboards that read it report revenue that is too low, with no indication that the data is incomplete.
-- **Someone reads during the write.** A query running at 2:03 a.m. sees 90 files, another at 2:05 sees 160. Two reports, two answers.
-- **Two jobs write at once.** A backfill and the regular load both write to the folder. Duplicate rows appear, or one job's cleanup deletes the other's files.
-- **An update is impossible to do safely.** To fix one wrong row you must rewrite the file it lives in. If the rewrite fails halfway, the row is gone or doubled.
+- **The job crashes at file 137:** The folder now holds a partial day. Dashboards that read it report revenue that is too low, with no indication that the data is incomplete.
+- **Someone reads during the write:** A query running at 2:03 a.m. sees 90 files, another at 2:05 sees 160. Two reports, two answers.
+- **Two jobs write at once:** A backfill and the regular load both write to the folder. Duplicate rows appear, or one job's cleanup deletes the other's files.
+- **An update is impossible to do safely:** To fix one wrong row you must rewrite the file it lives in. If the rewrite fails halfway, the row is gone or doubled.
 
 [[Relational Databases|Relational databases]] solved these problems decades ago with transactions. Data lakes built on plain files in [[Object Storage|object storage]] had none of it, because object stores only promise that a single object write is atomic. They know nothing about "these 200 files belong together."
 
@@ -141,10 +141,10 @@ WHEN NOT MATCHED THEN INSERT *;
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Isolation levels.** Reads always use snapshot isolation. For writes, Delta tables on Databricks support `WriteSerializable` (the default) and `Serializable`. WriteSerializable makes only write operations serializable, so a reader can see a table state that never appears in the Delta log history. It allows more concurrency: appends that do not read the table never conflict under WriteSerializable but can conflict under Serializable. Set the stricter level with the table property `delta.isolationLevel`.
-> - **Conflict detection.** Without row-level concurrency, two writers conflict when they modify the same data files, even if they change different rows. Row-level concurrency is enabled automatically on Databricks Runtime 14.3 LTS and above for unpartitioned tables with [[Deletion Vectors]] enabled. It detects changes at the row level, so concurrent `MERGE`, `UPDATE`, or `DELETE` operations on different rows of the same file no longer collide. Metadata changes (protocol, table properties, schema) can still fail all concurrent writes.
-> - **The commit step depends on the object store.** A commit must fail if another writer already created the same version. How that is guaranteed differs between object stores, and on Databricks the platform handles it for you on every cloud.
-> - **Multi-statement and multi-table transactions.** Classic Delta transactions cover one statement on one table. Databricks now documents transactions that span several statements and tables (see the transactions page in the sources). Check the docs for the current status and limits on your runtime before relying on them.
+> - **Isolation levels:** Reads always use snapshot isolation. For writes, Delta tables on Databricks support `WriteSerializable` (the default) and `Serializable`. WriteSerializable makes only write operations serializable, so a reader can see a table state that never appears in the Delta log history. It allows more concurrency: appends that do not read the table never conflict under WriteSerializable but can conflict under Serializable. Set the stricter level with the table property `delta.isolationLevel`.
+> - **Conflict detection:** Without row-level concurrency, two writers conflict when they modify the same data files, even if they change different rows. Row-level concurrency is enabled automatically on Databricks Runtime 14.3 LTS and above for unpartitioned tables with [[Deletion Vectors]] enabled. It detects changes at the row level, so concurrent `MERGE`, `UPDATE`, or `DELETE` operations on different rows of the same file no longer collide. Metadata changes (protocol, table properties, schema) can still fail all concurrent writes.
+> - **The commit step depends on the object store:** A commit must fail if another writer already created the same version. How that is guaranteed differs between object stores, and on Databricks the platform handles it for you on every cloud.
+> - **Multi-statement and multi-table transactions:** Classic Delta transactions cover one statement on one table. Databricks now documents transactions that span several statements and tables (see the transactions page in the sources). Check the docs for the current status and limits on your runtime before relying on them.
 
 ## Common misconceptions
 

@@ -175,12 +175,12 @@ AS SELECT * FROM STREAM read_files('/Volumes/shop/raw/events/', format => 'json'
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Incremental, not global.** Clustering applies to new and unclustered data on each `OPTIMIZE`, so the cost of each run is proportional to recent changes rather than table size. This is the main operational difference from Z-ordering.
-> - **Key choice for manual clustering.** Choose columns used in filters and joins. Put clustering columns among the columns that collect statistics, since data skipping depends on file-level min/max values (see the [[Delta Transaction Log]]).
-> - **Interaction with deletion vectors.** Liquid clustering and [[Deletion Vectors]] together reduce rewrite cost for `UPDATE`, `DELETE`, and `MERGE`.
-> - **Pipelines.** For materialized views with `CLUSTER BY AUTO`, Lakeflow pipelines drop clustering columns automatically when those columns are removed from the view's schema (2026 pipeline release notes).
-> - **Iceberg.** Managed Iceberg v3 tables support `CLUSTER BY AUTO` on Runtime 18.0 and above.
-> - **Managed tables only for AUTO.** Automatic key selection and the `REPLACE PARTITIONED BY ... AUTO` conversion require Unity Catalog managed tables.
+> - **Incremental, not global:** Clustering applies to new and unclustered data on each `OPTIMIZE`, so the cost of each run is proportional to recent changes rather than table size. This is the main operational difference from Z-ordering.
+> - **Key choice for manual clustering:** Choose columns used in filters and joins. Put clustering columns among the columns that collect statistics, since data skipping depends on file-level min/max values (see the [[Delta Transaction Log]]).
+> - **Interaction with deletion vectors:** Liquid clustering and [[Deletion Vectors]] together reduce rewrite cost for `UPDATE`, `DELETE`, and `MERGE`.
+> - **Pipelines:** For materialized views with `CLUSTER BY AUTO`, Lakeflow pipelines drop clustering columns automatically when those columns are removed from the view's schema (2026 pipeline release notes).
+> - **Iceberg:** Managed Iceberg v3 tables support `CLUSTER BY AUTO` on Runtime 18.0 and above.
+> - **Managed tables only for AUTO:** Automatic key selection and the `REPLACE PARTITIONED BY ... AUTO` conversion require Unity Catalog managed tables.
 
 ## Common misconceptions
 

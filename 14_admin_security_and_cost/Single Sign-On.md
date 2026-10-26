@@ -125,11 +125,11 @@ Pair SSO with [[SCIM Provisioning]]. With SSO alone, the person can authenticate
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Emergency access.** Once SSO is on, all users sign in through the IdP. If the IdP certificate expires or the application is deleted, browser sign-in fails for everyone. Plan an emergency path: a second IdP admin, a documented certificate rotation date, and account-level automation that uses an OAuth service principal rather than a browser.
-> - **Certificates.** SAML signing certificates expire. Put the expiry date in a calendar and rotate before it, using the IdP's overlap support.
-> - **Username claim.** If your company changes email domains, map the username to a stable claim, or users will appear as new identities.
-> - **Tool sign-in.** CLIs, SDKs, and BI tools use OAuth user-to-machine (U2M), which also goes through your IdP via the browser. SSO configuration therefore also affects tool sign-in. See [[Authentication - Tokens and OAuth]].
-> - **Network context.** SSO answers "who", not "from where". Combine it with [[IP Access Lists]], context-based ingress policies, or private connectivity for "from where".
+> - **Emergency access:** Once SSO is on, all users sign in through the IdP. If the IdP certificate expires or the application is deleted, browser sign-in fails for everyone. Plan an emergency path: a second IdP admin, a documented certificate rotation date, and account-level automation that uses an OAuth service principal rather than a browser.
+> - **Certificates:** SAML signing certificates expire. Put the expiry date in a calendar and rotate before it, using the IdP's overlap support.
+> - **Username claim:** If your company changes email domains, map the username to a stable claim, or users will appear as new identities.
+> - **Tool sign-in:** CLIs, SDKs, and BI tools use OAuth user-to-machine (U2M), which also goes through your IdP via the browser. SSO configuration therefore also affects tool sign-in. See [[Authentication - Tokens and OAuth]].
+> - **Network context:** SSO answers "who", not "from where". Combine it with [[IP Access Lists]], context-based ingress policies, or private connectivity for "from where".
 
 ## Common misconceptions
 

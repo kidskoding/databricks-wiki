@@ -142,9 +142,9 @@ SELECT * FROM table_changes('shop.sales.trips', 42);
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **The design trade-off is write cost vs. read cost.** Copy-on-write pays at write time; merge-on-read pays at read time until compaction runs. Delta's deletion vectors make the same trade inside one table: deletes and updates are cheap to write, and reads apply the vectors until a rewrite (OPTIMIZE or REORG) folds them in.
-> - **Incremental processing is the lasting idea.** Hudi popularized reading only what changed. Databricks generalized it in the change data feed, the newer automatic change data feed (built on row tracking), and incremental refresh for [[Materialized Views]].
-> - **Interoperability.** Projects have appeared that translate metadata between Hudi, Delta, and Iceberg. This vault has not confirmed Databricks support for any of them; for Databricks, the supported bridge is [[Delta UniForm]] (Delta to Iceberg).
+> - **The design trade-off is write cost vs. read cost:** Copy-on-write pays at write time; merge-on-read pays at read time until compaction runs. Delta's deletion vectors make the same trade inside one table: deletes and updates are cheap to write, and reads apply the vectors until a rewrite (OPTIMIZE or REORG) folds them in.
+> - **Incremental processing is the lasting idea:** Hudi popularized reading only what changed. Databricks generalized it in the change data feed, the newer automatic change data feed (built on row tracking), and incremental refresh for [[Materialized Views]].
+> - **Interoperability:** Projects have appeared that translate metadata between Hudi, Delta, and Iceberg. This vault has not confirmed Databricks support for any of them; for Databricks, the supported bridge is [[Delta UniForm]] (Delta to Iceberg).
 
 ## Common misconceptions
 

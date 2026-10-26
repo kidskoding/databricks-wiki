@@ -128,10 +128,10 @@ Open the best trial's notebook from the experiment page, review it, and register
 ## Small-business considerations
 
 > [!smallbiz] Small-business considerations
-> - **Use it for a baseline.** AutoML is a fast way to see whether a table can predict anything useful before investing more time.
-> - **Check your runtime first.** New clusters on Databricks Runtime 18.0 ML or later do not include AutoML. For forecasting, try serverless forecasting in the UI; for classification or regression, the generated notebooks from an older runtime or a hand-written scikit-learn (a popular Python machine learning library) model are alternatives.
-> - **Read the generated notebook.** It shows which columns mattered and how missing values were handled.
-> - **Set a timeout.** `timeout_minutes` caps how long trials run, which caps compute cost.
+> - **Use it for a baseline:** AutoML is a fast way to see whether a table can predict anything useful before investing more time.
+> - **Check your runtime first:** New clusters on Databricks Runtime 18.0 ML or later do not include AutoML. For forecasting, try serverless forecasting in the UI; for classification or regression, the generated notebooks from an older runtime or a hand-written scikit-learn (a popular Python machine learning library) model are alternatives.
+> - **Read the generated notebook:** It shows which columns mattered and how missing values were handled.
+> - **Set a timeout:** `timeout_minutes` caps how long trials run, which caps compute cost.
 
 ## Cloud differences
 
@@ -147,10 +147,10 @@ Open the best trial's notebook from the experiment page, review it, and register
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Runtime lifecycle.** Databricks runtimes reach end of support three years after general availability, so runtimes that still include AutoML will age out. Plan a path that does not depend on it.
-> - **Imbalanced classes.** For classification with rare positives, AutoML can sample the majority class; check the metric it optimizes against your business goal.
-> - **Feature tables.** AutoML can join features from [[Feature Engineering and Feature Store|feature tables]] in Unity Catalog.
-> - **Serverless forecasting vs classic.** Serverless adds DeepAR and registers to Unity Catalog, but does not return trial source notebooks.
+> - **Runtime lifecycle:** Databricks runtimes reach end of support three years after general availability, so runtimes that still include AutoML will age out. Plan a path that does not depend on it.
+> - **Imbalanced classes:** For classification with rare positives, AutoML can sample the majority class; check the metric it optimizes against your business goal.
+> - **Feature tables:** AutoML can join features from [[Feature Engineering and Feature Store|feature tables]] in Unity Catalog.
+> - **Serverless forecasting vs classic:** Serverless adds DeepAR and registers to Unity Catalog, but does not return trial source notebooks.
 
 ## Common misconceptions
 

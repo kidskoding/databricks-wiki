@@ -41,23 +41,41 @@ tags:
 
 ## The story of this chapter
 
-**Scope.** A working Databricks deployment still needs an owner. Someone must decide who can sign in, what each identity can do, which networks can reach the platform, how data is encrypted, how spend is limited and attributed, and how the platform is rebuilt after a failure. This chapter covers those tasks at the account level, with per-cloud differences in each note.
+### Scope
 
-**Administration surface.** Since [[Unity Catalog]] moved governance to the account, most platform-wide settings live in the [[Account Console]]: workspaces, metastores, identities, security settings, and usage. Workspace settings cover the rest. Responsibility is split across [[Admin Roles|admin roles]] (account admin, workspace admin, metastore admin, and narrower roles such as billing admin), and administrators should hold these roles through groups.
+A working Databricks deployment still needs an owner. Someone must decide who can sign in, what each identity can do, which networks can reach the platform, how data is encrypted, how spend is limited and attributed, and how the platform is rebuilt after a failure. This chapter covers those tasks at the account level, with per-cloud differences in each note.
 
-**Identity and access.** Databricks has three identity types: users, service principals, and groups ([[Users Groups and Service Principals]]). Account groups receive workspace assignments and Unity Catalog grants; legacy workspace-local groups cannot. Identities come from the company identity provider through [[SCIM Provisioning|SCIM or automatic identity management]], and people sign in through [[Single Sign-On]] with SAML 2.0 or OIDC, configured once for the account by unified login. Tools and automation authenticate with OAuth: user-to-machine for people, machine-to-machine for service principals, and token federation, which Databricks recommends because it removes stored secrets. Personal access tokens remain available but are treated as legacy ([[Authentication - Tokens and OAuth]]).
+### Administration surface
 
-**Guardrails.** [[Compute Policies]] (formerly cluster policies) limit how classic compute can be configured: size, runtime, auto-termination, access mode, and required tags. [[Secrets Management]] keeps credentials out of code with secret scopes, Azure Key Vault-backed scopes, and secrets in Unity Catalog.
+Since [[Unity Catalog]] moved governance to the account, most platform-wide settings live in the [[Account Console]]: workspaces, metastores, identities, security settings, and usage. Workspace settings cover the rest. Responsibility is split across [[Admin Roles|admin roles]] (account admin, workspace admin, metastore admin, and narrower roles such as billing admin), and administrators should hold these roles through groups.
 
-**Network security.** Databricks traffic follows three paths: front-end (users and clients to the workspace), back-end (classic compute to the control plane), and serverless (serverless compute to customer resources) ([[Network Security Overview]]). Front-end access is controlled with [[IP Access Lists]], context-based ingress policies, and inbound private connectivity. Classic compute uses secure cluster connectivity and, optionally, customer-managed networks and private links. Serverless compute is governed by network connectivity configurations and network policies for egress control ([[Serverless Network Security]]).
+### Identity and access
 
-**Data protection and compliance.** Data is encrypted at rest and in transit by default. Customer-managed keys add customer control over control-plane data, workspace storage, and compute disks ([[Encryption]]). For regulated data, the [[Compliance Security Profile]] applies hardened images, enhanced security monitoring, and automatic cluster updates, and is required for standards such as HIPAA, PCI-DSS, and FedRAMP.
+Databricks has three identity types: users, service principals, and groups ([[Users Groups and Service Principals]]). Account groups receive workspace assignments and Unity Catalog grants; legacy workspace-local groups cannot. Identities come from the company identity provider through [[SCIM Provisioning|SCIM or automatic identity management]], and people sign in through [[Single Sign-On]] with SAML 2.0 or OIDC, configured once for the account by unified login. Tools and automation authenticate with OAuth: user-to-machine for people, machine-to-machine for service principals, and token federation, which Databricks recommends because it removes stored secrets. Personal access tokens remain available but are treated as legacy ([[Authentication - Tokens and OAuth]]).
 
-**Cost.** Usage is metered in DBUs and recorded in `system.billing.usage` ([[Cost Management Basics]]). [[Budgets and Usage Dashboards]] provide alerts and breakdowns. [[Tagging for Chargeback]] attributes spend to teams through compute tags and serverless usage policies (formerly serverless budget policies). The [[Cost Optimization Checklist]] lists the settings that reduce spend, led by auto-termination, serverless compute, and job compute.
+### Guardrails
 
-**Automation and recovery.** The [[Terraform Provider]] manages accounts, workspaces, identities, policies, and permissions as code, alongside Declarative Automation Bundles for project assets. [[Disaster Recovery]] defines RPO and RTO targets and the strategies to meet them, including managed disaster recovery (Public Preview as of October 2026). Databricks protects its control plane; table data lives in customer storage and is the customer's responsibility to replicate.
+[[Compute Policies]] (formerly cluster policies) limit how classic compute can be configured: size, runtime, auto-termination, access mode, and required tags. [[Secrets Management]] keeps credentials out of code with secret scopes, Azure Key Vault-backed scopes, and secrets in Unity Catalog.
 
-**Next.** With the platform secured, governed, and cost-controlled, the remaining question is how to move existing data, pipelines, and reports onto it. [[Chapter 15 - Migrating to Databricks]] covers migration strategy and playbooks by source system.
+### Network security
+
+Databricks traffic follows three paths: front-end (users and clients to the workspace), back-end (classic compute to the control plane), and serverless (serverless compute to customer resources) ([[Network Security Overview]]). Front-end access is controlled with [[IP Access Lists]], context-based ingress policies, and inbound private connectivity. Classic compute uses secure cluster connectivity and, optionally, customer-managed networks and private links. Serverless compute is governed by network connectivity configurations and network policies for egress control ([[Serverless Network Security]]).
+
+### Data protection and compliance
+
+Data is encrypted at rest and in transit by default. Customer-managed keys add customer control over control-plane data, workspace storage, and compute disks ([[Encryption]]). For regulated data, the [[Compliance Security Profile]] applies hardened images, enhanced security monitoring, and automatic cluster updates, and is required for standards such as HIPAA, PCI-DSS, and FedRAMP.
+
+### Cost
+
+Usage is metered in DBUs and recorded in `system.billing.usage` ([[Cost Management Basics]]). [[Budgets and Usage Dashboards]] provide alerts and breakdowns. [[Tagging for Chargeback]] attributes spend to teams through compute tags and serverless usage policies (formerly serverless budget policies). The [[Cost Optimization Checklist]] lists the settings that reduce spend, led by auto-termination, serverless compute, and job compute.
+
+### Automation and recovery
+
+The [[Terraform Provider]] manages accounts, workspaces, identities, policies, and permissions as code, alongside Declarative Automation Bundles for project assets. [[Disaster Recovery]] defines RPO and RTO targets and the strategies to meet them, including managed disaster recovery (Public Preview as of October 2026). Databricks protects its control plane; table data lives in customer storage and is the customer's responsibility to replicate.
+
+### Next
+
+With the platform secured, governed, and cost-controlled, the remaining question is how to move existing data, pipelines, and reports onto it. [[Chapter 15 - Migrating to Databricks]] covers migration strategy and playbooks by source system.
 
 ## Notes in reading order
 

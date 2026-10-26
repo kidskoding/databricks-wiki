@@ -168,10 +168,10 @@ ALTER TABLE shop.sales.orders SET TBLPROPERTIES (
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **VACUUM is what ends time travel.** Until VACUUM runs, old files stay. On Unity Catalog managed tables, [[OPTIMIZE and VACUUM|predictive optimization]] runs VACUUM for you, so assume the 7-day window is real.
-> - **Iceberg tables work the same way.** Iceberg keeps snapshots, so Unity Catalog managed Iceberg tables can also be read as of an earlier point. Their VACUUM retention is fixed at 7 days.
-> - **Governance still applies to the past.** Querying an old version applies today's [[Row Filters and Column Masks|row filters, column masks]] and ABAC policies. You cannot time travel around a permission.
-> - **Privacy deletes.** Deleting a customer's rows does not remove them from old versions until VACUUM has run past retention. For [[GDPR]] "right to be forgotten" work, delete, then make sure VACUUM runs (and consider shorter retention on the affected tables).
+> - **VACUUM is what ends time travel:** Until VACUUM runs, old files stay. On Unity Catalog managed tables, [[OPTIMIZE and VACUUM|predictive optimization]] runs VACUUM for you, so assume the 7-day window is real.
+> - **Iceberg tables work the same way:** Iceberg keeps snapshots, so Unity Catalog managed Iceberg tables can also be read as of an earlier point. Their VACUUM retention is fixed at 7 days.
+> - **Governance still applies to the past:** Querying an old version applies today's [[Row Filters and Column Masks|row filters, column masks]] and ABAC policies. You cannot time travel around a permission.
+> - **Privacy deletes:** Deleting a customer's rows does not remove them from old versions until VACUUM has run past retention. For [[GDPR]] "right to be forgotten" work, delete, then make sure VACUUM runs (and consider shorter retention on the affected tables).
 > - **Restore can fail** if a data file it needs has already been vacuumed. Check the RESTORE reference for the options available in that case.
 
 ## Common misconceptions

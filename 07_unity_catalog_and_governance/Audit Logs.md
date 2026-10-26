@@ -159,11 +159,11 @@ The `system.access.audit` table is the same everywhere. **Log delivery** differs
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Verbose audit logs.** Databricks has a workspace setting that logs more detail, such as notebook commands. Its exact scope was not confirmed against current docs for this note, so check the audit log reference before enabling it.
-> - **Deleted workspaces.** When a workspace is deleted, its audit events older than 14 days are removed from `system.access.audit`. Use log delivery if you must keep them.
-> - **Account vs workspace events.** Account-level events (`workspace_id = 0`) cover account console actions, identity changes, and metastore-level Unity Catalog events.
-> - **Joins.** Join audit events with [[System Tables|system.access.table_lineage]] (who wrote what), `system.billing.usage` (what it cost), and `system.query.history` (the query text) for full investigations.
-> - **Retention.** The configured system-table retention (Beta) can extend beyond 365 days; log delivery is the classic way to keep logs indefinitely.
+> - **Verbose audit logs:** Databricks has a workspace setting that logs more detail, such as notebook commands. Its exact scope was not confirmed against current docs for this note, so check the audit log reference before enabling it.
+> - **Deleted workspaces:** When a workspace is deleted, its audit events older than 14 days are removed from `system.access.audit`. Use log delivery if you must keep them.
+> - **Account vs workspace events:** Account-level events (`workspace_id = 0`) cover account console actions, identity changes, and metastore-level Unity Catalog events.
+> - **Joins:** Join audit events with [[System Tables|system.access.table_lineage]] (who wrote what), `system.billing.usage` (what it cost), and `system.query.history` (the query text) for full investigations.
+> - **Retention:** The configured system-table retention (Beta) can extend beyond 365 days; log delivery is the classic way to keep logs indefinitely.
 
 ## Common misconceptions
 

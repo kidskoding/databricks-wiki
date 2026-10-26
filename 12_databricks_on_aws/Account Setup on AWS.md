@@ -182,11 +182,11 @@ resource "databricks_mws_workspaces" "prod" {
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Prerequisites for classic setup.** Account admin rights, permission to create IAM roles, S3 buckets, and policies, available VPC and NAT gateway quota, and (for automated configuration) the STS endpoint enabled for `us-west-2`.
-> - **Workspace catalog at creation.** If the storage configuration includes an optional IAM role ARN for Unity Catalog, a workspace catalog is created together with the workspace.
-> - **CloudFormation versus Terraform.** Databricks' IaC guidance says CloudFormation is no longer the preferred way to launch workspaces through the Account API. Use CloudFormation or Terraform for AWS infrastructure, and Terraform for Databricks resources.
-> - **IAM propagation.** Credential validation can fail if a newly created IAM role has not propagated yet. The Terraform guide suggests a `time_sleep` resource between role creation and `databricks_mws_credentials`.
-> - **Troubleshooting.** Common failures are AWS service limits, storage or credential validation errors, and VPC, subnet, or security group problems. Service control policies (SCPs) that deny `sts:AssumeRole` also block setup.
+> - **Prerequisites for classic setup:** Account admin rights, permission to create IAM roles, S3 buckets, and policies, available VPC and NAT gateway quota, and (for automated configuration) the STS endpoint enabled for `us-west-2`.
+> - **Workspace catalog at creation:** If the storage configuration includes an optional IAM role ARN for Unity Catalog, a workspace catalog is created together with the workspace.
+> - **CloudFormation versus Terraform:** Databricks' IaC guidance says CloudFormation is no longer the preferred way to launch workspaces through the Account API. Use CloudFormation or Terraform for AWS infrastructure, and Terraform for Databricks resources.
+> - **IAM propagation:** Credential validation can fail if a newly created IAM role has not propagated yet. The Terraform guide suggests a `time_sleep` resource between role creation and `databricks_mws_credentials`.
+> - **Troubleshooting:** Common failures are AWS service limits, storage or credential validation errors, and VPC, subnet, or security group problems. Service control policies (SCPs) that deny `sts:AssumeRole` also block setup.
 
 ## Common misconceptions
 

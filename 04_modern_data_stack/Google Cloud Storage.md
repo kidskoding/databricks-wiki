@@ -97,7 +97,9 @@ flowchart LR
   CMP[Databricks compute] -->|"gs://acme-lake/..."| B
 ```
 
-**The URI scheme.** Databricks and Spark address Cloud Storage as `gs://`:
+### The URI scheme
+
+Databricks and Spark address Cloud Storage as `gs://`:
 
 ```text
 gs://acme-lake/curated/orders/order_date=2026-10-24/part-0000.parquet
@@ -150,8 +152,8 @@ SELECT * FROM read_files('gs://acme-lake/raw/orders/', format => 'csv', header =
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Strong consistency.** Cloud Storage provides strong global consistency for object read-after-write, read-after-metadata-update, read-after-delete, and for bucket and object listings.
-> - **No atomic rename on flat buckets.** Renaming a prefix means copying and deleting every object, the same issue as S3. Delta's log-based commits avoid relying on rename.
+> - **Strong consistency:** Cloud Storage provides strong global consistency for object read-after-write, read-after-metadata-update, read-after-delete, and for bucket and object listings.
+> - **No atomic rename on flat buckets:** Renaming a prefix means copying and deleting every object, the same issue as S3. Delta's log-based commits avoid relying on rename.
 > - **Uniform bucket-level access** disables ACLs for all resources in the bucket so that IAM alone governs access. It cannot be disabled after it has been active on a bucket for 90 consecutive days. It simplifies audits and is the right default for a lakehouse bucket.
 > - **BigQuery and GCS share data** through Apache Iceberg managed tables, whose files live in a bucket you own. This makes GCS a shared storage layer for BigQuery and Databricks. See [[Google BigQuery]].
 > - **Lifecycle rules** can change class or delete objects by age. As on other clouds, never tier a live Delta table's files to a colder class.

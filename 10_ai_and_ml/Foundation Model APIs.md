@@ -83,10 +83,10 @@ As of October 2026 the supported-models list includes partner models (such as Op
 
 Limits and policies to know:
 
-- **Rate limits.** Pay-per-token endpoints have per-model input tokens per minute (ITPM), output tokens per minute (OTPM), and queries per hour (QPH) limits. For Enterprise-tier workspaces, many partner models share a tier of 1,000,000 ITPM, 100,000 OTPM, and 360,000 QPH; some open models have different caps.
-- **Regions.** Some models are available only in US pay-per-token regions; others in both EU and US regions.
-- **Retirement.** Databricks publishes an AI models maintenance policy with retirement dates and recommended replacements. For example, DeepSeek V4 Pro (0813) has a pay-per-token retirement date of October 30, 2026, with DeepSeek V4.1 Flash recommended.
-- **Compliance.** A separate page lists which models are covered under compliance profiles.
+- **Rate limits:** Pay-per-token endpoints have per-model input tokens per minute (ITPM), output tokens per minute (OTPM), and queries per hour (QPH) limits. For Enterprise-tier workspaces, many partner models share a tier of 1,000,000 ITPM, 100,000 OTPM, and 360,000 QPH; some open models have different caps.
+- **Regions:** Some models are available only in US pay-per-token regions; others in both EU and US regions.
+- **Retirement:** Databricks publishes an AI models maintenance policy with retirement dates and recommended replacements. For example, DeepSeek V4 Pro (0813) has a pay-per-token retirement date of October 30, 2026, with DeepSeek V4.1 Flash recommended.
+- **Compliance:** A separate page lists which models are covered under compliance profiles.
 
 In Unity Gateway, Databricks-provided model services are registered in the `system.ai` schema of Unity Catalog, so access to them is governed with grants. See [[Unity Gateway]].
 
@@ -138,10 +138,10 @@ FROM shop.silver.product_reviews;
 ## Small-business considerations
 
 > [!smallbiz] Small-business considerations
-> - **Start with pay-per-token.** There is no capacity to size and nothing to turn off.
-> - **Pick the smallest model that passes your evaluation.** Smaller models cost less per token and respond faster. Test with [[Agent Evaluation and Tracing|evaluation]] before choosing.
+> - **Start with pay-per-token:** There is no capacity to size and nothing to turn off.
+> - **Pick the smallest model that passes your evaluation:** Smaller models cost less per token and respond faster. Test with [[Agent Evaluation and Tracing|evaluation]] before choosing.
 > - **Use provisioned throughput only** when traffic is steady and high enough, or when you need guaranteed capacity.
-> - **Watch for retirements.** Subscribe to release notes and keep an evaluation set so switching models is a test, not a guess.
+> - **Watch for retirements:** Subscribe to release notes and keep an evaluation set so switching models is a test, not a guess.
 > - **Pricing:** see the [Foundation Model Serving pricing page](https://www.databricks.com/product/pricing/foundation-model-serving) and [[How Databricks Pricing Works]].
 
 ## Cloud differences
@@ -158,11 +158,11 @@ FROM shop.silver.product_reviews;
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Model units.** Provisioned throughput is sized in model units; the throughput per unit depends on the model and on prompt and output lengths.
-> - **Priority pay-per-token.** Some models list a priority pay-per-token option in addition to standard pay-per-token.
-> - **Responses API.** Endpoints support the OpenAI Responses API on the same base URLs, in addition to Chat Completions.
-> - **Structured outputs.** Supported chat models can be constrained to return JSON that matches a schema.
-> - **Batch inference.** `ai_query` over a table is the recommended batch pattern; batch usage appears in `system.billing.usage` under the `BATCH_INFERENCE` offering type.
+> - **Model units:** Provisioned throughput is sized in model units; the throughput per unit depends on the model and on prompt and output lengths.
+> - **Priority pay-per-token:** Some models list a priority pay-per-token option in addition to standard pay-per-token.
+> - **Responses API:** Endpoints support the OpenAI Responses API on the same base URLs, in addition to Chat Completions.
+> - **Structured outputs:** Supported chat models can be constrained to return JSON that matches a schema.
+> - **Batch inference:** `ai_query` over a table is the recommended batch pattern; batch usage appears in `system.billing.usage` under the `BATCH_INFERENCE` offering type.
 > - **Route optimization** is not supported on Foundation Model API endpoints.
 
 ## Common misconceptions

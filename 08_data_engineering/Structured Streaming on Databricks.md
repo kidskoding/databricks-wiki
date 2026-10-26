@@ -178,11 +178,11 @@ Run long-lived streams as a [[Lakeflow Jobs|job]] with a continuous trigger or w
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **One checkpoint per query.** Never share a checkpoint between queries or point a new query at an old checkpoint with different logic. Changing stateful operations usually requires a new checkpoint.
-> - **Checkpoint migration.** Lakeflow pipelines added `import_checkpoint` in 2026, which lets a pipeline adopt an existing stream's checkpoint so a migration from a hand-written stream to a pipeline does not reprocess data.
-> - **State size.** Aggregations, deduplication, and stream-stream joins keep state. Bound it with watermarks (`withWatermark("event_time", "10 minutes")`), or state grows without limit.
+> - **One checkpoint per query:** Never share a checkpoint between queries or point a new query at an old checkpoint with different logic. Changing stateful operations usually requires a new checkpoint.
+> - **Checkpoint migration:** Lakeflow pipelines added `import_checkpoint` in 2026, which lets a pipeline adopt an existing stream's checkpoint so a migration from a hand-written stream to a pipeline does not reprocess data.
+> - **State size:** Aggregations, deduplication, and stream-stream joins keep state. Bound it with watermarks (`withWatermark("event_time", "10 minutes")`), or state grows without limit.
 > - **`foreachBatch`** turns each micro-batch into a batch DataFrame, which allows `MERGE` into Delta and writes to sinks without streaming support. Real-time mode does not support `foreachBatch`; use `forEach` for custom sinks in real-time mode.
-> - **Monitoring.** Streaming queries report input rate, processing rate, and batch duration in the [[Spark UI]] and query progress events. Alert when processing rate falls below input rate for a sustained period.
+> - **Monitoring:** Streaming queries report input rate, processing rate, and batch duration in the [[Spark UI]] and query progress events. Alert when processing rate falls below input rate for a sustained period.
 > - **Exactly-once** requires a replayable source (Kafka offsets, files) and an idempotent or transactional sink (Delta). Apache Kafka supports only at-least-once write semantics, so a Kafka sink can write duplicates; consumers must tolerate them, for example by deduplicating on a unique key.
 
 ## Common misconceptions

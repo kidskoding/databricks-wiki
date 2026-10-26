@@ -178,7 +178,7 @@ FROM shop.feedback.reviews;
 > - **Good first uses:** tagging reviews and support tickets by topic, summarizing long feedback, translating messages from customers, and extracting order numbers from emails.
 > - **Test on 100 rows first** with `LIMIT 100`. Check the labels by hand before running on the full table.
 > - **Store the results** in a table and refresh new rows on a schedule, for example in a [[Lakeflow Jobs|job]], instead of recomputing in every dashboard query.
-> - **Do not send sensitive data you have not reviewed.** Check whether text contains [[PII]] and your policy for model use before processing it.
+> - **Do not send sensitive data you have not reviewed:** Check whether text contains [[PII]] and your policy for model use before processing it.
 >
 > Cost: task-specific functions run inference on Databricks-managed serverless GPU infrastructure through Model Serving. That inference is billed in addition to the query's SQL warehouse compute. `ai_query` is billed according to the endpoint it calls, usually per [[Token|token]]. See the official pricing page and [[How Databricks Pricing Works]].
 
@@ -196,12 +196,12 @@ FROM shop.feedback.reviews;
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Structured output.** `ai_query` accepts `responseFormat` (Databricks Runtime 15.4 LTS and above) with `text`, `json_object`, or `json_schema` types, so responses can be parsed into columns reliably.
-> - **Model parameters.** Pass settings such as `max_tokens` and `temperature` through the `modelParameters` argument.
-> - **Custom endpoints.** For a custom model endpoint without a schema, the signature includes `returnType` to declare the output type.
-> - **Batch at scale.** For large backfills, run them in a pipeline or job, and use `failOnError => false` so one malformed row does not stop the run.
-> - **Pipelines and Designer.** AI Functions can be used inside [[Lakeflow Spark Declarative Pipelines]] to label new rows incrementally, and [[Lakeflow Designer]] exposes them as built-in operators.
-> - **Governance.** Calls to endpoints can be governed and logged with [[Unity Gateway]]. Because outputs are model predictions, treat them as estimates and validate a sample (see [[Hallucination]]).
+> - **Structured output:** `ai_query` accepts `responseFormat` (Databricks Runtime 15.4 LTS and above) with `text`, `json_object`, or `json_schema` types, so responses can be parsed into columns reliably.
+> - **Model parameters:** Pass settings such as `max_tokens` and `temperature` through the `modelParameters` argument.
+> - **Custom endpoints:** For a custom model endpoint without a schema, the signature includes `returnType` to declare the output type.
+> - **Batch at scale:** For large backfills, run them in a pipeline or job, and use `failOnError => false` so one malformed row does not stop the run.
+> - **Pipelines and Designer:** AI Functions can be used inside [[Lakeflow Spark Declarative Pipelines]] to label new rows incrementally, and [[Lakeflow Designer]] exposes them as built-in operators.
+> - **Governance:** Calls to endpoints can be governed and logged with [[Unity Gateway]]. Because outputs are model predictions, treat them as estimates and validate a sample (see [[Hallucination]]).
 
 ## Common misconceptions
 

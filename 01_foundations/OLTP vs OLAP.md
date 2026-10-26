@@ -132,8 +132,8 @@ The first pair wants a row store with an index. The last query wants a column st
 
 > [!smallbiz] Small-business considerations
 > - **Your OLTP systems are your vendors' apps** (POS, booking, accounting). Do not run heavy reports against them directly; use their exports or APIs.
-> - **Your OLAP system is where those copies meet.** For a very small shop that may be a spreadsheet. Once you have several sources or years of history, it should be an analytics platform.
-> - **Freshness is a choice.** A nightly copy is fine for most small-business reports and is the cheapest. Only pay for near-real-time when a decision needs it.
+> - **Your OLAP system is where those copies meet:** For a very small shop that may be a spreadsheet. Once you have several sources or years of history, it should be an analytics platform.
+> - **Freshness is a choice:** A nightly copy is fine for most small-business reports and is the cheapest. Only pay for near-real-time when a decision needs it.
 
 > [!bridge]- In Databricks today
 > Databricks started on the OLAP side and now covers both:
@@ -156,11 +156,11 @@ The first pair wants a row store with an index. The last query wants a column st
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Row stores vs. column stores, mechanically.** A B-tree over row pages finds a key in a few page reads, but scanning one column still reads every page of the table. A columnar format such as Parquet lets a query skip the columns it does not need and compresses each column well, because values in one column are similar. Vectorized engines such as Photon then process thousands of rows per batch so the CPU can use SIMD instructions. The cost shows up on point updates: without deletion vectors, changing a single row in a Delta table rewrites the entire Parquet file that contains it. See [[Columnar Storage]] and [[Photon]].
-> - **Isolation and concurrency differ.** OLTP systems need fine-grained row locks or MVCC so thousands of tiny transactions do not block each other. Analytical tables use optimistic concurrency at the file or table level: Delta tables default to WriteSerializable isolation, offer Serializable, and add row-level concurrency to reduce conflicts between concurrent writers.
-> - **HTAP.** Hybrid transactional/analytical processing tries to serve both from one system, often by keeping a row store and a column replica in sync. Lakebase plus synced tables is Databricks' version of the pattern: two engines, one governed platform.
-> - **MOLAP vs. ROLAP.** Multidimensional OLAP (MOLAP) servers store multidimensional data directly in special structures such as arrays, often called cubes. Relational OLAP (ROLAP) servers keep the data in a relational database, usually in star or snowflake schemas, and map multidimensional operations to SQL. On Databricks, [[Metric Views]] and [[Semantic Layer|semantic layers]] fill the role of defining measures once and slicing them by dimensions at query time.
-> - **The freshness gap.** The classic split meant analytics was always a day behind. [[Change Data Capture]] and streaming ingestion shrink it to minutes or seconds. See [[Batch vs Streaming]].
+> - **Row stores vs. column stores, mechanically:** A B-tree over row pages finds a key in a few page reads, but scanning one column still reads every page of the table. A columnar format such as Parquet lets a query skip the columns it does not need and compresses each column well, because values in one column are similar. Vectorized engines such as Photon then process thousands of rows per batch so the CPU can use SIMD instructions. The cost shows up on point updates: without deletion vectors, changing a single row in a Delta table rewrites the entire Parquet file that contains it. See [[Columnar Storage]] and [[Photon]].
+> - **Isolation and concurrency differ:** OLTP systems need fine-grained row locks or MVCC so thousands of tiny transactions do not block each other. Analytical tables use optimistic concurrency at the file or table level: Delta tables default to WriteSerializable isolation, offer Serializable, and add row-level concurrency to reduce conflicts between concurrent writers.
+> - **HTAP:** Hybrid transactional/analytical processing tries to serve both from one system, often by keeping a row store and a column replica in sync. Lakebase plus synced tables is Databricks' version of the pattern: two engines, one governed platform.
+> - **MOLAP vs. ROLAP:** Multidimensional OLAP (MOLAP) servers store multidimensional data directly in special structures such as arrays, often called cubes. Relational OLAP (ROLAP) servers keep the data in a relational database, usually in star or snowflake schemas, and map multidimensional operations to SQL. On Databricks, [[Metric Views]] and [[Semantic Layer|semantic layers]] fill the role of defining measures once and slicing them by dimensions at query time.
+> - **The freshness gap:** The classic split meant analytics was always a day behind. [[Change Data Capture]] and streaming ingestion shrink it to minutes or seconds. See [[Batch vs Streaming]].
 
 ## Common misconceptions
 

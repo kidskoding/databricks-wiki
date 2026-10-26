@@ -161,10 +161,10 @@ GROUP BY event_type;
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Three levels of statistics.** File-level, stripe-level, and row-group-level statistics let readers skip progressively finer units of data.
-> - **Hive ACID internals.** Hive full ACID tables store a base directory plus delta directories of ORC files for inserts, updates, and deletes. Readers merge base and delta files at read time, and compaction consolidates them. This design is Hive-specific; [[Delta Lake]] provides transactions through a separate log over Parquet files.
-> - **Schema merging.** When reading many ORC files with differing schemas, the `mergeSchema` option (default `false`) controls whether Spark merges them.
-> - **Engine affinity.** ORC readers in Hive-centric engines were heavily optimized. Spark supports ORC, but most Spark and Databricks optimization work, including Delta features, targets Parquet.
+> - **Three levels of statistics:** File-level, stripe-level, and row-group-level statistics let readers skip progressively finer units of data.
+> - **Hive ACID internals:** Hive full ACID tables store a base directory plus delta directories of ORC files for inserts, updates, and deletes. Readers merge base and delta files at read time, and compaction consolidates them. This design is Hive-specific; [[Delta Lake]] provides transactions through a separate log over Parquet files.
+> - **Schema merging:** When reading many ORC files with differing schemas, the `mergeSchema` option (default `false`) controls whether Spark merges them.
+> - **Engine affinity:** ORC readers in Hive-centric engines were heavily optimized. Spark supports ORC, but most Spark and Databricks optimization work, including Delta features, targets Parquet.
 
 ## Common misconceptions
 

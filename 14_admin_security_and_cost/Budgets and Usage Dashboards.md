@@ -173,11 +173,11 @@ To be notified of a daily spike, schedule a [[SQL Alerts|SQL alert]] on the dail
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Job cost accuracy.** `usage_metadata.job_id` is populated for jobs on job compute and serverless, not for jobs on all-purpose compute. Databricks recommends job compute or serverless for accurate per-job cost. Usage from `WORKFLOW_RUN` tasks is attributed to the parent notebook.
-> - **Price field.** Some doc examples use `pricing.default`, others `pricing.effective_list.default`. Check the pricing table reference for the field your account exposes.
+> - **Job cost accuracy:** `usage_metadata.job_id` is populated for jobs on job compute and serverless, not for jobs on all-purpose compute. Databricks recommends job compute or serverless for accurate per-job cost. Usage from `WORKFLOW_RUN` tasks is attributed to the parent notebook.
+> - **Price field:** Some doc examples use `pricing.default`, others `pricing.effective_list.default`. Check the pricing table reference for the field your account exposes.
 > - **Genie budgets** use a per-user threshold model and a separate resource type.
 > - **Governance Hub Explorer** groups spend by product, resource, workspace, or tag, and has a **View untagged spend** shortcut for finding resources that need tags.
-> - **Job names.** `system.lakeflow.jobs` is a slowly changing dimension (SCD2) table with one row per change. Take the latest row per `workspace_id` and `job_id` by `change_time`, as in the query above, to get the current name.
+> - **Job names:** `system.lakeflow.jobs` is a slowly changing dimension (SCD2) table with one row per change. Take the latest row per `workspace_id` and `job_id` by `change_time`, as in the query above, to get the current name.
 
 ## Common misconceptions
 

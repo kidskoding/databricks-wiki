@@ -156,10 +156,10 @@ The customer still provides the hardware or VMs, operates the cluster, and plans
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Version lag.** Distributions shipped specific, patched versions of each project, often behind the latest Apache release. Customers on older distributions could not adopt new Spark or Hive features without a full platform upgrade.
-> - **Proprietary layers.** Vendors differentiated with management and governance tooling on top of the open-source core. Migration projects must account for features that existed only in those layers, such as cluster-management workflows and security policies.
-> - **Security policy migration.** Hadoop authorization policies (for example, Hive or HDFS permissions managed in vendor tooling) do not transfer automatically. They must be redesigned as Unity Catalog [[Privileges and Grants|grants]].
-> - **Market consolidation.** The combination of two competitors through an all-stock merger, rather than continued competition, is consistent with a market contracting as workloads moved to cloud services. The filings frame the combined company around hybrid and multi-cloud deployments.
+> - **Version lag:** Distributions shipped specific, patched versions of each project, often behind the latest Apache release. Customers on older distributions could not adopt new Spark or Hive features without a full platform upgrade.
+> - **Proprietary layers:** Vendors differentiated with management and governance tooling on top of the open-source core. Migration projects must account for features that existed only in those layers, such as cluster-management workflows and security policies.
+> - **Security policy migration:** Hadoop authorization policies (for example, Hive or HDFS permissions managed in vendor tooling) do not transfer automatically. They must be redesigned as Unity Catalog [[Privileges and Grants|grants]].
+> - **Market consolidation:** The combination of two competitors through an all-stock merger, rather than continued competition, is consistent with a market contracting as workloads moved to cloud services. The filings frame the combined company around hybrid and multi-cloud deployments.
 
 ## Common misconceptions
 

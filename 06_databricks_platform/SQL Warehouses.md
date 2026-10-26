@@ -92,7 +92,9 @@ A SQL warehouse runs SQL from the [[SQL Editor]], [[AI-BI Dashboards]], [[Genie 
 | Intelligent Workload Management | Yes | No | No |
 | Typical use | Most workloads (recommended) | Serverless unavailable in region, or custom networking | Entry-level performance |
 
-**Defaults differ by interface.** The UI creates serverless warehouses by default (pro in workspaces without serverless support). The API creates classic warehouses unless you set `enable_serverless_compute` to `true` and `warehouse_type` to `PRO`.
+### Defaults differ by interface
+
+The UI creates serverless warehouses by default (pro in workspaces without serverless support). The API creates classic warehouses unless you set `enable_serverless_compute` to `true` and `warehouse_type` to `PRO`.
 
 ## How it works
 
@@ -111,9 +113,9 @@ flowchart LR
 
 A warehouse has three main settings:
 
-1. **Cluster size.** The resources of each cluster, from 2X-Small to 4X-Large. A 5X-Large size exists but is labeled Public Preview in one page and Beta in another, so check before relying on it. Increase the size when queries [[Spill|spill]] to disk.
-2. **Scaling (minimum and maximum clusters).** More clusters serve more concurrent queries. Size controls how fast a single query runs; cluster count controls how many queries run at once.
-3. **Auto stop.** Idle minutes before the warehouse stops.
+1. **Cluster size:** The resources of each cluster, from 2X-Small to 4X-Large. A 5X-Large size exists but is labeled Public Preview in one page and Beta in another, so check before relying on it. Increase the size when queries [[Spill|spill]] to disk.
+2. **Scaling (minimum and maximum clusters):** More clusters serve more concurrent queries. Size controls how fast a single query runs; cluster count controls how many queries run at once.
+3. **Auto stop:** Idle minutes before the warehouse stops.
 
 | Setting | Serverless | Pro and classic |
 |---|---|---|
@@ -148,8 +150,8 @@ WHERE delete_time IS NULL;
 > [!smallbiz] Small-business considerations
 > One small serverless warehouse covers most small teams.
 > 1. **Start at 2X-Small or X-Small** with a maximum of one or two clusters.
-> 2. **Keep auto stop at 10 minutes or lower.** Serverless restarts in seconds, so a short timer costs little in waiting time.
-> 3. **Watch the Peak Queued Queries metric.** If queries queue, raise the maximum cluster count. If single queries are slow or spill, raise the size.
+> 2. **Keep auto stop at 10 minutes or lower:** Serverless restarts in seconds, so a short timer costs little in waiting time.
+> 3. **Watch the Peak Queued Queries metric:** If queries queue, raise the maximum cluster count. If single queries are slow or spill, raise the size.
 > 4. **Point Power BI or Tableau at the same warehouse** through its connection details page (see [[Connecting Power BI]]).
 >
 > Warehouses bill in [[DBUs]] per hour based on size and running time. See [[How Databricks Pricing Works]] for the official rates.
@@ -172,11 +174,11 @@ The warehouse model and SQL are the same on all clouds. Differences are in avail
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Sizing strategy.** Databricks suggests starting larger and scaling down. Size and count are independent axes: a 4X-Large warehouse with one cluster runs large single queries; a Small warehouse with ten clusters serves high concurrency.
-> - **Caching.** Warehouses use result caching and disk caching. Repeated dashboard queries often return from cache. See [[Query Performance and Caching]].
-> - **API constraints.** API `auto_stop_mins` values must be `0` (no auto stop) or at least `10` for non-serverless warehouses. The serverless create guide documents lower values. Treat the exact minimum as version dependent.
-> - **Observability.** Query history and the `system.query.history` and `system.compute.warehouses` tables show who ran what, on which warehouse, and for how long.
-> - **Governance.** Every query runs as the calling user (or the BI tool's identity), and [[Unity Catalog]] enforces grants, row filters, and column masks.
+> - **Sizing strategy:** Databricks suggests starting larger and scaling down. Size and count are independent axes: a 4X-Large warehouse with one cluster runs large single queries; a Small warehouse with ten clusters serves high concurrency.
+> - **Caching:** Warehouses use result caching and disk caching. Repeated dashboard queries often return from cache. See [[Query Performance and Caching]].
+> - **API constraints:** API `auto_stop_mins` values must be `0` (no auto stop) or at least `10` for non-serverless warehouses. The serverless create guide documents lower values. Treat the exact minimum as version dependent.
+> - **Observability:** Query history and the `system.query.history` and `system.compute.warehouses` tables show who ran what, on which warehouse, and for how long.
+> - **Governance:** Every query runs as the calling user (or the BI tool's identity), and [[Unity Catalog]] enforces grants, row filters, and column masks.
 
 ## Common misconceptions
 

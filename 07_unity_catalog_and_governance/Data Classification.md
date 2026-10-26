@@ -155,12 +155,12 @@ Configure catalogs from scripts with the [[Databricks CLI]] `data-classification
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Metastore-wide sensitivity.** The results table spans all catalogs in the metastore. Granting `SELECT` on it effectively grants visibility of sample sensitive values from every enabled catalog.
-> - **Detection is not tagging.** Detection results appear first; tags are applied only for classes where automatic tagging is enabled. This separation lets you tune false positives before policies take effect.
+> - **Metastore-wide sensitivity:** The results table spans all catalogs in the metastore. Granting `SELECT` on it effectively grants visibility of sample sensitive values from every enabled catalog.
+> - **Detection is not tagging:** Detection results appear first; tags are applied only for classes where automatic tagging is enabled. This separation lets you tune false positives before policies take effect.
 > - **Custom classifiers (Beta)** add organization-specific patterns, such as internal customer IDs, up to 50 per metastore.
-> - **Secure by default.** The ABAC documentation describes control tags that protect new tables until they are reviewed. Data Classification and control tags together reduce the window in which new sensitive data is unprotected.
-> - **Views (Beta).** View columns can be scanned when view scanning is enabled, but they are not tagged by default.
-> - **Scan latency.** Expect up to about 24 hours before new tables are classified. For data that must be protected immediately, tag columns manually at creation time.
+> - **Secure by default:** The ABAC documentation describes control tags that protect new tables until they are reviewed. Data Classification and control tags together reduce the window in which new sensitive data is unprotected.
+> - **Views (Beta):** View columns can be scanned when view scanning is enabled, but they are not tagged by default.
+> - **Scan latency:** Expect up to about 24 hours before new tables are classified. For data that must be protected immediately, tag columns manually at creation time.
 
 ## Common misconceptions
 

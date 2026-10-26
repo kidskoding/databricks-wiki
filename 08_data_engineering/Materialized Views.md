@@ -160,13 +160,13 @@ def customer_ltv():
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Incremental refresh needs serverless.** MVs that do not use serverless pipelines are always fully recomputed. Standalone MVs always refresh on a serverless pipeline; MVs in a pipeline need the pipeline set to serverless.
-> - **Enable change tracking on sources.** Some incremental techniques require row tracking on the source Delta tables. Databricks recommends enabling deletion vectors, row tracking, and change data feed on all MV source tables: `ALTER TABLE t SET TBLPROPERTIES (delta.enableDeletionVectors = true, delta.enableRowTracking = true, delta.enableChangeDataFeed = true)`.
-> - **Non-deterministic functions.** Time functions such as `current_date()` and `current_timestamp()` are supported in `WHERE` clauses. Other non-deterministic functions (such as `rand()`) prevent incremental refresh. So do recursive CTEs, sources such as volumes and foreign catalogs, and `SUM` or `AVG` over `FLOAT` or `DOUBLE` columns (cast to `DECIMAL` instead).
-> - **Check what happened.** Query the event log for `planning_information` events. Each records the chosen technique, such as `FULL_RECOMPUTE`, `NO_OP`, `ROW_BASED`, or `GROUP_AGGREGATE`. The pipeline editor's **Incrementalization** column shows the same per update. Run `EXPLAIN CREATE MATERIALIZED VIEW` to test a query before you create it.
-> - **Refresh policy.** `REFRESH POLICY` (`AUTO`, `INCREMENTAL`, `INCREMENTAL STRICT`, or `FULL`) controls whether a refresh may fall back to a full recompute. `INCREMENTAL STRICT` fails the refresh instead.
-> - **Permissions.** Readers need `SELECT` on the MV plus `USE CATALOG` and `USE SCHEMA` on its parents, not access to the sources. The owner needs `SELECT` on the sources. That makes MVs a clean way to publish a summary to people who must not see the raw rows.
-> - **dbt.** The dbt-databricks adapter can materialize a model as `materialized_view`. See [[dbt on Databricks]].
+> - **Incremental refresh needs serverless:** MVs that do not use serverless pipelines are always fully recomputed. Standalone MVs always refresh on a serverless pipeline; MVs in a pipeline need the pipeline set to serverless.
+> - **Enable change tracking on sources:** Some incremental techniques require row tracking on the source Delta tables. Databricks recommends enabling deletion vectors, row tracking, and change data feed on all MV source tables: `ALTER TABLE t SET TBLPROPERTIES (delta.enableDeletionVectors = true, delta.enableRowTracking = true, delta.enableChangeDataFeed = true)`.
+> - **Non-deterministic functions:** Time functions such as `current_date()` and `current_timestamp()` are supported in `WHERE` clauses. Other non-deterministic functions (such as `rand()`) prevent incremental refresh. So do recursive CTEs, sources such as volumes and foreign catalogs, and `SUM` or `AVG` over `FLOAT` or `DOUBLE` columns (cast to `DECIMAL` instead).
+> - **Check what happened:** Query the event log for `planning_information` events. Each records the chosen technique, such as `FULL_RECOMPUTE`, `NO_OP`, `ROW_BASED`, or `GROUP_AGGREGATE`. The pipeline editor's **Incrementalization** column shows the same per update. Run `EXPLAIN CREATE MATERIALIZED VIEW` to test a query before you create it.
+> - **Refresh policy:** `REFRESH POLICY` (`AUTO`, `INCREMENTAL`, `INCREMENTAL STRICT`, or `FULL`) controls whether a refresh may fall back to a full recompute. `INCREMENTAL STRICT` fails the refresh instead.
+> - **Permissions:** Readers need `SELECT` on the MV plus `USE CATALOG` and `USE SCHEMA` on its parents, not access to the sources. The owner needs `SELECT` on the sources. That makes MVs a clean way to publish a summary to people who must not see the raw rows.
+> - **dbt:** The dbt-databricks adapter can materialize a model as `materialized_view`. See [[dbt on Databricks]].
 
 ## Common misconceptions
 

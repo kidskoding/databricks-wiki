@@ -139,11 +139,11 @@ gcloud billing projects describe acme-databricks-prod
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Pay-as-you-go invoicing.** For pay-as-you-go accounts, the docs describe monthly billing based on usage, with an invoice reflecting the charges.
-> - **Commit drawdown.** Whether Databricks purchases on Google Cloud Marketplace count toward a Google Cloud commitment depends on your agreements; current Databricks docs do not state it. Confirm with Google and Databricks.
-> - **Databricks commits on partner products.** Since June 2026, up to 10% of a Databricks Universal Commit can be used for eligible third-party partner products in [[Databricks Marketplace]].
-> - **Standard tier.** The legacy-features page lists end of life for Standard tier workspaces on Google Cloud as a required migration.
-> - **Chargeback.** Use compute tags and serverless usage policies to attribute DBUs; see [[Tagging for Chargeback]].
+> - **Pay-as-you-go invoicing:** For pay-as-you-go accounts, the docs describe monthly billing based on usage, with an invoice reflecting the charges.
+> - **Commit drawdown:** Whether Databricks purchases on Google Cloud Marketplace count toward a Google Cloud commitment depends on your agreements; current Databricks docs do not state it. Confirm with Google and Databricks.
+> - **Databricks commits on partner products:** Since June 2026, up to 10% of a Databricks Universal Commit can be used for eligible third-party partner products in [[Databricks Marketplace]].
+> - **Standard tier:** The legacy-features page lists end of life for Standard tier workspaces on Google Cloud as a required migration.
+> - **Chargeback:** Use compute tags and serverless usage policies to attribute DBUs; see [[Tagging for Chargeback]].
 
 ## Common misconceptions
 

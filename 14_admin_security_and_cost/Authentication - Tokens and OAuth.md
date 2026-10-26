@@ -177,13 +177,13 @@ If you still allow PATs, an admin can:
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Account vs workspace tokens.** OAuth tokens are issued by either the account (`accounts.*` host) or a workspace. Account-level automation (Terraform for workspaces, users, metastores) needs an account-level token, which means a service principal with an admin role at the account.
-> - **GitHub subject format.** GitHub repositories created, renamed, or transferred on or after 15 July 2026 include numeric organisation and repository IDs in the `sub` claim. Older ones use the name-only format unless they opt in. Your federation policy subject must match exactly.
-> - **Reusable workflows.** To federate as a reusable workflow rather than the calling repository, set the policy's subject claim to `job_workflow_ref`.
-> - **Bundles.** For unattended [[Declarative Automation Bundles]] deployment, the docs prefer OAuth M2M for a service principal, then a PAT owned by a service principal.
-> - **Inactive PATs.** The Token report can filter to inactive principals. Removing a user's CAN USE permission stops their tokens working without revoking them.
-> - **OAuth secrets.** Account and workspace admins can create secrets for a service principal. A service principal can hold up to five secrets, each valid for at most two years, optionally scoped to specific APIs (scopes cannot be changed later). The secret is shown only once. Rotate secrets on a schedule, and prefer federation where your platform supports it.
-> - **Wrong token endpoint.** A 401 on M2M often means the request went to an identity provider or cloud token endpoint instead of the Databricks OAuth token endpoint.
+> - **Account vs workspace tokens:** OAuth tokens are issued by either the account (`accounts.*` host) or a workspace. Account-level automation (Terraform for workspaces, users, metastores) needs an account-level token, which means a service principal with an admin role at the account.
+> - **GitHub subject format:** GitHub repositories created, renamed, or transferred on or after 15 July 2026 include numeric organisation and repository IDs in the `sub` claim. Older ones use the name-only format unless they opt in. Your federation policy subject must match exactly.
+> - **Reusable workflows:** To federate as a reusable workflow rather than the calling repository, set the policy's subject claim to `job_workflow_ref`.
+> - **Bundles:** For unattended [[Declarative Automation Bundles]] deployment, the docs prefer OAuth M2M for a service principal, then a PAT owned by a service principal.
+> - **Inactive PATs:** The Token report can filter to inactive principals. Removing a user's CAN USE permission stops their tokens working without revoking them.
+> - **OAuth secrets:** Account and workspace admins can create secrets for a service principal. A service principal can hold up to five secrets, each valid for at most two years, optionally scoped to specific APIs (scopes cannot be changed later). The secret is shown only once. Rotate secrets on a schedule, and prefer federation where your platform supports it.
+> - **Wrong token endpoint:** A 401 on M2M often means the request went to an identity provider or cloud token endpoint instead of the Databricks OAuth token endpoint.
 
 ## Common misconceptions
 

@@ -150,12 +150,12 @@ GROUP BY s.name;
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Join strategies.** Broadcast hash join (no shuffle of the large side), shuffle hash join (both sides shuffled, hash table built per partition), sort-merge join (both sides shuffled and sorted; the default for large-large joins), plus nested-loop strategies for non-equi joins.
-> - **Skew detection in AQE.** Databricks documents that a partition is treated as skewed when it is larger than both a factor (5×) of the median partition size and a byte threshold (256 MB). AQE splits it into smaller tasks and, where needed, replicates the matching side. AQE handles skew only in shuffle-based joins, not broadcast joins. See [[Adaptive Query Execution]].
-> - **Spill.** If a shuffle's sort or hash buffers exceed execution memory, Spark [[Spill|spills]] to disk. The stage page shows "Spill (Memory)" and "Spill (Disk)". Databricks lists fixes: auto-optimized shuffle partitions, holding less data in memory, larger-memory executors.
-> - **Salting.** For a hot key, add a random suffix (`key || '_' || floor(rand()*8)`) on the large side, explode the small side to all suffixes, join, then aggregate away the salt. Use only when AQE skew handling is not enough.
-> - **Shuffle reuse.** Shuffle files persist on executors while the application runs. If a later job needs the same shuffle, the stage shows as "skipped" in the Spark UI because its output is reused.
-> - **Fetch failures.** Losing an executor loses its shuffle files, so downstream tasks fail with `FetchFailedException` and Spark re-runs the upstream stage. Frequent fetch failures often point to spot-instance loss or memory pressure.
+> - **Join strategies:** Broadcast hash join (no shuffle of the large side), shuffle hash join (both sides shuffled, hash table built per partition), sort-merge join (both sides shuffled and sorted; the default for large-large joins), plus nested-loop strategies for non-equi joins.
+> - **Skew detection in AQE:** Databricks documents that a partition is treated as skewed when it is larger than both a factor (5×) of the median partition size and a byte threshold (256 MB). AQE splits it into smaller tasks and, where needed, replicates the matching side. AQE handles skew only in shuffle-based joins, not broadcast joins. See [[Adaptive Query Execution]].
+> - **Spill:** If a shuffle's sort or hash buffers exceed execution memory, Spark [[Spill|spills]] to disk. The stage page shows "Spill (Memory)" and "Spill (Disk)". Databricks lists fixes: auto-optimized shuffle partitions, holding less data in memory, larger-memory executors.
+> - **Salting:** For a hot key, add a random suffix (`key || '_' || floor(rand()*8)`) on the large side, explode the small side to all suffixes, join, then aggregate away the salt. Use only when AQE skew handling is not enough.
+> - **Shuffle reuse:** Shuffle files persist on executors while the application runs. If a later job needs the same shuffle, the stage shows as "skipped" in the Spark UI because its output is reused.
+> - **Fetch failures:** Losing an executor loses its shuffle files, so downstream tasks fail with `FetchFailedException` and Spark re-runs the upstream stage. Frequent fetch failures often point to spot-instance loss or memory pressure.
 
 ## Common misconceptions
 

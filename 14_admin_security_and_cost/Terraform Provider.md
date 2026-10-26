@@ -76,7 +76,9 @@ Rules from the provider docs:
 - Most Unity Catalog APIs are workspace-level, except metastores, metastore assignments, and storage credentials.
 - Account-level operations need an identity with the account admin role.
 
-**Terraform vs Declarative Automation Bundles.** Use Terraform for platform resources (workspaces, networking, identities, policies, permissions). Use [[Declarative Automation Bundles]] for project assets (jobs, pipelines, notebooks, dashboards) that data teams deploy with their code.
+### Terraform vs Declarative Automation Bundles
+
+Use Terraform for platform resources (workspaces, networking, identities, policies, permissions). Use [[Declarative Automation Bundles]] for project assets (jobs, pipelines, notebooks, dashboards) that data teams deploy with their code.
 
 ## How it works
 
@@ -191,11 +193,11 @@ resource "databricks_metastore_assignment" "prod" {
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Module boundaries.** Keep account-level resources (workspaces, networking, metastores) and workspace-level resources in separate modules and state files. A workspace module can then be applied repeatedly to many workspaces.
-> - **SCIM and Terraform.** If SCIM or automatic identity management owns users and groups, reference them with data sources (`data "databricks_group"`) rather than creating them, so the two systems do not conflict.
-> - **Exporter.** The provider includes an experimental resource exporter that generates Terraform code from an existing workspace. It is useful for adopting Terraform on a workspace built by hand and for [[Disaster Recovery]] scripts.
-> - **Namespace migration.** Configurations that still use `databrickslabs/databricks` must switch the source, and existing state must be updated with `terraform state replace-provider`.
-> - **Drift.** Changes made in the UI to Terraform-managed objects are reverted on the next apply. Restrict admin UI access for managed objects, or import changes back into code.
+> - **Module boundaries:** Keep account-level resources (workspaces, networking, metastores) and workspace-level resources in separate modules and state files. A workspace module can then be applied repeatedly to many workspaces.
+> - **SCIM and Terraform:** If SCIM or automatic identity management owns users and groups, reference them with data sources (`data "databricks_group"`) rather than creating them, so the two systems do not conflict.
+> - **Exporter:** The provider includes an experimental resource exporter that generates Terraform code from an existing workspace. It is useful for adopting Terraform on a workspace built by hand and for [[Disaster Recovery]] scripts.
+> - **Namespace migration:** Configurations that still use `databrickslabs/databricks` must switch the source, and existing state must be updated with `terraform state replace-provider`.
+> - **Drift:** Changes made in the UI to Terraform-managed objects are reverted on the next apply. Restrict admin UI access for managed objects, or import changes back into code.
 
 ## Common misconceptions
 

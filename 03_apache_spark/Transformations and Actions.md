@@ -135,10 +135,10 @@ SELECT store, SUM(amount) FROM big_orders GROUP BY store;  -- runs: like an acti
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **One action can create several jobs.** Some operations, such as `orderBy` (which samples to choose range boundaries) or reading with schema inference, start extra small jobs. With [[Adaptive Query Execution]], a query may also show several jobs as it re-plans after each shuffle.
-> - **Narrow chains fuse.** Consecutive narrow transformations in a stage are pipelined, and with whole-stage code generation ([[Tungsten]]) they may compile into one Java function.
-> - **`repartition` vs `coalesce`.** `repartition(n)` is a wide transformation (full shuffle). `coalesce(n)` merges partitions without a shuffle, so it is narrow, but reducing to very few partitions also reduces parallelism for the steps before it.
-> - **`foreachBatch` in streaming.** In [[Structured Streaming]], `writeStream.start()` is the action; inside `foreachBatch` you can run ordinary batch actions on each micro-batch.
+> - **One action can create several jobs:** Some operations, such as `orderBy` (which samples to choose range boundaries) or reading with schema inference, start extra small jobs. With [[Adaptive Query Execution]], a query may also show several jobs as it re-plans after each shuffle.
+> - **Narrow chains fuse:** Consecutive narrow transformations in a stage are pipelined, and with whole-stage code generation ([[Tungsten]]) they may compile into one Java function.
+> - **`repartition` vs `coalesce`:** `repartition(n)` is a wide transformation (full shuffle). `coalesce(n)` merges partitions without a shuffle, so it is narrow, but reducing to very few partitions also reduces parallelism for the steps before it.
+> - **`foreachBatch` in streaming:** In [[Structured Streaming]], `writeStream.start()` is the action; inside `foreachBatch` you can run ordinary batch actions on each micro-batch.
 
 ## Common misconceptions
 

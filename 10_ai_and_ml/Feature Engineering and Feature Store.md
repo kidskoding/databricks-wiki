@@ -85,11 +85,11 @@ Databricks Feature Store has two main building blocks:
 
 Supporting capabilities:
 
-- **Training sets.** `create_training_set` joins a label DataFrame with features by key, with optional point-in-time lookups.
-- **Online stores.** Databricks Online Feature Stores provision a Lakebase project as the storage backend for low-latency lookups. Data is synced from offline tables: *materialization* for Feature Views, *publishing* for feature tables.
-- **Automatic feature lookup.** A model logged with the feature engineering client records which features it needs, so [[Model Serving]] fetches them by entity ID at request time.
-- **Feature Serving endpoints.** Serve features without a model, for example to a rules engine or an app. Databricks recommends serving the model directly when features feed model inference.
-- **Governance and lineage.** Unity Catalog records which models and endpoints use which features.
+- **Training sets:** `create_training_set` joins a label DataFrame with features by key, with optional point-in-time lookups.
+- **Online stores:** Databricks Online Feature Stores provision a Lakebase project as the storage backend for low-latency lookups. Data is synced from offline tables: *materialization* for Feature Views, *publishing* for feature tables.
+- **Automatic feature lookup:** A model logged with the feature engineering client records which features it needs, so [[Model Serving]] fetches them by entity ID at request time.
+- **Feature Serving endpoints:** Serve features without a model, for example to a rules engine or an app. Databricks recommends serving the model directly when features feed model inference.
+- **Governance and lineage:** Unity Catalog records which models and endpoints use which features.
 
 ## How it works
 
@@ -162,10 +162,10 @@ At serving time the request only carries `customer_id`. The endpoint reads the o
 ## Small-business considerations
 
 > [!smallbiz] Small-business considerations
-> - **A plain Delta table is enough to start.** A gold table keyed by `customer_id` with a primary key constraint already works as a feature table.
-> - **Skip the online store for batch scoring.** A nightly job that scores every customer needs no online store. Add one only when an app needs predictions within milliseconds.
-> - **Watch online store cost.** An online store runs on Lakebase compute, which is billed while it runs; the Google Cloud docs note that Lakebase scale-to-zero is not supported for online feature stores. See [[How Databricks Pricing Works]].
-> - **Use point-in-time joins for anything time-based.** It prevents leakage in forecasts and churn models.
+> - **A plain Delta table is enough to start:** A gold table keyed by `customer_id` with a primary key constraint already works as a feature table.
+> - **Skip the online store for batch scoring:** A nightly job that scores every customer needs no online store. Add one only when an app needs predictions within milliseconds.
+> - **Watch online store cost:** An online store runs on Lakebase compute, which is billed while it runs; the Google Cloud docs note that Lakebase scale-to-zero is not supported for online feature stores. See [[How Databricks Pricing Works]].
+> - **Use point-in-time joins for anything time-based:** It prevents leakage in forecasts and churn models.
 
 ## Cloud differences
 
@@ -181,13 +181,13 @@ At serving time the request only carries `customer_id`. The endpoint reads the o
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Time series feature tables.** Add `timeseries_columns` to a feature table, then use timestamp lookups in `FeatureLookup` for point-in-time correct joins.
-> - **Name clashes.** When two tables share a feature name, use `output_name` in `FeatureLookup`. Use `default_values` for features that can be missing.
-> - **On-demand features.** Python UDFs registered in Unity Catalog can compute features at request time, for example distance from a store.
-> - **Do not change keys.** Changing a feature table's primary key or a feature's type breaks downstream pipelines and models.
-> - **Permissions.** An endpoint creator needs `SELECT` on the backing table. A materialized table can hold many features, so `SELECT` on it grants access to all of them.
-> - **Multiple online stores.** Existing endpoints that look up features from multiple online stores keep working, but you cannot create new endpoints like this on Lakebase Autoscaling instances.
-> - **Feature View restrictions.** A `FeatureSpec` that uses Feature Views cannot also contain `FeatureLookup` or `FeatureFunction` definitions.
+> - **Time series feature tables:** Add `timeseries_columns` to a feature table, then use timestamp lookups in `FeatureLookup` for point-in-time correct joins.
+> - **Name clashes:** When two tables share a feature name, use `output_name` in `FeatureLookup`. Use `default_values` for features that can be missing.
+> - **On-demand features:** Python UDFs registered in Unity Catalog can compute features at request time, for example distance from a store.
+> - **Do not change keys:** Changing a feature table's primary key or a feature's type breaks downstream pipelines and models.
+> - **Permissions:** An endpoint creator needs `SELECT` on the backing table. A materialized table can hold many features, so `SELECT` on it grants access to all of them.
+> - **Multiple online stores:** Existing endpoints that look up features from multiple online stores keep working, but you cannot create new endpoints like this on Lakebase Autoscaling instances.
+> - **Feature View restrictions:** A `FeatureSpec` that uses Feature Views cannot also contain `FeatureLookup` or `FeatureFunction` definitions.
 
 ## Common misconceptions
 

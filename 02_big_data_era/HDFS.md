@@ -85,7 +85,9 @@ HDFS uses a single coordinator and many workers:
 | **Block** | The unit of storage. Files are split into blocks, typically 128 MB in Hadoop 3.x documentation (64 MB in the Hadoop 1.2.1 guide). Block size is configurable per file. |
 | **Replication factor** | The number of copies of each block, set per file and stored by the NameNode. The common case is three. |
 
-**Replica placement.** For a replication factor of three, the documented default places one replica on the writer's node (or a random node) and the other two on different nodes in one remote rack. This survives the loss of an entire rack while limiting slower inter-rack write traffic.
+### Replica placement
+
+For a replication factor of three, the documented default places one replica on the writer's node (or a random node) and the other two on different nodes in one remote rack. This survives the loss of an entire rack while limiting slower inter-rack write traffic.
 
 ## How it works
 
@@ -105,9 +107,9 @@ sequenceDiagram
   Note over NN,D3: DataNodes send heartbeats and block reports to the NameNode
 ```
 
-- **Write path.** The client requests target DataNodes for each block from the NameNode, then streams data to the first DataNode, which forwards it along a pipeline to the others. File data does not pass through the NameNode.
-- **Read path.** The client requests block locations from the NameNode, then reads each block directly from a DataNode that holds it, preferring the nearest.
-- **Recovery.** The NameNode monitors heartbeats and block reports. When a DataNode fails or a disk error leaves blocks under-replicated, it schedules new replicas on healthy nodes.
+- **Write path:** The client requests target DataNodes for each block from the NameNode, then streams data to the first DataNode, which forwards it along a pipeline to the others. File data does not pass through the NameNode.
+- **Read path:** The client requests block locations from the NameNode, then reads each block directly from a DataNode that holds it, preferring the nearest.
+- **Recovery:** The NameNode monitors heartbeats and block reports. When a DataNode fails or a disk error leaves blocks under-replicated, it schedules new replicas on healthy nodes.
 
 Common commands:
 
@@ -150,10 +152,10 @@ HDFS paths use the form `hdfs://namenode-host:port/path`. On Databricks, the equ
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Small files problem.** The NameNode holds the namespace and block map in memory. Millions of small files exhaust NameNode memory before disks fill. Teams compacted small files into larger ones. The same practice continues in the lakehouse: [[OPTIMIZE and VACUUM|OPTIMIZE]] compacts small files in Delta tables.
-> - **NameNode availability.** In Hadoop 1, NameNode failure stopped the cluster. Hadoop 2.2.0 (October 2013) added HDFS high availability with a standby NameNode, and **federation**, which divides the namespace across multiple NameNodes.
-> - **Atomic rename as a commit.** Jobs wrote output to a temporary directory and renamed it into place to commit. Object stores do not offer equivalent rename semantics, so cloud table formats such as [[Delta Lake]] and [[Apache Iceberg]] commit through their own metadata logs.
-> - **Coupled storage and compute.** Adding HDFS capacity required adding whole servers, including CPUs that might not be needed, and shutting down a cluster made its data unavailable. Cloud architectures keep data in object storage permanently and start and stop compute independently. See [[Storage vs Compute]] and [[The Pain of Hadoop]].
+> - **Small files problem:** The NameNode holds the namespace and block map in memory. Millions of small files exhaust NameNode memory before disks fill. Teams compacted small files into larger ones. The same practice continues in the lakehouse: [[OPTIMIZE and VACUUM|OPTIMIZE]] compacts small files in Delta tables.
+> - **NameNode availability:** In Hadoop 1, NameNode failure stopped the cluster. Hadoop 2.2.0 (October 2013) added HDFS high availability with a standby NameNode, and **federation**, which divides the namespace across multiple NameNodes.
+> - **Atomic rename as a commit:** Jobs wrote output to a temporary directory and renamed it into place to commit. Object stores do not offer equivalent rename semantics, so cloud table formats such as [[Delta Lake]] and [[Apache Iceberg]] commit through their own metadata logs.
+> - **Coupled storage and compute:** Adding HDFS capacity required adding whole servers, including CPUs that might not be needed, and shutting down a cluster made its data unavailable. Cloud architectures keep data in object storage permanently and start and stop compute independently. See [[Storage vs Compute]] and [[The Pain of Hadoop]].
 
 ## Common misconceptions
 

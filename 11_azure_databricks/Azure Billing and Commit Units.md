@@ -167,11 +167,11 @@ List prices in system tables do not reflect negotiated discounts or DBCU drawdow
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Drawdown ratios.** Each DBU workload type deducts a different number of DBCUs, proportional to its list price. A shift from all-purpose to jobs or serverless compute changes how fast a plan is consumed.
-> - **Cancellation and exchange.** Check the current terms in Microsoft's prepurchase documentation before buying. Do not assume a plan can be exchanged or refunded.
-> - **VM discounts are separate.** DBCUs cover DBUs only. Discounts on classic cluster VMs come from Azure-side mechanisms such as Azure Reservations or Azure savings plan for compute, which follow Azure's own matching rules. Microsoft states that from July 1, 2026, Reserved VM Instances for select older VM series can no longer be purchased or renewed.
-> - **Serverless.** Serverless DBU rates include compute, so VM discounts do not apply to serverless usage, but DBCU plans do.
-> - **Tag limits.** Cluster tags are not propagated to VMs for clusters created from pools (only workspace and pool tags are). Tags apply only to future usage.
+> - **Drawdown ratios:** Each DBU workload type deducts a different number of DBCUs, proportional to its list price. A shift from all-purpose to jobs or serverless compute changes how fast a plan is consumed.
+> - **Cancellation and exchange:** Check the current terms in Microsoft's prepurchase documentation before buying. Do not assume a plan can be exchanged or refunded.
+> - **VM discounts are separate:** DBCUs cover DBUs only. Discounts on classic cluster VMs come from Azure-side mechanisms such as Azure Reservations or Azure savings plan for compute, which follow Azure's own matching rules. Microsoft states that from July 1, 2026, Reserved VM Instances for select older VM series can no longer be purchased or renewed.
+> - **Serverless:** Serverless DBU rates include compute, so VM discounts do not apply to serverless usage, but DBCU plans do.
+> - **Tag limits:** Cluster tags are not propagated to VMs for clusters created from pools (only workspace and pool tags are). Tags apply only to future usage.
 
 ## Common misconceptions
 

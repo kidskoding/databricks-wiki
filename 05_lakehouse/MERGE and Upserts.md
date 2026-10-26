@@ -130,7 +130,9 @@ WHEN NOT MATCHED BY SOURCE AND t.ordered_at >= current_date() - INTERVAL 30 DAYS
   DELETE;                              -- gone from the snapshot, so gone here too
 ```
 
-**Deduplicate before merging.** A `MERGE` fails if several source rows match the same target row, because the result would be ambiguous. Pick one row per key first:
+### Deduplicate before merging
+
+A `MERGE` fails if several source rows match the same target row, because the result would be ambiguous. Pick one row per key first:
 
 ```sql
 MERGE INTO shop.sales.customers AS t
@@ -175,12 +177,12 @@ target = DeltaTable.forName(spark, "shop.sales.customers")
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **How merge executes.** Delta first finds which target files contain matching rows (a join), then rewrites only those files. **Low shuffle merge**, on by default since Runtime 10.4, avoids reshuffling unchanged rows in those files, which keeps layout from [[Liquid Clustering|clustering]] intact.
-> - **Deletion vectors make merges much cheaper.** With [[Deletion Vectors]], updated and deleted rows are marked in a small side file instead of rewriting the whole Parquet file. That is the biggest single speed-up for frequent, small merges.
-> - **Prune the target.** Add filters to the `ON` clause that let Delta skip files, such as `AND t.ordered_at >= '2026-10-01'`. Without them, every merge scans the whole target to look for matches. [[Data Skipping|Data skipping]] and dynamic file pruning help only if the join keys or filters line up with the layout.
-> - **Conflicts.** Without row-level concurrency, two concurrent merges that modify the same data files conflict under optimistic concurrency, even if they change different rows. On Databricks Runtime 14.3 LTS and above, unpartitioned tables with [[Deletion Vectors|deletion vectors]] enabled get row-level concurrency automatically, so concurrent merges on different rows of the same file can both succeed.
-> - **Schema evolution.** `MERGE WITH SCHEMA EVOLUTION` adds new source columns. See [[Schema Enforcement and Evolution]].
-> - **Getting changes out.** After a merge, downstream jobs often want only the rows that changed. That is the [[Change Data Feed]].
+> - **How merge executes:** Delta first finds which target files contain matching rows (a join), then rewrites only those files. **Low shuffle merge**, on by default since Runtime 10.4, avoids reshuffling unchanged rows in those files, which keeps layout from [[Liquid Clustering|clustering]] intact.
+> - **Deletion vectors make merges much cheaper:** With [[Deletion Vectors]], updated and deleted rows are marked in a small side file instead of rewriting the whole Parquet file. That is the biggest single speed-up for frequent, small merges.
+> - **Prune the target:** Add filters to the `ON` clause that let Delta skip files, such as `AND t.ordered_at >= '2026-10-01'`. Without them, every merge scans the whole target to look for matches. [[Data Skipping|Data skipping]] and dynamic file pruning help only if the join keys or filters line up with the layout.
+> - **Conflicts:** Without row-level concurrency, two concurrent merges that modify the same data files conflict under optimistic concurrency, even if they change different rows. On Databricks Runtime 14.3 LTS and above, unpartitioned tables with [[Deletion Vectors|deletion vectors]] enabled get row-level concurrency automatically, so concurrent merges on different rows of the same file can both succeed.
+> - **Schema evolution:** `MERGE WITH SCHEMA EVOLUTION` adds new source columns. See [[Schema Enforcement and Evolution]].
+> - **Getting changes out:** After a merge, downstream jobs often want only the rows that changed. That is the [[Change Data Feed]].
 
 ## Common misconceptions
 

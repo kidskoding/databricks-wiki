@@ -173,11 +173,11 @@ FROM STREAM read_kafka(
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Append-only assumption.** A streaming read of a Delta table expects appends. If an `UPDATE`, `DELETE`, `MERGE INTO`, or overwrite modifies the source table, the stream fails unless you skip those changes (the `skipChangeCommits` reader option, which processes only appends) or read the source's change feed. For real changes, use AUTO CDC.
-> - **Changing the query.** Editing a streaming table's query only affects new data. Rows already written stay as they were. To apply new logic to history, run a full refresh (if the source still has the data).
-> - **Full refresh danger.** If the source is Kafka with 7 days of retention, a full refresh loses everything older than 7 days. Protect important bronze tables with the table property `pipelines.reset.allowed = false` (default `true`), which blocks full refreshes of that table.
-> - **Stateful operations.** Aggregations and joins in a streaming table need [[Watermark|watermarks]] to bound state. Without one, state grows forever. Often the better answer is to aggregate in a materialized view instead.
-> - **Python standalone tables.** You can create standalone tables from a notebook on serverless compute, but the docs note you can't refresh or schedule them with `REFRESH`, `SCHEDULE`, or `TRIGGER ON UPDATE` when defined with Python decorators. Define them in SQL or schedule the notebook as a job.
+> - **Append-only assumption:** A streaming read of a Delta table expects appends. If an `UPDATE`, `DELETE`, `MERGE INTO`, or overwrite modifies the source table, the stream fails unless you skip those changes (the `skipChangeCommits` reader option, which processes only appends) or read the source's change feed. For real changes, use AUTO CDC.
+> - **Changing the query:** Editing a streaming table's query only affects new data. Rows already written stay as they were. To apply new logic to history, run a full refresh (if the source still has the data).
+> - **Full refresh danger:** If the source is Kafka with 7 days of retention, a full refresh loses everything older than 7 days. Protect important bronze tables with the table property `pipelines.reset.allowed = false` (default `true`), which blocks full refreshes of that table.
+> - **Stateful operations:** Aggregations and joins in a streaming table need [[Watermark|watermarks]] to bound state. Without one, state grows forever. Often the better answer is to aggregate in a materialized view instead.
+> - **Python standalone tables:** You can create standalone tables from a notebook on serverless compute, but the docs note you can't refresh or schedule them with `REFRESH`, `SCHEDULE`, or `TRIGGER ON UPDATE` when defined with Python decorators. Define them in SQL or schedule the notebook as a job.
 
 ## Common misconceptions
 

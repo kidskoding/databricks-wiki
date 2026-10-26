@@ -164,11 +164,11 @@ Entra ID access tokens expire within about an hour. A valid token has an `aud` c
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Duplicate emails.** If more than one Entra ID user has an email equal to an Azure Databricks username and none has a matching UPN, automatic identity management cannot determine the intended user. Keep one Entra object per email.
-> - **Migrating from SCIM.** Turning on automatic identity management while a SCIM application still provisions the same identities creates duplicates. Plan the cutover so each identity has one provisioning path.
-> - **Account admin bootstrap.** An Entra ID Global Administrator signs in at `accounts.azuredatabricks.net` to become the first account admin, then assigns the role to others. After that, the Global Administrator is no longer needed. See [[Admin Roles]].
-> - **Managed identity authentication.** The Databricks CLI and SDKs support Azure managed identity authentication for code running on Azure resources. Grant the managed identity access to the workspace like any other service principal.
-> - **Token validation.** For custom integrations, validate `aud` (the Azure Databricks resource ID) and `tid` (your tenant) before trusting a token.
+> - **Duplicate emails:** If more than one Entra ID user has an email equal to an Azure Databricks username and none has a matching UPN, automatic identity management cannot determine the intended user. Keep one Entra object per email.
+> - **Migrating from SCIM:** Turning on automatic identity management while a SCIM application still provisions the same identities creates duplicates. Plan the cutover so each identity has one provisioning path.
+> - **Account admin bootstrap:** An Entra ID Global Administrator signs in at `accounts.azuredatabricks.net` to become the first account admin, then assigns the role to others. After that, the Global Administrator is no longer needed. See [[Admin Roles]].
+> - **Managed identity authentication:** The Databricks CLI and SDKs support Azure managed identity authentication for code running on Azure resources. Grant the managed identity access to the workspace like any other service principal.
+> - **Token validation:** For custom integrations, validate `aud` (the Azure Databricks resource ID) and `tid` (your tenant) before trusting a token.
 
 ## Common misconceptions
 

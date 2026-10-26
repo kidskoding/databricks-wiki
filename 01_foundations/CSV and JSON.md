@@ -122,11 +122,11 @@ flowchart LR
 
 Where CSV and JSON break at scale:
 
-1. **No types.** `03/04/2026` can be March or April. ZIP code `02134` becomes the number `2134`. Prices with a comma as decimal separator split into two columns.
-2. **Inference is slow and fragile.** To guess types, a reader samples rows. Row 2,000,001 may contain `N/A` in a numeric column and fail the load.
-3. **Everything is read every time.** To total one column, a reader must parse every byte of every row. See [[Columnar Storage]].
-4. **No safe updates.** You cannot change one row in place, and there is no record of who changed what.
-5. **Messy escaping.** A customer note containing a comma and a line break breaks naive parsers.
+1. **No types:** `03/04/2026` can be March or April. ZIP code `02134` becomes the number `2134`. Prices with a comma as decimal separator split into two columns.
+2. **Inference is slow and fragile:** To guess types, a reader samples rows. Row 2,000,001 may contain `N/A` in a numeric column and fail the load.
+3. **Everything is read every time:** To total one column, a reader must parse every byte of every row. See [[Columnar Storage]].
+4. **No safe updates:** You cannot change one row in place, and there is no record of who changed what.
+5. **Messy escaping:** A customer note containing a comma and a line break breaks naive parsers.
 
 In Databricks you read both with `read_files`, and you can state the [[Schema|schema]] (the column names and types) to stop the guessing:
 
@@ -153,8 +153,8 @@ SELECT * FROM read_files(
 > [!smallbiz] Small-business considerations
 > CSV is how most of your data will first arrive, and that is fine. Three habits avoid most pain:
 > 1. **Export with a header row and ISO dates** (`2026-03-03`) whenever the tool allows it.
-> 2. **Keep codes as text.** Phone numbers, ZIP codes, and product SKUs are labels, not numbers. Declare them as strings.
-> 3. **Load once, then stop using the file.** Turn the CSV into a table, check row counts against the source, and query the table from then on.
+> 2. **Keep codes as text:** Phone numbers, ZIP codes, and product SKUs are labels, not numbers. Declare them as strings.
+> 3. **Load once, then stop using the file:** Turn the CSV into a table, check row counts against the source, and query the table from then on.
 
 > [!bridge]- In Databricks today
 > - **One-off and SQL reads:** the `read_files` table-valued function (Databricks SQL and Databricks Runtime 13.3 LTS and above). Databricks recommends it over the older `USING CSV` / `USING JSON` syntax because it accepts a schema and more options.
@@ -174,7 +174,7 @@ SELECT * FROM read_files(
 > - **Multi-line CSV fields** force a parser to track quote state across lines, which prevents splitting the file at arbitrary line breaks. Spark has a `multiLine` option for this, at the cost of parallelism.
 > - **JSON numbers** have no fixed precision in the spec. RFC 8259 warns that numbers beyond IEEE 754 double precision may not interoperate. Large IDs (above 2^53) can silently lose digits in JavaScript-based tools; send them as strings.
 > - **Duplicate keys** in a JSON object are allowed by ECMA-404 but RFC 8259 says names "SHOULD be unique", and behavior varies by parser.
-> - **Inference cost.** Schema inference on JSON may scan a sample or all files. On large landing zones, supply a schema or use schema hints to avoid long startup times and type flip-flopping between runs.
+> - **Inference cost:** Schema inference on JSON may scan a sample or all files. On large landing zones, supply a schema or use schema hints to avoid long startup times and type flip-flopping between runs.
 
 ## Common misconceptions
 

@@ -178,7 +178,7 @@ Older configurations use the field `client` instead of `environment_version`. Ch
 > 2. **Pin versions** (`package==x.y.z`). Unpinned packages can resolve differently on a new environment version and slow installs.
 > 3. **Keep one `requirements.txt`** in your Git folder and install from it, so notebooks and jobs agree.
 > 4. **Put your own wheels in a Unity Catalog volume,** not in DBFS.
-> 5. **Avoid init scripts for installing packages.** Databricks advises against it, and serverless does not support them.
+> 5. **Avoid init scripts for installing packages:** Databricks advises against it, and serverless does not support them.
 
 ## Cloud differences
 
@@ -188,12 +188,12 @@ Older configurations use the field `client` instead of `environment_version`. Ch
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Base environments.** Workspace admins can define serverless base environments (a curated dependency list on top of an environment version) and make one the default, so teams start from an approved set.
-> - **Environments mode on classic compute.** Classic compute offers an Environments dependency mode that manages dependencies through base environments and the same side panel as serverless, instead of cluster libraries. Check the docs for its current release status.
-> - **Access modes.** Libraries from volumes work on standard and dedicated access mode from Databricks Runtime 13.3 LTS. DBFS libraries are not supported in standard access mode. On standard access mode, JARs must be on the Unity Catalog allowlist (13.3 LTS and above).
-> - **Serverless limits.** Serverless does not support compute-scoped libraries, Maven coordinates, or JARs in notebooks. Custom Spark data sources and Spark extensions that depend on compute-scoped installs need classic compute.
-> - **Caching.** Serverless notebook environments are cached; notebook-scoped `%pip` installs are not cached across sessions.
-> - **Databricks Connect.** With [[Databricks Connect]], local packages run on your machine, but packages used inside UDFs must also exist in the remote environment.
+> - **Base environments:** Workspace admins can define serverless base environments (a curated dependency list on top of an environment version) and make one the default, so teams start from an approved set.
+> - **Environments mode on classic compute:** Classic compute offers an Environments dependency mode that manages dependencies through base environments and the same side panel as serverless, instead of cluster libraries. Check the docs for its current release status.
+> - **Access modes:** Libraries from volumes work on standard and dedicated access mode from Databricks Runtime 13.3 LTS. DBFS libraries are not supported in standard access mode. On standard access mode, JARs must be on the Unity Catalog allowlist (13.3 LTS and above).
+> - **Serverless limits:** Serverless does not support compute-scoped libraries, Maven coordinates, or JARs in notebooks. Custom Spark data sources and Spark extensions that depend on compute-scoped installs need classic compute.
+> - **Caching:** Serverless notebook environments are cached; notebook-scoped `%pip` installs are not cached across sessions.
+> - **Databricks Connect:** With [[Databricks Connect]], local packages run on your machine, but packages used inside UDFs must also exist in the remote environment.
 
 ## Common misconceptions
 

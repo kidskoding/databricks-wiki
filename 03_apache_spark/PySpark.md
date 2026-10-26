@@ -140,7 +140,7 @@ sales.select("item", with_tax("price").alias("price_with_tax")).show()
 
 > [!smallbiz] Small-business considerations
 > PySpark is a suitable choice when the team's data practitioner works in Python. Three practices keep it efficient:
-> 1. **Use `pyspark.sql.functions` first.** Most operations (dates, strings, JSON, windows) are built in and runs at engine speed.
+> 1. **Use `pyspark.sql.functions` first:** Most operations (dates, strings, JSON, windows) are built in and runs at engine speed.
 > 2. **Do heavy work in Spark, then `toPandas()` the small result** for charts or Excel export.
 > 3. **Write code that works on serverless**: DataFrames and SQL, no `sparkContext` or RDDs. Such code runs on serverless compute without cluster management.
 
@@ -155,11 +155,11 @@ sales.select("item", with_tax("price").alias("price_with_tax")).show()
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Py4J vs Spark Connect.** In Spark Classic, the Python process talks to the driver JVM through Py4J. In Spark Connect, the Python client sends protobuf plans over gRPC and gets Arrow results back, with no local JVM at all. That is why the Spark Connect Python client can be a small pure-Python package.
-> - **UDF cost.** A row-at-a-time Python UDF serializes each row to a Python worker and back, blocks some optimizations, and is not accelerated by Photon. Pandas UDFs batch rows through Apache Arrow and are much faster. Built-in functions avoid Python entirely.
-> - **`toPandas()` and Arrow.** Converting to pandas uses Arrow when enabled. It still pulls the full result into the client's memory, so limit or aggregate first.
-> - **pandas API on Spark.** `import pyspark.pandas as ps` gives `ps.DataFrame` with pandas syntax, distributed. It is handy for porting pandas code, but some pandas behaviors (ordering, index semantics) are expensive at scale.
-> - **Dependencies.** Python libraries must be available on every executor. On Databricks, use notebook-scoped `%pip install`, compute-scoped libraries, or serverless environments. See [[Libraries and Environments]].
+> - **Py4J vs Spark Connect:** In Spark Classic, the Python process talks to the driver JVM through Py4J. In Spark Connect, the Python client sends protobuf plans over gRPC and gets Arrow results back, with no local JVM at all. That is why the Spark Connect Python client can be a small pure-Python package.
+> - **UDF cost:** A row-at-a-time Python UDF serializes each row to a Python worker and back, blocks some optimizations, and is not accelerated by Photon. Pandas UDFs batch rows through Apache Arrow and are much faster. Built-in functions avoid Python entirely.
+> - **`toPandas()` and Arrow:** Converting to pandas uses Arrow when enabled. It still pulls the full result into the client's memory, so limit or aggregate first.
+> - **pandas API on Spark:** `import pyspark.pandas as ps` gives `ps.DataFrame` with pandas syntax, distributed. It is handy for porting pandas code, but some pandas behaviors (ordering, index semantics) are expensive at scale.
+> - **Dependencies:** Python libraries must be available on every executor. On Databricks, use notebook-scoped `%pip install`, compute-scoped libraries, or serverless environments. See [[Libraries and Environments]].
 
 ## Common misconceptions
 

@@ -151,9 +151,9 @@ You can change the default to source format in **Settings > Developer**.
 ## Small-business considerations
 
 > [!smallbiz] Small-business considerations
-> 1. **Attach notebooks to serverless compute.** No cluster runs while nobody is working.
-> 2. **Use Markdown cells as documentation.** A notebook that opens with a short `%md` explanation is easier for the next person to maintain.
-> 3. **Promote stable notebooks to jobs.** Once a notebook produces a reliable report, schedule it with [[Lakeflow Jobs]] instead of running it by hand.
+> 1. **Attach notebooks to serverless compute:** No cluster runs while nobody is working.
+> 2. **Use Markdown cells as documentation:** A notebook that opens with a short `%md` explanation is easier for the next person to maintain.
+> 3. **Promote stable notebooks to jobs:** Once a notebook produces a reliable report, schedule it with [[Lakeflow Jobs]] instead of running it by hand.
 > 4. **Put shared notebooks in a Git folder** once more than one person edits them.
 
 ## Cloud differences
@@ -164,11 +164,11 @@ You can change the default to source format in **Settings > Developer**.
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Scala and R on serverless.** Serverless notebooks support Python and SQL. Scala and R notebooks need classic compute.
-> - **`%sh` runs on the driver only.** It does not distribute work across workers.
-> - **Notebook-scoped libraries are not persistent.** `%pip` installs disappear when the session ends or the notebook detaches. Use the Environment side panel on serverless to persist dependencies.
-> - **Git and notebook state.** Git operations that change notebook source can clear cell outputs and version history. Source-format notebooks do not keep notebook dashboard information.
-> - **Local development.** The Databricks IDE extension for VS Code runs notebook cells locally, with DataFrame operations sent to Databricks through [[Databricks Connect]].
+> - **Scala and R on serverless:** Serverless notebooks support Python and SQL. Scala and R notebooks need classic compute.
+> - **`%sh` runs on the driver only:** It does not distribute work across workers.
+> - **Notebook-scoped libraries are not persistent:** `%pip` installs disappear when the session ends or the notebook detaches. Use the Environment side panel on serverless to persist dependencies.
+> - **Git and notebook state:** Git operations that change notebook source can clear cell outputs and version history. Source-format notebooks do not keep notebook dashboard information.
+> - **Local development:** The Databricks IDE extension for VS Code runs notebook cells locally, with DataFrame operations sent to Databricks through [[Databricks Connect]].
 
 ## Common misconceptions
 

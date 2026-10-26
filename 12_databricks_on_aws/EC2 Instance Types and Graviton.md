@@ -81,11 +81,11 @@ The `g` in a name such as `m7g` marks Graviton; a `d` marks local NVMe storage.
 
 AWS Graviton instances use Arm64 processors. Databricks supports them with conditions:
 
-- **Runtime.** The compute reference lists Graviton support on Databricks Runtime 9.1 LTS and above without [[Photon]], and 10.2 and above with Photon. For ML, Databricks Runtime 15.4 LTS ML and above supports Graviton.
-- **No mixing.** A cluster cannot mix Graviton and non-Graviton instance types.
-- **Limitations.** The Graviton limitations list on the compute reference includes features that do not run on Graviton (check it for your runtime). Databricks Container Services now offers an Arm base image for standard compute on Databricks Runtime 18 LTS and above.
-- **Photon exceptions.** `C7g` instances do not support Photon runtimes.
-- **Price performance.** A 2022 Databricks release note stated that Graviton2 instances with Photon can deliver up to 3x better price performance than comparable instances. Measure on your own workloads.
+- **Runtime:** The compute reference lists Graviton support on Databricks Runtime 9.1 LTS and above without [[Photon]], and 10.2 and above with Photon. For ML, Databricks Runtime 15.4 LTS ML and above supports Graviton.
+- **No mixing:** A cluster cannot mix Graviton and non-Graviton instance types.
+- **Limitations:** The Graviton limitations list on the compute reference includes features that do not run on Graviton (check it for your runtime). Databricks Container Services now offers an Arm base image for standard compute on Databricks Runtime 18 LTS and above.
+- **Photon exceptions:** `C7g` instances do not support Photon runtimes.
+- **Price performance:** A 2022 Databricks release note stated that Graviton2 instances with Photon can deliver up to 3x better price performance than comparable instances. Measure on your own workloads.
 
 ### Fleet instance types
 
@@ -163,11 +163,11 @@ databricks clusters list-node-types --output json | jq -r '.node_types[].node_ty
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Compliance security profile.** In June 2026, Databricks announced Graviton support with the compliance security profile for all compliance standards, in commercial regions and in GovCloud. Choose specific Graviton types that support encryption in transit, such as `m7gd` or `c7gd`, because `mgd-fleet` and `cgd-fleet` are not available with the profile.
-> - **GovCloud.** Since June 5, 2026, Graviton instance types are supported with the compliance security profile in Databricks on AWS GovCloud, and the GovCloud supported-instance list includes Graviton families such as `M7g`, `C7gd`, and `R8gd`. The Graviton limitations list in the compute configuration reference still names GovCloud; the docs conflict on this point. Fleet instances are not available in GovCloud.
-> - **Pools.** Instance pools keep idle instances warm to cut start time. Changing a pool's `spot_bid_price_percent` affects new clusters only.
-> - **Zone capacity.** With `zone_id: auto`, Databricks retries in another zone on insufficient-capacity errors. A cluster's nodes all run in one zone.
-> - **DBU rate varies by type.** Larger instances consume more DBUs per hour. Compare DBU and EC2 cost together, not separately.
+> - **Compliance security profile:** In June 2026, Databricks announced Graviton support with the compliance security profile for all compliance standards, in commercial regions and in GovCloud. Choose specific Graviton types that support encryption in transit, such as `m7gd` or `c7gd`, because `mgd-fleet` and `cgd-fleet` are not available with the profile.
+> - **GovCloud:** Since June 5, 2026, Graviton instance types are supported with the compliance security profile in Databricks on AWS GovCloud, and the GovCloud supported-instance list includes Graviton families such as `M7g`, `C7gd`, and `R8gd`. The Graviton limitations list in the compute configuration reference still names GovCloud; the docs conflict on this point. Fleet instances are not available in GovCloud.
+> - **Pools:** Instance pools keep idle instances warm to cut start time. Changing a pool's `spot_bid_price_percent` affects new clusters only.
+> - **Zone capacity:** With `zone_id: auto`, Databricks retries in another zone on insufficient-capacity errors. A cluster's nodes all run in one zone.
+> - **DBU rate varies by type:** Larger instances consume more DBUs per hour. Compare DBU and EC2 cost together, not separately.
 
 ## Common misconceptions
 

@@ -144,8 +144,8 @@ Benchmarks do not change what Genie knows. Only the knowledge store, examples, t
 ## Small-business considerations
 
 > [!smallbiz] Small-business considerations
-> - **Start narrow.** One agent over five to ten gold tables (see [[Medallion Architecture]]) (for example, sales, stores, and products) answers more accurately than one agent over every table.
-> - **Define metrics first.** If revenue is defined in a [[Metric Views|metric view]], Genie uses that definition instead of inferring one.
+> - **Start narrow:** One agent over five to ten gold tables (see [[Medallion Architecture]]) (for example, sales, stores, and products) answers more accurately than one agent over every table.
+> - **Define metrics first:** If revenue is defined in a [[Metric Views|metric view]], Genie uses that definition instead of inferring one.
 > - **Write five example queries** for the questions the owner asks most. This is usually the largest accuracy gain.
 > - **Teach users to check the SQL** behind an answer before acting on an unexpected number.
 >
@@ -159,12 +159,12 @@ Benchmarks do not change what Genie knows. Only the knowledge store, examples, t
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Trusted assets versus examples.** An example query guides generation. A trusted asset (a parameterized query or a Unity Catalog SQL function) returns verified logic, and the response is labeled Trusted. Use trusted assets for numbers that must match finance reports exactly.
-> - **Metric views as data sources.** A metric view supplies measures with fixed definitions and semantic metadata (added October 2025), which reduces ambiguity for Genie.
-> - **Benchmarks by mode.** A benchmark run uses either Chat or Agent mode for all its questions. Run both if users use both.
-> - **Governance.** Generated SQL runs under Unity Catalog. Row filters and column masks apply to the results.
-> - **API and embedding.** The Genie Agents API supports building Genie into Slack bots, portals, and [[Databricks Apps]]. Admins control embedding of dashboards and Genie Agents in external sites.
-> - **Agent mode and reasoning.** Agent mode runs several queries in sequence to answer one question, so it uses more warehouse time per question than Chat mode.
+> - **Trusted assets versus examples:** An example query guides generation. A trusted asset (a parameterized query or a Unity Catalog SQL function) returns verified logic, and the response is labeled Trusted. Use trusted assets for numbers that must match finance reports exactly.
+> - **Metric views as data sources:** A metric view supplies measures with fixed definitions and semantic metadata (added October 2025), which reduces ambiguity for Genie.
+> - **Benchmarks by mode:** A benchmark run uses either Chat or Agent mode for all its questions. Run both if users use both.
+> - **Governance:** Generated SQL runs under Unity Catalog. Row filters and column masks apply to the results.
+> - **API and embedding:** The Genie Agents API supports building Genie into Slack bots, portals, and [[Databricks Apps]]. Admins control embedding of dashboards and Genie Agents in external sites.
+> - **Agent mode and reasoning:** Agent mode runs several queries in sequence to answer one question, so it uses more warehouse time per question than Chat mode.
 
 ## Common misconceptions
 

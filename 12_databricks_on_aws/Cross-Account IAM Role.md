@@ -155,11 +155,11 @@ In Terraform, the resource is `databricks_mws_credentials`, used with an account
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **External ID differs by role.** The cross-account role uses your *Databricks account ID* as the external ID. Unity Catalog storage and service credentials use the *credential's own* external ID and must be self-assuming. Do not reuse one trust policy for the other.
-> - **Security group restrictions.** If the policy restricts actions to specific security groups, the role cannot be reused across workspaces. Create a separate role, policy, and credential configuration per workspace.
-> - **Service control policies.** If an AWS Organizations SCP denies `sts:AssumeRole` or EC2 actions, setup fails even with a correct IAM policy. Allowlist the required actions.
-> - **Updating a running workspace.** `credentials_id` is one of the few fields you can update on a running workspace (with `network_id`, `storage_customer_managed_key_id`, and `private_access_settings_id`).
-> - **Least privilege.** Prefer a customer-managed VPC with custom restrictions for production. See [[Least Privilege]].
+> - **External ID differs by role:** The cross-account role uses your *Databricks account ID* as the external ID. Unity Catalog storage and service credentials use the *credential's own* external ID and must be self-assuming. Do not reuse one trust policy for the other.
+> - **Security group restrictions:** If the policy restricts actions to specific security groups, the role cannot be reused across workspaces. Create a separate role, policy, and credential configuration per workspace.
+> - **Service control policies:** If an AWS Organizations SCP denies `sts:AssumeRole` or EC2 actions, setup fails even with a correct IAM policy. Allowlist the required actions.
+> - **Updating a running workspace:** `credentials_id` is one of the few fields you can update on a running workspace (with `network_id`, `storage_customer_managed_key_id`, and `private_access_settings_id`).
+> - **Least privilege:** Prefer a customer-managed VPC with custom restrictions for production. See [[Least Privilege]].
 
 ## Common misconceptions
 

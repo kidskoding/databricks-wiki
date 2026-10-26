@@ -75,8 +75,8 @@ S3 has no idea who a Databricks user is. Something must translate "user `ana` ma
 
 Two requirements are specific to AWS:
 
-- **Self-assuming role.** The role's trust policy must trust the Databricks Unity Catalog master role and also the role itself. AWS changed role trust behavior on June 30, 2023, and on January 20, 2025 Databricks began blocking storage credentials with non-self-assuming roles.
-- **External ID.** The trust policy's `sts:ExternalId` must match the external ID shown on the storage credential. This prevents the confused deputy problem.
+- **Self-assuming role:** The role's trust policy must trust the Databricks Unity Catalog master role and also the role itself. AWS changed role trust behavior on June 30, 2023, and on January 20, 2025 Databricks began blocking storage credentials with non-self-assuming roles.
+- **External ID:** The trust policy's `sts:ExternalId` must match the external ID shown on the storage credential. This prevents the confused deputy problem.
 
 Databricks recommends the automated setup (an AWS CloudFormation template launched from Catalog Explorer) where possible.
 
@@ -162,11 +162,11 @@ LIST 's3://acme-sales/raw';
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **KMS-encrypted buckets.** Keep the KMS statement from the Databricks policy template (encrypt and decrypt on the key) and allow the role in the key policy. Remove the statement if the bucket does not use KMS.
-> - **File events.** For [[Auto Loader]] file notification mode and managed file events, the role needs the additional file-events policy, which the Databricks template marks as optional.
-> - **Read-only credentials.** Mark a storage credential read-only to make every external location using it read-only.
-> - **Managed storage.** Assign an external location as managed storage for a catalog or schema to keep each business unit's managed tables in its own bucket. See [[Managed vs External Tables]].
-> - **Service credentials.** A separate securable, the *service credential*, lets code call AWS services through the same governed IAM-role pattern. Databricks also blocks non-self-assuming roles for service credentials.
+> - **KMS-encrypted buckets:** Keep the KMS statement from the Databricks policy template (encrypt and decrypt on the key) and allow the role in the key policy. Remove the statement if the bucket does not use KMS.
+> - **File events:** For [[Auto Loader]] file notification mode and managed file events, the role needs the additional file-events policy, which the Databricks template marks as optional.
+> - **Read-only credentials:** Mark a storage credential read-only to make every external location using it read-only.
+> - **Managed storage:** Assign an external location as managed storage for a catalog or schema to keep each business unit's managed tables in its own bucket. See [[Managed vs External Tables]].
+> - **Service credentials:** A separate securable, the *service credential*, lets code call AWS services through the same governed IAM-role pattern. Databricks also blocks non-self-assuming roles for service credentials.
 
 ## Common misconceptions
 

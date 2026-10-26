@@ -193,11 +193,11 @@ resource workspace 'Microsoft.Databricks/workspaces@2024-05-01' = {
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Managed NSG rules.** Because Azure Databricks manages the delegated NSG rules, infrastructure-as-code definitions of the NSG should add your own rules alongside them rather than replace the full rule set. A custom deny-all outbound rule must sit below explicit allows for the required service tags and ports.
-> - **Service endpoints versus private endpoints.** To reach storage accounts with firewalls, prefer private endpoints in a dedicated subnet. See [[ADLS and Access Connectors]] and [[Azure Private Link]].
-> - **User-defined routes.** To send egress through a firewall, add user-defined routes on both subnets and allow the Databricks control plane endpoints and service tags at the firewall. The Azure Databricks UDR guide lists the required routes, and notes that port 3306 must stay open for the legacy Hive metastore.
-> - **Private Link prerequisite.** Classic compute (back-end) Private Link requires VNet injection, secure cluster connectivity, and the Premium plan. Plan a `/27` subnet for private endpoints.
-> - **Workspace network update.** The update procedure (Public Preview) can move an existing workspace from a Databricks-managed VNet into your VNet, move it to a new VNet, or replace its subnets, using an exported ARM template. Stop all clusters and SQL warehouses first; network updates can take more than 15 minutes.
+> - **Managed NSG rules:** Because Azure Databricks manages the delegated NSG rules, infrastructure-as-code definitions of the NSG should add your own rules alongside them rather than replace the full rule set. A custom deny-all outbound rule must sit below explicit allows for the required service tags and ports.
+> - **Service endpoints versus private endpoints:** To reach storage accounts with firewalls, prefer private endpoints in a dedicated subnet. See [[ADLS and Access Connectors]] and [[Azure Private Link]].
+> - **User-defined routes:** To send egress through a firewall, add user-defined routes on both subnets and allow the Databricks control plane endpoints and service tags at the firewall. The Azure Databricks UDR guide lists the required routes, and notes that port 3306 must stay open for the legacy Hive metastore.
+> - **Private Link prerequisite:** Classic compute (back-end) Private Link requires VNet injection, secure cluster connectivity, and the Premium plan. Plan a `/27` subnet for private endpoints.
+> - **Workspace network update:** The update procedure (Public Preview) can move an existing workspace from a Databricks-managed VNet into your VNet, move it to a new VNet, or replace its subnets, using an exported ARM template. Stop all clusters and SQL warehouses first; network updates can take more than 15 minutes.
 
 ## Common misconceptions
 

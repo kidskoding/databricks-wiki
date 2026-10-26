@@ -132,9 +132,9 @@ flowchart LR
 
 > [!smallbiz] Small-business considerations
 > Genie Code is most valuable on a team with one data person, because it shortens the time spent looking up syntax and debugging.
-> 1. **Add table and column comments in Unity Catalog.** Genie Code uses that metadata, so good descriptions produce better code.
-> 2. **Review before running in production.** Treat generated code as a draft, and test it as you would a colleague's code. Models can [[Hallucination|hallucinate]].
-> 3. **Check the billing model.** Azure Databricks docs state that starting July 8, 2026, Genie Code is billed pay-as-you-go with a per-user free monthly allowance. Monitor usage in the first month. See [[How Databricks Pricing Works]].
+> 1. **Add table and column comments in Unity Catalog:** Genie Code uses that metadata, so good descriptions produce better code.
+> 2. **Review before running in production:** Treat generated code as a draft, and test it as you would a colleague's code. Models can [[Hallucination|hallucinate]].
+> 3. **Check the billing model:** Azure Databricks docs state that starting July 8, 2026, Genie Code is billed pay-as-you-go with a per-user free monthly allowance. Monitor usage in the first month. See [[How Databricks Pricing Works]].
 > 4. **Decide on partner-hosted models** with whoever owns compliance. The setting is on by default.
 
 ## Cloud differences
@@ -152,10 +152,10 @@ flowchart LR
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Context quality drives output quality.** Unity Catalog comments, tags, and [[Metric Views]] give Genie Code business meaning that column names alone do not.
-> - **Governance is inherited.** Genie Code sees only metadata the user can access, and generated code runs as the user. No separate permission model exists.
-> - **Unattended use.** Databricks has described running Genie Code as a [[Lakeflow Jobs]] task and from a terminal CLI. The status of these surfaces was not confirmed in official docs for this note; treat them as preview features.
-> - **Data residency.** Workspaces with strict geography requirements must reconcile the data-processing-geography setting with partner-hosted models.
+> - **Context quality drives output quality:** Unity Catalog comments, tags, and [[Metric Views]] give Genie Code business meaning that column names alone do not.
+> - **Governance is inherited:** Genie Code sees only metadata the user can access, and generated code runs as the user. No separate permission model exists.
+> - **Unattended use:** Databricks has described running Genie Code as a [[Lakeflow Jobs]] task and from a terminal CLI. The status of these surfaces was not confirmed in official docs for this note; treat them as preview features.
+> - **Data residency:** Workspaces with strict geography requirements must reconcile the data-processing-geography setting with partner-hosted models.
 
 ## Common misconceptions
 

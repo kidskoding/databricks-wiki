@@ -153,11 +153,11 @@ On Google Cloud, attach a [[Google Service Accounts|Google service account]] wit
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Two projects.** The connector separates the project that holds the table (`project`) from the project billed for the work (`parentProject`).
-> - **Pushdown.** Federation pushes filters and projections to BigQuery through the Storage API. Check the query profile to see what was pushed down.
-> - **JDBC change in Databricks Runtime 20.** Workloads using a `jdbc:bigquery:` URL fail without an installed BigQuery JDBC driver. The bundled `format("bigquery")` connector is not affected.
-> - **Legacy docs.** Older query federation pages for BigQuery are retired; use the current "Run federated queries on Google BigQuery" page.
-> - **Serverless and VPC Service Controls.** If VPC Service Controls block serverless access to BigQuery through Private Google Access, the docs recommend classic compute.
+> - **Two projects:** The connector separates the project that holds the table (`project`) from the project billed for the work (`parentProject`).
+> - **Pushdown:** Federation pushes filters and projections to BigQuery through the Storage API. Check the query profile to see what was pushed down.
+> - **JDBC change in Databricks Runtime 20:** Workloads using a `jdbc:bigquery:` URL fail without an installed BigQuery JDBC driver. The bundled `format("bigquery")` connector is not affected.
+> - **Legacy docs:** Older query federation pages for BigQuery are retired; use the current "Run federated queries on Google BigQuery" page.
+> - **Serverless and VPC Service Controls:** If VPC Service Controls block serverless access to BigQuery through Private Google Access, the docs recommend classic compute.
 
 ## Common misconceptions
 

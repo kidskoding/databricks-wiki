@@ -149,11 +149,11 @@ The warehouse runs this efficiently because it reads only the four columns the q
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Top-down vs bottom-up design.** A top-down design (Bill Inmon's approach) builds a normalized, enterprise-wide warehouse first and derives [[Data Mart|data marts]] from it as subsets. A bottom-up design (Ralph Kimball's approach) builds dimensional, star-schema marts for business units first and integrates them into a larger warehouse. Most systems combine both. The [[Medallion Architecture]] (bronze, silver, gold) applies similar layering on a lakehouse.
-> - **MPP.** Warehouses from Teradata to Redshift are *massively parallel processing* systems: shared-nothing nodes, each owning a slice of every table, joined by a fast network. Choosing how rows are distributed across nodes (distribution keys) was the central tuning skill, because a bad choice forces a [[Shuffles|shuffle]] on every join.
-> - **Coupled storage and compute.** In classic MPP, data lives on the compute nodes' disks. Adding storage means adding compute, and idle nodes still cost money. Snowflake, BigQuery, and later Redshift RA3 broke this coupling by keeping data in object storage or a managed storage layer. See [[Storage vs Compute]].
-> - **Closed formats.** A warehouse stores data in its own internal format. Only its engine can read it at full speed, which is why machine learning teams had to export data to files. The [[The Lakehouse Paper|lakehouse paper]] calls this out as lock-in and a source of staleness.
-> - **Denormalize for reads.** Warehouses deliberately repeat data ([[Denormalization]]) to avoid [[Join|joins]] at query time, the opposite of an OLTP design.
+> - **Top-down vs bottom-up design:** A top-down design (Bill Inmon's approach) builds a normalized, enterprise-wide warehouse first and derives [[Data Mart|data marts]] from it as subsets. A bottom-up design (Ralph Kimball's approach) builds dimensional, star-schema marts for business units first and integrates them into a larger warehouse. Most systems combine both. The [[Medallion Architecture]] (bronze, silver, gold) applies similar layering on a lakehouse.
+> - **MPP:** Warehouses from Teradata to Redshift are *massively parallel processing* systems: shared-nothing nodes, each owning a slice of every table, joined by a fast network. Choosing how rows are distributed across nodes (distribution keys) was the central tuning skill, because a bad choice forces a [[Shuffles|shuffle]] on every join.
+> - **Coupled storage and compute:** In classic MPP, data lives on the compute nodes' disks. Adding storage means adding compute, and idle nodes still cost money. Snowflake, BigQuery, and later Redshift RA3 broke this coupling by keeping data in object storage or a managed storage layer. See [[Storage vs Compute]].
+> - **Closed formats:** A warehouse stores data in its own internal format. Only its engine can read it at full speed, which is why machine learning teams had to export data to files. The [[The Lakehouse Paper|lakehouse paper]] calls this out as lock-in and a source of staleness.
+> - **Denormalize for reads:** Warehouses deliberately repeat data ([[Denormalization]]) to avoid [[Join|joins]] at query time, the opposite of an OLTP design.
 
 ## Common misconceptions
 

@@ -181,12 +181,12 @@ Saving each reorder is a small, frequent write, which suits a Postgres table in 
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Least privilege.** Admins approve the resources an app requests at deployment. Grant the app's service principal only the privileges it needs, such as `SELECT` on one view and `CAN USE` on one warehouse.
-> - **User tokens and scopes.** With user authorization, the app receives a user token in request headers. Validate the scopes the app needs and never log the token.
-> - **Lakebase as a resource.** Since March 16, 2026, Lakebase databases can be added as app resources, which supplies connection details and credentials without storing passwords in code.
-> - **Agents.** Apps are a common front end for agents built with the [[Mosaic AI Agent Framework]] and served on [[Model Serving]].
-> - **Deployment as code.** Define apps in [[Declarative Automation Bundles]] so the app, its resources, and permissions deploy together across dev and prod.
-> - **Compliance workspaces.** Since September 2026, Databricks Apps is on by default for workspaces with the [[Compliance Security Profile]] enabled.
+> - **Least privilege:** Admins approve the resources an app requests at deployment. Grant the app's service principal only the privileges it needs, such as `SELECT` on one view and `CAN USE` on one warehouse.
+> - **User tokens and scopes:** With user authorization, the app receives a user token in request headers. Validate the scopes the app needs and never log the token.
+> - **Lakebase as a resource:** Since March 16, 2026, Lakebase databases can be added as app resources, which supplies connection details and credentials without storing passwords in code.
+> - **Agents:** Apps are a common front end for agents built with the [[Mosaic AI Agent Framework]] and served on [[Model Serving]].
+> - **Deployment as code:** Define apps in [[Declarative Automation Bundles]] so the app, its resources, and permissions deploy together across dev and prod.
+> - **Compliance workspaces:** Since September 2026, Databricks Apps is on by default for workspaces with the [[Compliance Security Profile]] enabled.
 
 ## Common misconceptions
 

@@ -38,21 +38,37 @@ tags:
 
 ## The story of this chapter
 
-**Era.** Databricks announced Azure Databricks in November 2017 as a "first party" Microsoft service, built through a year-long joint effort with Microsoft, and the service became generally available on March 22, 2018. Unlike Databricks on AWS and Google Cloud, which are sold by Databricks directly or through a cloud marketplace, Azure Databricks is created as an Azure resource and billed by Microsoft under the customer's Azure subscription terms. See [[Azure Databricks Overview]] and [[First-Party Microsoft Service]].
+### Era
 
-**Provisioning.** A workspace is an Azure resource of type `Microsoft.Databricks/workspaces`, deployed with the Azure portal, Azure CLI, Bicep, ARM templates, or Terraform ([[Creating an Azure Databricks Workspace]]). Premium is the only pricing tier for new workspaces since April 1, 2026, and remaining Standard tier workspaces are upgraded automatically in a phased rollout that starts October 1, 2026. Serverless workspaces run only serverless compute on Databricks-managed default storage. Classic workspaces run cluster VMs in your subscription, inside a [[Managed Resource Group]] protected by a system deny assignment.
+Databricks announced Azure Databricks in November 2017 as a "first party" Microsoft service, built through a year-long joint effort with Microsoft, and the service became generally available on March 22, 2018. Unlike Databricks on AWS and Google Cloud, which are sold by Databricks directly or through a cloud marketplace, Azure Databricks is created as an Azure resource and billed by Microsoft under the customer's Azure subscription terms. See [[Azure Databricks Overview]] and [[First-Party Microsoft Service]].
 
-**Identity.** [[Microsoft Entra ID Integration|Microsoft Entra ID]] is built in. Automatic identity management, on by default for accounts created after August 1, 2025, syncs users, groups (including nested groups), and service principals without a SCIM application. Conditional access policies target the AzureDatabricks application.
+### Provisioning
 
-**Network.** Classic compute can be deployed into a VNet you own with [[VNet Injection]], using two delegated subnets. [[Secure Cluster Connectivity]] removes public IPs from cluster nodes, and Microsoft plans to require it for all classic workspaces. [[Azure Private Link]] adds private endpoints for user access (front-end), cluster-to-control-plane traffic (back-end), and browser authentication. Serverless compute is governed separately by network connectivity configurations.
+A workspace is an Azure resource of type `Microsoft.Databricks/workspaces`, deployed with the Azure portal, Azure CLI, Bicep, ARM templates, or Terraform ([[Creating an Azure Databricks Workspace]]). Premium is the only pricing tier for new workspaces since April 1, 2026, and remaining Standard tier workspaces are upgraded automatically in a phased rollout that starts October 1, 2026. Serverless workspaces run only serverless compute on Databricks-managed default storage. Classic workspaces run cluster VMs in your subscription, inside a [[Managed Resource Group]] protected by a system deny assignment.
 
-**Data access and secrets.** [[Unity Catalog]] reaches ADLS Gen2 through an Access Connector's managed identity, which needs no stored secret and can pass storage firewalls through resource instance rules ([[ADLS and Access Connectors]]). Remaining credentials can be read from Azure Key Vault through read-only [[Azure Key Vault Secret Scopes]].
+### Identity
 
-**Microsoft integrations.** [[Azure Data Factory with Databricks|Azure Data Factory]] runs Lakeflow jobs with the Databricks Job activity. [[Microsoft Fabric and OneLake vs Databricks|Microsoft Fabric]] overlaps with Databricks and integrates through mirrored Unity Catalog catalogs (GA) and read-only OneLake catalog federation. [[Power BI on Azure Databricks|Power BI]] connects with Entra ID SSO and, since October 15, 2026, a generally available ADBC driver, and semantic models can be published from Unity Catalog.
+[[Microsoft Entra ID Integration|Microsoft Entra ID]] is built in. Automatic identity management, on by default for accounts created after August 1, 2025, syncs users, groups (including nested groups), and service principals without a SCIM application. Conditional access policies target the AzureDatabricks application.
 
-**Operations.** Usage is metered in DBUs on the Azure invoice and can be prepaid with one- or three-year Databricks commit units ([[Azure Billing and Commit Units]]). Diagnostic settings send audit events to Azure Monitor, while the `system.access.audit` table covers account-level events too ([[Azure Monitor and Diagnostic Logs]]). [[Customer-Managed Keys on Azure]] encrypt managed services, workspace storage, and managed disks with Key Vault or Managed HSM keys.
+### Network
 
-**Next.** [[Chapter 12 - Databricks on AWS]] covers the same concepts on Amazon Web Services, and the [[Cloud Comparison - Azure vs AWS vs GCP]] hub compares all three side by side.
+Classic compute can be deployed into a VNet you own with [[VNet Injection]], using two delegated subnets. [[Secure Cluster Connectivity]] removes public IPs from cluster nodes, and Microsoft plans to require it for all classic workspaces. [[Azure Private Link]] adds private endpoints for user access (front-end), cluster-to-control-plane traffic (back-end), and browser authentication. Serverless compute is governed separately by network connectivity configurations.
+
+### Data access and secrets
+
+[[Unity Catalog]] reaches ADLS Gen2 through an Access Connector's managed identity, which needs no stored secret and can pass storage firewalls through resource instance rules ([[ADLS and Access Connectors]]). Remaining credentials can be read from Azure Key Vault through read-only [[Azure Key Vault Secret Scopes]].
+
+### Microsoft integrations
+
+[[Azure Data Factory with Databricks|Azure Data Factory]] runs Lakeflow jobs with the Databricks Job activity. [[Microsoft Fabric and OneLake vs Databricks|Microsoft Fabric]] overlaps with Databricks and integrates through mirrored Unity Catalog catalogs (GA) and read-only OneLake catalog federation. [[Power BI on Azure Databricks|Power BI]] connects with Entra ID SSO and, since October 15, 2026, a generally available ADBC driver, and semantic models can be published from Unity Catalog.
+
+### Operations
+
+Usage is metered in DBUs on the Azure invoice and can be prepaid with one- or three-year Databricks commit units ([[Azure Billing and Commit Units]]). Diagnostic settings send audit events to Azure Monitor, while the `system.access.audit` table covers account-level events too ([[Azure Monitor and Diagnostic Logs]]). [[Customer-Managed Keys on Azure]] encrypt managed services, workspace storage, and managed disks with Key Vault or Managed HSM keys.
+
+### Next
+
+[[Chapter 12 - Databricks on AWS]] covers the same concepts on Amazon Web Services, and the [[Cloud Comparison - Azure vs AWS vs GCP]] hub compares all three side by side.
 
 ## Notes in reading order
 

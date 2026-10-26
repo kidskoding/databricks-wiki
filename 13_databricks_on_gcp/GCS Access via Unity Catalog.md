@@ -72,9 +72,13 @@ Google Cloud Storage (GCS) grants access to Google identities, not to Databricks
 | Create external location (`gs://` path + credential) | Databricks | Admin | `CREATE EXTERNAL LOCATION` on the metastore and the credential |
 | Grant access to groups | Databricks | Owner | `GRANT` |
 
-**Roles on the bucket.** The docs list **Storage Legacy Bucket Reader** and **Storage Object Admin** for read and write. For one-direction access, the docs show narrower examples such as **Storage Object Viewer** (read) and **Storage Object Creator** (write).
+### Roles on the bucket
 
-**Region.** Keep the bucket in the same region as the workspace to avoid egress charges.
+The docs list **Storage Legacy Bucket Reader** and **Storage Object Admin** for read and write. For one-direction access, the docs show narrower examples such as **Storage Object Viewer** (read) and **Storage Object Creator** (write).
+
+### Region
+
+Keep the bucket in the same region as the workspace to avoid egress charges.
 
 ## How it works
 
@@ -95,7 +99,7 @@ sequenceDiagram
 
 ### Procedure
 
-1. **Create the storage credential.** In Catalog Explorer: **Catalog**, **External data**, **Credentials**, **Create credential**, type **GCP Service Account**, name `sales_bucket_cred`. Or:
+1. **Create the storage credential:** In Catalog Explorer: **Catalog**, **External data**, **Credentials**, **Create credential**, type **GCP Service Account**, name `sales_bucket_cred`. Or:
 
 ```bash
 databricks storage-credentials create --json '{
@@ -150,11 +154,11 @@ LIST 'gs://acme-sales/raw';
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Read-only credentials.** Marking a storage credential read-only makes every external location that uses it read-only.
-> - **File events.** For managed file events and [[Auto Loader]] notifications, the service account needs additional access, and the Cloud Storage service agent needs the Pub/Sub Publisher role. The docs route you back to the credential setup steps if it is missing.
-> - **Managed storage per catalog.** Assign an external location as a catalog's or schema's managed storage to keep each business unit's managed tables in its own bucket.
-> - **Your bucket's encryption is yours.** Databricks CMK settings cover the workspace buckets, not buckets you register in Unity Catalog. Configure encryption for business-data buckets in Cloud Storage. See [[Customer-Managed Keys on Google Cloud]].
-> - **Workspace buckets are separate.** The two workspace buckets Databricks creates are for system data, not for Unity Catalog business data.
+> - **Read-only credentials:** Marking a storage credential read-only makes every external location that uses it read-only.
+> - **File events:** For managed file events and [[Auto Loader]] notifications, the service account needs additional access, and the Cloud Storage service agent needs the Pub/Sub Publisher role. The docs route you back to the credential setup steps if it is missing.
+> - **Managed storage per catalog:** Assign an external location as a catalog's or schema's managed storage to keep each business unit's managed tables in its own bucket.
+> - **Your bucket's encryption is yours:** Databricks CMK settings cover the workspace buckets, not buckets you register in Unity Catalog. Configure encryption for business-data buckets in Cloud Storage. See [[Customer-Managed Keys on Google Cloud]].
+> - **Workspace buckets are separate:** The two workspace buckets Databricks creates are for system data, not for Unity Catalog business data.
 
 ## Common misconceptions
 

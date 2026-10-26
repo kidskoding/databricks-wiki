@@ -69,9 +69,9 @@ Mastery: `INPUT[inlineSelect(option(new), option(learning), option(solid)):maste
 
 Lineage supports three common tasks:
 
-1. **Root-cause analysis.** Trace a column back to its source tables.
-2. **Impact analysis.** Find every downstream table, job, and dashboard before renaming or dropping a column.
-3. **Compliance.** Show where [[PII]] flows, for example for [[GDPR]] or [[HIPAA]] reviews.
+1. **Root-cause analysis:** Trace a column back to its source tables.
+2. **Impact analysis:** Find every downstream table, job, and dashboard before renaming or dropping a column.
+3. **Compliance:** Show where [[PII]] flows, for example for [[GDPR]] or [[HIPAA]] reviews.
 
 Hand-maintained diagrams drift out of date. Lineage captured from executed queries reflects what actually ran.
 
@@ -138,13 +138,13 @@ The lineage system tables keep a **rolling one-year window**.
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Best effort, not a guarantee.** The docs say the system tables are a subset of all read and write events, because it is not always possible to capture lineage. Treat it as very good evidence, not proof.
-> - **Names, not paths.** Column lineage appears in Catalog Explorer and the API only when both source and target are referenced by table name. Path-based reads are recorded in the column lineage system table with `source_path` or `target_path` instead.
-> - **No source, no column lineage.** Writing literal values creates no column lineage event, because there is no source column. Reading a column is captured even if nothing is written.
-> - **UDFs.** Table-level lineage is captured through UDFs; column-level lineage through UDFs is not.
-> - **External lineage lives elsewhere.** External lineage edges are **not** written to `system.access.table_lineage` or `column_lineage`. Query them through the external lineage APIs or Catalog Explorer.
-> - **Permissions.** Users see lineage nodes for objects they lack access to as masked or limited entries, so lineage does not leak table contents.
-> - **Workspace scope.** Lineage is aggregated across workspaces attached to the same metastore; lineage audit events use the `lineageTracking` service name.
+> - **Best effort, not a guarantee:** The docs say the system tables are a subset of all read and write events, because it is not always possible to capture lineage. Treat it as very good evidence, not proof.
+> - **Names, not paths:** Column lineage appears in Catalog Explorer and the API only when both source and target are referenced by table name. Path-based reads are recorded in the column lineage system table with `source_path` or `target_path` instead.
+> - **No source, no column lineage:** Writing literal values creates no column lineage event, because there is no source column. Reading a column is captured even if nothing is written.
+> - **UDFs:** Table-level lineage is captured through UDFs; column-level lineage through UDFs is not.
+> - **External lineage lives elsewhere:** External lineage edges are **not** written to `system.access.table_lineage` or `column_lineage`. Query them through the external lineage APIs or Catalog Explorer.
+> - **Permissions:** Users see lineage nodes for objects they lack access to as masked or limited entries, so lineage does not leak table contents.
+> - **Workspace scope:** Lineage is aggregated across workspaces attached to the same metastore; lineage audit events use the `lineageTracking` service name.
 
 ## Common misconceptions
 

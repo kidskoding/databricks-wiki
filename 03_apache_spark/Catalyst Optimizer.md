@@ -128,8 +128,8 @@ Against files, pushdown means the scan only reads matching files and row groups,
 
 > [!smallbiz] Small-business considerations
 > Catalyst produces efficient plans from readable SQL and DataFrame code and rarely needs tuning. Two practices help it:
-> - **Use built-in functions, not custom Python functions.** Catalyst can see inside `upper()` or `date_trunc()` but not inside your Python [[UDF]].
-> - **Keep table statistics current.** `ANALYZE TABLE ... COMPUTE STATISTICS` gives Catalyst row counts and column statistics for better join choices.
+> - **Use built-in functions, not custom Python functions:** Catalyst can see inside `upper()` or `date_trunc()` but not inside your Python [[UDF]].
+> - **Keep table statistics current:** `ANALYZE TABLE ... COMPUTE STATISTICS` gives Catalyst row counts and column statistics for better join choices.
 
 > [!bridge]- In Databricks today
 > Catalyst plans every query on Databricks, in notebooks, jobs, pipelines, and [[SQL Warehouses]]. Databricks adds its own optimizer rules and statistics on top, and [[Photon]] then executes the physical plan: Databricks' docs note that Catalyst still plans the query while Photon replaces the execution layer. [[Adaptive Query Execution]] is on by default and re-optimizes plans at runtime. Delta features such as [[Liquid Clustering]] and file statistics make Catalyst's pushdowns skip far more data.
@@ -142,12 +142,12 @@ Against files, pushdown means the scan only reads matching files and row groups,
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Trees and rules.** Every node is an immutable Scala case class (`Filter`, `Join`, `Project`, `Literal`, `Add`). A rule is a partial function applied with `transform`, for example "replace `Add(Literal(a), Literal(b))` with `Literal(a+b)`" (constant folding). Rules are grouped into batches and run until the tree stops changing (a fixed point).
-> - **Rule-based first, cost-based second.** Most logical rewrites are always beneficial and need no statistics. The cost-based optimizer (CBO, `spark.sql.cbo.enabled`) uses table and column statistics for join reordering and selection; it depends on `ANALYZE TABLE` statistics being present.
-> - **Extensibility.** `SparkSessionExtensions` lets you inject parser, analyzer, optimizer, and planner rules. Delta Lake and many connectors use this to add their own logic. Data Source V2 lets connectors accept pushed-down filters, column pruning, limits, and aggregates.
-> - **The SIGMOD paper's numbers.** The 2015 paper notes that Catalyst's code generator was about 700 lines of code, using Scala quasiquotes to build code trees compiled at runtime.
-> - **Static plans have blind spots.** Catalyst plans with estimates. If the estimates are wrong (a filter keeps 1% instead of 50%, or one key holds most rows), the plan can be bad. That limit is why [[Adaptive Query Execution]] was added in Spark 3.0.
-> - **Debugging tools.** `df.explain("formatted")`, `df.explain("cost")`, the SQL/DataFrame tab in the [[Spark UI]], and on Databricks the query profile.
+> - **Trees and rules:** Every node is an immutable Scala case class (`Filter`, `Join`, `Project`, `Literal`, `Add`). A rule is a partial function applied with `transform`, for example "replace `Add(Literal(a), Literal(b))` with `Literal(a+b)`" (constant folding). Rules are grouped into batches and run until the tree stops changing (a fixed point).
+> - **Rule-based first, cost-based second:** Most logical rewrites are always beneficial and need no statistics. The cost-based optimizer (CBO, `spark.sql.cbo.enabled`) uses table and column statistics for join reordering and selection; it depends on `ANALYZE TABLE` statistics being present.
+> - **Extensibility:** `SparkSessionExtensions` lets you inject parser, analyzer, optimizer, and planner rules. Delta Lake and many connectors use this to add their own logic. Data Source V2 lets connectors accept pushed-down filters, column pruning, limits, and aggregates.
+> - **The SIGMOD paper's numbers:** The 2015 paper notes that Catalyst's code generator was about 700 lines of code, using Scala quasiquotes to build code trees compiled at runtime.
+> - **Static plans have blind spots:** Catalyst plans with estimates. If the estimates are wrong (a filter keeps 1% instead of 50%, or one key holds most rows), the plan can be bad. That limit is why [[Adaptive Query Execution]] was added in Spark 3.0.
+> - **Debugging tools:** `df.explain("formatted")`, `df.explain("cost")`, the SQL/DataFrame tab in the [[Spark UI]], and on Databricks the query profile.
 
 ## Common misconceptions
 

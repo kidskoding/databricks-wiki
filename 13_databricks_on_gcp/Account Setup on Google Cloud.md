@@ -166,11 +166,11 @@ resource "databricks_mws_workspaces" "prod" {
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Least-privilege workspace creation.** Security-conscious accounts can create workspaces with a creator service account that has custom IAM roles, calling the Account API. The creator then needs only read-level permissions to validate settings, and you pre-create resources and grants yourself. Databricks still recommends the standard flow for most deployments.
-> - **Service account roles do not inherit.** A service account you create does not inherit your roles. Grant it roles on the project explicitly.
-> - **What workspace creation makes.** A classic workspace creates a workspace service account with custom roles, two GCS buckets (three if the workspace was enabled for Unity Catalog automatically), and (if Databricks-managed) a VPC. See [[Google Service Accounts]].
-> - **Orders.** The Google order number appears in the account console under **Settings**, **Subscription & billing**, and matches the listing's **Manage orders** page.
-> - **Terraform networks.** In `databricks_mws_networks`, the GKE secondary range arguments of `gcp_managed_network_config` are deprecated and can be removed from templates.
+> - **Least-privilege workspace creation:** Security-conscious accounts can create workspaces with a creator service account that has custom IAM roles, calling the Account API. The creator then needs only read-level permissions to validate settings, and you pre-create resources and grants yourself. Databricks still recommends the standard flow for most deployments.
+> - **Service account roles do not inherit:** A service account you create does not inherit your roles. Grant it roles on the project explicitly.
+> - **What workspace creation makes:** A classic workspace creates a workspace service account with custom roles, two GCS buckets (three if the workspace was enabled for Unity Catalog automatically), and (if Databricks-managed) a VPC. See [[Google Service Accounts]].
+> - **Orders:** The Google order number appears in the account console under **Settings**, **Subscription & billing**, and matches the listing's **Manage orders** page.
+> - **Terraform networks:** In `databricks_mws_networks`, the GKE secondary range arguments of `gcp_managed_network_config` are deprecated and can be removed from templates.
 
 ## Common misconceptions
 

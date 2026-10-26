@@ -150,10 +150,10 @@ In production, the same steps are usually declared in a pipeline that loads only
 ## Small-business considerations
 
 > [!smallbiz] Small-business considerations
-> - **Use ELT.** Land raw exports and API responses first, then transform with SQL. You can fix a mistake by re-running the transformation instead of asking the vendor for old data.
-> - **Use managed extraction where possible.** A managed connector for your [[SaaS PaaS and IaaS|SaaS]] applications removes most custom extraction code.
+> - **Use ELT:** Land raw exports and API responses first, then transform with SQL. You can fix a mistake by re-running the transformation instead of asking the vendor for old data.
+> - **Use managed extraction where possible:** A managed connector for your [[SaaS PaaS and IaaS|SaaS]] applications removes most custom extraction code.
 > - **Start with three layers:** raw (bronze), cleaned (silver), and reporting (gold). Add more only when needed.
-> - **Mask sensitive data early.** A clinic should restrict or mask patient identifiers as soon as data lands, not only in the reporting layer.
+> - **Mask sensitive data early:** A clinic should restrict or mask patient identifiers as soon as data lands, not only in the reporting layer.
 
 > [!bridge]- In Databricks today
 > Databricks groups its data engineering features under [[Lakeflow]], a unified solution for ingestion, transformation, and orchestration:
@@ -177,12 +177,12 @@ In production, the same steps are usually declared in a pipeline that loads only
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Incremental processing.** Rebuilding every table from all raw data each night does not scale. Incremental pipelines process only new or changed data: new files (Auto Loader), changed rows ([[Change Data Capture]], [[Change Data Feed]]), or new stream records. [[Streaming Tables|Streaming tables]] and [[Materialized Views|materialized views]] in Lakeflow pipelines manage this automatically.
-> - **Idempotency.** A pipeline step should produce the same result if it runs twice, so retries and [[Backfill|backfills]] are safe. Use `MERGE` on keys or overwrite partitions instead of blind appends. See [[Idempotency]] and [[MERGE and Upserts]].
-> - **EtLT.** Many teams apply light transformation during extraction (type casting, PII masking, deduplication) and heavy business transformation after loading.
+> - **Incremental processing:** Rebuilding every table from all raw data each night does not scale. Incremental pipelines process only new or changed data: new files (Auto Loader), changed rows ([[Change Data Capture]], [[Change Data Feed]]), or new stream records. [[Streaming Tables|Streaming tables]] and [[Materialized Views|materialized views]] in Lakeflow pipelines manage this automatically.
+> - **Idempotency:** A pipeline step should produce the same result if it runs twice, so retries and [[Backfill|backfills]] are safe. Use `MERGE` on keys or overwrite partitions instead of blind appends. See [[Idempotency]] and [[MERGE and Upserts]].
+> - **EtLT:** Many teams apply light transformation during extraction (type casting, PII masking, deduplication) and heavy business transformation after loading.
 > - **Reverse ETL** sends modeled data back into operational tools (CRM, marketing). See [[Reverse ETL]].
-> - **Data contracts.** As sources multiply, agreeing schemas and quality rules with source owners prevents breakage. Enforce them with [[Schema Enforcement and Evolution|schema enforcement]] and expectations.
-> - **Zero-ETL and federation.** Some sources can be queried in place, without copying, through [[Lakehouse Federation]]. This trades copy cost for query-time dependence on the source system.
+> - **Data contracts:** As sources multiply, agreeing schemas and quality rules with source owners prevents breakage. Enforce them with [[Schema Enforcement and Evolution|schema enforcement]] and expectations.
+> - **Zero-ETL and federation:** Some sources can be queried in place, without copying, through [[Lakehouse Federation]]. This trades copy cost for query-time dependence on the source system.
 
 ## Common misconceptions
 

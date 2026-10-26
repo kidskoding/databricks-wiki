@@ -155,10 +155,10 @@ SELECT * FROM glue_sales.orders_db.orders LIMIT 10;
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Keep Lake Formation permissions stable.** If the credential loses access to Glue or Lake Formation even briefly, the foreign catalog's schemas can be dropped and recreated, which removes existing Unity Catalog grants. Avoid revoke-then-grant changes in Lake Formation, and keep a re-runnable script of your schema grants.
-> - **Authorized paths.** `authorized_paths` limits which S3 prefixes the foreign catalog may read. Tables outside them are not readable through Unity Catalog.
-> - **Two governance layers.** Lake Formation controls what the service credential can see in Glue. Unity Catalog controls what each Databricks user can see in the foreign catalog. A user can read a table only if both layers allow it.
-> - **Iceberg route.** For Iceberg tables in Glue, foreign Iceberg support lets Unity Catalog govern and read them while Glue remains the catalog of record. See [[Apache Iceberg]].
+> - **Keep Lake Formation permissions stable:** If the credential loses access to Glue or Lake Formation even briefly, the foreign catalog's schemas can be dropped and recreated, which removes existing Unity Catalog grants. Avoid revoke-then-grant changes in Lake Formation, and keep a re-runnable script of your schema grants.
+> - **Authorized paths:** `authorized_paths` limits which S3 prefixes the foreign catalog may read. Tables outside them are not readable through Unity Catalog.
+> - **Two governance layers:** Lake Formation controls what the service credential can see in Glue. Unity Catalog controls what each Databricks user can see in the foreign catalog. A user can read a table only if both layers allow it.
+> - **Iceberg route:** For Iceberg tables in Glue, foreign Iceberg support lets Unity Catalog govern and read them while Glue remains the catalog of record. See [[Apache Iceberg]].
 
 ## Common misconceptions
 

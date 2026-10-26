@@ -134,10 +134,10 @@ Databricks provides a Partner Connect guide for Tableau Desktop, and Tableau's D
 ## Small-business considerations
 
 > [!smallbiz] Small-business considerations
-> - **Start with the tool the business already owns.** If the company has Microsoft 365 licenses that include Power BI, use Power BI against a Databricks SQL warehouse.
-> - **Consider native dashboards first.** [[AI-BI Dashboards]] and [[Genie Agents]] are built into Databricks, so there is no second license or second copy of data, and sharing uses Unity Catalog permissions.
-> - **Define metrics once.** Put shared definitions in the gold tables or in [[Metric Views]], not separately in each report.
-> - **Control refresh cost.** Every DirectQuery interaction or scheduled refresh runs on the SQL warehouse. Set an auto-stop on the warehouse and schedule refreshes no more often than needed.
+> - **Start with the tool the business already owns:** If the company has Microsoft 365 licenses that include Power BI, use Power BI against a Databricks SQL warehouse.
+> - **Consider native dashboards first:** [[AI-BI Dashboards]] and [[Genie Agents]] are built into Databricks, so there is no second license or second copy of data, and sharing uses Unity Catalog permissions.
+> - **Define metrics once:** Put shared definitions in the gold tables or in [[Metric Views]], not separately in each report.
+> - **Control refresh cost:** Every DirectQuery interaction or scheduled refresh runs on the SQL warehouse. Set an auto-stop on the warehouse and schedule refreshes no more often than needed.
 
 > [!bridge]- In Databricks today
 > Databricks provides native BI features and also serves external BI tools:
@@ -159,11 +159,11 @@ Databricks provides a Partner Connect guide for Tableau Desktop, and Tableau's D
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **DirectQuery limits.** The Databricks connector's `Databricks.Query` data source does not support DirectQuery mode. Use the navigator-based table selection for DirectQuery models.
-> - **Metric views and Power BI.** Microsoft removed the *Metric View BI Compatibility Mode* option from the Databricks connector for Power BI; check the current Databricks Power BI docs for how metric views are exposed.
-> - **Query caching.** SQL warehouses cache query results, which reduces cost for dashboards that issue identical queries. See [[Query Performance and Caching]].
-> - **Semantic models vs metric views.** A Power BI semantic model or LookML project defines metrics inside one tool. [[Metric Views]] define them in the catalog for all tools. Choose one primary location to avoid drift.
-> - **Service principals for refresh.** Scheduled refreshes should authenticate as a service principal (OAuth machine-to-machine), not a person, so that refreshes continue when staff change.
+> - **DirectQuery limits:** The Databricks connector's `Databricks.Query` data source does not support DirectQuery mode. Use the navigator-based table selection for DirectQuery models.
+> - **Metric views and Power BI:** Microsoft removed the *Metric View BI Compatibility Mode* option from the Databricks connector for Power BI; check the current Databricks Power BI docs for how metric views are exposed.
+> - **Query caching:** SQL warehouses cache query results, which reduces cost for dashboards that issue identical queries. See [[Query Performance and Caching]].
+> - **Semantic models vs metric views:** A Power BI semantic model or LookML project defines metrics inside one tool. [[Metric Views]] define them in the catalog for all tools. Choose one primary location to avoid drift.
+> - **Service principals for refresh:** Scheduled refreshes should authenticate as a service principal (OAuth machine-to-machine), not a person, so that refreshes continue when staff change.
 
 ## Common misconceptions
 

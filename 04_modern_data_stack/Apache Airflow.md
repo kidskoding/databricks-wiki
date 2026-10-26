@@ -146,11 +146,11 @@ A third, `DatabricksCreateJobsOperator`, creates or resets a job definition and 
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Durable runs.** Recent versions of the Databricks provider run `DatabricksRunNowOperator` in a *durable* mode by default: it saves the Databricks run ID before polling, so if the Airflow task is retried it reattaches to the existing run instead of launching a duplicate. The provider docs say this requires a recent Airflow 3 release; if you set `deferrable=True`, deferrable mode takes precedence.
+> - **Durable runs:** Recent versions of the Databricks provider run `DatabricksRunNowOperator` in a *durable* mode by default: it saves the Databricks run ID before polling, so if the Airflow task is retried it reattaches to the existing run instead of launching a duplicate. The provider docs say this requires a recent Airflow 3 release; if you set `deferrable=True`, deferrable mode takes precedence.
 > - **Deferrable operators** free the Airflow worker slot while a long Databricks job runs, using Airflow's triggerer.
-> - **Idempotency.** Airflow will retry and backfill, so every task must be safe to run twice for the same date. With Delta, `MERGE` or `INSERT OVERWRITE ... WHERE date = ...` patterns give you that. See [[Idempotency]].
-> - **API versions.** Older provider versions call the Jobs API 2.0 or 2.1; current ones use 2.2. Check your installed provider version when examples disagree.
-> - **Avoid double orchestration.** If Airflow triggers a separate Databricks job for every small step, each step incurs startup time and loses Lakeflow Jobs features such as shared job compute and repair runs. Trigger one multi-task job and let Lakeflow Jobs manage the steps inside it.
+> - **Idempotency:** Airflow will retry and backfill, so every task must be safe to run twice for the same date. With Delta, `MERGE` or `INSERT OVERWRITE ... WHERE date = ...` patterns give you that. See [[Idempotency]].
+> - **API versions:** Older provider versions call the Jobs API 2.0 or 2.1; current ones use 2.2. Check your installed provider version when examples disagree.
+> - **Avoid double orchestration:** If Airflow triggers a separate Databricks job for every small step, each step incurs startup time and loses Lakeflow Jobs features such as shared job compute and repair runs. Trigger one multi-task job and let Lakeflow Jobs manage the steps inside it.
 
 ## Common misconceptions
 

@@ -125,8 +125,8 @@ Because the example uses serverless compute only, the cloud bill contains storag
 
 In most small-business estimates, SQL warehouse hours (row 3) are the largest line, because a warehouse consumes DBUs for every minute it runs. The main levers, in order of typical impact:
 
-1. **Auto-stop.** Stopping the warehouse after a short idle period reduces row 3 more than any other change.
-2. **Standard mode for scheduled jobs.** Up to 70% lower than performance-optimized mode for jobs that tolerate a 4–6 minute start-up.
+1. **Auto-stop:** Stopping the warehouse after a short idle period reduces row 3 more than any other change.
+2. **Standard mode for scheduled jobs:** Up to 70% lower than performance-optimized mode for jobs that tolerate a 4–6 minute start-up.
 3. **Jobs instead of notebooks** for recurring work.
 4. **Committed use** once usage is stable (see [[How Databricks Pricing Works]]).
 
@@ -179,10 +179,10 @@ flowchart LR
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Classic compute uses two rates.** Hourly cost = (DBUs per hour for the instance type × price per DBU) + VM price per hour, multiplied by the node count. With autoscaling, use the average node count.
-> - **Photon affects both factors.** Photon increases DBUs per hour and often reduces run time. Measure the net effect. See [[Photon]].
-> - **Attribute before optimizing.** Tag jobs and apply serverless usage policies so that system-table costs can be split by team or workload. See [[Tagging for Chargeback]].
-> - **Budgets use list prices.** Budgets and `system.billing.list_prices` exclude negotiated discounts, so they overstate the bill for contracted customers.
+> - **Classic compute uses two rates:** Hourly cost = (DBUs per hour for the instance type × price per DBU) + VM price per hour, multiplied by the node count. With autoscaling, use the average node count.
+> - **Photon affects both factors:** Photon increases DBUs per hour and often reduces run time. Measure the net effect. See [[Photon]].
+> - **Attribute before optimizing:** Tag jobs and apply serverless usage policies so that system-table costs can be split by team or workload. See [[Tagging for Chargeback]].
+> - **Budgets use list prices:** Budgets and `system.billing.list_prices` exclude negotiated discounts, so they overstate the bill for contracted customers.
 
 ## Common misconceptions
 

@@ -121,10 +121,10 @@ To see AWS-side costs for classic compute, use AWS Cost Explorer filtered by the
 ## Small-business considerations
 
 > [!smallbiz] Small-business considerations
-> - **Serverless-first keeps billing simple.** With serverless, compute infrastructure is included in the Databricks charge, so most cost appears in one place.
-> - **Pick the route your finance team prefers.** A card is fastest. AWS Marketplace helps if you already have an AWS account and want one invoice.
-> - **Set budgets on day one.** Create a budget alert in the account console and review `system.billing.usage` weekly. See [[Budgets and Usage Dashboards]].
-> - **Tag classic compute.** Without tags, EC2 costs on the AWS bill are hard to attribute to teams or projects.
+> - **Serverless-first keeps billing simple:** With serverless, compute infrastructure is included in the Databricks charge, so most cost appears in one place.
+> - **Pick the route your finance team prefers:** A card is fastest. AWS Marketplace helps if you already have an AWS account and want one invoice.
+> - **Set budgets on day one:** Create a budget alert in the account console and review `system.billing.usage` weekly. See [[Budgets and Usage Dashboards]].
+> - **Tag classic compute:** Without tags, EC2 costs on the AWS bill are hard to attribute to teams or projects.
 
 ## Cloud differences
 
@@ -140,11 +140,11 @@ To see AWS-side costs for classic compute, use AWS Cost Explorer filtered by the
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Trial conversion.** For trials started through AWS Marketplace, the account moves to pay-as-you-go on the AWS bill when trial credits run out. To avoid conversion, terminate compute, remove any card on file, and cancel before the trial ends.
-> - **Contract accounts.** The account console's subscription page does not apply to contract accounts. Billing changes go through the Databricks account team.
-> - **Commit spend on partner products.** Since June 2026, up to 10% of a Databricks Universal Commit can be used to buy eligible third-party partner products through [[Databricks Marketplace]], under the published commitment terms.
-> - **AWS commitments.** Databricks' 2022 announcement said Marketplace usage could count toward an existing AWS Enterprise Discount Program commitment. Confirm current eligibility with AWS or Databricks; it is not stated in current Databricks docs.
-> - **GovCloud.** Databricks on AWS GovCloud has its own AWS Marketplace listing. See [[Databricks on AWS GovCloud]].
+> - **Trial conversion:** For trials started through AWS Marketplace, the account moves to pay-as-you-go on the AWS bill when trial credits run out. To avoid conversion, terminate compute, remove any card on file, and cancel before the trial ends.
+> - **Contract accounts:** The account console's subscription page does not apply to contract accounts. Billing changes go through the Databricks account team.
+> - **Commit spend on partner products:** Since June 2026, up to 10% of a Databricks Universal Commit can be used to buy eligible third-party partner products through [[Databricks Marketplace]], under the published commitment terms.
+> - **AWS commitments:** Databricks' 2022 announcement said Marketplace usage could count toward an existing AWS Enterprise Discount Program commitment. Confirm current eligibility with AWS or Databricks; it is not stated in current Databricks docs.
+> - **GovCloud:** Databricks on AWS GovCloud has its own AWS Marketplace listing. See [[Databricks on AWS GovCloud]].
 
 ## Common misconceptions
 

@@ -153,10 +153,10 @@ curl -s -H "Authorization: Bearer $DATABRICKS_TOKEN" \
 ## Small-business considerations
 
 > [!smallbiz] Small-business considerations
-> - **Check for a managed connector first.** Writing and maintaining API code (pagination, retries, schema changes, rate limits) is ongoing work. If [[Lakeflow Connect]] or a tool such as [[Fivetran and ELT Tools|Fivetran]] supports your application, it usually costs less in staff time than custom code.
+> - **Check for a managed connector first:** Writing and maintaining API code (pagination, retries, schema changes, rate limits) is ongoing work. If [[Lakeflow Connect]] or a tool such as [[Fivetran and ELT Tools|Fivetran]] supports your application, it usually costs less in staff time than custom code.
 > - **Write custom API code for the long tail:** a niche booking system or a local supplier's portal that no connector supports.
 > - **Store credentials as secrets,** never in notebooks or scripts. See [[Secrets Management]].
-> - **Pull incrementally.** Request only records changed since the last run (`updated_since`), not the full history every time.
+> - **Pull incrementally:** Request only records changed since the last run (`updated_since`), not the full history every time.
 
 > [!bridge]- In Databricks today
 > - **Managed SaaS connectors:** [[Lakeflow Connect]] provides managed connectors for applications such as Salesforce and Workday (Workday HCM, Workday Reports, and Workday Activity Logging). Each connector uses a Unity Catalog connection to store credentials, an ingestion pipeline, and streaming destination tables, and runs on serverless compute. The connectors handle authentication, incremental reads, schema evolution, and retries. You choose objects, destination, schedule, and permissions, but not the ingestion logic itself.
@@ -178,12 +178,12 @@ curl -s -H "Authorization: Bearer $DATABRICKS_TOKEN" \
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **OAuth on Databricks.** User-to-machine (U2M) tokens come from the `/oidc/v1/token` endpoint and are valid for one hour; the SDKs and CLI refresh them automatically. Machine-to-machine (M2M) authentication uses a service principal's client ID and secret. A service principal can have up to five OAuth secrets, each valid for up to two years, and access tokens expire after one hour.
-> - **Personal access tokens.** A PAT is valid for one workspace only. A user can create up to 600 PATs per workspace, Databricks automatically revokes PATs unused for 90 days, PATs cannot automate account-level APIs, and admins can disable PAT authentication for a workspace.
-> - **Idempotent requests.** Retries after a timeout can create duplicates if the request is not [[Idempotency|idempotent]]. `GET` and `PUT` are idempotent by design; for `POST`, use idempotency keys where the API supports them, or deduplicate downstream with [[MERGE and Upserts|MERGE]].
-> - **Incremental extraction patterns.** Cursor-based pagination is safer than page numbers when records change during extraction. Filtering by `updated_at` can miss deletes; use a deletes endpoint, a [[Webhook|webhook]], or periodic full reconciliation.
-> - **Rate limits and backoff.** Handle `429` and `5xx` responses with exponential backoff and jitter, and respect `Retry-After` headers.
-> - **Schema drift.** SaaS vendors add fields without notice. Land raw JSON first (as `VARIANT` or JSON files), then parse into typed columns, so a new field does not break the load. See [[Schema Enforcement and Evolution]].
+> - **OAuth on Databricks:** User-to-machine (U2M) tokens come from the `/oidc/v1/token` endpoint and are valid for one hour; the SDKs and CLI refresh them automatically. Machine-to-machine (M2M) authentication uses a service principal's client ID and secret. A service principal can have up to five OAuth secrets, each valid for up to two years, and access tokens expire after one hour.
+> - **Personal access tokens:** A PAT is valid for one workspace only. A user can create up to 600 PATs per workspace, Databricks automatically revokes PATs unused for 90 days, PATs cannot automate account-level APIs, and admins can disable PAT authentication for a workspace.
+> - **Idempotent requests:** Retries after a timeout can create duplicates if the request is not [[Idempotency|idempotent]]. `GET` and `PUT` are idempotent by design; for `POST`, use idempotency keys where the API supports them, or deduplicate downstream with [[MERGE and Upserts|MERGE]].
+> - **Incremental extraction patterns:** Cursor-based pagination is safer than page numbers when records change during extraction. Filtering by `updated_at` can miss deletes; use a deletes endpoint, a [[Webhook|webhook]], or periodic full reconciliation.
+> - **Rate limits and backoff:** Handle `429` and `5xx` responses with exponential backoff and jitter, and respect `Retry-After` headers.
+> - **Schema drift:** SaaS vendors add fields without notice. Land raw JSON first (as `VARIANT` or JSON files), then parse into typed columns, so a new field does not break the load. See [[Schema Enforcement and Evolution]].
 
 ## Common misconceptions
 

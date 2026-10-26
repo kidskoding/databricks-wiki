@@ -75,7 +75,9 @@ A shared Databricks account serves many teams. Without attribution, the monthly 
 | **Workspace tags** | All compute in a workspace | Workspace configuration (cloud-specific) | Cloud resources and usage |
 | **Serverless usage policies** | Serverless notebooks, jobs, pipelines, serving endpoints, and apps | Workspace admins create; users select | `custom_tags` in `system.billing.usage` |
 
-**Default tags.** Databricks adds default tags to compute it deploys: `Vendor`, `ClusterId`, `ClusterName`, and `Creator` on clusters; `JobId` (and `RunName` on some clouds) on jobs compute; a warehouse identifier on SQL warehouses; `DatabricksInstancePoolId` and `DatabricksInstancePoolCreatorId` on pools.
+### Default tags
+
+Databricks adds default tags to compute it deploys: `Vendor`, `ClusterId`, `ClusterName`, and `Creator` on clusters; `JobId` (and `RunName` on some clouds) on jobs compute; a warehouse identifier on SQL warehouses; `DatabricksInstancePoolId` and `DatabricksInstancePoolCreatorId` on pools.
 
 **Key rules from the docs:**
 
@@ -174,11 +176,11 @@ WHERE usage_date >= current_date() - INTERVAL 30 DAYS;
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Pool-based clusters.** In DBU usage, both cluster and pool tags are recorded even when the cluster comes from a pool. The cloud-resource behavior differs by cloud, as listed above.
-> - **Shared compute.** Usage on a shared all-purpose cluster carries that cluster's tags, not the tags of each user's work. For per-job attribution, run jobs on job compute or serverless.
-> - **Development-mode pipelines.** Serverless usage policy tag updates are not reflected in new pipeline updates while the pipeline is in development mode, and take up to 24 hours to propagate.
-> - **Jobs UI.** Tags inherited from serverless usage policies do not appear in the Jobs list UI.
-> - **Governance Hub.** The Cost page shows a tagged-spend percentage and a **View untagged spend** shortcut (Beta as of October 2026).
+> - **Pool-based clusters:** In DBU usage, both cluster and pool tags are recorded even when the cluster comes from a pool. The cloud-resource behavior differs by cloud, as listed above.
+> - **Shared compute:** Usage on a shared all-purpose cluster carries that cluster's tags, not the tags of each user's work. For per-job attribution, run jobs on job compute or serverless.
+> - **Development-mode pipelines:** Serverless usage policy tag updates are not reflected in new pipeline updates while the pipeline is in development mode, and take up to 24 hours to propagate.
+> - **Jobs UI:** Tags inherited from serverless usage policies do not appear in the Jobs list UI.
+> - **Governance Hub:** The Cost page shows a tagged-spend percentage and a **View untagged spend** shortcut (Beta as of October 2026).
 > - **Billing admins** can manage serverless usage policies without being account admins. See [[Admin Roles]].
 
 ## Common misconceptions

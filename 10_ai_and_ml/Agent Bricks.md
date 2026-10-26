@@ -169,7 +169,7 @@ For an existing agent project, the CLI prepares migration instructions that a co
 > [!smallbiz] Small-business considerations
 > - **No developer on staff?** Start with Genie Agents for questions over your tables. Genie Agents usage is free through January 31, 2027, according to the July 2026 release notes.
 > - **One developer?** The Agent Bricks CLI removes most hosting and identity setup. Start with one narrow agent, such as order status.
-> - **Limit what the agent can do.** Give its service principal read access to the specific tables it needs. Avoid write access until evaluation is solid.
+> - **Limit what the agent can do:** Give its service principal read access to the specific tables it needs. Avoid write access until evaluation is solid.
 > - **Evaluate before launch** with real customer questions ([[Agent Evaluation and Tracing]]).
 > - **Cost drivers:** the Databricks App compute that hosts the agent, model [[Token|tokens]] through [[Unity Gateway]], and any AI Search endpoint. See [[How Databricks Pricing Works]].
 
@@ -187,11 +187,11 @@ For an existing agent project, the CLI prepares migration instructions that a co
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Durable runs.** `DurableAgentServer` keeps each run's state in a Runtime Store, so long tasks can resume after a restart.
-> - **Agent identity.** Each deployment acts as the app's service principal, so the agent sees what that principal can see. If the agent must respect each end user's permissions, check the Databricks Apps authorization docs for user-level access before deploying.
-> - **Legacy paths.** The MLflow AgentServer, LongRunningAgentServer, and agents deployed to Model Serving are listed as legacy, each with a mapped replacement. See [[Mosaic AI Agent Framework]].
-> - **Tools through MCP.** Unity Gateway MCP (Model Context Protocol, a standard for connecting tools to AI models) services expose governed tools; jailbreak screening for MCP tool calls is in Beta.
-> - **Sources disagree on maturity.** Some pages label the CLI Beta and others experimental, and the default model differs across pages.
+> - **Durable runs:** `DurableAgentServer` keeps each run's state in a Runtime Store, so long tasks can resume after a restart.
+> - **Agent identity:** Each deployment acts as the app's service principal, so the agent sees what that principal can see. If the agent must respect each end user's permissions, check the Databricks Apps authorization docs for user-level access before deploying.
+> - **Legacy paths:** The MLflow AgentServer, LongRunningAgentServer, and agents deployed to Model Serving are listed as legacy, each with a mapped replacement. See [[Mosaic AI Agent Framework]].
+> - **Tools through MCP:** Unity Gateway MCP (Model Context Protocol, a standard for connecting tools to AI models) services expose governed tools; jailbreak screening for MCP tool calls is in Beta.
+> - **Sources disagree on maturity:** Some pages label the CLI Beta and others experimental, and the default model differs across pages.
 
 ## Common misconceptions
 

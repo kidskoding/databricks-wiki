@@ -161,9 +161,9 @@ SHOW TABLES IN hive_metastore.default;
 > The catalog role belongs to [[Unity Catalog]], which adds account-wide scope, fine-grained permissions, lineage, auditing, and governance for files, functions, and models.
 >
 > The Hive Metastore remains present in three forms:
-> - **The legacy `hive_metastore` catalog.** Databricks documents it as a legacy feature and recommends upgrading its tables to Unity Catalog. Joins with data in the legacy metastore work only in the workspace where that data resides.
-> - **Hive metastore federation.** Unity Catalog creates a foreign catalog that mirrors a Hive metastore. For a workspace's internal legacy metastore, the foreign catalog supports reads and writes, and writes flow back to the Hive metastore. For external Hive metastores and AWS Glue, access is read-only.
-> - **External Hive metastores (legacy).** Older configurations connected clusters directly to an organization's own metastore database. Databricks lists this configuration in its archived legacy documentation.
+> - **The legacy `hive_metastore` catalog:** Databricks documents it as a legacy feature and recommends upgrading its tables to Unity Catalog. Joins with data in the legacy metastore work only in the workspace where that data resides.
+> - **Hive metastore federation:** Unity Catalog creates a foreign catalog that mirrors a Hive metastore. For a workspace's internal legacy metastore, the foreign catalog supports reads and writes, and writes flow back to the Hive metastore. For external Hive metastores and AWS Glue, access is read-only.
+> - **External Hive metastores (legacy):** Older configurations connected clusters directly to an organization's own metastore database. Databricks lists this configuration in its archived legacy documentation.
 
 ## Cloud differences
 
@@ -179,11 +179,11 @@ SHOW TABLES IN hive_metastore.default;
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Partition metadata limits scale.** Each partition is a row in the metastore database. Tables with very large partition counts make partition operations and query planning slow and load the backing database. [[Delta Lake]] and [[Apache Iceberg]] track files in table-level metadata, so the catalog only records the table's location.
-> - **Client-side security.** Classic HMS relied on engines and file permissions for authorization. Hive documentation notes that authorization performed on the client side cannot guarantee security on the metastore side, which is why metastore-side authorization was added. The Thrift interface can be secured with SASL and Kerberos. Unity Catalog enforces permissions centrally and issues short-lived storage credentials to compute.
-> - **Version pinning.** Engines communicate with HMS through a client library for a specific metastore version. Databricks' legacy external-metastore documentation requires configuring the metastore version and client JARs per cluster.
-> - **Federation requirements.** Hive metastore federation requires a connection, plus storage credentials and external locations covering every table path (authorized paths). Supported external HMS versions are 0.13, 2.3, and 3.1. Some Unity Catalog features, including OpenSharing, data quality monitoring, and online tables, are unavailable on federated tables. Tables in DBFS root or mount locations cannot be reached from other workspaces.
-> - **After migration.** Clusters continue to connect to the Hive metastore after tables are upgraded unless that access is explicitly disabled. See [[Hive Metastore Migration to Unity Catalog]].
+> - **Partition metadata limits scale:** Each partition is a row in the metastore database. Tables with very large partition counts make partition operations and query planning slow and load the backing database. [[Delta Lake]] and [[Apache Iceberg]] track files in table-level metadata, so the catalog only records the table's location.
+> - **Client-side security:** Classic HMS relied on engines and file permissions for authorization. Hive documentation notes that authorization performed on the client side cannot guarantee security on the metastore side, which is why metastore-side authorization was added. The Thrift interface can be secured with SASL and Kerberos. Unity Catalog enforces permissions centrally and issues short-lived storage credentials to compute.
+> - **Version pinning:** Engines communicate with HMS through a client library for a specific metastore version. Databricks' legacy external-metastore documentation requires configuring the metastore version and client JARs per cluster.
+> - **Federation requirements:** Hive metastore federation requires a connection, plus storage credentials and external locations covering every table path (authorized paths). Supported external HMS versions are 0.13, 2.3, and 3.1. Some Unity Catalog features, including OpenSharing, data quality monitoring, and online tables, are unavailable on federated tables. Tables in DBFS root or mount locations cannot be reached from other workspaces.
+> - **After migration:** Clusters continue to connect to the Hive metastore after tables are upgraded unless that access is explicitly disabled. See [[Hive Metastore Migration to Unity Catalog]].
 
 ## Common misconceptions
 

@@ -75,10 +75,10 @@ Redshift today comes in two deployment shapes:
 
 Key features you will hear about:
 
-- **Managed storage (RA3 and Serverless).** Data is stored in Redshift managed storage. AWS states that this lets you scale and pay for compute and storage independently, which removes the classic MPP constraint of adding compute to gain disk capacity.
-- **Redshift Spectrum.** Queries files in an S3 data lake as external tables, with no loading or ETL required.
-- **Concurrency scaling.** Adds transient compute capacity for bursts of queries. In March 2026 AWS announced general availability of concurrency scaling for auto-copy and zero-ETL ingestion.
-- **Zero-ETL integrations.** Managed replication from supported AWS databases into Redshift without a separate pipeline.
+- **Managed storage (RA3 and Serverless):** Data is stored in Redshift managed storage. AWS states that this lets you scale and pay for compute and storage independently, which removes the classic MPP constraint of adding compute to gain disk capacity.
+- **Redshift Spectrum:** Queries files in an S3 data lake as external tables, with no loading or ETL required.
+- **Concurrency scaling:** Adds transient compute capacity for bursts of queries. In March 2026 AWS announced general availability of concurrency scaling for auto-copy and zero-ETL ingestion.
+- **Zero-ETL integrations:** Managed replication from supported AWS databases into Redshift without a separate pipeline.
 
 Prices are on the official [Amazon Redshift pricing page](https://aws.amazon.com/redshift/pricing/).
 
@@ -146,11 +146,11 @@ Modern Redshift can pick distribution and sort keys automatically (`AUTO`), but 
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Distribution styles.** `KEY`, `EVEN`, `ALL`, and `AUTO` (the default when none is specified). `ALL` copies a small dimension table to every node to avoid data movement during joins, similar to a Spark [[Broadcast Join|broadcast join]].
-> - **Zone maps.** Redshift stores columnar data in 1 MB blocks and keeps the min and max values of each block as metadata, so a sort key on date lets a range filter skip blocks. Delta Lake's file statistics and [[Liquid Clustering]] do the same job; see [[Data Skipping]].
-> - **VACUUM and ANALYZE.** Deleted rows are only marked for deletion, and sort order degrades as data arrives. Redshift now runs automatic table sort, `VACUUM DELETE`, and statistics updates (automatic analyze) in the background, but the parallel to Delta's [[OPTIMIZE and VACUUM]] is direct.
-> - **WLM.** Workload management queues separate ETL from dashboards. Concurrency scaling is attached per queue on provisioned clusters.
-> - **Lock-in shape.** Data in managed storage is in Redshift's format. Getting it out for other engines means `UNLOAD` to Parquet in S3, which is the additional ETL step described in the [[The Lakehouse Paper|lakehouse paper]].
+> - **Distribution styles:** `KEY`, `EVEN`, `ALL`, and `AUTO` (the default when none is specified). `ALL` copies a small dimension table to every node to avoid data movement during joins, similar to a Spark [[Broadcast Join|broadcast join]].
+> - **Zone maps:** Redshift stores columnar data in 1 MB blocks and keeps the min and max values of each block as metadata, so a sort key on date lets a range filter skip blocks. Delta Lake's file statistics and [[Liquid Clustering]] do the same job; see [[Data Skipping]].
+> - **VACUUM and ANALYZE:** Deleted rows are only marked for deletion, and sort order degrades as data arrives. Redshift now runs automatic table sort, `VACUUM DELETE`, and statistics updates (automatic analyze) in the background, but the parallel to Delta's [[OPTIMIZE and VACUUM]] is direct.
+> - **WLM:** Workload management queues separate ETL from dashboards. Concurrency scaling is attached per queue on provisioned clusters.
+> - **Lock-in shape:** Data in managed storage is in Redshift's format. Getting it out for other engines means `UNLOAD` to Parquet in S3, which is the additional ETL step described in the [[The Lakehouse Paper|lakehouse paper]].
 
 ## Common misconceptions
 

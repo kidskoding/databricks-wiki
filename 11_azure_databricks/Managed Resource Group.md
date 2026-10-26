@@ -132,9 +132,9 @@ For clusters created from a pool, only workspace tags and pool tags are propagat
 ## Small-business considerations
 
 > [!smallbiz] Small-business considerations
-> - **Do not modify or delete the managed resource group.** Manage the workspace resource instead.
+> - **Do not modify or delete the managed resource group:** Manage the workspace resource instead.
 > - **Tag the workspace and compute** so VM and disk costs can be attributed in Azure cost analysis.
-> - **Keep business data out of the workspace storage account.** Store it in your own [[Azure Data Lake Storage|ADLS Gen2]] account governed by Unity Catalog. See [[ADLS and Access Connectors]].
+> - **Keep business data out of the workspace storage account:** Store it in your own [[Azure Data Lake Storage|ADLS Gen2]] account governed by Unity Catalog. See [[ADLS and Access Connectors]].
 >
 > A serverless workspace has no cluster VMs in your subscription.
 
@@ -152,10 +152,10 @@ For clusters created from a pool, only workspace tags and pool tags are propagat
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Guardrails.** Restrict cluster size, node type, and tags with [[Compute Policies|compute policies]], which Databricks evaluates before creating VMs.
-> - **Workspace storage firewall.** You can enable firewall support for the workspace storage account. It requires the Premium plan and secure cluster connectivity for classic compute. Serverless compute reaches the account through the `AzureDatabricksServerless` service tag (onboarded through a network security perimeter) or through private endpoints configured in a network connectivity configuration.
-> - **Tag propagation timing.** Changed workspace tags can take up to one hour to propagate and do not reach existing compute until it is edited and restarted. Tags do not apply to past usage. A custom tag that reuses a default key is renamed with an `x_` prefix.
-> - **Naming.** ARM and Bicep examples generate the name as `databricks-rg-<workspace>-<hash>`.
+> - **Guardrails:** Restrict cluster size, node type, and tags with [[Compute Policies|compute policies]], which Databricks evaluates before creating VMs.
+> - **Workspace storage firewall:** You can enable firewall support for the workspace storage account. It requires the Premium plan and secure cluster connectivity for classic compute. Serverless compute reaches the account through the `AzureDatabricksServerless` service tag (onboarded through a network security perimeter) or through private endpoints configured in a network connectivity configuration.
+> - **Tag propagation timing:** Changed workspace tags can take up to one hour to propagate and do not reach existing compute until it is edited and restarted. Tags do not apply to past usage. A custom tag that reuses a default key is renamed with an `x_` prefix.
+> - **Naming:** ARM and Bicep examples generate the name as `databricks-rg-<workspace>-<hash>`.
 
 ## Common misconceptions
 

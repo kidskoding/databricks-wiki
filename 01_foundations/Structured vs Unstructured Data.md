@@ -68,9 +68,9 @@ Mastery: `INPUT[inlineSelect(option(new), option(learning), option(solid)):maste
 
 The split matters because computers handle the three kinds very differently:
 
-- **Structured data is easy to query.** A question such as the number of 10:30 no-shows returns an exact answer in milliseconds. This is what [[Relational Databases|relational databases]] and [[SQL]] were built for.
-- **Unstructured data was, for decades, nearly impossible to query.** A computer could store a scanned referral letter, but not tell you what it said. It sat in shared drives and was searched by hand.
-- **Semi-structured data appeared with the web.** Web apps and [[APIs]] exchange [[CSV and JSON|JSON]], where each record carries its own labels. It is flexible, but two records can disagree about which fields exist.
+- **Structured data is easy to query:** A question such as the number of 10:30 no-shows returns an exact answer in milliseconds. This is what [[Relational Databases|relational databases]] and [[SQL]] were built for.
+- **Unstructured data was, for decades, nearly impossible to query:** A computer could store a scanned referral letter, but not tell you what it said. It sat in shared drives and was searched by hand.
+- **Semi-structured data appeared with the web:** Web apps and [[APIs]] exchange [[CSV and JSON|JSON]], where each record carries its own labels. It is flexible, but two records can disagree about which fields exist.
 
 In most businesses, unstructured files outnumber structured records, although the proportion is hard to measure. Much of the tooling in later chapters ([[Data Lakes|data lakes]], the [[The Lakehouse Idea|lakehouse]], and AI functions) exists to make unstructured and semi-structured data usable alongside tables.
 
@@ -86,8 +86,8 @@ Structured, semi-structured, and unstructured data are three categories that des
 
 The key idea that separates them is **when the [[Schema|schema]] is decided**:
 
-- **Schema on write.** You define columns before saving anything. Bad data is rejected at the door. This is how databases work.
-- **Schema on read.** You save whatever arrives and decide what it means when you read it. This is how data lakes started, and it is flexible but risky (see [[Data Swamps]]).
+- **Schema on write:** You define columns before saving anything. Bad data is rejected at the door. This is how databases work.
+- **Schema on read:** You save whatever arrives and decide what it means when you read it. This is how data lakes started, and it is flexible but risky (see [[Data Swamps]]).
 
 ## How it works
 
@@ -135,8 +135,8 @@ FROM read_files('/Volumes/clinic/raw/referrals/', format => 'binaryFile', fileNa
 
 > [!smallbiz] Small-business considerations
 > Structure data in this order:
-> 1. **Get the structured data right first.** Orders, appointments, and invoices answer most business questions.
-> 2. **Keep semi-structured data raw, then pull out what you need.** Store the API's JSON as-is, then extract the five fields you actually report on.
+> 1. **Get the structured data right first:** Orders, appointments, and invoices answer most business questions.
+> 2. **Keep semi-structured data raw, then pull out what you need:** Store the API's JSON as-is, then extract the five fields you actually report on.
 > 3. **Treat unstructured data as a later project** unless it is your core business. Customer reviews, referral letters, and support emails become valuable once AI can read them, but they need [[Data Governance|governance]] (access rules and ownership) first because they often contain [[PII|personal data]].
 
 > [!bridge]- In Databricks today
@@ -152,10 +152,10 @@ FROM read_files('/Volumes/clinic/raw/referrals/', format => 'binaryFile', fileNa
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **"Unstructured" usually means "structure not yet extracted".** A PDF invoice has a very regular structure; it is encoded as pixels and text positions. OCR, layout models, and [[LLM|LLMs]] recover it. Images and audio get turned into [[Embedding|embeddings]] for similarity search instead of columns.
-> - **VARIANT vs. JSON strings vs. structs.** A JSON string must be re-parsed on every read. A `STRUCT` column is fast but forces a fixed schema. `VARIANT` stores a binary encoding that keeps flexibility and is faster to query than strings. The Databricks docs note limits: `VARIANT` cannot be used for comparisons, grouping, ordering, or set operations, cannot be a clustering, partition, or Z-order key, and ingested records are capped at 16 MB. Round-tripping is not exact: `to_json(parse_json(s))` may not equal `s`.
-> - **Path case sensitivity.** In VARIANT path expressions, `col:Status` and `col:status` look for different fields. JSON from different source systems often disagrees on case.
-> - **Schema evolution is the real cost of semi-structured data.** When a vendor adds a field, schema-on-read systems absorb it silently, and downstream reports may never see it. See [[Schema Enforcement and Evolution]].
+> - **"Unstructured" usually means "structure not yet extracted":** A PDF invoice has a very regular structure; it is encoded as pixels and text positions. OCR, layout models, and [[LLM|LLMs]] recover it. Images and audio get turned into [[Embedding|embeddings]] for similarity search instead of columns.
+> - **VARIANT vs. JSON strings vs. structs:** A JSON string must be re-parsed on every read. A `STRUCT` column is fast but forces a fixed schema. `VARIANT` stores a binary encoding that keeps flexibility and is faster to query than strings. The Databricks docs note limits: `VARIANT` cannot be used for comparisons, grouping, ordering, or set operations, cannot be a clustering, partition, or Z-order key, and ingested records are capped at 16 MB. Round-tripping is not exact: `to_json(parse_json(s))` may not equal `s`.
+> - **Path case sensitivity:** In VARIANT path expressions, `col:Status` and `col:status` look for different fields. JSON from different source systems often disagrees on case.
+> - **Schema evolution is the real cost of semi-structured data:** When a vendor adds a field, schema-on-read systems absorb it silently, and downstream reports may never see it. See [[Schema Enforcement and Evolution]].
 
 ## Common misconceptions
 

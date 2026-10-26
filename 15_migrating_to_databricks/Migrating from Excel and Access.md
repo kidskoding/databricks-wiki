@@ -123,10 +123,10 @@ CREATE SCHEMA  IF NOT EXISTS finance.sales;
 
 Tables are stricter than spreadsheets:
 
-- **One table per sheet, one header row.** Remove titles, notes, and blank rows above the headers.
-- **No merged cells, subtotal rows, or color used as data.** "Red means overdue" becomes a column named `is_overdue`.
-- **Simple column names.** `Order Date` becomes `order_date`. Avoid `%`, `#`, and `/`.
-- **One kind of value per column.** Dates are dates and amounts are numbers. No "TBC" in a price column.
+- **One table per sheet, one header row:** Remove titles, notes, and blank rows above the headers.
+- **No merged cells, subtotal rows, or color used as data:** "Red means overdue" becomes a column named `is_overdue`.
+- **Simple column names:** `Order Date` becomes `order_date`. Avoid `%`, `#`, and `/`.
+- **One kind of value per column:** Dates are dates and amounts are numbers. No "TBC" in a price column.
 
 ### Step 3a: upload a file in the UI
 
@@ -245,11 +245,11 @@ Table and column descriptions in Catalog Explorer improve answer accuracy. Datab
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Data entry needs a new home.** Dashboards are read-only. If people entered data through Access forms, give them a small app ([[Databricks Apps]]) backed by a table or an OLTP database (built for day-to-day transactions) such as [[Lakebase]], rather than letting them edit tables directly.
-> - **Schema drift in weekly files.** When someone adds a column to next week's file, [[Auto Loader]] can evolve the schema. Decide whether that should fail or be accepted; see [[Schema Enforcement and Evolution]].
-> - **Money needs DECIMAL.** Use `DECIMAL(p, s)` for currency, never `DOUBLE`, or totals drift by fractions of a cent.
-> - **Keep the raw files.** Original files in a Volume provide an audit trail and allow a table rebuild if a load goes wrong.
-> - **Relationships.** Access enforces relationships. Databricks lets you declare [[Primary and Foreign Keys|primary and foreign keys]] as informational constraints that are not enforced. Declare them anyway: they help Genie and BI tools understand joins.
+> - **Data entry needs a new home:** Dashboards are read-only. If people entered data through Access forms, give them a small app ([[Databricks Apps]]) backed by a table or an OLTP database (built for day-to-day transactions) such as [[Lakebase]], rather than letting them edit tables directly.
+> - **Schema drift in weekly files:** When someone adds a column to next week's file, [[Auto Loader]] can evolve the schema. Decide whether that should fail or be accepted; see [[Schema Enforcement and Evolution]].
+> - **Money needs DECIMAL:** Use `DECIMAL(p, s)` for currency, never `DOUBLE`, or totals drift by fractions of a cent.
+> - **Keep the raw files:** Original files in a Volume provide an audit trail and allow a table rebuild if a load goes wrong.
+> - **Relationships:** Access enforces relationships. Databricks lets you declare [[Primary and Foreign Keys|primary and foreign keys]] as informational constraints that are not enforced. Declare them anyway: they help Genie and BI tools understand joins.
 
 ## Common misconceptions
 

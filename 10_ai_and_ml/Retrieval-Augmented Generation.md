@@ -168,8 +168,8 @@ The column names (`source_uri`, `chunk_to_retrieve`) must match the chunk table.
 ## Small-business considerations
 
 > [!smallbiz] Small-business considerations
-> - **RAG is the usual first GenAI project.** Support answers, staff handbooks, and product FAQs fit well.
-> - **Clean documents first.** Outdated or contradictory articles produce outdated or contradictory answers.
+> - **RAG is the usual first GenAI project:** Support answers, staff handbooks, and product FAQs fit well.
+> - **Clean documents first:** Outdated or contradictory articles produce outdated or contradictory answers.
 > - **Require citations** and a "do not know" fallback in the system prompt.
 > - **Build an evaluation set of 20 to 50 real questions** with expected answers before launch. See [[Agent Evaluation and Tracing]].
 > - **Cost drivers:** document parsing (billed under AI Functions), embeddings, the AI Search endpoint, and LLM tokens per question. Longer retrieved context means more input tokens.
@@ -188,12 +188,12 @@ The column names (`source_uri`, `chunk_to_retrieve`) must match the chunk table.
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Retrieval quality first.** Databricks' retrieval quality guide recommends `ai_parse_document` for PDFs and complex documents, since poor parsing of tables and layout hurts retrieval.
+> - **Retrieval quality first:** Databricks' retrieval quality guide recommends `ai_parse_document` for PDFs and complex documents, since poor parsing of tables and layout hurts retrieval.
 > - **Hybrid search and reranking** improve recall for product codes and names.
 > - **Metadata filters** restrict retrieval, for example to the current policy version or the customer's region.
-> - **Permissions.** The retriever runs with an identity. Make sure it can read only documents the end user is allowed to see.
-> - **Evaluation.** The MLflow judges `RetrievalGroundedness` (is the answer supported by retrieved context) and `RetrievalRelevance` (is the context relevant to the request) target RAG failure modes.
-> - **RAG and fine-tuning together.** Databricks notes that production systems can combine a fine-tuned model for tone and terminology with RAG for knowledge.
+> - **Permissions:** The retriever runs with an identity. Make sure it can read only documents the end user is allowed to see.
+> - **Evaluation:** The MLflow judges `RetrievalGroundedness` (is the answer supported by retrieved context) and `RetrievalRelevance` (is the context relevant to the request) target RAG failure modes.
+> - **RAG and fine-tuning together:** Databricks notes that production systems can combine a fine-tuned model for tone and terminology with RAG for knowledge.
 
 ## Common misconceptions
 

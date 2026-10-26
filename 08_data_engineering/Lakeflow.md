@@ -131,7 +131,9 @@ CREATE SCHEMA IF NOT EXISTS shop.gold;
 CREATE VOLUME IF NOT EXISTS shop.bronze.landing;  -- files land here
 ```
 
-**2. Ingest.** Shopify has a managed [[Lakeflow Connect]] connector (in Beta as of October 2026). It writes tables such as `shop.bronze.orders` for you. QuickBooks has no managed connector in the docs as of October 2026, so the shop exports a nightly CSV of invoices into the `landing` [[Volumes|volume]] (or uses a partner tool), and [[Auto Loader]] picks it up.
+#### 2. Ingest
+
+Shopify has a managed [[Lakeflow Connect]] connector (in Beta as of October 2026). It writes tables such as `shop.bronze.orders` for you. QuickBooks has no managed connector in the docs as of October 2026, so the shop exports a nightly CSV of invoices into the `landing` [[Volumes|volume]] (or uses a partner tool), and [[Auto Loader]] picks it up.
 
 **3. Transform** with a pipeline, one SQL file (see [[Lakeflow Spark Declarative Pipelines]]):
 
@@ -190,7 +192,9 @@ resources:
             pipeline_id: ${resources.pipelines.shop_etl.id}
 ```
 
-**5. Use it.** A dashboard or [[Genie Agents|Genie Agent]] reads `shop.gold.daily_summary`. That is [[Chapter 09 - SQL BI and Apps|chapter 09]].
+#### 5. Use it
+
+A dashboard or [[Genie Agents|Genie Agent]] reads `shop.gold.daily_summary`. That is [[Chapter 09 - SQL BI and Apps|chapter 09]].
 
 ## Small-business considerations
 
@@ -215,10 +219,10 @@ resources:
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Declarative vs procedural.** The docs draw the line clearly. Lakeflow Jobs is procedural: you say "run task A, then B". Pipelines are declarative: you say "table C is defined by this query", and the engine works out the order from the dependencies. Most production setups use both: a job that runs one or more pipelines plus a few notebook or SQL tasks.
-> - **Everything is a pipeline underneath.** Managed connectors in Lakeflow Connect run as ingestion pipelines, and Designer builds pipelines too. So the same event log, lineage, and monitoring apply to all of them.
-> - **Open core.** The declarative framework is in Apache Spark itself (`pyspark.pipelines`, Spark 4.1+). Databricks adds things on top, such as the AUTO CDC APIs, which the docs say are only available in Lakeflow pipelines.
-> - **Agents.** Databricks positions 2026 Lakeflow features around "agentic data engineering". In the Lakeflow Pipelines Editor, [[Genie Code]] can explore data, generate and run pipeline code, and fix errors, asking you to approve its plan before it acts. Treat its output like any other code: review it and test it.
+> - **Declarative vs procedural:** The docs draw the line clearly. Lakeflow Jobs is procedural: you say "run task A, then B". Pipelines are declarative: you say "table C is defined by this query", and the engine works out the order from the dependencies. Most production setups use both: a job that runs one or more pipelines plus a few notebook or SQL tasks.
+> - **Everything is a pipeline underneath:** Managed connectors in Lakeflow Connect run as ingestion pipelines, and Designer builds pipelines too. So the same event log, lineage, and monitoring apply to all of them.
+> - **Open core:** The declarative framework is in Apache Spark itself (`pyspark.pipelines`, Spark 4.1+). Databricks adds things on top, such as the AUTO CDC APIs, which the docs say are only available in Lakeflow pipelines.
+> - **Agents:** Databricks positions 2026 Lakeflow features around "agentic data engineering". In the Lakeflow Pipelines Editor, [[Genie Code]] can explore data, generate and run pipeline code, and fix errors, asking you to approve its plan before it acts. Treat its output like any other code: review it and test it.
 
 ## Common misconceptions
 

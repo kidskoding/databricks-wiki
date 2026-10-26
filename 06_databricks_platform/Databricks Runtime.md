@@ -110,8 +110,8 @@ Databricks' release lifecycle runs from **Beta**, to **GA** for roughly six mont
 
 Recent changes:
 
-- **One release line per major version.** From Runtime 18 onward, Databricks documents a major version on one page that collects all features shipped during its release cycle, instead of a separate page per minor version.
-- **Java 21.** Runtime 18 defaults to JDK 21 instead of JDK 17, with a fallback to JDK 17 for compatibility problems.
+- **One release line per major version:** From Runtime 18 onward, Databricks documents a major version on one page that collects all features shipped during its release cycle, instead of a separate page per minor version.
+- **Java 21:** Runtime 18 defaults to JDK 21 instead of JDK 17, with a fallback to JDK 17 for compatibility problems.
 
 ## How it works
 
@@ -180,13 +180,13 @@ spark.conf.get("spark.databricks.clusterUsageTags.sparkVersion")  # DBR key
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Maintenance updates.** Within a version, Databricks ships maintenance updates (security patches and bug fixes) automatically when a cluster restarts. Long-running clusters do not pick them up until they restart.
-> - **Serverless uses runtime versions managed by Databricks.** Serverless compute tracks recent runtime code (serverless releases in August–September 2026 included updates from Runtime 19). You pin a client-side *environment version* instead of a runtime. See [[Serverless Compute]] and [[Libraries and Environments]].
-> - **Databricks Connect matches the runtime.** The [[Databricks Connect]] package version should match the runtime major/minor version of the cluster it talks to.
-> - **Scala 2.13 only from 17.** JARs compiled for Scala 2.12 must be rebuilt for Runtime 17 and later.
-> - **Standard access mode restrictions.** In Runtime 19, several Spark configuration properties are restricted on standard access mode clusters, and creating a cluster that sets them fails.
-> - **End of support.** After end of support, a version gets no fixes and is eventually removed from the version list. Jobs pinned to it must be upgraded.
-> - **Custom images.** Databricks Container Services lets you boot a custom Docker image on classic compute. It is rarely needed now that environments and init scripts in volumes cover most cases.
+> - **Maintenance updates:** Within a version, Databricks ships maintenance updates (security patches and bug fixes) automatically when a cluster restarts. Long-running clusters do not pick them up until they restart.
+> - **Serverless uses runtime versions managed by Databricks:** Serverless compute tracks recent runtime code (serverless releases in August–September 2026 included updates from Runtime 19). You pin a client-side *environment version* instead of a runtime. See [[Serverless Compute]] and [[Libraries and Environments]].
+> - **Databricks Connect matches the runtime:** The [[Databricks Connect]] package version should match the runtime major/minor version of the cluster it talks to.
+> - **Scala 2.13 only from 17:** JARs compiled for Scala 2.12 must be rebuilt for Runtime 17 and later.
+> - **Standard access mode restrictions:** In Runtime 19, several Spark configuration properties are restricted on standard access mode clusters, and creating a cluster that sets them fails.
+> - **End of support:** After end of support, a version gets no fixes and is eventually removed from the version list. Jobs pinned to it must be upgraded.
+> - **Custom images:** Databricks Container Services lets you boot a custom Docker image on classic compute. It is rarely needed now that environments and init scripts in volumes cover most cases.
 
 ## Common misconceptions
 

@@ -78,8 +78,8 @@ You reach it at the account URL for your cloud, or from inside a workspace throu
 
 Two behaviors to note:
 
-- **Only account admins can create workspaces.** A workspace admin runs one workspace. They cannot create a new one.
-- **Removing a user from the account removes them from every workspace.** For that reason the docs suggest *deactivating* users in most cases. Deactivation is not a console button: you do it through the Account Users API (or the [[Databricks CLI]]).
+- **Only account admins can create workspaces:** A workspace admin runs one workspace. They cannot create a new one.
+- **Removing a user from the account removes them from every workspace:** For that reason the docs suggest *deactivating* users in most cases. Deactivation is not a console button: you do it through the Account Users API (or the [[Databricks CLI]]).
 
 ## How it works
 
@@ -150,11 +150,11 @@ The sections are the same everywhere. What differs is where the account lives, w
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Account vs workspace APIs.** Every REST API is either account-level (host is the accounts URL, path includes `/accounts/<account-id>/`) or workspace-level (host is the workspace URL). Tools such as Terraform need a separate provider configuration for each. Mixing them is the most common automation error. See [[Terraform Provider]].
-> - **Workspace assignment API.** Assigning a principal to a workspace, and setting whether it is a workspace user or admin there, is done with the Workspace Assignment API from the account level.
-> - **Multiple accounts.** Large companies sometimes run one account per cloud or per legal entity. Identities, metastores, and budgets do not cross accounts, so sharing between them uses [[OpenSharing]].
+> - **Account vs workspace APIs:** Every REST API is either account-level (host is the accounts URL, path includes `/accounts/<account-id>/`) or workspace-level (host is the workspace URL). Tools such as Terraform need a separate provider configuration for each. Mixing them is the most common automation error. See [[Terraform Provider]].
+> - **Workspace assignment API:** Assigning a principal to a workspace, and setting whether it is a workspace user or admin there, is done with the Workspace Assignment API from the account level.
+> - **Multiple accounts:** Large companies sometimes run one account per cloud or per legal entity. Identities, metastores, and budgets do not cross accounts, so sharing between them uses [[OpenSharing]].
 > - **Console IP access lists** protect the account console and account APIs separately from workspace IP lists. On Azure, account-console IP lists were labeled Public Preview in the docs as of October 2026. See [[IP Access Lists]].
-> - **Audit.** Account-level actions (creating workspaces, changing SSO, granting admin) land in the [[Audit Logs|audit log]] system table, `system.access.audit`, with account-level service names.
+> - **Audit:** Account-level actions (creating workspaces, changing SSO, granting admin) land in the [[Audit Logs|audit log]] system table, `system.access.audit`, with account-level service names.
 
 ## Common misconceptions
 

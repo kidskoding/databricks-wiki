@@ -168,10 +168,10 @@ The Unity Catalog best practices docs suggest catalogs as the main unit of data 
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Isolation unit.** Catalogs are where you set managed storage and workspace binding, so they are the natural boundary between environments or business units that must not mix.
-> - **Ownership.** Every securable has exactly one owner (a user, service principal, or group). Make owners groups, so a person leaving does not orphan objects. Transfer with `ALTER ... OWNER TO`.
-> - **Table formats.** Managed tables can be Delta or Iceberg. Delta tables can also expose Iceberg metadata through [[Delta UniForm]].
-> - **Views vs dynamic views.** A view that calls `is_account_group_member()` can hide rows or columns per group. Newer [[Row Filters and Column Masks]] and [[Attribute-Based Access Control|ABAC]] usually replace that pattern.
+> - **Isolation unit:** Catalogs are where you set managed storage and workspace binding, so they are the natural boundary between environments or business units that must not mix.
+> - **Ownership:** Every securable has exactly one owner (a user, service principal, or group). Make owners groups, so a person leaving does not orphan objects. Transfer with `ALTER ... OWNER TO`.
+> - **Table formats:** Managed tables can be Delta or Iceberg. Delta tables can also expose Iceberg metadata through [[Delta UniForm]].
+> - **Views vs dynamic views:** A view that calls `is_account_group_member()` can hide rows or columns per group. Newer [[Row Filters and Column Masks]] and [[Attribute-Based Access Control|ABAC]] usually replace that pattern.
 
 ## Common misconceptions
 

@@ -142,7 +142,7 @@ print(run.state.result_state)
 
 Ways to configure the client:
 
-1. **No arguments.** The SDK tries environment variables, then the `DEFAULT` profile in `~/.databrickscfg`, then other supported methods.
+1. **No arguments:** The SDK tries environment variables, then the `DEFAULT` profile in `~/.databrickscfg`, then other supported methods.
 2. **A profile:** `WorkspaceClient(profile="prod")`.
 3. **Service principal OAuth:** `WorkspaceClient(host=..., client_id=..., client_secret=...)`.
 4. **Host and token:** supported, but Databricks does not recommend hard-coding tokens because they can leak through version control.
@@ -164,7 +164,7 @@ curl -s -X POST "https://<workspace-url>/api/2.2/jobs/run-now" \
 > [!smallbiz] Small-business considerations
 > 1. **Start with the CLI,** and switch to the Python SDK when a script needs loops, conditions, or error handling.
 > 2. **Run automation as a [[Users Groups and Service Principals|service principal]]** with OAuth machine-to-machine credentials, not as a person.
-> 3. **Keep secrets out of code.** Use environment variables in CI, or [[Secrets Management|Databricks secrets]] inside notebooks.
+> 3. **Keep secrets out of code:** Use environment variables in CI, or [[Secrets Management|Databricks secrets]] inside notebooks.
 > 4. **Use the SDK inside notebooks for admin chores,** such as listing idle clusters or exporting job settings.
 
 ## Cloud differences
@@ -184,11 +184,11 @@ The API surface is the same on all clouds. Differences are the workspace URL for
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Long-running operations.** SDK methods that start work (such as `jobs.run_now` or `clusters.create`) return a waiter. Calling `.result()` polls until completion.
-> - **Pagination.** List methods return iterators that fetch further pages automatically.
-> - **Rate limits.** APIs enforce limits. For example, a workspace can create at most 10,000 jobs per hour, including `runs submit`. Design batch automation to back off on HTTP 429 responses.
-> - **Account vs workspace.** Account-level operations (creating workspaces, managing account identities, reading billable usage) require the account client and an account admin identity.
-> - **Workload identity federation.** For CI systems such as GitHub Actions or Azure DevOps, OAuth token federation exchanges the CI system's identity token for a Databricks token, so no long-lived secret is stored.
+> - **Long-running operations:** SDK methods that start work (such as `jobs.run_now` or `clusters.create`) return a waiter. Calling `.result()` polls until completion.
+> - **Pagination:** List methods return iterators that fetch further pages automatically.
+> - **Rate limits:** APIs enforce limits. For example, a workspace can create at most 10,000 jobs per hour, including `runs submit`. Design batch automation to back off on HTTP 429 responses.
+> - **Account vs workspace:** Account-level operations (creating workspaces, managing account identities, reading billable usage) require the account client and an account admin identity.
+> - **Workload identity federation:** For CI systems such as GitHub Actions or Azure DevOps, OAuth token federation exchanges the CI system's identity token for a Databricks token, so no long-lived secret is stored.
 
 ## Common misconceptions
 

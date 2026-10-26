@@ -75,7 +75,9 @@ Private Service Connect is Google Cloud's mechanism for consuming a producer's s
 - Quota: up to **10 endpoints of each type per region per host project** (20 total).
 - A transit VPC cannot mix workspaces that use inbound PSC with workspaces that do not.
 
-**Public access.** For PSC workspaces, public access is allowed by default. Restrict it with private access settings (which registered endpoints may reach each workspace) and an [[IP Access Lists|IP access list]] rule, or the PSC access level settings.
+### Public access
+
+For PSC workspaces, public access is allowed by default. Restrict it with private access settings (which registered endpoints may reach each workspace) and an [[IP Access Lists|IP access list]] rule, or the PSC access level settings.
 
 ## How it works
 
@@ -161,12 +163,12 @@ In Terraform, the resources are `databricks_mws_vpc_endpoint`, `databricks_mws_p
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Endpoint sharing.** Share one workspace (General Access) endpoint across all workspaces that use a VPC, and one SCC relay endpoint for all classic compute from that VPC.
-> - **DNS consistency.** The workspace and data-plane hostnames must resolve to the same PSC endpoint. A mismatch can conflict with the private access settings policy and make cluster startup fail.
-> - **No internet by default.** With PSC, the compute VPC has no default path to the internet. If you control egress with a firewall, allow the URLs Databricks needs, or provide Cloud NAT or a private mirror for package repositories and the metastore.
-> - **Serverless.** Serverless compute does not use PSC to reach Google-managed services; it reaches Cloud Storage and BigQuery through Private Google Access. Outbound PSC from serverless (through network connectivity configurations) reaches your own resources behind an internal load balancer. See [[Serverless Network Security]].
-> - **Service Direct.** A separate inbound option exists for performance-intensive services, with its own setup guide.
-> - **Adding PSC later.** Use the update-workspace network configuration process; plan a maintenance window for DNS changes.
+> - **Endpoint sharing:** Share one workspace (General Access) endpoint across all workspaces that use a VPC, and one SCC relay endpoint for all classic compute from that VPC.
+> - **DNS consistency:** The workspace and data-plane hostnames must resolve to the same PSC endpoint. A mismatch can conflict with the private access settings policy and make cluster startup fail.
+> - **No internet by default:** With PSC, the compute VPC has no default path to the internet. If you control egress with a firewall, allow the URLs Databricks needs, or provide Cloud NAT or a private mirror for package repositories and the metastore.
+> - **Serverless:** Serverless compute does not use PSC to reach Google-managed services; it reaches Cloud Storage and BigQuery through Private Google Access. Outbound PSC from serverless (through network connectivity configurations) reaches your own resources behind an internal load balancer. See [[Serverless Network Security]].
+> - **Service Direct:** A separate inbound option exists for performance-intensive services, with its own setup guide.
+> - **Adding PSC later:** Use the update-workspace network configuration process; plan a maintenance window for DNS changes.
 
 ## Common misconceptions
 

@@ -35,19 +35,33 @@ tags:
 
 ## The story of this chapter
 
-**Era.** AWS was the first cloud Databricks ran on (see [[The Founding of Databricks]]). Databricks on AWS is sold by Databricks, either directly (credit card or contract) or through AWS Marketplace, where Databricks introduced a pay-as-you-go offering in 2022. The account console is at `accounts.cloud.databricks.com`. See [[Databricks on AWS Overview]].
+### Era
 
-**Getting started.** Express setup creates an account and a serverless workspace with only an email address. Serverless workspaces became generally available on AWS on January 29, 2026; they use serverless compute and Databricks-managed default storage, so they create nothing in your AWS account. Classic workspaces, which run compute in your account, are created with the AWS Quickstart (a CloudFormation stack), automated configuration, manual configuration, or the Account API and Terraform ([[Account Setup on AWS]]).
+AWS was the first cloud Databricks ran on (see [[The Founding of Databricks]]). Databricks on AWS is sold by Databricks, either directly (credit card or contract) or through AWS Marketplace, where Databricks introduced a pay-as-you-go offering in 2022. The account console is at `accounts.cloud.databricks.com`. See [[Databricks on AWS Overview]].
 
-**Classic building blocks.** A classic workspace is assembled from account-level configuration objects. A credential configuration holds the [[Cross-Account IAM Role]] that lets the control plane launch EC2 instances. A storage configuration holds the [[Workspace Storage Bucket]], an S3 bucket for workspace system data that should not hold production data. An optional network configuration places compute in a [[Customer-Managed VPC on AWS]] with at least two private subnets in different availability zones. [[AWS PrivateLink]] adds private front-end and back-end endpoints, controlled by private access settings, on the Enterprise plan.
+### Getting started
 
-**Data access.** The legacy pattern attached [[Instance Profiles]] to clusters, which gave every user of a cluster the same S3 access. [[Unity Catalog]] replaced it with storage credentials backed by self-assuming IAM roles and external locations ([[S3 Access via Unity Catalog]]). Since January 20, 2025, Databricks blocks storage credentials whose roles are not self-assuming. Tables already registered in AWS Glue can be governed in place through catalog federation ([[Hive Metastore Federation for AWS Glue]]).
+Express setup creates an account and a serverless workspace with only an email address. Serverless workspaces became generally available on AWS on January 29, 2026; they use serverless compute and Databricks-managed default storage, so they create nothing in your AWS account. Classic workspaces, which run compute in your account, are created with the AWS Quickstart (a CloudFormation stack), automated configuration, manual configuration, or the Account API and Terraform ([[Account Setup on AWS]]).
 
-**Cost and compute.** The Databricks charge (in DBUs) is billed by Databricks or through AWS Marketplace, while EC2, EBS, S3, and networking for classic compute appear on the AWS bill ([[AWS Marketplace and Billing]]). Instance choice, Arm-based Graviton types, fleet types, and spot with fallback are the main levers on classic cost ([[EC2 Instance Types and Graviton]]).
+### Classic building blocks
 
-**Security and compliance.** [[Customer-Managed Keys on AWS]] encrypt managed services, the workspace bucket, and EBS volumes with AWS KMS keys on the Enterprise tier. [[Databricks on AWS GovCloud]] is a separate environment in `us-gov-west-1` with FedRAMP High and DoD IL5 authorizations and the compliance security profile on every workspace.
+A classic workspace is assembled from account-level configuration objects. A credential configuration holds the [[Cross-Account IAM Role]] that lets the control plane launch EC2 instances. A storage configuration holds the [[Workspace Storage Bucket]], an S3 bucket for workspace system data that should not hold production data. An optional network configuration places compute in a [[Customer-Managed VPC on AWS]] with at least two private subnets in different availability zones. [[AWS PrivateLink]] adds private front-end and back-end endpoints, controlled by private access settings, on the Enterprise plan.
 
-**Next.** [[Chapter 13 - Databricks on Google Cloud]] covers the same concepts on Google Cloud, where Databricks is bought through Google Cloud Marketplace and authenticates with Google service accounts.
+### Data access
+
+The legacy pattern attached [[Instance Profiles]] to clusters, which gave every user of a cluster the same S3 access. [[Unity Catalog]] replaced it with storage credentials backed by self-assuming IAM roles and external locations ([[S3 Access via Unity Catalog]]). Since January 20, 2025, Databricks blocks storage credentials whose roles are not self-assuming. Tables already registered in AWS Glue can be governed in place through catalog federation ([[Hive Metastore Federation for AWS Glue]]).
+
+### Cost and compute
+
+The Databricks charge (in DBUs) is billed by Databricks or through AWS Marketplace, while EC2, EBS, S3, and networking for classic compute appear on the AWS bill ([[AWS Marketplace and Billing]]). Instance choice, Arm-based Graviton types, fleet types, and spot with fallback are the main levers on classic cost ([[EC2 Instance Types and Graviton]]).
+
+### Security and compliance
+
+[[Customer-Managed Keys on AWS]] encrypt managed services, the workspace bucket, and EBS volumes with AWS KMS keys on the Enterprise tier. [[Databricks on AWS GovCloud]] is a separate environment in `us-gov-west-1` with FedRAMP High and DoD IL5 authorizations and the compliance security profile on every workspace.
+
+### Next
+
+[[Chapter 13 - Databricks on Google Cloud]] covers the same concepts on Google Cloud, where Databricks is bought through Google Cloud Marketplace and authenticates with Google service accounts.
 
 ## Notes in reading order
 

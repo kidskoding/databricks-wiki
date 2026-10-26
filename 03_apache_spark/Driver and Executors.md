@@ -78,8 +78,8 @@ Running one program on many machines requires a coordinator that plans, divides 
 
 Key facts:
 
-- **The driver is a single point of failure.** If it crashes (often from running out of memory), the whole application fails.
-- **Executors are disposable.** If one dies, the driver reschedules its tasks elsewhere and rebuilds lost data from lineage ([[RDDs]]).
+- **The driver is a single point of failure:** If it crashes (often from running out of memory), the whole application fails.
+- **Executors are disposable:** If one dies, the driver reschedules its tasks elsewhere and rebuilds lost data from lineage ([[RDDs]]).
 - **Data flows between executors, not through the driver,** except when you call an action that returns rows to the driver (`collect`, `toPandas`, `show`).
 
 ## How it works
@@ -130,7 +130,7 @@ display(summary)    # or summary.show()
 > On Databricks you choose a cluster size, not processes. Rules of thumb for a small team:
 > - **Start with [[Serverless Compute]]** for notebooks and jobs. Databricks sizes the driver and executors for you, and you pay only while it runs.
 > - **On classic compute, a single-node cluster** (driver only, no workers) is sufficient for learning and for small datasets.
-> - **Add workers for parallelism, not for driver memory.** If the notebook crashes on `toPandas()`, the driver is too small or the result is too big; more workers will not help.
+> - **Add workers for parallelism, not for driver memory:** If the notebook crashes on `toPandas()`, the driver is too small or the result is too big; more workers will not help.
 > - **Turn on [[Auto Termination|auto termination]]** so idle clusters stop accruing charges.
 
 > [!bridge]- In Databricks today
@@ -152,12 +152,12 @@ Driver and worker nodes are cloud [[Virtual Machine|virtual machines]], so insta
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Driver memory.** `spark.driver.memory` and `spark.driver.maxResultSize` (default 1g in open source) limit what actions can return. A "Total size of serialized results is bigger than spark.driver.maxResultSize" error means you are collecting too much.
-> - **Executor memory layout.** Executor heap is split into reserved memory, user memory, and a unified Spark pool (`spark.memory.fraction`, default 0.6) shared by execution (shuffles, joins, sorts) and storage (cache). Overhead memory outside the heap covers Python workers and native buffers; PySpark-heavy jobs often need more of it.
-> - **Python processes.** In PySpark, executors start Python worker processes for Python UDFs and pandas UDFs. Data crosses JVM-Python boundaries via Arrow.
-> - **Dynamic allocation.** Open-source Spark can add and remove executors with `spark.dynamicAllocation.enabled` (needs an external shuffle service or shuffle tracking). Databricks autoscaling serves the same purpose at the node level.
-> - **Many small vs few large executors.** Very large executors suffer longer GC pauses; very small ones waste memory on overhead and broadcasts. Databricks' default of one executor per worker using all its cores avoids most of this tuning.
-> - **Spark Connect changes the driver's role.** With Connect, your client process is no longer the driver. The driver runs on the server, so client crashes do not kill the cluster and many clients can share one server.
+> - **Driver memory:** `spark.driver.memory` and `spark.driver.maxResultSize` (default 1g in open source) limit what actions can return. A "Total size of serialized results is bigger than spark.driver.maxResultSize" error means you are collecting too much.
+> - **Executor memory layout:** Executor heap is split into reserved memory, user memory, and a unified Spark pool (`spark.memory.fraction`, default 0.6) shared by execution (shuffles, joins, sorts) and storage (cache). Overhead memory outside the heap covers Python workers and native buffers; PySpark-heavy jobs often need more of it.
+> - **Python processes:** In PySpark, executors start Python worker processes for Python UDFs and pandas UDFs. Data crosses JVM-Python boundaries via Arrow.
+> - **Dynamic allocation:** Open-source Spark can add and remove executors with `spark.dynamicAllocation.enabled` (needs an external shuffle service or shuffle tracking). Databricks autoscaling serves the same purpose at the node level.
+> - **Many small vs few large executors:** Very large executors suffer longer GC pauses; very small ones waste memory on overhead and broadcasts. Databricks' default of one executor per worker using all its cores avoids most of this tuning.
+> - **Spark Connect changes the driver's role:** With Connect, your client process is no longer the driver. The driver runs on the server, so client crashes do not kill the cluster and many clients can share one server.
 
 ## Common misconceptions
 

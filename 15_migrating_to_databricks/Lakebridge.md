@@ -254,12 +254,12 @@ The job runs on serverless compute by default. A classic cluster must run Databr
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Pluggable transpilers.** Lakebridge talks to transpilers over the Language Server Protocol. Each transpiler sits in its own folder with a `config.yml` that lists its dialects and launch command. Only one transpiler is used at a time. Third-party transpilers can be installed manually.
-> - **Morpheus guarantee model.** No errors and no warnings means equivalent results, except that some statistical functions may use different algorithms and row order may differ without `ORDER BY`. A warning means equivalence could not be confirmed; an error means it cannot be guaranteed.
-> - **Analyzer thresholds.** Complexity rises with loops, statement counts, `PIVOT`, and XML usage. If more than half of the objects score HIGH or VERY HIGH, plan at least two manual review passes.
-> - **Switch limits.** Files over the `token_count_threshold` are skipped as "Not converted". `max_fix_attempts` controls automatic correction. Notebooks over 10 MB cannot be exported, and output paths must start with `/Workspace/`.
-> - **Reconcile tuning.** `column_mapping` handles renamed columns, `drop_columns` excludes audit columns, and custom transformations normalize types (the FAQ lists examples for Oracle numbers and Snowflake arrays and timestamps).
-> - **Agentic code converter.** Separately from the CLI, Databricks offers an in-workspace agentic code converter (Beta in October 2026). Its docs list T-SQL, Snowflake, Redshift, Oracle, BigQuery, and Teradata as sources and a limit of 300 files per batch. July 2026 release notes call it the Lakebridge Agentic Converter.
+> - **Pluggable transpilers:** Lakebridge talks to transpilers over the Language Server Protocol. Each transpiler sits in its own folder with a `config.yml` that lists its dialects and launch command. Only one transpiler is used at a time. Third-party transpilers can be installed manually.
+> - **Morpheus guarantee model:** No errors and no warnings means equivalent results, except that some statistical functions may use different algorithms and row order may differ without `ORDER BY`. A warning means equivalence could not be confirmed; an error means it cannot be guaranteed.
+> - **Analyzer thresholds:** Complexity rises with loops, statement counts, `PIVOT`, and XML usage. If more than half of the objects score HIGH or VERY HIGH, plan at least two manual review passes.
+> - **Switch limits:** Files over the `token_count_threshold` are skipped as "Not converted". `max_fix_attempts` controls automatic correction. Notebooks over 10 MB cannot be exported, and output paths must start with `/Workspace/`.
+> - **Reconcile tuning:** `column_mapping` handles renamed columns, `drop_columns` excludes audit columns, and custom transformations normalize types (the FAQ lists examples for Oracle numbers and Snowflake arrays and timestamps).
+> - **Agentic code converter:** Separately from the CLI, Databricks offers an in-workspace agentic code converter (Beta in October 2026). Its docs list T-SQL, Snowflake, Redshift, Oracle, BigQuery, and Teradata as sources and a limit of 300 files per batch. July 2026 release notes call it the Lakebridge Agentic Converter.
 
 ## Common misconceptions
 

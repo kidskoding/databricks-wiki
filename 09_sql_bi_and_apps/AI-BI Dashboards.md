@@ -186,12 +186,12 @@ Dashboards cache dataset results for up to 24 hours. A dashboard can therefore s
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Embedding for external users.** Only published dashboards can be embedded. Workspace admins must approve the external domains. For users outside your organization, Databricks recommends individual data permissions with a [[Users Groups and Service Principals|service principal]]. Embedding requires third-party cookies in the viewer's browser.
-> - **Local metric views.** A metric view defined inside a dashboard (a local metric view) became generally available in August 2026. It is separate from a Unity Catalog metric view and is not reusable by other tools.
-> - **Dashboards as code.** The dashboard REST API still uses the `lakeview` path (`/api/2.0/lakeview/dashboards`). Dashboards can be exported, stored in [[Git Folders and Workspace Files|Git folders]], and deployed with [[Declarative Automation Bundles]].
-> - **Field references in titles.** Typing `@` in a widget title or description inserts a field reference that shows a formatted value, such as a sum, which responds to filters.
-> - **Filters that skip widgets.** A widget can be configured to ignore selected dashboard filters while the filters still apply to the rest of the page.
-> - **Sizing for concurrency.** Many viewers opening a dashboard at the same time produce concurrent queries on the warehouse. Use serverless and see [[SQL Warehouses]] for scaling.
+> - **Embedding for external users:** Only published dashboards can be embedded. Workspace admins must approve the external domains. For users outside your organization, Databricks recommends individual data permissions with a [[Users Groups and Service Principals|service principal]]. Embedding requires third-party cookies in the viewer's browser.
+> - **Local metric views:** A metric view defined inside a dashboard (a local metric view) became generally available in August 2026. It is separate from a Unity Catalog metric view and is not reusable by other tools.
+> - **Dashboards as code:** The dashboard REST API still uses the `lakeview` path (`/api/2.0/lakeview/dashboards`). Dashboards can be exported, stored in [[Git Folders and Workspace Files|Git folders]], and deployed with [[Declarative Automation Bundles]].
+> - **Field references in titles:** Typing `@` in a widget title or description inserts a field reference that shows a formatted value, such as a sum, which responds to filters.
+> - **Filters that skip widgets:** A widget can be configured to ignore selected dashboard filters while the filters still apply to the rest of the page.
+> - **Sizing for concurrency:** Many viewers opening a dashboard at the same time produce concurrent queries on the warehouse. Use serverless and see [[SQL Warehouses]] for scaling.
 
 ## Common misconceptions
 

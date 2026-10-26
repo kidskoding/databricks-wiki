@@ -130,9 +130,9 @@ customers = spark.read.table("main.crm.customers")
 
 > [!smallbiz] Small-business considerations
 > These problems explain why a small company should not adopt an on-premises (company-owned hardware) [[The Three Vs of Big Data|big data]] stack. The current alternative removes the main cost drivers:
-> - **No idle hardware.** Compute starts for a job and stops afterward.
-> - **No component integration.** The platform provider maintains compatible runtime versions.
-> - **No separate SQL, storage, and governance products.** One platform covers them.
+> - **No idle hardware:** Compute starts for a job and stops afterward.
+> - **No component integration:** The platform provider maintains compatible runtime versions.
+> - **No separate SQL, storage, and governance products:** One platform covers them.
 >
 > Evaluate cost by usage, not by hardware purchase. See [[How Databricks Pricing Works]] and [[Total Cost of Ownership]].
 
@@ -165,11 +165,11 @@ customers = spark.read.table("main.crm.customers")
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Data locality stopped paying off.** Hadoop co-located data and computation because network bandwidth was scarce. Faster networks and object storage made remote reads acceptable, which removed the main reason to couple storage and compute.
-> - **Cost of replication.** Triple replication on HDFS means storing three copies of every byte on purchased disks. Cloud object storage provides durability as a service billed by capacity used.
-> - **Upgrade risk.** Upgrading a distribution changed many component versions at once, so organizations delayed upgrades and ran outdated software. Managed runtimes with long-term-support versions reduce this risk.
-> - **Spark inherited part of the stack.** Early Spark ran on YARN and read HDFS, so Spark first replaced only the processing layer. Cloud object storage replaced HDFS later, and Delta Lake and Unity Catalog replaced the remaining table and catalog functions.
-> - **Market signal.** Cloudera and Hortonworks announced an all-stock merger in October 2018 and completed it in January 2019. See [[Cloudera and Hortonworks]].
+> - **Data locality stopped paying off:** Hadoop co-located data and computation because network bandwidth was scarce. Faster networks and object storage made remote reads acceptable, which removed the main reason to couple storage and compute.
+> - **Cost of replication:** Triple replication on HDFS means storing three copies of every byte on purchased disks. Cloud object storage provides durability as a service billed by capacity used.
+> - **Upgrade risk:** Upgrading a distribution changed many component versions at once, so organizations delayed upgrades and ran outdated software. Managed runtimes with long-term-support versions reduce this risk.
+> - **Spark inherited part of the stack:** Early Spark ran on YARN and read HDFS, so Spark first replaced only the processing layer. Cloud object storage replaced HDFS later, and Delta Lake and Unity Catalog replaced the remaining table and catalog functions.
+> - **Market signal:** Cloudera and Hortonworks announced an all-stock merger in October 2018 and completed it in January 2019. See [[Cloudera and Hortonworks]].
 
 ## Common misconceptions
 

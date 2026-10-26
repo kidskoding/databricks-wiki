@@ -73,8 +73,8 @@ Older Databricks workspaces exposed this bucket to users as the **DBFS root** (`
 
 Rules from the docs:
 
-- **Do not delete or modify the workspace storage.** If it is deleted, the workspace cannot be recovered.
-- **Do not store production data in the DBFS root.** Use Unity Catalog managed or external storage in separate buckets.
+- **Do not delete or modify the workspace storage:** If it is deleted, the workspace cannot be recovered.
+- **Do not store production data in the DBFS root:** Use Unity Catalog managed or external storage in separate buckets.
 
 ## How it works
 
@@ -137,11 +137,11 @@ databricks account storage create --json '{
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Workspace catalog.** If the storage configuration includes an optional IAM role ARN, Databricks creates a workspace catalog together with the workspace, using this storage.
-> - **Bring your own policy.** Newer docs describe creating the bucket first and then assigning it to a workspace, so you keep full control of the bucket policy while the workspace retains access.
-> - **DBFS root as an external location (legacy).** Unity Catalog can register the DBFS root as an external location to govern old data during migration. Treat this as a migration aid, not a target design.
-> - **Encryption.** A workspace storage key covers this bucket and, optionally, EBS volumes of classic compute (`reuse_key_for_cluster_volumes`). It does not cover DBFS mounts of other buckets.
-> - **Metastore storage is separate.** Unity Catalog metastore-level managed storage, if used, is a different bucket from the workspace bucket.
+> - **Workspace catalog:** If the storage configuration includes an optional IAM role ARN, Databricks creates a workspace catalog together with the workspace, using this storage.
+> - **Bring your own policy:** Newer docs describe creating the bucket first and then assigning it to a workspace, so you keep full control of the bucket policy while the workspace retains access.
+> - **DBFS root as an external location (legacy):** Unity Catalog can register the DBFS root as an external location to govern old data during migration. Treat this as a migration aid, not a target design.
+> - **Encryption:** A workspace storage key covers this bucket and, optionally, EBS volumes of classic compute (`reuse_key_for_cluster_volumes`). It does not cover DBFS mounts of other buckets.
+> - **Metastore storage is separate:** Unity Catalog metastore-level managed storage, if used, is a different bucket from the workspace bucket.
 
 ## Common misconceptions
 

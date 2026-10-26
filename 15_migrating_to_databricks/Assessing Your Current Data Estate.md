@@ -206,12 +206,12 @@ Add value, effort, and decision columns to the inventory and sort:
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Prioritize by usage, not size.** A large log table read once a quarter is a cheap file export. A small lookup table joined by every report is wave-1 critical.
-> - **Build the dependency graph.** Use the Analyzer's interdependency output, or parse view and procedure definitions on the source, to find objects that must move together.
-> - **Classify sensitivity early.** Tag [[PII]] columns in the inventory so that [[Row Filters and Column Masks|masks]] and [[Data Classification|classification]] apply as soon as the data lands.
-> - **Record freshness SLAs.** The time each report needs its data decides between a continuous change feed and a nightly batch load.
-> - **Keep the inventory in Databricks.** Load the spreadsheet as a table and track wave status on a dashboard.
-> - **Treat Profiler estimates as a starting point.** The Profiler is Experimental as of October 2026. Cross-check sizing against [[How Databricks Pricing Works]].
+> - **Prioritize by usage, not size:** A large log table read once a quarter is a cheap file export. A small lookup table joined by every report is wave-1 critical.
+> - **Build the dependency graph:** Use the Analyzer's interdependency output, or parse view and procedure definitions on the source, to find objects that must move together.
+> - **Classify sensitivity early:** Tag [[PII]] columns in the inventory so that [[Row Filters and Column Masks|masks]] and [[Data Classification|classification]] apply as soon as the data lands.
+> - **Record freshness SLAs:** The time each report needs its data decides between a continuous change feed and a nightly batch load.
+> - **Keep the inventory in Databricks:** Load the spreadsheet as a table and track wave status on a dashboard.
+> - **Treat Profiler estimates as a starting point:** The Profiler is Experimental as of October 2026. Cross-check sizing against [[How Databricks Pricing Works]].
 
 ## Common misconceptions
 

@@ -138,9 +138,9 @@ flowchart TD
   C -.Azure.-> AZ
 ```
 
-- **AWS and Google Cloud.** Databricks bills DBUs (directly or through a cloud marketplace). The cloud provider bills machines, storage, and network separately.
-- **Azure.** Microsoft bills Azure Databricks directly under your Azure subscription, so Databricks and Azure resource charges appear on the same Azure invoice as separate items.
-- **Serverless.** Databricks manages the machines, so the virtual-machine charges on the cloud bill largely disappear. Storage and [[Egress|egress]] charges remain.
+- **AWS and Google Cloud:** Databricks bills DBUs (directly or through a cloud marketplace). The cloud provider bills machines, storage, and network separately.
+- **Azure:** Microsoft bills Azure Databricks directly under your Azure subscription, so Databricks and Azure resource charges appear on the same Azure invoice as separate items.
+- **Serverless:** Databricks manages the machines, so the virtual-machine charges on the cloud bill largely disappear. Storage and [[Egress|egress]] charges remain.
 
 ## How it works
 
@@ -204,10 +204,10 @@ Account admins can create **budgets** with monthly thresholds and email alerts, 
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **List price versus contract price.** `system.billing.list_prices` contains list prices with start and end times. Negotiated discounts are not included, so budgets and system-table cost queries show list-price amounts.
-> - **Attributing serverless spend.** Serverless compute has no cluster to tag. Apply **serverless usage policies**; their tags propagate to the `custom_tags` column of `system.billing.usage`. See [[Tagging for Chargeback]].
-> - **SQL warehouses.** DBU consumption increases with warehouse size and running time, so size and auto-stop settings drive cost. See [[SQL Warehouses]].
-> - **Genie budgets.** Genie usage has its own budget configuration. The SQL warehouse compute that runs Genie queries is billed separately.
+> - **List price versus contract price:** `system.billing.list_prices` contains list prices with start and end times. Negotiated discounts are not included, so budgets and system-table cost queries show list-price amounts.
+> - **Attributing serverless spend:** Serverless compute has no cluster to tag. Apply **serverless usage policies**; their tags propagate to the `custom_tags` column of `system.billing.usage`. See [[Tagging for Chargeback]].
+> - **SQL warehouses:** DBU consumption increases with warehouse size and running time, so size and auto-stop settings drive cost. See [[SQL Warehouses]].
+> - **Genie budgets:** Genie usage has its own budget configuration. The SQL warehouse compute that runs Genie queries is billed separately.
 
 ## Common misconceptions
 

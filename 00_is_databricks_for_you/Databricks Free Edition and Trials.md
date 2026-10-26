@@ -130,11 +130,11 @@ flowchart TD
 
 Recommended 14-day evaluation plan:
 
-1. **Day 1.** Sign up, upload one real export, and confirm that you can query it.
-2. **Days 2–5.** Rebuild the most labor-intensive report as a scheduled job and a dashboard.
-3. **Days 6–10.** Let the job run on its schedule. Share the dashboard with the owner in Genie One.
-4. **Days 11–13.** Query `system.billing.usage` and update the estimate in [[Estimating Costs for a Small Business]].
-5. **Day 14.** Decide whether to add payment, extend the proof of concept, or stop.
+1. **Day 1:** Sign up, upload one real export, and confirm that you can query it.
+2. **Days 2–5:** Rebuild the most labor-intensive report as a scheduled job and a dashboard.
+3. **Days 6–10:** Let the job run on its schedule. Share the dashboard with the owner in Genie One.
+4. **Days 11–13:** Query `system.billing.usage` and update the estimate in [[Estimating Costs for a Small Business]].
+5. **Day 14:** Decide whether to add payment, extend the proof of concept, or stop.
 
 ## Small-business considerations
 
@@ -155,10 +155,10 @@ Recommended 14-day evaluation plan:
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Serverless limitations apply.** Because Free Edition is serverless-only, general serverless limitations also apply, including no Spark UI, limited DBFS access, and a maximum run duration.
-> - **Status.** Free Edition launched in Public Preview in June 2025. Check the current documentation for its status and quotas.
-> - **Moving to a paid account.** Keep notebooks in [[Git Folders and Workspace Files|Git folders]] so that work can move from a Free Edition account to a paid workspace.
-> - **Trial usage in system tables.** Trial usage is metered like paid usage, so `system.billing.usage` previews the production bill.
+> - **Serverless limitations apply:** Because Free Edition is serverless-only, general serverless limitations also apply, including no Spark UI, limited DBFS access, and a maximum run duration.
+> - **Status:** Free Edition launched in Public Preview in June 2025. Check the current documentation for its status and quotas.
+> - **Moving to a paid account:** Keep notebooks in [[Git Folders and Workspace Files|Git folders]] so that work can move from a Free Edition account to a paid workspace.
+> - **Trial usage in system tables:** Trial usage is metered like paid usage, so `system.billing.usage` previews the production bill.
 
 ## Common misconceptions
 

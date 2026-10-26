@@ -62,9 +62,9 @@ Mastery: `INPUT[inlineSelect(option(new), option(learning), option(solid)):maste
 
 Three requirements drove the data lake pattern:
 
-1. **Variety.** Much new data is semi-structured or unstructured (see [[Structured vs Unstructured Data]]). Loading it into warehouse tables requires defining its structure in advance and discarding anything that does not fit.
-2. **Volume.** Warehouse storage is priced for curated data, which makes retaining years of raw logs costly. See [[The Three Vs of Big Data]].
-3. **New users.** Data scientists need raw, detailed data for [[Machine Learning Basics|machine learning]], not pre-aggregated summaries.
+1. **Variety:** Much new data is semi-structured or unstructured (see [[Structured vs Unstructured Data]]). Loading it into warehouse tables requires defining its structure in advance and discarding anything that does not fit.
+2. **Volume:** Warehouse storage is priced for curated data, which makes retaining years of raw logs costly. See [[The Three Vs of Big Data]].
+3. **New users:** Data scientists need raw, detailed data for [[Machine Learning Basics|machine learning]], not pre-aggregated summaries.
 
 Early data lakes ran on [[HDFS]] in Hadoop clusters. Most later moved to cloud [[Object Storage|object storage]] such as [[Amazon S3]], [[Azure Data Lake Storage]], and [[Google Cloud Storage]], which costs less and does not require a running cluster to retain data.
 
@@ -149,11 +149,11 @@ This code has no transactional guarantees. If the `overwrite` fails partway, rea
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Directory-as-table.** Hive established the convention that a folder of files is a table and subfolders like `order_date=2026-10-24` are partitions, with the [[Hive Metastore]] recording the mapping. Every lake engine inherited it, including its weaknesses: listing millions of files is slow, and the metastore and the files can disagree.
-> - **Small files.** Streaming and frequent appends create thousands of tiny files, which severely slows reads. Lakes needed periodic compaction jobs; Delta automates this with [[OPTIMIZE and VACUUM]] and auto-compaction.
-> - **No isolation.** Without a transaction log, readers can observe partial writes, and concurrent writers can corrupt a table. This is the core technical gap the [[Delta Transaction Log]] closes.
-> - **Zones.** Lakes were often organized as landing/raw, cleansed, and curated zones. The [[Medallion Architecture]] (bronze, silver, gold) is the same idea on reliable tables.
-> - **Lake plus warehouse.** Because lakes were unreliable for BI, companies copied a curated subset into a warehouse, creating [[The Two-Tier Architecture Problem]].
+> - **Directory-as-table:** Hive established the convention that a folder of files is a table and subfolders like `order_date=2026-10-24` are partitions, with the [[Hive Metastore]] recording the mapping. Every lake engine inherited it, including its weaknesses: listing millions of files is slow, and the metastore and the files can disagree.
+> - **Small files:** Streaming and frequent appends create thousands of tiny files, which severely slows reads. Lakes needed periodic compaction jobs; Delta automates this with [[OPTIMIZE and VACUUM]] and auto-compaction.
+> - **No isolation:** Without a transaction log, readers can observe partial writes, and concurrent writers can corrupt a table. This is the core technical gap the [[Delta Transaction Log]] closes.
+> - **Zones:** Lakes were often organized as landing/raw, cleansed, and curated zones. The [[Medallion Architecture]] (bronze, silver, gold) is the same idea on reliable tables.
+> - **Lake plus warehouse:** Because lakes were unreliable for BI, companies copied a curated subset into a warehouse, creating [[The Two-Tier Architecture Problem]].
 
 ## Common misconceptions
 

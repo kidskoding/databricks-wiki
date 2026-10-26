@@ -167,12 +167,12 @@ Column tags do **not** inherit from the parent table; tag the column itself. [[D
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Precedence.** Policies attached higher up (catalog) apply to everything below. Table owners cannot override, modify, or remove them. That is the main governance advantage over table-level filters.
-> - **Design tags to be unambiguous.** If several policies could match the same column, the outcome gets hard to reason about. Keep tag values mutually exclusive so each column matches one mask.
-> - **Secure by default with control tags.** The docs describe a pattern where new tables get a control tag that denies or masks access until someone reviews and re-tags them. It pairs well with [[Data Classification]].
-> - **Multi-domain masking.** For sensitivity tiers (public, internal, confidential, restricted) define one tag with ordered values and a mask function per tier; the docs have a worked example.
-> - **Performance.** Policy UDFs run per row or value, like table-level ones. Keep them simple, and use `USING COLUMNS` to pass in only what the function needs.
-> - **Audit.** Policy creation and changes appear in the [[Audit Logs]] under the `unityCatalog` service, so you can alert on someone weakening a policy.
+> - **Precedence:** Policies attached higher up (catalog) apply to everything below. Table owners cannot override, modify, or remove them. That is the main governance advantage over table-level filters.
+> - **Design tags to be unambiguous:** If several policies could match the same column, the outcome gets hard to reason about. Keep tag values mutually exclusive so each column matches one mask.
+> - **Secure by default with control tags:** The docs describe a pattern where new tables get a control tag that denies or masks access until someone reviews and re-tags them. It pairs well with [[Data Classification]].
+> - **Multi-domain masking:** For sensitivity tiers (public, internal, confidential, restricted) define one tag with ordered values and a mask function per tier; the docs have a worked example.
+> - **Performance:** Policy UDFs run per row or value, like table-level ones. Keep them simple, and use `USING COLUMNS` to pass in only what the function needs.
+> - **Audit:** Policy creation and changes appear in the [[Audit Logs]] under the `unityCatalog` service, so you can alert on someone weakening a policy.
 
 ## Common misconceptions
 

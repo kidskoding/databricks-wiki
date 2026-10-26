@@ -169,9 +169,9 @@ In [[Lakeflow Spark Declarative Pipelines]], the same three steps become a strea
 > [!smallbiz] Small-business considerations
 > Use the pattern from the first table, at small scale:
 > - **Three schemas** (`bronze`, `silver`, `gold`) in one catalog are enough for most teams.
-> - **Grant analysts and BI tools access to gold only.** This keeps reports on agreed definitions.
-> - **Do not over-build.** A shop with one data source may need one silver and two gold tables. Add tables when a report requires them.
-> - **Keep bronze.** Raw history allows you to fix a cleaning mistake months later without asking the source system for old data, which many [[SaaS PaaS and IaaS|SaaS]] [[APIs]] do not keep.
+> - **Grant analysts and BI tools access to gold only:** This keeps reports on agreed definitions.
+> - **Do not over-build:** A shop with one data source may need one silver and two gold tables. Add tables when a report requires them.
+> - **Keep bronze:** Raw history allows you to fix a cleaning mistake months later without asking the source system for old data, which many [[SaaS PaaS and IaaS|SaaS]] [[APIs]] do not keep.
 >
 > Each layer is storage plus the compute that refreshes it. Incremental processing (only new records) keeps that compute small. See [[How Databricks Pricing Works]] for the meters.
 
@@ -183,12 +183,12 @@ In [[Lakeflow Spark Declarative Pipelines]], the same three steps become a strea
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **The layers are logical, not physical.** Layers are a naming and responsibility convention. They can be schemas, catalogs (`bronze`, `silver`, `gold` catalogs per environment), or a mix. Choose based on how you grant access.
-> - **Bronze schema strategy.** Databricks recommends a flexible bronze schema (strings, `VARIANT`, or binary) to tolerate source changes. Typed columns are applied in silver, where [[Schema Enforcement and Evolution|enforcement]] belongs.
-> - **Incremental by default.** Streaming into bronze and incremental refresh of [[Materialized Views]] for silver and gold avoid reprocessing history. Silver tables that change in place are typically maintained with [[MERGE and Upserts|MERGE]] or `AUTO CDC`, and downstream consumers read changes through the [[Change Data Feed]].
-> - **Quality gates.** Attach [[Expectations and Data Quality|expectations]] to silver to drop, quarantine, or fail on bad records, and track the metrics over time.
-> - **Gold and dimensional modeling.** Gold often uses a [[Star Schema]] of fact and dimension tables, or [[Metric Views]] that define KPIs once for all BI tools.
-> - **Not a mandate for three copies of everything.** Some gold outputs can be views over silver. Materialize only when query cost or latency requires it.
+> - **The layers are logical, not physical:** Layers are a naming and responsibility convention. They can be schemas, catalogs (`bronze`, `silver`, `gold` catalogs per environment), or a mix. Choose based on how you grant access.
+> - **Bronze schema strategy:** Databricks recommends a flexible bronze schema (strings, `VARIANT`, or binary) to tolerate source changes. Typed columns are applied in silver, where [[Schema Enforcement and Evolution|enforcement]] belongs.
+> - **Incremental by default:** Streaming into bronze and incremental refresh of [[Materialized Views]] for silver and gold avoid reprocessing history. Silver tables that change in place are typically maintained with [[MERGE and Upserts|MERGE]] or `AUTO CDC`, and downstream consumers read changes through the [[Change Data Feed]].
+> - **Quality gates:** Attach [[Expectations and Data Quality|expectations]] to silver to drop, quarantine, or fail on bad records, and track the metrics over time.
+> - **Gold and dimensional modeling:** Gold often uses a [[Star Schema]] of fact and dimension tables, or [[Metric Views]] that define KPIs once for all BI tools.
+> - **Not a mandate for three copies of everything:** Some gold outputs can be views over silver. Materialize only when query cost or latency requires it.
 
 ## Common misconceptions
 

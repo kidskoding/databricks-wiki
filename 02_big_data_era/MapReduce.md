@@ -223,11 +223,11 @@ ORDER BY n DESC;
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Disk between steps.** Map output is written to local disk and fetched by reducers over the network. Reduce output is written to HDFS with replication. A ten-job pipeline writes and rereads its data ten times, which makes multi-step and iterative workloads, such as machine learning, slow.
-> - **Partitioner.** A partitioner assigns each key to a reduce task, by default with a hash of the key. A key with far more values than others produces one oversized reduce task, the original form of [[Data Skew]].
-> - **Joins.** A reduce-side join tags records from both inputs in the map phase and matches them in the reduce phase. A map-side join loads the smaller input into each mapper's memory, the precursor of the [[Broadcast Join]].
-> - **Task startup cost.** Each task ran in its own [[JVM]] process, and JVM startup added seconds per task. Spark's long-running executors remove this overhead.
-> - **Successors.** DAG engines, and then Spark's in-memory [[RDDs]], generalized MapReduce while keeping the map, shuffle, and reduce structure underneath.
+> - **Disk between steps:** Map output is written to local disk and fetched by reducers over the network. Reduce output is written to HDFS with replication. A ten-job pipeline writes and rereads its data ten times, which makes multi-step and iterative workloads, such as machine learning, slow.
+> - **Partitioner:** A partitioner assigns each key to a reduce task, by default with a hash of the key. A key with far more values than others produces one oversized reduce task, the original form of [[Data Skew]].
+> - **Joins:** A reduce-side join tags records from both inputs in the map phase and matches them in the reduce phase. A map-side join loads the smaller input into each mapper's memory, the precursor of the [[Broadcast Join]].
+> - **Task startup cost:** Each task ran in its own [[JVM]] process, and JVM startup added seconds per task. Spark's long-running executors remove this overhead.
+> - **Successors:** DAG engines, and then Spark's in-memory [[RDDs]], generalized MapReduce while keeping the map, shuffle, and reduce structure underneath.
 
 ## Common misconceptions
 

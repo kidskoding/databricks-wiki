@@ -83,10 +83,10 @@ Snowflake's documentation describes a three-layer architecture that is a hybrid 
 
 Key characteristics:
 
-- **Minimal tuning.** There are no user-managed indexes or distribution keys. Snowflake keeps value-range metadata per micro-partition and prunes automatically.
-- **Elastic, isolated compute.** Separate warehouses per team; auto-suspend and auto-resume; multi-cluster warehouses for concurrency.
-- **Billing by credits.** Each warehouse size consumes credits per hour while running, and each size step roughly doubles both compute power and credit rate. Storage is billed separately. See Snowflake's pricing documentation for rates.
-- **Data sharing.** Snowflake accounts can share live data with each other without copying it.
+- **Minimal tuning:** There are no user-managed indexes or distribution keys. Snowflake keeps value-range metadata per micro-partition and prunes automatically.
+- **Elastic, isolated compute:** Separate warehouses per team; auto-suspend and auto-resume; multi-cluster warehouses for concurrency.
+- **Billing by credits:** Each warehouse size consumes credits per hour while running, and each size step roughly doubles both compute power and credit rate. Storage is billed separately. See Snowflake's pricing documentation for rates.
+- **Data sharing:** Snowflake accounts can share live data with each other without copying it.
 
 Snowflake has expanded beyond SQL warehousing. Its documentation covers Apache Iceberg tables stored in customer-managed cloud storage, Snowflake Open Catalog for Iceberg, hybrid tables for transactional workloads, and programmatic interfaces for Python and other languages. Snowflake and Databricks now compete across most of these workloads.
 
@@ -153,11 +153,11 @@ This pattern, with data loaded into one platform and read by many independent co
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Micro-partitions vs Delta files.** Both are immutable columnar chunks with per-column statistics used for pruning. The difference is openness: Delta files are Parquet in your bucket, readable by any engine; standard Snowflake tables are readable only through Snowflake.
+> - **Micro-partitions vs Delta files:** Both are immutable columnar chunks with per-column statistics used for pruning. The difference is openness: Delta files are Parquet in your bucket, readable by any engine; standard Snowflake tables are readable only through Snowflake.
 > - **Clustering keys** in Snowflake (with Automatic Clustering, a Snowflake service that reclusters clustered tables in the background and consumes credits) play the role [[Liquid Clustering]] plays in Delta.
 > - **Time travel and zero-copy cloning** are available on both platforms. A Snowflake zero-copy clone initially shares the underlying storage of its source object. See [[Time Travel]] and [[Zero-Copy]].
-> - **Iceberg as common ground.** Both vendors support Apache Iceberg, so a table written by one engine can be read by another. Which catalog owns the table (a Snowflake catalog or Unity Catalog) becomes the main architectural decision. See [[Open Table Formats]] and [[Delta UniForm]].
-> - **Cost models differ in shape.** Snowflake bills credits for the time each warehouse runs; Databricks bills [[DBUs]] per compute-second. Neither is cheaper in general; workload shape decides. See [[How Databricks Pricing Works]].
+> - **Iceberg as common ground:** Both vendors support Apache Iceberg, so a table written by one engine can be read by another. Which catalog owns the table (a Snowflake catalog or Unity Catalog) becomes the main architectural decision. See [[Open Table Formats]] and [[Delta UniForm]].
+> - **Cost models differ in shape:** Snowflake bills credits for the time each warehouse runs; Databricks bills [[DBUs]] per compute-second. Neither is cheaper in general; workload shape decides. See [[How Databricks Pricing Works]].
 
 ## Common misconceptions
 

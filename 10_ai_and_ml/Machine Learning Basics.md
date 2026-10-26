@@ -121,11 +121,11 @@ flowchart LR
 
 Each stage maps to a note in this chapter:
 
-1. **Prepare features.** Turn raw tables into model inputs. See [[Feature Engineering and Feature Store]].
-2. **Train and track.** Train in a [[Notebooks|notebook]] on [[Databricks Runtime]] for Machine Learning, which preinstalls libraries such as scikit-learn, XGBoost, PyTorch, and [[MLflow]]. Every run is logged. See [[Experiment Tracking]], or let [[AutoML]] run the trials.
-3. **Register.** Save the chosen model as a versioned object in Unity Catalog. See [[Models in Unity Catalog]].
-4. **Deploy.** Score a table on a schedule with a [[Lakeflow Jobs|job]], or expose a [[REST]] endpoint with [[Model Serving]].
-5. **Monitor.** Watch input and prediction tables for drift. See [[Data Quality Monitoring]].
+1. **Prepare features:** Turn raw tables into model inputs. See [[Feature Engineering and Feature Store]].
+2. **Train and track:** Train in a [[Notebooks|notebook]] on [[Databricks Runtime]] for Machine Learning, which preinstalls libraries such as scikit-learn, XGBoost, PyTorch, and [[MLflow]]. Every run is logged. See [[Experiment Tracking]], or let [[AutoML]] run the trials.
+3. **Register:** Save the chosen model as a versioned object in Unity Catalog. See [[Models in Unity Catalog]].
+4. **Deploy:** Score a table on a schedule with a [[Lakeflow Jobs|job]], or expose a [[REST]] endpoint with [[Model Serving]].
+5. **Monitor:** Watch input and prediction tables for drift. See [[Data Quality Monitoring]].
 
 ### Worked example: a weekly demand forecast
 
@@ -155,10 +155,10 @@ The split by date matters. For forecasting, test data must come after training d
 ## Small-business considerations
 
 > [!smallbiz] Small-business considerations
-> - **Start with a question that has a cost attached.** Over-ordering perishable stock, missed reorders, or churn are good first targets. "Use AI" is not a use case.
-> - **Check the data first.** A forecast needs at least one or two years of clean daily or weekly history to capture seasonality.
-> - **Begin with a baseline.** Compare any model with a simple rule, such as "same week last year". If the model does not beat it, do not deploy it.
-> - **Use batch predictions.** A nightly job that writes a predictions table is cheaper and simpler than a live endpoint. Most forecasts do not need real-time answers.
+> - **Start with a question that has a cost attached:** Over-ordering perishable stock, missed reorders, or churn are good first targets. "Use AI" is not a use case.
+> - **Check the data first:** A forecast needs at least one or two years of clean daily or weekly history to capture seasonality.
+> - **Begin with a baseline:** Compare any model with a simple rule, such as "same week last year". If the model does not beat it, do not deploy it.
+> - **Use batch predictions:** A nightly job that writes a predictions table is cheaper and simpler than a live endpoint. Most forecasts do not need real-time answers.
 > - **Cost drivers** are the compute that trains and scores models. See [[How Databricks Pricing Works]].
 
 ## Cloud differences
@@ -175,11 +175,11 @@ The split by date matters. For forecasting, test data must come after training d
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Train, validation, and test splits.** Tune on the validation set and report on the test set exactly once. For time series, use rolling or expanding windows.
-> - **Leakage.** A feature that would not be known at prediction time (for example, "refund issued" when predicting churn) inflates accuracy. Point-in-time joins in [[Feature Engineering and Feature Store]] prevent it.
-> - **Training-serving skew.** Features computed differently in training and in production degrade accuracy. Using the same feature definitions for both is the purpose of a feature store.
-> - **Distributed training.** Most tabular models fit on one machine. Spark MLlib, Ray, and distributed PyTorch on [[AI Runtime]] are for data or models that do not.
-> - **Choosing a metric.** Mean absolute error is easy to explain for forecasts. For imbalanced classification, such as fraud, accuracy is misleading; use precision, recall, or area under the precision-recall curve.
+> - **Train, validation, and test splits:** Tune on the validation set and report on the test set exactly once. For time series, use rolling or expanding windows.
+> - **Leakage:** A feature that would not be known at prediction time (for example, "refund issued" when predicting churn) inflates accuracy. Point-in-time joins in [[Feature Engineering and Feature Store]] prevent it.
+> - **Training-serving skew:** Features computed differently in training and in production degrade accuracy. Using the same feature definitions for both is the purpose of a feature store.
+> - **Distributed training:** Most tabular models fit on one machine. Spark MLlib, Ray, and distributed PyTorch on [[AI Runtime]] are for data or models that do not.
+> - **Choosing a metric:** Mean absolute error is easy to explain for forecasts. For imbalanced classification, such as fraud, accuracy is misleading; use precision, recall, or area under the precision-recall curve.
 
 ## Common misconceptions
 

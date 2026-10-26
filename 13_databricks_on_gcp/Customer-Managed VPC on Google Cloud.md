@@ -163,11 +163,11 @@ databricks account networks create --json '{
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Sharing a VPC across workspaces.** Several workspaces can use subnets in one VPC. Plan IP space for peak concurrent nodes across all of them.
-> - **Egress lockdown.** To restrict egress, deny `0.0.0.0/0` at the firewall and allow only the Databricks control plane, metastore, and package endpoints listed in the IP and domain reference, or use PSC plus a private mirror for packages.
-> - **VPC Service Controls.** Optional perimeters can cover the compute and storage projects. If they block serverless access through Private Google Access, the docs suggest classic compute.
-> - **Updating networks.** A separate page covers updating a workspace's network configuration (for example, adding PSC); it does not allow moving to a different VPC.
-> - **Least-privilege creation.** With a creator service account and custom roles, you pre-create the network and grants yourself.
+> - **Sharing a VPC across workspaces:** Several workspaces can use subnets in one VPC. Plan IP space for peak concurrent nodes across all of them.
+> - **Egress lockdown:** To restrict egress, deny `0.0.0.0/0` at the firewall and allow only the Databricks control plane, metastore, and package endpoints listed in the IP and domain reference, or use PSC plus a private mirror for packages.
+> - **VPC Service Controls:** Optional perimeters can cover the compute and storage projects. If they block serverless access through Private Google Access, the docs suggest classic compute.
+> - **Updating networks:** A separate page covers updating a workspace's network configuration (for example, adding PSC); it does not allow moving to a different VPC.
+> - **Least-privilege creation:** With a creator service account and custom roles, you pre-create the network and grants yourself.
 
 ## Common misconceptions
 

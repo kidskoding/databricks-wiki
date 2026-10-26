@@ -69,10 +69,10 @@ Mastery: `INPUT[inlineSelect(option(new), option(learning), option(solid)):maste
 
 In Spark Classic, the client and the driver are the same process. This has several consequences:
 
-- **Heavy clients.** Each application embeds the driver and its JVM. Python clients communicate with the JVM through Py4J.
-- **Shared fate.** A memory-heavy operation in one user's code can crash the driver for everyone on a shared cluster.
-- **Version coupling.** Client and cluster must run the same Spark version, so upgrades require upgrading every application.
-- **Limited embedding.** Spark cannot easily be used from IDEs, notebooks outside the cluster, or applications in other languages.
+- **Heavy clients:** Each application embeds the driver and its JVM. Python clients communicate with the JVM through Py4J.
+- **Shared fate:** A memory-heavy operation in one user's code can crash the driver for everyone on a shared cluster.
+- **Version coupling:** Client and cluster must run the same Spark version, so upgrades require upgrading every application.
+- **Limited embedding:** Spark cannot easily be used from IDEs, notebooks outside the cluster, or applications in other languages.
 
 Spark 3.4 introduced Spark Connect, a decoupled client-server architecture. Spark 4.0 added a lightweight Python client, a Spark Connect-enabled distribution, and the `spark.api.mode` setting to switch an application between Classic and Connect.
 
@@ -138,8 +138,8 @@ spark.read.table("samples.nyctaxi.trips").limit(5).show()
 
 > [!smallbiz] Small-business considerations
 > Spark Connect is mostly invisible: it is the mechanism behind serverless notebooks and Databricks Connect. Two practical consequences for a small team:
-> 1. **Write DataFrame and SQL code only.** Code that avoids RDDs and `spark.sparkContext` runs on [[Serverless Compute]], which removes cluster management.
-> 2. **Develop locally.** With [[Databricks Connect]], you can write and debug PySpark in VS Code or PyCharm against Databricks compute, with no local Spark installation.
+> 1. **Write DataFrame and SQL code only:** Code that avoids RDDs and `spark.sparkContext` runs on [[Serverless Compute]], which removes cluster management.
+> 2. **Develop locally:** With [[Databricks Connect]], you can write and debug PySpark in VS Code or PyCharm against Databricks compute, with no local Spark installation.
 
 > [!bridge]- In Databricks today
 > Spark Connect underpins several Databricks features. [[Serverless Compute]] for notebooks and jobs supports only Spark Connect APIs, and standard access mode clusters also run through it, which is why RDD APIs are unavailable there. [[Databricks Connect]] extends Spark Connect for Databricks Runtime 13.3 LTS and above, adding support for Databricks compute modes and [[Unity Catalog]]; Python serverless support in Databricks Connect reached GA with 17.3 LTS. Databricks documents behavior differences in "Compare Spark Connect to Spark Classic," including deferred analysis and name resolution.
@@ -152,11 +152,11 @@ spark.read.table("samples.nyctaxi.trips").limit(5).show()
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Deferred analysis.** Because the server analyzes plans only at execution, errors such as a missing column surface at the action, not at the transformation. Accessing `df.schema` or `df.columns` triggers a server round trip; cache the result in a variable inside loops.
-> - **Temporary views and session state.** Temp views, UDFs, and SQL configurations live in the server session. A reconnecting client may get a new session and lose them.
-> - **UDFs.** Python UDFs are serialized and executed on the server, so the server environment must contain the libraries the UDF imports.
-> - **Version compatibility.** The Spark documentation states that applications can be forward-compatible as long as the server-side RPC definitions remain backward compatible. Databricks Connect requires a client version compatible with the target Databricks Runtime.
-> - **Security.** Open-source Spark Connect has no built-in authentication. Because it uses gRPC over HTTP/2, an authenticating proxy can secure it. Databricks handles authentication at the platform level.
+> - **Deferred analysis:** Because the server analyzes plans only at execution, errors such as a missing column surface at the action, not at the transformation. Accessing `df.schema` or `df.columns` triggers a server round trip; cache the result in a variable inside loops.
+> - **Temporary views and session state:** Temp views, UDFs, and SQL configurations live in the server session. A reconnecting client may get a new session and lose them.
+> - **UDFs:** Python UDFs are serialized and executed on the server, so the server environment must contain the libraries the UDF imports.
+> - **Version compatibility:** The Spark documentation states that applications can be forward-compatible as long as the server-side RPC definitions remain backward compatible. Databricks Connect requires a client version compatible with the target Databricks Runtime.
+> - **Security:** Open-source Spark Connect has no built-in authentication. Because it uses gRPC over HTTP/2, an authenticating proxy can secure it. Databricks handles authentication at the platform level.
 
 ## Common misconceptions
 

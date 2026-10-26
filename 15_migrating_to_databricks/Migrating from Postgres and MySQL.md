@@ -214,12 +214,12 @@ WHERE s.deleted_at IS NULL;
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **WAL bloat.** A Postgres replication slot retains WAL until the consumer reads it. Databricks says the gateway must run continuously to prevent WAL bloat. Monitor `pg_replication_slots`.
-> - **Orphaned slots.** Deleting an ingestion pipeline does not drop its replication slot. Drop it manually, or WAL keeps accumulating.
-> - **Binlog purges.** If MySQL purges a binlog before the gateway reads it, every table in the pipeline needs a full refresh.
-> - **Soft deletes vs hard deletes.** Log-based capture records hard deletes. If the application soft-deletes (`deleted_at`), filter in the cleaned layer.
-> - **Per-tenant schemas.** Applications with one schema per customer produce many identical tables. Union them into one table with a tenant column.
-> - **Federation pushdown.** Filters, projections, limits, offsets, aggregates, and sorting with a limit push down to PostgreSQL and MySQL; window functions do not. Joins between foreign tables in the same source push down on Databricks Runtime 17.2 and above and SQL warehouses (Public Preview, enabled on the **Previews** page). A join between a foreign table and a Delta table runs in Databricks. Run `EXPLAIN FORMATTED` to see the SQL sent to the source.
+> - **WAL bloat:** A Postgres replication slot retains WAL until the consumer reads it. Databricks says the gateway must run continuously to prevent WAL bloat. Monitor `pg_replication_slots`.
+> - **Orphaned slots:** Deleting an ingestion pipeline does not drop its replication slot. Drop it manually, or WAL keeps accumulating.
+> - **Binlog purges:** If MySQL purges a binlog before the gateway reads it, every table in the pipeline needs a full refresh.
+> - **Soft deletes vs hard deletes:** Log-based capture records hard deletes. If the application soft-deletes (`deleted_at`), filter in the cleaned layer.
+> - **Per-tenant schemas:** Applications with one schema per customer produce many identical tables. Union them into one table with a tenant column.
+> - **Federation pushdown:** Filters, projections, limits, offsets, aggregates, and sorting with a limit push down to PostgreSQL and MySQL; window functions do not. Joins between foreign tables in the same source push down on Databricks Runtime 17.2 and above and SQL warehouses (Public Preview, enabled on the **Previews** page). A join between a foreign table and a Delta table runs in Databricks. Run `EXPLAIN FORMATTED` to see the SQL sent to the source.
 
 ## Common misconceptions
 

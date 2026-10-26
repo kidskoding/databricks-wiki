@@ -178,11 +178,11 @@ For VNet-injected workspaces, also allow the workspace subnets (or use private e
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Credential vending.** Unity Catalog issues short-lived, path-scoped credentials to compute, and to supported external engines through credential vending, so the managed identity itself is never exposed to users.
-> - **Scope of the role.** Grant *Storage Blob Data Contributor* at the narrowest practical scope (container or storage account). One connector can serve several storage accounts, or you can use one connector per business unit to isolate blast radius.
-> - **Service credentials.** An Access Connector can also back Unity Catalog service credentials, which let code authenticate to other Azure services without stored secrets.
-> - **Workspace storage firewall.** Firewall support for the workspace storage account in the [[Managed Resource Group|managed resource group]] is a separate feature with its own requirements (Premium, secure cluster connectivity).
-> - **Terraform.** The `azurerm_databricks_access_connector` resource supports the combined `SystemAssigned, UserAssigned` identity type from AzureRM provider 4.15.0.
+> - **Credential vending:** Unity Catalog issues short-lived, path-scoped credentials to compute, and to supported external engines through credential vending, so the managed identity itself is never exposed to users.
+> - **Scope of the role:** Grant *Storage Blob Data Contributor* at the narrowest practical scope (container or storage account). One connector can serve several storage accounts, or you can use one connector per business unit to isolate blast radius.
+> - **Service credentials:** An Access Connector can also back Unity Catalog service credentials, which let code authenticate to other Azure services without stored secrets.
+> - **Workspace storage firewall:** Firewall support for the workspace storage account in the [[Managed Resource Group|managed resource group]] is a separate feature with its own requirements (Premium, secure cluster connectivity).
+> - **Terraform:** The `azurerm_databricks_access_connector` resource supports the combined `SystemAssigned, UserAssigned` identity type from AzureRM provider 4.15.0.
 
 ## Common misconceptions
 

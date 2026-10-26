@@ -84,11 +84,11 @@ Most published comparisons target large enterprises with dedicated data teams. F
 
 ### Typical decision paths
 
-1. **Microsoft 365 and Power BI in place.** Evaluate in order: Power BI alone, Microsoft Fabric, Azure Databricks. Azure Databricks is a [[First-Party Microsoft Service|first-party Microsoft service]] billed on the Azure subscription, and Power BI connects to it. See [[Microsoft Fabric and OneLake vs Databricks]].
-2. **Google Cloud with data in BigQuery.** Remaining on BigQuery requires the least change. Databricks on Google Cloud is the stronger option when Python engineering, ML, AI, or more than one cloud is required. See [[BigQuery Integration]].
-3. **SQL-only analysts.** Snowflake, BigQuery, and [[Databricks SQL]] all serve this use case. Compare them on the team's familiarity and on measured usage for representative queries.
-4. **Engineering, ML, or AI agents planned.** Databricks provides these capabilities on the same governed tables.
-5. **Small data and a small budget.** Postgres or DuckDB is sufficient. Open formats simplify a later move.
+1. **Microsoft 365 and Power BI in place:** Evaluate in order: Power BI alone, Microsoft Fabric, Azure Databricks. Azure Databricks is a [[First-Party Microsoft Service|first-party Microsoft service]] billed on the Azure subscription, and Power BI connects to it. See [[Microsoft Fabric and OneLake vs Databricks]].
+2. **Google Cloud with data in BigQuery:** Remaining on BigQuery requires the least change. Databricks on Google Cloud is the stronger option when Python engineering, ML, AI, or more than one cloud is required. See [[BigQuery Integration]].
+3. **SQL-only analysts:** Snowflake, BigQuery, and [[Databricks SQL]] all serve this use case. Compare them on the team's familiarity and on measured usage for representative queries.
+4. **Engineering, ML, or AI agents planned:** Databricks provides these capabilities on the same governed tables.
+5. **Small data and a small budget:** Postgres or DuckDB is sufficient. Open formats simplify a later move.
 
 ## How it works
 
@@ -141,9 +141,9 @@ Use a weighted scorecard to record the evaluation:
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Units are not comparable.** A DBU is Databricks' normalized unit of processing. Other vendors' billing units measure different quantities, so benchmark representative workloads instead of converting units.
-> - **Open formats.** Unity Catalog governs Delta and managed Iceberg tables and exposes an Iceberg REST interface for other engines (see [[Unity Catalog]]). See also [[Open Table Formats]] and [[Delta UniForm]].
-> - **Migration tooling.** See [[Lakebridge]] and [[Migration Strategy Overview]] for moving to Databricks from another warehouse.
+> - **Units are not comparable:** A DBU is Databricks' normalized unit of processing. Other vendors' billing units measure different quantities, so benchmark representative workloads instead of converting units.
+> - **Open formats:** Unity Catalog governs Delta and managed Iceberg tables and exposes an Iceberg REST interface for other engines (see [[Unity Catalog]]). See also [[Open Table Formats]] and [[Delta UniForm]].
+> - **Migration tooling:** See [[Lakebridge]] and [[Migration Strategy Overview]] for moving to Databricks from another warehouse.
 
 ## Common misconceptions
 

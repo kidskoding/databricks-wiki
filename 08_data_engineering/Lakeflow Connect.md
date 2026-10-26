@@ -137,10 +137,10 @@ flowchart LR
   IP --> ST
 ```
 
-1. **Connection.** A user with the `CREATE CONNECTION` privilege on the metastore (usually an admin) creates a Unity Catalog **connection** that stores the credentials (OAuth for SaaS, a login for databases). Users who have `USE CONNECTION` (or `ALL PRIVILEGES`) on it can build pipelines from it without seeing the secret.
-2. **Ingestion pipeline.** You choose source objects and a destination catalog and schema. For SaaS sources the [[Serverless Compute|serverless]] pipeline calls the API directly.
-3. **Gateway (databases only).** For a database source such as SQL Server, an **ingestion gateway** runs continuously on classic compute (compute in your own cloud account; see [[Compute Types]]), reads snapshots and change logs, and stages them in a Unity Catalog [[Volumes|volume]]. Staged data is purged after 30 days. The ingestion pipeline then applies those changes to the destination tables. SQL Server and MySQL also offer an integrated CDC pipeline that runs extraction inside each pipeline update, with no separate gateway.
-4. **Schedule.** You run the pipeline from a [[Lakeflow Jobs|job]], for example nightly or every 15 minutes.
+1. **Connection:** A user with the `CREATE CONNECTION` privilege on the metastore (usually an admin) creates a Unity Catalog **connection** that stores the credentials (OAuth for SaaS, a login for databases). Users who have `USE CONNECTION` (or `ALL PRIVILEGES`) on it can build pipelines from it without seeing the secret.
+2. **Ingestion pipeline:** You choose source objects and a destination catalog and schema. For SaaS sources the [[Serverless Compute|serverless]] pipeline calls the API directly.
+3. **Gateway (databases only):** For a database source such as SQL Server, an **ingestion gateway** runs continuously on classic compute (compute in your own cloud account; see [[Compute Types]]), reads snapshots and change logs, and stages them in a Unity Catalog [[Volumes|volume]]. Staged data is purged after 30 days. The ingestion pipeline then applies those changes to the destination tables. SQL Server and MySQL also offer an integrated CDC pipeline that runs extraction inside each pipeline update, with no separate gateway.
+4. **Schedule:** You run the pipeline from a [[Lakeflow Jobs|job]], for example nightly or every 15 minutes.
 
 You can build all of this in the UI (**Data Ingestion** in the sidebar). For a repeatable setup, define it in a [[Declarative Automation Bundles|bundle]]. A sketch of a Salesforce ingestion pipeline (the connection is created first in Catalog Explorer):
 
@@ -188,7 +188,7 @@ GROUP BY StageName;
 > Managed connectors remove the need to write and maintain API extraction code. Guidance:
 > - **Use a managed connector when one exists and is GA** for your source. It saves you from maintaining API code forever.
 > - **Beta connectors (like Shopify in October 2026) are fine for a pilot**, but expect changes and keep a fallback, such as Shopify's own CSV export into a volume.
-> - **Where no connector exists, export files.** For QuickBooks, a scheduled CSV export into a volume plus [[Auto Loader]] is a low-cost option. A partner tool from [[Partner Connect]] is the other option.
+> - **Where no connector exists, export files:** For QuickBooks, a scheduled CSV export into a volume plus [[Auto Loader]] is a low-cost option. A partner tool from [[Partner Connect]] is the other option.
 > - **For occasional queries against a database**, [[Lakehouse Federation]] reads it in place without copying.
 >
 > Managed connectors are billed by the serverless compute the ingestion pipeline uses (and, for databases, the gateway's classic compute). See [[How Databricks Pricing Works]].
@@ -207,11 +207,11 @@ GROUP BY StageName;
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Destination tables are streaming tables.** That is why connectors handle schema evolution and incremental updates: the [[Lakeflow Spark Declarative Pipelines|pipeline engine]] does it. You can read them like any table, but don't write to them yourself.
-> - **History tracking.** Many managed connectors, including Salesforce, Google Analytics, and SQL Server, can store the destination as SCD type 1 (latest only) or SCD type 2 (full history). Check the feature availability table on the connector's page. See [[Slowly Changing Dimensions]].
-> - **Gateway sizing and cost.** The database gateway runs continuously on classic compute so it captures changes before the source truncates its change logs. You pay for that compute even when the ingestion pipeline is idle, and an undersized gateway can fail the initial snapshot. A query-based connector avoids the gateway when the source has a good cursor column, at the cost of more load on the source. It tracks soft deletes through a `deletion_condition`; hard-delete tracking is in Beta.
+> - **Destination tables are streaming tables:** That is why connectors handle schema evolution and incremental updates: the [[Lakeflow Spark Declarative Pipelines|pipeline engine]] does it. You can read them like any table, but don't write to them yourself.
+> - **History tracking:** Many managed connectors, including Salesforce, Google Analytics, and SQL Server, can store the destination as SCD type 1 (latest only) or SCD type 2 (full history). Check the feature availability table on the connector's page. See [[Slowly Changing Dimensions]].
+> - **Gateway sizing and cost:** The database gateway runs continuously on classic compute so it captures changes before the source truncates its change logs. You pay for that compute even when the ingestion pipeline is idle, and an undersized gateway can fail the initial snapshot. A query-based connector avoids the gateway when the source has a good cursor column, at the cost of more load on the source. It tracks soft deletes through a `deletion_condition`; hard-delete tracking is in Beta.
 > - **Query-based connectors** track changes with a single cursor column, which the docs describe as a monotonically increasing timestamp or integer. If rows can be updated without changing that column, you will miss updates.
-> - **Customizable vs managed.** Databricks says standard connectors "offer higher levels of ingestion pipeline customization". If you need unusual filtering or parsing at ingest, a standard connector in your own pipeline may fit better than a managed one.
+> - **Customizable vs managed:** Databricks says standard connectors "offer higher levels of ingestion pipeline customization". If you need unusual filtering or parsing at ingest, a standard connector in your own pipeline may fit better than a managed one.
 
 ## Common misconceptions
 

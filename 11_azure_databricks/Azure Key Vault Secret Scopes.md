@@ -160,11 +160,11 @@ databricks secrets put-acl kv-prod data-engineers READ
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **RBAC vaults.** A vault using the Azure RBAC permission model cannot back a secret scope. Switch the vault to the vault access policy model before creating the scope, or use a separate vault for Databricks.
-> - **Blast radius.** Every principal with `READ` on the scope can read every secret in the vault. Map vaults to access boundaries rather than putting all credentials in one vault.
-> - **Creation permission is checked every time.** Creating a scope requires Key Vault Contributor, Contributor, or Owner on the vault even if the Azure Databricks service already has an access policy on it.
-> - **Databricks-backed limits.** Databricks-backed scopes allow up to 1,000 secrets per scope and 128 KB per secret value.
-> - **Alternatives.** Unity Catalog service credentials (backed by an Access Connector) let code call Azure services, including Key Vault, with a managed identity instead of a stored secret.
+> - **RBAC vaults:** A vault using the Azure RBAC permission model cannot back a secret scope. Switch the vault to the vault access policy model before creating the scope, or use a separate vault for Databricks.
+> - **Blast radius:** Every principal with `READ` on the scope can read every secret in the vault. Map vaults to access boundaries rather than putting all credentials in one vault.
+> - **Creation permission is checked every time:** Creating a scope requires Key Vault Contributor, Contributor, or Owner on the vault even if the Azure Databricks service already has an access policy on it.
+> - **Databricks-backed limits:** Databricks-backed scopes allow up to 1,000 secrets per scope and 128 KB per secret value.
+> - **Alternatives:** Unity Catalog service credentials (backed by an Access Connector) let code call Azure services, including Key Vault, with a managed identity instead of a stored secret.
 
 ## Common misconceptions
 

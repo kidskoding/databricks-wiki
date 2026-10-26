@@ -111,7 +111,9 @@ What you should see:
 
 A SQL query works the same way. Each `SELECT` you run is an action, and the **SQL / DataFrame** tab links the query to the jobs it launched.
 
-**Reading the numbers.** Databricks' guide to diagnosing slow jobs starts here:
+### Reading the numbers
+
+Databricks' guide to diagnosing slow jobs starts here:
 
 1. Find the longest **job**, then the longest **stage** in it.
 2. On that stage, check **spill** (data written to disk because memory ran out).
@@ -135,12 +137,12 @@ A SQL query works the same way. Each `SELECT` you run is an action, and the **SQ
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **DAGScheduler and TaskScheduler.** The DAGScheduler on the driver splits a job into stages at shuffle dependencies and submits stages whose parents are done. The TaskScheduler hands tasks to free executor slots, preferring data locality.
-> - **Skipped stages.** If a stage's shuffle output already exists from an earlier job, the UI shows it as "skipped." That is reuse, not an error.
-> - **Retries.** A failed task is retried, up to a configurable limit (`spark.task.maxFailures`). A lost shuffle output triggers a re-run of the parent stage (a "stage retry").
-> - **AQE and job counts.** With [[Adaptive Query Execution]], Spark runs a query stage by stage, re-optimizing after each shuffle, so a single SQL query can appear as several jobs with plans that change while it runs.
-> - **Speculation.** `spark.speculation` launches backup copies of very slow tasks on other executors and takes whichever finishes first. It helps with bad machines, not with skew (both copies would be slow).
-> - **Task metrics worth knowing.** Scheduler delay (waiting for a slot or for task data), deserialization time, GC time, shuffle read blocked time, and peak execution memory. High GC time points to memory pressure; high shuffle read blocked time points to network or a slow upstream executor.
+> - **DAGScheduler and TaskScheduler:** The DAGScheduler on the driver splits a job into stages at shuffle dependencies and submits stages whose parents are done. The TaskScheduler hands tasks to free executor slots, preferring data locality.
+> - **Skipped stages:** If a stage's shuffle output already exists from an earlier job, the UI shows it as "skipped." That is reuse, not an error.
+> - **Retries:** A failed task is retried, up to a configurable limit (`spark.task.maxFailures`). A lost shuffle output triggers a re-run of the parent stage (a "stage retry").
+> - **AQE and job counts:** With [[Adaptive Query Execution]], Spark runs a query stage by stage, re-optimizing after each shuffle, so a single SQL query can appear as several jobs with plans that change while it runs.
+> - **Speculation:** `spark.speculation` launches backup copies of very slow tasks on other executors and takes whichever finishes first. It helps with bad machines, not with skew (both copies would be slow).
+> - **Task metrics worth knowing:** Scheduler delay (waiting for a slot or for task data), deserialization time, GC time, shuffle read blocked time, and peak execution memory. High GC time points to memory pressure; high shuffle read blocked time points to network or a slow upstream executor.
 
 ## Common misconceptions
 

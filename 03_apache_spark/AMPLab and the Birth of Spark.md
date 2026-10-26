@@ -60,9 +60,9 @@ Mastery: `INPUT[inlineSelect(option(new), option(learning), option(solid)):maste
 
 By the late 2000s, [[Apache Hadoop]] was the standard platform for processing large datasets. Researchers at UC Berkeley identified three limitations:
 
-- **Iterative work was slow.** [[Machine Learning Basics|Machine-learning]] algorithms run the same steps over the same data again and again. In [[MapReduce]], each pass reads from disk and writes back to disk, so a 10-pass algorithm pays the disk cost 10 times.
-- **Interactive questions were not interactive.** Running a quick query on a cluster still meant launching a [[Batch vs Streaming|batch]] job and waiting.
-- **Programs were hard to write.** Anything beyond map and reduce had to be stitched together from many separate jobs.
+- **Iterative work was slow:** [[Machine Learning Basics|Machine-learning]] algorithms run the same steps over the same data again and again. In [[MapReduce]], each pass reads from disk and writes back to disk, so a 10-pass algorithm pays the disk cost 10 times.
+- **Interactive questions were not interactive:** Running a quick query on a cluster still meant launching a [[Batch vs Streaming|batch]] job and waiting.
+- **Programs were hard to write:** Anything beyond map and reduce had to be stitched together from many separate jobs.
 
 Servers had large amounts of memory, which is much faster than disk. The research problem was keeping data in memory across many machines while still recovering from machine failures. Spark was the result.
 
@@ -103,8 +103,8 @@ flowchart LR
 
 Two decisions shaped adoption:
 
-1. **Open source from the start.** An early public release allowed companies to test Spark on production workloads and contribute changes while it was still a research project.
-2. **A neutral home.** Moving Spark to the [[Apache Software Foundation]] placed it under vendor-neutral governance, so other vendors and cloud providers could adopt and contribute to it. As a result, Spark is offered by many vendors and cloud services in addition to Databricks.
+1. **Open source from the start:** An early public release allowed companies to test Spark on production workloads and contribute changes while it was still a research project.
+2. **A neutral home:** Moving Spark to the [[Apache Software Foundation]] placed it under vendor-neutral governance, so other vendors and cloud providers could adopt and contribute to it. As a result, Spark is offered by many vendors and cloud services in addition to Databricks.
 
 The following example shows the original use case. The data is loaded once, cached in memory, and reused across several passes, which MapReduce could not do without rereading from disk:
 
@@ -125,8 +125,8 @@ for i in range(5):        # an "iterative" job: each pass reuses memory, not dis
 
 > [!smallbiz] Small-business considerations
 > This history is not required to use Databricks. It has two practical implications:
-> 1. **No [[Vendor Lock-In|lock-in]] on the engine.** Your Spark code is standard Apache Spark. If you ever leave Databricks, the same PySpark and SQL run on other Spark services.
-> 2. **Upgrades come with the runtime.** New Apache Spark versions reach Databricks through new [[Databricks Runtime]] versions, so you adopt them by selecting a newer runtime rather than upgrading Spark yourself.
+> 1. **No [[Vendor Lock-In|lock-in]] on the engine:** Your Spark code is standard Apache Spark. If you ever leave Databricks, the same PySpark and SQL run on other Spark services.
+> 2. **Upgrades come with the runtime:** New Apache Spark versions reach Databricks through new [[Databricks Runtime]] versions, so you adopt them by selecting a newer runtime rather than upgrading Spark yourself.
 
 > [!bridge]- In Databricks today
 > The AMPLab's work lives on in the [[Databricks Runtime]], which is Apache Spark plus Databricks' own improvements such as [[Photon]]. Databricks continues to contribute upstream (to the open-source project): in 2025 it donated its declarative pipeline framework to Apache Spark, where it shipped in Spark 4.1 as Spark Declarative Pipelines, and the managed version is [[Lakeflow Spark Declarative Pipelines]]. See also [[The Founding of Databricks]] and [[Open Source vs Databricks - Who Replaced What]].
@@ -139,10 +139,10 @@ for i in range(5):        # an "iterative" job: each pass reuses memory, not dis
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Why Mesos mattered.** Spark was first written partly to show what could be built on Mesos, a cluster manager from the same lab. Spark later added its own standalone mode and support for [[YARN]] and [[Kubernetes]], which removed its dependence on Hadoop.
-> - **The research lineage.** The RDD paper argued that a restricted model (coarse-grained transformations rather than fine-grained updates to shared memory) was enough to express MapReduce, SQL, graph processing, and iterative ML, while making recovery cheap through lineage. That trade-off defines Spark to this day.
-> - **Shark to Spark SQL.** An early AMPLab project, Shark, ran Hive queries on Spark. Its limits led to Spark SQL and the Catalyst optimizer, published at SIGMOD 2015.
-> - **Successor labs.** After AMPLab, Berkeley ran RISELab, which produced Ray among other projects. The pattern of lab, open source, then company continued.
+> - **Why Mesos mattered:** Spark was first written partly to show what could be built on Mesos, a cluster manager from the same lab. Spark later added its own standalone mode and support for [[YARN]] and [[Kubernetes]], which removed its dependence on Hadoop.
+> - **The research lineage:** The RDD paper argued that a restricted model (coarse-grained transformations rather than fine-grained updates to shared memory) was enough to express MapReduce, SQL, graph processing, and iterative ML, while making recovery cheap through lineage. That trade-off defines Spark to this day.
+> - **Shark to Spark SQL:** An early AMPLab project, Shark, ran Hive queries on Spark. Its limits led to Spark SQL and the Catalyst optimizer, published at SIGMOD 2015.
+> - **Successor labs:** After AMPLab, Berkeley ran RISELab, which produced Ray among other projects. The pattern of lab, open source, then company continued.
 
 ## Common misconceptions
 

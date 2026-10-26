@@ -144,10 +144,10 @@ LIST 's3://acme-lake/curated/orders/';
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Consistency.** Since December 2020, S3 provides strong read-after-write consistency for writes, overwrites, and listings. Before that, some operations were eventually consistent and lake engines needed workarounds. Delta Lake's transaction log does not rely on directory listings to determine table contents.
-> - **No atomic rename.** On flat namespaces, "renaming a folder" means copying every object. Hadoop-era commit protocols that relied on rename were slow and unsafe on S3. Delta's log-based commits avoid rename entirely; ADLS's hierarchical namespace makes directory renames atomic.
-> - **Request costs and small files.** Each `GET` and `LIST` is billed and has latency. Thousands of tiny files cost more and read slower than a few large ones, which is why compaction matters. See [[OPTIMIZE and VACUUM]].
-> - **Throughput scales with parallelism.** Object stores serve high aggregate [[Throughput|throughput]] across many concurrent requests, which suits Spark's many-task model. For example, Amazon S3 supports at least 3,500 write and 5,500 read requests per second per partitioned prefix, with no limit on the number of prefixes.
+> - **Consistency:** Since December 2020, S3 provides strong read-after-write consistency for writes, overwrites, and listings. Before that, some operations were eventually consistent and lake engines needed workarounds. Delta Lake's transaction log does not rely on directory listings to determine table contents.
+> - **No atomic rename:** On flat namespaces, "renaming a folder" means copying every object. Hadoop-era commit protocols that relied on rename were slow and unsafe on S3. Delta's log-based commits avoid rename entirely; ADLS's hierarchical namespace makes directory renames atomic.
+> - **Request costs and small files:** Each `GET` and `LIST` is billed and has latency. Thousands of tiny files cost more and read slower than a few large ones, which is why compaction matters. See [[OPTIMIZE and VACUUM]].
+> - **Throughput scales with parallelism:** Object stores serve high aggregate [[Throughput|throughput]] across many concurrent requests, which suits Spark's many-task model. For example, Amazon S3 supports at least 3,500 write and 5,500 read requests per second per partitioned prefix, with no limit on the number of prefixes.
 > - **Lifecycle rules** move old objects to colder tiers automatically. A lifecycle policy that archives a live Delta table's files can break queries, because the files are no longer readable until restored. Databricks archival support (Public Preview, Runtime 13.3 LTS and above) makes queries skip archived files when possible and fail early when they need them.
 
 ## Common misconceptions
