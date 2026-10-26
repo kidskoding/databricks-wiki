@@ -152,7 +152,7 @@ flowchart LR
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Single master:** One master simplified placement and replication decisions. It scaled because clients requested only metadata and the master held metadata in memory. HDFS adopted the same design for its NameNode, and NameNode memory became the limit on file count, known as the small files problem.
+> - **Single master:** One master simplified placement and replication decisions. It scaled because clients requested only metadata and the master held metadata in memory. HDFS adopted the same design for its NameNode, and NameNode memory became the limit on file count, known as the [[Small Files Problem|small files problem]].
 > - **Large chunks reduce metadata:** 64 MB chunks produce far fewer entries for the master than small blocks would. HDFS used 64 MB blocks in Hadoop 1 and 128 MB as the typical size in later versions.
 > - **Record append:** GFS allowed concurrent appends to one file with at-least-once semantics. Applications had to tolerate duplicate records, a problem that recurs in streaming as [[Exactly-Once Processing]].
 > - **Combiner:** The MapReduce paper describes an optional combiner that partially reduces map output on each machine before the shuffle. Spark applies the same optimization to aggregations.

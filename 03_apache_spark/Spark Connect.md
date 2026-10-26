@@ -60,8 +60,8 @@ Mastery: `INPUT[inlineSelect(option(new), option(learning), option(solid)):maste
 > [!analogy]- Analogy: ordering through a counter
 > | Restaurant | Spark Connect |
 > |---|---|
-> | Customer writes an order on a slip | Client builds an unresolved logical plan |
-> | Slip passed through the counter window | Plan sent over gRPC as Protocol Buffers |
+> | Customer writes an order on a slip | Client builds an unresolved [[Logical and Physical Plans\|logical plan]] |
+> | Slip passed through the counter window | Plan sent over [[gRPC]] as Protocol Buffers |
 > | Kitchen cooks the order | Server analyzes, optimizes, and executes the plan |
 > | Food returned in containers | Results streamed back as Apache Arrow batches |
 
@@ -147,7 +147,7 @@ spark.read.table("samples.nyctaxi.trips").limit(5).show()
 ## Cloud differences
 
 > [!note] No cloud differences
-> Spark Connect and Databricks Connect work the same on Azure, AWS, and Google Cloud. Authentication uses each workspace's normal methods (personal access tokens or [[OAuth]]); see [[Authentication - Tokens and OAuth]].
+> Spark Connect and Databricks Connect work the same on Azure, AWS, and Google Cloud. Authentication uses each workspace's normal methods ([[Personal Access Token|personal access tokens]] or [[OAuth]]); see [[Authentication - Tokens and OAuth]].
 
 ## Advanced topics
 

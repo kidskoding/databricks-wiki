@@ -72,7 +72,7 @@ Mastery: `INPUT[inlineSelect(option(new), option(learning), option(solid)):maste
 
 Processing data across many machines requires storage that spans those machines. Conventional file systems are local to one machine, and network file servers of the period were expensive and became bottlenecks.
 
-HDFS targets one workload: large files written once and read sequentially many times, with high [[Throughput|throughput]], on commodity hardware. The HDFS design documentation lists these assumptions: hardware failure is the norm, applications need streaming data access, datasets are large, files follow a write-once-read-many model, and moving computation is cheaper than moving data.
+HDFS targets one workload: large files written once and read sequentially many times, with high [[Throughput|throughput]], on [[Commodity Hardware|commodity hardware]]. The HDFS design documentation lists these assumptions: hardware failure is the norm, applications need streaming data access, datasets are large, files follow a write-once-read-many model, and moving computation is cheaper than moving data.
 
 ## Overview
 
@@ -152,7 +152,7 @@ HDFS paths use the form `hdfs://namenode-host:port/path`. On Databricks, the equ
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Small files problem:** The NameNode holds the namespace and block map in memory. Millions of small files exhaust NameNode memory before disks fill. Teams compacted small files into larger ones. The same practice continues in the lakehouse: [[OPTIMIZE and VACUUM|OPTIMIZE]] compacts small files in Delta tables.
+> - **[[Small Files Problem|Small files problem]]:** The NameNode holds the namespace and block map in memory. Millions of small files exhaust NameNode memory before disks fill. Teams compacted small files into larger ones. The same practice continues in the lakehouse: [[OPTIMIZE and VACUUM|OPTIMIZE]] compacts small files in Delta tables.
 > - **NameNode availability:** In Hadoop 1, NameNode failure stopped the cluster. Hadoop 2.2.0 (October 2013) added HDFS high availability with a standby NameNode, and **federation**, which divides the namespace across multiple NameNodes.
 > - **Atomic rename as a commit:** Jobs wrote output to a temporary directory and renamed it into place to commit. Object stores do not offer equivalent rename semantics, so cloud table formats such as [[Delta Lake]] and [[Apache Iceberg]] commit through their own metadata logs.
 > - **Coupled storage and compute:** Adding HDFS capacity required adding whole servers, including CPUs that might not be needed, and shutting down a cluster made its data unavailable. Cloud architectures keep data in object storage permanently and start and stop compute independently. See [[Storage vs Compute]] and [[The Pain of Hadoop]].

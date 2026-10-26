@@ -120,7 +120,7 @@ A distribution vendor performs the following work for each release:
 2. Back-ports security and bug fixes into those versions.
 3. Tests the combination as a unit.
 4. Ships installers and a cluster management console.
-5. Integrates authentication (typically Kerberos), authorization, and auditing.
+5. Integrates authentication (typically [[Kerberos]]), authorization, and auditing.
 6. Provides support under a subscription.
 
 The customer still provides the hardware or VMs, operates the cluster, and plans upgrades.

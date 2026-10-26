@@ -140,7 +140,7 @@ Record benefits that are hard to price, such as fewer reporting errors, faster m
 | Insufficient skills | Free Edition for training; role-based learning paths; scope limited to one report at a time | [[Path - One-Person Data Team]], [[Path - Certification Prep]] |
 | Key-person dependency | Code in Git folders, jobs run as service principals, documented tables in Unity Catalog | [[Git Folders and Workspace Files]], [[Users Groups and Service Principals]] |
 | Data security and compliance | Groups and grants from the start, column masks for sensitive data, audit logs, compliance features where required | [[Unity Catalog]], [[Row Filters and Column Masks]], [[Compliance Security Profile]] |
-| Lock-in | Data stored in open formats in cloud storage; pay-as-you-go until usage is stable | [[Open Table Formats]], [[Vendor Lock-In]] |
+| Lock-in | Data stored in open formats in cloud storage; [[Pay-As-You-Go\|pay-as-you-go]] until usage is stable | [[Open Table Formats]], [[Vendor Lock-In]] |
 | Adoption | Business users work in Genie One and dashboards; the old report runs in parallel until trusted | [[Genie One]], [[Running Old and New in Parallel]] |
 
 ### Decision request

@@ -138,7 +138,7 @@ A common layout for a growing company:
 The resources a workspace *creates in your cloud* and the format of its URL differ by cloud.
 
 > [!azure]- Azure Databricks
-> - **Creating it:** an Azure Databricks workspace is an Azure resource. You create it in the Azure portal (or with ARM, Bicep, or Terraform) inside a resource group and subscription. The account is tied to your **Microsoft Entra ID tenant**, and the first person with the right role becomes an account admin. Account console: `https://accounts.azuredatabricks.net`. See [[Creating an Azure Databricks Workspace]].
+> - **Creating it:** an Azure Databricks workspace is an Azure resource. You create it in the Azure portal (or with ARM, Bicep, or Terraform) inside a [[Resource Group|resource group]] and subscription. The account is tied to your **Microsoft [[Tenant|Entra ID tenant]]**, and the first person with the right role becomes an account admin. Account console: `https://accounts.azuredatabricks.net`. See [[Creating an Azure Databricks Workspace]].
 > - **URL:** `https://adb-<workspace-id>.<n>.azuredatabricks.net`, where the number after `adb-` is the workspace ID.
 > - **What it creates:** a locked [[Managed Resource Group|managed resource group]] (named like `databricks-rg-<workspace>-<suffix>`) holding the workspace storage account (DBFS root), a virtual network and network security group (unless you use [[VNet Injection]]), and a managed identity. Cluster VMs appear in it when compute runs. You usually also create an **Access Connector for Azure Databricks** for Unity Catalog storage access.
 > - **Billing:** on your Azure invoice. See [[Azure Billing and Commit Units]].

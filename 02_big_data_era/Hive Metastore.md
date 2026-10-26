@@ -74,7 +74,7 @@ Files in [[HDFS]] have paths but no description of their contents. To run `SELEC
 
 - the storage location of `orders`,
 - column names and [[Data Type|types]],
-- the file format and the SerDe that parses it,
+- the file format and the [[SerDe]] that parses it,
 - the list of partitions and their locations,
 - optional statistics, such as row counts, for the optimizer.
 

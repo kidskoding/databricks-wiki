@@ -192,7 +192,7 @@ For an existing agent project, the CLI prepares migration instructions that a co
 > - **Durable runs:** `DurableAgentServer` keeps each run's state in a Runtime Store, so long tasks can resume after a restart.
 > - **Agent identity:** Each deployment acts as the app's service principal, so the agent sees what that principal can see. If the agent must respect each end user's permissions, check the Databricks Apps authorization docs for user-level access before deploying.
 > - **Legacy paths:** The MLflow AgentServer, LongRunningAgentServer, and agents deployed to Model Serving are listed as legacy, each with a mapped replacement. See [[Mosaic AI Agent Framework]].
-> - **Tools through MCP:** Unity Gateway MCP (Model Context Protocol, a standard for connecting tools to AI models) services expose governed tools; jailbreak screening for MCP tool calls is in Beta.
+> - **Tools through MCP:** Unity Gateway MCP ([[Model Context Protocol]], a standard for connecting tools to AI models) services expose governed tools; jailbreak screening for MCP tool calls is in Beta.
 > - **Sources disagree on maturity:** Some pages label the CLI Beta and others experimental, and the default model differs across pages.
 
 ## Common misconceptions

@@ -56,7 +56,7 @@ Mastery: `INPUT[inlineSelect(option(new), option(learning), option(solid)):maste
 
 ## Background
 
-Security teams on Azure usually centralize logs in Azure Monitor (Log Analytics workspaces), often feeding Microsoft Sentinel or another SIEM through Event Hubs. Azure Databricks integrates with this through **diagnostic settings** on the workspace resource, the same mechanism used by other Azure services.
+Security teams on Azure usually centralize logs in Azure Monitor (Log Analytics workspaces), often feeding Microsoft Sentinel or another [[SIEM]] through Event Hubs. Azure Databricks integrates with this through **diagnostic settings** on the workspace resource, the same mechanism used by other Azure services.
 
 Databricks also provides the [[Audit Logs|audit log]] as a [[System Tables|system table]], `system.access.audit`, which covers more event types. Databricks recommends the system table for accessing audit logs.
 

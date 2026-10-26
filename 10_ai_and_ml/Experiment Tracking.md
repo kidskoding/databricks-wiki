@@ -101,7 +101,7 @@ flowchart LR
   CMP --> BEST[Best run's model<br/>registered in Unity Catalog]
 ```
 
-A small hyperparameter sweep for a bakery's daily bread forecast:
+A small [[Hyperparameter|hyperparameter]] sweep for a bakery's daily bread forecast:
 
 ```python
 import mlflow

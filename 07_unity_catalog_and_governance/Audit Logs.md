@@ -63,11 +63,11 @@ Mastery: `INPUT[inlineSelect(option(new), option(learning), option(solid)):maste
 > - **Every teller window and vault door** is a Databricks service (Unity Catalog, jobs, clusters, SQL, sign-in).
 > - **Each recorded moment** is one event: who, what action, on what, from which IP address, success or failure.
 > - **Watching the tape live** is querying `system.access.audit` or setting a [[SQL Alerts|SQL alert]].
-> - **Shipping the tape to an off-site vault** is audit log delivery to your own storage or SIEM.
+> - **Shipping the tape to an off-site vault** is audit log delivery to your own storage or [[SIEM]].
 
 ## Background
 
-A central audit log is required to investigate security events and to satisfy audits. Frameworks such as [[SOC 2]], [[HIPAA]], and PCI DSS require evidence of who accessed sensitive data and who changed permissions. Databricks audit logs cover:
+A central audit log is required to investigate security events and to satisfy audits. Frameworks such as [[SOC 2]], [[HIPAA]], and [[PCI DSS]] require evidence of who accessed sensitive data and who changed permissions. Databricks audit logs cover:
 
 - **Identity**: sign-ins, token creation, group changes.
 - **Data access**: Unity Catalog reads (`getTable`), grants, and policy changes.

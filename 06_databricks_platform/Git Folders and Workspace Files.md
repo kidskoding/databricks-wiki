@@ -160,7 +160,7 @@ When the same package exists in several places, Databricks resolves it in this o
 ## Cloud differences
 
 > [!azure]- Azure Databricks
-> - **Azure DevOps with Microsoft Entra ID:** The Azure Databricks docs state that when you sign in with Entra ID and the Azure DevOps organization is linked to the same Entra ID tenant as the workspace, Azure DevOps authentication happens automatically. The AWS-hosted docs state that Entra ID tokens are not supported and a personal access token is required. Verify in your workspace.
+> - **Azure DevOps with Microsoft Entra ID:** The Azure Databricks docs state that when you sign in with Entra ID and the Azure DevOps organization is linked to the same [[Tenant|Entra ID tenant]] as the workspace, Azure DevOps authentication happens automatically. The AWS-hosted docs state that Entra ID tokens are not supported and a personal access token is required. Verify in your workspace.
 > - **Cross-tenant:** If the Azure DevOps project is in a different tenant, use an Azure DevOps personal access token.
 > - **Conditional access:** If an Entra ID conditional access policy blocks Databricks, cloning fails with an access error. Add an exclusion for Azure Databricks IP addresses or users. See [[Microsoft Entra ID Integration]].
 > - **Automation:** For Azure DevOps pipelines, the docs recommend federated credentials with an OIDC token instead of stored personal access tokens.

@@ -74,7 +74,7 @@ A single computer allows assumptions that do not hold across a network of machin
 - **Partial failure:** On one machine, components work or the machine stops. Across 1,000 machines, some components are failing at any given time. The GFS and MapReduce designs treat component failure as the normal case.
 - **Unreliable network:** Messages can be delayed, dropped, or duplicated. A node that does not respond may be failed, overloaded, or slow, and these cases look the same to other nodes.
 - **No shared clock:** Each machine's clock drifts, so ordering events across machines requires explicit coordination.
-- **Stragglers:** One slow machine can delay a job that thousands of other machines have finished.
+- **[[Straggler Task|Stragglers]]:** One slow machine can delay a job that thousands of other machines have finished.
 
 Every system in the rest of this vault, including [[HDFS]], [[Apache Spark]], and [[Delta Lake]], is a distributed system built to handle these conditions.
 
@@ -111,7 +111,7 @@ Four techniques account for most fault tolerance in big data systems:
 
 1. **Heartbeats:** Workers send periodic status messages. The coordinator marks a worker as failed when messages stop. In HDFS, DataNodes send heartbeats and block reports to the NameNode.
 2. **Replication:** Each piece of data is stored on more than one machine, preferably in different racks, so the loss of a machine or a rack does not lose data.
-3. **Deterministic re-execution:** Tasks produce the same output from the same input, so a failed or slow task can be rerun on another machine. The MapReduce paper calls duplicate copies of slow tasks *backup tasks*; Spark calls this *speculative execution*.
+3. **Deterministic re-execution:** Tasks produce the same output from the same input, so a failed or slow task can be rerun on another machine. The MapReduce paper calls duplicate copies of slow tasks *backup tasks*; Spark calls this *[[Speculative Execution|speculative execution]]*.
 4. **Data locality:** The scheduler runs each task on or near the machine that stores its input, because network bandwidth is the scarcer resource.
 
 Because systems retry work, pipeline writes must be safe to repeat. See [[Idempotency]] and [[Exactly-Once Processing]].

@@ -136,7 +136,7 @@ Permissions: creating a connection needs `CREATE CONNECTION` on the metastore. C
 
 > [!smallbiz] Small-business considerations
 > Federation is often the quickest way to start. A foreign catalog over the PostgreSQL or MySQL database behind a shop or booking system makes its tables queryable without building a pipeline. Two considerations:
-> - **Every query hits the source database:** Frequently refreshed dashboards add load to the production system. Use a read replica if one is available.
+> - **Every query hits the source database:** Frequently refreshed dashboards add load to the production system. Use a [[Read Replica|read replica]] if one is available.
 > - **Ingest tables that are queried often:** Use [[Lakeflow Connect]] or a scheduled job to land it as a managed table, which is faster and cheaper to query repeatedly.
 >
 > Federation itself has no separate license; you pay for the Databricks compute that runs the query and any data transfer your cloud charges.

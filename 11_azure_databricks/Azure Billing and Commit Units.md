@@ -70,7 +70,7 @@ On AWS and Google Cloud, Databricks can bill you directly or through the cloud m
 | Charge | Applies to | Notes |
 |---|---|---|
 | **DBUs** | All compute | Metered per second by workload type. Premium is the only tier for new workspaces |
-| **VMs, disks, IPs, NAT gateway** | Classic compute | Billed by Azure as normal resources in the [[Managed Resource Group\|managed resource group]] or your VNet |
+| **VMs, disks, IPs, [[NAT Gateway\|NAT gateway]]** | Classic compute | Billed by Azure as normal resources in the [[Managed Resource Group\|managed resource group]] or your VNet |
 | **Serverless** | Serverless compute | The DBU rate includes the underlying VM cost |
 | **Storage and networking** | Your ADLS, default storage, egress, private endpoints | Billed by Azure |
 

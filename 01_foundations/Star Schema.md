@@ -170,7 +170,7 @@ The clinic's version has `fact_appointments` (one row per appointment, with a `n
 > [!bridge]- In Databricks today
 > - **Where it lives:** Databricks guidance places the star schema at the **gold** layer of the [[Medallion Architecture]], with bronze and silver handling ingestion and cleaning.
 > - **How to build it:** in [[Lakeflow Spark Declarative Pipelines]], the recommended pattern is facts as [[Streaming Tables|streaming tables]] and dimensions as [[Materialized Views|materialized views]], using `AUTO CDC` with SCD Type 2 only when you need change history. See [[Slowly Changing Dimensions]].
-> - **Keys:** prefer natural keys where the source key is stable; use surrogate keys only when a source reuses or changes IDs. Declare primary and foreign keys with `RELY`, which Databricks recommends because it can eliminate unnecessary joins.
+> - **Keys:** prefer natural keys where the source key is stable; use [[Surrogate Key|surrogate keys]] only when a source reuses or changes IDs. Declare primary and foreign keys with `RELY`, which Databricks recommends because it can eliminate unnecessary joins.
 > - **Business definitions on top:** [[Metric Views]] support star schemas directly, with the fact table joined to dimensions as many-to-one relationships, so measures like revenue are defined once.
 > - **BI:** tools such as [[Connecting Power BI|Power BI]] query the gold tables through [[SQL Warehouses]].
 

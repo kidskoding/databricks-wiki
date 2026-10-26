@@ -49,7 +49,7 @@ tags:
 Mastery: `INPUT[inlineSelect(option(new), option(learning), option(solid)):mastery]`
 
 > [!story] Context
-> [[Customer-Managed Keys on AWS]] and the [[Compliance Security Profile]] harden a commercial workspace. Some US public-sector and defense workloads must run in an environment authorized at FedRAMP High or DoD Impact Level 5. Databricks provides a separate deployment in AWS GovCloud (US) for them.
+> [[Customer-Managed Keys on AWS]] and the [[Compliance Security Profile]] harden a commercial workspace. Some US public-sector and defense workloads must run in an environment authorized at [[FedRAMP]] High or DoD Impact Level 5. Databricks provides a separate deployment in AWS GovCloud (US) for them.
 
 > [!eli5] Summary
 > AWS has a walled-off part of its cloud for the US government and its contractors. Databricks runs a separate copy of its platform there, with stricter security switched on for every workspace, so agencies can use it for sensitive data.

@@ -109,7 +109,7 @@ The docs define three network traffic paths:
 
 1. **Inbound (front-end):** users, BI tools, and scripts reaching the control plane. You can restrict it with [[IP Access Lists]] and private connectivity ([[AWS PrivateLink]], [[Azure Private Link]], [[Private Service Connect]]).
 2. **Classic (control plane ↔ classic compute):** with [[Secure Cluster Connectivity]], cluster VMs have no public IP addresses. They open an outbound connection to the control plane rather than the control plane reaching in.
-3. **Outbound from serverless:** serverless compute reaching your storage and other resources. You control it with network connectivity configurations (NCCs), private endpoints, and serverless egress controls. See [[Serverless Network Security]].
+3. **Outbound from serverless:** serverless compute reaching your storage and other resources. You control it with network connectivity configurations (NCCs), [[Private Endpoint|private endpoints]], and serverless egress controls. See [[Serverless Network Security]].
 
 A query on classic compute follows these steps:
 

@@ -68,7 +68,7 @@ Teams that run BigQuery and Databricks together usually need one of three things
 | | Lakehouse Federation | Spark BigQuery connector |
 |---|---|---|
 | Direction | Read-only | Read and write |
-| Interface | SQL on a foreign catalog in Unity Catalog | `spark.read.format("bigquery")` and `df.write.format("bigquery")` |
+| Interface | SQL on a [[Foreign Catalog\|foreign catalog]] in Unity Catalog | `spark.read.format("bigquery")` and `df.write.format("bigquery")` |
 | Governance | Unity Catalog grants, lineage, audit | Credentials on the cluster |
 | Compute | Databricks Runtime 16.1+ (standard or dedicated access mode); pro or serverless SQL warehouses | Classic clusters with the bundled connector |
 | Under the hood | BigQuery Storage API (not JDBC), with filter and projection pushdown | BigQuery Storage API; writes stage through a GCS bucket |

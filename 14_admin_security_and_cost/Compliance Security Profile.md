@@ -58,7 +58,7 @@ Mastery: `INPUT[inlineSelect(option(new), option(learning), option(solid)):maste
 
 ## Background
 
-Standards such as [[HIPAA]], PCI-DSS, and FedRAMP require technical controls (hardened operating systems, FIPS-validated cryptography, monitoring, timely patching) in addition to contracts and processes. Configuring each control separately is error-prone and hard to prove to an auditor. Databricks packages the required controls as the **compliance security profile**. The Azure docs state that it requires the **Enhanced Security and Compliance add-on**.
+Standards such as [[HIPAA]], PCI-DSS, and [[FedRAMP]] require technical controls (hardened operating systems, FIPS-validated cryptography, monitoring, timely patching) in addition to contracts and processes. Configuring each control separately is error-prone and hard to prove to an auditor. Databricks packages the required controls as the **compliance security profile**. The Azure docs state that it requires the **Enhanced Security and Compliance add-on**.
 
 ## Overview
 

@@ -160,7 +160,7 @@ The [[Checkpoint|checkpoint]] stores which offsets have been processed, so a res
 The Databricks Kafka connector works the same on every cloud. What differs is which managed Kafka service sits nearby and how the network reaches it.
 
 > [!azure]- Azure Databricks
-> Azure Event Hubs provides an Apache Kafka endpoint that speaks the Kafka protocol, so the same `format("kafka")` code can read it after you change the connection configuration. Confluent Cloud also runs on Azure. Make sure the brokers resolve and are reachable from your workspace's network ([[VNet Injection]], private endpoints).
+> Azure Event Hubs provides an Apache Kafka endpoint that speaks the Kafka protocol, so the same `format("kafka")` code can read it after you change the connection configuration. Confluent Cloud also runs on Azure. Make sure the brokers resolve and are reachable from your workspace's network ([[VNet Injection]], [[Private Endpoint|private endpoints]]).
 
 > [!aws]- Databricks on AWS
 > Amazon MSK (Managed Streaming for Apache Kafka) and Confluent Cloud are the usual choices. Keep the cluster in the same region and reach it over private networking ([[Customer-Managed VPC on AWS]], [[AWS PrivateLink]]).

@@ -83,7 +83,7 @@ The platform is the same [[The Data Intelligence Platform|Data Intelligence Plat
 | **Billing** | Microsoft bills usage under your Azure subscription terms; Databricks commit units can be prepurchased | [[Azure Billing and Commit Units]] |
 | **Identity** | Microsoft Entra ID is built in | [[Microsoft Entra ID Integration]] |
 | **Classic compute** | Azure [[Virtual Machine\|VMs]] in a [[Managed Resource Group\|managed resource group]] or your own [[VPC and VNet\|VNet]] | [[Managed Resource Group]], [[VNet Injection]] |
-| **Network security** | Network security groups (NSGs, traffic rules), NAT gateway (shared outbound address), Azure Private Link | [[Secure Cluster Connectivity]], [[Azure Private Link]] |
+| **Network security** | Network security groups (NSGs, traffic rules), [[NAT Gateway\|NAT gateway]] (shared outbound address), Azure Private Link | [[Secure Cluster Connectivity]], [[Azure Private Link]] |
 | **Storage access** | [[Azure Data Lake Storage\|ADLS Gen2]] through an Access Connector (`Microsoft.Databricks/accessConnectors`) | [[ADLS and Access Connectors]] |
 | **Secrets and keys** | Azure Key Vault and Azure Key Vault Managed HSM (hardware security module) | [[Azure Key Vault Secret Scopes]], [[Customer-Managed Keys on Azure]] |
 | **Integrations** | Azure Data Factory, Microsoft Fabric, Power BI | [[Azure Data Factory with Databricks]], [[Microsoft Fabric and OneLake vs Databricks]], [[Power BI on Azure Databricks]] |

@@ -105,7 +105,7 @@ sequenceDiagram
 ```
 
 - **Atomicity:** if the writer crashes before the commit, the new files are orphans that no version references. [[OPTIMIZE and VACUUM|VACUUM]] cleans them up later.
-- **Isolation:** readers always read one complete version. Writers use **optimistic concurrency control**: there are no locks, each writer reads a snapshot, and at commit time it checks whether a conflicting change was committed since that snapshot. If so, the write fails with a concurrent modification exception instead of corrupting data.
+- **Isolation:** readers always read one complete version. Writers use **[[Optimistic Concurrency|optimistic concurrency]] control**: there are no locks, each writer reads a snapshot, and at commit time it checks whether a conflicting change was committed since that snapshot. If so, the write fails with a concurrent modification exception instead of corrupting data.
 - **Consistency:** the log also stores the schema and table constraints, so writes that break them are rejected (see [[Schema Enforcement and Evolution]]).
 - **Durability:** the commit file sits in the same durable object storage as the data.
 

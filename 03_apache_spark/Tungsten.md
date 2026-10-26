@@ -61,7 +61,7 @@ Mastery: `INPUT[inlineSelect(option(new), option(learning), option(solid)):maste
 Databricks' 2015 Tungsten announcement argued that for many Spark workloads, CPU and memory efficiency, not disk or network I/O, had become the main limit. Three sources of JVM overhead were significant:
 
 - **Object overhead:** A Java object for a short string can use several times more memory than the characters themselves, which wastes cache and memory.
-- **Garbage collection:** Millions of short-lived row objects make the JVM garbage collector pause the program.
+- **[[Garbage Collection|Garbage collection]]:** Millions of short-lived row objects make the JVM garbage collector pause the program.
 - **Virtual function calls:** The classic "Volcano" execution model calls `next()` on each operator for each row. Each call is cheap, but billions of unpredictable virtual calls carry a measurable cost.
 
 ## Overview

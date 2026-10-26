@@ -68,7 +68,7 @@ Mastery: `INPUT[inlineSelect(option(new), option(learning), option(solid)):maste
 > | Placing an order at the window | A request |
 > | The tray handed back | A response, usually JSON |
 > | Showing a membership card first | Authentication with a [[Token\|token]] |
-> | "Maximum five orders per minute" | Rate limits |
+> | "Maximum five orders per minute" | [[Rate Limit\|Rate limits]] |
 > | A text message when your order is ready | A [[Webhook\|webhook]] |
 
 ## Background
@@ -91,7 +91,7 @@ An **API (application programming interface)** is a contract that defines which 
 | **Parameters** | Filters and options | `?updated_since=2026-03-03&page=2` |
 | **Authentication** | Proof of who is calling | An API key, or an [[OAuth]] access token |
 | **Response** | The returned data and a status code | [[CSV and JSON\|JSON]] body, `200 OK` or `429 Too Many Requests` |
-| **Pagination** | Results split across pages | `next_page` cursor in the response |
+| **[[Pagination]]** | Results split across pages | `next_page` cursor in the response |
 | **Rate limit** | Maximum requests per period | 100 requests per minute |
 
 Other interface types appear in data work:
@@ -162,7 +162,7 @@ curl -s -H "Authorization: Bearer $DATABRICKS_TOKEN" \
 > - **Managed SaaS connectors:** [[Lakeflow Connect]] provides managed connectors for applications such as Salesforce and Workday (Workday HCM, Workday Reports, and Workday Activity Logging). Each connector uses a Unity Catalog connection to store credentials, an ingestion pipeline, and streaming destination tables, and runs on serverless compute. The connectors handle authentication, incremental reads, schema evolution, and retries. You choose objects, destination, schedule, and permissions, but not the ingestion logic itself.
 > - **Custom APIs:** write Python in a notebook or job, land the raw JSON in a [[Volumes|volume]] or table, and schedule it with [[Lakeflow Jobs]].
 > - **Automating Databricks:** the Databricks REST API, the [[Databricks CLI]], and the SDKs. See [[Databricks SDKs and REST API]].
-> - **Authentication to Databricks:** Databricks strongly recommends OAuth for both users and service principals. Personal access tokens (PATs) are a legacy option. See [[Authentication - Tokens and OAuth]].
+> - **Authentication to Databricks:** Databricks strongly recommends OAuth for both users and service principals. [[Personal Access Token|Personal access tokens]] (PATs) are a legacy option. See [[Authentication - Tokens and OAuth]].
 
 ## Cloud differences
 

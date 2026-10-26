@@ -65,7 +65,7 @@ Databricks SSO supports two standard protocols. Your identity provider must supp
 | Protocol | What it is | Typical IdPs |
 |---|---|---|
 | **SAML 2.0** | An older XML-based standard. The IdP sends a signed assertion. | Okta, Entra ID, OneLogin, AWS IAM Identity Center, JumpCloud |
-| **OpenID Connect (OIDC)** | A newer layer on [[OAuth]] 2.0. The IdP returns a signed ID token. | Okta, Entra ID, Keycloak, Google |
+| **[[OpenID Connect]] (OIDC)** | A newer layer on [[OAuth]] 2.0. The IdP returns a signed ID token. | Okta, Entra ID, Keycloak, Google |
 
 **Unified login** means one SSO configuration applies to the account console and every workspace. The docs say it is enabled by default for most accounts. Accounts created after 21 June 2023, or that had not configured SSO before 12 December 2024, get it automatically, and it cannot be disabled.
 

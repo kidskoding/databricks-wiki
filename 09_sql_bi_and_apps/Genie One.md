@@ -141,7 +141,7 @@ GRANT SELECT      ON SCHEMA  shop.analytics  TO `viewers`;
 ## Cloud differences
 
 > [!azure]- Azure Databricks
-> - Genie One works the same as on other clouds. Users sign in with Microsoft Entra ID, and conditional access and multi-factor authentication (MFA) policies apply. See [[Microsoft Entra ID Integration]].
+> - Genie One works the same as on other clouds. Users sign in with Microsoft Entra ID, and conditional access and [[Multi-Factor Authentication|multi-factor authentication]] (MFA) policies apply. See [[Microsoft Entra ID Integration]].
 > - The account console URL differs from AWS. Use the Genie entry on the Azure Databricks account landing page or the `/one` path documented for Azure.
 
 > [!aws]- Databricks on AWS

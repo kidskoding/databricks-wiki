@@ -77,7 +77,7 @@ How a request is judged:
 
 Facts from the docs:
 
-- At most **1,000 IP/CIDR values** across all allow and block lists combined. Each CIDR counts as one value. Going over returns a 400 `QUOTA_EXCEEDED` error.
+- At most **1,000 IP/[[CIDR]] values** across all allow and block lists combined. Each CIDR counts as one value. Going over returns a 400 `QUOTA_EXCEEDED` error.
 - **IPv4 only.**
 - The API refuses a change that would block **your own current IP**, returning `INVALID_STATE`. This prevents most self-lockouts.
 - Changes usually take effect within a few minutes.

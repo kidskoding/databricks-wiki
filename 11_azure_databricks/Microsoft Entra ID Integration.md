@@ -95,7 +95,7 @@ SCIM provisioning uses an Entra ID enterprise application to push users and grou
 
 ### Conditional access
 
-Entra ID conditional access controls when and from where users can sign in, for example by requiring multi-factor authentication or a corporate network. Requirements:
+Entra ID conditional access controls when and from where users can sign in, for example by requiring [[Multi-Factor Authentication|multi-factor authentication]] or a corporate network. Requirements:
 
 - Azure Databricks Premium (the only tier for new workspaces).
 - Microsoft Entra ID Premium.
@@ -156,7 +156,7 @@ Entra ID access tokens expire within about an hour. A valid token has an `aud` c
 > Entra ID is built in for sign-in. Identity sync uses automatic identity management or Entra SCIM. Conditional access, Entra ID tokens, Entra ID-managed service principals, and Azure managed identities are Azure-only options. The first account admin is established by an Entra ID Global Administrator.
 
 > [!aws]- Databricks on AWS
-> An account admin configures SSO in the account console (**Security** > **Identity provider setup**) with any SAML 2.0 or OIDC identity provider, such as Entra ID, Okta, OneLogin, or Keycloak. Unified login applies one SSO configuration to the account and all workspaces, and Databricks recommends adding users with SCIM. Service principals are Databricks-managed and use OAuth machine-to-machine authentication. See [[Single Sign-On]] and [[SCIM Provisioning]].
+> An account admin configures SSO in the account console (**Security** > **Identity provider setup**) with any [[SAML]] 2.0 or OIDC identity provider, such as Entra ID, Okta, OneLogin, or Keycloak. Unified login applies one SSO configuration to the account and all workspaces, and Databricks recommends adding users with SCIM. Service principals are Databricks-managed and use OAuth machine-to-machine authentication. See [[Single Sign-On]] and [[SCIM Provisioning]].
 
 > [!gcp]- Databricks on Google Cloud
 > SSO with Google Cloud Identity is available by default. You can configure a different SAML 2.0 or OIDC identity provider instead, which then disables Google ID token authentication. Identities sync through SCIM. Google Cloud resources are accessed through [[Google Service Accounts|Google service accounts]] rather than Entra identities.

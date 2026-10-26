@@ -82,7 +82,7 @@ Timeline:
 |---|---|
 | June 2023 | Databricks signs a definitive agreement to acquire MosaicML, valued at approximately 1.3 billion US dollars including retention packages |
 | July 19, 2023 | Databricks completes the acquisition |
-| March 2024 | Databricks releases **DBRX** (Base and Instruct), an open mixture-of-experts LLM built by Databricks AI Research, and adds it to Model Serving |
+| March 2024 | Databricks releases **DBRX** (Base and Instruct), an open [[Mixture of Experts\|mixture-of-experts]] LLM built by Databricks AI Research, and adds it to Model Serving |
 | June 2024 | Databricks says it has fully integrated and expanded the model-building capabilities from the acquisition; products carry the **Mosaic AI** name |
 | April 30, 2025 | DBRX Instruct retired from Foundation Model APIs pay-per-token (replacement: Llama 4 Maverick) |
 | December 19, 2025 | DBRX retired from provisioned throughput |

@@ -69,7 +69,7 @@ Mastery: `INPUT[inlineSelect(option(new), option(learning), option(solid)):maste
 > | The map with every paragraph pinned on it | Index |
 > | The librarian's desk | Endpoint |
 > | Finding the pins closest to your question | Similarity (nearest neighbor) search |
-> | Also checking the exact words in the title | Hybrid search |
+> | Also checking the exact words in the title | [[Hybrid Search\|Hybrid search]] |
 > | New books added to the map overnight | Delta Sync |
 
 ## Background

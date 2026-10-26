@@ -158,7 +158,7 @@ print("AUC:", auc)
 > [!deepdive]- Advanced topics (301–401)
 > - **Vectors:** Features are stored in a single vector column (dense or sparse `pyspark.ml.linalg` vectors). `VectorAssembler` builds it; most estimators read `featuresCol`.
 > - **Distributed algorithm cost:** Tree ensembles and logistic regression scale well. Some algorithms require many passes over the data, so caching the training DataFrame (`df.cache()`) avoids rereading the source per iteration.
-> - **Hyperparameter tuning:** `CrossValidator` with a `ParamGridBuilder` trains *k × grid-size* models. `setParallelism(n)` trains several in parallel.
+> - **[[Hyperparameter]] tuning:** `CrossValidator` with a `ParamGridBuilder` trains *k × grid-size* models. `setParallelism(n)` trains several in parallel.
 > - **Persistence format:** Saved pipelines are directories of metadata and Parquet files, readable from Scala, Java, and Python. With MLflow, `mlflow.spark.log_model` stores the pipeline with environment information.
 > - **Alternatives for deep learning:** MLlib does not cover deep learning. For neural networks, use a deep-learning framework on [[AI Runtime]].
 

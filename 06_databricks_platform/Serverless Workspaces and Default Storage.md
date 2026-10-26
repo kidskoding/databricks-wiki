@@ -177,7 +177,7 @@ Serverless workspaces inherit all [[Serverless Compute|serverless compute limita
 ## Cloud differences
 
 > [!azure]- Azure Databricks
-> - In the Azure portal, search for **Azure Databricks**, click **+ Create**, choose a resource group, name, and region, and set the workspace type to **Serverless**.
+> - In the Azure portal, search for **Azure Databricks**, click **+ Create**, choose a [[Resource Group|resource group]], name, and region, and set the workspace type to **Serverless**.
 > - The Azure CLI documents that serverless mode does not support custom VNet configuration, custom encryption, access connectors, default catalog properties, or managed resource groups. Those require the hybrid (classic) mode.
 > - Some regions do not support serverless workspaces or default storage. Check the Azure Databricks feature region support page. The default storage sharing feature is not supported in `southcentralus`, `uksouth`, and `westus2`.
 > - See [[Creating an Azure Databricks Workspace]] for the classic flow.

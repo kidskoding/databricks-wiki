@@ -50,7 +50,7 @@ This chapter answers a practical question before the rest of the vault explains 
 
 ### What it costs
 
-[[How Databricks Pricing Works]] explains the DBU, the SKU that sets the price per DBU for each kind of workload, the retirement of the Standard tier, the difference between serverless and classic compute, and why most customers receive one bill from Databricks and one from the cloud provider (on Azure, both appear on one Microsoft invoice). It also covers pay-as-you-go, committed-use contracts, and Azure prepurchase. [[Estimating Costs for a Small Business]] turns this model into a fill-in formula and worksheet, then corrects the estimate with usage measured during a trial. The vault does not quote prices; each note links to the official pricing pages and calculators.
+[[How Databricks Pricing Works]] explains the DBU, the [[SKU]] that sets the price per DBU for each kind of workload, the retirement of the Standard tier, the difference between serverless and classic compute, and why most customers receive one bill from Databricks and one from the cloud provider (on Azure, both appear on one Microsoft invoice). It also covers [[Pay-As-You-Go|pay-as-you-go]], committed-use contracts, and Azure prepurchase. [[Estimating Costs for a Small Business]] turns this model into a fill-in formula and worksheet, then corrects the estimate with usage measured during a trial. The vault does not quote prices; each note links to the official pricing pages and calculators.
 
 ### How to start
 

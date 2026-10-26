@@ -83,7 +83,7 @@ Lakebase Postgres became generally available on **January 22, 2026**. The GA rel
 |---|---|
 | **Project** | The top-level container for a Lakebase database deployment |
 | **Branch** | An isolated copy of the database state. Each project starts with a root branch named `production`, which cannot be deleted. A project can have up to 500 branches. |
-| **Compute** | The Postgres compute attached to a branch, sized in Capacity Units (CU). Autoscaling is available for computes up to 64 CU, and computes can scale to zero when idle. |
+| **Compute** | The Postgres compute attached to a branch, sized in Capacity Units (CU). Autoscaling is available for computes up to 64 CU, and computes can [[Scale to Zero\|scale to zero]] when idle. |
 | **Postgres versions** | 16, 17, and 18. Version 17 is the default. |
 | **Synced tables** | Copies of Unity Catalog tables served into Postgres for low-latency reads |
 | **Management** | UI, REST API, [[Databricks CLI]], and Databricks SDKs (Python, Java, Go), all generally available, plus [[Declarative Automation Bundles]] |
@@ -165,7 +165,7 @@ Create a branch from `production` to test a schema change or a new app version a
 
 > [!aws]- Databricks on AWS
 > - GA on January 22, 2026. Autoscaling regions include `us-east-1`, `us-east-2`, and `us-west-2`, among others.
-> - Lakebase supports PCI-DSS and HITRUST in all AWS regions, per the Lakebase release notes.
+> - Lakebase supports [[PCI DSS|PCI-DSS]] and HITRUST in all AWS regions, per the Lakebase release notes.
 
 > [!gcp]- Databricks on Google Cloud
 > - Lakebase is in Beta on Google Cloud. The GCP release notes list Beta availability in `us-east4`, `us-central1`, and `europe-west3`. This status was not confirmed as current in October 2026; check the GCP Lakebase release notes.

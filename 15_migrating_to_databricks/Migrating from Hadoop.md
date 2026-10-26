@@ -89,7 +89,7 @@ A Databricks blog post on Hadoop migration lists five areas to plan: **administr
 > | [[Hive Metastore]] | [[Unity Catalog]]; external metastores can be federated during the move |
 > | Oozie | [[Lakeflow Jobs]] |
 > | Sqoop | [[Lakeflow Connect]] or [[Lakehouse Federation]] |
-> | [[Apache HBase]] | No direct equivalent. Use [[Lakebase]] or a cloud NoSQL service (Azure Cosmos DB, Amazon DynamoDB or Keyspaces) for low-latency serving |
+> | [[Apache HBase]] | No direct equivalent. Use [[Lakebase]] or a cloud [[NoSQL]] service (Azure Cosmos DB, Amazon DynamoDB or Keyspaces) for low-latency serving |
 > | Ranger or Sentry policies | [[Privileges and Grants\|Unity Catalog grants]], [[Row Filters and Column Masks]] |
 > | ORC and Parquet files on HDFS | [[Delta Lake]] tables |
 
@@ -99,7 +99,7 @@ A Databricks blog post on Hadoop migration lists five areas to plan: **administr
 | **Metadata** | Register Hive tables in Unity Catalog | Hive metastore federation, then upgrade ([[Hive Metastore Migration to Unity Catalog]]) |
 | **Processing** | Move Spark, Hive, and Pig jobs | Databricks Runtime; Lakebridge Analyzer and Switch |
 | **Orchestration** | Replace Oozie workflows and cron jobs | [[Lakeflow Jobs]] |
-| **Security** | Replace Kerberos, Ranger, or Sentry | Unity Catalog, workspace identity |
+| **Security** | Replace [[Kerberos]], Ranger, or Sentry | Unity Catalog, workspace identity |
 
 ## How it works
 

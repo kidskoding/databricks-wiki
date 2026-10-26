@@ -110,7 +110,7 @@ flowchart TD
   HM["HMaster"] -.->|"assigns regions,<br/>coordinates splits"| RSB
 ```
 
-- **Write path:** A write is sent to the RegionServer that owns the key's region. It is appended to a write-ahead log in HDFS for durability and buffered in an in-memory MemStore. Full MemStores are flushed to immutable, sorted store files in HDFS. Background compactions merge store files to keep reads efficient.
+- **Write path:** A write is sent to the RegionServer that owns the key's region. It is appended to a [[Write-Ahead Log|write-ahead log]] in HDFS for durability and buffered in an in-memory MemStore. Full MemStores are flushed to immutable, sorted store files in HDFS. Background compactions merge store files to keep reads efficient.
 - **Read path:** The client locates the region through the `hbase:meta` table, caches the location, and reads from the RegionServer, which merges data from the MemStore and store files.
 
 HBase shell example:
@@ -140,7 +140,7 @@ scan 'users', {STARTROW => 'user#48000', STOPROW => 'user#49000', LIMIT => 10}
 
 > [!bridge]- In Databricks today
 > Databricks has no direct HBase equivalent. HBase is an operational store for key-based access; Databricks is primarily an analytics platform. HBase workloads typically move as follows:
-> - **Low-latency application reads and writes:** [[Lakebase]], the managed PostgreSQL database in Databricks, or a cloud NoSQL service outside Databricks.
+> - **Low-latency application reads and writes:** [[Lakebase]], the managed PostgreSQL database in Databricks, or a cloud [[NoSQL]] service outside Databricks.
 > - **Analytics over HBase data:** [[Delta Lake]] tables. `MERGE` covers the upsert patterns HBase often served. See [[MERGE and Upserts]].
 > - **Serving features or model outputs to applications:** see [[Model Serving]] and [[Feature Engineering and Feature Store]].
 

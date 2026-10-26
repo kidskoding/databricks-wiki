@@ -178,7 +178,7 @@ files = dbutils.fs.ls("/Volumes/bakery/raw/pos_exports/")
 > - **Object storage is not a file system:** Object stores such as Amazon S3, Azure Blob Storage, and Google Cloud Storage are key-value stores: you `PUT`, `GET`, and `LIST` whole objects, updating an object usually means rewriting it, renames of objects or "directories" are not cheap, and updates across several objects are not atomic. (ADLS Gen2 adds directories and atomic renames, but atomic updates across many files still need a table format.) Table formats such as [[Delta Lake]] add a transaction log so that a set of immutable files behaves like a table with [[ACID Transactions|ACID transactions]]. This is the core idea of chapter 05.
 > - **Elastic compute needs stateless design:** If any node can disappear, results must be written to storage, not kept on local disks. Streaming jobs persist progress in a [[Checkpoint|checkpoint]] in storage for the same reason.
 > - **Data gravity and egress:** Compute should run in the same cloud [[Region|region]] as the data. Reading across regions or clouds adds latency and [[Egress|egress]] charges.
-> - **Separation inside OLTP databases:** Some modern Postgres services separate the storage layer from the compute nodes, which enables scale-to-zero and fast branching. Lakebase's GA feature list (autoscaling, scale-to-zero, instant branching, point-in-time recovery) follows this pattern.
+> - **Separation inside OLTP databases:** Some modern Postgres services separate the storage layer from the compute nodes, which enables scale-to-zero and fast branching. Lakebase's GA feature list (autoscaling, scale-to-zero, instant branching, [[Point-in-Time Recovery|point-in-time recovery]]) follows this pattern.
 
 ## Common misconceptions
 

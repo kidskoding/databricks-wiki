@@ -82,7 +82,7 @@ Hive introduced four ideas that persist in current platforms:
 
 1. **SQL instead of Java:** HiveQL queries compile into jobs on the cluster.
 2. **Tables over files:** A table is a directory of files in [[HDFS]], with a name, columns, and types defined separately.
-3. **Schema-on-read:** Hive does not validate files when they are added. It applies the table schema at query time, which accommodates the *variety* described in [[The Three Vs of Big Data]].
+3. **[[Schema-on-Read|Schema-on-read]]:** Hive does not validate files when they are added. It applies the table schema at query time, which accommodates the *variety* described in [[The Three Vs of Big Data]].
 4. **A shared catalog:** Table definitions are stored in the [[Hive Metastore]], so multiple tools see the same tables.
 
 ## Overview
@@ -96,7 +96,7 @@ Hive is a SQL engine and data warehouse layer for Hadoop:
 | **Execution engine** | Originally MapReduce; later versions support other engines |
 | **[[Hive Metastore]]** | Stores databases, tables, columns, partitions, and file locations in a relational database |
 | **HiveServer2** | Accepts SQL over [[JDBC and ODBC]] so BI tools can connect |
-| **SerDe** | A serializer/deserializer that defines how Hive reads and writes a file format (delimited text, JSON, [[Apache ORC\|ORC]], [[Apache Parquet\|Parquet]], and others) |
+| **[[SerDe]]** | A serializer/deserializer that defines how Hive reads and writes a file format (delimited text, JSON, [[Apache ORC\|ORC]], [[Apache Parquet\|Parquet]], and others) |
 
 **Partitions** are Hive's primary performance mechanism. A table partitioned by date stores each date in a subdirectory, such as `/warehouse/logs/dt=2014-06-01/`. A query filtering on `dt` reads only matching directories. This is [[Partition Pruning|partition pruning]].
 

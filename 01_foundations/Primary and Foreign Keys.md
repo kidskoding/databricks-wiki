@@ -88,7 +88,7 @@ A primary key is a column whose value uniquely identifies each row of a table, a
 | **Foreign key (FK)** | A column in one table that refers to the primary key of another | `appointments.patient_id` points at `patients.patient_id` |
 | **Composite key** | A key made of several columns together | `(doctor_id, start_time)` in a schedule |
 | **Natural key** | A key that already exists in the real world or source system | A product barcode, a tax ID, the POS's order number |
-| **Surrogate key** | A meaningless ID the system generates | An auto-incrementing number or a UUID (a long, randomly generated ID) |
+| **[[Surrogate Key\|Surrogate key]]** | A meaningless ID the system generates | An auto-incrementing number or a UUID (a long, randomly generated ID) |
 | **Unique constraint** | A rule that values must not repeat, without being the main key | Each patient's email is unique |
 
 Rules a traditional database enforces:

@@ -63,7 +63,7 @@ Cloud regions are highly available, but regional outages, misconfigurations, and
 
 | Measure | Meaning |
 |---|---|
-| **RPO** (recovery point objective) | The maximum acceptable data loss, measured in time. An RPO of 15 minutes means losing at most the last 15 minutes of changes. |
+| **[[RPO and RTO\|RPO]]** (recovery point objective) | The maximum acceptable data loss, measured in time. An RPO of 15 minutes means losing at most the last 15 minutes of changes. |
 | **RTO** (recovery time objective) | The maximum acceptable time to restore service. |
 
 Databricks' HA/DR design guide gives example targets: **critical** workloads with RTO under 1 hour and RPO under 15 minutes; **important** workloads with RTO under 4 hours and RPO under 1 hour using hourly replication. These are planning examples, not guarantees.

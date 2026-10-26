@@ -75,7 +75,7 @@ Databricks has two modes. Both return the same shape of result.
 | | Legacy change data feed | Automatic change data feed (Auto CDF) |
 |---|---|---|
 | How changes are computed | At write time; change files are written alongside data | At query time, using [[Delta Transaction Log\|row tracking]] |
-| Enable | `delta.enableChangeDataFeed = true` per table | Row tracking on the table; no CDF property |
+| Enable | `delta.enableChangeDataFeed = true` per table | [[Row Tracking\|Row tracking]] on the table; no CDF property |
 | Requirements | Delta table | Databricks Runtime 19 or above; UC managed Delta table with row tracking, or an Apache Iceberg v3 table, registered in Unity Catalog |
 | Write overhead | Extra change files on each write | None at write time; Databricks reports `MERGE` and `UPDATE` typically about 15% faster on tables queried for changes |
 | Status (October 2026) | Supported; Databricks recommends migrating | Generally available (September 2026 release notes); rolling out to all supported regions by the end of October 2026 |

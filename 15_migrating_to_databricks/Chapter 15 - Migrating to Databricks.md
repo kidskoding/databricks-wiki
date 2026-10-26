@@ -46,7 +46,7 @@ The source-system playbooks share one pattern:
 |---|---|
 | Coexist | [[Lakehouse Federation]]: query the old system in place through a Unity Catalog connection and foreign catalog |
 | Ingest | [[Lakeflow Connect]] for databases and SaaS, or file exports loaded with [[Auto Loader]] and [[COPY INTO]] |
-| Convert | [[Lakebridge]] transpilers, or the agentic code converter (Beta in October 2026) |
+| Convert | [[Lakebridge]] [[Transpiler\|transpilers]], or the agentic code converter (Beta in October 2026) |
 | Validate | Lakebridge Reconcile and SQL comparisons |
 
 The playbooks run from simplest to most complex. [[Migrating from Excel and Access]] moves files into governed tables, dashboards, and Genie agents. [[Migrating from SQL Server]] and [[Migrating from Postgres and MySQL]] move analytics off application databases using change tracking, CDC, logical replication, or binlog replication, without replacing the application database. The cloud warehouse playbooks cover [[Migrating from Snowflake]] (query and catalog federation, Iceberg-based coexistence, Morpheus conversion), [[Migrating from Amazon Redshift]] (`UNLOAD` to S3, BladeBridge conversion), and [[Migrating from Google BigQuery]] (Storage API federation, `EXPORT DATA`, no built-in transpiler). [[Migrating from Hadoop]] covers HDFS data, Hive metastore federation, and job and security changes.

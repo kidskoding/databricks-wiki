@@ -163,7 +163,7 @@ Trigger options on Databricks:
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Event time vs. processing time:** Event time is when something happened; processing time is when the system sees it. Mobile apps and sensors send late data, so aggregations by event time need a [[Watermark|watermark]] that defines how late data may arrive before a window closes.
+> - **[[Event Time|Event time]] vs. processing time:** Event time is when something happened; processing time is when the system sees it. Mobile apps and sensors send late data, so aggregations by event time need a [[Watermark|watermark]] that defines how late data may arrive before a window closes.
 > - **State and checkpoints:** Streaming aggregations and joins keep state across micro-batches. A [[Checkpoint|checkpoint]] in durable storage records offsets and state so a restarted query resumes where it stopped. Changing a query in incompatible ways can require a new checkpoint.
 > - **Delivery guarantees:** At-most-once can lose data, at-least-once can duplicate it, and [[Exactly-Once Processing|exactly-once]] requires replayable sources, checkpoints, and idempotent or transactional sinks. When Structured Streaming writes to a Delta table, the Delta transaction log guarantees exactly-once processing, even with other streams or batch queries writing to the same table.
 > - **Changing triggers:** Switching a query from a time-based interval to `availableNow` can cause a micro-batch to run as an incremental batch before all available records are processed. Plan trigger changes deliberately.

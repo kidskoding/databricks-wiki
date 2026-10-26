@@ -72,7 +72,7 @@ At the end of this chapter, data is cataloged, secured, traced, and shareable. G
 | 1 | [[Unity Catalog]] | 101 Beginner | Databricks' governance layer for permissions, discovery, lineage, and auditing across every workspace. |
 | 2 | [[Metastore]] | 201 Practitioner | The top-level Unity Catalog container, one per region, that holds every catalog, credential, share, and connection. |
 | 3 | [[Three-Level Namespace]] | 101 Beginner | catalog.schema.table, the three-part address of every table, view, volume, function, and model. |
-| 4 | [[Catalogs Schemas and Tables]] | 101 Beginner | The securable objects in Unity Catalog (catalogs, schemas, tables, views, volumes, functions, models) and how to organize them. |
+| 4 | [[Catalogs Schemas and Tables]] | 101 Beginner | The [[Securable Object\|securable objects]] in Unity Catalog (catalogs, schemas, tables, views, volumes, functions, models) and how to organize them. |
 | 5 | [[Managed vs External Tables]] | 201 Practitioner | Who owns the files, and what happens when you drop a table. Managed is the default and recommended choice. |
 | 6 | [[Volumes]] | 201 Practitioner | Governed folders for non-table files like CSVs, images, PDFs, and model artifacts, addressed as /Volumes/catalog/schema/volume. |
 | 7 | [[Storage Credentials and External Locations]] | 301 Advanced | How Unity Catalog is allowed to reach your cloud storage, with credentials held by the catalog instead of by clusters. |

@@ -62,7 +62,7 @@ Mastery: `INPUT[inlineSelect(option(new), option(learning), option(solid)):maste
 
 Before cloud warehouses, an organization that needed a warehouse bought an appliance: a large upfront purchase, a long setup, and a fixed capacity that was either too large or eventually too small.
 
-AWS announced Redshift as a limited preview at re:Invent in **November 2012** and made it generally available in **February 2013**. It provides a [[Columnar Storage|columnar]], massively parallel processing (MPP) warehouse that is provisioned from the AWS console and billed by usage. Redshift uses a PostgreSQL-based SQL dialect and connects through PostgreSQL, JDBC, and ODBC drivers.
+AWS announced Redshift as a limited preview at re:Invent in **November 2012** and made it generally available in **February 2013**. It provides a [[Columnar Storage|columnar]], massively parallel processing ([[MPP]]) warehouse that is provisioned from the AWS console and billed by usage. Redshift uses a PostgreSQL-based SQL dialect and connects through PostgreSQL, JDBC, and ODBC drivers.
 
 ## Overview
 

@@ -170,7 +170,7 @@ Databricks adds large language models, governed AI, and business-user tools on t
 | July 11, 2023 | Microsoft announces the rename of Azure Active Directory to Microsoft Entra ID, with rollout from August 15, 2023. | [[Microsoft Entra ID Integration]] |
 | Late 2023 | Databricks introduces the name Data Intelligence Platform. | [[The Data Intelligence Platform]] |
 | November 9, 2023 | Unity Catalog is enabled automatically for new Azure Databricks workspaces created after this date. | [[Metastore]], [[Azure Databricks Overview]] |
-| March 2024 | Databricks releases DBRX, an open mixture-of-experts LLM. | [[MosaicML and Open Models]] |
+| March 2024 | Databricks releases DBRX, an open [[Mixture of Experts\|mixture-of-experts]] LLM. | [[MosaicML and Open Models]] |
 | April 2024 | Lakeview dashboards, now AI/BI dashboards, become generally available. | [[AI-BI Dashboards]] |
 | April 30, 2024 | Databricks on AWS GovCloud receives a FedRAMP High agency ATO. DoD IL5 provisional authorization follows in November 2024. | [[Databricks on AWS GovCloud]] |
 | December 20, 2024 | New notebooks are created as `.ipynb` files by default. | [[Notebooks]] |

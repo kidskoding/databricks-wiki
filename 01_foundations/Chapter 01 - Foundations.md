@@ -76,7 +76,7 @@ Every tool in this chapter assumes that one machine can store and process the da
 | # | Note | Depth | What it covers |
 |---|---|---|---|
 | 1 | [[What Is Data]] | 101 Beginner | Data as recorded facts, and why businesses keep it. |
-| 2 | [[Structured vs Unstructured Data]] | 101 Beginner | Tables versus documents, images, audio, and logs, and the semi-structured data in between. |
+| 2 | [[Structured vs Unstructured Data]] | 101 Beginner | Tables versus documents, images, audio, and logs, and the [[Semi-Structured Data\|semi-structured data]] in between. |
 | 3 | [[Files and File Formats]] | 101 Beginner | What a file format is and why the choice of format decides how fast and cheap data is to use. |
 | 4 | [[CSV and JSON]] | 101 Beginner | The two most common plain-text data formats and their limits at scale. |
 | 5 | [[Spreadsheets]] | 101 Beginner | Why Excel runs the world, and where it breaks. |

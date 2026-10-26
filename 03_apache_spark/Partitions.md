@@ -115,7 +115,7 @@ SELECT /*+ REBALANCE */       * FROM main.default.demo_ids;   -- even out sizes 
 
 **Sizing rules of thumb**
 
-- Aim for partitions of roughly **100–200 MB** in memory for scans, and for at least 2–3 tasks per core so stragglers do not idle the cluster.
+- Aim for partitions of roughly **100–200 MB** in memory for scans, and for at least 2–3 tasks per core so [[Straggler Task|stragglers]] do not idle the cluster.
 - If a stage has **fewer tasks than cores**, you are leaving the cluster idle.
 - If a stage has **tens of thousands of tiny tasks** (a few KB each), scheduling overhead dominates.
 - If one task is far slower than the rest, look for [[Data Skew|skew]], not for a partition count.

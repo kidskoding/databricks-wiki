@@ -55,7 +55,7 @@ Mastery: `INPUT[inlineSelect(option(new), option(learning), option(solid)):maste
 
 > [!analogy]- Analogy: a ledger with sticky notes
 > - **The bound ledger pages** are the base data files.
-> - **Sticky notes on a page** ("row 14's price is now 18.20") are change logs waiting to be folded in. This is the *merge-on-read* style: cheap to write, a bit more work to read.
+> - **Sticky notes on a page** ("row 14's price is now 18.20") are change logs waiting to be folded in. This is the *[[Copy-on-Write and Merge-on-Read|merge-on-read]]* style: cheap to write, a bit more work to read.
 > - **Rewriting the page cleanly** is *copy-on-write*: more work to write, easy to read.
 > - **A periodic clean-up session that copies sticky notes into fresh pages** is compaction.
 
@@ -143,7 +143,7 @@ SELECT * FROM table_changes('shop.sales.trips', 42);
 
 > [!deepdive]- Advanced topics (301–401)
 > - **The design trade-off is write cost vs. read cost:** Copy-on-write pays at write time; merge-on-read pays at read time until compaction runs. Delta's deletion vectors make the same trade inside one table: deletes and updates are cheap to write, and reads apply the vectors until a rewrite (OPTIMIZE or REORG) folds them in.
-> - **Incremental processing is the lasting idea:** Hudi popularized reading only what changed. Databricks generalized it in the change data feed, the newer automatic change data feed (built on row tracking), and incremental refresh for [[Materialized Views]].
+> - **Incremental processing is the lasting idea:** Hudi popularized reading only what changed. Databricks generalized it in the change data feed, the newer automatic change data feed (built on [[Row Tracking|row tracking]]), and incremental refresh for [[Materialized Views]].
 > - **Interoperability:** Projects have appeared that translate metadata between Hudi, Delta, and Iceberg. This vault has not confirmed Databricks support for any of them; for Databricks, the supported bridge is [[Delta UniForm]] (Delta to Iceberg).
 
 ## Common misconceptions

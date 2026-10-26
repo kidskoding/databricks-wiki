@@ -73,7 +73,7 @@ Mastery: `INPUT[inlineSelect(option(new), option(learning), option(solid)):maste
 
 ## Background
 
-Each SaaS application exposes data through its own [[APIs|API]], with its own authentication, pagination, rate limits, and schema changes. A hand-written extraction script per source breaks whenever the source changes a field or an API version, and a small team can maintain only a few of them.
+Each SaaS application exposes data through its own [[APIs|API]], with its own authentication, [[Pagination|pagination]], [[Rate Limit|rate limits]], and schema changes. A hand-written extraction script per source breaks whenever the source changes a field or an API version, and a small team can maintain only a few of them.
 
 Cloud warehouses made it practical to load raw data first and transform it afterwards inside the warehouse: [[ETL vs ELT|ELT instead of ETL]]. Managed ELT vendors turned extraction and loading into a subscription service with prebuilt connectors. Fivetran is the best-known example; others include Airbyte, Matillion, Qlik, and Hevo. Together with [[dbt]] for transformation and [[BI Tools]] for reporting, these tools made up the core of the "modern data stack".
 

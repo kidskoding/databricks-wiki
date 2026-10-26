@@ -78,7 +78,7 @@ An alert combines a query, a condition, a schedule, and notifications.
 | **SQL warehouse** | The compute that runs the query |
 | **Condition** | A comparison on the first value of a result column, or on an aggregation of one column across all rows (such as sum or average), against a threshold |
 | **Test condition** | A button that shows whether the alert would trigger on current data |
-| **Schedule** | A repeat interval from drop-down menus, or a Quartz cron expression (select **Show cron syntax**) |
+| **Schedule** | A repeat interval from drop-down menus, or a [[Quartz Cron\|Quartz cron]] expression (select **Show cron syntax**) |
 | **Notifications** | Users, or notification destinations such as email, Slack, Microsoft Teams, or a [[Webhook\|webhook]], chosen on the **Destinations** tab |
 | **Custom template** | Optional subject and body with variables such as `{{ALERT_NAME}}`, `{{ALERT_STATUS}}`, `{{ALERT_THRESHOLD}}`, `{{ALERT_URL}}`, and `{{QUERY_RESULT_TABLE}}` |
 | **Notify when back to normal** | An option to notify subscribers when the alert returns to OK |

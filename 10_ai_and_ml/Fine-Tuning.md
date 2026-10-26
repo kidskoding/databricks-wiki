@@ -94,7 +94,7 @@ Methods:
 | Method | What changes | Hardware |
 |---|---|---|
 | Full fine-tuning | All weights | Most GPU memory |
-| Parameter-efficient (for example LoRA) | Small adapter weights | Less GPU memory; common for small teams |
+| Parameter-efficient (for example [[LoRA]]) | Small adapter weights | Less GPU memory; common for small teams |
 | Continued pre-training | All weights, on raw domain text | Large datasets |
 
 ## How it works

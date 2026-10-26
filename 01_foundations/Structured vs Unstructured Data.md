@@ -70,7 +70,7 @@ The split matters because computers handle the three kinds very differently:
 
 - **Structured data is easy to query:** A question such as the number of 10:30 no-shows returns an exact answer in milliseconds. This is what [[Relational Databases|relational databases]] and [[SQL]] were built for.
 - **Unstructured data was, for decades, nearly impossible to query:** A computer could store a scanned referral letter, but not tell you what it said. It sat in shared drives and was searched by hand.
-- **Semi-structured data appeared with the web:** Web apps and [[APIs]] exchange [[CSV and JSON|JSON]], where each record carries its own labels. It is flexible, but two records can disagree about which fields exist.
+- **[[Semi-Structured Data|Semi-structured data]] appeared with the web:** Web apps and [[APIs]] exchange [[CSV and JSON|JSON]], where each record carries its own labels. It is flexible, but two records can disagree about which fields exist.
 
 In most businesses, unstructured files outnumber structured records, although the proportion is hard to measure. Much of the tooling in later chapters ([[Data Lakes|data lakes]], the [[The Lakehouse Idea|lakehouse]], and AI functions) exists to make unstructured and semi-structured data usable alongside tables.
 
@@ -87,7 +87,7 @@ Structured, semi-structured, and unstructured data are three categories that des
 The key idea that separates them is **when the [[Schema|schema]] is decided**:
 
 - **Schema on write:** You define columns before saving anything. Bad data is rejected at the door. This is how databases work.
-- **Schema on read:** You save whatever arrives and decide what it means when you read it. This is how data lakes started, and it is flexible but risky (see [[Data Swamps]]).
+- **[[Schema-on-Read|Schema on read]]:** You save whatever arrives and decide what it means when you read it. This is how data lakes started, and it is flexible but risky (see [[Data Swamps]]).
 
 ## How it works
 

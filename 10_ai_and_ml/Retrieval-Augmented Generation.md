@@ -85,7 +85,7 @@ A RAG application has two pipelines:
 | **Serving chain** (per question) | Embed question, retrieve chunks, build prompt, call LLM, return answer with sources | AI Search, [[Foundation Model APIs]], [[Unity Gateway\|Unity Gateway]], [[Agent Bricks]] |
 | **Quality loop** | Trace, evaluate, collect feedback, fix | [[MLflow]] tracing and judges ([[Agent Evaluation and Tracing]]) |
 
-Chunking strategies described in the Databricks docs include fixed-size, paragraph-based, format-specific (Markdown or HTML headers), and semantic chunking. The docs note that naive fixed-size splitting rarely holds up in production.
+[[Chunking]] strategies described in the Databricks docs include fixed-size, paragraph-based, format-specific (Markdown or HTML headers), and semantic chunking. The docs note that naive fixed-size splitting rarely holds up in production.
 
 ## How it works
 
@@ -189,7 +189,7 @@ The column names (`source_uri`, `chunk_to_retrieve`) must match the chunk table.
 
 > [!deepdive]- Advanced topics (301–401)
 > - **Retrieval quality first:** Databricks' retrieval quality guide recommends `ai_parse_document` for PDFs and complex documents, since poor parsing of tables and layout hurts retrieval.
-> - **Hybrid search and reranking** improve recall for product codes and names.
+> - **[[Hybrid Search|Hybrid search]] and reranking** improve recall for product codes and names.
 > - **Metadata filters** restrict retrieval, for example to the current policy version or the customer's region.
 > - **Permissions:** The retriever runs with an identity. Make sure it can read only documents the end user is allowed to see.
 > - **Evaluation:** The MLflow judges `RetrievalGroundedness` (is the answer supported by retrieved context) and `RetrievalRelevance` (is the context relevant to the request) target RAG failure modes.

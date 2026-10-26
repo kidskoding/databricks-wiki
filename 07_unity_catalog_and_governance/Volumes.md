@@ -56,7 +56,7 @@ tags:
 Mastery: `INPUT[inlineSelect(option(new), option(learning), option(solid)):mastery]`
 
 > [!story] Context
-> [[Managed vs External Tables]] covers tabular data. Many workloads also use files that are not tables: raw CSV drops, scanned documents, images, model artifacts, and Python wheels. In a traditional [[Data Lakes|data lake]] these files sit in buckets without catalog-level governance. Volumes register them in [[Unity Catalog]].
+> [[Managed vs External Tables]] covers tabular data. Many workloads also use files that are not tables: raw CSV drops, scanned documents, images, model artifacts, and [[Python Wheel|Python wheels]]. In a traditional [[Data Lakes|data lake]] these files sit in buckets without catalog-level governance. Volumes register them in [[Unity Catalog]].
 
 > [!eli5] Summary
 > A volume is a governed folder for files of any type. The same access rules that protect tables decide who can read, add, or delete the files in it.

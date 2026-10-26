@@ -159,7 +159,7 @@ SHOW GRANTS `analysts` ON CATALOG prod;
 ## Cloud differences
 
 > [!azure]- Azure Databricks, AWS, and Google Cloud
-> The privilege model and SQL are identical on all three clouds. What differs is where your users and groups come from: Microsoft Entra ID on Azure (see [[Microsoft Entra ID Integration]]), or any SAML/OIDC identity provider with SCIM on AWS and GCP (see [[SCIM Provisioning]]). The GCP privileges page is sometimes a little behind the AWS and Azure pages on newer privileges, so check it for preview items.
+> The privilege model and SQL are identical on all three clouds. What differs is where your users and groups come from: Microsoft Entra ID on Azure (see [[Microsoft Entra ID Integration]]), or any [[SAML]]/OIDC identity provider with [[SCIM]] on AWS and GCP (see [[SCIM Provisioning]]). The GCP privileges page is sometimes a little behind the AWS and Azure pages on newer privileges, so check it for preview items.
 
 ## Advanced topics
 

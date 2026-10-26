@@ -69,7 +69,7 @@ Catalyst is a library inside Spark SQL that represents every query as a **tree**
 | Phase | Input → output | What happens |
 |---|---|---|
 | **1. Analysis** | Unresolved logical plan → analyzed logical plan | Look up tables and columns in the catalog, resolve names and types. Errors like "column not found" come from here. |
-| **2. Logical optimization** | Analyzed plan → optimized logical plan | Rule-based rewrites: predicate pushdown, column pruning, constant folding, combining filters, simplifying expressions, reordering joins. |
+| **2. Logical optimization** | Analyzed plan → optimized logical plan | Rule-based rewrites: [[Predicate Pushdown\|predicate pushdown]], column pruning, constant folding, combining filters, simplifying expressions, reordering joins. |
 | **3. Physical planning** | Optimized logical plan → physical plan(s) | Choose how to run each step, such as broadcast hash join vs sort-merge join, using statistics and cost. |
 | **4. Code generation** | Physical plan → Java bytecode | Generate compact code for the plan ([[Tungsten]] whole-stage code generation). |
 

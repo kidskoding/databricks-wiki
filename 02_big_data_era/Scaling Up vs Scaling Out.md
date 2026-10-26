@@ -157,7 +157,7 @@ In the cloud, both directions are configuration settings. On Databricks classic 
 > [!confusion] Scaling out is not always faster
 > Additional machines help only when work divides into independent units. A job limited by one large key or by sequential steps does not speed up.
 
-> [!confusion] "Commodity hardware" does not mean unreliable hardware
+> [!confusion] "[[Commodity Hardware|Commodity hardware]]" does not mean unreliable hardware
 > It means standard, mass-produced servers rather than specialized high-end systems. At large machine counts, failures become routine, so the software is designed to tolerate them.
 
 ## Recall

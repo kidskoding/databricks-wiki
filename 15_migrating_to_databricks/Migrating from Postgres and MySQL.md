@@ -64,7 +64,7 @@ Mastery: `INPUT[inlineSelect(option(new), option(learning), option(solid)):maste
 > |---|---|
 > | The kitchen, which must stay fast | The primary database |
 > | A second copy of the order board | A read replica |
-> | The ticket rail where every order is written first | The write-ahead log (Postgres) or binary log (MySQL) |
+> | The ticket rail where every order is written first | The [[Write-Ahead Log\|write-ahead log]] (Postgres) or binary log (MySQL) |
 > | A runner who copies tickets to the back office | [[Lakeflow Connect]] |
 > | Walking into the kitchen to ask a question | [[Lakehouse Federation]] |
 
@@ -190,7 +190,7 @@ WHERE s.deleted_at IS NULL;
 | MySQL `0000-00-00` dates | `NULL` | Clean during ingestion |
 | MySQL `TINYINT(1)` used as boolean | `BOOLEAN` | |
 | MySQL case-insensitive default collations | Case-sensitive `UTF8_BINARY` by default | Use `UTF8_LCASE` where needed |
-| Indexes | [[Liquid Clustering]] on filter columns | Delta tables have no B-tree indexes |
+| Indexes | [[Liquid Clustering]] on filter columns | Delta tables have no [[B-Tree\|B-tree]] indexes |
 
 ## Small-business considerations
 

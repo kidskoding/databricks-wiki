@@ -71,7 +71,7 @@ Usage is metered in DBUs and recorded in `system.billing.usage` ([[Cost Manageme
 
 ### Automation and recovery
 
-The [[Terraform Provider]] manages accounts, workspaces, identities, policies, and permissions as code, alongside Declarative Automation Bundles for project assets. [[Disaster Recovery]] defines RPO and RTO targets and the strategies to meet them, including managed disaster recovery (Public Preview as of October 2026). Databricks protects its control plane; table data lives in customer storage and is the customer's responsibility to replicate.
+The [[Terraform Provider]] manages accounts, workspaces, identities, policies, and permissions as code, alongside Declarative Automation Bundles for project assets. [[Disaster Recovery]] defines [[RPO and RTO]] targets and the strategies to meet them, including managed disaster recovery (Public Preview as of October 2026). Databricks protects its control plane; table data lives in customer storage and is the customer's responsibility to replicate.
 
 ### Next
 

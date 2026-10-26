@@ -176,7 +176,7 @@ At serving time the request only carries `customer_id`. The endpoint reads the o
 > Online stores provision a Lakebase project. No other differences.
 
 > [!gcp]- Databricks on Google Cloud
-> Online Feature Stores are created as Lakebase Autoscaling projects. Some Google Cloud pages still mark the online store as Beta. The GCP docs list limits: the online table's catalog name must match the Lakebase database name, and an online store supports up to 3 read replicas.
+> Online Feature Stores are created as Lakebase Autoscaling projects. Some Google Cloud pages still mark the online store as Beta. The GCP docs list limits: the online table's catalog name must match the Lakebase database name, and an online store supports up to 3 [[Read Replica|read replicas]].
 
 ## Advanced topics
 

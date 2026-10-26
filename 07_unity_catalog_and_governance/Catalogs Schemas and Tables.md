@@ -64,7 +64,7 @@ Mastery: `INPUT[inlineSelect(option(new), option(learning), option(solid)):maste
 > - **Aisles** inside each department are schemas.
 > - **Products on the shelf** are tables and views. Loose items in bins, like apples, are files in a [[Volumes|volume]].
 > - **Store recipes** posted on the wall are functions and models: things you *use*, not things you read.
-> - **Staff badges** decide who can enter the stock room. In Unity Catalog every one of these things is a *securable object* that can carry its own permissions.
+> - **Staff badges** decide who can enter the stock room. In Unity Catalog every one of these things is a *[[Securable Object|securable object]]* that can carry its own permissions.
 
 ## Background
 

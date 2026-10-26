@@ -156,7 +156,7 @@ Distributed training needs an 8xH100 or 8xB300 accelerator. The decorator uses a
 > - **Environment versions:** GPU environment version 6 is the last to ship `serverless_gpu`; versions 5 and below use it. Plan migration to `databricks.air` before version 7.
 > - **Maturity:** Pages disagree on whether the distributed decorator is Beta or Public Preview. Treat AI Runtime APIs as subject to change.
 > - **Scheduling:** Jobs can run AI Runtime workloads on a schedule and chain them with upstream data preparation and downstream registration tasks.
-> - **Serving on GPU:** `GPU_XLARGE` (1x H100) serving endpoints do not support scale to zero.
+> - **Serving on GPU:** `GPU_XLARGE` (1x H100) serving endpoints do not support [[Scale to Zero|scale to zero]].
 > - **Library pinning:** Pin library versions in the serverless environment configuration so training runs are reproducible.
 > - **Data loading** often bottlenecks GPU training. Use streaming data loaders from Delta tables or volumes and keep GPUs busy.
 

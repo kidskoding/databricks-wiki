@@ -30,6 +30,7 @@ related:
   - "[[Genie Agents]]"
   - "[[Genie Code]]"
   - "[[MosaicML and Open Models]]"
+  - "[[AI Playground]]"
 aliases:
   - GenAI
   - Generative AI
@@ -169,7 +170,7 @@ FROM shop.silver.support_emails;
 ## Advanced topics
 
 > [!deepdive]- Advanced topics (301–401)
-> - **Context window:** Each model has a maximum number of tokens per request (prompt plus output). RAG must fit retrieved chunks inside it.
+> - **[[Context Window|Context window]]:** Each model has a maximum number of tokens per request (prompt plus output). RAG must fit retrieved chunks inside it.
 > - **Temperature and determinism:** Lower temperature makes output more repeatable, which suits classification and extraction.
 > - **Structured outputs:** Databricks serving supports structured outputs, so a model can be constrained to return JSON matching a schema.
 > - **Model retirement:** Hosted models are retired on a published schedule. Pin evaluation sets so you can test a replacement model before the retirement date. See [[Foundation Model APIs]].

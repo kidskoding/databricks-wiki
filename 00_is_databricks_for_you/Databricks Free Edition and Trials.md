@@ -95,7 +95,7 @@ Quotas can change; check the official limitations page before relying on a speci
 | Databases | One [[Lakebase]] project with scale-to-zero compute |
 | AI | One AI Search endpoint with one search unit; GPU serving endpoints and provisioned throughput unavailable |
 | Not supported | R and Scala, custom workspace storage locations, online tables, [[Clean Rooms]], Knowledge Assistant |
-| Administration | One workspace and one [[Metastore\|metastore]] per account; no account console; no SSO or SCIM |
+| Administration | One workspace and one [[Metastore\|metastore]] per account; no account console; no SSO or [[SCIM]] |
 | Quota behavior | When a quota is exceeded, compute shuts down until the quota resets; data and settings are retained |
 | Terms | Non-commercial use only |
 

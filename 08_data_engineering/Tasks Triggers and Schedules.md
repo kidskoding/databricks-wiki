@@ -80,7 +80,7 @@ Production pipelines are rarely linear. They fan out (load five stores in parall
 | Task type | Runs | Typical use |
 |---|---|---|
 | Notebook | A notebook | Ad hoc logic, Auto Loader loads, API calls |
-| Python script / Python wheel | A `.py` file or a packaged library | Tested, versioned code |
+| Python script / [[Python Wheel\|Python wheel]] | A `.py` file or a packaged library | Tested, versioned code |
 | JAR | Compiled Scala or Java | Legacy Spark apps |
 | SQL | A query, file, dashboard, or alert on a SQL warehouse | Checks, reports, post-refresh steps |
 | Pipeline | A Lakeflow pipeline update | Your bronze/silver/gold build |
