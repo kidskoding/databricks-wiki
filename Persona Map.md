@@ -50,8 +50,8 @@ Studying for an exam? [[Path - Certification Prep]] maps the notes to each Datab
 
 1. **Pick your row** in the table above. If you are unsure which job you are doing, [[Who Uses Databricks - Roles]] describes each one.
 2. **Prefer the guided path** when one exists. A path is a curated, ordered route. The tables below are the complete list, in depth order, and they are better for filling gaps than for a first read.
-3. **Read the 101s first.** Each note's `[!eli5]` block is the one-minute answer, and its collapsed "Going deeper" box holds the expert detail.
-4. **Follow the graph.** When a note mentions an idea you do not know, its links and `prereqs` take you back to it. The [[Timeline of Data Engineering]] shows where each tool sits in the story.
+3. **Read the 101s first:** Each note's `[!eli5]` block is the one-minute answer, and its collapsed "Going deeper" box holds the expert detail.
+4. **Follow the graph:** When a note mentions an idea you do not know, its links and `prereqs` take you back to it. The [[Timeline of Data Engineering]] shows where each tool sits in the story.
 
 > [!info] This table is generated
 > Do not edit the persona tables by hand. Change a note's `personas:` frontmatter, then run `python3 scripts/build_index.py`, and the tables below rebuild. Notes still marked `status: stub` appear here too, because the plan is fixed even before every note is written.
