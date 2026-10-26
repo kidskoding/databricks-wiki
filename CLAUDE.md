@@ -4,7 +4,7 @@ A second brain for Databricks, written by a Databricks student fellow (UIUC). It
 
 ## Structure
 
-- **The vault is one story, told in chronological order.** Each chapter covers an era or problem, the tools that solved it, and the new pain that led to the next chapter. Pre-Databricks history (Hadoop, Spark, Kafka, Airflow, lakes and warehouses) comes first. Databricks arrives in chapter 06 as the answer to that history.
+- **The vault is one story, told in chronological order:** Each chapter covers an era or problem, the tools that solved it, and the new pain that led to the next chapter. Pre-Databricks history (Hadoop, Spark, Kafka, Airflow, lakes and warehouses) comes first. Databricks arrives in chapter 06 as the answer to that history.
 - `start_here.md` is the home dashboard and table of contents. It links to the chapter notes.
 - Each folder holds one chapter note (`Chapter NN - Title.md`, `type: chapter`) that lists its concept notes in reading order. Those lists define the planned note names.
 - `_meta/manifest.yaml` is the blueprint: every chapter and planned note, with its depth, summary, personas, and key edges. `python3 scripts/scaffold.py` creates any missing stubs from it.
@@ -16,7 +16,7 @@ A second brain for Databricks, written by a Databricks student fellow (UIUC). It
   - `15_migrating_to_databricks` is Part 3 (moving in).
   - `80_learning_paths` holds one path note per persona (`type: path`, from `_templates/Path.md`).
 - Hub notes at the root (`Timeline of Data Engineering.md`, `Open Source vs Databricks - Who Replaced What.md`, `Cloud Comparison - Azure vs AWS vs GCP.md`, `Databricks Product Names and Renames.md`, `Persona Map.md`) tie the story together.
-- After any edit, run `python3 scripts/build_index.py`. It regenerates `llms.txt`, `_meta/vault_index.json`, and the Persona Map table, and it fails on unresolved links. Commit the regenerated files.
+- After any edit, run `python3 scripts/build_index.py` (it needs PyYAML; without it, run `uv run --with pyyaml python3 scripts/build_index.py`). It regenerates `llms.txt`, `_meta/vault_index.json`, and the Persona Map table, and it fails on unresolved links. Commit the regenerated files.
 - `90_glossary/` holds one short plain-English note per jargon term.
 - `_templates/Concept.md` is the note template. Every concept note follows its section order.
 
@@ -33,24 +33,25 @@ The graph view is a core feature, so links live in frontmatter properties as wel
 
 ## Writing rules
 
-- **Research every note against trusted primary sources.** In order of preference:
+- **Research every note against trusted primary sources:** In order of preference:
   1. Official Databricks documentation: `docs.databricks.com/{aws,gcp}/en/...` and `learn.microsoft.com/en-us/azure/databricks/...`, including release notes.
   2. Other Databricks-published material: `databricks.com` (engineering and product blog posts by Databricks staff, `databricks.com/glossary`, research papers, product and pricing pages).
   3. Other trusted primary sources: official open-source project docs (`spark.apache.org`, `delta.io`, `iceberg.apache.org`, `mlflow.org`, `kafka.apache.org`, `airflow.apache.org`, `unitycatalog.io`), official cloud provider docs (`learn.microsoft.com`, `docs.aws.amazon.com`, `cloud.google.com`), other vendors' own docs when describing their product, and peer-reviewed papers (CIDR, VLDB, OSDI, NSDI, SIGMOD).
 
   Do not use or cite content farms, SEO blogs, Medium posts, Wikipedia, forums, or AI-generated summaries. If a trusted source cannot confirm a fact, leave it out or mark it unconfirmed. Databricks renames products often (Delta Live Tables → Lakeflow Spark Declarative Pipelines, Workflows → Lakeflow Jobs, Databricks Asset Bundles → Declarative Automation Bundles, Delta Sharing → OpenSharing). Never write product names from memory without checking.
 - List sources in the collapsed `[!sources]` callout and set `last_verified` in frontmatter to the date you checked.
-- **Write like developer documentation.** The notes read like professional reference docs in the style of the Cloudflare, Vercel, and Databricks docs, not like a blog or a chat:
-  - **Never use em dashes (U+2014).** Use a period, comma, colon, or parentheses instead. Do not substitute a spaced en dash or double hyphen. `scripts/build_index.py` fails on any em dash.
+- **Write like developer documentation:** The notes read like professional reference docs in the style of the Cloudflare, Vercel, and Databricks docs, not like a blog or a chat:
+  - **Never use em dashes (U+2014):** Use a period, comma, colon, or parentheses instead. Do not substitute a spaced en dash or double hyphen. `scripts/build_index.py` fails on any em dash.
   - Open each page with one sentence that says what the thing is. Follow with short sections a reader can scan, and put procedures in numbered steps with one action per step.
   - Neutral, precise, declarative. Present tense, active voice, second person for instructions ("Run `OPTIMIZE`...").
   - Short paragraphs, one idea each. Lead with the definition, then the details.
   - No hype, rhetorical questions, jokes, exclamation marks, filler ("simply", "just", "magic", "game-changer"), or narrative scene-setting.
   - Use the exact product names, UI labels, SQL keywords, and API names. Put code identifiers in backticks.
   - Prefer tables for reference data (options, limits, comparisons) and numbered lists for procedures.
+  - Structure with real headings, not bold run-in labels. A topic that gets its own paragraph is a `###` subheading. A short labelled item is a bullet with a colon: `- **Label:** text`. Never write `**Label.** text`; `scripts/build_index.py` fails on it (fix with `scripts/fix_bold_leads.py`).
   - Code samples are minimal, runnable, labeled with a language, and commented only where needed.
   - State status explicitly: Public Preview, GA, deprecated, with the date checked.
-- **Plain language first.** The `[!eli5]` Summary block states what the thing is and why it matters in two or three sentences without jargon. It is still written professionally. Every jargon word elsewhere links to its note or glossary entry.
+- **Plain language first:** The `[!eli5]` Summary block states what the thing is and why it matters in two or three sentences without jargon. It is still written professionally. Every jargon word elsewhere links to its note or glossary entry.
 - Analogies are optional. Use one only when it genuinely clarifies the idea, and keep it brief and factual.
 - Give per-cloud differences in the `[!azure]`, `[!aws]`, `[!gcp]` callouts. Skip a cloud only if nothing differs, and say so.
 - Keep flashcards (`Question::Answer`) in the `## Recall` section, outside callouts, so the Spaced Repetition plugin parses them.

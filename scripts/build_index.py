@@ -24,6 +24,7 @@ SKIP_DIRS = {".git", ".obsidian", "_templates", "_assets", "scripts", "_meta"}
 EDGE_KEYS = ["chapter", "prev", "next", "evolved_from", "evolved_into", "cloud_equivalent",
              "related", "prereqs", "unlocks", "notes"]
 LINK_RE = re.compile(r"\[\[([^\]#|\\]+)(?:#[^\]|\\]*)?(?:\\?\|[^\]]*)?\]\]")
+BOLD_LEAD = re.compile(r"^(?:> ?)*(?: *(?:[-*+]|\d+\.) +)?\*\*[^*]{2,80}?\.\*\* ")
 MANIFEST = yaml.safe_load((ROOT / "_meta" / "manifest.yaml").read_text())
 PERSONAS = MANIFEST["personas"]
 GEN_START = "<!-- GENERATED:persona-map START (scripts/build_index.py) -->"
@@ -83,6 +84,13 @@ def main():
                     unresolved[t].add(title)
         if "\u2014" in n["body"] or "\u2014" in json.dumps(m, default=str, ensure_ascii=False):
             errors.append(f"em dash found: {n['path']}")
+        in_fence = False
+        for line in n["body"].split("\n"):
+            if line.lstrip("> ").startswith("```"):
+                in_fence = not in_fence
+            elif not in_fence and BOLD_LEAD.match(line):
+                errors.append(f"bold run-in label '**X.**' (use a ### heading or '**X:**'): {n['path']}")
+                break
         body_links = sorted(set(m_.group(1).strip() for m_ in LINK_RE.finditer(n["body"])))
         for t in body_links:
             if t not in titles:
