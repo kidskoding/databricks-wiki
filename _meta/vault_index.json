@@ -33623,11 +33623,6 @@
   },
   {
    "source": "Hive Metastore Migration to Unity Catalog",
-   "target": "Unity Catalog",
-   "type": "evolved_into"
-  },
-  {
-   "source": "Hive Metastore Migration to Unity Catalog",
    "target": "Hive Metastore Federation for AWS Glue",
    "type": "cloud_equivalent"
   },
