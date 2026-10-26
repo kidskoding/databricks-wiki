@@ -28,7 +28,7 @@ The graph view is a core feature, so links live in frontmatter properties as wel
 - `evolved_from` / `evolved_into`: history threads across chapters (MapReduce → Apache Spark, Apache Hive → Unity Catalog).
 - `cloud_equivalent`: the same idea on another cloud (VNet Injection ↔ Customer-Managed VPC).
 - `related`: any other strong connection.
-- Every note opens with a `[!story]` "Previously" callout and ends with a `[!nextup]` hand-off to its `next` note. Notes about pre-Databricks tools add a `[!bridge]` callout saying where that job lives in Databricks today.
+- Every note opens with a `[!story] Context` callout and ends with a `[!nextup] Next` hand-off to its `next` note. Notes about pre-Databricks tools add a `[!bridge]` callout saying where that job lives in Databricks today.
 - Graph color groups (by folder) live in `.obsidian/graph.json`.
 
 ## Writing rules
