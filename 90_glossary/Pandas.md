@@ -12,6 +12,7 @@ related:
   - "[[Spreadsheets]]"
   - "[[UDF]]"
   - "[[Notebooks]]"
+  - "[[Pandas API on Spark]]"
 aliases:
   - "pandas"
   - "pd"
