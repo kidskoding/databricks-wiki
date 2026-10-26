@@ -27,6 +27,7 @@ related:
   - "[[Object Storage]]"
   - "[[Workspace Storage Bucket]]"
   - "[[Hive Metastore Migration to Unity Catalog]]"
+  - "[[Predictive Optimization]]"
 aliases:
   - Managed tables
   - External tables

@@ -24,6 +24,7 @@ related:
   - "[[Generative AI and LLMs]]"
   - "[[Retrieval-Augmented Generation]]"
   - "[[How Databricks Pricing Works]]"
+  - "[[AI Playground]]"
 aliases:
   - FMAPI
   - Foundation Model Serving

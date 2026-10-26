@@ -184,7 +184,7 @@ Where do you find an executor's thread dump?::In the Executors tab.
 > **Unlocks next:** [[Query Performance and Caching]], [[Cost Optimization Checklist]]
 
 > [!nextup] Next
-> Spark addressed processing speed but not storage reliability or governance. [[Chapter 04 - The Modern Data Stack]] covers the data warehouses, data lakes, and tools that formed around Spark, and the two-tier architecture they produced.
+> [[Pandas API on Spark]] covers running pandas-style Python code on the same distributed engine, for data too large for one machine.
 
 > [!sources]- Sources (last verified: 2026-10-25)
 > - [Diagnose cost and performance issues using the Spark UI (AWS)](https://docs.databricks.com/aws/en/optimizations/spark-ui-guide/)

@@ -32,7 +32,7 @@ tags:
 # Chapter 11 - Azure Databricks
 
 > [!story] Context
-> Part 1 ended with [[Chapter 10 - AI and ML|chapter 10]] and [[MosaicML and Open Models]], completing the description of the Databricks platform itself. Part 2 covers how that platform runs on each cloud. This chapter covers Microsoft Azure, where Databricks is a first-party Microsoft service with its own provisioning, identity, networking, billing, and integrations.
+> Part 1 ended with [[Chapter 10 - AI and ML|chapter 10]], [[Managed MCP Servers]], and [[AI Playground]], completing the description of the Databricks platform itself. Part 2 covers how that platform runs on each cloud. This chapter covers Microsoft Azure, where Databricks is a first-party Microsoft service with its own provisioning, identity, networking, billing, and integrations.
 
 **Databricks as a first-party Microsoft service, with its own identity, networking, billing, and integrations.**
 

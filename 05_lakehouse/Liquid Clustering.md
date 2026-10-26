@@ -25,6 +25,7 @@ related:
   - "[[Materialized Views]]"
   - "[[Streaming Tables]]"
   - "[[Apache Iceberg]]"
+  - "[[Predictive Optimization]]"
 aliases:
   - CLUSTER BY
   - CLUSTER BY AUTO

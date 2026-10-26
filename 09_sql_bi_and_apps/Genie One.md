@@ -188,7 +188,7 @@ What does Genie One show a user?::Only the dashboards, Genie Agents, and apps ex
 > **Unlocks next:** [[Path - Business Owner]], [[Chapter 10 - AI and ML]]
 
 > [!nextup] Next
-> [[Chapter 10 - AI and ML]] moves from reporting on past results to predictions, models, and AI agents built on the same governed data.
+> [[VARIANT Data Type]] covers storing and querying JSON and other semi-structured data in Databricks SQL without fixing its schema up front.
 
 > [!sources]- Sources (last verified: 2026-10-25)
 > - [Use Genie One (AWS)](https://docs.databricks.com/aws/en/genie-one)

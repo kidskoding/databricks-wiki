@@ -36,7 +36,7 @@ tags:
 # Chapter 06 - The Databricks Platform
 
 > [!story] Context
-> [[Chapter 05 - The Lakehouse|Chapter 05]] ended with the lakehouse design: open table formats such as [[Delta Lake]] on cheap object storage, maintained with commands like [[OPTIMIZE and VACUUM]]. A design is not a product. This chapter covers the managed platform that Databricks built to run it: accounts, workspaces, compute, and the tools for writing and deploying code.
+> [[Chapter 05 - The Lakehouse|Chapter 05]] ended with the lakehouse design: open table formats such as [[Delta Lake]] on cheap object storage, maintained with commands like [[OPTIMIZE and VACUUM]], which [[Predictive Optimization]] can run automatically. A design is not a product. This chapter covers the managed platform that Databricks built to run it: accounts, workspaces, compute, and the tools for writing and deploying code.
 
 **Databricks arrives. Accounts, workspaces, compute, notebooks, and the tools for building on it.**
 

@@ -27,6 +27,7 @@ related:
   - "[[Agent Bricks]]"
   - "[[Budgets and Usage Dashboards]]"
   - "[[Databricks on AWS GovCloud]]"
+  - "[[Managed MCP Servers]]"
 aliases:
   - AI Gateway
   - External Models

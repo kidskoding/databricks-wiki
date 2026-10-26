@@ -16,6 +16,7 @@ evolved_from:
 evolved_into: []
 cloud_equivalent: []
 related:
+  - "[[Predictive Optimization]]"
   - "[[Liquid Clustering]]"
   - "[[Time Travel]]"
   - "[[Deletion Vectors]]"
@@ -25,7 +26,6 @@ related:
   - "[[Data Skipping]]"
   - "[[Serverless Compute]]"
 aliases:
-  - Predictive Optimization
   - OPTIMIZE
   - VACUUM
   - ANALYZE
@@ -91,7 +91,7 @@ The retention window is set by `delta.deletedFileRetentionDuration`, default 7 d
 
 ### Predictive optimization
 
-Predictive optimization runs maintenance automatically on [[Unity Catalog]] managed tables.
+Predictive optimization runs maintenance automatically on [[Unity Catalog]] managed tables. [[Predictive Optimization]] covers it in full, including monitoring and billing.
 
 | Item | Detail |
 |---|---|
@@ -202,7 +202,7 @@ What is the VACUUM retention period for Iceberg tables on Databricks?::Fixed at 
 > **Unlocks next:** [[Managed vs External Tables]], [[Query Performance and Caching]], [[Cost Optimization Checklist]]
 
 > [!nextup] Next
-> [[Chapter 06 - The Databricks Platform]] covers the managed platform that runs these tables: accounts, workspaces, compute, and the services that automate maintenance.
+> [[Predictive Optimization]] covers the Databricks service that decides when to run these commands on Unity Catalog managed tables, so you do not schedule them yourself.
 
 > [!sources]- Sources (last verified: 2026-10-25)
 > - [Predictive optimization for Unity Catalog managed tables (AWS)](https://docs.databricks.com/aws/en/optimizations/predictive-optimization)

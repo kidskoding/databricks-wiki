@@ -32,7 +32,7 @@ tags:
 # Chapter 04 - The Modern Data Stack
 
 > [!story] Context
-> [[Chapter 03 - Apache Spark|Chapter 03]] ended with [[Apache Spark]] as a fast, general engine for processing large datasets, inspected through the [[Spark UI]]. This chapter covers the cloud-era systems that surrounded such engines in the 2010s, and the architecture they produced.
+> [[Chapter 03 - Apache Spark|Chapter 03]] ended with [[Apache Spark]] as a fast, general engine for processing large datasets, inspected through the [[Spark UI]] and usable from pandas-style code through the [[Pandas API on Spark]]. This chapter covers the cloud-era systems that surrounded such engines in the 2010s, and the architecture they produced.
 
 **Cloud warehouses, data lakes, Kafka, Airflow, and dbt, and the messy two-tier world they created.**
 

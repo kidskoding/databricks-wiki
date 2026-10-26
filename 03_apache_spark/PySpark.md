@@ -25,6 +25,7 @@ related:
   - "[[Spark Connect]]"
   - "[[Serverless Compute]]"
   - "[[MLlib]]"
+  - "[[Pandas API on Spark]]"
 aliases:
   - Python Spark
   - pyspark

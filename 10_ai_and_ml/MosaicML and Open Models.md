@@ -172,7 +172,7 @@ What replaced Foundation Model Fine-tuning?::AI Runtime, Databricks' serverless 
 > **Unlocks next:** [[Foundation Model APIs]], [[Chapter 11 - Azure Databricks]]
 
 > [!nextup] Next
-> This ends Part 1. [[Chapter 11 - Azure Databricks]] begins Part 2, the clouds, with Azure Databricks: a first-party Microsoft service with its own identity, networking, and billing.
+> [[Managed MCP Servers]] covers how agents built on these models reach governed data and tools through the Model Context Protocol.
 
 > [!sources]- Sources (last verified: 2026-10-25)
 > - [Databricks signs definitive agreement to acquire MosaicML (press release)](https://www.databricks.com/company/newsroom/press-releases/databricks-signs-definitive-agreement-acquire-mosaicml-leading-generative-ai-platform)

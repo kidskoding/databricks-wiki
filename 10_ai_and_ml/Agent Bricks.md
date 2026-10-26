@@ -28,6 +28,8 @@ related:
   - "[[Databricks CLI]]"
   - "[[Users Groups and Service Principals]]"
   - "[[MLflow]]"
+  - "[[Managed MCP Servers]]"
+  - "[[AI Playground]]"
 aliases:
   - Agent Bricks CLI
   - Agent Runtime

@@ -25,6 +25,7 @@ related:
   - "[[Transformations and Actions]]"
   - "[[Delta Lake]]"
   - "[[Notebooks]]"
+  - "[[Pandas API on Spark]]"
 aliases:
   - DataFrame
   - Spark DataFrame

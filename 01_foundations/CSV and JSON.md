@@ -25,6 +25,7 @@ related:
   - "[[COPY INTO]]"
   - "[[Schema Enforcement and Evolution]]"
   - "[[Apache Parquet]]"
+  - "[[VARIANT Data Type]]"
 aliases:
   - CSV
   - JSON

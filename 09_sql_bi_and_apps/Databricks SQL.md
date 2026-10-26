@@ -29,6 +29,8 @@ related:
   - "[[DBUs]]"
   - "[[Genie Agents]]"
   - "[[Connecting Power BI]]"
+  - "[[VARIANT Data Type]]"
+  - "[[SQL Scripting and Stored Procedures]]"
 aliases:
   - DBSQL
 prereqs:
