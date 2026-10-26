@@ -75,6 +75,19 @@ def main():
     titles = set(nodes) | {p.name for p in ROOT.rglob("*") if p.is_file() and p.suffix != ".md"
                            and p.relative_to(ROOT).parts[0] not in {".git", ".obsidian"}}
     out_nodes, edges, unresolved, missing = [], [], defaultdict(set), []
+
+    # The agent primer is linted like a note but is not itself a graph node.
+    primer = ROOT / "_meta" / "primer.md"
+    if primer.exists():
+        p_text = primer.read_text()
+        if "—" in p_text:
+            errors.append("em dash found: _meta/primer.md")
+        if any(BOLD_LEAD.match(l) for l in p_text.split("\n")):
+            errors.append("bold run-in label '**X.**' (use a ### heading or '**X:**'): _meta/primer.md")
+        for t in {m_.group(1).strip() for m_ in LINK_RE.finditer(p_text)}:
+            if t not in titles:
+                unresolved[t].add("_meta/primer.md")
+
     for title, n in nodes.items():
         m = n["meta"]
         for key in EDGE_KEYS:
