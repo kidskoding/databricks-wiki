@@ -20,7 +20,7 @@ import sys
 import yaml
 
 ROOT = Path(__file__).resolve().parent.parent
-SKIP_DIRS = {".git", ".obsidian", "_templates", "_assets", "scripts", "_meta"}
+SKIP_DIRS = {".git", ".obsidian", ".claude", "_templates", "_assets", "scripts", "_meta"}
 EDGE_KEYS = ["chapter", "prev", "next", "evolved_from", "evolved_into", "cloud_equivalent",
              "related", "prereqs", "unlocks", "notes"]
 LINK_RE = re.compile(r"\[\[([^\]#|\\]+)(?:#[^\]|\\]*)?(?:\\?\|[^\]]*)?\]\]")
@@ -161,7 +161,9 @@ def write_llms_txt(nodes):
         "> administration (11-14), migrating a business (15), plus a front door for business readers (00),",
         "> learning paths by persona (80), and a glossary (90).",
         "",
-        "Agent instructions: AGENTS.md. Full typed graph: _meta/vault_index.json. Blueprint: _meta/manifest.yaml.",
+        "Agent instructions: AGENTS.md. One-read briefing: _meta/primer.md. Full typed graph: _meta/vault_index.json.",
+        "Query tools: `python3 scripts/brain.py context \"<question>\"` (also search, note, resolve, cloud, history, path),",
+        "or the MCP server in .mcp.json (scripts/brain_mcp.py). Blueprint: _meta/manifest.yaml.",
         "Depth: 101 beginner, 201 practitioner, 301 advanced, 401 expert.",
         "",
     ]

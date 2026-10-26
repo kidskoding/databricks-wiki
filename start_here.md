@@ -86,4 +86,7 @@ Compare the clouds side by side in [[Cloud Comparison - Azure vs AWS vs GCP]].
 ![[Vault Progress.base]]
 
 > [!info]- For AI agents
-> This vault is built to be read by agents as well as people. Start with `AGENTS.md` (how the vault is organized and how to answer from it) and `llms.txt` (a one-line map of every note). `_meta/vault_index.json` has every note and typed edge.
+> This vault is built to be read by agents as well as people.
+> - **Briefing:** `_meta/primer.md` makes an agent fluent in current Databricks in one read.
+> - **Query tools:** `scripts/brain.py` (CLI) and `scripts/brain_mcp.py` (MCP server, registered in `.mcp.json`) answer questions, translate old product names, and compare clouds in under a second.
+> - **Guides:** `AGENTS.md` explains how to use and extend the vault. `llms.txt` maps every note. `_meta/vault_index.json` holds every note and typed edge.

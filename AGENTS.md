@@ -2,6 +2,34 @@
 
 This repository is **Databricks Brain**, an Obsidian vault that teaches Databricks from zero to expert. It is meant to be read by people *and* by agents. This file tells an agent how to find things, how to answer from the vault, and how to add to it safely. Writing style rules live in `CLAUDE.md`. Read both before you edit anything.
 
+## 0. Fast start for agents
+
+Get fluent in one read, then query instead of guessing:
+
+1. **Read `_meta/primer.md` once.** It is a dense briefing: current product names, the platform map, decision guides, defaults and limits, cloud differences, verified snippets, gotchas, and a watchlist of preview features. Every line links to its source note.
+2. **Query the graph** for each question, with the CLI or the MCP server. Both use the same engine, need only the Python standard library, and answer in under a second.
+
+| Task | CLI (`python3 scripts/brain.py ...`) | MCP tool |
+|---|---|---|
+| Briefing | `primer` | `databricks_primer` |
+| Answer bundle for a question | `context "<question>" [--budget 1800]` | `databricks_context` |
+| Translate an old product name | `resolve "<name>"` | `databricks_resolve` |
+| Ranked section search | `search "<query>" [--cloud aws] [--type concept]` | `databricks_search` |
+| Read a note at a depth | `note "<title>" [--level summary\|standard\|full] [--section "<heading>"]` | `databricks_note` |
+| Azure vs AWS vs GCP | `cloud "<title>"` | `databricks_cloud` |
+| Graph neighbors | `neighbors "<title>" [--edge prereqs]` | `databricks_neighbors` |
+| Lineage (replaced what, replaced by) | `history "<title>"` | `databricks_history` |
+| Route for a role | `path <persona>` | `databricks_path` |
+
+Add `--json` for machine-readable output.
+
+### Connect a harness
+
+- **Claude Code:** the repo's `.mcp.json` registers the `databricks-brain` server, and `.claude/skills/databricks-brain/SKILL.md` tells Claude when to use it.
+- **Other MCP clients** (Claude Desktop, Cursor, and others): add a stdio server whose command is `python3` with the argument `/absolute/path/to/databricks-wiki/scripts/brain_mcp.py`.
+- **Harnesses without MCP:** run the CLI through the shell, or read `llms.txt` and the notes directly.
+- **Self-test:** `python3 scripts/test_brain.py` checks name resolution, search quality, and an MCP session.
+
 ## 1. The shape of the vault
 
 | Folder | Part | What is in it |
@@ -15,9 +43,9 @@ This repository is **Databricks Brain**, an Obsidian vault that teaches Databric
 | `80_learning_paths/` | 4 | Ordered routes through the vault, one per persona. |
 | `90_glossary/` | | One short note per jargon term. |
 | root | | `start_here.md` (home), hub notes (timeline, who-replaced-what, cloud comparison, renames, persona map). |
-| `_meta/` | | `manifest.yaml` (blueprint), `vault_index.json` (generated graph), `Vault Progress.base`. |
+| `_meta/` | | `primer.md` (one-read agent briefing), `manifest.yaml` (blueprint), `vault_index.json` (generated graph), `Vault Progress.base`. |
 | `_templates/` | | `Concept.md`, `Glossary.md`, `Path.md`. |
-| `scripts/` | | `scaffold.py` (create stubs from the manifest), `build_index.py` (rebuild the index and check links). |
+| `scripts/` | | `brain.py` (query CLI), `brain_mcp.py` (MCP server), `test_brain.py` (self-test), `scaffold.py` (create stubs, `--relink` reading order), `build_index.py` (rebuild the index and check rules), `rename_note.py` (rename a note everywhere), `fix_bold_leads.py`. |
 
 Each content folder has one chapter note, `Chapter NN - Title.md`, which lists its notes in reading order.
 
