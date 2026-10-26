@@ -5,7 +5,7 @@ part: 1
 level: 8
 section: Data Engineering
 summary: Getting data in, cleaning it, and running it on schedule with Lakeflow.
-prev: "[[Hive Metastore Migration to Unity Catalog]]"
+prev: "[[Lakeguard]]"
 next: "[[Lakeflow]]"
 notes:
   - "[[Lakeflow]]"

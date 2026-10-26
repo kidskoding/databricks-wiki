@@ -10,7 +10,7 @@ personas:
   - scientist
 chapter: "[[Chapter 06 - The Databricks Platform]]"
 prev: "[[DBUs]]"
-next: "[[Chapter 07 - Unity Catalog and Governance]]"
+next: "[[Serverless Workspaces and Default Storage]]"
 evolved_from:
   - "[[Python for Data]]"
 evolved_into: []

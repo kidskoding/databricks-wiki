@@ -10,7 +10,7 @@ personas:
   - analyst
 chapter: "[[Chapter 09 - SQL BI and Apps]]"
 prev: "[[Lakebase]]"
-next: "[[Chapter 10 - AI and ML]]"
+next: "[[VARIANT Data Type]]"
 evolved_from: []
 evolved_into: []
 cloud_equivalent: []

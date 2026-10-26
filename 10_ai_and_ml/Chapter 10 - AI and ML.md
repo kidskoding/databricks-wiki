@@ -5,7 +5,7 @@ part: 1
 level: 10
 section: AI & ML
 summary: From classic machine learning to agents, covering MLflow, Model Serving, Unity Gateway, AI Search, and Agent Bricks.
-prev: "[[Genie One]]"
+prev: "[[SQL Scripting and Stored Procedures]]"
 next: "[[Machine Learning Basics]]"
 notes:
   - "[[Machine Learning Basics]]"
@@ -102,6 +102,8 @@ This chapter ends Part 1, the story of the platform. Part 2 covers the clouds, s
 | 17 | [[Data Quality Monitoring]] | 301 Advanced | Watching tables and model inputs for freshness, completeness, and drift with anomaly detection and data profiling (formerly Lakehouse Monitoring). |
 | 18 | [[AI Runtime]] | 301 Advanced | GPU clusters on Databricks Runtime ML and AI Runtime serverless GPUs (A10 and H100) for deep learning, fine-tuning, and LLM work. |
 | 19 | [[MosaicML and Open Models]] | 201 Practitioner | Databricks' 2023 MosaicML acquisition, the MPT and DBRX open models, and how that technology lives on in hosted models, serving, and AI Runtime. |
+| 20 | [[Managed MCP Servers]] | 301 Advanced | Databricks-hosted Model Context Protocol servers that give AI agents governed access to data, functions, and search. |
+| 21 | [[AI Playground]] | 101 Beginner | A no-code UI for trying, comparing, and prototyping LLMs and agents in the workspace. |
 
 <!-- GENERATED:reading-order END -->
 

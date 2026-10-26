@@ -9,7 +9,7 @@ personas:
   - engineer
 chapter: "[[Chapter 03 - Apache Spark]]"
 prev: "[[Spark Connect]]"
-next: "[[Chapter 04 - The Modern Data Stack]]"
+next: "[[Pandas API on Spark]]"
 evolved_from:
   - "[[Jobs Stages and Tasks]]"
 evolved_into:

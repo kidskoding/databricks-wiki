@@ -5,7 +5,7 @@ part: 1
 level: 6
 section: Databricks Platform
 summary: Databricks arrives. Accounts, workspaces, compute, notebooks, and the tools for building on it.
-prev: "[[OPTIMIZE and VACUUM]]"
+prev: "[[Predictive Optimization]]"
 next: "[[The Founding of Databricks]]"
 notes:
   - "[[The Founding of Databricks]]"
@@ -98,6 +98,11 @@ At the end of this chapter, you can create compute, write and version code, depl
 | 18 | [[Databricks Connect]] | 301 Advanced | A client library, built on Spark Connect, that runs Spark code from your local IDE on Databricks clusters or serverless compute. |
 | 19 | [[DBUs]] | 101 Beginner | The Databricks Unit (DBU), a normalized unit of processing power per hour that Databricks usage is measured and priced in. |
 | 20 | [[Libraries and Environments]] | 201 Practitioner | How to install Python, JAR, and R packages and pin dependencies with notebook-scoped libraries, compute-scoped libraries, and serverless environments. |
+| 21 | [[Serverless Workspaces and Default Storage]] | 201 Practitioner | Workspaces that run only on serverless compute and store data in Databricks-managed storage, with no cloud setup. |
+| 22 | [[dbutils and Widgets]] | 201 Practitioner | The notebook utility library for files, secrets, and job values, and widgets for notebook parameters. |
+| 23 | [[Instance Pools]] | 301 Advanced | Pre-warmed idle VMs that cut classic cluster start time. |
+| 24 | [[Init Scripts]] | 301 Advanced | Shell scripts that run on each classic cluster node at startup, and where to store them safely. |
+| 25 | [[DBFS]] | 201 Practitioner | The legacy Databricks File System and mounts, and why Unity Catalog volumes replace them. |
 
 <!-- GENERATED:reading-order END -->
 

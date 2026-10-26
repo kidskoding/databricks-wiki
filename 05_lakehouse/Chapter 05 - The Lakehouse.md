@@ -89,6 +89,7 @@ At the end of this chapter, the storage layer is reliable, open, and largely sel
 | 15 | [[Deletion Vectors]] | 401 Expert | Marking rows deleted instead of rewriting whole files. |
 | 16 | [[Change Data Feed]] | 301 Advanced | A row-level log of what changed in a Delta table, for downstream incremental processing. |
 | 17 | [[OPTIMIZE and VACUUM]] | 301 Advanced | Compacting small files and deleting old ones, and Predictive Optimization doing it for you. |
+| 18 | [[Predictive Optimization]] | 201 Practitioner | Databricks automatically running OPTIMIZE, VACUUM, and statistics collection on Unity Catalog managed tables. |
 
 <!-- GENERATED:reading-order END -->
 

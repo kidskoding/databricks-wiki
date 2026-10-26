@@ -5,7 +5,7 @@ part: 1
 level: 4
 section: The Modern Data Stack
 summary: Cloud warehouses, data lakes, Kafka, Airflow, and dbt, and the messy two-tier world they created.
-prev: "[[Spark UI]]"
+prev: "[[Pandas API on Spark]]"
 next: "[[Data Warehouses]]"
 notes:
   - "[[Data Warehouses]]"

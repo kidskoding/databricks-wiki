@@ -79,6 +79,8 @@ The chapter uses one running example: a three-store bakery whose owner reviews "
 | 12 | [[Databricks Apps]] | 201 Practitioner | Hosting internal web apps in Streamlit, Dash, React, and others right next to your data. |
 | 13 | [[Lakebase]] | 301 Advanced | A managed Postgres database (OLTP) inside the lakehouse, for apps and agents, generally available since January 22, 2026. |
 | 14 | [[Genie One]] | 101 Beginner | Genie One (formerly Databricks One), the simplified business-user home for dashboards, Genie Agents, and apps. |
+| 15 | [[VARIANT Data Type]] | 201 Practitioner | Storing and querying semi-structured JSON-like data efficiently with the VARIANT type. |
+| 16 | [[SQL Scripting and Stored Procedures]] | 301 Advanced | Variables, control flow, and reusable procedures in Databricks SQL, for porting warehouse logic. |
 
 <!-- GENERATED:reading-order END -->
 

@@ -365,6 +365,11 @@ chapters:
         depth: 201
         personas: [engineer]
         summary: The built-in web page for seeing what a Spark job did and why it was slow.
+      - title: Pandas API on Spark
+        depth: 201
+        personas: [scientist, engineer]
+        summary: Running pandas-style code on Spark for data too large for one machine.
+        related: [PySpark, DataFrames, Python for Data]
 
   - folder: 04_modern_data_stack
     number: "04"
@@ -544,6 +549,11 @@ chapters:
         personas: [engineer, admin]
         summary: Compacting small files and deleting old ones, and Predictive Optimization doing it for you.
         aliases: [Predictive Optimization]
+      - title: Predictive Optimization
+        depth: 201
+        personas: [admin, engineer, solo]
+        summary: Databricks automatically running OPTIMIZE, VACUUM, and statistics collection on Unity Catalog managed tables.
+        related: [OPTIMIZE and VACUUM, Liquid Clustering, Managed vs External Tables]
 
   - folder: 06_databricks_platform
     number: "06"
@@ -647,6 +657,31 @@ chapters:
         depth: 201
         personas: [engineer, scientist]
         summary: Installing Python packages and pinning dependencies on classic and serverless compute.
+      - title: Serverless Workspaces and Default Storage
+        depth: 201
+        personas: [solo, admin, owner]
+        summary: Workspaces that run only on serverless compute and store data in Databricks-managed storage, with no cloud setup.
+        related: [Serverless Compute, Accounts and Workspaces, Managed vs External Tables]
+      - title: dbutils and Widgets
+        depth: 201
+        personas: [engineer, scientist]
+        summary: The notebook utility library for files, secrets, and job values, and widgets for notebook parameters.
+        related: [Notebooks, Secrets Management, Volumes]
+      - title: Instance Pools
+        depth: 301
+        personas: [admin, engineer, finance]
+        summary: Pre-warmed idle VMs that cut classic cluster start time.
+        related: [All-Purpose Compute, Jobs Compute, Compute Policies]
+      - title: Init Scripts
+        depth: 301
+        personas: [admin, engineer]
+        summary: Shell scripts that run on each classic cluster node at startup, and where to store them safely.
+        related: [Libraries and Environments, All-Purpose Compute, Volumes]
+      - title: DBFS
+        depth: 201
+        personas: [engineer, admin]
+        summary: The legacy Databricks File System and mounts, and why Unity Catalog volumes replace them.
+        related: [Volumes, Hive Metastore Migration to Unity Catalog, Object Storage]
 
   - folder: 07_unity_catalog_and_governance
     number: "07"
@@ -736,6 +771,31 @@ chapters:
         personas: [admin, engineer]
         summary: Upgrading older workspaces off the legacy Hive metastore.
         evolved_from: [Hive Metastore]
+      - title: Catalog Explorer
+        depth: 101
+        personas: [everyone, analyst, admin]
+        summary: The Unity Catalog UI for browsing, searching, and managing data and AI assets and their permissions.
+        related: [Unity Catalog, Privileges and Grants, Data Lineage]
+      - title: Governed Tags
+        depth: 201
+        personas: [admin, security]
+        summary: Account-level tag definitions with controlled values, used for discovery, classification, and ABAC policies.
+        related: [Attribute-Based Access Control, Data Classification, Tagging for Chargeback]
+      - title: Service Credentials
+        depth: 301
+        personas: [admin, engineer]
+        summary: Unity Catalog objects that let code reach cloud services other than storage, such as queues or secret stores.
+        related: [Storage Credentials and External Locations, Secrets Management, Unity Catalog]
+      - title: Unity Catalog Functions
+        depth: 201
+        personas: [engineer, analyst, ai-dev]
+        summary: SQL and Python functions registered in Unity Catalog, governed and reusable across queries, agents, and tools.
+        related: [Row Filters and Column Masks, AI Functions in SQL, Mosaic AI Agent Framework]
+      - title: Lakeguard
+        depth: 301
+        personas: [admin, security]
+        summary: The isolation technology that lets many users share standard and serverless compute while Unity Catalog enforces fine-grained access.
+        related: [Compute Types, Row Filters and Column Masks, Serverless Compute]
 
   - folder: 08_data_engineering
     number: "08"
@@ -894,6 +954,16 @@ chapters:
         depth: 101
         personas: [owner, analyst]
         summary: The simplified business-user home for dashboards, Genie Agents, and apps.
+      - title: VARIANT Data Type
+        depth: 201
+        personas: [engineer, analyst]
+        summary: Storing and querying semi-structured JSON-like data efficiently with the VARIANT type.
+        related: [Structured vs Unstructured Data, CSV and JSON, Databricks SQL]
+      - title: SQL Scripting and Stored Procedures
+        depth: 301
+        personas: [analyst, engineer]
+        summary: Variables, control flow, and reusable procedures in Databricks SQL, for porting warehouse logic.
+        related: [Databricks SQL, Migrating from SQL Server, Unity Catalog Functions]
 
   - folder: 10_ai_and_ml
     number: "10"
@@ -984,6 +1054,16 @@ chapters:
         depth: 201
         personas: [owner, ai-dev]
         summary: Databricks' 2023 MosaicML acquisition, DBRX, and its open-model strategy.
+      - title: Managed MCP Servers
+        depth: 301
+        personas: [ai-dev]
+        summary: Databricks-hosted Model Context Protocol servers that give AI agents governed access to data, functions, and search.
+        related: [Agent Bricks, Unity Catalog Functions, AI Search]
+      - title: AI Playground
+        depth: 101
+        personas: [everyone, ai-dev, analyst]
+        summary: A no-code UI for trying, comparing, and prototyping LLMs and agents in the workspace.
+        related: [Foundation Model APIs, Generative AI and LLMs, Agent Bricks]
 
   - folder: 11_azure_databricks
     number: "11"
@@ -1537,3 +1617,68 @@ glossary:
   - Model
   - Drift
   - Pandas
+  - SCIM
+  - SAML
+  - OpenID Connect
+  - Multi-Factor Authentication
+  - Personal Access Token
+  - Tenant
+  - PCI DSS
+  - FedRAMP
+  - FinOps
+  - Chargeback
+  - RPO and RTO
+  - SKU
+  - Pay-As-You-Go
+  - CIDR
+  - NAT Gateway
+  - Private Endpoint
+  - Resource Group
+  - SIEM
+  - Securable Object
+  - Foreign Catalog
+  - Apache Arrow
+  - gRPC
+  - Predicate Pushdown
+  - Logical and Physical Plans
+  - Garbage Collection
+  - Straggler Task
+  - Speculative Execution
+  - Small Files Problem
+  - Commodity Hardware
+  - NoSQL
+  - Sharding
+  - CAP Theorem
+  - Kerberos
+  - SerDe
+  - MPP
+  - Schema-on-Read
+  - Semi-Structured Data
+  - B-Tree
+  - MVCC
+  - Isolation Level
+  - Optimistic Concurrency
+  - Copy-on-Write and Merge-on-Read
+  - Row Tracking
+  - Column Mapping
+  - Write-Ahead Log
+  - Read Replica
+  - Collation
+  - Surrogate Key
+  - Event Time
+  - Rate Limit
+  - Pagination
+  - Endpoint
+  - Transpiler
+  - Point-in-Time Recovery
+  - Quartz Cron
+  - Python Wheel
+  - LTS
+  - Context Window
+  - Chunking
+  - LoRA
+  - Model Context Protocol
+  - Hyperparameter
+  - Mixture of Experts
+  - Hybrid Search
+  - Scale to Zero

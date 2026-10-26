@@ -10,7 +10,7 @@ personas:
   - ai-dev
 chapter: "[[Chapter 10 - AI and ML]]"
 prev: "[[AI Runtime]]"
-next: "[[Chapter 11 - Azure Databricks]]"
+next: "[[Managed MCP Servers]]"
 evolved_from:
   - "[[The Founding of Databricks]]"
 evolved_into:

@@ -5,7 +5,7 @@ part: 2
 level: 11
 section: Azure Databricks
 summary: Databricks as a first-party Microsoft service, with its own identity, networking, billing, and integrations.
-prev: "[[MosaicML and Open Models]]"
+prev: "[[AI Playground]]"
 next: "[[Azure Databricks Overview]]"
 notes:
   - "[[Azure Databricks Overview]]"

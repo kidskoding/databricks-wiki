@@ -10,7 +10,7 @@ personas:
   - admin
 chapter: "[[Chapter 05 - The Lakehouse]]"
 prev: "[[Change Data Feed]]"
-next: "[[Chapter 06 - The Databricks Platform]]"
+next: "[[Predictive Optimization]]"
 evolved_from:
   - "[[Z-Ordering]]"
 evolved_into: []

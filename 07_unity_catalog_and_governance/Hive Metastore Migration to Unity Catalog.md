@@ -10,7 +10,7 @@ personas:
   - engineer
 chapter: "[[Chapter 07 - Unity Catalog and Governance]]"
 prev: "[[Data Classification]]"
-next: "[[Chapter 08 - Data Engineering]]"
+next: "[[Catalog Explorer]]"
 evolved_from:
   - "[[Hive Metastore]]"
 evolved_into:

@@ -101,6 +101,7 @@ Spark improved processing but not storage. Data in a data lake remained plain fi
 | 17 | [[Adaptive Query Execution]] | 301 Advanced | Spark re-planning a query during execution based on runtime statistics. |
 | 18 | [[Spark Connect]] | 301 Advanced | The client-server protocol that lets thin clients run Spark DataFrame code on a remote Spark server. |
 | 19 | [[Spark UI]] | 201 Practitioner | The built-in web interface for seeing what a Spark application did and why it was slow. |
+| 20 | [[Pandas API on Spark]] | 201 Practitioner | Running pandas-style code on Spark for data too large for one machine. |
 
 <!-- GENERATED:reading-order END -->
 

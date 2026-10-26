@@ -5,7 +5,7 @@ part: 1
 level: 7
 section: Unity Catalog & Governance
 summary: One place to find, secure, track, and share every data and AI asset.
-prev: "[[Libraries and Environments]]"
+prev: "[[DBFS]]"
 next: "[[Unity Catalog]]"
 notes:
   - "[[Unity Catalog]]"
@@ -88,6 +88,11 @@ At the end of this chapter, data is cataloged, secured, traced, and shareable. G
 | 17 | [[Databricks Marketplace]] | 201 Practitioner | An open marketplace for finding and getting datasets, ML models, and other data products from providers, delivered through OpenSharing. |
 | 18 | [[Data Classification]] | 301 Advanced | A Unity Catalog feature that scans catalogs for sensitive data such as PII and can tag matching columns automatically. |
 | 19 | [[Hive Metastore Migration to Unity Catalog]] | 301 Advanced | Upgrading older workspaces from the legacy Hive metastore to Unity Catalog with federation, SYNC, CLONE, and the UCX utilities. |
+| 20 | [[Catalog Explorer]] | 101 Beginner | The Unity Catalog UI for browsing, searching, and managing data and AI assets and their permissions. |
+| 21 | [[Governed Tags]] | 201 Practitioner | Account-level tag definitions with controlled values, used for discovery, classification, and ABAC policies. |
+| 22 | [[Service Credentials]] | 301 Advanced | Unity Catalog objects that let code reach cloud services other than storage, such as queues or secret stores. |
+| 23 | [[Unity Catalog Functions]] | 201 Practitioner | SQL and Python functions registered in Unity Catalog, governed and reusable across queries, agents, and tools. |
+| 24 | [[Lakeguard]] | 301 Advanced | The isolation technology that lets many users share standard and serverless compute while Unity Catalog enforces fine-grained access. |
 
 <!-- GENERATED:reading-order END -->
 
