@@ -50,5 +50,6 @@ Row tracking::A Delta table feature that assigns each row a stable ID and its la
 Which table property enables row tracking?::delta.enableRowTracking = true.
 
 > [!sources]- Sources (last verified: 2026-10-26)
-> - [Row tracking in Databricks (AWS)](https://docs.databricks.com/aws/en/tables/features/row-tracking)
+> - [Row tracking in Databricks (AWS)](https://docs.databricks.com/aws/en/delta/row-tracking)
+> - [Row tracking in Azure Databricks](https://learn.microsoft.com/en-us/azure/databricks/delta/row-tracking)
 > - [Delta Lake feature compatibility and protocols (AWS)](https://docs.databricks.com/aws/en/tables/features/feature-compatibility)
