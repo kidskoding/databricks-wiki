@@ -5,10 +5,15 @@ Safe to re-run: it never overwrites a note that already exists, except chapter
 notes' generated reading-order block (between the GENERATED markers), which is
 rebuilt so it always matches the manifest.
 
-Usage: python3 scripts/scaffold.py
+Usage: python3 scripts/scaffold.py [--relink]
+
+--relink rewrites the `prev` / `next` frontmatter of every existing note to match
+the manifest's reading order (use it after inserting notes into a chapter). It
+does not touch the prose in [!story] / [!nextup] callouts; fix those by hand.
 """
 from pathlib import Path
 import re
+import sys
 
 import yaml
 
@@ -214,6 +219,20 @@ def main():
         }
         path.write_text(fm(meta) + f"\n# {term}\n\n> [!todo] Stub\n> Write from `_templates/Glossary.md`.\n")
         created += 1
+
+    if "--relink" in sys.argv:
+        relinked = 0
+        for ch in MANIFEST["chapters"]:
+            for title in [chapter_title(ch)] + [n["title"] for n in ch["notes"]]:
+                path = ROOT / ch["folder"] / f"{title}.md"
+                text = path.read_text()
+                prev, nxt = neighbours(title)
+                new = re.sub(r'^prev: .*$', f'prev: "{prev}"', text, count=1, flags=re.M)
+                new = re.sub(r'^next: .*$', f'next: "{nxt}"', new, count=1, flags=re.M)
+                if new != text:
+                    path.write_text(new)
+                    relinked += 1
+        print(f"relinked {relinked} notes")
 
     print(f"created {created} notes")
 
